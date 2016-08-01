@@ -19,9 +19,7 @@ class YMVideoViewController: YMBaseViewController {
     
     private func setupUI() {
         navigationItem.title = ""
-        titleBGView.addSubview(titleScrollView)
-        titleBGView.addSubview(titleSearchButton)
-        navigationItem.titleView = titleBGView
+        navigationItem.titleView = titleView
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,26 +27,16 @@ class YMVideoViewController: YMBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private lazy var titleSearchButton: UIButton = {
-        let titleSearchButton = UIButton()
-        titleSearchButton.setBackgroundImage(UIImage(named: "shadow_addolder_titlebar_44x36_"), forState: .Normal)
-        titleSearchButton.backgroundColor = UIColor.redColor()
-        titleSearchButton.frame = CGRectMake(SCREENW - 30, 0, 30, 44)
-        return titleSearchButton
+    private lazy var titleView: YMTitleView = {
+        let titleView = YMTitleView.titleView()
+        titleView.delegate = self
+        return titleView
     }()
-    
-    
-    private lazy var titleBGView: UIView = {
-        let titleBGView = UIView()
-        titleBGView.frame = CGRectMake(0, 0, SCREENW, 44)
-        return titleBGView
-    }()
-    
-    private lazy var titleScrollView: UIScrollView = {
-        let titleScrollView = UIScrollView()
-        titleScrollView.backgroundColor = UIColor.cyanColor()
-        titleScrollView.frame = CGRectMake(0, 0, SCREENW - 30, 44)
-        return titleScrollView
-    }()
+}
 
+extension YMVideoViewController: YMTitleViewDelegate {
+    func titleView(titleView: YMTitleView, titleSearchButton button: UIButton) {
+        let searchVC = YMVideoSearchController()
+        navigationController?.pushViewController(searchVC, animated: true)
+    }
 }

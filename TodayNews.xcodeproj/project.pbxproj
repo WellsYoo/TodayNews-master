@@ -12,6 +12,8 @@
 		827E87E6C347D72EEA480634 /* Pods_TodayNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4486ED8A9D71B92D386525D6 /* Pods_TodayNews.framework */; };
 		940375951D4F820C00C7B135 /* YMConcern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375941D4F820C00C7B135 /* YMConcern.swift */; };
 		940375971D4F92C300C7B135 /* YMNewCareSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375961D4F92C300C7B135 /* YMNewCareSearchController.swift */; };
+		940375991D4F9BCB00C7B135 /* YMTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375981D4F9BCB00C7B135 /* YMTitleView.swift */; };
+		9403759B1D4F9FE000C7B135 /* YMVideoSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9403759A1D4F9FE000C7B135 /* YMVideoSearchController.swift */; };
 		940FC7641D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FC7631D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift */; };
 		940FC76D1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FC76B1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift */; };
 		940FC76E1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940FC76C1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib */; };
@@ -81,6 +83,8 @@
 		4486ED8A9D71B92D386525D6 /* Pods_TodayNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		940375941D4F820C00C7B135 /* YMConcern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMConcern.swift; sourceTree = "<group>"; };
 		940375961D4F92C300C7B135 /* YMNewCareSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareSearchController.swift; sourceTree = "<group>"; };
+		940375981D4F9BCB00C7B135 /* YMTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMTitleView.swift; sourceTree = "<group>"; };
+		9403759A1D4F9FE000C7B135 /* YMVideoSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoSearchController.swift; sourceTree = "<group>"; };
 		940FC7631D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMMineNoLoginHeaderView.swift; sourceTree = "<group>"; };
 		940FC76B1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareNoLoginCell.swift; sourceTree = "<group>"; };
 		940FC76C1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareNoLoginCell.xib; sourceTree = "<group>"; };
@@ -427,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				947564E71D4BADD500AC6B72 /* YMVideoViewController.swift */,
+				9403759A1D4F9FE000C7B135 /* YMVideoSearchController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 		947564E91D4BADD500AC6B72 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				940375981D4F9BCB00C7B135 /* YMTitleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -650,6 +656,7 @@
 				947564F11D4BADD500AC6B72 /* YMVideoViewController.swift in Sources */,
 				947564FD1D4C2AA500AC6B72 /* YMMineHeaderBottomView.swift in Sources */,
 				9475650F1D4CAC8E00AC6B72 /* YMSettingModel.swift in Sources */,
+				940375991D4F9BCB00C7B135 /* YMTitleView.swift in Sources */,
 				947564ED1D4BADD500AC6B72 /* YMTabBarController.swift in Sources */,
 				947565281D4CF90600AC6B72 /* YMNewCareTopCell.swift in Sources */,
 				947565021D4C2EE800AC6B72 /* YMMineCell.swift in Sources */,
@@ -666,6 +673,7 @@
 				947564EB1D4BADD500AC6B72 /* YMBaseViewController.swift in Sources */,
 				947564FF1D4C2BD600AC6B72 /* YMMineHeaderIconButton.swift in Sources */,
 				947565251D4CF3E900AC6B72 /* YMNetworkTool.swift in Sources */,
+				9403759B1D4F9FE000C7B135 /* YMVideoSearchController.swift in Sources */,
 				947564F31D4C269D00AC6B72 /* YMVerticalButton.swift in Sources */,
 				940FC7641D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift in Sources */,
 				9475652F1D4D7EC500AC6B72 /* YMCareheaderView.swift in Sources */,
