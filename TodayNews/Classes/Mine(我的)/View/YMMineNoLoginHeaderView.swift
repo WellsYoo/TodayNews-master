@@ -27,7 +27,7 @@ class YMMineNoLoginHeaderView: UIView {
     weak var delegate: YMMineNoLoginHeaderViewDelegate?
     
     class func noLoginHeaderView() -> YMMineNoLoginHeaderView {
-        let frame = CGRectMake(0, 0, SCREENW, 278)
+        let frame = CGRectMake(0, 0, SCREENW, 260)
         return YMMineNoLoginHeaderView(frame: frame)
     }
     
@@ -83,7 +83,7 @@ class YMMineNoLoginHeaderView: UIView {
         
         moreLoginButton.snp_makeConstraints { (make) in
             make.centerX.equalTo(0)
-            make.size.equalTo(CGSizeMake(110, 24))
+            make.size.equalTo(CGSizeMake(110, 27))
             make.top.equalTo(weiboLoginButton.snp_bottom).offset(2 * kMargin)
         }
         
@@ -97,7 +97,7 @@ class YMMineNoLoginHeaderView: UIView {
     private lazy var mobileLoginButton: UIButton = {
         let mobileButton = UIButton()
         mobileButton.setImage(UIImage(named: "cellphoneicon_login_profile_78x78_"), forState: .Normal)
-        mobileButton.addTarget(self, action: #selector(moreLoginButtonClick(_:)), forControlEvents: .TouchUpInside)
+        mobileButton.addTarget(self, action: #selector(mobileLoginButtonClick(_:)), forControlEvents: .TouchUpInside)
         return mobileButton
     }()
     
@@ -105,7 +105,7 @@ class YMMineNoLoginHeaderView: UIView {
     private lazy var wechatLoginButton: UIButton = {
         let wechatLoginButton = UIButton()
         wechatLoginButton.setImage(UIImage(named: "weixinicon_login_profile_78x78_"), forState: .Normal)
-        wechatLoginButton.addTarget(self, action: #selector(moreLoginButtonClick(_:)), forControlEvents: .TouchUpInside)
+        wechatLoginButton.addTarget(self, action: #selector(wechatLoginButtonClick(_:)), forControlEvents: .TouchUpInside)
         return wechatLoginButton
     }()
     
@@ -113,7 +113,7 @@ class YMMineNoLoginHeaderView: UIView {
     private lazy var qqLoginButton: UIButton = {
         let qqLoginButton = UIButton()
         qqLoginButton.setImage(UIImage(named: "qqicon_login_profile_78x78_"), forState: .Normal)
-        qqLoginButton.addTarget(self, action: #selector(moreLoginButtonClick(_:)), forControlEvents: .TouchUpInside)
+        qqLoginButton.addTarget(self, action: #selector(qqLoginButtonClick(_:)), forControlEvents: .TouchUpInside)
         return qqLoginButton
     }()
     
@@ -121,7 +121,7 @@ class YMMineNoLoginHeaderView: UIView {
     private lazy var weiboLoginButton: UIButton = {
         let weiboLoginButton = UIButton()
         weiboLoginButton.setImage(UIImage(named: "sinaicon_login_profile_78x78_"), forState: .Normal)
-        weiboLoginButton.addTarget(self, action: #selector(moreLoginButtonClick(_:)), forControlEvents: .TouchUpInside)
+        weiboLoginButton.addTarget(self, action: #selector(weiboLoginButtonClick(_:)), forControlEvents: .TouchUpInside)
         return weiboLoginButton
     }()
     
@@ -136,11 +136,11 @@ class YMMineNoLoginHeaderView: UIView {
     /// 创建 更多登录方式按钮
     private lazy var moreLoginButton: UIButton = {
         let moreLoginButton = UIButton()
-        moreLoginButton.setTitle("更多登录方式 >", forState: .Normal)
+        moreLoginButton.setTitle(" 更多登录方式 >", forState: .Normal)
         moreLoginButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        moreLoginButton.titleLabel?.font = UIFont.systemFontOfSize(13)
-        moreLoginButton.backgroundColor = UIColor.lightGrayColor()
-        moreLoginButton.layer.cornerRadius = 13
+        moreLoginButton.titleLabel?.font = UIFont.systemFontOfSize(14)
+        moreLoginButton.backgroundColor = YMColor(170, g: 170, b: 170, a: 0.6)
+        moreLoginButton.layer.cornerRadius = 15
         moreLoginButton.layer.masksToBounds = true
         moreLoginButton.addTarget(self, action: #selector(moreLoginButtonClick(_:)), forControlEvents: .TouchUpInside)
         return moreLoginButton

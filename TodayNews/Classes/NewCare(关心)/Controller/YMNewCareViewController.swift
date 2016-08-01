@@ -10,18 +10,39 @@
 
 import UIKit
 
-let newCareTopCellID = "YMNewCareTopCell"
+
+let newCareTopCellID = "YMNewCareNoLoginCell"
 let newCareBottomCellID = "YMNewCareBottomCell"
 
 class YMNewCareViewController: YMBaseViewController {
 
     var tableView: UITableView?
     
+    var concerns = [YMConcern]()
+    
+    var offset: Int = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 设置 UI
         setupUI()
+        // 上拉和下拉加载数据
+        setupRefresh()
+    }
+    
+    /// 上拉和下拉加载数据
+    private func setupRefresh() {
+        YMNetworkTool.shareNetworkTool.loadNewConcernList(tableView!) { (concerns) in
+            self.concerns = concerns
+            self.tableView!.reloadData()
+        }
         
+        YMNetworkTool.shareNetworkTool.loadMoreConcernList(tableView!, outOffset: offset) { (inOffset, concerns) in
+            self.concerns += concerns
+            self.offset = inOffset
+            self.tableView!.reloadData()
+        }
         
     }
     
@@ -29,7 +50,7 @@ class YMNewCareViewController: YMBaseViewController {
     private func setupUI() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search_topic_24x24_"), style: .Plain, target: self, action: #selector(searchBBItemClick))
         let tableView = UITableView(frame: view.bounds, style: .Grouped)
-        let topNib = UINib(nibName: String(YMNewCareTopCell), bundle: nil)
+        let topNib = UINib(nibName: String(YMNewCareNoLoginCell), bundle: nil)
         tableView.registerNib(topNib, forCellReuseIdentifier: newCareTopCellID)
         let bottomNib = UINib(nibName: String(YMNewCareBottomCell), bundle: nil)
         tableView.registerNib(bottomNib, forCellReuseIdentifier: newCareBottomCellID)
@@ -50,7 +71,8 @@ class YMNewCareViewController: YMBaseViewController {
     }
     
     func searchBBItemClick() {
-        print(#function)
+        let searchVC = YMNewCareSearchController()
+        navigationController?.pushViewController(searchVC, animated: true)
     }
 }
 
@@ -61,17 +83,20 @@ extension YMNewCareViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if section == 0 {
+            return 1
+        } else {
+            return concerns.count ?? 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 { // 正在关心
-            let cell = tableView.dequeueReusableCellWithIdentifier(newCareTopCellID) as! YMNewCareTopCell
-            
+            let cell = tableView.dequeueReusableCellWithIdentifier(newCareTopCellID) as! YMNewCareNoLoginCell
             return cell
         } else { // 可能关心
             let cell = tableView.dequeueReusableCellWithIdentifier(newCareBottomCellID) as! YMNewCareBottomCell
-            
+            cell.concern = concerns[indexPath.row]
             return cell
         }
     }

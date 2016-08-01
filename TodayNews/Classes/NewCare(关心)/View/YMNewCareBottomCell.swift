@@ -7,8 +7,21 @@
 //
 
 import UIKit
+import Kingfisher
 
 class YMNewCareBottomCell: UITableViewCell {
+    
+    var concern: YMConcern? {
+        didSet {
+            let url = concern!.avatar_url!
+            titleImageView.kf_setImageWithURL(NSURL(string: url)!)
+            titleLabel.text = concern!.name
+            peopleCountLabel.text = "\(concern!.concern_count)人关心"
+            peopleCountLabel.hidden = Bool(concern!.concern_count) ? false : true
+            commentCountLabel.text = "\(concern!.discuss_count)条评论"
+            commentCountLabel.hidden = Bool(concern!.discuss_count) ? false : true
+        }
+    }
 
     @IBOutlet weak var titleImageView: UIImageView!
     // 关注标题
@@ -36,4 +49,7 @@ class YMNewCareBottomCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func careButtonClick(sender: UIButton) {
+        
+    }
 }

@@ -20,7 +20,7 @@ class YMMineHeaderView: UIView {
     weak var delegate: YMMineHeaderViewDelegae?
     
     class func headerView() -> YMMineHeaderView {
-        let frame = CGRectMake(0, 0, SCREENW, 278)
+        let frame = CGRectMake(0, 0, SCREENW, 260)
         return YMMineHeaderView(frame: frame)
     }
 

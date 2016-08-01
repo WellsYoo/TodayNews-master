@@ -28,7 +28,7 @@ class YMVerticalButton: UIButton {
         imageView?.height = imageView!.width
         // 调整文字
         titleLabel?.x = 0
-        titleLabel?.y = imageView!.height + kMargin
+        titleLabel?.y = imageView!.height
         titleLabel?.width = self.width
         titleLabel?.height = self.height - self.titleLabel!.y
     }

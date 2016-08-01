@@ -18,6 +18,7 @@ class YMHomeViewController: UITableViewController {
     
     private func setupUI() {
         view.backgroundColor = YMGlobalColor()
+        navigationItem.title = ""
         navigationController?.navigationBar.barTintColor = YMColor(210, g: 63, b: 66, a: 1.0)
         
     }
