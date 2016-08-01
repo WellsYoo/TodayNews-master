@@ -8,8 +8,17 @@
 
 import UIKit
 
-class YMNewCareSearchController: YMBaseViewController {
+let leftCategoryID = "leftCategoryID"
+let rightContentID = "rightContentID"
 
+class YMNewCareSearchController: YMBaseViewController {
+    
+    /// 左侧分类Table
+    @IBOutlet weak var leftCategoryTableView: UITableView!
+    /// 右侧内容Table
+    @IBOutlet weak var rightContentTableView: UITableView!
+    
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         searchBar.resignFirstResponder()
@@ -24,7 +33,17 @@ class YMNewCareSearchController: YMBaseViewController {
     
     private func setupUI() {
         navigationItem.titleView = searchBar
-        
+        let leftNib = UINib(nibName: String(YMNewCareCategoryCell), bundle: nil)
+        leftCategoryTableView.registerNib(leftNib, forCellReuseIdentifier: leftCategoryID)
+        let rightNib = UINib(nibName: String(YMNewCareContentCell), bundle: nil)
+        rightContentTableView.registerNib(rightNib, forCellReuseIdentifier: rightContentID)
+        automaticallyAdjustsScrollViewInsets = false
+        leftCategoryTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+        rightContentTableView.contentInset = leftCategoryTableView.contentInset
+        leftCategoryTableView.tableFooterView = UIView()
+        rightContentTableView.tableFooterView = UIView()
+        leftCategoryTableView.rowHeight = 70
+        rightContentTableView.rowHeight = 70
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +59,24 @@ class YMNewCareSearchController: YMBaseViewController {
     
 }
 
-extension YMNewCareSearchController {
+extension YMNewCareSearchController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if tableView == leftCategoryTableView {
+            let categoryCell = tableView.dequeueReusableCellWithIdentifier(leftCategoryID) as! YMNewCareCategoryCell
+            categoryCell.textLabel?.text = "iOS"
+            return categoryCell
+        } else {
+            let contentCell = tableView.dequeueReusableCellWithIdentifier(rightContentID) as! YMNewCareContentCell
+            
+            return contentCell
+        }
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         searchBar.resignFirstResponder()
     }
