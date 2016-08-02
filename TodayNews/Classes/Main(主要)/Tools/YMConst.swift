@@ -46,6 +46,10 @@ enum YMOtherLoginButtonType: Int {
     case QQLogin = 102
 }
 
+/// iid 未登录用户 id，我觉得只要安装了今日头条就会生成一个 iid
+/// 可以在自己的手机上安装一个今日头条，然后通过 charles 抓取一下这个 iid，
+/// 替换成自己的，再进行测试
+let IID = 5034850950
 /// 服务器地址
 let BASE_URL = "http://lf.snssdk.com/"
 

@@ -5,23 +5,25 @@
 //  Created by 杨蒙 on 16/7/29.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
-//  关注界面
+//  主控制器
+//  3.关心界面
 //
 
 import UIKit
 
-
-let newCareTopCellID = "YMNewCareNoLoginCell"
+let newCareNoLoginCellID = "YMNewCareNoLoginCell"
+let newCareTopCellID = "YMNewCareTopCell"
 let newCareBottomCellID = "YMNewCareBottomCell"
 
 class YMNewCareViewController: YMBaseViewController {
 
     var tableView: UITableView?
     
-    var concerns = [YMConcern]()
+    var topConcerns = [YMConcern]()
+    
+    var bottomConcerns = [YMConcern]()
     
     var offset: Int = 0
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,25 +35,31 @@ class YMNewCareViewController: YMBaseViewController {
     
     /// 上拉和下拉加载数据
     private func setupRefresh() {
-        YMNetworkTool.shareNetworkTool.loadNewConcernList(tableView!) { (concerns) in
-            self.concerns = concerns
+        YMNetworkTool.shareNetworkTool.loadNewConcernList(tableView!) { (topConcerns, bottomConcerns) in
+            self.topConcerns = topConcerns
+            self.bottomConcerns = bottomConcerns
             self.tableView!.reloadData()
         }
         
-        YMNetworkTool.shareNetworkTool.loadMoreConcernList(tableView!, outOffset: offset) { (inOffset, concerns) in
-            self.concerns += concerns
+        YMNetworkTool.shareNetworkTool.loadMoreConcernList(tableView!, outOffset: offset) { (inOffset, topConcerns, bottomConcerns) in
+            self.topConcerns += topConcerns
+            self.bottomConcerns += bottomConcerns
             self.offset = inOffset
             self.tableView!.reloadData()
         }
-        
     }
     
     // 设置 UI
     private func setupUI() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search_topic_24x24_"), style: .Plain, target: self, action: #selector(searchBBItemClick))
         let tableView = UITableView(frame: view.bounds, style: .Grouped)
-        let topNib = UINib(nibName: String(YMNewCareNoLoginCell), bundle: nil)
+        // 注册没有登录的 cell
+        let noLoginNib = UINib(nibName: String(YMNewCareNoLoginCell), bundle: nil)
+        tableView.registerNib(noLoginNib, forCellReuseIdentifier: newCareNoLoginCellID)
+        // 注册顶部的 cell
+        let topNib = UINib(nibName: String(YMNewCareTopCell), bundle: nil)
         tableView.registerNib(topNib, forCellReuseIdentifier: newCareTopCellID)
+        // 注册底部的 cell
         let bottomNib = UINib(nibName: String(YMNewCareBottomCell), bundle: nil)
         tableView.registerNib(bottomNib, forCellReuseIdentifier: newCareBottomCellID)
         tableView.tableFooterView = UIView()
@@ -76,40 +84,40 @@ class YMNewCareViewController: YMBaseViewController {
     }
 }
 
-extension YMNewCareViewController: UITableViewDelegate, UITableViewDataSource {
+extension YMNewCareViewController: UITableViewDelegate, UITableViewDataSource, YMNewCareBottomCellDelegate {
     
+    // MARK: - UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return concerns.count ?? 0
-        }
+        return section == 0 ? (topConcerns.count == 0 ? 1 : topConcerns.count) : bottomConcerns.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 { // 正在关心
-            let cell = tableView.dequeueReusableCellWithIdentifier(newCareTopCellID) as! YMNewCareNoLoginCell
-            return cell
+            if topConcerns.count == 0 {
+                let cell = tableView.dequeueReusableCellWithIdentifier(newCareNoLoginCellID) as! YMNewCareNoLoginCell
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCellWithIdentifier(newCareTopCellID) as! YMNewCareTopCell
+                cell.concern = topConcerns[indexPath.row]
+                return cell
+            }
         } else { // 可能关心
             let cell = tableView.dequeueReusableCellWithIdentifier(newCareBottomCellID) as! YMNewCareBottomCell
-            cell.concern = concerns[indexPath.row]
+            cell.concern = bottomConcerns[indexPath.row]
+            cell.delegate = self
             return cell
         }
     }
     
+    // MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = YMCareheaderView()
-        if section == 0 {
-            headerView.title = "正在关心"
-            return headerView
-        } else {
-            headerView.title = "可能关心"
-            return headerView
-        }
+        section == 0 ? (headerView.title = "正在关心") : (headerView.title = "可能关心")
+        return headerView
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -118,6 +126,28 @@ extension YMNewCareViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        if indexPath.section == 0 {
+            if topConcerns.count != 0 {
+                let concernDetailVC = YMConcernDetailController()
+                navigationController?.pushViewController(concernDetailVC, animated: true)
+                let cell = tableView.dequeueReusableCellWithIdentifier(newCareTopCellID) as! YMNewCareTopCell
+                cell.newButton.hidden = true
+            }
+        } else {
+            let concernDetailVC = YMConcernDetailController()
+            navigationController?.pushViewController(concernDetailVC, animated: true)
+        }
+    }
+    
+    // MARK: - YMNewCareBottomCellDelegate
+    func bottomCell(bottomCell: YMNewCareBottomCell, careButton: UIButton) {
+        let concern = bottomCell.concern
+        YMNetworkTool.shareNetworkTool.bottomCellDidClickedCareButton(concern!.concern_id!, tableView: tableView!) { (topConcerns, bottomConcerns) in
+            self.topConcerns = topConcerns
+            self.bottomConcerns = bottomConcerns
+            self.tableView!.reloadData()
+        }
     }
     
 }

@@ -9,7 +9,13 @@
 import UIKit
 import Kingfisher
 
+protocol YMNewCareBottomCellDelegate: NSObjectProtocol {
+    func bottomCell(bottomCell: YMNewCareBottomCell, careButton: UIButton)
+}
+
 class YMNewCareBottomCell: UITableViewCell {
+    
+    weak var delegate: YMNewCareBottomCellDelegate?
     
     var concern: YMConcern? {
         didSet {
@@ -50,6 +56,6 @@ class YMNewCareBottomCell: UITableViewCell {
     }
     
     @IBAction func careButtonClick(sender: UIButton) {
-        
+        delegate?.bottomCell(self, careButton: sender)
     }
 }
