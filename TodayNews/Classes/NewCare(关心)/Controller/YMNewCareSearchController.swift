@@ -5,6 +5,13 @@
 //  Created by 杨蒙 on 16/8/1.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
+//
+//  当时以为今日头条的搜索界面的接口是由两个 tableView，根据不同的接口，返回各自的数据
+//  但是后来通过 charles 查看它的接口发现返回的是一个 html 网页，所以后来改用
+//  YMNewCareSearchViewController 创建一个 webView 来显示数据
+//
+//  这个类不在使用，搜索界面相关代码请看 YMNewCareSearchViewController
+
 
 import UIKit
 

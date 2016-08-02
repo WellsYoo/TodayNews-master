@@ -19,7 +19,7 @@ class YMNetworkTool: NSObject {
     /// 关心
     /// 获取新的 关心数据列表
     func loadNewConcernList(tableView: UITableView, finished:(concerns: [YMConcern]) -> ()) {
-        let url = "http://lf.snssdk.com/concern/v1/concern/list/"
+        let url = BASE_URL + "concern/v1/concern/list/"
         let params = ["iid": 5034850950,
                       "count": 20,
                       "offset": 0,
@@ -52,7 +52,7 @@ class YMNetworkTool: NSObject {
     
     /// 获取更多 关心数据列表
     func loadMoreConcernList(tableView: UITableView, outOffset: Int, finished:(inOffset: Int, concerns: [YMConcern]) -> ()) {
-        let url = "http://lf.snssdk.com/concern/v1/concern/list/"
+        let url = BASE_URL + "concern/v1/concern/list/"
         let params = ["iid": 5034850950,
                       "count": 20,
                       "offset": outOffset,
@@ -69,7 +69,6 @@ class YMNetworkTool: NSObject {
                     if let value = response.result.value {
                         let json = JSON(value)
                         let inOffset = json["offset"].int!
-                        print(inOffset)
                         if let concern_list = json["concern_list"].arrayObject {
                             var concerns = [YMConcern]()
                             for dict in concern_list {
@@ -81,6 +80,30 @@ class YMNetworkTool: NSObject {
                     }
             }
         })
+    }
+    
+    /// 关心界面 -> 搜索关心类别和内容
+    func loadSearchResult(keyword: String, finished:(keywords: [YMKeyword]) -> ()) {
+        let url = BASE_URL + "2/article/search_sug/?keyword=\(keyword)"
+        Alamofire
+            .request(.GET, url)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    SVProgressHUD.showErrorWithStatus("加载失败...")
+                    return
+                }
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    if let datas = json["data"].arrayObject {
+                        var keywords = [YMKeyword]()
+                        for data in datas {
+                            let keyword = YMKeyword(dict: data  as! [String: AnyObject])
+                            keywords.append(keyword)
+                        }
+                        finished(keywords: keywords)
+                    }
+                }
+        }
     }
     
 }
