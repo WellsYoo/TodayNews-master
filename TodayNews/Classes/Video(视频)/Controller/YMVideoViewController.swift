@@ -14,7 +14,9 @@ class YMVideoViewController: YMBaseViewController {
         super.viewDidLoad()
         
         setupUI()
-        
+        YMNetworkTool.shareNetworkTool.loadVideoTitlesData { (topTitles) in
+            
+        }
     }
     
     private func setupUI() {

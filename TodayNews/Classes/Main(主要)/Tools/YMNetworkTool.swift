@@ -16,6 +16,57 @@ class YMNetworkTool: NSObject {
     /// 单例
     static let shareNetworkTool = YMNetworkTool()
     
+    /// 首页
+    /// 获取首页顶部标题内容
+    func loadHomeTitlesData(finished:(topTitles: [YMVideoTopTitle])->()) {
+        let url = BASE_URL + "article/category/get_subscribed/v1/?iid=\(IID)"
+        Alamofire
+            .request(.GET, url)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    SVProgressHUD.showErrorWithStatus("加载失败...")
+                    return
+                }
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    let dataDict = json["data"].dictionary
+                    if let data = dataDict!["data"]!.arrayObject {
+                        var titles = [YMVideoTopTitle]()
+                        for dict in data {
+                            let title = YMVideoTopTitle(dict: dict as! [String: AnyObject])
+                            titles.append(title)
+                            print(title.name)
+                        }
+                        finished(topTitles: titles)
+                    }
+                }
+        }
+    }
+    
+    /// 视频
+    /// 获取视频顶部标题内容
+    func loadVideoTitlesData(finished:(topTitles: [YMVideoTopTitle])->()) {
+        let url = BASE_URL + "video_api/get_category/v1/"
+        Alamofire
+            .request(.GET, url)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    SVProgressHUD.showErrorWithStatus("加载失败...")
+                    return
+                }
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    if let data = json["data"].arrayObject {
+                        var titles = [YMVideoTopTitle]()
+                        for dict in data {
+                            let title = YMVideoTopTitle(dict: dict as! [String: AnyObject])
+                        }
+                        finished(topTitles: titles)
+                    }
+                }
+        }
+    }
+    
     /// 关心
     /// 获取新的 关心数据列表
     func loadNewConcernList(tableView: UITableView, finished:(topConcerns: [YMConcern], bottomConcerns: [YMConcern]) -> ()) {

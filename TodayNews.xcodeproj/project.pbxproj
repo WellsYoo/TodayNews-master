@@ -28,6 +28,7 @@
 		940375A51D5013DB00C7B135 /* YMNewCareSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940375A41D5013DB00C7B135 /* YMNewCareSearchController.xib */; };
 		940375A81D50DE3300C7B135 /* YMVideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375A61D50DE3300C7B135 /* YMVideoCollectionViewCell.swift */; };
 		940375A91D50DE3300C7B135 /* YMVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940375A71D50DE3300C7B135 /* YMVideoCollectionViewCell.xib */; };
+		940375AB1D50EC4B00C7B135 /* YMVideoTopTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375AA1D50EC4B00C7B135 /* YMVideoTopTitle.swift */; };
 		940FC7641D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FC7631D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift */; };
 		940FC76D1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FC76B1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift */; };
 		940FC76E1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940FC76C1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib */; };
@@ -113,6 +114,7 @@
 		940375A41D5013DB00C7B135 /* YMNewCareSearchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareSearchController.xib; sourceTree = "<group>"; };
 		940375A61D50DE3300C7B135 /* YMVideoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		940375A71D50DE3300C7B135 /* YMVideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMVideoCollectionViewCell.xib; sourceTree = "<group>"; };
+		940375AA1D50EC4B00C7B135 /* YMVideoTopTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoTopTitle.swift; sourceTree = "<group>"; };
 		940FC7631D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMMineNoLoginHeaderView.swift; sourceTree = "<group>"; };
 		940FC76B1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareNoLoginCell.swift; sourceTree = "<group>"; };
 		940FC76C1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareNoLoginCell.xib; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 		947564E81D4BADD500AC6B72 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				940375AA1D50EC4B00C7B135 /* YMVideoTopTitle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				947565121D4CAD8400AC6B72 /* YMSettingCell.swift in Sources */,
 				940FC76D1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift in Sources */,
 				9475651E1D4CC3B700AC6B72 /* YMHelpViewController.swift in Sources */,
+				940375AB1D50EC4B00C7B135 /* YMVideoTopTitle.swift in Sources */,
 				2527642F1D4F50F10078C143 /* YMSettingHeaderView.swift in Sources */,
 				9475652C1D4CFAD600AC6B72 /* YMNewCareBottomCell.swift in Sources */,
 				947564F91D4C274C00AC6B72 /* UIView+Extension.swift in Sources */,

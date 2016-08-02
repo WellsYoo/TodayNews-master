@@ -89,7 +89,8 @@ extension YMTitleView: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! YMVideoCollectionViewCell
+        cell.titleLabel.textColor = UIColor.redColor()
     }
     
 }
