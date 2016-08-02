@@ -60,6 +60,7 @@ class YMNetworkTool: NSObject {
                         var titles = [YMVideoTopTitle]()
                         for dict in data {
                             let title = YMVideoTopTitle(dict: dict as! [String: AnyObject])
+                            titles.append(title)
                         }
                         finished(topTitles: titles)
                     }

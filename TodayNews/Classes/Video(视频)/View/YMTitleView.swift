@@ -16,6 +16,8 @@ protocol YMTitleViewDelegate: NSObjectProtocol {
 }
 
 class YMTitleView: UIView {
+    /// 顶部标题数组
+    var titles = [YMVideoTopTitle]()
     
     weak var delegate: YMTitleViewDelegate?
     
@@ -26,7 +28,11 @@ class YMTitleView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
+        YMNetworkTool.shareNetworkTool.loadVideoTitlesData { (topTitles) in
+            self.setupUI()
+            self.titles = topTitles
+            self.titleCollectionView.reloadData()
+        }
     }
     
     private func setupUI() {
@@ -45,15 +51,16 @@ class YMTitleView: UIView {
         }
         
     }
-
+    
+    /// 顶部搜索按钮
     private lazy var titleSearchButton: UIButton = {
         let titleSearchButton = UIButton()
-//        titleSearchButton.setBackgroundImage(UIImage(named: "shadow_add_titlebar_new_52x44_"), forState: .Normal)
         titleSearchButton.setImage(UIImage(named: "search_topic_24x24_"), forState: .Normal)
         titleSearchButton.addTarget(self, action: #selector(titleSearchButtonClick(_:)), forControlEvents: .TouchUpInside)
         return titleSearchButton
     }()
     
+    /// 顶部 collectionView
     private lazy var titleCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .Horizontal
@@ -79,18 +86,19 @@ class YMTitleView: UIView {
 extension YMTitleView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return titles.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(videoCollectionViewCellID, forIndexPath: indexPath) as! YMVideoCollectionViewCell
-        cell.titleLabel.text = "推荐"
+        let topTitle = titles[indexPath.item]
+        cell.titleLabel.text = topTitle.name
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! YMVideoCollectionViewCell
-        cell.titleLabel.textColor = UIColor.redColor()
+        
+        
     }
     
 }
