@@ -8,28 +8,27 @@
 
 import UIKit
 
-class YMVideoSearchController: YMBaseViewController {
+class YMVideoSearchController: UIViewController {
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         searchBar.resignFirstResponder()
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupUI()
         
     }
     
     private func setupUI() {
+        view.backgroundColor = YMGlobalColor()
         navigationItem.titleView = searchBar
         searchBar.becomeFirstResponder()
-        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
-        
+        navigationItem.leftBarButtonItem = UIBarButtonItem()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "取消", style: .Plain, target: self, action: #selector(cancelBBItemClick))
+        navigationItem.rightBarButtonItem?.tintColor = YMColor(37, g: 142, b: 240, a: 1.0)
     }
     
     func cancelBBItemClick() {

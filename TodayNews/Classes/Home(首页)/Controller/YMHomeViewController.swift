@@ -35,8 +35,6 @@ class YMHomeViewController: UITableViewController {
 
 extension YMHomeViewController {
     
-    
-    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }

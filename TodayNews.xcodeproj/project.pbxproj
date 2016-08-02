@@ -26,6 +26,8 @@
 		940375A21D50119C00C7B135 /* YMNewCareContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375A01D50119C00C7B135 /* YMNewCareContentCell.swift */; };
 		940375A31D50119C00C7B135 /* YMNewCareContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940375A11D50119C00C7B135 /* YMNewCareContentCell.xib */; };
 		940375A51D5013DB00C7B135 /* YMNewCareSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940375A41D5013DB00C7B135 /* YMNewCareSearchController.xib */; };
+		940375A81D50DE3300C7B135 /* YMVideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375A61D50DE3300C7B135 /* YMVideoCollectionViewCell.swift */; };
+		940375A91D50DE3300C7B135 /* YMVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940375A71D50DE3300C7B135 /* YMVideoCollectionViewCell.xib */; };
 		940FC7641D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FC7631D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift */; };
 		940FC76D1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FC76B1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift */; };
 		940FC76E1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940FC76C1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib */; };
@@ -109,6 +111,8 @@
 		940375A01D50119C00C7B135 /* YMNewCareContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareContentCell.swift; sourceTree = "<group>"; };
 		940375A11D50119C00C7B135 /* YMNewCareContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareContentCell.xib; sourceTree = "<group>"; };
 		940375A41D5013DB00C7B135 /* YMNewCareSearchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareSearchController.xib; sourceTree = "<group>"; };
+		940375A61D50DE3300C7B135 /* YMVideoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoCollectionViewCell.swift; sourceTree = "<group>"; };
+		940375A71D50DE3300C7B135 /* YMVideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMVideoCollectionViewCell.xib; sourceTree = "<group>"; };
 		940FC7631D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMMineNoLoginHeaderView.swift; sourceTree = "<group>"; };
 		940FC76B1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareNoLoginCell.swift; sourceTree = "<group>"; };
 		940FC76C1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareNoLoginCell.xib; sourceTree = "<group>"; };
@@ -483,6 +487,8 @@
 			isa = PBXGroup;
 			children = (
 				940375981D4F9BCB00C7B135 /* YMTitleView.swift */,
+				940375A61D50DE3300C7B135 /* YMVideoCollectionViewCell.swift */,
+				940375A71D50DE3300C7B135 /* YMVideoCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -599,6 +605,7 @@
 				947565031D4C2EE800AC6B72 /* YMMineCell.xib in Resources */,
 				940FC76E1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib in Resources */,
 				9475647A1D4B86FE00AC6B72 /* LaunchScreen.storyboard in Resources */,
+				940375A91D50DE3300C7B135 /* YMVideoCollectionViewCell.xib in Resources */,
 				9403759F1D50101900C7B135 /* YMNewCareCategoryCell.xib in Resources */,
 				947565131D4CAD8400AC6B72 /* YMSettingCell.xib in Resources */,
 				252764351D50421C0078C143 /* YMNewCareSearchViewController.xib in Resources */,
@@ -714,6 +721,7 @@
 				947564EE1D4BADD500AC6B72 /* AppDelegate.swift in Sources */,
 				947564F71D4C274100AC6B72 /* YMConst.swift in Sources */,
 				940375951D4F820C00C7B135 /* YMConcern.swift in Sources */,
+				940375A81D50DE3300C7B135 /* YMVideoCollectionViewCell.swift in Sources */,
 				252764371D504C990078C143 /* YMSearchContentViewController.swift in Sources */,
 				252764461D5095B00078C143 /* YMConcernDetailController.swift in Sources */,
 				947564EB1D4BADD500AC6B72 /* YMBaseViewController.swift in Sources */,

@@ -40,11 +40,7 @@ class YMNetworkTool: NSObject {
                             var bottomConcerns = [YMConcern]()
                             for dict in concern_list {
                                 let concern = YMConcern(dict: dict as! [String: AnyObject])
-                                if concern.newly == 1 {
-                                    topConcerns.append(concern)
-                                } else {
-                                    bottomConcerns.append(concern)
-                                }
+                                (concern.concern_time != 0) ? topConcerns.append(concern) : bottomConcerns.append(concern)
                             }
                             finished(topConcerns: topConcerns, bottomConcerns: bottomConcerns)
                         }
@@ -79,11 +75,7 @@ class YMNetworkTool: NSObject {
                             var bottomConcerns = [YMConcern]()
                             for dict in concern_list {
                                 let concern = YMConcern(dict: dict as! [String: AnyObject])
-                                if concern.newly == 1 {
-                                    topConcerns.append(concern)
-                                } else {
-                                    bottomConcerns.append(concern)
-                                }
+                                (concern.concern_time != 0) ? topConcerns.append(concern) : bottomConcerns.append(concern)
                             }
                             finished(inOffset: inOffset, topConcerns: topConcerns, bottomConcerns: bottomConcerns)
                         }

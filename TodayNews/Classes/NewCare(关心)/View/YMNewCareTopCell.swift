@@ -16,6 +16,7 @@ class YMNewCareTopCell: UITableViewCell {
             let url = concern!.avatar_url!
             titleImageView.kf_setImageWithURL(NSURL(string: url)!)
             titleLabel.text = concern!.name
+            newButton.hidden = concern!.newly == 0 ? true : false
         }
     }
 
@@ -35,8 +36,6 @@ class YMNewCareTopCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
