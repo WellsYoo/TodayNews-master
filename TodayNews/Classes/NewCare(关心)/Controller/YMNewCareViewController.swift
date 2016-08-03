@@ -130,10 +130,10 @@ extension YMNewCareViewController: UITableViewDelegate, UITableViewDataSource, Y
             if topConcerns.count == 0 {
                 return
             }
-            let concernDetailVC = YMConcernDetailController()
+            let concernDetailVC = YMSelectConcernTableController()
             navigationController?.pushViewController(concernDetailVC, animated: true)
         } else {
-            let concernDetailVC = YMConcernDetailController()
+            let concernDetailVC = YMSelectConcernTableController()
             navigationController?.pushViewController(concernDetailVC, animated: true)
         }
         

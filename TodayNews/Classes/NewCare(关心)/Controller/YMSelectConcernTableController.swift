@@ -5,7 +5,7 @@
 //  Created by 杨蒙 on 16/8/2.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
-//  关心界面 -> 点击了一个 cell -> 详情界面
+//  关心界面 -> 点击了一个 cell -> 选中关注的 列表界面
 //
 
 import UIKit
@@ -13,7 +13,7 @@ import Kingfisher
 
 let concernDetailCellID = "concernDetailCellID"
 
-class YMConcernDetailController: YMBaseViewController {
+class YMSelectConcernTableController: YMBaseViewController {
 
     var tableView: UITableView?
 
@@ -74,7 +74,7 @@ class YMConcernDetailController: YMBaseViewController {
     
 }
 
-extension YMConcernDetailController: UITableViewDataSource, UITableViewDelegate {
+extension YMSelectConcernTableController: UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,23 +89,48 @@ extension YMConcernDetailController: UITableViewDataSource, UITableViewDelegate 
     
     // MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        print(bgImageView.frame)
         let offsetY = scrollView.contentOffset.y
-        if offsetY <= 86 {
-            var tempFrame = bgImageView.frame
-            tempFrame.size.height = 150 - offsetY
-            bgImageView.frame = tempFrame
-            bgImageView.snp_updateConstraints(closure: { (make) in
-                make.height.equalTo(tempFrame.size.height)
-            })
-//            bgImageView.avaterImageView.alpha = 1 / offsetY
+        if offsetY <= 0 {
+            
+        } else {
+            
         }
-        if offsetY < 0 {
-            bgImageView.snp_updateConstraints(closure: { (make) in
-                make.height.equalTo(150)
-            })
+//        if offsetY <= 0 {
+//            bgImageView.snp_updateConstraints(closure: { (make) in
+//                make.height.equalTo(150)
+//            })
 //            bgImageView.avaterImageView.alpha = 1
-        }
+//            bgImageView.peopleCountLabel.alpha = 1
+//            bgImageView.topicCountLabel.alpha = 1
+//            bgImageView.introduceButton.alpha = 1
+//            bgImageView.refreshImageView.alpha = 0
+//            bgImageView.titltButton.snp_remakeConstraints(closure: { (make) in
+//                make.top.equalTo(bgImageView.snp_bottom).offset(-70)
+//                make.left.equalTo(bgImageView.snp_left).offset(85)
+//            })
+//            bgImageView.coverButton.hidden = true
+//        } else if offsetY > 0 && offsetY <= 86{
+//            var tempFrame = bgImageView.frame
+//            tempFrame.size.height = 150 - offsetY
+//            bgImageView.frame = tempFrame
+//            bgImageView.snp_updateConstraints(closure: { (make) in
+//                make.height.equalTo(tempFrame.size.height)
+//            })
+//            bgImageView.avaterImageView.alpha = 1 / offsetY
+//            bgImageView.peopleCountLabel.alpha = 1 / offsetY
+//            bgImageView.topicCountLabel.alpha = 1 / offsetY
+//            bgImageView.introduceButton.alpha = 1 / offsetY
+//            bgImageView.titltButton.centerX = SCREENW * 0.5
+//            bgImageView.titltButton.snp_updateConstraints(closure: { (make) in
+//                make.centerX.equalTo(bgImageView)
+//                make.top.equalTo(bgImageView.snp_top).offset(45)
+//            })
+//            bgImageView.refreshImageView.alpha = offsetY * 0.01
+//        }
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        print("scrollViewWillBeginDragging")
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

@@ -16,7 +16,7 @@
 		252764391D5059880078C143 /* YMKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252764381D5059880078C143 /* YMKeyword.swift */; };
 		252764431D507C560078C143 /* YMsearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252764411D507C560078C143 /* YMsearchCell.swift */; };
 		252764441D507C560078C143 /* YMsearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 252764421D507C560078C143 /* YMsearchCell.xib */; };
-		252764461D5095B00078C143 /* YMConcernDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252764451D5095B00078C143 /* YMConcernDetailController.swift */; };
+		252764461D5095B00078C143 /* YMSelectConcernTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252764451D5095B00078C143 /* YMSelectConcernTableController.swift */; };
 		256D00EC1D51AE67007D40CF /* YMAddTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D00EB1D51AE67007D40CF /* YMAddTopicViewController.swift */; };
 		256D00EE1D51B5E3007D40CF /* YMTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D00ED1D51B5E3007D40CF /* YMTopic.swift */; };
 		827E87E6C347D72EEA480634 /* Pods_TodayNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4486ED8A9D71B92D386525D6 /* Pods_TodayNews.framework */; };
@@ -75,6 +75,7 @@
 		9475652C1D4CFAD600AC6B72 /* YMNewCareBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475652A1D4CFAD600AC6B72 /* YMNewCareBottomCell.swift */; };
 		9475652D1D4CFAD600AC6B72 /* YMNewCareBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9475652B1D4CFAD600AC6B72 /* YMNewCareBottomCell.xib */; };
 		9475652F1D4D7EC500AC6B72 /* YMCareheaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475652E1D4D7EC500AC6B72 /* YMCareheaderView.swift */; };
+		94D92DC21D523D0C00CB345A /* YMConcernDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D92DC11D523D0C00CB345A /* YMConcernDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +106,7 @@
 		252764381D5059880078C143 /* YMKeyword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMKeyword.swift; sourceTree = "<group>"; };
 		252764411D507C560078C143 /* YMsearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMsearchCell.swift; sourceTree = "<group>"; };
 		252764421D507C560078C143 /* YMsearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMsearchCell.xib; sourceTree = "<group>"; };
-		252764451D5095B00078C143 /* YMConcernDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMConcernDetailController.swift; sourceTree = "<group>"; };
+		252764451D5095B00078C143 /* YMSelectConcernTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMSelectConcernTableController.swift; sourceTree = "<group>"; };
 		256D00EB1D51AE67007D40CF /* YMAddTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMAddTopicViewController.swift; sourceTree = "<group>"; };
 		256D00ED1D51B5E3007D40CF /* YMTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YMTopic.swift; path = "TodayNews/Classes/Home(首页)/Controller/YMTopic.swift"; sourceTree = SOURCE_ROOT; };
 		4486ED8A9D71B92D386525D6 /* Pods_TodayNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +171,7 @@
 		9475652A1D4CFAD600AC6B72 /* YMNewCareBottomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareBottomCell.swift; sourceTree = "<group>"; };
 		9475652B1D4CFAD600AC6B72 /* YMNewCareBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareBottomCell.xib; sourceTree = "<group>"; };
 		9475652E1D4D7EC500AC6B72 /* YMCareheaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMCareheaderView.swift; sourceTree = "<group>"; };
+		94D92DC11D523D0C00CB345A /* YMConcernDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMConcernDetailViewController.swift; sourceTree = "<group>"; };
 		FC9B11AC2D7AFCE523D16496 /* Pods-TodayNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews/Pods-TodayNews.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -433,7 +435,8 @@
 				252764321D50421C0078C143 /* YMNewCareSearchViewController.swift */,
 				252764331D50421C0078C143 /* YMNewCareSearchViewController.xib */,
 				252764361D504C990078C143 /* YMSearchContentViewController.swift */,
-				252764451D5095B00078C143 /* YMConcernDetailController.swift */,
+				252764451D5095B00078C143 /* YMSelectConcernTableController.swift */,
+				94D92DC11D523D0C00CB345A /* YMConcernDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -750,12 +753,13 @@
 				9475651B1D4CC2A900AC6B72 /* YMAutoPlayVideoController.swift in Sources */,
 				947564EC1D4BADD500AC6B72 /* YMNavigationController.swift in Sources */,
 				947564EF1D4BADD500AC6B72 /* YMMineViewController.swift in Sources */,
+				94D92DC21D523D0C00CB345A /* YMConcernDetailViewController.swift in Sources */,
 				947564EE1D4BADD500AC6B72 /* AppDelegate.swift in Sources */,
 				947564F71D4C274100AC6B72 /* YMConst.swift in Sources */,
 				940375951D4F820C00C7B135 /* YMConcern.swift in Sources */,
 				940375A81D50DE3300C7B135 /* YMVideoCollectionViewCell.swift in Sources */,
 				252764371D504C990078C143 /* YMSearchContentViewController.swift in Sources */,
-				252764461D5095B00078C143 /* YMConcernDetailController.swift in Sources */,
+				252764461D5095B00078C143 /* YMSelectConcernTableController.swift in Sources */,
 				947564EB1D4BADD500AC6B72 /* YMBaseViewController.swift in Sources */,
 				947564FF1D4C2BD600AC6B72 /* YMMineHeaderIconButton.swift in Sources */,
 				947565251D4CF3E900AC6B72 /* YMNetworkTool.swift in Sources */,

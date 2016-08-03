@@ -9,7 +9,14 @@
 import UIKit
 import SnapKit
 
+protocol YMBlurImageViewDelegate: NSObjectProtocol {
+    func blurImageView(blurImage: YMBlurImageView, titleButton: UIButton)
+    
+}
+
 class YMBlurImageView: UIImageView {
+    
+    weak var delegate: YMBlurImageViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,10 +24,66 @@ class YMBlurImageView: UIImageView {
         addSubview(blurView)
         // 添加关注图片按钮
         addSubview(avaterImageView)
+        // 添加标题
+        addSubview(titltButton)
+        // 添加关注人数
+        addSubview(peopleCountLabel)
+        // 添加帖子数量
+        addSubview(topicCountLabel)
+        // 添加介绍按钮
+        addSubview(introduceButton)
+        // 添加刷新图片
+        addSubview(refreshImageView)
+        // 添加覆盖按钮
+        addSubview(coverButton)
+        // 添加分享按钮
+        addSubview(shareButton)
+        // 添加关心按钮
+        addSubview(careButton)
         // 添加返回按钮
         addSubview(backButton)
         
+        coverButton.snp_makeConstraints { (make) in
+            make.left.bottom.right.equalTo(self)
+            make.top.equalTo(avaterImageView.snp_top).offset(-kMargin)
+        }
         
+        refreshImageView.snp_makeConstraints { (make) in
+            make.centerY.equalTo(backButton.snp_centerY)
+            make.size.equalTo(CGSizeMake(20, 20))
+            make.centerX.equalTo(self.centerX).offset(titltButton.width)
+        }
+        
+        careButton.snp_makeConstraints { (make) in
+            make.right.equalTo(shareButton.snp_left).offset(-kMargin)
+            make.centerY.equalTo(backButton.snp_centerY)
+            make.size.equalTo(CGSizeMake(53, 30))
+        }
+        
+        shareButton.snp_makeConstraints { (make) in
+            make.centerY.equalTo(backButton.snp_centerY)
+            make.right.equalTo(self).offset(-kMargin)
+        }
+        
+        introduceButton.snp_makeConstraints { (make) in
+            make.left.equalTo(topicCountLabel.snp_right).offset(kMargin)
+            make.centerY.equalTo(topicCountLabel.snp_centerY)
+        }
+        
+        topicCountLabel.snp_makeConstraints { (make) in
+            make.left.equalTo(peopleCountLabel.snp_right).offset(kMargin)
+            make.top.equalTo(peopleCountLabel.snp_top)
+        }
+        
+        peopleCountLabel.snp_makeConstraints { (make) in
+            make.left.equalTo(titltButton.snp_left)
+            make.bottom.equalTo(avaterImageView.snp_bottom).offset(-5)
+        }
+        
+        titltButton.snp_makeConstraints { (make) in
+            make.left.equalTo(avaterImageView.snp_right).offset(kMargin)
+            make.top.equalTo(avaterImageView.snp_top).offset(5)
+        }
         
         avaterImageView.snp_makeConstraints { (make) in
             make.left.equalTo(backButton)
@@ -38,6 +101,82 @@ class YMBlurImageView: UIImageView {
         }
     }
     
+    // 中心刷新图标
+    var refreshImageView: UIImageView = {
+        let refreshImageView = UIImageView()
+        refreshImageView.image = UIImage(named: "refresh_titlebar_20x20_")
+        refreshImageView.alpha = 0
+        return refreshImageView
+    }()
+    
+    // 覆盖按钮
+    lazy var coverButton: UIButton = {
+        let coverButton = UIButton()
+        coverButton.addTarget(self, action: #selector(coverButtonClick), forControlEvents: .TouchUpInside)
+        return coverButton
+    }()
+    
+    // 关心按钮
+    private lazy var careButton: UIButton = {
+        let careButton = UIButton()
+        careButton.setTitle("关心", forState: .Normal)
+        careButton.setTitle("不关心", forState: .Selected)
+        careButton.titleLabel?.font = UIFont.systemFontOfSize(16)
+        careButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        careButton.layer.borderColor = UIColor.whiteColor().CGColor
+        careButton.layer.borderWidth = 1
+        careButton.layer.cornerRadius = kCornerRadius
+        careButton.layer.masksToBounds = true
+        careButton.addTarget(self, action: #selector(careButtonClick(_:)), forControlEvents: .TouchUpInside)
+        return careButton
+    }()
+    
+    // 分享按钮
+    private lazy var shareButton: UIButton = {
+        let shareButton = UIButton()
+        shareButton.setImage(UIImage(named: "icon_details_share_24x24_"), forState: .Normal)
+        shareButton.setImage(UIImage(named: "icon_details_share_press_24x24_"), forState: .Highlighted)
+        shareButton.addTarget(self, action: #selector(shareButtonClick), forControlEvents: .TouchUpInside)
+        return shareButton
+    }()
+    
+    // 介绍按钮
+    lazy var introduceButton:  UIButton = {
+        let introduceButton = UIButton()
+        introduceButton.setTitle("介绍 >", forState: .Normal)
+        introduceButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        introduceButton.titleLabel?.font = UIFont.systemFontOfSize(14)
+        return introduceButton
+    }()
+    
+    // 帖子数量
+    lazy var topicCountLabel: UILabel = {
+        let topicCountLabel = UILabel()
+        topicCountLabel.text = "1000帖子"
+        topicCountLabel.textColor = UIColor.whiteColor()
+        topicCountLabel.font = UIFont.systemFontOfSize(14)
+        return topicCountLabel
+    }()
+    
+    // 关注人数
+    lazy var peopleCountLabel: UILabel = {
+        let peopleCountLabel = UILabel()
+        peopleCountLabel.text = "5679人关注"
+        peopleCountLabel.textColor = UIColor.whiteColor()
+        peopleCountLabel.font = UIFont.systemFontOfSize(14)
+        return peopleCountLabel
+    }()
+    
+    // 标题
+    lazy var titltButton: UIButton = {
+        let titltButton = UIButton()
+        titltButton.setTitle("# 数码宝贝", forState: .Normal)
+        titltButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        titltButton.titleLabel!.font = UIFont.systemFontOfSize(16)
+        titltButton.addTarget(self, action: #selector(titltButtonClick(_:)), forControlEvents: .TouchUpInside)
+        return titltButton
+    }()
+    
     // 关注图片
     var avaterImageView: UIImageView = {
         let avaterImageView = UIImageView()
@@ -48,7 +187,7 @@ class YMBlurImageView: UIImageView {
     // 返回按钮
     private lazy var backButton: UIButton = {
         let backButton = UIButton()
-        backButton.setImage(UIImage(named: "leftbackicon_white_titlebar_24x24_"), forState: .Normal)
+        backButton.setImage(UIImage(named: "white_lefterbackicon_titlebar_28x28_"), forState: .Normal)
         backButton.addTarget(self, action: #selector(backButtonClick), forControlEvents: .TouchUpInside)
         backButton.sizeToFit()
         return backButton
@@ -61,8 +200,30 @@ class YMBlurImageView: UIImageView {
         return blurView
     }()
     
+    /// 返回按钮点击
     func backButtonClick() {
-        
+        print(#function)
+    }
+    
+    /// 标题按钮点击
+    func titltButtonClick(button: UIButton) {
+        delegate?.blurImageView(self, titleButton: button)
+    }
+    
+    /// 分享按钮点击
+    func shareButtonClick() {
+        print(#function)
+    }
+    
+    /// 关心按钮点击
+    func careButtonClick(button: UIButton) {
+        button.selected = !button.selected
+        print(#function)
+    }
+    
+    /// 覆盖按钮点击
+    func coverButtonClick() {
+        print(#function)
     }
     
     required init?(coder aDecoder: NSCoder) {
