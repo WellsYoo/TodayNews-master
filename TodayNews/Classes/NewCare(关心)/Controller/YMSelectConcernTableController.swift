@@ -13,7 +13,7 @@ import Kingfisher
 
 let concernDetailCellID = "concernDetailCellID"
 
-class YMSelectConcernTableController: YMBaseViewController {
+class YMSelectConcernTableController: UIViewController {
 
     var tableView: UITableView?
 
@@ -29,10 +29,7 @@ class YMSelectConcernTableController: YMBaseViewController {
     }
     
     private func setupUI() {
-        navigationController?.navigationBar.barStyle = .Black
-        navigationController?.navigationBar.setBackgroundImage(UIImage(),forBarMetrics: .Default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.translucent = true
+        view.backgroundColor = YMGlobalColor()
         
         view.addSubview(bgImageView)
         
@@ -64,6 +61,7 @@ class YMSelectConcernTableController: YMBaseViewController {
     lazy var bgImageView: YMBlurImageView = {
         let bgImageView = YMBlurImageView(frame: CGRectZero)
         bgImageView.image = UIImage(named: "hrscy")
+        bgImageView.delegate = self
         return bgImageView
     }()
     
@@ -74,7 +72,33 @@ class YMSelectConcernTableController: YMBaseViewController {
     
 }
 
-extension YMSelectConcernTableController: UITableViewDataSource, UITableViewDelegate {
+extension YMSelectConcernTableController: UITableViewDataSource, UITableViewDelegate, YMBlurImageViewDelegate {
+    
+    // MARK: - YMBlurImageViewDelegate
+    func blurImageView(blurImage: YMBlurImageView, titleButton: UIButton) {
+        
+    }
+    
+    /// 返回按钮点击
+    func blurImageView(blurImage: YMBlurImageView, backButton: UIButton) {
+         navigationController?.popViewControllerAnimated(true)
+    }
+    
+    /// 覆盖按钮点击
+    func blurImageView(blurImage: YMBlurImageView, coverButton: UIButton) {
+        let concernDetailVC = YMConcernDetailViewController()
+        navigationController?.pushViewController(concernDetailVC, animated: true)
+    }
+    
+    /// 关心按钮点击
+    func blurImageView(blurImage: YMBlurImageView, careButton: UIButton) {
+        
+    }
+    
+    /// 分享按钮点击
+    func blurImageView(blurImage: YMBlurImageView, shareButton: UIButton) {
+        
+    }
     
     // MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,10 +151,6 @@ extension YMSelectConcernTableController: UITableViewDataSource, UITableViewDele
 //            })
 //            bgImageView.refreshImageView.alpha = offsetY * 0.01
 //        }
-    }
-    
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        print("scrollViewWillBeginDragging")
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
