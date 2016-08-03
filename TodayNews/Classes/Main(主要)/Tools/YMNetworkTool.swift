@@ -16,10 +16,11 @@ class YMNetworkTool: NSObject {
     /// 单例
     static let shareNetworkTool = YMNetworkTool()
     
-    /// 首页
+    /// ------------------------ 首 页 -------------------------
+    //
     /// 获取首页顶部标题内容
-    func loadHomeTitlesData(finished:(topTitles: [YMVideoTopTitle])->()) {
-        let url = BASE_URL + "article/category/get_subscribed/v1/?iid=\(IID)"
+    func loadHomeTitlesData(finished:(topTitles: [YMTopic])->()) {
+        let url = BASE_URL + "article/category/get_subscribed/v1/?iid=\(IID)&aid=13"
         Alamofire
             .request(.GET, url)
             .responseJSON { (response) in
@@ -31,22 +32,47 @@ class YMNetworkTool: NSObject {
                     let json = JSON(value)
                     let dataDict = json["data"].dictionary
                     if let data = dataDict!["data"]!.arrayObject {
-                        var titles = [YMVideoTopTitle]()
+                        var topics = [YMTopic]()
                         for dict in data {
-                            let title = YMVideoTopTitle(dict: dict as! [String: AnyObject])
-                            titles.append(title)
-                            print(title.name)
+                            let title = YMTopic(dict: dict as! [String: AnyObject])
+                            topics.append(title)
                         }
-                        finished(topTitles: titles)
+                        finished(topTitles: topics)
                     }
                 }
         }
     }
     
-    /// 视频
+    
+    /// 首页 -> 添加标题，获取推荐标题内容
+    func loadRecommendTopic(finished:(recommendTopics: [YMTopic]) -> ()) {
+        let url = "https://lf.snssdk.com/article/category/get_extra/v1/?iid=\(IID)&aid=13"
+        Alamofire
+            .request(.GET, url)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    SVProgressHUD.showErrorWithStatus("加载失败...")
+                    return
+                }
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    if let data = json["data"].arrayObject {
+                        var topics = [YMTopic]()
+                        for dict in data {
+                            let title = YMTopic(dict: dict as! [String: AnyObject])
+                            topics.append(title)
+                        }
+                        finished(recommendTopics: topics)
+                    }
+                }
+        }
+    }
+    
+    /// -------------------------- 视 频 --------------------------
+    //
     /// 获取视频顶部标题内容
     func loadVideoTitlesData(finished:(topTitles: [YMVideoTopTitle])->()) {
-        let url = BASE_URL + "video_api/get_category/v1/"
+        let url = BASE_URL + "video_api/get_category/v1/?iid=\(IID)&aid=13"
         Alamofire
             .request(.GET, url)
             .responseJSON { (response) in
@@ -68,7 +94,8 @@ class YMNetworkTool: NSObject {
         }
     }
     
-    /// 关心
+    /// -------------------------- 关 心 --------------------------
+    //
     /// 获取新的 关心数据列表
     func loadNewConcernList(tableView: UITableView, finished:(topConcerns: [YMConcern], bottomConcerns: [YMConcern]) -> ()) {
         let url = BASE_URL + "concern/v1/concern/list/"
@@ -101,6 +128,35 @@ class YMNetworkTool: NSObject {
         })
         tableView.mj_header.automaticallyChangeAlpha = true //根据拖拽比例自动切换透明度
         tableView.mj_header.beginRefreshing()
+    }
+    
+    /// 获取新的 关心数据列表，不显示上拉刷新
+    func loadNewConcernListHiddenPullRefresh(finished:(topConcerns: [YMConcern], bottomConcerns: [YMConcern]) -> ()) {
+        let url = BASE_URL + "concern/v1/concern/list/"
+        let params = ["iid": IID,
+                      "count": 20,
+                      "offset": 0,
+                      "type": "manage"]
+        Alamofire
+            .request(.POST, url, parameters: params as? [String : AnyObject])
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    SVProgressHUD.showErrorWithStatus("加载失败...")
+                    return
+                }
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    if let concern_list = json["concern_list"].arrayObject {
+                        var topConcerns = [YMConcern]()
+                        var bottomConcerns = [YMConcern]()
+                        for dict in concern_list {
+                            let concern = YMConcern(dict: dict as! [String: AnyObject])
+                            (concern.concern_time != 0) ? topConcerns.append(concern) : bottomConcerns.append(concern)
+                        }
+                        finished(topConcerns: topConcerns, bottomConcerns: bottomConcerns)
+                    }
+                }
+        }
     }
     
     /// 获取更多 关心数据列表
@@ -147,7 +203,7 @@ class YMNetworkTool: NSObject {
                 SVProgressHUD.showErrorWithStatus("加载失败...")
                 return
             }
-            YMNetworkTool.shareNetworkTool.loadNewConcernList(tableView, finished: { (topConcerns, bottomConcerns) in
+            YMNetworkTool.shareNetworkTool.loadNewConcernListHiddenPullRefresh({ (topConcerns, bottomConcerns) in
                 finish(topConcerns: topConcerns, bottomConcerns: bottomConcerns)
             })
         }

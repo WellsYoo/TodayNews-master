@@ -5,6 +5,8 @@
 //  Created by 杨蒙 on 16/8/2.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
+//  显示搜索结果
+//
 
 import UIKit
 
@@ -82,6 +84,7 @@ extension YMSearchContentViewController: UISearchBarDelegate, UITableViewDelegat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(searchContentCellID) as! YMsearchCell
+        cell.searchText = searchBar.text
         cell.keyword = keywords[indexPath.row]
         return cell
     }
@@ -89,7 +92,6 @@ extension YMSearchContentViewController: UISearchBarDelegate, UITableViewDelegat
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         searchBar.resignFirstResponder()
-        
     }
     
     // MARK: - UISearchBarDelegate

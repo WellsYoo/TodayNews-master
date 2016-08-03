@@ -126,18 +126,25 @@ extension YMNewCareViewController: UITableViewDelegate, UITableViewDataSource, Y
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if topConcerns.count != 0 {
+        if indexPath.section == 0 {
+            if topConcerns.count == 0 {
+                return
+            }
+            let concernDetailVC = YMConcernDetailController()
+            navigationController?.pushViewController(concernDetailVC, animated: true)
+        } else {
             let concernDetailVC = YMConcernDetailController()
             navigationController?.pushViewController(concernDetailVC, animated: true)
         }
+        
+        
     }
     
     // MARK: - YMNewCareBottomCellDelegate
     func bottomCell(bottomCell: YMNewCareBottomCell, careButton: UIButton) {
         // TODO: - 给 cell 添加动画效果
         
-        let concern = bottomCell.concern
-        YMNetworkTool.shareNetworkTool.bottomCellDidClickedCareButton(concern!.concern_id!, tableView: tableView!) { (topConcerns, bottomConcerns) in
+        YMNetworkTool.shareNetworkTool.bottomCellDidClickedCareButton(bottomCell.concern!.concern_id!, tableView: tableView!) { (topConcerns, bottomConcerns) in
             self.topConcerns = topConcerns
             self.bottomConcerns = bottomConcerns
             self.tableView!.reloadData()

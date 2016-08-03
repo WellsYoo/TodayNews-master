@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		251FBB461D51F6B5006ED186 /* YMBlurImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251FBB451D51F6B5006ED186 /* YMBlurImageView.swift */; };
 		2527642F1D4F50F10078C143 /* YMSettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2527642E1D4F50F10078C143 /* YMSettingHeaderView.swift */; };
 		252764311D4F50FB0078C143 /* YMSettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 252764301D4F50FB0078C143 /* YMSettingHeaderView.xib */; };
 		252764341D50421C0078C143 /* YMNewCareSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252764321D50421C0078C143 /* YMNewCareSearchViewController.swift */; };
@@ -16,6 +17,8 @@
 		252764431D507C560078C143 /* YMsearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252764411D507C560078C143 /* YMsearchCell.swift */; };
 		252764441D507C560078C143 /* YMsearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 252764421D507C560078C143 /* YMsearchCell.xib */; };
 		252764461D5095B00078C143 /* YMConcernDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252764451D5095B00078C143 /* YMConcernDetailController.swift */; };
+		256D00EC1D51AE67007D40CF /* YMAddTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D00EB1D51AE67007D40CF /* YMAddTopicViewController.swift */; };
+		256D00EE1D51B5E3007D40CF /* YMTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D00ED1D51B5E3007D40CF /* YMTopic.swift */; };
 		827E87E6C347D72EEA480634 /* Pods_TodayNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4486ED8A9D71B92D386525D6 /* Pods_TodayNews.framework */; };
 		940375951D4F820C00C7B135 /* YMConcern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375941D4F820C00C7B135 /* YMConcern.swift */; };
 		940375971D4F92C300C7B135 /* YMNewCareSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375961D4F92C300C7B135 /* YMNewCareSearchController.swift */; };
@@ -93,6 +96,7 @@
 
 /* Begin PBXFileReference section */
 		14DB40818E01E6EB10374E82 /* Pods-TodayNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews/Pods-TodayNews.release.xcconfig"; sourceTree = "<group>"; };
+		251FBB451D51F6B5006ED186 /* YMBlurImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMBlurImageView.swift; sourceTree = "<group>"; };
 		2527642E1D4F50F10078C143 /* YMSettingHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMSettingHeaderView.swift; sourceTree = "<group>"; };
 		252764301D4F50FB0078C143 /* YMSettingHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMSettingHeaderView.xib; sourceTree = "<group>"; };
 		252764321D50421C0078C143 /* YMNewCareSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareSearchViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 		252764411D507C560078C143 /* YMsearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMsearchCell.swift; sourceTree = "<group>"; };
 		252764421D507C560078C143 /* YMsearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMsearchCell.xib; sourceTree = "<group>"; };
 		252764451D5095B00078C143 /* YMConcernDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMConcernDetailController.swift; sourceTree = "<group>"; };
+		256D00EB1D51AE67007D40CF /* YMAddTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMAddTopicViewController.swift; sourceTree = "<group>"; };
+		256D00ED1D51B5E3007D40CF /* YMTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YMTopic.swift; path = "TodayNews/Classes/Home(首页)/Controller/YMTopic.swift"; sourceTree = SOURCE_ROOT; };
 		4486ED8A9D71B92D386525D6 /* Pods_TodayNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		940375941D4F820C00C7B135 /* YMConcern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMConcern.swift; sourceTree = "<group>"; };
 		940375961D4F92C300C7B135 /* YMNewCareSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareSearchController.swift; sourceTree = "<group>"; };
@@ -285,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				947564CF1D4BADD500AC6B72 /* YMHomeViewController.swift */,
+				256D00EB1D51AE67007D40CF /* YMAddTopicViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -292,6 +299,7 @@
 		947564D01D4BADD500AC6B72 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				256D00ED1D51B5E3007D40CF /* YMTopic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -455,6 +463,7 @@
 				940375A11D50119C00C7B135 /* YMNewCareContentCell.xib */,
 				252764411D507C560078C143 /* YMsearchCell.swift */,
 				252764421D507C560078C143 /* YMsearchCell.xib */,
+				251FBB451D51F6B5006ED186 /* YMBlurImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -509,6 +518,7 @@
 				9475646A1D4B86FE00AC6B72 /* Resources */,
 				B8824F32DBF52FD05D7FB17B /* [CP] Embed Pods Frameworks */,
 				D742B3A08405C3BFDD831843 /* [CP] Copy Pods Resources */,
+				E68540B3D748F379981CAAEF /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -687,6 +697,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TodayNews/Pods-TodayNews-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E68540B3D748F379981CAAEF /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TodayNews/Pods-TodayNews-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -711,13 +736,16 @@
 				252764391D5059880078C143 /* YMKeyword.swift in Sources */,
 				947564FD1D4C2AA500AC6B72 /* YMMineHeaderBottomView.swift in Sources */,
 				9475650F1D4CAC8E00AC6B72 /* YMSettingModel.swift in Sources */,
+				251FBB461D51F6B5006ED186 /* YMBlurImageView.swift in Sources */,
 				940375991D4F9BCB00C7B135 /* YMTitleView.swift in Sources */,
 				947564ED1D4BADD500AC6B72 /* YMTabBarController.swift in Sources */,
 				947565281D4CF90600AC6B72 /* YMNewCareTopCell.swift in Sources */,
 				947565021D4C2EE800AC6B72 /* YMMineCell.swift in Sources */,
 				940375971D4F92C300C7B135 /* YMNewCareSearchController.swift in Sources */,
 				947565151D4CB85D00AC6B72 /* YMAccountManageController.swift in Sources */,
+				256D00EE1D51B5E3007D40CF /* YMTopic.swift in Sources */,
 				9475650B1D4C584C00AC6B72 /* YMSettingViewController.swift in Sources */,
+				256D00EC1D51AE67007D40CF /* YMAddTopicViewController.swift in Sources */,
 				947565091D4C568100AC6B72 /* YMCollectionViewController.swift in Sources */,
 				9475651B1D4CC2A900AC6B72 /* YMAutoPlayVideoController.swift in Sources */,
 				947564EC1D4BADD500AC6B72 /* YMNavigationController.swift in Sources */,

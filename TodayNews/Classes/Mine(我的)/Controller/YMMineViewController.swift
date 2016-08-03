@@ -17,7 +17,7 @@ class YMMineViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.navigationBarHidden = true
     }
     
     override func viewDidLoad() {
@@ -161,6 +161,9 @@ extension YMMineViewController: YMMineHeaderViewDelegae, YMMineHeaderBottomViewD
                 tempFrame.origin.y = offsetY
                 tempFrame.size.height = kYMMineHeaderImageHeight - offsetY
                 headerView.bgImageView.frame = tempFrame
+            headerView.bgImageView.snp_updateConstraints(closure: { (make) in
+                make.height.equalTo(tempFrame.size.height)
+            })
             } else {
                 var tempFrame = noLoginHeaderView.bgImageView.frame
                 tempFrame.origin.y = offsetY

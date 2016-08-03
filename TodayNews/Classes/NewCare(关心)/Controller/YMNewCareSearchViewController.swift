@@ -5,6 +5,8 @@
 //  Created by 杨蒙 on 16/8/2.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
+//  搜索关注，其实就是一个 html 网页
+//
 
 import UIKit
 import SVProgressHUD
@@ -19,7 +21,7 @@ class YMNewCareSearchViewController: YMBaseViewController {
         /// 自动对页面进行缩放以适应屏幕
         webView.scalesPageToFit = true
         webView.dataDetectorTypes = .All
-        let content_url = "http://lf.snssdk.com/concern/v1/guide/page/?ab_client=a1,b2,b8,f2,f6,e1&iid=5034850950&ac=WIFI&ssmix=a&aid=13&app_name=news_article&channel=App%20Store&device_platform=iphone&idfa=7D860ECF-C119-4A2D-9870-A9CCA1AD7CFA&os_version=9.3.2&vid=8575CB9D-EFE0-411F-8E5C-DBB0D48D1948&openudid=f1503767fe6a235142ac7ae604797c1093a40488&device_type=iPhone%206&ab_feature=z1&device_id=6096495334&ab_version=concern_talk_data_test10_09&resolution=750*1334&version_code=5.7.1"
+        let content_url = "http://lf.snssdk.com/concern/v1/guide/page/?iid=\(IID)"
         let url = NSURL(string: content_url)
         let request = NSURLRequest(URL: url!)
         webView.loadRequest(request)

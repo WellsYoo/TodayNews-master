@@ -10,12 +10,19 @@ import UIKit
 
 class YMsearchCell: UITableViewCell {
 
+    var searchText: String?
+    
     var keyword: YMKeyword? {
         didSet {
-            keywordLabel.text = keyword!.keyword
+            let count = searchText?.characters.count
+            let index = keyword!.keyword?.startIndex.advancedBy(count!)
+            let subString = keyword!.keyword?.substringFromIndex(index!)
+            let attributeString = NSMutableAttributedString(string: searchText!, attributes: [NSForegroundColorAttributeName: YMColor(232, g: 84, b: 85, a: 1.0)])
+            let subAttributeString = NSAttributedString(string: subString!)
+            attributeString.appendAttributedString(subAttributeString)
+            keywordLabel.attributedText = attributeString
         }
     }
-    
     
     @IBOutlet weak var keywordLabel: UILabel!
     

@@ -93,7 +93,7 @@ func YMColor(r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {
 
 /// 背景灰色
 func YMGlobalColor() -> UIColor {
-    return YMColor(242, g: 247, b: 248, a: 1)
+    return YMColor(245, g: 245, b: 245, a: 1)
 }
 
 /// 红色
