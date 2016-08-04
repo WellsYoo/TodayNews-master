@@ -9,7 +9,13 @@
 import UIKit
 import Kingfisher
 
+protocol YMScrollTitleViewDelegate: NSObjectProtocol {
+    func titleView(titleView: YMScrollTitleView, titles: [YMTitleLabel])
+}
+
 class YMScrollTitleView: UIView {
+    
+    weak var delegate: YMScrollTitleViewDelegate?
     
     /// 存放标题模型的数组
     var titles = [YMTopic]()
@@ -19,6 +25,10 @@ class YMScrollTitleView: UIView {
     var labelWidths = [CGFloat]()
     /// 顶部导航栏右边加号按钮点击
     var addBtnClickClosure: (() -> ())?
+    /// 点击了一个 label
+    var didSelectTitleLable: ((titleLabel: YMTitleLabel)->())?
+    
+    var titlesClosure: ((titleArray: [YMTopic])->())?
     /// 记录当前选中的下标
     private var currentIndex = 0
     /// 记录上一个下标
@@ -54,6 +64,18 @@ class YMScrollTitleView: UIView {
         setupTitlesLable()
         /// 设置 label 的位置
         setupLabelsPosition()
+        
+        titlesClosure?(titleArray: titles)
+    }
+    
+    /// 暴露给外界，告知外界点击了哪一个 titleLabel
+    func didSelectTitleLableClosure(closure:(titleLabel: YMTitleLabel)->()) {
+         didSelectTitleLable = closure
+    }
+    
+    /// 暴露给外界，向外界传递 topic 数组
+    func titleArrayClosure(closure: (titleArray: [YMTopic])->()) {
+        titlesClosure = closure
     }
     
     /// 设置添加右边按钮
@@ -146,17 +168,22 @@ extension YMScrollTitleView {
         oldLabel.currentScale = 1.0
         currentLabel.textColor = UIColor.whiteColor()
         currentLabel.currentScale = 1.1
-        
         // 改变 label 的位置
         adjustTitleOffSetToCurrentIndex(currentIndex)
+        didSelectTitleLable?(titleLabel: currentLabel)
     }
     
     /// 当点击标题的时候，检查是否需要改变 label 的位置
-    private func adjustTitleOffSetToCurrentIndex(currentIndex: Int) {
+    func adjustTitleOffSetToCurrentIndex(currentIndex: Int) {
         if oldIndex == currentIndex {
             return
         }
+        let oldLabel = labels[oldIndex]
         let currentLabel = labels[currentIndex]
+        currentLabel.currentScale = 1.1
+        currentLabel.textColor = UIColor.whiteColor()
+        oldLabel.textColor = YMColor(235, g: 235, b: 235, a: 1.0)
+        oldLabel.currentScale = 1.0
         // 当前偏移量
         var offsetX = currentLabel.centerX - SCREENW * 0.5
         if offsetX < 0 {
