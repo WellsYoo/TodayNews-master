@@ -9,7 +9,7 @@
 import UIKit
 
 class YMVideoViewController: UIViewController {
-
+    // 当前选中的 titleLabel 的 上一个 titleLabel
     var oldIndex: Int = 0
     
     override func viewDidLoad() {
@@ -18,7 +18,7 @@ class YMVideoViewController: UIViewController {
         setupUI()
         
     }
-    
+    // 设置 UI
     private func setupUI() {
         view!.backgroundColor = YMGlobalColor()
         //不要自动调整inset
@@ -82,6 +82,7 @@ extension YMVideoViewController: UIScrollViewDelegate {
         scrollView.addSubview(vc.view)
     }
     
+    // scrollView 刚开始滑动时
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         // 当前索引
         let index = Int(scrollView.contentOffset.x / scrollView.width)
@@ -89,6 +90,7 @@ extension YMVideoViewController: UIScrollViewDelegate {
         self.oldIndex = index
     }
     
+    // scrollView 结束滑动
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         scrollViewDidEndScrollingAnimation(scrollView)
         // 当前索引

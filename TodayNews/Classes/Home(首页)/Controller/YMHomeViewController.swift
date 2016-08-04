@@ -11,10 +11,8 @@ import UIKit
 let homeTopicCellID = "YMHomeTopicCell"
 
 class YMHomeViewController: UIViewController {
-    
+    // 当前选中的 titleLabel 的 上一个 titleLabel
     var oldIndex: Int = 0
-    
-//    var titles = [YMTopic]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +89,7 @@ extension YMHomeViewController: UIScrollViewDelegate {
         scrollView.addSubview(vc.view)
     }
     
+    // scrollView 刚开始滑动时
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         // 当前索引
         let index = Int(scrollView.contentOffset.x / scrollView.width)
@@ -98,6 +97,7 @@ extension YMHomeViewController: UIScrollViewDelegate {
         self.oldIndex = index
     }
     
+    // scrollView 结束滑动
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         scrollViewDidEndScrollingAnimation(scrollView)
         // 当前索引

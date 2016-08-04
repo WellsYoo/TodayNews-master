@@ -43,7 +43,7 @@ class YMScrollTitleView: UIView {
         addSubview(scrollView)
         // 添加按钮
         addSubview(addButton)
-        
+        // 布局
         scrollView.snp_makeConstraints { (make) in
             make.left.top.bottom.equalTo(self)
             make.right.equalTo(addButton.snp_left)
@@ -58,7 +58,7 @@ class YMScrollTitleView: UIView {
         setupTitlesLable()
         /// 设置 label 的位置
         setupLabelsPosition()
-        
+        // 保存 titles 数组
         titlesClosure?(titleArray: titles)
     }
     
@@ -172,6 +172,7 @@ extension YMScrollTitleView {
         if oldIndex == currentIndex {
             return
         }
+        // 重新设置 label 的状态
         let oldLabel = labels[oldIndex]
         let currentLabel = labels[currentIndex]
         currentLabel.currentScale = 1.1

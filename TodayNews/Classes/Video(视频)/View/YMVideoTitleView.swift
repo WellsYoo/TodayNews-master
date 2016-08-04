@@ -29,6 +29,7 @@ class YMVideoTitleView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        /// 获取数据
         YMNetworkTool.shareNetworkTool.loadVideoTitlesData({ [weak self] (topTitles) in
             self!.titles = topTitles
             self!.setupUI()
@@ -151,6 +152,7 @@ extension YMVideoTitleView {
         guard let  currentLabel = tap.view as? YMTitleLabel else {
             return
         }
+        
         oldIndex = currentIndex
         currentIndex = currentLabel.tag
         let oldLabel = labels[oldIndex]
@@ -161,6 +163,7 @@ extension YMVideoTitleView {
         
         // 改变 label 的位置
         adjustVideoTitleOffSetToCurrentIndex(currentIndex, oldIndex: oldIndex)
+        // 获取点击的 titleLabel
         didSelectVideoTitleLable?(titleLabel: currentLabel)
     }
     
@@ -169,6 +172,7 @@ extension YMVideoTitleView {
         if oldIndex == currentIndex {
             return
         }
+        // 重新设置 label 的状态
         let currentLabel = labels[currentIndex]
         let oldLabel = labels[oldIndex]
         currentLabel.currentScale = 1.1
