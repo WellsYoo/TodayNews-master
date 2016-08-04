@@ -14,6 +14,8 @@ class YMHomeViewController: UIViewController {
     
     var scrollView: UIScrollView?
     
+    var oldIndex: Int = 0
+    
     var titles = [YMTopic]()
     
     override func viewDidLoad() {
@@ -95,11 +97,20 @@ extension YMHomeViewController: UIScrollViewDelegate {
         scrollView.addSubview(vc.view)
     }
     
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        // 当前索引
+        let index = Int(scrollView.contentOffset.x / scrollView.width)
+        // 记录刚开始拖拽是的 index
+        self.oldIndex = index
+    }
+    
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         scrollViewDidEndScrollingAnimation(scrollView)
         // 当前索引
         let index = Int(scrollView.contentOffset.x / scrollView.width)
-        titleView.adjustTitleOffSetToCurrentIndex(index)
+        // 与刚开始拖拽时的 index 进行比较
+        // 检查是否需要改变 label 的位置
+        titleView.adjustTitleOffSetToCurrentIndex(index, oldIndex: self.oldIndex)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

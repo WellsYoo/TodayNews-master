@@ -33,7 +33,6 @@ class YMHomeTopicController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(topicTableViewCellID) as! YMTopicTableViewCell
         cell.textLabel?.text = "\(navigationItem.title)----\(indexPath.row)"
-        print("\(navigationItem.title)----\(indexPath.row)")
         return cell
     }
 

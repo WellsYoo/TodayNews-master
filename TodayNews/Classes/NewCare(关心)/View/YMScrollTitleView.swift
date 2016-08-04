@@ -169,12 +169,12 @@ extension YMScrollTitleView {
         currentLabel.textColor = UIColor.whiteColor()
         currentLabel.currentScale = 1.1
         // 改变 label 的位置
-        adjustTitleOffSetToCurrentIndex(currentIndex)
+        adjustTitleOffSetToCurrentIndex(currentIndex, oldIndex: oldIndex)
         didSelectTitleLable?(titleLabel: currentLabel)
     }
     
     /// 当点击标题的时候，检查是否需要改变 label 的位置
-    func adjustTitleOffSetToCurrentIndex(currentIndex: Int) {
+    func adjustTitleOffSetToCurrentIndex(currentIndex: Int, oldIndex: Int) {
         if oldIndex == currentIndex {
             return
         }
