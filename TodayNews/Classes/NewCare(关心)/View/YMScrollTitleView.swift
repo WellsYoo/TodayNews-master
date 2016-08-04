@@ -9,13 +9,7 @@
 import UIKit
 import Kingfisher
 
-protocol YMScrollTitleViewDelegate: NSObjectProtocol {
-    func titleView(titleView: YMScrollTitleView, titles: [YMTitleLabel])
-}
-
 class YMScrollTitleView: UIView {
-    
-    weak var delegate: YMScrollTitleViewDelegate?
     
     /// 存放标题模型的数组
     var titles = [YMTopic]()
@@ -27,7 +21,7 @@ class YMScrollTitleView: UIView {
     var addBtnClickClosure: (() -> ())?
     /// 点击了一个 label
     var didSelectTitleLable: ((titleLabel: YMTitleLabel)->())?
-    
+    /// 向外界传递 titles 数组
     var titlesClosure: ((titleArray: [YMTopic])->())?
     /// 记录当前选中的下标
     private var currentIndex = 0

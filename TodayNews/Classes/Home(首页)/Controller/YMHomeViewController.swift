@@ -12,11 +12,9 @@ let homeTopicCellID = "YMHomeTopicCell"
 
 class YMHomeViewController: UIViewController {
     
-    var scrollView: UIScrollView?
-    
     var oldIndex: Int = 0
     
-    var titles = [YMTopic]()
+//    var titles = [YMTopic]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +25,11 @@ class YMHomeViewController: UIViewController {
         view!.backgroundColor = YMGlobalColor()
         //不要自动调整inset
         automaticallyAdjustsScrollViewInsets = false
-        navigationItem.title = ""
+        
         navigationItem.titleView = titleView
         navigationController?.navigationBar.barStyle = .Black
         navigationController?.navigationBar.barTintColor = YMColor(210, g: 63, b: 66, a: 1.0)
+        view.addSubview(scrollView)
         // 添加按钮点击
         titleView.addButtonClickClosure { [weak self] in
             let addTopicVC = YMAddTopicViewController()
@@ -40,35 +39,30 @@ class YMHomeViewController: UIViewController {
         
         /// 点击了哪一个 titleLabel，然后 scrolleView 进行相应 的偏移
         titleView.didSelectTitleLableClosure { [weak self] (titleLabel) in
-            var offset = self!.scrollView!.contentOffset
-            offset.x = CGFloat(titleLabel.tag) * self!.scrollView!.width
-            self!.scrollView!.setContentOffset(offset, animated: true)
+            var offset = self!.scrollView.contentOffset
+            offset.x = CGFloat(titleLabel.tag) * self!.scrollView.width
+            self!.scrollView.setContentOffset(offset, animated: true)
         }
         
         // 返回标题的数量
         titleView.titleArrayClosure { [weak self] (titleArray) in
-            self!.titles = titleArray
             for topic in titleArray {
                 let topicVC = YMHomeTopicController()
                 topicVC.title = topic.name
                 self!.addChildViewController(topicVC)
             }
-            self!.setupScrollView()
-            self!.scrollViewDidEndScrollingAnimation(self!.scrollView!)
-            self!.scrollView!.contentSize = CGSizeMake(SCREENW * CGFloat(titleArray.count), SCREENH)
+            self!.scrollViewDidEndScrollingAnimation(self!.scrollView)
+            self!.scrollView.contentSize = CGSizeMake(SCREENW * CGFloat(titleArray.count), SCREENH)
         }
     }
     
-    /// 设置 scrollView
-    private func setupScrollView() {
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = UIColor.cyanColor()
         scrollView.frame = UIScreen.mainScreen().bounds
         scrollView.pagingEnabled = true
         scrollView.delegate = self
-        view.addSubview(scrollView)
-        self.scrollView = scrollView
-    }
+        return scrollView
+    }()
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

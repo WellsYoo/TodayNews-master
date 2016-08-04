@@ -18,6 +18,10 @@ class YMVideoTitleView: UIView {
     var labelWidths = [CGFloat]()
     /// 顶部导航栏右边加号按钮点击
     var searchBtnClickClosure: (() -> ())?
+    /// 点击了一个 label
+    var didSelectVideoTitleLable: ((titleLabel: YMTitleLabel)->())?
+    /// 向外界传递 titles 数组
+    var videoTitlesClosure: ((titleArray: [YMVideoTopTitle])->())?
     /// 记录当前选中的下标
     private var currentIndex = 0
     /// 记录上一个下标
@@ -51,6 +55,18 @@ class YMVideoTitleView: UIView {
         setupVideoTitlesLable()
         /// 设置 label 的位置
         setupVideoLabelsPosition()
+        
+        videoTitlesClosure?(titleArray: titles)
+    }
+    
+    /// 暴露给外界，告知外界点击了哪一个 titleLabel
+    func didSelectVideoTitleLableClosure(closure:(titleLabel: YMTitleLabel)->()) {
+        didSelectVideoTitleLable = closure
+    }
+    
+    /// 暴露给外界，向外界传递 topic 数组
+    func videoTitleArrayClosure(closure: (titleArray: [YMVideoTopTitle])->()) {
+        videoTitlesClosure = closure
     }
     
     /// 顶部搜索按钮
@@ -144,15 +160,21 @@ extension YMVideoTitleView {
         currentLabel.currentScale = 1.1
         
         // 改变 label 的位置
-        adjustTitleOffSetToCurrentIndex(currentIndex)
+        adjustVideoTitleOffSetToCurrentIndex(currentIndex, oldIndex: oldIndex)
+        didSelectVideoTitleLable?(titleLabel: currentLabel)
     }
     
     /// 当点击标题的时候，检查是否需要改变 label 的位置
-    private func adjustTitleOffSetToCurrentIndex(currentIndex: Int) {
+    func adjustVideoTitleOffSetToCurrentIndex(currentIndex: Int, oldIndex: Int) {
         if oldIndex == currentIndex {
             return
         }
         let currentLabel = labels[currentIndex]
+        let oldLabel = labels[oldIndex]
+        currentLabel.currentScale = 1.1
+        currentLabel.textColor = YMColor(232, g: 84, b: 85, a: 1.0)
+        oldLabel.textColor = UIColor.blackColor()
+        oldLabel.currentScale = 1.0
         // 当前偏移量
         var offsetX = currentLabel.centerX - SCREENW * 0.5
         if offsetX < 0 {
