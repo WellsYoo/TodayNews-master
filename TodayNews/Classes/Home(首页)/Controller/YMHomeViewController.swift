@@ -22,36 +22,28 @@ class YMHomeViewController: UITableViewController {
         navigationItem.titleView = titleView
         navigationController?.navigationBar.barStyle = .Black
         navigationController?.navigationBar.barTintColor = YMColor(210, g: 63, b: 66, a: 1.0)
+        
+        titleView.addButtonClickClosure { [weak self] in
+            let addTopicVC = YMAddTopicViewController()
+            let nav = YMNavigationController(rootViewController: addTopicVC)
+            self!.presentViewController(nav, animated: false, completion: nil)
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    private lazy var titleView: YMTitleView = {
-        let titleView = YMTitleView.titleView()
-        titleView.delegate = self
-        titleView.imageName = "search_topic_24x24_"
-//        YMNetworkTool.shareNetworkTool.loadHomeTitlesData({ (topTitles) in
-//            titleView.titles = topTitles
-//            titleView.titleCollectionView.reloadData()
-//        })
+    /// 顶部标题
+    private lazy var titleView: YMScrollTitleView = {
+        let titleView = YMScrollTitleView()
         return titleView
     }()
     
 }
 
-extension YMHomeViewController: YMTitleViewDelegate {
-    
-    
-    
-    // MARK: - YMTitleViewDelegate
-    func titleView(titleView: YMTitleView, titleButton button: UIButton) {
-        let addTopicVC = YMAddTopicViewController()
-        let nav = YMNavigationController(rootViewController: addTopicVC)
-        presentViewController(nav, animated: false, completion: nil)
-    }
+extension YMHomeViewController {
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent

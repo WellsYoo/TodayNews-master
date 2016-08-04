@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		251FBB461D51F6B5006ED186 /* YMBlurImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251FBB451D51F6B5006ED186 /* YMBlurImageView.swift */; };
+		251FBB481D530E34006ED186 /* YMScrollTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251FBB471D530E34006ED186 /* YMScrollTitleView.swift */; };
 		2527642F1D4F50F10078C143 /* YMSettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2527642E1D4F50F10078C143 /* YMSettingHeaderView.swift */; };
 		252764311D4F50FB0078C143 /* YMSettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 252764301D4F50FB0078C143 /* YMSettingHeaderView.xib */; };
 		252764341D50421C0078C143 /* YMNewCareSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252764321D50421C0078C143 /* YMNewCareSearchViewController.swift */; };
@@ -98,6 +99,7 @@
 /* Begin PBXFileReference section */
 		14DB40818E01E6EB10374E82 /* Pods-TodayNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews/Pods-TodayNews.release.xcconfig"; sourceTree = "<group>"; };
 		251FBB451D51F6B5006ED186 /* YMBlurImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMBlurImageView.swift; sourceTree = "<group>"; };
+		251FBB471D530E34006ED186 /* YMScrollTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YMScrollTitleView.swift; path = "TodayNews/Classes/NewCare(关心)/View/YMScrollTitleView.swift"; sourceTree = SOURCE_ROOT; };
 		2527642E1D4F50F10078C143 /* YMSettingHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMSettingHeaderView.swift; sourceTree = "<group>"; };
 		252764301D4F50FB0078C143 /* YMSettingHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMSettingHeaderView.xib; sourceTree = "<group>"; };
 		252764321D50421C0078C143 /* YMNewCareSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareSearchViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 		947564D11D4BADD500AC6B72 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				251FBB471D530E34006ED186 /* YMScrollTitleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -757,6 +760,7 @@
 				947564EE1D4BADD500AC6B72 /* AppDelegate.swift in Sources */,
 				947564F71D4C274100AC6B72 /* YMConst.swift in Sources */,
 				940375951D4F820C00C7B135 /* YMConcern.swift in Sources */,
+				251FBB481D530E34006ED186 /* YMScrollTitleView.swift in Sources */,
 				940375A81D50DE3300C7B135 /* YMVideoCollectionViewCell.swift in Sources */,
 				252764371D504C990078C143 /* YMSearchContentViewController.swift in Sources */,
 				252764461D5095B00078C143 /* YMSelectConcernTableController.swift in Sources */,
