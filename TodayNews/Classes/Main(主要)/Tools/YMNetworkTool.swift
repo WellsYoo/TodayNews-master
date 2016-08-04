@@ -72,7 +72,9 @@ class YMNetworkTool: NSObject {
     //
     /// 获取视频顶部标题内容
     func loadVideoTitlesData(finished:(topTitles: [YMVideoTopTitle])->()) {
-        let url = BASE_URL + "video_api/get_category/v1/?iid=\(IID)&aid=13"
+        // version_code 表示今日头条的版本号，经过测试 >= 5.6 版本新增了『火山直播』
+        // os_version 表示 iOS 的系统版本，经测试 >= 8.0 版本新增了『火山直播』
+        let url = BASE_URL + "video_api/get_category/v1/?iid=\(IID)&version_code=5.7.1&device_platform=iphone&os_version=9.3.2"
         Alamofire
             .request(.GET, url)
             .responseJSON { (response) in

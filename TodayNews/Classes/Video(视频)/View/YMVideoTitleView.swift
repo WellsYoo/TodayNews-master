@@ -1,24 +1,23 @@
 //
-//  YMScrollTitleView.swift
+//  YMTitleView.swift
 //  TodayNews
 //
-//  Created by 杨蒙 on 16/8/4.
+//  Created by 杨蒙 on 16/8/1.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
 
 import UIKit
-import Kingfisher
+import SnapKit
 
-class YMScrollTitleView: UIView {
-    
-    /// 存放标题模型的数组
-    var titles = [YMTopic]()
+class YMVideoTitleView: UIView {
+    /// 顶部标题数组
+    var titles = [YMVideoTopTitle]()
     /// 存放标题 label 数组
     var labels = [YMTitleLabel]()
     /// 存放 label 的宽度
     var labelWidths = [CGFloat]()
     /// 顶部导航栏右边加号按钮点击
-    var addBtnClickClosure: (() -> ())?
+    var searchBtnClickClosure: (() -> ())?
     /// 记录当前选中的下标
     private var currentIndex = 0
     /// 记录上一个下标
@@ -26,53 +25,49 @@ class YMScrollTitleView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        // 获取首页顶部标题数据
-        YMNetworkTool.shareNetworkTool.loadHomeTitlesData { [weak self] (topTitles) in
+        YMNetworkTool.shareNetworkTool.loadVideoTitlesData({ [weak self] (topTitles) in
             self!.titles = topTitles
             self!.setupUI()
-        }
+        })
     }
     
-    /// 设置 UI
     private func setupUI() {
         // 添加滚动视图
         addSubview(scrollView)
-        // 添加按钮
-        addSubview(addButton)
-        
+        // 添加搜索按钮
+        addSubview(titleSearchButton)
+
         scrollView.snp_makeConstraints { (make) in
             make.left.top.bottom.equalTo(self)
-            make.right.equalTo(addButton.snp_left)
+            make.right.equalTo(titleSearchButton.snp_left)
         }
         
-        addButton.snp_makeConstraints { (make) in
+        titleSearchButton.snp_makeConstraints { (make) in
             make.top.bottom.right.equalTo(self)
             make.width.equalTo(30)
         }
         
         /// 添加 label
-        setupTitlesLable()
+        setupVideoTitlesLable()
         /// 设置 label 的位置
-        setupLabelsPosition()
+        setupVideoLabelsPosition()
     }
     
-    /// 设置添加右边按钮
-    private lazy var addButton: UIButton = {
-        let addButton = UIButton()
-        addButton.setTitle("+", forState: .Normal)
-        addButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        addButton.titleLabel?.font = UIFont.systemFontOfSize(30)
-        addButton.addTarget(self, action: #selector(addButtonClick), forControlEvents: .TouchUpInside)
-        return addButton
+    /// 顶部搜索按钮
+    private lazy var titleSearchButton: UIButton = {
+        let titleSearchButton = UIButton()
+        titleSearchButton.addTarget(self, action: #selector(titleSearchButtonClick(_:)), forControlEvents: .TouchUpInside)
+        titleSearchButton.setImage(UIImage(named: "search_topic_24x24_"), forState: .Normal)
+        return titleSearchButton
     }()
     
-    /// 右边添加按钮点击
-    func addButtonClick() {
-        addBtnClickClosure?()
+    func titleSearchButtonClick(button: UIButton) {
+        searchBtnClickClosure?()
     }
+    
     /// 添加按钮闭包
-    func addButtonClickClosure(closure:()->()) {
-        addBtnClickClosure = closure
+    func searchButtonClickClosure(closure:()->()) {
+        searchBtnClickClosure = closure
     }
     
     /// 设置滚动视图
@@ -82,20 +77,21 @@ class YMScrollTitleView: UIView {
         return scrollView
     }()
     
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
-extension YMScrollTitleView {
+extension YMVideoTitleView {
     
     /// 添加 label
-    private func setupTitlesLable() {
+    private func setupVideoTitlesLable() {
         for (index, topic) in titles.enumerate() {
             let label = YMTitleLabel()
             label.text = topic.name
             label.tag = index
-            label.textColor = YMColor(235, g: 235, b: 235, a: 1.0)
+            label.textColor = UIColor.blackColor()
             label.textAlignment = .Center
             label.userInteractionEnabled = true
             let tap = UITapGestureRecognizer(target: self, action: #selector(titleLabelOnClick(_:)))
@@ -108,12 +104,12 @@ extension YMScrollTitleView {
             scrollView.addSubview(label)
         }
         let currentLabel = labels[currentIndex]
-        currentLabel.textColor = UIColor.whiteColor()
+        currentLabel.textColor = YMColor(232, g: 84, b: 85, a: 1.0)
         currentLabel.currentScale = 1.1
     }
     
     /// 设置 label 的位置
-    private func setupLabelsPosition() {
+    private func setupVideoLabelsPosition() {
         var titleX: CGFloat = 0.0
         let titleY: CGFloat = 0.0
         var titleW: CGFloat = 0.0
@@ -142,9 +138,9 @@ extension YMScrollTitleView {
         oldIndex = currentIndex
         currentIndex = currentLabel.tag
         let oldLabel = labels[oldIndex]
-        oldLabel.textColor = YMColor(235, g: 235, b: 235, a: 1.0)
+        oldLabel.textColor = UIColor.blackColor()
         oldLabel.currentScale = 1.0
-        currentLabel.textColor = UIColor.whiteColor()
+        currentLabel.textColor = YMColor(232, g: 84, b: 85, a: 1.0)
         currentLabel.currentScale = 1.1
         
         // 改变 label 的位置
@@ -163,7 +159,7 @@ extension YMScrollTitleView {
             offsetX = 0
         }
         // 最大偏移量
-        var maxOffsetX = scrollView.contentSize.width - (SCREENW - addButton.width)
+        var maxOffsetX = scrollView.contentSize.width - (SCREENW - titleSearchButton.width)
         
         if maxOffsetX < 0 {
             maxOffsetX = 0
@@ -180,15 +176,6 @@ extension YMScrollTitleView {
         didSet {
             let newFrame = CGRectMake(0, 0, SCREENW, 44)
             super.frame = newFrame
-        }
-    }
-}
-
-class YMTitleLabel: UILabel {
-    /// 用来记录当前 label 的缩放比例
-    var currentScale: CGFloat = 1.0 {
-        didSet {
-            transform = CGAffineTransformMakeScale(currentScale, currentScale)
         }
     }
 }

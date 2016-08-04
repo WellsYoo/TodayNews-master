@@ -23,7 +23,7 @@
 		827E87E6C347D72EEA480634 /* Pods_TodayNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4486ED8A9D71B92D386525D6 /* Pods_TodayNews.framework */; };
 		940375951D4F820C00C7B135 /* YMConcern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375941D4F820C00C7B135 /* YMConcern.swift */; };
 		940375971D4F92C300C7B135 /* YMNewCareSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375961D4F92C300C7B135 /* YMNewCareSearchController.swift */; };
-		940375991D4F9BCB00C7B135 /* YMTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375981D4F9BCB00C7B135 /* YMTitleView.swift */; };
+		940375991D4F9BCB00C7B135 /* YMVideoTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375981D4F9BCB00C7B135 /* YMVideoTitleView.swift */; };
 		9403759B1D4F9FE000C7B135 /* YMVideoSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9403759A1D4F9FE000C7B135 /* YMVideoSearchController.swift */; };
 		9403759E1D50101900C7B135 /* YMNewCareCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9403759C1D50101900C7B135 /* YMNewCareCategoryCell.swift */; };
 		9403759F1D50101900C7B135 /* YMNewCareCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9403759D1D50101900C7B135 /* YMNewCareCategoryCell.xib */; };
@@ -114,7 +114,7 @@
 		4486ED8A9D71B92D386525D6 /* Pods_TodayNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		940375941D4F820C00C7B135 /* YMConcern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMConcern.swift; sourceTree = "<group>"; };
 		940375961D4F92C300C7B135 /* YMNewCareSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareSearchController.swift; sourceTree = "<group>"; };
-		940375981D4F9BCB00C7B135 /* YMTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMTitleView.swift; sourceTree = "<group>"; };
+		940375981D4F9BCB00C7B135 /* YMVideoTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoTitleView.swift; sourceTree = "<group>"; };
 		9403759A1D4F9FE000C7B135 /* YMVideoSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoSearchController.swift; sourceTree = "<group>"; };
 		9403759C1D50101900C7B135 /* YMNewCareCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareCategoryCell.swift; sourceTree = "<group>"; };
 		9403759D1D50101900C7B135 /* YMNewCareCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareCategoryCell.xib; sourceTree = "<group>"; };
@@ -504,7 +504,7 @@
 		947564E91D4BADD500AC6B72 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				940375981D4F9BCB00C7B135 /* YMTitleView.swift */,
+				940375981D4F9BCB00C7B135 /* YMVideoTitleView.swift */,
 				940375A61D50DE3300C7B135 /* YMVideoCollectionViewCell.swift */,
 				940375A71D50DE3300C7B135 /* YMVideoCollectionViewCell.xib */,
 			);
@@ -743,7 +743,7 @@
 				947564FD1D4C2AA500AC6B72 /* YMMineHeaderBottomView.swift in Sources */,
 				9475650F1D4CAC8E00AC6B72 /* YMSettingModel.swift in Sources */,
 				251FBB461D51F6B5006ED186 /* YMBlurImageView.swift in Sources */,
-				940375991D4F9BCB00C7B135 /* YMTitleView.swift in Sources */,
+				940375991D4F9BCB00C7B135 /* YMVideoTitleView.swift in Sources */,
 				947564ED1D4BADD500AC6B72 /* YMTabBarController.swift in Sources */,
 				947565281D4CF90600AC6B72 /* YMNewCareTopCell.swift in Sources */,
 				947565021D4C2EE800AC6B72 /* YMMineCell.swift in Sources */,

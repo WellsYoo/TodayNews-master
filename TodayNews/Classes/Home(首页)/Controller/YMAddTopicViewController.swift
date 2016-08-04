@@ -19,8 +19,6 @@ class YMAddTopicViewController: UIViewController {
         
         setupUI()
         
-        
-        
     }
     
     private func setupUI() {

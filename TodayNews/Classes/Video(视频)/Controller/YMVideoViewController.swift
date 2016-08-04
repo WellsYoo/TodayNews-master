@@ -20,7 +20,10 @@ class YMVideoViewController: UITableViewController {
     private func setupUI() {
         navigationItem.title = ""
         navigationItem.titleView = titleView
-        
+        titleView.searchButtonClickClosure { [weak self] in
+            let videoSearchVC = YMVideoSearchController()
+            self!.navigationController?.pushViewController(videoSearchVC, animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,21 +31,12 @@ class YMVideoViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private lazy var titleView: YMTitleView = {
-        let titleView = YMTitleView.titleView()
-        titleView.delegate = self
-        titleView.imageName = "search_topic_24x24_"
-        YMNetworkTool.shareNetworkTool.loadVideoTitlesData({ (topTitles) in
-            titleView.titles = topTitles
-            titleView.titleCollectionView.reloadData()
-        })
+    private lazy var titleView: YMVideoTitleView = {
+        let titleView = YMVideoTitleView()
         return titleView
     }()
 }
 
-extension YMVideoViewController: YMTitleViewDelegate {
-    func titleView(titleView: YMTitleView, titleButton button: UIButton) {
-        let searchVC = YMVideoSearchController()
-        navigationController?.pushViewController(searchVC, animated: true)
-    }
+extension YMVideoViewController {
+    
 }
