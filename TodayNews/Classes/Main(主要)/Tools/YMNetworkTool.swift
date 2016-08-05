@@ -19,7 +19,7 @@ class YMNetworkTool: NSObject {
     /// ------------------------ 首 页 -------------------------
     //
     /// 获取首页顶部标题内容
-    func loadHomeTitlesData(finished:(topTitles: [YMTopic])->()) {
+    func loadHomeTitlesData(finished:(topTitles: [YMHomeTopTitle])->()) {
         let url = BASE_URL + "article/category/get_subscribed/v1/?iid=\(IID)&aid=13"
         Alamofire
             .request(.GET, url)
@@ -32,9 +32,9 @@ class YMNetworkTool: NSObject {
                     let json = JSON(value)
                     let dataDict = json["data"].dictionary
                     if let data = dataDict!["data"]!.arrayObject {
-                        var topics = [YMTopic]()
+                        var topics = [YMHomeTopTitle]()
                         for dict in data {
-                            let title = YMTopic(dict: dict as! [String: AnyObject])
+                            let title = YMHomeTopTitle(dict: dict as! [String: AnyObject])
                             topics.append(title)
                         }
                         finished(topTitles: topics)
@@ -43,9 +43,40 @@ class YMNetworkTool: NSObject {
         }
     }
     
+    /// 获取首页不同分类的新闻内容
+    func loadHomeCategoryNewsFeed(category: String, finished:(newsTopics: [YMNewsTopic])->()) {
+        let url = BASE_URL + "api/news/feed/v39/?category=\(category)"
+        Alamofire
+            .request(.GET, url)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    SVProgressHUD.showErrorWithStatus("加载失败...")
+                    return
+                }
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    let datas = json["data"].array
+                    var topics = [YMNewsTopic]()
+                    for data in datas! {
+                        let content = data["content"].stringValue
+                        let contentData: NSData = content.dataUsingEncoding(NSUTF8StringEncoding)!
+                        do {
+                            let dict = try NSJSONSerialization.JSONObjectWithData(contentData, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
+                            let topic = YMNewsTopic(dict: dict as! [String : AnyObject])
+                            topics.append(topic)
+                            print(dict)
+                        } catch {
+                            SVProgressHUD.showErrorWithStatus("获取数据失败!")
+                        }
+                    }
+                    finished(newsTopics: topics)
+                }
+        }
+    }
     
-    /// 首页 -> 添加标题，获取推荐标题内容
-    func loadRecommendTopic(finished:(recommendTopics: [YMTopic]) -> ()) {
+    
+    /// 首页 -> 『+』点击，添加标题，获取推荐标题内容
+    func loadRecommendTopic(finished:(recommendTopics: [YMHomeTopTitle]) -> ()) {
         let url = "https://lf.snssdk.com/article/category/get_extra/v1/?iid=\(IID)&aid=13"
         Alamofire
             .request(.GET, url)
@@ -57,9 +88,9 @@ class YMNetworkTool: NSObject {
                 if let value = response.result.value {
                     let json = JSON(value)
                     if let data = json["data"].arrayObject {
-                        var topics = [YMTopic]()
+                        var topics = [YMHomeTopTitle]()
                         for dict in data {
-                            let title = YMTopic(dict: dict as! [String: AnyObject])
+                            let title = YMHomeTopTitle(dict: dict as! [String: AnyObject])
                             topics.append(title)
                         }
                         finished(recommendTopics: topics)

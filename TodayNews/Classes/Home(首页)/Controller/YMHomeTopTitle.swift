@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YMTopic: NSObject {
+class YMHomeTopTitle: NSObject {
     
     var category: String?
 

@@ -12,7 +12,7 @@ import Kingfisher
 class YMScrollTitleView: UIView {
     
     /// 存放标题模型的数组
-    var titles = [YMTopic]()
+    var titles = [YMHomeTopTitle]()
     /// 存放标题 label 数组
     var labels = [YMTitleLabel]()
     /// 存放 label 的宽度
@@ -22,7 +22,7 @@ class YMScrollTitleView: UIView {
     /// 点击了一个 label
     var didSelectTitleLable: ((titleLabel: YMTitleLabel)->())?
     /// 向外界传递 titles 数组
-    var titlesClosure: ((titleArray: [YMTopic])->())?
+    var titlesClosure: ((titleArray: [YMHomeTopTitle])->())?
     /// 记录当前选中的下标
     private var currentIndex = 0
     /// 记录上一个下标
@@ -68,16 +68,15 @@ class YMScrollTitleView: UIView {
     }
     
     /// 暴露给外界，向外界传递 topic 数组
-    func titleArrayClosure(closure: (titleArray: [YMTopic])->()) {
+    func titleArrayClosure(closure: (titleArray: [YMHomeTopTitle])->()) {
         titlesClosure = closure
     }
     
     /// 设置添加右边按钮
     private lazy var addButton: UIButton = {
         let addButton = UIButton()
-        addButton.setTitle("+", forState: .Normal)
+        addButton.setImage(UIImage(named: "add_channel_titlbar_16x16_"), forState: .Normal)
         addButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        addButton.titleLabel?.font = UIFont.systemFontOfSize(30)
         addButton.addTarget(self, action: #selector(addButtonClick), forControlEvents: .TouchUpInside)
         return addButton
     }()

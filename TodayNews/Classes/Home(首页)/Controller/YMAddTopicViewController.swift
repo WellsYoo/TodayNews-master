@@ -10,9 +10,9 @@ import UIKit
 
 class YMAddTopicViewController: UIViewController {
     /// 我的频道
-    var myTopics = [YMTopic]()
+    var myTopics = [YMHomeTopTitle]()
     /// 推荐频道
-    var recomendTopics = [YMTopic]()
+    var recomendTopics = [YMHomeTopTitle]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

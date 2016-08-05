@@ -44,9 +44,9 @@ class YMHomeViewController: UIViewController {
         
         // 返回标题的数量
         titleView.titleArrayClosure { [weak self] (titleArray) in
-            for topic in titleArray {
+            for topTitle in titleArray {
                 let topicVC = YMHomeTopicController()
-                topicVC.title = topic.name
+                topicVC.topTitle = topTitle
                 self!.addChildViewController(topicVC)
             }
             self!.scrollViewDidEndScrollingAnimation(self!.scrollView)
