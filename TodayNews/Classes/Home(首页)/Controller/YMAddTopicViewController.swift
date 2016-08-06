@@ -23,7 +23,7 @@ class YMAddTopicViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = UIColor.whiteColor()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "X", style: .Plain, target: self, action: #selector(closeBBItemClick))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "add_channels_close_20x20_"), style: .Plain, target: self, action: #selector(closeBBItemClick))
         // 去除 navigationBar 底部的黑线
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)

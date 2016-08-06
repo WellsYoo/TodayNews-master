@@ -16,13 +16,36 @@ class YMNetworkTool: NSObject {
     /// 单例
     static let shareNetworkTool = YMNetworkTool()
     
+    /// 有多少条文章更新
+    func loadArticleRefreshTip(finished:(count: Int)->()) {
+        let url = BASE_URL + "2/article/v39/refresh_tip/"
+        Alamofire
+            .request(.GET, url)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    SVProgressHUD.showErrorWithStatus("加载失败...")
+                    return
+                }
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    let data = json["data"].dictionary
+                    let count = data!["count"]!.int
+                    finished(count: count!)
+                }
+        }
+        
+    }
+    
     /// ------------------------ 首 页 -------------------------
     //
     /// 获取首页顶部标题内容
     func loadHomeTitlesData(finished:(topTitles: [YMHomeTopTitle])->()) {
-        let url = BASE_URL + "article/category/get_subscribed/v1/?iid=\(IID)&aid=13"
+        let url = BASE_URL + "article/category/get_subscribed/v1/?"
+        let params = ["device_id": device_id,
+                      "aid": 13,
+                      "iid": IID]
         Alamofire
-            .request(.GET, url)
+            .request(.GET, url, parameters: params)
             .responseJSON { (response) in
                 guard response.result.isSuccess else {
                     SVProgressHUD.showErrorWithStatus("加载失败...")
@@ -44,42 +67,88 @@ class YMNetworkTool: NSObject {
     }
     
     /// 获取首页不同分类的新闻内容
-    func loadHomeCategoryNewsFeed(category: String, finished:(newsTopics: [YMNewsTopic])->()) {
-        let url = BASE_URL + "api/news/feed/v39/?category=\(category)"
-        Alamofire
-            .request(.GET, url)
-            .responseJSON { (response) in
-                guard response.result.isSuccess else {
-                    SVProgressHUD.showErrorWithStatus("加载失败...")
-                    return
-                }
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    let datas = json["data"].array
-                    var topics = [YMNewsTopic]()
-                    for data in datas! {
-                        let content = data["content"].stringValue
-                        let contentData: NSData = content.dataUsingEncoding(NSUTF8StringEncoding)!
-                        do {
-                            let dict = try NSJSONSerialization.JSONObjectWithData(contentData, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
-                            let topic = YMNewsTopic(dict: dict as! [String : AnyObject])
-                            topics.append(topic)
-                            print(dict)
-                        } catch {
-                            SVProgressHUD.showErrorWithStatus("获取数据失败!")
-                        }
+    func loadHomeCategoryNewsFeed(category: String, tableView: UITableView, finished:(newsTopics: [YMNewsTopic])->()) {
+        let url = BASE_URL + "api/news/feed/v39/?"
+        let params = ["device_id": device_id,
+                      "category": category,
+                      "iid": IID]
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            Alamofire
+                .request(.GET, url, parameters: params as? [String : AnyObject])
+                .responseJSON { (response) in
+                    tableView.mj_header.endRefreshing()
+                    guard response.result.isSuccess else {
+                        SVProgressHUD.showErrorWithStatus("加载失败...")
+                        return
                     }
-                    finished(newsTopics: topics)
-                }
-        }
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        let datas = json["data"].array
+                        var topics = [YMNewsTopic]()
+                        for data in datas! {
+                            let content = data["content"].stringValue
+                            let contentData: NSData = content.dataUsingEncoding(NSUTF8StringEncoding)!
+                            do {
+                                let dict = try NSJSONSerialization.JSONObjectWithData(contentData, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
+                                let topic = YMNewsTopic(dict: dict as! [String : AnyObject])
+                                topics.append(topic)
+                                print(dict)
+                            } catch {
+                                SVProgressHUD.showErrorWithStatus("获取数据失败!")
+                            }
+                        }
+                        finished(newsTopics: topics)
+                    }
+            }
+        })
+        tableView.mj_header.automaticallyChangeAlpha = true //根据拖拽比例自动切换透
+        tableView.mj_header.beginRefreshing()
     }
     
+    /// 获取首页不同分类的新闻内容
+    func loadHomeCategoryMoreNewsFeed(category: String, tableView: UITableView, finished:(moreTopics: [YMNewsTopic])->()) {
+        let url = BASE_URL + "api/news/feed/v39/?"
+        let params = ["device_id": device_id,
+                      "category": category,
+                      "iid": IID]
+        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+            Alamofire
+                .request(.GET, url, parameters: params as? [String : AnyObject])
+                .responseJSON { (response) in
+                    tableView.mj_footer.endRefreshing()
+                    guard response.result.isSuccess else {
+                        SVProgressHUD.showErrorWithStatus("加载失败...")
+                        return
+                    }
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        let datas = json["data"].array
+                        var topics = [YMNewsTopic]()
+                        for data in datas! {
+                            let content = data["content"].stringValue
+                            let contentData: NSData = content.dataUsingEncoding(NSUTF8StringEncoding)!
+                            do {
+                                let dict = try NSJSONSerialization.JSONObjectWithData(contentData, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
+                                let topic = YMNewsTopic(dict: dict as! [String : AnyObject])
+                                topics.append(topic)
+                            } catch {
+                                SVProgressHUD.showErrorWithStatus("获取数据失败!")
+                            }
+                        }
+                        finished(moreTopics: topics)
+                    }
+            }
+        })
+    }
     
     /// 首页 -> 『+』点击，添加标题，获取推荐标题内容
     func loadRecommendTopic(finished:(recommendTopics: [YMHomeTopTitle]) -> ()) {
-        let url = "https://lf.snssdk.com/article/category/get_extra/v1/?iid=\(IID)&aid=13"
+        let url = "https://lf.snssdk.com/article/category/get_extra/v1/?"
+        let params = ["device_id": device_id,
+                      "aid": 13,
+                      "iid": IID]
         Alamofire
-            .request(.GET, url)
+            .request(.GET, url, parameters: params)
             .responseJSON { (response) in
                 guard response.result.isSuccess else {
                     SVProgressHUD.showErrorWithStatus("加载失败...")
@@ -105,9 +174,14 @@ class YMNetworkTool: NSObject {
     func loadVideoTitlesData(finished:(topTitles: [YMVideoTopTitle])->()) {
         // version_code 表示今日头条的版本号，经过测试 >= 5.6 版本新增了『火山直播』
         // os_version 表示 iOS 的系统版本，经测试 >= 8.0 版本新增了『火山直播』
-        let url = BASE_URL + "video_api/get_category/v1/?iid=\(IID)&version_code=5.7.1&device_platform=iphone&os_version=9.3.2"
+        let url = BASE_URL + "video_api/get_category/v1/?"
+        let params = ["device_id": device_id,
+                      "version_code": "5.7.1",
+                      "iid": IID,
+                      "device_platform": "iphone",
+                      "os_version": "9.3.2"]
         Alamofire
-            .request(.GET, url)
+            .request(.GET, url, parameters: params as? [String : AnyObject])
             .responseJSON { (response) in
                 guard response.result.isSuccess else {
                     SVProgressHUD.showErrorWithStatus("加载失败...")

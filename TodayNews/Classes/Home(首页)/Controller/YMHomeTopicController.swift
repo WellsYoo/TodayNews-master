@@ -1,8 +1,8 @@
 //
-//  YMHomeTopicControllerTableViewController.swift
+//  YMHomeTopicController.swift
 //  TodayNews
 //
-//  Created by 杨蒙 on 16/8/4.
+//  Created by 杨蒙 on 16/8/6.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
 
@@ -18,14 +18,18 @@ class YMHomeTopicController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupUI()
+        
+        // 添加上拉刷新和下拉刷新
+        setupRefresh()
+    }
+    
+    private func setupUI() {
         tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0)
         let nib = UINib(nibName: String(YMTopicTableViewCell), bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: topicTableViewCellID)
-        // 获取首页不同分类的新闻内容
-        YMNetworkTool.shareNetworkTool.loadHomeCategoryNewsFeed("news_hot") { [weak self] (newsTopics) in
-            self!.newsTopics = newsTopics
-            self!.tableView.reloadData()
-        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,11 +37,23 @@ class YMHomeTopicController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    
-
 }
 
 extension YMHomeTopicController {
+    
+    /// 添加上拉刷新和下拉刷新
+    private func setupRefresh() {
+        // 获取首页不同分类的新闻内容
+        YMNetworkTool.shareNetworkTool.loadHomeCategoryNewsFeed(topTitle!.category!, tableView: tableView) { [weak self] (newsTopics) in
+            self!.newsTopics = newsTopics
+            self!.tableView.reloadData()
+        }
+        YMNetworkTool.shareNetworkTool.loadHomeCategoryMoreNewsFeed(topTitle!.category!, tableView: tableView) { [weak self] (moreTopics) in
+            self?.newsTopics += moreTopics
+            self!.tableView.reloadData()
+        }
+    }
+    
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsTopics.count ?? 0
@@ -49,4 +65,10 @@ extension YMHomeTopicController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+    }
 }
+
+

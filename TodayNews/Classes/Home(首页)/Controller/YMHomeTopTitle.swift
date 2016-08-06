@@ -12,9 +12,9 @@ class YMHomeTopTitle: NSObject {
     
     var category: String?
 
-    var tip_new: Int = 0
+    var tip_new: Int?
 
-    var default_add: Int = 0
+    var default_add: Int?
 
     var web_url: String?
 
@@ -30,9 +30,9 @@ class YMHomeTopTitle: NSObject {
     
     init(dict: [String: AnyObject]) {
         super.init()
-        category = dict["categorys"] as? String
-        tip_new = dict["tip_new"] as! Int
-        default_add = dict["default_add"] as! Int
+        category = dict["category"] as? String
+        tip_new = dict["tip_new"] as? Int
+        default_add = dict["default_add"] as? Int
         web_url = dict["web_url"] as? String
         concern_id = dict["concern_id"] as? String
         icon_url = dict["icon_url"] as? String
