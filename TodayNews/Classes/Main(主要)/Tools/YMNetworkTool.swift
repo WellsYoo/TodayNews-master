@@ -67,12 +67,13 @@ class YMNetworkTool: NSObject {
     }
     
     /// 获取首页不同分类的新闻内容
-    func loadHomeCategoryNewsFeed(category: String, tableView: UITableView, finished:(newsTopics: [YMNewsTopic])->()) {
+    func loadHomeCategoryNewsFeed(category: String, tableView: UITableView, finished:(nowTime: NSTimeInterval,newsTopics: [YMNewsTopic])->()) {
         let url = BASE_URL + "api/news/feed/v39/?"
         let params = ["device_id": device_id,
                       "category": category,
                       "iid": IID]
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            let nowTime = NSDate().timeIntervalSince1970
             Alamofire
                 .request(.GET, url, parameters: params as? [String : AnyObject])
                 .responseJSON { (response) in
@@ -90,27 +91,31 @@ class YMNetworkTool: NSObject {
                             let contentData: NSData = content.dataUsingEncoding(NSUTF8StringEncoding)!
                             do {
                                 let dict = try NSJSONSerialization.JSONObjectWithData(contentData, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
+                                print(dict)
                                 let topic = YMNewsTopic(dict: dict as! [String : AnyObject])
                                 topics.append(topic)
-                                print(dict)
                             } catch {
                                 SVProgressHUD.showErrorWithStatus("获取数据失败!")
                             }
+                            
                         }
-                        finished(newsTopics: topics)
+                        finished(nowTime: nowTime, newsTopics: topics)
                     }
             }
         })
         tableView.mj_header.automaticallyChangeAlpha = true //根据拖拽比例自动切换透
         tableView.mj_header.beginRefreshing()
+        
     }
     
     /// 获取首页不同分类的新闻内容
-    func loadHomeCategoryMoreNewsFeed(category: String, tableView: UITableView, finished:(moreTopics: [YMNewsTopic])->()) {
+    func loadHomeCategoryMoreNewsFeed(category: String, lastRefreshTime: NSTimeInterval, tableView: UITableView, finished:(moreTopics: [YMNewsTopic])->()) {
         let url = BASE_URL + "api/news/feed/v39/?"
         let params = ["device_id": device_id,
                       "category": category,
-                      "iid": IID]
+                      "iid": IID,
+                      "last_refresh_sub_entrance_interval": lastRefreshTime]
+        print(lastRefreshTime)
         tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
             Alamofire
                 .request(.GET, url, parameters: params as? [String : AnyObject])

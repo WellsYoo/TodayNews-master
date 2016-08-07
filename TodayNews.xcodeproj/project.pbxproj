@@ -79,9 +79,10 @@
 		9475652D1D4CFAD600AC6B72 /* YMNewCareBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9475652B1D4CFAD600AC6B72 /* YMNewCareBottomCell.xib */; };
 		9475652F1D4D7EC500AC6B72 /* YMCareheaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475652E1D4D7EC500AC6B72 /* YMCareheaderView.swift */; };
 		94D584FB1D55883300E4CAFE /* YMHomeTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */; };
+		94D584FD1D5704F500E4CAFE /* UIImage+Extendion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */; };
+		94D584FF1D57051000E4CAFE /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */; };
 		94D92DC21D523D0C00CB345A /* YMConcernDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D92DC11D523D0C00CB345A /* YMConcernDetailViewController.swift */; };
 		94DD98A01D537E8D00331B6B /* YMTopicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DD989E1D537E8D00331B6B /* YMTopicTableViewCell.swift */; };
-		94DD98A11D537E8D00331B6B /* YMTopicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DD989F1D537E8D00331B6B /* YMTopicTableViewCell.xib */; };
 		94DD98A31D5401CB00331B6B /* YMVideoTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DD98A21D5401CB00331B6B /* YMVideoTopicController.swift */; };
 		94DD98AA1D5402A900331B6B /* YMVideoTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DD98A81D5402A900331B6B /* YMVideoTopicCell.swift */; };
 		94DD98AB1D5402A900331B6B /* YMVideoTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DD98A91D5402A900331B6B /* YMVideoTopicCell.xib */; };
@@ -184,9 +185,10 @@
 		9475652B1D4CFAD600AC6B72 /* YMNewCareBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareBottomCell.xib; sourceTree = "<group>"; };
 		9475652E1D4D7EC500AC6B72 /* YMCareheaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMCareheaderView.swift; sourceTree = "<group>"; };
 		94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeTopicController.swift; sourceTree = "<group>"; };
+		94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extendion.swift"; sourceTree = "<group>"; };
+		94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		94D92DC11D523D0C00CB345A /* YMConcernDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMConcernDetailViewController.swift; sourceTree = "<group>"; };
 		94DD989E1D537E8D00331B6B /* YMTopicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMTopicTableViewCell.swift; sourceTree = "<group>"; };
-		94DD989F1D537E8D00331B6B /* YMTopicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMTopicTableViewCell.xib; sourceTree = "<group>"; };
 		94DD98A21D5401CB00331B6B /* YMVideoTopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoTopicController.swift; sourceTree = "<group>"; };
 		94DD98A81D5402A900331B6B /* YMVideoTopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoTopicCell.swift; sourceTree = "<group>"; };
 		94DD98A91D5402A900331B6B /* YMVideoTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMVideoTopicCell.xib; sourceTree = "<group>"; };
@@ -331,7 +333,6 @@
 			children = (
 				251FBB471D530E34006ED186 /* YMScrollTitleView.swift */,
 				94DD989E1D537E8D00331B6B /* YMTopicTableViewCell.swift */,
-				94DD989F1D537E8D00331B6B /* YMTopicTableViewCell.xib */,
 				9472DA011D5579040001038F /* YMTipView.swift */,
 			);
 			path = View;
@@ -352,6 +353,8 @@
 			isa = PBXGroup;
 			children = (
 				947564F81D4C274C00AC6B72 /* UIView+Extension.swift */,
+				94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */,
+				94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -657,7 +660,6 @@
 				9475650D1D4C5AA500AC6B72 /* YMSettingPlist.plist in Resources */,
 				252764441D507C560078C143 /* YMsearchCell.xib in Resources */,
 				940375A31D50119C00C7B135 /* YMNewCareContentCell.xib in Resources */,
-				94DD98A11D537E8D00331B6B /* YMTopicTableViewCell.xib in Resources */,
 				947564771D4B86FE00AC6B72 /* Assets.xcassets in Resources */,
 				947565191D4CBCAA00AC6B72 /* YMAccountCell.xib in Resources */,
 				252764311D4F50FB0078C143 /* YMSettingHeaderView.xib in Resources */,
@@ -763,6 +765,7 @@
 				2527642F1D4F50F10078C143 /* YMSettingHeaderView.swift in Sources */,
 				9475652C1D4CFAD600AC6B72 /* YMNewCareBottomCell.swift in Sources */,
 				947564F91D4C274C00AC6B72 /* UIView+Extension.swift in Sources */,
+				94D584FD1D5704F500E4CAFE /* UIImage+Extendion.swift in Sources */,
 				947564F01D4BADD500AC6B72 /* YMNewCareViewController.swift in Sources */,
 				947564EA1D4BADD500AC6B72 /* YMHomeViewController.swift in Sources */,
 				947564F11D4BADD500AC6B72 /* YMVideoViewController.swift in Sources */,
@@ -804,6 +807,7 @@
 				947564F31D4C269D00AC6B72 /* YMVerticalButton.swift in Sources */,
 				940375A21D50119C00C7B135 /* YMNewCareContentCell.swift in Sources */,
 				940FC7641D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift in Sources */,
+				94D584FF1D57051000E4CAFE /* UIImageView+Extension.swift in Sources */,
 				9475652F1D4D7EC500AC6B72 /* YMCareheaderView.swift in Sources */,
 				947565181D4CBCAA00AC6B72 /* YMAccountCell.swift in Sources */,
 			);

@@ -22,9 +22,9 @@ class YMHomeTopTitle: NSObject {
 
     var icon_url: String?
 
-    var flags: Int = 0
+    var flags: Int?
 
-    var type: Int = 0
+    var type: Int?
 
     var name: String?
     
@@ -36,8 +36,8 @@ class YMHomeTopTitle: NSObject {
         web_url = dict["web_url"] as? String
         concern_id = dict["concern_id"] as? String
         icon_url = dict["icon_url"] as? String
-        flags = dict["flags"] as! Int
-        type = dict["type"] as! Int
+        flags = dict["flags"] as? Int
+        type = dict["type"] as? Int
         name = dict["name"] as? String
     }
     

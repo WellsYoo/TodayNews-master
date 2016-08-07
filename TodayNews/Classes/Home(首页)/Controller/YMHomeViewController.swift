@@ -17,6 +17,8 @@ class YMHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        // 有多少条文章更新
+        showRefreshTipView()
         // 处理标题的回调
         homeTitleViewCallback()
     }

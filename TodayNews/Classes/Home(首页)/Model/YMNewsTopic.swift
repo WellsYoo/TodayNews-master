@@ -5,16 +5,22 @@
 //  Created by 杨蒙 on 16/8/5.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
+//  每条新闻的内容
+//
 
 import UIKit
 
 class YMNewsTopic: NSObject {
+    // 文字的高度
+    var titleH: CGFloat = 0
+    var imageW: CGFloat = 0
+    var imageH: CGFloat = 0
     
     var abstract: String?
     
     var keywords: String?
     
-    var title: String?
+    var title: NSString?
     
     var label: String?
     var label_style: Int?
@@ -38,6 +44,8 @@ class YMNewsTopic: NSObject {
     var publish_time: Int?
     
     var source: String?
+    var source_avatar: String?
+    var stick_label: String?
     
     var gallary_image_count: Int?
     var group_id: Int?
@@ -57,7 +65,7 @@ class YMNewsTopic: NSObject {
     var filter_words: [YMFilterWord]?
     
     var image_list: [YMImageList]?
-    var middle_image: [YMMiddleImageList]?
+    var middle_image: YMMiddleImage?
     var large_image_list: [YMLargeImageList]?
     
     var behot_time: Int?
@@ -68,6 +76,8 @@ class YMNewsTopic: NSObject {
     var article_type: Int?
     
     var cursor: Int?
+    
+    var media_info: YMMediaInfo?
     
     init(dict: [String: AnyObject]) {
         super.init()
@@ -104,20 +114,91 @@ class YMNewsTopic: NSObject {
         
         publish_time = dict["publish_time"] as? Int
         
-        abstract = dict["abstract"] as? String
         keywords = dict["keywords"] as? String
-        title = dict["title"] as? String
+        abstract = dict["abstract"] as? String
+
         source = dict["source"] as? String
+        source_avatar = dict["source_avatar"] as? String
+        stick_label = dict["stick_label"] as? String
         
         label = dict["label"] as? String
         label_style = dict["label_style"] as? Int
         
-        filter_words = dict["filter_words"] as? [YMFilterWord]
+        /// 遍历举报的内容
+        let filterWords = dict["filter_words"] as? [AnyObject]
+        if filterWords?.count != 0 {
+            for item in filterWords! {
+                let filterWord = YMFilterWord(dict: item as! [String: AnyObject])
+                filter_words?.append(filterWord)
+            }
+        }
         
-        image_list = dict["image_list"] as? [YMImageList]
-        middle_image = dict["middle_image"] as? [YMMiddleImageList]
-        large_image_list = dict["large_image_list"] as? [YMLargeImageList]
+        let imageLists = dict["image_list"] as? [AnyObject]
+        middle_image = YMMiddleImage(dict: dict["middle_image"] as! [String: AnyObject])
+        let largeImageLists = dict["large_image_list"] as? [AnyObject]
+        
+        let mediaDict = dict["media_info"]
+        if mediaDict != nil {
+            media_info = YMMediaInfo(dict: mediaDict as! [String: AnyObject])
+        }
+        
+        title = dict["title"] as? NSString
+        
+        var size = CGSizeZero
+        // 2.如果 middle_image 不为空，则在 cell 显示一张图片 70 × 108，文字在左边，图片在右边
+        if middle_image != nil {
+            // 当 middle_image 不为 0 时，image_list 可能为 0 ，可能不为 0
+            // 1.如果 image_list 不为空，则显示 3 张图片 ((SCREENW -30 -12) / 3)×70，文字在上边
+            // 文字的宽度 SCREENW-30
+            if imageLists?.count != 0 {
+                imageW = (SCREENW - CGFloat(42)) / 3
+                // 文字的宽度 SCREENW-30
+                size = CGSizeMake(SCREENW - 30, CGFloat(MAXFLOAT))
+                // 循环遍历 image_list
+                for item in imageLists! {
+                    let imageList = YMImageList(dict: item as! [String: AnyObject])
+                    image_list?.append(imageList)
+                }
+            } else {
+                // 文字在左边，图片在右边
+                imageW = 108
+                // 文字宽度 SCREENW - 108 - 30 - 20
+                size = CGSizeMake(SCREENW - 158, CGFloat(MAXFLOAT))
+            }
+            imageH = 70
+        } else { // 大图、视频图片或广告
+            // 3.如果 large_image_list 不为空，则显示一张大图 (SCREENW -30)×170，文字在上边
+            imageH = 170
+            imageW = SCREENW - CGFloat(30)
+            size = CGSizeMake(SCREENW - 30, CGFloat(MAXFLOAT))
+            if largeImageLists?.count != 0 {
+                for item in largeImageLists! {
+                    let largeImage = YMLargeImageList(dict: item as! [String: AnyObject])
+                    large_image_list?.append(largeImage)
+                }
+            }
+        }
+        titleH = abstract!.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(17)], context: nil).size.height
+        print("titleH=\(titleH)--------------------------")
     }
+    
+}
+
+class YMMediaInfo: NSObject {
+    
+    var avatar_url: String?
+    var name: String?
+    var media_id: Int?
+    var user_verified: Int?
+    
+    init(dict: [String: AnyObject]) {
+        super.init()
+        avatar_url = dict["avatar_url"] as? String
+        name = dict["name"] as? String
+        user_verified = dict["user_verified"] as? Int
+        media_id = dict["media_id"] as? Int
+    }
+    
     
 }
 
@@ -158,7 +239,7 @@ class YMImageList: NSObject {
     }
 }
 
-class YMMiddleImageList: NSObject {
+class YMMiddleImage: NSObject {
     
     var hight: Int?
     var width: Int?

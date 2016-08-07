@@ -31,7 +31,11 @@ class YMVideoTitleView: UIView {
         super.init(frame: frame)
         /// 获取数据
         YMNetworkTool.shareNetworkTool.loadVideoTitlesData({ [weak self] (topTitles) in
-            self!.titles = topTitles
+            // 添加推荐标题
+            let dict = ["category": "", "name": "推荐"]
+            let recommend = YMVideoTopTitle(dict: dict)
+            self!.titles.append(recommend)
+            self!.titles += topTitles
             self!.setupUI()
         })
     }
