@@ -55,18 +55,18 @@ class YMNewsTopic: NSObject {
     var has_mp4_video: Bool?
     var has_video: Bool?
     
-    var video_detail_info: [YMVideoDetailInfo]?
+    var video_detail_info: YMVideoDetailInfo?
     
     var video_style: Int?
     var video_duration: Int?
     var video_id: Int?
     
     // 点击 『x』 按钮，弹出框内容
-    var filter_words: [YMFilterWord]?
+    var filter_words = [YMFilterWord]()
     
-    var image_list: [YMImageList]?
+    var image_list = [YMImageList]()
     var middle_image: YMMiddleImage?
-    var large_image_list: [YMLargeImageList]?
+    var large_image_list = [YMLargeImageList]()
     
     var behot_time: Int?
     
@@ -94,8 +94,11 @@ class YMNewsTopic: NSObject {
         has_mp4_video = dict["has_mp4_video"] as? Bool
         has_m3u8_video = dict["has_m3u8_video"] as? Bool
         has_image = dict["has_image"] as? Bool
+        let videoDetailInfo = dict["video_detail_info"] as? [String: AnyObject]
+        if videoDetailInfo != nil {
+            video_detail_info = YMVideoDetailInfo(dict: videoDetailInfo!)
+        }
         
-        video_detail_info = dict["video_detail_info"] as? [YMVideoDetailInfo]
         video_duration = dict["video_duration"] as? Int
         video_id = dict["video_id"] as? Int
         video_style = dict["video_style"] as? Int
@@ -128,8 +131,9 @@ class YMNewsTopic: NSObject {
         let filterWords = dict["filter_words"] as? [AnyObject]
         if filterWords?.count != 0 {
             for item in filterWords! {
+                
                 let filterWord = YMFilterWord(dict: item as! [String: AnyObject])
-                filter_words?.append(filterWord)
+                filter_words.append(filterWord)
             }
         }
         
@@ -157,7 +161,7 @@ class YMNewsTopic: NSObject {
                 // 循环遍历 image_list
                 for item in imageLists! {
                     let imageList = YMImageList(dict: item as! [String: AnyObject])
-                    image_list?.append(imageList)
+                    image_list.append(imageList)
                 }
             } else {
                 // 文字在左边，图片在右边
@@ -174,7 +178,7 @@ class YMNewsTopic: NSObject {
             if largeImageLists?.count != 0 {
                 for item in largeImageLists! {
                     let largeImage = YMLargeImageList(dict: item as! [String: AnyObject])
-                    large_image_list?.append(largeImage)
+                    large_image_list.append(largeImage)
                 }
             }
         }
@@ -198,8 +202,6 @@ class YMMediaInfo: NSObject {
         user_verified = dict["user_verified"] as? Int
         media_id = dict["media_id"] as? Int
     }
-    
-    
 }
 
 class YMFilterWord: NSObject {
@@ -277,6 +279,7 @@ class YMLargeImageList: NSObject {
         width = dict["width"] as? Int
         uri = dict["uri"] as? String
         url = dict["url"] as? String
+        
         url_list = dict["url_list"] as? [[String: AnyObject]] ?? [[:]]
     }
 }
@@ -291,6 +294,7 @@ class YMVideoDetailInfo: NSObject {
     var video_type: Int?
     var video_watch_count: Int?
     var video_watching_count: Int?
+    var detail_video_large_image: YMDetailVideoLargeImage?
     
     init(dict: [String: AnyObject]) {
         super.init()
@@ -302,6 +306,7 @@ class YMVideoDetailInfo: NSObject {
         direct_play = dict["direct_play"] as? Int
         group_flags = dict["group_flags"] as? Int
         show_pgc_subscribe = dict["show_pgc_subscribe"] as? Int
+        detail_video_large_image = YMDetailVideoLargeImage(dict: dict["detail_video_large_image"] as! [String: AnyObject])
         
     }
 }
@@ -315,7 +320,7 @@ class YMDetailVideoLargeImage: NSObject {
     
     var url: String?
     
-    var url_list: [[String: AnyObject]]?
+    var url_list = [[String: AnyObject]]()
     
     init(dict: [String: AnyObject]) {
         super.init()

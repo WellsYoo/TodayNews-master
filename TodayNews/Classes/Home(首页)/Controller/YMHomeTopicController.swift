@@ -67,9 +67,9 @@ extension YMHomeTopicController {
         let cell = tableView.dequeueReusableCellWithIdentifier(topicTableViewCellID) as! YMTopicTableViewCell
         cell.newsTopic = newsTopics[indexPath.row]
         /// 举报按钮点击回调
-//        cell.closeButtonClick { (filterWords) in
-//            
-//        }
+        cell.closeButtonClick { (filterWords) in
+            
+        }
         return cell
     }
     

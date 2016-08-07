@@ -134,11 +134,11 @@ class YMTopicTableViewCell: UITableViewCell {
     
     /// 举报按钮点击
     func closeBtnClick() {
-//        closeButtonClosure?(filterWords: filterWords!)
+        closeButtonClosure?(filterWords: filterWords!)
     }
     /// 举报按钮点击回调
     func closeButtonClick(closure:(filterWord: [YMFilterWord])->()) {
-//        closeButtonClosure = closure
+        closeButtonClosure = closure
     }
     
     required init?(coder aDecoder: NSCoder) {
