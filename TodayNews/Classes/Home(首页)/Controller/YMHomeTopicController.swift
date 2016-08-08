@@ -75,7 +75,8 @@ extension YMHomeTopicController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 97
+        let newsTopic = newsTopics[indexPath.row]
+        return newsTopic.cellHeight
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

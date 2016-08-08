@@ -13,8 +13,10 @@ import UIKit
 class YMNewsTopic: NSObject {
     // 文字的高度
     var titleH: CGFloat = 0
+    var titleW: CGFloat = 0
     var imageW: CGFloat = 0
     var imageH: CGFloat = 0
+    var cellHeight: CGFloat = 0
     
     var abstract: String?
     
@@ -94,10 +96,6 @@ class YMNewsTopic: NSObject {
         has_mp4_video = dict["has_mp4_video"] as? Bool
         has_m3u8_video = dict["has_m3u8_video"] as? Bool
         has_image = dict["has_image"] as? Bool
-        let videoDetailInfo = dict["video_detail_info"] as? [String: AnyObject]
-        if videoDetailInfo != nil {
-            video_detail_info = YMVideoDetailInfo(dict: videoDetailInfo!)
-        }
         
         video_duration = dict["video_duration"] as? Int
         video_id = dict["video_id"] as? Int
@@ -131,15 +129,10 @@ class YMNewsTopic: NSObject {
         let filterWords = dict["filter_words"] as? [AnyObject]
         if filterWords?.count != 0 {
             for item in filterWords! {
-                
                 let filterWord = YMFilterWord(dict: item as! [String: AnyObject])
                 filter_words.append(filterWord)
             }
         }
-        
-        let imageLists = dict["image_list"] as? [AnyObject]
-        middle_image = YMMiddleImage(dict: dict["middle_image"] as! [String: AnyObject])
-        let largeImageLists = dict["large_image_list"] as? [AnyObject]
         
         let mediaDict = dict["media_info"]
         if mediaDict != nil {
@@ -148,44 +141,68 @@ class YMNewsTopic: NSObject {
         
         title = dict["title"] as? NSString
         
-        var size = CGSizeZero
-        // 2.如果 middle_image 不为空，则在 cell 显示一张图片 70 × 108，文字在左边，图片在右边
-        if middle_image != nil {
-            // 当 middle_image 不为 0 时，image_list 可能为 0 ，可能不为 0
+        let videoDetailInfo = dict["video_detail_info"] as? [String: AnyObject]
+        if videoDetailInfo != nil {
+            video_detail_info = YMVideoDetailInfo(dict: videoDetailInfo!)
+        }
+        
+        let middleImage = dict["middle_image"] as? [String: AnyObject]
+        if middleImage != nil {
+            middle_image = YMMiddleImage(dict: dict["middle_image"] as! [String: AnyObject])
+        }
+        
+        let largeImageLists = dict["large_image_list"] as! [AnyObject]
+        let imageLists = dict["image_list"] as? [AnyObject]
+        
+        // 整个 cell 的高度 有四种情况：
+        // 首先判断 imageLists 是否有值
+        if imageLists?.count != 0 {
             // 1.如果 image_list 不为空，则显示 3 张图片 ((SCREENW -30 -12) / 3)×70，文字在上边
-            // 文字的宽度 SCREENW-30
-            if imageLists?.count != 0 {
-                imageW = (SCREENW - CGFloat(42)) / 3
-                // 文字的宽度 SCREENW-30
-                size = CGSizeMake(SCREENW - 30, CGFloat(MAXFLOAT))
-                // 循环遍历 image_list
-                for item in imageLists! {
-                    let imageList = YMImageList(dict: item as! [String: AnyObject])
-                    image_list.append(imageList)
-                }
-            } else {
-                // 文字在左边，图片在右边
-                imageW = 108
-                // 文字宽度 SCREENW - 108 - 30 - 20
-                size = CGSizeMake(SCREENW - 158, CGFloat(MAXFLOAT))
+            // 循环遍历 image_list
+            for item in imageLists! {
+                let imageList = YMImageList(dict: item as! [String: AnyObject])
+                image_list.append(imageList)
             }
+            imageW = (SCREENW - CGFloat(42)) / 3
             imageH = 70
-        } else { // 大图、视频图片或广告
-            // 3.如果 large_image_list 不为空，则显示一张大图 (SCREENW -30)×170，文字在上边
-            imageH = 170
-            imageW = SCREENW - CGFloat(30)
-            size = CGSizeMake(SCREENW - 30, CGFloat(MAXFLOAT))
-            if largeImageLists?.count != 0 {
-                for item in largeImageLists! {
-                    let largeImage = YMLargeImageList(dict: item as! [String: AnyObject])
-                    large_image_list.append(largeImage)
+            // 文字的宽度 SCREENW-30
+            titleW = SCREENW - 30
+            titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)))
+            cellHeight = 2 * kHomeMargin + titleH + imageH + 2 * kMargin + 16
+        } else {
+            // 再判断 middle_image 是否为空
+            if middle_image?.height != nil {
+                // 大图、视频图片或广告
+                // 2.如果 large_image_list 或 video_detail_info 不为空，则显示一张大图 (SCREENW -30)×170，文字在上边
+                // 再判断 video_detail_info 是否为空
+                if video_detail_info?.video_id != nil || largeImageLists.count != 0 {
+                    imageW = SCREENW - CGFloat(30)
+                    imageH = 170
+                    titleW = SCREENW - 30
+                    titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)))
+                    // 中间有一张大图（包括视频和广告的图片），cell 的高度 = 底部间距 + 标题的高度 + 中间间距 + 图片高度 + 中间间距 + 用户头像的高度 + 底部间距
+                    cellHeight = 2 * kHomeMargin + titleH + imageH + 2 * kMargin + 16
+                } else {
+                    // 如果 middle_image 不为空，则在 cell 显示一张图片 70 × 108，文字在左边，图片在右边
+                    // 说明是右边图
+                    imageW = 108
+                    // 图片在右边的情况和有三张图片的情况，为了计算简单，图片的高度设置为相等
+                    imageH = 70
+                    // 文字宽度 SCREENW - 108 - 30 - 20
+                    titleW = SCREENW - 158
+                    titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)))
+                    // 比较标题和图片的高度哪个大，那么 cell 的高度就根据大的计算
+                    // 右边有一张图片，cell 的高度 = 底部间距 + 标题的高度 + 中间的间距 + 用户头像的高度 + 底部间距
+                    cellHeight = (titleH >= imageH) ? (2 * kHomeMargin + titleH + 2 * kMargin + 16):(2 * kHomeMargin + imageH + 2 * kMargin + 16)
                 }
+            } else { // 没有图片,也不是视频
+                titleW = SCREENW - 30
+                titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)))
+                // 没有图片，cell 的高度 = 底部间距 + 标题的高度 + 中间的间距 + 用户头像的高度 + 底部间距
+                cellHeight = 2 * kHomeMargin + titleH + kMargin + 16
             }
         }
-        titleH = abstract!.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(17)], context: nil).size.height
-        print("titleH=\(titleH)--------------------------")
     }
-    
 }
 
 class YMMediaInfo: NSObject {
@@ -222,7 +239,7 @@ class YMFilterWord: NSObject {
 
 class YMImageList: NSObject {
     
-    var hight: Int?
+    var height: Int?
     var width: Int?
     
     var uri: String?
@@ -233,7 +250,7 @@ class YMImageList: NSObject {
     
     init(dict: [String: AnyObject]) {
         super.init()
-        hight = dict["hight"] as? Int
+        height = dict["hight"] as? Int
         width = dict["width"] as? Int
         uri = dict["uri"] as? String
         url = dict["url"] as? String
@@ -243,7 +260,7 @@ class YMImageList: NSObject {
 
 class YMMiddleImage: NSObject {
     
-    var hight: Int?
+    var height: Int?
     var width: Int?
     
     var uri: String?
@@ -254,7 +271,7 @@ class YMMiddleImage: NSObject {
     
     init(dict: [String: AnyObject]) {
         super.init()
-        hight = dict["hight"] as? Int
+        height = dict["height"] as? Int
         width = dict["width"] as? Int
         uri = dict["uri"] as? String
         url = dict["url"] as? String
@@ -264,7 +281,7 @@ class YMMiddleImage: NSObject {
 
 class YMLargeImageList: NSObject {
     
-    var hight: Int?
+    var height: Int?
     var width: Int?
     
     var uri: String?
@@ -275,7 +292,7 @@ class YMLargeImageList: NSObject {
     
     init(dict: [String: AnyObject]) {
         super.init()
-        hight = dict["hight"] as? Int
+        height = dict["height"] as? Int
         width = dict["width"] as? Int
         uri = dict["uri"] as? String
         url = dict["url"] as? String
@@ -307,13 +324,12 @@ class YMVideoDetailInfo: NSObject {
         group_flags = dict["group_flags"] as? Int
         show_pgc_subscribe = dict["show_pgc_subscribe"] as? Int
         detail_video_large_image = YMDetailVideoLargeImage(dict: dict["detail_video_large_image"] as! [String: AnyObject])
-        
     }
 }
 
 class YMDetailVideoLargeImage: NSObject {
     
-    var hight: Int?
+    var height: Int?
     var width: Int?
     
     var uri: String?
@@ -324,7 +340,7 @@ class YMDetailVideoLargeImage: NSObject {
     
     init(dict: [String: AnyObject]) {
         super.init()
-        hight = dict["hight"] as? Int
+        height = dict["height"] as? Int
         width = dict["width"] as? Int
         uri = dict["uri"] as? String
         url = dict["url"] as? String

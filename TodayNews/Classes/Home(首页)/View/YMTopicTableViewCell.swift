@@ -18,10 +18,10 @@ class YMTopicTableViewCell: UITableViewCell {
     var newsTopic: YMNewsTopic? {
         didSet{
             titleLabel.text = String(newsTopic!.title!)
-            let mediaInfo = newsTopic?.media_info
-            
-            if newsTopic?.source! == "专题" {
-                nameLabel.text = newsTopic?.source
+            let mediaInfo = newsTopic!.media_info
+            // mediaInfo 不为空，source_avatar 不一定存在，source_avatar 不为空，mediaInfo 也不一定存在
+            if newsTopic!.source_avatar != nil {
+                nameLabel.text = newsTopic!.source
                 avatarImageView.setCircleHeader(newsTopic!.source_avatar!)
             }
             
@@ -36,7 +36,47 @@ class YMTopicTableViewCell: UITableViewCell {
             } else {
                 commentLabel.text = "\(newsTopic!.comment_count!)条评论"
             }
+            closeButton.hidden = (newsTopic?.stick_label == "置顶") ? true : false
             filterWords = newsTopic?.filter_words
+            
+//            if newsTopic!.image_list.count != 0 {
+//                rightImageView.snp_updateConstraints(closure: { (make) in
+//                    make.size.equalTo(CGSizeZero)
+//                })
+//                rightImageView.hidden = true
+//            } else {
+//                if newsTopic!.middle_image!.height != nil {
+//                    if newsTopic!.video_detail_info?.video_id != nil || newsTopic?.large_image_list.count != 0 {
+//                        rightImageView.snp_remakeConstraints(closure: { (make) in
+//                            make.left.equalTo(titleLabel.snp_left)
+//                            make.top.equalTo(titleLabel.snp_bottom).offset(8)
+//                            make.right.equalTo(titleLabel.snp_right)
+//                            make.bottom.equalTo(avatarImageView.snp_top).offset(-8)
+//                        })
+//                        let videoDetailInfo = newsTopic?.video_detail_info
+//                        var urlString = String()
+//                        if videoDetailInfo?.video_id != nil {
+//                            urlString = videoDetailInfo!.detail_video_large_image!.url!
+//                        }
+//                        if newsTopic!.large_image_list.count != 0 {
+//                            urlString = newsTopic!.large_image_list.first!.url!
+//                        }
+//                        rightImageView.kf_setImageWithURL(NSURL(string: urlString)!)
+//                    } else {
+//                        let url = newsTopic?.middle_image!.url
+//                        rightImageView.kf_setImageWithURL(NSURL(string: url!)!)
+//                        titleLabel.snp_updateConstraints(closure: { (make) in
+//                            make.right.equalTo(rightImageView.snp_left).offset(-kHomeMargin)
+//                        })
+//                    }
+//                } else {
+//                    rightImageView.snp_updateConstraints(closure: { (make) in
+//                        make.size.equalTo(CGSizeZero)
+//                    })
+//                    rightImageView.hidden = true
+//                }
+//            }
+            
         }
     }
     
@@ -57,14 +97,22 @@ class YMTopicTableViewCell: UITableViewCell {
         
         addSubview(closeButton)
         
+        addSubview(rightImageView)
+        
+        rightImageView.snp_makeConstraints { (make) in
+            make.top.equalTo(titleLabel.snp_top)
+            make.size.equalTo(CGSizeMake(70, 108))
+            make.right.equalTo(self).offset(-kHomeMargin)
+        }
+        
         titleLabel.snp_makeConstraints { (make) in
-            make.left.top.equalTo(self).offset(15)
-            make.right.equalTo(self).offset(-15)
+            make.left.top.equalTo(self).offset(kHomeMargin)
+            make.right.equalTo(self).offset(-kHomeMargin)
         }
         
         avatarImageView.snp_makeConstraints { (make) in
             make.left.equalTo(titleLabel.snp_left)
-            make.bottom.equalTo(self.snp_bottom).offset(-15)
+            make.bottom.equalTo(self.snp_bottom).offset(-kHomeMargin)
             make.size.equalTo(CGSizeMake(16, 16))
         }
         
@@ -94,7 +142,19 @@ class YMTopicTableViewCell: UITableViewCell {
         return titleLabel
     }()
     
-    /// 用户名
+    /// 中间大图
+    private lazy var largeImageView: UIImageView = {
+        let largeImageView = UIImageView()
+        return largeImageView
+    }()
+    
+    /// 右边图片
+    private lazy var rightImageView: UIImageView = {
+        let rightImageView = UIImageView()
+        return rightImageView
+    }()
+    
+    /// 用户名头像
     private lazy var avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
         return avatarImageView

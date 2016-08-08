@@ -65,6 +65,8 @@ let isLogin = "isLogin"
 let RETURN_OK = 200
 /// 间距
 let kMargin: CGFloat = 10.0
+/// 首页新闻间距
+let kHomeMargin: CGFloat = 15.0
 /// 圆角
 let kCornerRadius: CGFloat = 5.0
 /// 线宽
