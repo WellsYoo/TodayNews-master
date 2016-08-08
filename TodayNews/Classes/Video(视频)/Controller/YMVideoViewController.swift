@@ -33,9 +33,9 @@ class YMVideoViewController: UIViewController {
         
         // 返回视频标题的数量
         titleView.videoTitleArrayClosure { [weak self] (titleArray) in
-            for topic in titleArray {
+            for videoTopic in titleArray {
                 let topicVC = YMVideoTopicController()
-                topicVC.title = topic.name
+                topicVC.videoTitle = videoTopic
                 self!.addChildViewController(topicVC)
             }
             self!.scrollViewDidEndScrollingAnimation(self!.scrollView)

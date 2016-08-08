@@ -12,7 +12,7 @@ let topicTableViewCellID = "YMTopicTableViewCell"
 
 class YMHomeTopicController: UITableViewController {
     // 下拉刷新的时间
-    var pullRefreshTime: NSTimeInterval?
+    private var pullRefreshTime: NSTimeInterval?
     // 记录点击的顶部标题
     var topTitle: YMHomeTopTitle?
     // 存放新闻主题的数组
