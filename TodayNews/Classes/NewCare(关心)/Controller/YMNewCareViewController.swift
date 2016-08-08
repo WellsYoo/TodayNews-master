@@ -136,8 +136,6 @@ extension YMNewCareViewController: UITableViewDelegate, UITableViewDataSource, Y
             let concernDetailVC = YMSelectConcernTableController()
             navigationController?.pushViewController(concernDetailVC, animated: true)
         }
-        
-        
     }
     
     // MARK: - YMNewCareBottomCellDelegate

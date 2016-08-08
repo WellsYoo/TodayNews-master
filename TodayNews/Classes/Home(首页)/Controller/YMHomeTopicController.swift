@@ -68,7 +68,8 @@ extension YMHomeTopicController {
         cell.newsTopic = newsTopics[indexPath.row]
         /// 举报按钮点击回调
         cell.closeButtonClick { (filterWords) in
-            
+            let popVC = YMHomePopController()
+            self.navigationController?.pushViewController(popVC, animated: true)
         }
         return cell
     }

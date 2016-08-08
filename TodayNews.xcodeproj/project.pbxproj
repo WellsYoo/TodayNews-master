@@ -78,6 +78,7 @@
 		9475652C1D4CFAD600AC6B72 /* YMNewCareBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475652A1D4CFAD600AC6B72 /* YMNewCareBottomCell.swift */; };
 		9475652D1D4CFAD600AC6B72 /* YMNewCareBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9475652B1D4CFAD600AC6B72 /* YMNewCareBottomCell.xib */; };
 		9475652F1D4D7EC500AC6B72 /* YMCareheaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475652E1D4D7EC500AC6B72 /* YMCareheaderView.swift */; };
+		947650C11D581AFC00F33B68 /* YMHomePopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947650C01D581AFC00F33B68 /* YMHomePopController.swift */; };
 		94D584FB1D55883300E4CAFE /* YMHomeTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */; };
 		94D584FD1D5704F500E4CAFE /* UIImage+Extendion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */; };
 		94D584FF1D57051000E4CAFE /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */; };
@@ -184,6 +185,7 @@
 		9475652A1D4CFAD600AC6B72 /* YMNewCareBottomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareBottomCell.swift; sourceTree = "<group>"; };
 		9475652B1D4CFAD600AC6B72 /* YMNewCareBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareBottomCell.xib; sourceTree = "<group>"; };
 		9475652E1D4D7EC500AC6B72 /* YMCareheaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMCareheaderView.swift; sourceTree = "<group>"; };
+		947650C01D581AFC00F33B68 /* YMHomePopController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomePopController.swift; sourceTree = "<group>"; };
 		94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeTopicController.swift; sourceTree = "<group>"; };
 		94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extendion.swift"; sourceTree = "<group>"; };
 		94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				947564CF1D4BADD500AC6B72 /* YMHomeViewController.swift */,
 				256D00EB1D51AE67007D40CF /* YMAddTopicViewController.swift */,
 				94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */,
+				947650C01D581AFC00F33B68 /* YMHomePopController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -787,6 +790,7 @@
 				947565091D4C568100AC6B72 /* YMCollectionViewController.swift in Sources */,
 				9475651B1D4CC2A900AC6B72 /* YMAutoPlayVideoController.swift in Sources */,
 				94DD98AA1D5402A900331B6B /* YMVideoTopicCell.swift in Sources */,
+				947650C11D581AFC00F33B68 /* YMHomePopController.swift in Sources */,
 				947564EC1D4BADD500AC6B72 /* YMNavigationController.swift in Sources */,
 				947564EF1D4BADD500AC6B72 /* YMMineViewController.swift in Sources */,
 				94D92DC21D523D0C00CB345A /* YMConcernDetailViewController.swift in Sources */,
