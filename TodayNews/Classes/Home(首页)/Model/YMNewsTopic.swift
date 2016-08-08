@@ -151,7 +151,7 @@ class YMNewsTopic: NSObject {
             middle_image = YMMiddleImage(dict: dict["middle_image"] as! [String: AnyObject])
         }
         
-        let largeImageLists = dict["large_image_list"] as! [AnyObject]
+        let largeImageLists = dict["large_image_list"] as? [AnyObject]
         let imageLists = dict["image_list"] as? [AnyObject]
         
         // 整个 cell 的高度 有四种情况：
@@ -175,7 +175,7 @@ class YMNewsTopic: NSObject {
                 // 大图、视频图片或广告
                 // 2.如果 large_image_list 或 video_detail_info 不为空，则显示一张大图 (SCREENW -30)×170，文字在上边
                 // 再判断 video_detail_info 是否为空
-                if video_detail_info?.video_id != nil || largeImageLists.count != 0 {
+                if video_detail_info?.video_id != nil || largeImageLists!.count != 0 {
                     imageW = SCREENW - CGFloat(30)
                     imageH = 170
                     titleW = SCREENW - 30
