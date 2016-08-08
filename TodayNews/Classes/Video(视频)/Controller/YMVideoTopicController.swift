@@ -17,7 +17,7 @@ class YMVideoTopicController: UITableViewController {
     // 记录点击的顶部标题
     var videoTitle: YMVideoTopTitle?
     // 存放新闻主题的数组
-    var videoTopics = [YMVideoTopic]()
+    private var newsTopics = [YMNewsTopic]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,26 +48,26 @@ extension YMVideoTopicController {
     private func setupRefresh() {
         pullRefreshTime = NSDate().timeIntervalSince1970
         // 获取首页不同分类的新闻内容
-        YMNetworkTool.shareNetworkTool.loadVideoCategoryNewsFeed(videoTitle!.category!, tableView: tableView) { [weak self] (nowTime, newTopics) in
+        YMNetworkTool.shareNetworkTool.loadHomeCategoryNewsFeed(videoTitle!.category!, tableView: tableView) { [weak self] (nowTime, newsTopics) in
             self!.pullRefreshTime = nowTime
-            self!.videoTopics = newTopics
+            self!.newsTopics = newsTopics
             self!.tableView.reloadData()
         }
         // 获取更多新闻内容
-        YMNetworkTool.shareNetworkTool.loadVideoCategoryMoreNewsFeed(videoTitle!.category!, lastRefreshTime: pullRefreshTime!, tableView: tableView) { [weak self] (moreTopics) in
-            self?.videoTopics += moreTopics
+        YMNetworkTool.shareNetworkTool.loadHomeCategoryMoreNewsFeed(videoTitle!.category!, lastRefreshTime: pullRefreshTime!, tableView: tableView) { [weak self] (moreTopics) in
+            self?.newsTopics += moreTopics
             self!.tableView.reloadData()
         }
     }
     
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return newsTopics.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(videoTopicCellID) as! YMVideoTopicCell
-        
+        cell.videoTopic = newsTopics[indexPath.row]
         return cell
     }
     

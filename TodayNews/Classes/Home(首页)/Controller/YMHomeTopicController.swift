@@ -16,7 +16,7 @@ class YMHomeTopicController: UITableViewController {
     // 记录点击的顶部标题
     var topTitle: YMHomeTopTitle?
     // 存放新闻主题的数组
-    var newsTopics = [YMNewsTopic]()
+    private var newsTopics = [YMNewsTopic]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

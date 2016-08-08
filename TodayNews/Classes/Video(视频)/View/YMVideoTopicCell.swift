@@ -10,6 +10,33 @@ import UIKit
 
 class YMVideoTopicCell: UITableViewCell {
     
+    var videoTopic: YMNewsTopic? {
+        didSet {
+            titleLabel.text = String(videoTopic!.title!)
+            let mediaInfo = videoTopic!.media_info
+            nameLabel.text = mediaInfo?.name
+            avatarImageView.setCircleHeader(mediaInfo!.avatar_url!)
+            if videoTopic!.comment_count! == 0 {
+                commentButton.setTitle("评论", forState: .Normal)
+            } else if videoTopic!.comment_count! >= 10000 {
+                let comment_count = videoTopic!.comment_count! / 10000
+                commentButton.setTitle("\(comment_count)万", forState: .Normal)
+            } else {
+                commentButton.setTitle("\(videoTopic!.comment_count!)", forState: .Normal)
+            }
+            if let videoDetailInfo = videoTopic?.video_detail_info {
+                if videoDetailInfo.video_watch_count >= 10000 {
+                    let watch_count = videoDetailInfo.video_watch_count! / 10000
+                    countLabel.text = "\(watch_count)万次播放"
+                } else {
+                    countLabel.text = "\(videoDetailInfo.video_watch_count!)次播放"
+                }
+                let videoImage = videoDetailInfo.detail_video_large_image
+                bgImageView.kf_setImageWithURL(NSURL(string: videoImage!.url!)!)
+            }
+        }
+    }
+    
     /// 标题 label
     @IBOutlet weak var titleLabel: UILabel!
     /// 背景图片

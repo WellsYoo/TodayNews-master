@@ -127,7 +127,7 @@ class YMNewsTopic: NSObject {
         
         /// 遍历举报的内容
         let filterWords = dict["filter_words"] as? [AnyObject]
-        if filterWords?.count != 0 {
+        if filterWords != nil {
             for item in filterWords! {
                 let filterWord = YMFilterWord(dict: item as! [String: AnyObject])
                 filter_words.append(filterWord)

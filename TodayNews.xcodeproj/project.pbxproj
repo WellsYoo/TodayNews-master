@@ -83,7 +83,6 @@
 		9479ED041D58B9AC00EF7337 /* YMHomeSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479ED031D58B9AC00EF7337 /* YMHomeSmallCell.swift */; };
 		9479ED061D58B9C900EF7337 /* YMHomeLargeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479ED051D58B9C900EF7337 /* YMHomeLargeCell.swift */; };
 		9479ED081D58B9DB00EF7337 /* YMHomeMiddleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479ED071D58B9DB00EF7337 /* YMHomeMiddleCell.swift */; };
-		9479ED0A1D58D32100EF7337 /* YMVideoTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479ED091D58D32100EF7337 /* YMVideoTopic.swift */; };
 		94D584FB1D55883300E4CAFE /* YMHomeTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */; };
 		94D584FD1D5704F500E4CAFE /* UIImage+Extendion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */; };
 		94D584FF1D57051000E4CAFE /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */; };
@@ -195,7 +194,6 @@
 		9479ED031D58B9AC00EF7337 /* YMHomeSmallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeSmallCell.swift; sourceTree = "<group>"; };
 		9479ED051D58B9C900EF7337 /* YMHomeLargeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeLargeCell.swift; sourceTree = "<group>"; };
 		9479ED071D58B9DB00EF7337 /* YMHomeMiddleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeMiddleCell.swift; sourceTree = "<group>"; };
-		9479ED091D58D32100EF7337 /* YMVideoTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoTopic.swift; sourceTree = "<group>"; };
 		94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeTopicController.swift; sourceTree = "<group>"; };
 		94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extendion.swift"; sourceTree = "<group>"; };
 		94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -539,7 +537,6 @@
 			isa = PBXGroup;
 			children = (
 				940375AA1D50EC4B00C7B135 /* YMVideoTopTitle.swift */,
-				9479ED091D58D32100EF7337 /* YMVideoTopic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -778,7 +775,6 @@
 				947565121D4CAD8400AC6B72 /* YMSettingCell.swift in Sources */,
 				9472DA001D5499A60001038F /* YMNewsTopic.swift in Sources */,
 				940FC76D1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift in Sources */,
-				9479ED0A1D58D32100EF7337 /* YMVideoTopic.swift in Sources */,
 				9475651E1D4CC3B700AC6B72 /* YMHelpViewController.swift in Sources */,
 				940375AB1D50EC4B00C7B135 /* YMVideoTopTitle.swift in Sources */,
 				2527642F1D4F50F10078C143 /* YMSettingHeaderView.swift in Sources */,
