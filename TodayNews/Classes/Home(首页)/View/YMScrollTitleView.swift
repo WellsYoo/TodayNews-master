@@ -10,7 +10,7 @@
 
 import UIKit
 import Kingfisher
-
+/// ![](http://obna9emby.bkt.clouddn.com/news/home-title.png)
 class YMScrollTitleView: UIView {
     
     /// 存放标题模型的数组

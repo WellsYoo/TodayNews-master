@@ -2,6 +2,8 @@
 
 这个类是第三个主控制器，显示关注界面。
 
+![](http://obna9emby.bkt.clouddn.com/news/%E5%85%B3%E6%B3%A8-1.jpg)
+
 这个界面创建了一个 tableView，并且注册了三种不同的 cell，分别是 `YMNewCareNoLoginCell.swift`，`YMNewCareTopCell.swift`，以及 `YMNewCareBottomCell.swift`，可分别打开各自的文件，进行查看。
 
 首先设置 UI，然后 `setupRefresh()` 是添加上拉和下拉刷新，然后将 tableView 分成了上下两组，上边一组表示自己添加的关注内容，下边一组表示未添加的关注内容，下面一组可以上拉加载更多内容。

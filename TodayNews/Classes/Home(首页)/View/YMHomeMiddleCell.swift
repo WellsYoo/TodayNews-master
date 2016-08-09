@@ -9,7 +9,7 @@
 //
 
 import UIKit
-
+/// ![右边显示一张图片的情况](http://obna9emby.bkt.clouddn.com/home-cell-4.png)
 class YMHomeMiddleCell: YMHomeTopicCell {
     
     var newsTopic: YMNewsTopic? {

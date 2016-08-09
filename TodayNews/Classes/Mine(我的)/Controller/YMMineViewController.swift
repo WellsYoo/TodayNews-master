@@ -4,13 +4,13 @@
 //
 //  Created by 杨蒙 on 16/7/29.
 //  Copyright © 2016年 hrscy. All rights reserved.
-//
+
+///
 
 import UIKit
 
 let mineCellID = "YMMineCell"
-
-
+/// ![](http://obna9emby.bkt.clouddn.com/news/%E6%88%91%E7%9A%84-%E6%9C%AA%E7%99%BB%E5%BD%95_spec.png)
 class YMMineViewController: UITableViewController {
     
     var cells = [AnyObject]()

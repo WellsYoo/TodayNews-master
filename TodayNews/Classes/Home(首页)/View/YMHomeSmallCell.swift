@@ -9,7 +9,7 @@
 //
 
 import UIKit
-
+/// ![](http://obna9emby.bkt.clouddn.com/home-cell-3.png)
 class YMHomeSmallCell: YMHomeTopicCell {
     
     var newsTopic: YMNewsTopic? {

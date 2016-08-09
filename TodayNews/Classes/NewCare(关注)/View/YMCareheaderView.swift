@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-
+/// ![](http://obna9emby.bkt.clouddn.com/news/care-header.png)
 class YMCareheaderView: UIView {
     
     var title: String? {

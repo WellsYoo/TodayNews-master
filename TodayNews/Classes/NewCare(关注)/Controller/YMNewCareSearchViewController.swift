@@ -10,7 +10,7 @@
 
 import UIKit
 import SVProgressHUD
-
+/// ![](http://obna9emby.bkt.clouddn.com/news/care-search.jpg)
 class YMNewCareSearchViewController: YMBaseViewController {
 
     @IBOutlet var webView: UIWebView!

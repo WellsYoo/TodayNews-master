@@ -9,7 +9,7 @@
 //
 
 import UIKit
-
+/// ![](http://obna9emby.bkt.clouddn.com/news/account_spec.png)
 class YMAccountManageController: UITableViewController {
 
     override func viewDidLoad() {

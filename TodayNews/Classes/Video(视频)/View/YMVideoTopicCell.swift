@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+/// ![](http://obna9emby.bkt.clouddn.com/news/video-cell.png)
 class YMVideoTopicCell: UITableViewCell {
     
     var videoTopic: YMNewsTopic? {

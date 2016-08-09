@@ -1,5 +1,7 @@
 # YMScrollTitleView.swift
 
+![](http://obna9emby.bkt.clouddn.com/news/home-title.png)
+
 这个类和和视频顶部标题的类有些类似，对于数据和按钮点击的回调使用闭包的方式。而在视频的标题 `YMVideoTitleView.swift` 里使用代理来代替闭包，实现的功能是相同的，但是实现的方式不同，可以对比看一下。
 
 对控件的布局方式还是使用的 `SnapKit` 来进行布局。

@@ -19,7 +19,7 @@ protocol YMBlurImageViewDelegate: NSObjectProtocol {
     func blurImageView(blurImage: YMBlurImageView, shareButton: UIButton)
     func blurImageView(blurImage: YMBlurImageView, careButton: UIButton)
 }
-
+/// ![](http://obna9emby.bkt.clouddn.com/care-title.png)
 class YMBlurImageView: UIImageView {
     
     weak var delegate: YMBlurImageViewDelegate?

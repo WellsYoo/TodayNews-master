@@ -1,6 +1,8 @@
 # YMHomeViewController.swift
 
 
+![首页-1](http://obna9emby.bkt.clouddn.com/news/%E9%A6%96%E9%A1%B5-1_spec.png)
+
 ## 1.首先，首页的状态栏的颜色是白色，所以调用了下面的方法：
 
 ```

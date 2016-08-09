@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+/// ![](http://obna9emby.bkt.clouddn.com/home-cell-1.png)
 class YMHomeNoImageCell: YMHomeTopicCell {
     
     var newsTopic: YMNewsTopic? {

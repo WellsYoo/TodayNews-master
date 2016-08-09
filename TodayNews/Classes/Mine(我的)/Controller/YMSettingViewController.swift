@@ -9,7 +9,7 @@
 import UIKit
 
 let settingCellID = "settingCellID"
-
+/// ![](http://obna9emby.bkt.clouddn.com/news/%E8%AE%BE%E7%BD%AE.png)
 class YMSettingViewController: YMBaseViewController {
 
     var tableView: UITableView?

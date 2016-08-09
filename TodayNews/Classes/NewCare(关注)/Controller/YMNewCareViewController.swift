@@ -14,7 +14,7 @@ import UIKit
 let newCareNoLoginCellID = "YMNewCareNoLoginCell"
 let newCareTopCellID = "YMNewCareTopCell"
 let newCareBottomCellID = "YMNewCareBottomCell"
-
+/// ![](http://obna9emby.bkt.clouddn.com/news/%E5%85%B3%E6%B3%A8-1.jpg)
 class YMNewCareViewController: YMBaseViewController {
 
     var tableView: UITableView?

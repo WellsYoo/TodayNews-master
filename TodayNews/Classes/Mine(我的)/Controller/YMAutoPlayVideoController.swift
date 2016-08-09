@@ -5,6 +5,8 @@
 //  Created by 杨蒙 on 16/7/30.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
+//  自动播放视频
+//
 
 import UIKit
 

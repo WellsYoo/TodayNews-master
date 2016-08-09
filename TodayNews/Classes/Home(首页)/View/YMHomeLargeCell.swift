@@ -8,7 +8,8 @@
 //  中间显示一张大图的情况
 //
 import UIKit
-
+/// ![](http://obna9emby.bkt.clouddn.com/home-cell-2.png)
+/// ![](http://obna9emby.bkt.clouddn.com/home-cell-5.png)
 class YMHomeLargeCell: YMHomeTopicCell {
     
     var newsTopic: YMNewsTopic? {
@@ -35,17 +36,17 @@ class YMHomeLargeCell: YMHomeTopicCell {
             filterWords = newsTopic?.filter_words
             let videoDetailInfo = newsTopic?.video_detail_info
             var urlString = String()
-            if newsTopic!.large_image_list.count != 0 {
-                urlString = newsTopic!.large_image_list.first!.url!
-                rightBottomLabel.text = "\(newsTopic!.gallary_image_count)图"
-            }
             if videoDetailInfo?.video_id != nil {
                 urlString = videoDetailInfo!.detail_video_large_image!.url!
                 /// 格式化时间
                 let minute = Int(newsTopic!.video_duration! / 60)
                 let second = newsTopic!.video_duration! % 60
                 rightBottomLabel.text = String(format: "%02d:%02d", minute, second)
+            } else {
+                urlString = newsTopic!.large_image_list.first!.url!
+                rightBottomLabel.text = "\(newsTopic!.gallary_image_count)图"
             }
+
             
             largeImageView.kf_setImageWithURL(NSURL(string: urlString)!)
             if let label = newsTopic?.label {
