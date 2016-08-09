@@ -126,29 +126,25 @@ class YMNewsTopic: NSObject {
         label_style = dict["label_style"] as? Int
         
         /// 遍历举报的内容
-        let filterWords = dict["filter_words"] as? [AnyObject]
-        if filterWords != nil {
-            for item in filterWords! {
+        if let filterWords = dict["filter_words"] as? [AnyObject] {
+            for item in filterWords {
                 let filterWord = YMFilterWord(dict: item as! [String: AnyObject])
                 filter_words.append(filterWord)
             }
         }
         
-        let mediaDict = dict["media_info"]
-        if mediaDict != nil {
+        title = dict["title"] as? NSString
+        
+        if let mediaDict = dict["media_info"] {
             media_info = YMMediaInfo(dict: mediaDict as! [String: AnyObject])
         }
         
-        title = dict["title"] as? NSString
-        
-        let videoDetailInfo = dict["video_detail_info"] as? [String: AnyObject]
-        if videoDetailInfo != nil {
-            video_detail_info = YMVideoDetailInfo(dict: videoDetailInfo!)
+        if let videoDetailInfo = dict["video_detail_info"] {
+            video_detail_info = YMVideoDetailInfo(dict: videoDetailInfo as! [String : AnyObject])
         }
         
-        let middleImage = dict["middle_image"] as? [String: AnyObject]
-        if middleImage != nil {
-            middle_image = YMMiddleImage(dict: dict["middle_image"] as! [String: AnyObject])
+        if let middleImage = dict["middle_image"] {
+            middle_image = YMMiddleImage(dict: middleImage as! [String: AnyObject])
         }
         
         let largeImageLists = dict["large_image_list"] as? [AnyObject]
@@ -175,13 +171,19 @@ class YMNewsTopic: NSObject {
                 // 大图、视频图片或广告
                 // 2.如果 large_image_list 或 video_detail_info 不为空，则显示一张大图 (SCREENW -30)×170，文字在上边
                 // 再判断 video_detail_info 是否为空
-                if video_detail_info?.video_id != nil || largeImageLists!.count != 0 {
+                if video_detail_info?.video_id != nil || largeImageLists?.count > 0 {
                     imageW = SCREENW - CGFloat(30)
                     imageH = 170
                     titleW = SCREENW - 30
                     titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)))
                     // 中间有一张大图（包括视频和广告的图片），cell 的高度 = 底部间距 + 标题的高度 + 中间间距 + 图片高度 + 中间间距 + 用户头像的高度 + 底部间距
                     cellHeight = 2 * kHomeMargin + titleH + imageH + 2 * kMargin + 16
+                    if largeImageLists?.count > 0 {
+                        for index in largeImageLists! {
+                            let largeImage = YMLargeImageList(dict: index as! [String : AnyObject])
+                            large_image_list.append(largeImage)
+                        }
+                    }
                 } else {
                     // 如果 middle_image 不为空，则在 cell 显示一张图片 70 × 108，文字在左边，图片在右边
                     // 说明是右边图
@@ -193,7 +195,7 @@ class YMNewsTopic: NSObject {
                     titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)))
                     // 比较标题和图片的高度哪个大，那么 cell 的高度就根据大的计算
                     // 右边有一张图片，cell 的高度 = 底部间距 + 标题的高度 + 中间的间距 + 用户头像的高度 + 底部间距
-                    cellHeight = (titleH >= imageH) ? (2 * kHomeMargin + titleH + 2 * kMargin + 16):(2 * kHomeMargin + imageH + 2 * kMargin + 16)
+                    cellHeight = (titleH + 16 + kMargin >= imageH) ? (2 * kHomeMargin + titleH + kMargin + 16):(2 * kHomeMargin + imageH)
                 }
             } else { // 没有图片,也不是视频
                 titleW = SCREENW - 30
@@ -242,8 +244,6 @@ class YMImageList: NSObject {
     var height: Int?
     var width: Int?
     
-    var uri: String?
-    
     var url: String?
     
     var url_list: [[String: AnyObject]]?
@@ -252,7 +252,6 @@ class YMImageList: NSObject {
         super.init()
         height = dict["hight"] as? Int
         width = dict["width"] as? Int
-        uri = dict["uri"] as? String
         url = dict["url"] as? String
         url_list = dict["url_list"] as? [[String: AnyObject]] ?? [[:]]
     }
@@ -263,8 +262,6 @@ class YMMiddleImage: NSObject {
     var height: Int?
     var width: Int?
     
-    var uri: String?
-    
     var url: String?
     
     var url_list: [[String: AnyObject]]?
@@ -273,8 +270,14 @@ class YMMiddleImage: NSObject {
         super.init()
         height = dict["height"] as? Int
         width = dict["width"] as? Int
-        uri = dict["uri"] as? String
-        url = dict["url"] as? String
+        if let urlString = dict["url"] as? String {
+            if urlString.hasSuffix(".webp") {
+                let range = urlString.rangeOfString(".webp")
+                url = urlString.substringToIndex(range!.startIndex)
+            } else {
+                url = urlString
+            }
+        }
         url_list = dict["url_list"] as? [[String: AnyObject]] ?? [[:]]
     }
 }
@@ -284,8 +287,6 @@ class YMLargeImageList: NSObject {
     var height: Int?
     var width: Int?
     
-    var uri: String?
-    
     var url: String?
     
     var url_list: [[String: AnyObject]]?
@@ -294,9 +295,7 @@ class YMLargeImageList: NSObject {
         super.init()
         height = dict["height"] as? Int
         width = dict["width"] as? Int
-        uri = dict["uri"] as? String
         url = dict["url"] as? String
-        
         url_list = dict["url_list"] as? [[String: AnyObject]] ?? [[:]]
     }
 }
@@ -332,8 +331,6 @@ class YMDetailVideoLargeImage: NSObject {
     var height: Int?
     var width: Int?
     
-    var uri: String?
-    
     var url: String?
     
     var url_list = [[String: AnyObject]]()
@@ -342,7 +339,6 @@ class YMDetailVideoLargeImage: NSObject {
         super.init()
         height = dict["height"] as? Int
         width = dict["width"] as? Int
-        uri = dict["uri"] as? String
         url = dict["url"] as? String
         url_list = dict["url_list"] as? [[String: AnyObject]] ?? [[:]]
     }

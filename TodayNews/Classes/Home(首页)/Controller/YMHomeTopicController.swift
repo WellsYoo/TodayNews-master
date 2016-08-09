@@ -8,7 +8,10 @@
 
 import UIKit
 
-let topicTableViewCellID = "YMTopicTableViewCell"
+let topicSmallCellID = "YMHomeSmallCell"
+let topicMiddleCellID = "YMHomeMiddleCell"
+let topicLargeCellID = "YMHomeLargeCell"
+let topicNoImageCellID = "YMHomeNoImageCell"
 
 class YMHomeTopicController: UITableViewController {
     // 下拉刷新的时间
@@ -29,8 +32,12 @@ class YMHomeTopicController: UITableViewController {
     
     private func setupUI() {
         tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0)
-        tableView.registerClass(YMTopicTableViewCell.self, forCellReuseIdentifier: topicTableViewCellID)
+        tableView.registerClass(YMHomeSmallCell.self, forCellReuseIdentifier: topicSmallCellID)
+        tableView.registerClass(YMHomeMiddleCell.self, forCellReuseIdentifier: topicMiddleCellID)
+        tableView.registerClass(YMHomeLargeCell.self, forCellReuseIdentifier: topicLargeCellID)
+        tableView.registerClass(YMHomeNoImageCell.self, forCellReuseIdentifier: topicNoImageCellID)
         tableView.estimatedRowHeight = 97
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,14 +71,42 @@ extension YMHomeTopicController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(topicTableViewCellID) as! YMTopicTableViewCell
-        cell.newsTopic = newsTopics[indexPath.row]
-        /// 举报按钮点击回调
-        cell.closeButtonClick { (filterWords) in
-            let popVC = YMHomePopController()
-            self.navigationController?.pushViewController(popVC, animated: true)
+        let newsTopic = newsTopics[indexPath.row]
+        
+        if newsTopic.image_list.count != 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier(topicSmallCellID) as! YMHomeSmallCell
+            cell.newsTopic = newsTopic
+            cell.closeButtonClick({ (filterWord) in
+                
+            })
+            return cell
+        } else {
+            if newsTopic.middle_image?.height != nil {
+                if newsTopic.video_detail_info?.video_id != nil || newsTopic.large_image_list.count != 0 {
+                    let cell = tableView.dequeueReusableCellWithIdentifier(topicLargeCellID) as! YMHomeLargeCell
+                    cell.newsTopic = newsTopic
+                    cell.closeButtonClick({ (filterWord) in
+                        
+                    })
+                    return cell
+                } else {
+                    let cell = tableView.dequeueReusableCellWithIdentifier(topicMiddleCellID) as! YMHomeMiddleCell
+                    cell.newsTopic = newsTopic
+                    cell.closeButtonClick({ (filterWord) in
+                        
+                    })
+                    return cell
+                }
+            } else {
+                let cell = tableView.dequeueReusableCellWithIdentifier(topicNoImageCellID) as! YMHomeNoImageCell
+                cell.newsTopic = newsTopic
+                cell.closeButtonClick({ (filterWord) in
+                    
+                })
+                return cell
+            }
         }
-        return cell
+        
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

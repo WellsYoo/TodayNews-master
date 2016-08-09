@@ -1,16 +1,14 @@
 //
-//  YMHomeMiddleCell.swift
+//  YMHomeNoImageCell.swift
 //  TodayNews
 //
-//  Created by 杨蒙 on 16/8/8.
+//  Created by 杨蒙 on 16/8/9.
 //  Copyright © 2016年 hrscy. All rights reserved.
-//
-//  右边显示一张图片的情况
 //
 
 import UIKit
 
-class YMHomeMiddleCell: YMHomeTopicCell {
+class YMHomeNoImageCell: YMHomeTopicCell {
     
     var newsTopic: YMNewsTopic? {
         didSet{
@@ -20,13 +18,11 @@ class YMHomeMiddleCell: YMHomeTopicCell {
             if newsTopic!.source_avatar != nil {
                 nameLabel.text = newsTopic!.source
                 avatarImageView.setCircleHeader(newsTopic!.source_avatar!)
-                rightImageView.kf_setImageWithURL(NSURL(string: newsTopic!.source_avatar!)!)
             }
             
             if mediaInfo?.name != nil {
                 nameLabel.text = mediaInfo?.name
                 avatarImageView.setCircleHeader(mediaInfo!.avatar_url!)
-                rightImageView.kf_setImageWithURL(NSURL(string: mediaInfo!.avatar_url!)!)
             }
             
             if newsTopic!.comment_count! >= 10000 {
@@ -35,18 +31,7 @@ class YMHomeMiddleCell: YMHomeTopicCell {
             } else {
                 commentLabel.text = "\(newsTopic!.comment_count!)条评论"
             }
-            
-            if (newsTopic!.titleH + avatarImageView.height + kMargin) < newsTopic?.imageH {
-                closeButton.snp_remakeConstraints(closure: { (make) in
-                    make.right.equalTo(rightImageView.snp_left).offset(-kHomeMargin)
-                    make.centerY.equalTo(avatarImageView)
-                    make.size.equalTo(CGSizeMake(17, 12))
-                })
-            }
             filterWords = newsTopic?.filter_words
-            let url = newsTopic!.middle_image?.url
-            rightImageView.kf_setImageWithURL(NSURL(string: url!)!)
-            
             if let label = newsTopic?.label {
                 stickLabel.setTitle(" \(label) ", forState: .Normal)
                 stickLabel.hidden = false
@@ -57,26 +42,7 @@ class YMHomeMiddleCell: YMHomeTopicCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        addSubview(rightImageView)
-        
-        rightImageView.snp_makeConstraints { (make) in
-            make.top.equalTo(self).offset(kHomeMargin)
-            make.size.equalTo(CGSizeMake(108, 70))
-            make.right.equalTo(self).offset(-kHomeMargin)
-        }
-        
-        titleLabel.snp_remakeConstraints { (make) in
-            make.right.equalTo(rightImageView.snp_left).offset(-kHomeMargin)
-            make.left.top.equalTo(self).offset(kHomeMargin)
-        }
     }
-    
-    /// 右边图片
-    private lazy var rightImageView: UIImageView = {
-        let rightImageView = UIImageView()
-        rightImageView.backgroundColor = UIColor.lightGrayColor()
-        return rightImageView
-    }()
     
     /// 举报按钮点击
     override func closeBtnClick() {

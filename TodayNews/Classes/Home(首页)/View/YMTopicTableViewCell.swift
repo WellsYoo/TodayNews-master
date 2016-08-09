@@ -40,11 +40,12 @@ class YMTopicTableViewCell: UITableViewCell {
             filterWords = newsTopic?.filter_words
             
             if newsTopic!.image_list.count != 0 {
-                rightImageView.snp_updateConstraints(closure: { (make) in
+
+                rightImageView.snp_remakeConstraints(closure: { (make) in
                     make.size.equalTo(CGSizeZero)
                 })
                 rightImageView.hidden = true
-                largeImageView.snp_updateConstraints(closure: { (make) in
+                largeImageView.snp_remakeConstraints(closure: { (make) in
                     make.size.equalTo(CGSizeZero)
                 })
                 largeImageView.hidden = true
@@ -82,6 +83,7 @@ class YMTopicTableViewCell: UITableViewCell {
                     largeImageView.hidden = true
                 }
             }
+
         }
     }
     

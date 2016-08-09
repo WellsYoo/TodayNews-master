@@ -31,9 +31,15 @@ class YMVideoTopicCell: UITableViewCell {
                 } else {
                     countLabel.text = "\(videoDetailInfo.video_watch_count!)次播放"
                 }
-                let videoImage = videoDetailInfo.detail_video_large_image
-                bgImageView.kf_setImageWithURL(NSURL(string: videoImage!.url!)!)
+                
+                let largeImageList = videoTopic?.large_image_list.first
+                bgImageView.kf_setImageWithURL(NSURL(string: largeImageList!.url!)!)
             }
+            
+            /// 格式化时间
+            let minute = Int(videoTopic!.video_duration! / 60)
+            let second = videoTopic!.video_duration! % 60
+            timeLabel.text = String(format: "%02d:%02d", minute, second)
         }
     }
     
@@ -58,9 +64,20 @@ class YMVideoTopicCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        //如果发现控件的位置和尺寸不是自己设置的，那么有可能是自动伸缩属性导致
+        autoresizingMask = .None
+        bgImageView.userInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapBgImageViewClick(_:)))
+        bgImageView.addGestureRecognizer(tap)
     }
-
+    
+    /// 背景图片添加点击方法
+    func tapBgImageViewClick(tapGesture: UITapGestureRecognizer) {
+        print(#function)
+        playButton.selected = !playButton.selected
+        
+    }
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
