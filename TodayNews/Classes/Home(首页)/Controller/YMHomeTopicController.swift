@@ -32,10 +32,12 @@ class YMHomeTopicController: UITableViewController {
     
     private func setupUI() {
         tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0)
+        // 注册 cell
         tableView.registerClass(YMHomeSmallCell.self, forCellReuseIdentifier: topicSmallCellID)
         tableView.registerClass(YMHomeMiddleCell.self, forCellReuseIdentifier: topicMiddleCellID)
         tableView.registerClass(YMHomeLargeCell.self, forCellReuseIdentifier: topicLargeCellID)
         tableView.registerClass(YMHomeNoImageCell.self, forCellReuseIdentifier: topicNoImageCellID)
+        // 预设定 cell 的高度为 97
         tableView.estimatedRowHeight = 97
         
     }
@@ -67,7 +69,8 @@ extension YMHomeTopicController {
     
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsTopics.count ?? 0
+        tableView.tableViewNoDataOrNewworkFail(newsTopics.count)
+        return newsTopics.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

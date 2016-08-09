@@ -53,5 +53,7 @@ override var frame: CGRect {
 
 这样设置，运行程序，发现 titleView 在屏幕两边不在留有间距。
 
+## 3.子控制器
 
+`YMHomeTopicController.swift` 作为 `YMHomeViewController.swift`的子控制器，显示新闻数据。
 

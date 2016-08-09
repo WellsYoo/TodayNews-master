@@ -7,6 +7,8 @@
 //
 //  每条新闻的内容
 //
+//  具体说明请看 YMNewsTopic.md
+//
 
 import UIKit
 
@@ -25,7 +27,6 @@ class YMNewsTopic: NSObject {
     var title: NSString?
     
     var label: String?
-    var label_style: Int?
     
     var article_alt_url: String?
     var article_url: String?
@@ -123,7 +124,6 @@ class YMNewsTopic: NSObject {
         stick_label = dict["stick_label"] as? String
         
         label = dict["label"] as? String
-        label_style = dict["label_style"] as? Int
         
         /// 遍历举报的内容
         if let filterWords = dict["filter_words"] as? [AnyObject] {
@@ -153,7 +153,7 @@ class YMNewsTopic: NSObject {
         // 整个 cell 的高度 有四种情况：
         // 首先判断 imageLists 是否有值
         if imageLists?.count != 0 {
-            // 1.如果 image_list 不为空，则显示 3 张图片 ((SCREENW -30 -12) / 3)×70，文字在上边
+            // 如果 image_list 不为空，则显示 3 张图片 ((SCREENW -30 -12) / 3)×70，文字在上边
             // 循环遍历 image_list
             for item in imageLists! {
                 let imageList = YMImageList(dict: item as! [String: AnyObject])
@@ -169,7 +169,7 @@ class YMNewsTopic: NSObject {
             // 再判断 middle_image 是否为空
             if middle_image?.height != nil {
                 // 大图、视频图片或广告
-                // 2.如果 large_image_list 或 video_detail_info 不为空，则显示一张大图 (SCREENW -30)×170，文字在上边
+                // 如果 large_image_list 或 video_detail_info 不为空，则显示一张大图 (SCREENW -30)×170，文字在上边
                 // 再判断 video_detail_info 是否为空
                 if video_detail_info?.video_id != nil || largeImageLists?.count > 0 {
                     imageW = SCREENW - CGFloat(30)

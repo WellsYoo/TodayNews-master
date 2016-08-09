@@ -18,6 +18,7 @@ class YMVideoViewController: UIViewController {
         setupUI()
         
     }
+    
     // 设置 UI
     private func setupUI() {
         view!.backgroundColor = YMGlobalColor()
@@ -25,11 +26,6 @@ class YMVideoViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         navigationItem.titleView = titleView
         view.addSubview(scrollView)
-        // 搜索按钮点击
-        titleView.searchButtonClickClosure { [weak self] in
-            let videoSearchVC = YMVideoSearchController()
-            self!.navigationController?.pushViewController(videoSearchVC, animated: true)
-        }
         
         // 返回视频标题的数量
         titleView.videoTitleArrayClosure { [weak self] (titleArray) in
@@ -40,13 +36,6 @@ class YMVideoViewController: UIViewController {
             }
             self!.scrollViewDidEndScrollingAnimation(self!.scrollView)
             self!.scrollView.contentSize = CGSizeMake(SCREENW * CGFloat(titleArray.count), SCREENH)
-        }
-        
-        /// 点击了哪一个 titleLabel，然后 scrolleView 进行相应 的偏移
-        titleView.didSelectVideoTitleLableClosure { [weak self] (titleLabel) in
-            var offset = self!.scrollView.contentOffset
-            offset.x = CGFloat(titleLabel.tag) * self!.scrollView.width
-            self!.scrollView.setContentOffset(offset, animated: true)
         }
     }
 
@@ -65,11 +54,26 @@ class YMVideoViewController: UIViewController {
     
     private lazy var titleView: YMVideoTitleView = {
         let titleView = YMVideoTitleView()
+        titleView.delegate = self
         return titleView
     }()
 }
 
-extension YMVideoViewController: UIScrollViewDelegate {
+extension YMVideoViewController: UIScrollViewDelegate, YMVideoTitleViewDelegate {
+    
+    // MARK: - YMVideoTitleViewDelegate
+    /// 标题点击
+    func videoTitle(videoTitle: YMVideoTitleView, didSelectVideoTitleLable titleLabel: YMTitleLabel) {
+        var offset = self.scrollView.contentOffset
+        offset.x = CGFloat(titleLabel.tag) * self.scrollView.width
+        self.scrollView.setContentOffset(offset, animated: true)
+    }
+    /// 搜索按钮点击
+    func videoTitle(videoTitle: YMVideoTitleView, didClickSearchButton searchButton: UIButton) {
+        let videoSearchVC = YMVideoSearchController()
+        self.navigationController?.pushViewController(videoSearchVC, animated: true)
+    }
+    
     // MARK: - UIScrollViewDelegate
     func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
         // 当前索引

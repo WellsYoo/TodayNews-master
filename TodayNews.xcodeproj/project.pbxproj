@@ -7,35 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		251FBB461D51F6B5006ED186 /* YMBlurImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251FBB451D51F6B5006ED186 /* YMBlurImageView.swift */; };
-		251FBB481D530E34006ED186 /* YMScrollTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251FBB471D530E34006ED186 /* YMScrollTitleView.swift */; };
 		2527642F1D4F50F10078C143 /* YMSettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2527642E1D4F50F10078C143 /* YMSettingHeaderView.swift */; };
 		252764311D4F50FB0078C143 /* YMSettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 252764301D4F50FB0078C143 /* YMSettingHeaderView.xib */; };
-		252764341D50421C0078C143 /* YMNewCareSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252764321D50421C0078C143 /* YMNewCareSearchViewController.swift */; };
-		252764351D50421C0078C143 /* YMNewCareSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 252764331D50421C0078C143 /* YMNewCareSearchViewController.xib */; };
-		252764371D504C990078C143 /* YMSearchContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252764361D504C990078C143 /* YMSearchContentViewController.swift */; };
-		252764391D5059880078C143 /* YMKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252764381D5059880078C143 /* YMKeyword.swift */; };
-		252764431D507C560078C143 /* YMsearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252764411D507C560078C143 /* YMsearchCell.swift */; };
-		252764441D507C560078C143 /* YMsearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 252764421D507C560078C143 /* YMsearchCell.xib */; };
-		252764461D5095B00078C143 /* YMSelectConcernTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252764451D5095B00078C143 /* YMSelectConcernTableController.swift */; };
 		256D00EC1D51AE67007D40CF /* YMAddTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D00EB1D51AE67007D40CF /* YMAddTopicViewController.swift */; };
 		256D00EE1D51B5E3007D40CF /* YMHomeTopTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D00ED1D51B5E3007D40CF /* YMHomeTopTitle.swift */; };
 		827E87E6C347D72EEA480634 /* Pods_TodayNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4486ED8A9D71B92D386525D6 /* Pods_TodayNews.framework */; };
-		940375951D4F820C00C7B135 /* YMConcern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375941D4F820C00C7B135 /* YMConcern.swift */; };
-		940375971D4F92C300C7B135 /* YMNewCareSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375961D4F92C300C7B135 /* YMNewCareSearchController.swift */; };
 		940375991D4F9BCB00C7B135 /* YMVideoTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375981D4F9BCB00C7B135 /* YMVideoTitleView.swift */; };
 		9403759B1D4F9FE000C7B135 /* YMVideoSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9403759A1D4F9FE000C7B135 /* YMVideoSearchController.swift */; };
-		9403759E1D50101900C7B135 /* YMNewCareCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9403759C1D50101900C7B135 /* YMNewCareCategoryCell.swift */; };
-		9403759F1D50101900C7B135 /* YMNewCareCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9403759D1D50101900C7B135 /* YMNewCareCategoryCell.xib */; };
-		940375A21D50119C00C7B135 /* YMNewCareContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375A01D50119C00C7B135 /* YMNewCareContentCell.swift */; };
-		940375A31D50119C00C7B135 /* YMNewCareContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940375A11D50119C00C7B135 /* YMNewCareContentCell.xib */; };
-		940375A51D5013DB00C7B135 /* YMNewCareSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940375A41D5013DB00C7B135 /* YMNewCareSearchController.xib */; };
 		940375A81D50DE3300C7B135 /* YMVideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375A61D50DE3300C7B135 /* YMVideoCollectionViewCell.swift */; };
 		940375A91D50DE3300C7B135 /* YMVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940375A71D50DE3300C7B135 /* YMVideoCollectionViewCell.xib */; };
 		940375AB1D50EC4B00C7B135 /* YMVideoTopTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940375AA1D50EC4B00C7B135 /* YMVideoTopTitle.swift */; };
 		940FC7641D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FC7631D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift */; };
-		940FC76D1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FC76B1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift */; };
-		940FC76E1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940FC76C1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib */; };
+		945025F51D59D33800C7F3B9 /* YMConcernDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025DC1D59D33800C7F3B9 /* YMConcernDetailViewController.swift */; };
+		945025F61D59D33800C7F3B9 /* YMNewCareSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025DD1D59D33800C7F3B9 /* YMNewCareSearchViewController.swift */; };
+		945025F71D59D33800C7F3B9 /* YMNewCareSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945025DE1D59D33800C7F3B9 /* YMNewCareSearchViewController.xib */; };
+		945025F81D59D33800C7F3B9 /* YMNewCareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025DF1D59D33800C7F3B9 /* YMNewCareViewController.swift */; };
+		945025F91D59D33800C7F3B9 /* YMSearchContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025E01D59D33800C7F3B9 /* YMSearchContentViewController.swift */; };
+		945025FA1D59D33800C7F3B9 /* YMSelectConcernTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025E11D59D33800C7F3B9 /* YMSelectConcernTableController.swift */; };
+		945025FB1D59D33800C7F3B9 /* YMConcern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025E31D59D33800C7F3B9 /* YMConcern.swift */; };
+		945025FC1D59D33800C7F3B9 /* YMKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025E41D59D33800C7F3B9 /* YMKeyword.swift */; };
+		945025FD1D59D33800C7F3B9 /* YMBlurImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025E61D59D33800C7F3B9 /* YMBlurImageView.swift */; };
+		945025FE1D59D33800C7F3B9 /* YMCareheaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025E71D59D33800C7F3B9 /* YMCareheaderView.swift */; };
+		945025FF1D59D33800C7F3B9 /* YMNewCareBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025E81D59D33800C7F3B9 /* YMNewCareBottomCell.swift */; };
+		945026001D59D33800C7F3B9 /* YMNewCareBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945025E91D59D33800C7F3B9 /* YMNewCareBottomCell.xib */; };
+		945026051D59D33800C7F3B9 /* YMNewCareNoLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025EE1D59D33800C7F3B9 /* YMNewCareNoLoginCell.swift */; };
+		945026061D59D33800C7F3B9 /* YMNewCareNoLoginCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945025EF1D59D33800C7F3B9 /* YMNewCareNoLoginCell.xib */; };
+		945026071D59D33800C7F3B9 /* YMNewCareTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025F01D59D33800C7F3B9 /* YMNewCareTopCell.swift */; };
+		945026081D59D33800C7F3B9 /* YMNewCareTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945025F11D59D33800C7F3B9 /* YMNewCareTopCell.xib */; };
+		9450260A1D59D33800C7F3B9 /* YMsearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025F31D59D33800C7F3B9 /* YMsearchCell.swift */; };
+		9450260B1D59D33800C7F3B9 /* YMsearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945025F41D59D33800C7F3B9 /* YMsearchCell.xib */; };
+		9450260F1D59D47F00C7F3B9 /* YMScrollTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9450260E1D59D47F00C7F3B9 /* YMScrollTitleView.swift */; };
+		945026111D59DBBF00C7F3B9 /* YMTopicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945026101D59DBBF00C7F3B9 /* YMTopicTableViewCell.swift */; };
 		9472DA001D5499A60001038F /* YMNewsTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9472D9FF1D5499A60001038F /* YMNewsTopic.swift */; };
 		9472DA021D5579040001038F /* YMTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9472DA011D5579040001038F /* YMTipView.swift */; };
 		947564771D4B86FE00AC6B72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947564761D4B86FE00AC6B72 /* Assets.xcassets */; };
@@ -48,7 +50,6 @@
 		947564ED1D4BADD500AC6B72 /* YMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947564D71D4BADD500AC6B72 /* YMTabBarController.swift */; };
 		947564EE1D4BADD500AC6B72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947564D91D4BADD500AC6B72 /* AppDelegate.swift */; };
 		947564EF1D4BADD500AC6B72 /* YMMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947564DD1D4BADD500AC6B72 /* YMMineViewController.swift */; };
-		947564F01D4BADD500AC6B72 /* YMNewCareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947564E21D4BADD500AC6B72 /* YMNewCareViewController.swift */; };
 		947564F11D4BADD500AC6B72 /* YMVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947564E71D4BADD500AC6B72 /* YMVideoViewController.swift */; };
 		947564F31D4C269D00AC6B72 /* YMVerticalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947564F21D4C269D00AC6B72 /* YMVerticalButton.swift */; };
 		947564F71D4C274100AC6B72 /* YMConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947564F61D4C274100AC6B72 /* YMConst.swift */; };
@@ -73,11 +74,6 @@
 		9475651E1D4CC3B700AC6B72 /* YMHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475651C1D4CC3B700AC6B72 /* YMHelpViewController.swift */; };
 		9475651F1D4CC3B700AC6B72 /* YMHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9475651D1D4CC3B700AC6B72 /* YMHelpViewController.xib */; };
 		947565251D4CF3E900AC6B72 /* YMNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947565241D4CF3E900AC6B72 /* YMNetworkTool.swift */; };
-		947565281D4CF90600AC6B72 /* YMNewCareTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947565261D4CF90600AC6B72 /* YMNewCareTopCell.swift */; };
-		947565291D4CF90600AC6B72 /* YMNewCareTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947565271D4CF90600AC6B72 /* YMNewCareTopCell.xib */; };
-		9475652C1D4CFAD600AC6B72 /* YMNewCareBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475652A1D4CFAD600AC6B72 /* YMNewCareBottomCell.swift */; };
-		9475652D1D4CFAD600AC6B72 /* YMNewCareBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9475652B1D4CFAD600AC6B72 /* YMNewCareBottomCell.xib */; };
-		9475652F1D4D7EC500AC6B72 /* YMCareheaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475652E1D4D7EC500AC6B72 /* YMCareheaderView.swift */; };
 		947650C11D581AFC00F33B68 /* YMHomePopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947650C01D581AFC00F33B68 /* YMHomePopController.swift */; };
 		947650C31D589E5A00F33B68 /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947650C21D589E5A00F33B68 /* NSString+Extension.swift */; };
 		9479ED041D58B9AC00EF7337 /* YMHomeSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479ED031D58B9AC00EF7337 /* YMHomeSmallCell.swift */; };
@@ -85,11 +81,12 @@
 		9479ED081D58B9DB00EF7337 /* YMHomeMiddleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479ED071D58B9DB00EF7337 /* YMHomeMiddleCell.swift */; };
 		9479ED0C1D597EA200EF7337 /* YMHomeNoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479ED0B1D597EA200EF7337 /* YMHomeNoImageCell.swift */; };
 		9479ED0E1D59816900EF7337 /* YMHomeTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479ED0D1D59816900EF7337 /* YMHomeTopicCell.swift */; };
+		9479ED101D59C48D00EF7337 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479ED0F1D59C48D00EF7337 /* UITableView+Extension.swift */; };
+		9479ED151D59CE2F00EF7337 /* YMFirstIntroduceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479ED131D59CE2F00EF7337 /* YMFirstIntroduceController.swift */; };
+		9479ED161D59CE2F00EF7337 /* YMFirstIntroduceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9479ED141D59CE2F00EF7337 /* YMFirstIntroduceController.xib */; };
 		94D584FB1D55883300E4CAFE /* YMHomeTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */; };
 		94D584FD1D5704F500E4CAFE /* UIImage+Extendion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */; };
 		94D584FF1D57051000E4CAFE /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */; };
-		94D92DC21D523D0C00CB345A /* YMConcernDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D92DC11D523D0C00CB345A /* YMConcernDetailViewController.swift */; };
-		94DD98A01D537E8D00331B6B /* YMTopicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DD989E1D537E8D00331B6B /* YMTopicTableViewCell.swift */; };
 		94DD98A31D5401CB00331B6B /* YMVideoTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DD98A21D5401CB00331B6B /* YMVideoTopicController.swift */; };
 		94DD98AA1D5402A900331B6B /* YMVideoTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DD98A81D5402A900331B6B /* YMVideoTopicCell.swift */; };
 		94DD98AB1D5402A900331B6B /* YMVideoTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DD98A91D5402A900331B6B /* YMVideoTopicCell.xib */; };
@@ -114,35 +111,37 @@
 
 /* Begin PBXFileReference section */
 		14DB40818E01E6EB10374E82 /* Pods-TodayNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews/Pods-TodayNews.release.xcconfig"; sourceTree = "<group>"; };
-		251FBB451D51F6B5006ED186 /* YMBlurImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMBlurImageView.swift; sourceTree = "<group>"; };
-		251FBB471D530E34006ED186 /* YMScrollTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YMScrollTitleView.swift; path = "TodayNews/Classes/NewCare(关心)/View/YMScrollTitleView.swift"; sourceTree = SOURCE_ROOT; };
 		2527642E1D4F50F10078C143 /* YMSettingHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMSettingHeaderView.swift; sourceTree = "<group>"; };
 		252764301D4F50FB0078C143 /* YMSettingHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMSettingHeaderView.xib; sourceTree = "<group>"; };
-		252764321D50421C0078C143 /* YMNewCareSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareSearchViewController.swift; sourceTree = "<group>"; };
-		252764331D50421C0078C143 /* YMNewCareSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareSearchViewController.xib; sourceTree = "<group>"; };
-		252764361D504C990078C143 /* YMSearchContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMSearchContentViewController.swift; sourceTree = "<group>"; };
-		252764381D5059880078C143 /* YMKeyword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMKeyword.swift; sourceTree = "<group>"; };
-		252764411D507C560078C143 /* YMsearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMsearchCell.swift; sourceTree = "<group>"; };
-		252764421D507C560078C143 /* YMsearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMsearchCell.xib; sourceTree = "<group>"; };
-		252764451D5095B00078C143 /* YMSelectConcernTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMSelectConcernTableController.swift; sourceTree = "<group>"; };
 		256D00EB1D51AE67007D40CF /* YMAddTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMAddTopicViewController.swift; sourceTree = "<group>"; };
 		256D00ED1D51B5E3007D40CF /* YMHomeTopTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YMHomeTopTitle.swift; path = "TodayNews/Classes/Home(首页)/Controller/YMHomeTopTitle.swift"; sourceTree = SOURCE_ROOT; };
 		4486ED8A9D71B92D386525D6 /* Pods_TodayNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		940375941D4F820C00C7B135 /* YMConcern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMConcern.swift; sourceTree = "<group>"; };
-		940375961D4F92C300C7B135 /* YMNewCareSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareSearchController.swift; sourceTree = "<group>"; };
 		940375981D4F9BCB00C7B135 /* YMVideoTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoTitleView.swift; sourceTree = "<group>"; };
 		9403759A1D4F9FE000C7B135 /* YMVideoSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoSearchController.swift; sourceTree = "<group>"; };
-		9403759C1D50101900C7B135 /* YMNewCareCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareCategoryCell.swift; sourceTree = "<group>"; };
-		9403759D1D50101900C7B135 /* YMNewCareCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareCategoryCell.xib; sourceTree = "<group>"; };
-		940375A01D50119C00C7B135 /* YMNewCareContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareContentCell.swift; sourceTree = "<group>"; };
-		940375A11D50119C00C7B135 /* YMNewCareContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareContentCell.xib; sourceTree = "<group>"; };
-		940375A41D5013DB00C7B135 /* YMNewCareSearchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareSearchController.xib; sourceTree = "<group>"; };
 		940375A61D50DE3300C7B135 /* YMVideoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		940375A71D50DE3300C7B135 /* YMVideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMVideoCollectionViewCell.xib; sourceTree = "<group>"; };
 		940375AA1D50EC4B00C7B135 /* YMVideoTopTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoTopTitle.swift; sourceTree = "<group>"; };
 		940FC7631D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMMineNoLoginHeaderView.swift; sourceTree = "<group>"; };
-		940FC76B1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareNoLoginCell.swift; sourceTree = "<group>"; };
-		940FC76C1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareNoLoginCell.xib; sourceTree = "<group>"; };
+		945025DC1D59D33800C7F3B9 /* YMConcernDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMConcernDetailViewController.swift; sourceTree = "<group>"; };
+		945025DD1D59D33800C7F3B9 /* YMNewCareSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareSearchViewController.swift; sourceTree = "<group>"; };
+		945025DE1D59D33800C7F3B9 /* YMNewCareSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareSearchViewController.xib; sourceTree = "<group>"; };
+		945025DF1D59D33800C7F3B9 /* YMNewCareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareViewController.swift; sourceTree = "<group>"; };
+		945025E01D59D33800C7F3B9 /* YMSearchContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMSearchContentViewController.swift; sourceTree = "<group>"; };
+		945025E11D59D33800C7F3B9 /* YMSelectConcernTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMSelectConcernTableController.swift; sourceTree = "<group>"; };
+		945025E31D59D33800C7F3B9 /* YMConcern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMConcern.swift; sourceTree = "<group>"; };
+		945025E41D59D33800C7F3B9 /* YMKeyword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMKeyword.swift; sourceTree = "<group>"; };
+		945025E61D59D33800C7F3B9 /* YMBlurImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMBlurImageView.swift; sourceTree = "<group>"; };
+		945025E71D59D33800C7F3B9 /* YMCareheaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMCareheaderView.swift; sourceTree = "<group>"; };
+		945025E81D59D33800C7F3B9 /* YMNewCareBottomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareBottomCell.swift; sourceTree = "<group>"; };
+		945025E91D59D33800C7F3B9 /* YMNewCareBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareBottomCell.xib; sourceTree = "<group>"; };
+		945025EE1D59D33800C7F3B9 /* YMNewCareNoLoginCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareNoLoginCell.swift; sourceTree = "<group>"; };
+		945025EF1D59D33800C7F3B9 /* YMNewCareNoLoginCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareNoLoginCell.xib; sourceTree = "<group>"; };
+		945025F01D59D33800C7F3B9 /* YMNewCareTopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareTopCell.swift; sourceTree = "<group>"; };
+		945025F11D59D33800C7F3B9 /* YMNewCareTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareTopCell.xib; sourceTree = "<group>"; };
+		945025F31D59D33800C7F3B9 /* YMsearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMsearchCell.swift; sourceTree = "<group>"; };
+		945025F41D59D33800C7F3B9 /* YMsearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMsearchCell.xib; sourceTree = "<group>"; };
+		9450260E1D59D47F00C7F3B9 /* YMScrollTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMScrollTitleView.swift; sourceTree = "<group>"; };
+		945026101D59DBBF00C7F3B9 /* YMTopicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMTopicTableViewCell.swift; sourceTree = "<group>"; };
 		9472D9FF1D5499A60001038F /* YMNewsTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewsTopic.swift; sourceTree = "<group>"; };
 		9472DA011D5579040001038F /* YMTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMTipView.swift; sourceTree = "<group>"; };
 		9475646C1D4B86FE00AC6B72 /* TodayNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,7 +160,6 @@
 		947564D71D4BADD500AC6B72 /* YMTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMTabBarController.swift; sourceTree = "<group>"; };
 		947564D91D4BADD500AC6B72 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		947564DD1D4BADD500AC6B72 /* YMMineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMMineViewController.swift; sourceTree = "<group>"; };
-		947564E21D4BADD500AC6B72 /* YMNewCareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareViewController.swift; sourceTree = "<group>"; };
 		947564E71D4BADD500AC6B72 /* YMVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoViewController.swift; sourceTree = "<group>"; };
 		947564F21D4C269D00AC6B72 /* YMVerticalButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVerticalButton.swift; sourceTree = "<group>"; };
 		947564F61D4C274100AC6B72 /* YMConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMConst.swift; sourceTree = "<group>"; };
@@ -186,11 +184,6 @@
 		9475651C1D4CC3B700AC6B72 /* YMHelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHelpViewController.swift; sourceTree = "<group>"; };
 		9475651D1D4CC3B700AC6B72 /* YMHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMHelpViewController.xib; sourceTree = "<group>"; };
 		947565241D4CF3E900AC6B72 /* YMNetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNetworkTool.swift; sourceTree = "<group>"; };
-		947565261D4CF90600AC6B72 /* YMNewCareTopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareTopCell.swift; sourceTree = "<group>"; };
-		947565271D4CF90600AC6B72 /* YMNewCareTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareTopCell.xib; sourceTree = "<group>"; };
-		9475652A1D4CFAD600AC6B72 /* YMNewCareBottomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareBottomCell.swift; sourceTree = "<group>"; };
-		9475652B1D4CFAD600AC6B72 /* YMNewCareBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareBottomCell.xib; sourceTree = "<group>"; };
-		9475652E1D4D7EC500AC6B72 /* YMCareheaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMCareheaderView.swift; sourceTree = "<group>"; };
 		947650C01D581AFC00F33B68 /* YMHomePopController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomePopController.swift; sourceTree = "<group>"; };
 		947650C21D589E5A00F33B68 /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		9479ED031D58B9AC00EF7337 /* YMHomeSmallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeSmallCell.swift; sourceTree = "<group>"; };
@@ -198,11 +191,12 @@
 		9479ED071D58B9DB00EF7337 /* YMHomeMiddleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeMiddleCell.swift; sourceTree = "<group>"; };
 		9479ED0B1D597EA200EF7337 /* YMHomeNoImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeNoImageCell.swift; sourceTree = "<group>"; };
 		9479ED0D1D59816900EF7337 /* YMHomeTopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeTopicCell.swift; sourceTree = "<group>"; };
+		9479ED0F1D59C48D00EF7337 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		9479ED131D59CE2F00EF7337 /* YMFirstIntroduceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMFirstIntroduceController.swift; sourceTree = "<group>"; };
+		9479ED141D59CE2F00EF7337 /* YMFirstIntroduceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMFirstIntroduceController.xib; sourceTree = "<group>"; };
 		94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeTopicController.swift; sourceTree = "<group>"; };
 		94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extendion.swift"; sourceTree = "<group>"; };
 		94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
-		94D92DC11D523D0C00CB345A /* YMConcernDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMConcernDetailViewController.swift; sourceTree = "<group>"; };
-		94DD989E1D537E8D00331B6B /* YMTopicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMTopicTableViewCell.swift; sourceTree = "<group>"; };
 		94DD98A21D5401CB00331B6B /* YMVideoTopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoTopicController.swift; sourceTree = "<group>"; };
 		94DD98A81D5402A900331B6B /* YMVideoTopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoTopicCell.swift; sourceTree = "<group>"; };
 		94DD98A91D5402A900331B6B /* YMVideoTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMVideoTopicCell.xib; sourceTree = "<group>"; };
@@ -250,6 +244,55 @@
 				4486ED8A9D71B92D386525D6 /* Pods_TodayNews.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		945025DA1D59D33800C7F3B9 /* NewCare(关注) */ = {
+			isa = PBXGroup;
+			children = (
+				945025DB1D59D33800C7F3B9 /* Controller */,
+				945025E21D59D33800C7F3B9 /* Model */,
+				945025E51D59D33800C7F3B9 /* View */,
+			);
+			path = "NewCare(关注)";
+			sourceTree = "<group>";
+		};
+		945025DB1D59D33800C7F3B9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				945025DC1D59D33800C7F3B9 /* YMConcernDetailViewController.swift */,
+				945025DD1D59D33800C7F3B9 /* YMNewCareSearchViewController.swift */,
+				945025DE1D59D33800C7F3B9 /* YMNewCareSearchViewController.xib */,
+				945025DF1D59D33800C7F3B9 /* YMNewCareViewController.swift */,
+				945025E01D59D33800C7F3B9 /* YMSearchContentViewController.swift */,
+				945025E11D59D33800C7F3B9 /* YMSelectConcernTableController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		945025E21D59D33800C7F3B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				945025E31D59D33800C7F3B9 /* YMConcern.swift */,
+				945025E41D59D33800C7F3B9 /* YMKeyword.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		945025E51D59D33800C7F3B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				945025E61D59D33800C7F3B9 /* YMBlurImageView.swift */,
+				945025E71D59D33800C7F3B9 /* YMCareheaderView.swift */,
+				945025E81D59D33800C7F3B9 /* YMNewCareBottomCell.swift */,
+				945025E91D59D33800C7F3B9 /* YMNewCareBottomCell.xib */,
+				945025EE1D59D33800C7F3B9 /* YMNewCareNoLoginCell.swift */,
+				945025EF1D59D33800C7F3B9 /* YMNewCareNoLoginCell.xib */,
+				945025F01D59D33800C7F3B9 /* YMNewCareTopCell.swift */,
+				945025F11D59D33800C7F3B9 /* YMNewCareTopCell.xib */,
+				945025F31D59D33800C7F3B9 /* YMsearchCell.swift */,
+				945025F41D59D33800C7F3B9 /* YMsearchCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		947564631D4B86FE00AC6B72 = {
@@ -305,10 +348,11 @@
 			isa = PBXGroup;
 			children = (
 				947564CD1D4BADD500AC6B72 /* Home(首页) */,
-				947564D21D4BADD500AC6B72 /* Main(主要) */,
-				947564DB1D4BADD500AC6B72 /* Mine(我的) */,
-				947564E01D4BADD500AC6B72 /* NewCare(关心) */,
 				947564E51D4BADD500AC6B72 /* Video(视频) */,
+				945025DA1D59D33800C7F3B9 /* NewCare(关注) */,
+				947564DB1D4BADD500AC6B72 /* Mine(我的) */,
+				9479ED111D59CE0C00EF7337 /* Login&Register */,
+				947564D21D4BADD500AC6B72 /* Main(主要) */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -346,14 +390,14 @@
 		947564D11D4BADD500AC6B72 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				251FBB471D530E34006ED186 /* YMScrollTitleView.swift */,
-				94DD989E1D537E8D00331B6B /* YMTopicTableViewCell.swift */,
+				945026101D59DBBF00C7F3B9 /* YMTopicTableViewCell.swift */,
 				9472DA011D5579040001038F /* YMTipView.swift */,
 				9479ED031D58B9AC00EF7337 /* YMHomeSmallCell.swift */,
 				9479ED071D58B9DB00EF7337 /* YMHomeMiddleCell.swift */,
 				9479ED051D58B9C900EF7337 /* YMHomeLargeCell.swift */,
 				9479ED0B1D597EA200EF7337 /* YMHomeNoImageCell.swift */,
 				9479ED0D1D59816900EF7337 /* YMHomeTopicCell.swift */,
+				9450260E1D59D47F00C7F3B9 /* YMScrollTitleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -376,6 +420,7 @@
 				94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */,
 				94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */,
 				947650C21D589E5A00F33B68 /* NSString+Extension.swift */,
+				9479ED0F1D59C48D00EF7337 /* UITableView+Extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -464,61 +509,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		947564E01D4BADD500AC6B72 /* NewCare(关心) */ = {
-			isa = PBXGroup;
-			children = (
-				947564E11D4BADD500AC6B72 /* Controller */,
-				947564E31D4BADD500AC6B72 /* Model */,
-				947564E41D4BADD500AC6B72 /* View */,
-			);
-			path = "NewCare(关心)";
-			sourceTree = "<group>";
-		};
-		947564E11D4BADD500AC6B72 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				947564E21D4BADD500AC6B72 /* YMNewCareViewController.swift */,
-				940375961D4F92C300C7B135 /* YMNewCareSearchController.swift */,
-				940375A41D5013DB00C7B135 /* YMNewCareSearchController.xib */,
-				252764321D50421C0078C143 /* YMNewCareSearchViewController.swift */,
-				252764331D50421C0078C143 /* YMNewCareSearchViewController.xib */,
-				252764361D504C990078C143 /* YMSearchContentViewController.swift */,
-				252764451D5095B00078C143 /* YMSelectConcernTableController.swift */,
-				94D92DC11D523D0C00CB345A /* YMConcernDetailViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		947564E31D4BADD500AC6B72 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				940375941D4F820C00C7B135 /* YMConcern.swift */,
-				252764381D5059880078C143 /* YMKeyword.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		947564E41D4BADD500AC6B72 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				947565261D4CF90600AC6B72 /* YMNewCareTopCell.swift */,
-				947565271D4CF90600AC6B72 /* YMNewCareTopCell.xib */,
-				9475652A1D4CFAD600AC6B72 /* YMNewCareBottomCell.swift */,
-				9475652B1D4CFAD600AC6B72 /* YMNewCareBottomCell.xib */,
-				9475652E1D4D7EC500AC6B72 /* YMCareheaderView.swift */,
-				940FC76B1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift */,
-				940FC76C1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib */,
-				9403759C1D50101900C7B135 /* YMNewCareCategoryCell.swift */,
-				9403759D1D50101900C7B135 /* YMNewCareCategoryCell.xib */,
-				940375A01D50119C00C7B135 /* YMNewCareContentCell.swift */,
-				940375A11D50119C00C7B135 /* YMNewCareContentCell.xib */,
-				252764411D507C560078C143 /* YMsearchCell.swift */,
-				252764421D507C560078C143 /* YMsearchCell.xib */,
-				251FBB451D51F6B5006ED186 /* YMBlurImageView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		947564E51D4BADD500AC6B72 /* Video(视频) */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,6 +547,23 @@
 				94DD98A91D5402A900331B6B /* YMVideoTopicCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		9479ED111D59CE0C00EF7337 /* Login&Register */ = {
+			isa = PBXGroup;
+			children = (
+				9479ED121D59CE0C00EF7337 /* Controller */,
+			);
+			path = "Login&Register";
+			sourceTree = "<group>";
+		};
+		9479ED121D59CE0C00EF7337 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9479ED131D59CE2F00EF7337 /* YMFirstIntroduceController.swift */,
+				9479ED141D59CE2F00EF7337 /* YMFirstIntroduceController.xib */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -668,24 +675,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				947565291D4CF90600AC6B72 /* YMNewCareTopCell.xib in Resources */,
 				947565031D4C2EE800AC6B72 /* YMMineCell.xib in Resources */,
-				940FC76E1D4F7E7400F53ADE /* YMNewCareNoLoginCell.xib in Resources */,
 				9475647A1D4B86FE00AC6B72 /* LaunchScreen.storyboard in Resources */,
 				940375A91D50DE3300C7B135 /* YMVideoCollectionViewCell.xib in Resources */,
-				9403759F1D50101900C7B135 /* YMNewCareCategoryCell.xib in Resources */,
+				945025F71D59D33800C7F3B9 /* YMNewCareSearchViewController.xib in Resources */,
+				9450260B1D59D33800C7F3B9 /* YMsearchCell.xib in Resources */,
 				947565131D4CAD8400AC6B72 /* YMSettingCell.xib in Resources */,
-				252764351D50421C0078C143 /* YMNewCareSearchViewController.xib in Resources */,
-				9475652D1D4CFAD600AC6B72 /* YMNewCareBottomCell.xib in Resources */,
+				945026081D59D33800C7F3B9 /* YMNewCareTopCell.xib in Resources */,
 				947565051D4C3AA600AC6B72 /* YMMineCellPlist.plist in Resources */,
 				9475650D1D4C5AA500AC6B72 /* YMSettingPlist.plist in Resources */,
-				252764441D507C560078C143 /* YMsearchCell.xib in Resources */,
-				940375A31D50119C00C7B135 /* YMNewCareContentCell.xib in Resources */,
 				947564771D4B86FE00AC6B72 /* Assets.xcassets in Resources */,
+				945026061D59D33800C7F3B9 /* YMNewCareNoLoginCell.xib in Resources */,
 				947565191D4CBCAA00AC6B72 /* YMAccountCell.xib in Resources */,
 				252764311D4F50FB0078C143 /* YMSettingHeaderView.xib in Resources */,
+				945026001D59D33800C7F3B9 /* YMNewCareBottomCell.xib in Resources */,
 				9475651F1D4CC3B700AC6B72 /* YMHelpViewController.xib in Resources */,
-				940375A51D5013DB00C7B135 /* YMNewCareSearchController.xib in Resources */,
+				9479ED161D59CE2F00EF7337 /* YMFirstIntroduceController.xib in Resources */,
 				94DD98AB1D5402A900331B6B /* YMVideoTopicCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -777,66 +782,65 @@
 				947565071D4C3BD100AC6B72 /* YMMineCellModel.swift in Sources */,
 				94DD98A31D5401CB00331B6B /* YMVideoTopicController.swift in Sources */,
 				947564FB1D4C299C00AC6B72 /* YMMineHeaderView.swift in Sources */,
-				252764341D50421C0078C143 /* YMNewCareSearchViewController.swift in Sources */,
+				945025FD1D59D33800C7F3B9 /* YMBlurImageView.swift in Sources */,
 				947565121D4CAD8400AC6B72 /* YMSettingCell.swift in Sources */,
 				9472DA001D5499A60001038F /* YMNewsTopic.swift in Sources */,
-				940FC76D1D4F7E7400F53ADE /* YMNewCareNoLoginCell.swift in Sources */,
 				9475651E1D4CC3B700AC6B72 /* YMHelpViewController.swift in Sources */,
 				940375AB1D50EC4B00C7B135 /* YMVideoTopTitle.swift in Sources */,
 				2527642F1D4F50F10078C143 /* YMSettingHeaderView.swift in Sources */,
-				9475652C1D4CFAD600AC6B72 /* YMNewCareBottomCell.swift in Sources */,
+				945025FB1D59D33800C7F3B9 /* YMConcern.swift in Sources */,
 				947564F91D4C274C00AC6B72 /* UIView+Extension.swift in Sources */,
+				945025FF1D59D33800C7F3B9 /* YMNewCareBottomCell.swift in Sources */,
+				9479ED101D59C48D00EF7337 /* UITableView+Extension.swift in Sources */,
 				94D584FD1D5704F500E4CAFE /* UIImage+Extendion.swift in Sources */,
-				947564F01D4BADD500AC6B72 /* YMNewCareViewController.swift in Sources */,
 				947564EA1D4BADD500AC6B72 /* YMHomeViewController.swift in Sources */,
 				947564F11D4BADD500AC6B72 /* YMVideoViewController.swift in Sources */,
 				9479ED041D58B9AC00EF7337 /* YMHomeSmallCell.swift in Sources */,
-				9403759E1D50101900C7B135 /* YMNewCareCategoryCell.swift in Sources */,
-				252764391D5059880078C143 /* YMKeyword.swift in Sources */,
+				9479ED151D59CE2F00EF7337 /* YMFirstIntroduceController.swift in Sources */,
 				947564FD1D4C2AA500AC6B72 /* YMMineHeaderBottomView.swift in Sources */,
 				9475650F1D4CAC8E00AC6B72 /* YMSettingModel.swift in Sources */,
 				94D584FB1D55883300E4CAFE /* YMHomeTopicController.swift in Sources */,
-				251FBB461D51F6B5006ED186 /* YMBlurImageView.swift in Sources */,
+				945025F81D59D33800C7F3B9 /* YMNewCareViewController.swift in Sources */,
+				9450260A1D59D33800C7F3B9 /* YMsearchCell.swift in Sources */,
+				945025F91D59D33800C7F3B9 /* YMSearchContentViewController.swift in Sources */,
+				945025FC1D59D33800C7F3B9 /* YMKeyword.swift in Sources */,
 				940375991D4F9BCB00C7B135 /* YMVideoTitleView.swift in Sources */,
 				947564ED1D4BADD500AC6B72 /* YMTabBarController.swift in Sources */,
-				947565281D4CF90600AC6B72 /* YMNewCareTopCell.swift in Sources */,
 				947565021D4C2EE800AC6B72 /* YMMineCell.swift in Sources */,
-				940375971D4F92C300C7B135 /* YMNewCareSearchController.swift in Sources */,
+				945026111D59DBBF00C7F3B9 /* YMTopicTableViewCell.swift in Sources */,
 				947565151D4CB85D00AC6B72 /* YMAccountManageController.swift in Sources */,
 				256D00EE1D51B5E3007D40CF /* YMHomeTopTitle.swift in Sources */,
 				9479ED0E1D59816900EF7337 /* YMHomeTopicCell.swift in Sources */,
 				9475650B1D4C584C00AC6B72 /* YMSettingViewController.swift in Sources */,
 				256D00EC1D51AE67007D40CF /* YMAddTopicViewController.swift in Sources */,
 				947565091D4C568100AC6B72 /* YMCollectionViewController.swift in Sources */,
+				945026051D59D33800C7F3B9 /* YMNewCareNoLoginCell.swift in Sources */,
+				945026071D59D33800C7F3B9 /* YMNewCareTopCell.swift in Sources */,
 				9475651B1D4CC2A900AC6B72 /* YMAutoPlayVideoController.swift in Sources */,
 				94DD98AA1D5402A900331B6B /* YMVideoTopicCell.swift in Sources */,
 				947650C11D581AFC00F33B68 /* YMHomePopController.swift in Sources */,
 				947564EC1D4BADD500AC6B72 /* YMNavigationController.swift in Sources */,
+				945025FA1D59D33800C7F3B9 /* YMSelectConcernTableController.swift in Sources */,
 				947564EF1D4BADD500AC6B72 /* YMMineViewController.swift in Sources */,
-				94D92DC21D523D0C00CB345A /* YMConcernDetailViewController.swift in Sources */,
+				945025F51D59D33800C7F3B9 /* YMConcernDetailViewController.swift in Sources */,
 				9479ED0C1D597EA200EF7337 /* YMHomeNoImageCell.swift in Sources */,
 				947564EE1D4BADD500AC6B72 /* AppDelegate.swift in Sources */,
+				945025F61D59D33800C7F3B9 /* YMNewCareSearchViewController.swift in Sources */,
 				947564F71D4C274100AC6B72 /* YMConst.swift in Sources */,
 				9472DA021D5579040001038F /* YMTipView.swift in Sources */,
-				940375951D4F820C00C7B135 /* YMConcern.swift in Sources */,
 				9479ED081D58B9DB00EF7337 /* YMHomeMiddleCell.swift in Sources */,
-				251FBB481D530E34006ED186 /* YMScrollTitleView.swift in Sources */,
 				940375A81D50DE3300C7B135 /* YMVideoCollectionViewCell.swift in Sources */,
-				252764371D504C990078C143 /* YMSearchContentViewController.swift in Sources */,
-				252764461D5095B00078C143 /* YMSelectConcernTableController.swift in Sources */,
-				94DD98A01D537E8D00331B6B /* YMTopicTableViewCell.swift in Sources */,
 				9479ED061D58B9C900EF7337 /* YMHomeLargeCell.swift in Sources */,
+				945025FE1D59D33800C7F3B9 /* YMCareheaderView.swift in Sources */,
+				9450260F1D59D47F00C7F3B9 /* YMScrollTitleView.swift in Sources */,
 				947564EB1D4BADD500AC6B72 /* YMBaseViewController.swift in Sources */,
 				947564FF1D4C2BD600AC6B72 /* YMMineHeaderIconButton.swift in Sources */,
 				947565251D4CF3E900AC6B72 /* YMNetworkTool.swift in Sources */,
-				252764431D507C560078C143 /* YMsearchCell.swift in Sources */,
 				9403759B1D4F9FE000C7B135 /* YMVideoSearchController.swift in Sources */,
 				947564F31D4C269D00AC6B72 /* YMVerticalButton.swift in Sources */,
-				940375A21D50119C00C7B135 /* YMNewCareContentCell.swift in Sources */,
 				940FC7641D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift in Sources */,
 				947650C31D589E5A00F33B68 /* NSString+Extension.swift in Sources */,
 				94D584FF1D57051000E4CAFE /* UIImageView+Extension.swift in Sources */,
-				9475652F1D4D7EC500AC6B72 /* YMCareheaderView.swift in Sources */,
 				947565181D4CBCAA00AC6B72 /* YMAccountCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
