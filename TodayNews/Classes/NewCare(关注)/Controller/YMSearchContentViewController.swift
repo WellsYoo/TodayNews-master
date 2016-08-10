@@ -54,8 +54,10 @@ class YMSearchContentViewController: YMBaseViewController {
     }
 
     private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
+        var searchBar = UISearchBar()
         searchBar.delegate = self
+        searchBar.height = 40
+//        searchBar.setSearchFieldBackgroundImage(UIImage(named: "searchbar_location_2x44_"), forState: .Normal)
         searchBar.placeholder = "请输入关键字"
         return searchBar
     }()

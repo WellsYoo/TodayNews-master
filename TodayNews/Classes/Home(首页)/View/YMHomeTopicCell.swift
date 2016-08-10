@@ -141,7 +141,6 @@ class YMHomeTopicCell: UITableViewCell {
     
     /// 举报按钮点击
     func closeBtnClick() {
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

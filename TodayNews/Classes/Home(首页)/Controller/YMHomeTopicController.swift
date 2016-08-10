@@ -32,6 +32,7 @@ class YMHomeTopicController: UITableViewController {
     }
     
     private func setupUI() {
+        self.definesPresentationContext = true
         tableView.contentInset = UIEdgeInsetsMake(20, 0, 49, 0)
         // 注册 cell
         tableView.registerClass(YMHomeSmallCell.self, forCellReuseIdentifier: topicSmallCellID)
@@ -45,9 +46,21 @@ class YMHomeTopicController: UITableViewController {
     
     private lazy var homeSearchBar: YMHomeSearchBar = {
         let homeSearchBar = YMHomeSearchBar()
+        homeSearchBar.searchBar.delegate = self
         homeSearchBar.frame = CGRectMake(0, 0, SCREENW, 44)
         return homeSearchBar
     }()
+    
+//    private lazy var searchController: UISearchController = {
+//        let searchController = UISearchController(searchResultsController: nil)
+////        searchController.searchResultsUpdater = self
+//        searchController.dimsBackgroundDuringPresentation = true
+//        searchController.hidesNavigationBarDuringPresentation = true
+//        searchController.searchBar.placeholder = "搜索"
+//        searchController.searchBar.barTintColor = YMGlobalColor()
+//        searchController.searchBar.sizeToFit()
+//        return searchController
+//    }()
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -56,7 +69,17 @@ class YMHomeTopicController: UITableViewController {
 
 }
 
-extension YMHomeTopicController {
+extension YMHomeTopicController: UITextFieldDelegate {
+    
+    // MARK: - UITextFieldDelegate
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        // 创建搜索内容控制器
+        let searchContentVC = YMSearchContentViewController()
+//        searchContentVC.delegate = self
+        let nav = YMNavigationController(rootViewController: searchContentVC)
+        presentViewController(nav, animated: false, completion: nil)
+        return true
+    }
     
     /// 添加上拉刷新和下拉刷新
     private func setupRefresh() {
@@ -124,13 +147,11 @@ extension YMHomeTopicController {
         return newsTopic.cellHeight
     }
     
+    // MARK: - UITableViewDeleagte
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-    }
-    
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
+        let homeDetailVC = YMHomeDetailController()
+        navigationController?.pushViewController(homeDetailVC, animated: true)
     }
     
     override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
