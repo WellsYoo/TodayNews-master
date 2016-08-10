@@ -12,13 +12,17 @@ class YMAddTopicViewController: UIViewController {
     /// 我的频道
     var myTopics = [YMHomeTopTitle]()
     /// 推荐频道
-    var recomendTopics = [YMHomeTopTitle]()
+    var recommendTopics = [YMHomeTopTitle]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
-        
+        /// 获取推荐标题内容
+        YMNetworkTool.shareNetworkTool.loadRecommendTopic { [weak self] (topics) in
+            self!.recommendTopics = topics
+            
+        }
     }
     
     private func setupUI() {

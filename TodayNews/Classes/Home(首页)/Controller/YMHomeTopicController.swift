@@ -14,6 +14,7 @@ let topicLargeCellID = "YMHomeLargeCell"
 let topicNoImageCellID = "YMHomeNoImageCell"
 
 class YMHomeTopicController: UITableViewController {
+    
     // 下拉刷新的时间
     private var pullRefreshTime: NSTimeInterval?
     // 记录点击的顶部标题
@@ -31,7 +32,7 @@ class YMHomeTopicController: UITableViewController {
     }
     
     private func setupUI() {
-        tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0)
+        tableView.contentInset = UIEdgeInsetsMake(20, 0, 49, 0)
         // 注册 cell
         tableView.registerClass(YMHomeSmallCell.self, forCellReuseIdentifier: topicSmallCellID)
         tableView.registerClass(YMHomeMiddleCell.self, forCellReuseIdentifier: topicMiddleCellID)
@@ -39,8 +40,14 @@ class YMHomeTopicController: UITableViewController {
         tableView.registerClass(YMHomeNoImageCell.self, forCellReuseIdentifier: topicNoImageCellID)
         // 预设定 cell 的高度为 97
         tableView.estimatedRowHeight = 97
-        
+        tableView.tableHeaderView = homeSearchBar
     }
+    
+    private lazy var homeSearchBar: YMHomeSearchBar = {
+        let homeSearchBar = YMHomeSearchBar()
+        homeSearchBar.frame = CGRectMake(0, 0, SCREENW, 44)
+        return homeSearchBar
+    }()
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -121,6 +128,17 @@ extension YMHomeTopicController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
     }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y)
+    }
+    
+    override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y < -20 {
+            scrollView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0)
+        }
+    }
+    
 }
 
 
