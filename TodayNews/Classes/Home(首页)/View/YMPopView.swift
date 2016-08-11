@@ -120,7 +120,6 @@ class YMPopView: UIView {
     /// 白色 view
     private lazy var bgView: UIView = {
         let bgView = UIView()
-//        bgView.frame = CGRectMake(15, SCREENH - 177, SCREENW - 30, 177)
         bgView.layer.cornerRadius = kCornerRadius
         bgView.layer.masksToBounds = true
         bgView.backgroundColor = UIColor.whiteColor()
