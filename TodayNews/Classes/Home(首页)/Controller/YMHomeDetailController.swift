@@ -27,8 +27,14 @@ class YMHomeDetailController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more_right_topic_night_24x24_"), style: .Plain, target: self, action: #selector(homeDetailBBItemClick))
         navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
         navigationController?.navigationBar.barStyle = .Default
+        view.addSubview(scrollView)
         
         view.addSubview(bottomView)
+        
+        scrollView.snp_makeConstraints { (make) in
+            make.top.left.right.equalTo(view)
+            make.bottom.equalTo(bottomView.snp_top)
+        }
         
         bottomView.snp_makeConstraints { (make) in
             make.left.right.bottom.equalTo(view)
@@ -42,13 +48,12 @@ class YMHomeDetailController: UIViewController {
     
     private lazy var bottomView: YMHomeDetailBottomView = {
         let bottomView = NSBundle.mainBundle().loadNibNamed(String(YMHomeDetailBottomView), owner: nil, options: nil).last as! YMHomeDetailBottomView
-        
         return bottomView
     }()
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        
+//        scrollView.contentInset = UIEdgeInsetsMake(<#T##top: CGFloat##CGFloat#>, <#T##left: CGFloat##CGFloat#>, <#T##bottom: CGFloat##CGFloat#>, <#T##right: CGFloat##CGFloat#>)
         return scrollView
     }()
     

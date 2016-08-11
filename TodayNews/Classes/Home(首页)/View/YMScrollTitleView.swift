@@ -35,7 +35,7 @@ class YMScrollTitleView: UIView {
         // 获取首页顶部标题数据
         YMNetworkTool.shareNetworkTool.loadHomeTitlesData { [weak self] (topTitles) in
             // 添加推荐标题
-            let dict = ["category": "", "name": "推荐"]
+            let dict = ["category": "__all__", "name": "推荐"]
             let recommend = YMHomeTopTitle(dict: dict)
             self!.titles.append(recommend)
             self!.titles += topTitles

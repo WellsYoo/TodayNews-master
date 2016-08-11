@@ -47,10 +47,10 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSW-MS-lbs">
-                    <rect key="frame" x="206" y="0.0" width="9" height="20"/>
+                    <rect key="frame" x="206" y="5" width="9" height="16"/>
                     <color key="backgroundColor" red="0.96470588235294119" green="0.35686274509803922" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="Gvv-jN-B6P"/>
+                        <constraint firstAttribute="height" constant="16" id="Gvv-jN-B6P"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -77,7 +77,7 @@
                 <constraint firstItem="1eU-n7-hlC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="WN8-QS-BeX"/>
                 <constraint firstAttribute="bottom" secondItem="wpQ-q1-KQB" secondAttribute="bottom" id="Yhg-Of-pG4"/>
                 <constraint firstItem="ft1-SN-h02" firstAttribute="leading" secondItem="1eU-n7-hlC" secondAttribute="trailing" constant="20" id="ZGd-Yc-jWS"/>
-                <constraint firstItem="gSW-MS-lbs" firstAttribute="top" secondItem="ft1-SN-h02" secondAttribute="top" id="fNo-j0-ONt"/>
+                <constraint firstItem="gSW-MS-lbs" firstAttribute="top" secondItem="ft1-SN-h02" secondAttribute="top" constant="5" id="fNo-j0-ONt"/>
                 <constraint firstAttribute="trailing" secondItem="wpQ-q1-KQB" secondAttribute="trailing" constant="10" id="s2J-zN-7Qd"/>
                 <constraint firstItem="1eU-n7-hlC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wcQ-8j-afH"/>
                 <constraint firstAttribute="bottom" secondItem="ft1-SN-h02" secondAttribute="bottom" id="zEv-aF-Yfh"/>
