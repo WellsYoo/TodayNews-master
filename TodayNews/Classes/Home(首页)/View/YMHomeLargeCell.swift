@@ -47,7 +47,6 @@ class YMHomeLargeCell: YMHomeTopicCell {
                 rightBottomLabel.text = "\(newsTopic!.gallary_image_count)图"
             }
 
-            
             largeImageView.kf_setImageWithURL(NSURL(string: urlString)!)
             if let label = newsTopic?.label {
                 if label == "" {

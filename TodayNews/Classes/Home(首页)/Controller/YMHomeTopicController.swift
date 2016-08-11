@@ -105,12 +105,15 @@ extension YMHomeTopicController: UITextFieldDelegate {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let newsTopic = newsTopics[indexPath.row]
+        let tableViewSuperView = tableView.superview
         
         if newsTopic.image_list.count != 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(topicSmallCellID) as! YMHomeSmallCell
             cell.newsTopic = newsTopic
-            cell.closeButtonClick({ (filterWord) in
-                
+            cell.closeButtonClick({ (filterWords) in
+                let buttonRect = cell.closeButton.convertRect(cell.closeButton.frame, fromView: tableViewSuperView!.superview)
+                // < -517 的时候，尖角在下面
+                YMPopView.show(filterWords, topY: buttonRect.minY)
             })
             return cell
         } else {
@@ -118,23 +121,29 @@ extension YMHomeTopicController: UITextFieldDelegate {
                 if newsTopic.video_detail_info?.video_id != nil || newsTopic.large_image_list.count != 0 {
                     let cell = tableView.dequeueReusableCellWithIdentifier(topicLargeCellID) as! YMHomeLargeCell
                     cell.newsTopic = newsTopic
-                    cell.closeButtonClick({ (filterWord) in
-                        
+                    cell.closeButtonClick({ (filterWords) in
+                        let buttonRect = cell.closeButton.convertRect(cell.closeButton.frame, fromView: tableViewSuperView!.superview)
+                        // < -517 的时候，尖角在下面
+                        YMPopView.show(filterWords, topY: buttonRect.minY)
                     })
                     return cell
                 } else {
                     let cell = tableView.dequeueReusableCellWithIdentifier(topicMiddleCellID) as! YMHomeMiddleCell
                     cell.newsTopic = newsTopic
-                    cell.closeButtonClick({ (filterWord) in
-                        
+                    cell.closeButtonClick({ (filterWords) in
+                        let buttonRect = cell.closeButton.convertRect(cell.closeButton.frame, fromView: tableViewSuperView!.superview)
+                        // < -517 的时候，尖角在下面
+                        YMPopView.show(filterWords, topY: buttonRect.minY)
                     })
                     return cell
                 }
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier(topicNoImageCellID) as! YMHomeNoImageCell
                 cell.newsTopic = newsTopic
-                cell.closeButtonClick({ (filterWord) in
-                    
+                cell.closeButtonClick({ (filterWords) in
+                    let buttonRect = cell.closeButton.convertRect(cell.closeButton.frame, fromView: tableViewSuperView!.superview)
+                    // < -517 的时候，尖角在下面
+                    YMPopView.show(filterWords, topY: buttonRect.minY)
                 })
                 return cell
             }

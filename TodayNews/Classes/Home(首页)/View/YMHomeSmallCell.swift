@@ -87,7 +87,7 @@ class YMHomeSmallCell: YMHomeTopicCell {
     }
     
     /// 举报按钮点击回调
-    func closeButtonClick(closure:(filterWord: [YMFilterWord])->()) {
+    func closeButtonClick(closure:(filterWords: [YMFilterWord])->()) {
         closeButtonClosure = closure
     }
     

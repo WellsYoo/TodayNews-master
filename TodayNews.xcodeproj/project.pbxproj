@@ -38,6 +38,7 @@
 		945026111D59DBBF00C7F3B9 /* YMTopicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945026101D59DBBF00C7F3B9 /* YMTopicTableViewCell.swift */; };
 		945026141D5B769800C7F3B9 /* YMHomeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945026131D5B769800C7F3B9 /* YMHomeSearch.swift */; };
 		946B44B81D5BEE6300D03FC3 /* YMHomeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B44B71D5BEE6300D03FC3 /* YMHomeDetailController.swift */; };
+		946B44BA1D5C237000D03FC3 /* YMPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B44B91D5C237000D03FC3 /* YMPopView.swift */; };
 		9472DA001D5499A60001038F /* YMNewsTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9472D9FF1D5499A60001038F /* YMNewsTopic.swift */; };
 		9472DA021D5579040001038F /* YMTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9472DA011D5579040001038F /* YMTipView.swift */; };
 		947564771D4B86FE00AC6B72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947564761D4B86FE00AC6B72 /* Assets.xcassets */; };
@@ -142,6 +143,7 @@
 		945026101D59DBBF00C7F3B9 /* YMTopicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMTopicTableViewCell.swift; sourceTree = "<group>"; };
 		945026131D5B769800C7F3B9 /* YMHomeSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeSearch.swift; sourceTree = "<group>"; };
 		946B44B71D5BEE6300D03FC3 /* YMHomeDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeDetailController.swift; sourceTree = "<group>"; };
+		946B44B91D5C237000D03FC3 /* YMPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMPopView.swift; sourceTree = "<group>"; };
 		9472D9FF1D5499A60001038F /* YMNewsTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewsTopic.swift; sourceTree = "<group>"; };
 		9472DA011D5579040001038F /* YMTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMTipView.swift; sourceTree = "<group>"; };
 		9475646C1D4B86FE00AC6B72 /* TodayNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -400,6 +402,7 @@
 				9479ED0D1D59816900EF7337 /* YMHomeTopicCell.swift */,
 				9450260E1D59D47F00C7F3B9 /* YMScrollTitleView.swift */,
 				945026131D5B769800C7F3B9 /* YMHomeSearch.swift */,
+				946B44B91D5C237000D03FC3 /* YMPopView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 				940375AB1D50EC4B00C7B135 /* YMVideoTopTitle.swift in Sources */,
 				2527642F1D4F50F10078C143 /* YMSettingHeaderView.swift in Sources */,
 				945025FB1D59D33800C7F3B9 /* YMConcern.swift in Sources */,
+				946B44BA1D5C237000D03FC3 /* YMPopView.swift in Sources */,
 				947564F91D4C274C00AC6B72 /* UIView+Extension.swift in Sources */,
 				945025FF1D59D33800C7F3B9 /* YMNewCareBottomCell.swift in Sources */,
 				9479ED101D59C48D00EF7337 /* UITableView+Extension.swift in Sources */,
