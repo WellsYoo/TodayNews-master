@@ -20,8 +20,11 @@ class YMHomeShareView: UIView {
         homeShareView.backgroundColor = YMColor(0, g: 0, b: 0, a: 0.5)
         let window = UIApplication.sharedApplication().keyWindow
         window?.addSubview(homeShareView)
-        UIView.animateWithDuration(kAnimationDuration) { 
+        UIView.animateWithDuration(kAnimationDuration, animations: { 
             homeShareView.bgView.frame = CGRectMake(0, SCREENH - 290, SCREENW, 290)
+            }) { (_) in
+                homeShareView.addButton(homeShareView.topScrollView)
+                homeShareView.addButton(homeShareView.bottomScrollView)
         }
     }
     
@@ -50,8 +53,9 @@ class YMHomeShareView: UIView {
         cancelButton.frame = CGRectMake(0, bgView.height - 48, SCREENW, 48)
         bgView.addSubview(cancelButton)
         
-        addButton(topScrollView)
-        addButton(bottomScrollView)
+//        addButton(topScrollView)
+        
+//        addButton(bottomScrollView)
     }
     
     // 上部的滚动视图
@@ -111,7 +115,7 @@ extension YMHomeShareView {
     func addButton(scrollView: UIScrollView) {
         let buttonW: CGFloat = 80
         let buttonH: CGFloat = 80
-        let buttonY: CGFloat = 23
+        let buttonY: CGFloat = CGRectGetMaxY(scrollView.frame)
         
         for index in 0..<shares.count {
             let share = shares[index]
@@ -122,14 +126,31 @@ extension YMHomeShareView {
             button.titleLabel?.font = UIFont.systemFontOfSize(13)
             button.setTitleColor(UIColor.blackColor(), forState: .Normal)
             button.addTarget(self, action: #selector(shareButtonClick(_:)), forControlEvents: .TouchUpInside)
-            let buttonX = CGFloat(index) * buttonW + kMargin
-            button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH)
+            let buttonX = CGFloat(index) * buttonW + 3 * kMargin
+            
+            button.x = buttonX
+            button.width = buttonW
+            button.height = buttonH
+            button.y = 23
             scrollView.addSubview(button)
+//            let springAnimation = CASpringAnimation(keyPath: "position.y")
+//            springAnimation.fromValue = buttonY
+//            springAnimation.toValue = 23
+////            springAnimation.speed = 1
+//            springAnimation.initialVelocity = 1
+//            springAnimation.damping = 0.4
+////            springAnimation.beginTime = CACurrentMediaTime() + Double(8 * index + 10)
+//            springAnimation.duration = kAnimationDuration
+//            button.layer.addAnimation(springAnimation, forKey: springAnimation.keyPath)
+            button.y = buttonY
+            UIView.animateWithDuration(kAnimationDuration, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: UIViewAnimationOptions(rawValue: 0), animations: {
+                    button.y = 23
+                }, completion: { (_) in
+            })
             if index == shares.count - 1 {
                 scrollView.contentSize = CGSizeMake(CGRectGetMaxX(button.frame) + 2 * kMargin, topScrollView.height)
             }
         }
-        scrollView.setContentOffset(CGPointMake(-20, 0), animated: true)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

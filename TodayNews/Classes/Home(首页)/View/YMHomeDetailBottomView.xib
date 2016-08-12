@@ -47,10 +47,10 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSW-MS-lbs">
-                    <rect key="frame" x="208.5" y="2.5" width="8" height="16"/>
+                    <rect key="frame" x="208.5" y="3" width="8" height="15"/>
                     <color key="backgroundColor" red="0.96470588235294119" green="0.35686274509803922" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="16" id="Gvv-jN-B6P"/>
+                        <constraint firstAttribute="height" constant="15" id="Gvv-jN-B6P"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
