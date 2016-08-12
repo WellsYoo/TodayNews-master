@@ -133,15 +133,6 @@ extension YMHomeShareView {
             button.height = buttonH
             button.y = 23
             scrollView.addSubview(button)
-//            let springAnimation = CASpringAnimation(keyPath: "position.y")
-//            springAnimation.fromValue = buttonY
-//            springAnimation.toValue = 23
-////            springAnimation.speed = 1
-//            springAnimation.initialVelocity = 1
-//            springAnimation.damping = 0.4
-////            springAnimation.beginTime = CACurrentMediaTime() + Double(8 * index + 10)
-//            springAnimation.duration = kAnimationDuration
-//            button.layer.addAnimation(springAnimation, forKey: springAnimation.keyPath)
             button.y = buttonY
             UIView.animateWithDuration(kAnimationDuration, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: UIViewAnimationOptions(rawValue: 0), animations: {
                     button.y = 23
