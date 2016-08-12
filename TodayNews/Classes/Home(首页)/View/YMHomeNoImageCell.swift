@@ -5,6 +5,8 @@
 //  Created by 杨蒙 on 16/8/9.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
+//  没有图片的情况
+//
 
 import UIKit
 /// ![](http://obna9emby.bkt.clouddn.com/home-cell-1.png)
@@ -25,12 +27,16 @@ class YMHomeNoImageCell: YMHomeTopicCell {
                 avatarImageView.setCircleHeader(mediaInfo!.avatar_url!)
             }
             
-            if newsTopic!.comment_count! >= 10000 {
-                let comment_count = newsTopic!.comment_count! / 10000
-                commentLabel.text = "\(comment_count)万条评论"
+            if let commentCount = newsTopic!.comment_count {
+                if commentCount >= 10000 {
+                    commentLabel.text = "\(commentCount / 10000)万评论"
+                } else {
+                    commentLabel.text = "\(commentCount)评论"
+                }
             } else {
-                commentLabel.text = "\(newsTopic!.comment_count!)条评论"
+                commentLabel.hidden = true
             }
+            
             filterWords = newsTopic?.filter_words
             if let label = newsTopic?.label {
                 stickLabel.setTitle(" \(label) ", forState: .Normal)

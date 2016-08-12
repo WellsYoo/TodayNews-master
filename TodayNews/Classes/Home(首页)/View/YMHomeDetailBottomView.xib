@@ -47,18 +47,18 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSW-MS-lbs">
-                    <rect key="frame" x="206" y="5" width="9" height="16"/>
+                    <rect key="frame" x="208.5" y="2.5" width="8" height="16"/>
                     <color key="backgroundColor" red="0.96470588235294119" green="0.35686274509803922" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="16" id="Gvv-jN-B6P"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="5"/>
+                            <integer key="value" value="6"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
@@ -70,15 +70,15 @@
                 <constraint firstItem="1eU-n7-hlC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Bm8-1u-PdN"/>
                 <constraint firstItem="ft1-SN-h02" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Cn1-kA-JJd"/>
                 <constraint firstAttribute="bottom" secondItem="1eU-n7-hlC" secondAttribute="bottom" constant="7" id="DcJ-kJ-V9s"/>
+                <constraint firstItem="gSW-MS-lbs" firstAttribute="centerY" secondItem="ft1-SN-h02" secondAttribute="centerY" constant="-12" id="EQf-wP-lQb"/>
                 <constraint firstItem="wpQ-q1-KQB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FSI-xH-Sze"/>
-                <constraint firstItem="gSW-MS-lbs" firstAttribute="trailing" secondItem="ft1-SN-h02" secondAttribute="trailing" constant="-5" id="Jb4-v4-TKB"/>
                 <constraint firstItem="wpQ-q1-KQB" firstAttribute="leading" secondItem="zmz-41-TLR" secondAttribute="trailing" id="Lxu-hN-TBf"/>
                 <constraint firstAttribute="bottom" secondItem="zmz-41-TLR" secondAttribute="bottom" id="M0L-QF-AB8"/>
                 <constraint firstItem="1eU-n7-hlC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="WN8-QS-BeX"/>
                 <constraint firstAttribute="bottom" secondItem="wpQ-q1-KQB" secondAttribute="bottom" id="Yhg-Of-pG4"/>
                 <constraint firstItem="ft1-SN-h02" firstAttribute="leading" secondItem="1eU-n7-hlC" secondAttribute="trailing" constant="20" id="ZGd-Yc-jWS"/>
-                <constraint firstItem="gSW-MS-lbs" firstAttribute="top" secondItem="ft1-SN-h02" secondAttribute="top" constant="5" id="fNo-j0-ONt"/>
                 <constraint firstAttribute="trailing" secondItem="wpQ-q1-KQB" secondAttribute="trailing" constant="10" id="s2J-zN-7Qd"/>
+                <constraint firstItem="gSW-MS-lbs" firstAttribute="centerX" secondItem="ft1-SN-h02" secondAttribute="centerX" constant="15" id="sBl-Bu-Gbo"/>
                 <constraint firstItem="1eU-n7-hlC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wcQ-8j-afH"/>
                 <constraint firstAttribute="bottom" secondItem="ft1-SN-h02" secondAttribute="bottom" id="zEv-aF-Yfh"/>
             </constraints>

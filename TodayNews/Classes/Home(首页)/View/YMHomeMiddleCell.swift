@@ -29,11 +29,14 @@ class YMHomeMiddleCell: YMHomeTopicCell {
                 rightImageView.kf_setImageWithURL(NSURL(string: mediaInfo!.avatar_url!)!)
             }
             
-            if newsTopic!.comment_count! >= 10000 {
-                let comment_count = newsTopic!.comment_count! / 10000
-                commentLabel.text = "\(comment_count)万条评论"
+            if let commentCount = newsTopic!.comment_count {
+                if commentCount >= 10000 {
+                    commentLabel.text = "\(commentCount / 10000)万评论"
+                } else {
+                    commentLabel.text = "\(commentCount)评论"
+                }
             } else {
-                commentLabel.text = "\(newsTopic!.comment_count!)条评论"
+                commentLabel.hidden = true
             }
             
             if (newsTopic!.titleH + avatarImageView.height + kMargin) < newsTopic?.imageH {

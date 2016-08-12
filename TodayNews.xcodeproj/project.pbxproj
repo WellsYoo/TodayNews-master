@@ -87,6 +87,10 @@
 		9479ED101D59C48D00EF7337 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479ED0F1D59C48D00EF7337 /* UITableView+Extension.swift */; };
 		9479ED151D59CE2F00EF7337 /* YMFirstIntroduceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479ED131D59CE2F00EF7337 /* YMFirstIntroduceController.swift */; };
 		9479ED161D59CE2F00EF7337 /* YMFirstIntroduceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9479ED141D59CE2F00EF7337 /* YMFirstIntroduceController.xib */; };
+		949F32591D5DA06900620DB1 /* YMSharePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 949F32581D5DA06900620DB1 /* YMSharePlist.plist */; };
+		949F325B1D5DA99F00620DB1 /* YMHomeShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F325A1D5DA99F00620DB1 /* YMHomeShareView.swift */; };
+		949F32611D5DAC2100620DB1 /* YMHomeShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F32601D5DAC2100620DB1 /* YMHomeShare.swift */; };
+		949F32651D5DB1F800620DB1 /* YMShareVerticalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F32641D5DB1F800620DB1 /* YMShareVerticalButton.swift */; };
 		94D584FB1D55883300E4CAFE /* YMHomeTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */; };
 		94D584FD1D5704F500E4CAFE /* UIImage+Extendion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */; };
 		94D584FF1D57051000E4CAFE /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */; };
@@ -200,6 +204,10 @@
 		9479ED0F1D59C48D00EF7337 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		9479ED131D59CE2F00EF7337 /* YMFirstIntroduceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMFirstIntroduceController.swift; sourceTree = "<group>"; };
 		9479ED141D59CE2F00EF7337 /* YMFirstIntroduceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMFirstIntroduceController.xib; sourceTree = "<group>"; };
+		949F32581D5DA06900620DB1 /* YMSharePlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YMSharePlist.plist; sourceTree = "<group>"; };
+		949F325A1D5DA99F00620DB1 /* YMHomeShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeShareView.swift; sourceTree = "<group>"; };
+		949F32601D5DAC2100620DB1 /* YMHomeShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeShare.swift; sourceTree = "<group>"; };
+		949F32641D5DB1F800620DB1 /* YMShareVerticalButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMShareVerticalButton.swift; sourceTree = "<group>"; };
 		94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeTopicController.swift; sourceTree = "<group>"; };
 		94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extendion.swift"; sourceTree = "<group>"; };
 		94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -389,6 +397,7 @@
 			children = (
 				256D00ED1D51B5E3007D40CF /* YMHomeTopTitle.swift */,
 				9472D9FF1D5499A60001038F /* YMNewsTopic.swift */,
+				949F32601D5DAC2100620DB1 /* YMHomeShare.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -409,6 +418,8 @@
 				946B44BD1D5CCA5E00D03FC3 /* YMHomeDetailBottomView.swift */,
 				946B44BF1D5CCA6F00D03FC3 /* YMHomeDetailBottomView.xib */,
 				946B44C11D5D36A700D03FC3 /* YMHomdeDetailUserView.swift */,
+				949F325A1D5DA99F00620DB1 /* YMHomeShareView.swift */,
+				949F32641D5DB1F800620DB1 /* YMShareVerticalButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -454,6 +465,7 @@
 				947564781D4B86FE00AC6B72 /* LaunchScreen.storyboard */,
 				947565041D4C3AA600AC6B72 /* YMMineCellPlist.plist */,
 				9475650C1D4C5AA500AC6B72 /* YMSettingPlist.plist */,
+				949F32581D5DA06900620DB1 /* YMSharePlist.plist */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -689,6 +701,7 @@
 				945025F71D59D33800C7F3B9 /* YMNewCareSearchViewController.xib in Resources */,
 				9450260B1D59D33800C7F3B9 /* YMsearchCell.xib in Resources */,
 				947565131D4CAD8400AC6B72 /* YMSettingCell.xib in Resources */,
+				949F32591D5DA06900620DB1 /* YMSharePlist.plist in Resources */,
 				945026081D59D33800C7F3B9 /* YMNewCareTopCell.xib in Resources */,
 				947565051D4C3AA600AC6B72 /* YMMineCellPlist.plist in Resources */,
 				9475650D1D4C5AA500AC6B72 /* YMSettingPlist.plist in Resources */,
@@ -788,6 +801,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				949F32651D5DB1F800620DB1 /* YMShareVerticalButton.swift in Sources */,
 				946B44C21D5D36A700D03FC3 /* YMHomdeDetailUserView.swift in Sources */,
 				947565071D4C3BD100AC6B72 /* YMMineCellModel.swift in Sources */,
 				94DD98A31D5401CB00331B6B /* YMVideoTopicController.swift in Sources */,
@@ -834,6 +848,7 @@
 				947564EC1D4BADD500AC6B72 /* YMNavigationController.swift in Sources */,
 				945025FA1D59D33800C7F3B9 /* YMSelectConcernTableController.swift in Sources */,
 				947564EF1D4BADD500AC6B72 /* YMMineViewController.swift in Sources */,
+				949F32611D5DAC2100620DB1 /* YMHomeShare.swift in Sources */,
 				945025F51D59D33800C7F3B9 /* YMConcernDetailViewController.swift in Sources */,
 				9479ED0C1D597EA200EF7337 /* YMHomeNoImageCell.swift in Sources */,
 				947564EE1D4BADD500AC6B72 /* AppDelegate.swift in Sources */,
@@ -851,6 +866,7 @@
 				947564F31D4C269D00AC6B72 /* YMVerticalButton.swift in Sources */,
 				940FC7641D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift in Sources */,
 				947650C31D589E5A00F33B68 /* NSString+Extension.swift in Sources */,
+				949F325B1D5DA99F00620DB1 /* YMHomeShareView.swift in Sources */,
 				94D584FF1D57051000E4CAFE /* UIImageView+Extension.swift in Sources */,
 				946B44BE1D5CCA5E00D03FC3 /* YMHomeDetailBottomView.swift in Sources */,
 				947565181D4CBCAA00AC6B72 /* YMAccountCell.swift in Sources */,

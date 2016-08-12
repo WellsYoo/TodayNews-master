@@ -6,6 +6,7 @@
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
 //  弹出框
+//  这个类写的不好，显示的位置不正确
 //
 
 import UIKit

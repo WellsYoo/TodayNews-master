@@ -26,25 +26,31 @@ class YMHomeLargeCell: YMHomeTopicCell {
                 avatarImageView.setCircleHeader(mediaInfo.avatar_url!)
             }
             
-            if newsTopic!.comment_count! >= 10000 {
-                let comment_count = newsTopic!.comment_count! / 10000
-                commentLabel.text = "\(comment_count)万条评论"
+            if let commentCount = newsTopic!.comment_count {
+                if commentCount >= 10000 {
+                    commentLabel.text = "\(commentCount / 10000)万评论"
+                } else {
+                    commentLabel.text = "\(commentCount)评论"
+                }
             } else {
-                commentLabel.text = "\(newsTopic!.comment_count!)条评论"
+                commentLabel.hidden = true
             }
             
             filterWords = newsTopic?.filter_words
-            let videoDetailInfo = newsTopic?.video_detail_info
+            
             var urlString = String()
-            if videoDetailInfo?.video_id != nil {
-                urlString = videoDetailInfo!.detail_video_large_image!.url!
+            
+            if let videoDetailInfo = newsTopic?.video_detail_info {
+                // 说明是视频
+                urlString = videoDetailInfo.detail_video_large_image!.url!
                 /// 格式化时间
                 let minute = Int(newsTopic!.video_duration! / 60)
                 let second = newsTopic!.video_duration! % 60
                 rightBottomLabel.text = String(format: "%02d:%02d", minute, second)
-            } else {
+            } else { // 说明是大图
+                playButton.hidden = true
                 urlString = newsTopic!.large_image_list.first!.url!
-                rightBottomLabel.text = "\(newsTopic!.gallary_image_count)图"
+                rightBottomLabel.text = "\(newsTopic!.gallary_image_count!)图"
             }
 
             largeImageView.kf_setImageWithURL(NSURL(string: urlString)!)

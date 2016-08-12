@@ -5,20 +5,26 @@
 //  Created by 杨蒙 on 16/8/12.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
+//  新闻详情标题下面的关注用户
+//  没有调用
+//
 
 import UIKit
 import SnapKit
-
+/// ![](http://obna9emby.bkt.clouddn.com/news/home-detail-care.png)
 class YMHomdeDetailUserView: UIView {
     
-    
+    var newTopic: YMNewsTopic? {
+        didSet {
+            
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupUI()
     }
-    
     
     private func setupUI() {
         
@@ -32,9 +38,8 @@ class YMHomdeDetailUserView: UIView {
         
         addSubview(careButton)
         
-        
         careButton.snp_makeConstraints { (make) in
-            make.size.equalTo(CGSizeMake(72, 28))
+            make.size.equalTo(CGSizeMake(72, 29))
             make.right.equalTo(self).offset(-kHomeMargin)
             make.centerY.equalTo(avatarImage)
         }
@@ -46,7 +51,6 @@ class YMHomdeDetailUserView: UIView {
         
         typeButton.snp_makeConstraints { (make) in
             make.left.equalTo(titleLabel)
-            make.size.equalTo(CGSizeMake(26, 13))
             make.bottom.equalTo(avatarImage.snp_bottom)
         }
         
@@ -57,7 +61,7 @@ class YMHomdeDetailUserView: UIView {
         
         avatarImage.snp_makeConstraints { (make) in
             make.left.equalTo(self).offset(kHomeMargin)
-            make.size.equalTo(CGSizeMake(72, 72))
+            make.size.equalTo(CGSizeMake(36, 36))
             make.centerY.equalTo(self)
         }
         
@@ -87,6 +91,7 @@ class YMHomdeDetailUserView: UIView {
     private lazy var typeButton: UIButton = {
         let typeButton = UIButton()
         typeButton.userInteractionEnabled = false
+        typeButton.sizeToFit()
         typeButton.setTitle("原创", forState: .Normal)
         typeButton.setTitleColor(YMColor(76, g: 148, b: 200, a: 1.0), forState: .Normal)
         typeButton.titleLabel?.font = UIFont.systemFontOfSize(13)
@@ -115,7 +120,4 @@ class YMHomdeDetailUserView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
 }

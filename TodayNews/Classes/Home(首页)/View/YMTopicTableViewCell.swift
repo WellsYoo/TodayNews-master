@@ -5,10 +5,12 @@
 //  Created by 杨蒙 on 16/8/4.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
+//  这个类没有调用
+//
 
 import UIKit
 import SnapKit
-
+///  这个类没有调用，可以对比 **YMHomeTopicCell,YMHomeNoImageCell,YMHomeLargeCell,YMHomeMiddleCell,YMHomeSmallCell**
 class YMTopicTableViewCell: UITableViewCell {
     
     var filterWords: [YMFilterWord]?

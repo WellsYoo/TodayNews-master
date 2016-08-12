@@ -26,6 +26,7 @@ class YMHomeSearchBar: UIView {
     
     lazy var searchBar: YMSearchBar = {
         let searchBar = YMSearchBar()
+        searchBar.placeholder = "搜索"
         return searchBar
     }()
     
@@ -40,7 +41,6 @@ class YMSearchBar: UITextField {
         backgroundColor = UIColor.whiteColor()
         layer.cornerRadius = kCornerRadius
         layer.masksToBounds = true
-        placeholder = "搜索"
         let searchIcon = UIImageView()
         font = UIFont.systemFontOfSize(15)
         searchIcon.image = UIImage(named: "search_discover_16x16_")

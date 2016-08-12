@@ -89,6 +89,10 @@ class YMNewsTopic: NSObject {
         
         article_type = dict["article_type"] as? Int
         
+        url = dict["url"] as? String
+        article_url = dict["article_url"] as? String
+        article_alt_url = dict["article_alt_url"] as? String
+        
         bury_count = dict["bury_count"] as? Int
         cell_flag = dict["cell_flag"] as? Int
         behot_time = dict["behot_time"] as? Int
@@ -160,7 +164,7 @@ class YMNewsTopic: NSObject {
                     imageW = SCREENW - CGFloat(30)
                     imageH = 170
                     titleW = SCREENW - 30
-                    titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)))
+                    titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)), fontSize: 17)
                     // 中间有一张大图（包括视频和广告的图片），cell 的高度 = 底部间距 + 标题的高度 + 中间间距 + 图片高度 + 中间间距 + 用户头像的高度 + 底部间距
                     cellHeight = 2 * kHomeMargin + titleH + imageH + 2 * kMargin + 16
                     if largeImageLists?.count > 0 {
@@ -177,14 +181,14 @@ class YMNewsTopic: NSObject {
                     imageH = 70
                     // 文字宽度 SCREENW - 108 - 30 - 20
                     titleW = SCREENW - 158
-                    titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)))
+                    titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)), fontSize: 17)
                     // 比较标题和图片的高度哪个大，那么 cell 的高度就根据大的计算
                     // 右边有一张图片，cell 的高度 = 底部间距 + 标题的高度 + 中间的间距 + 用户头像的高度 + 底部间距
                     cellHeight = (titleH + 16 + kMargin >= imageH) ? (2 * kHomeMargin + titleH + kMargin + 16):(2 * kHomeMargin + imageH)
                 }
             } else { // 没有图片,也不是视频
                 titleW = SCREENW - 30
-                titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)))
+                titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)), fontSize: 17)
                 // 没有图片，cell 的高度 = 底部间距 + 标题的高度 + 中间的间距 + 用户头像的高度 + 底部间距
                 cellHeight = 2 * kHomeMargin + titleH + kMargin + 16
             }
@@ -199,7 +203,7 @@ class YMNewsTopic: NSObject {
             imageH = 70
             // 文字的宽度 SCREENW-30
             titleW = SCREENW - 30
-            titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)))
+            titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)), fontSize: 17)
             cellHeight = 2 * kHomeMargin + titleH + imageH + 2 * kMargin + 16
         }
         

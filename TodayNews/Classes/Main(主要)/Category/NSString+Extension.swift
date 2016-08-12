@@ -9,9 +9,8 @@
 import UIKit
 
 extension NSString {
-    
-    
-    class func boundingRectWithString(string: NSString, size: CGSize) -> CGFloat {
-        return string.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(17)], context: nil).size.height
+    /// 返回文字的高度
+    class func boundingRectWithString(string: NSString, size: CGSize, fontSize: CGFloat) -> CGFloat {
+        return string.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(fontSize)], context: nil).size.height
     }
 }

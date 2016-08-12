@@ -160,7 +160,7 @@ extension YMHomeTopicController: UITextFieldDelegate {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let homeDetailVC = YMHomeDetailController()
-        homeDetailVC.newTopic = newsTopics[indexPath.row]
+        homeDetailVC.newsTopic = newsTopics[indexPath.row]
         navigationController?.pushViewController(homeDetailVC, animated: true)
     }
     
