@@ -108,7 +108,7 @@ extension YMHomeShareView {
     
     /// 点击了某个分享按钮
     func shareButtonClick(button: YMShareVerticalButton) {
-        
+        print("点击了---- \(button.titleLabel!.text!)")
     }
     
     /// 创建分享按钮
