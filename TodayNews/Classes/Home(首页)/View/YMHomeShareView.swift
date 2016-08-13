@@ -9,7 +9,7 @@
 //
 
 import UIKit
-
+/// ![](http://obna9emby.bkt.clouddn.com/news/home-share.png)
 class YMHomeShareView: UIView {
 
     var shares = [YMHomeShare]()
@@ -52,10 +52,6 @@ class YMHomeShareView: UIView {
         
         cancelButton.frame = CGRectMake(0, bgView.height - 48, SCREENW, 48)
         bgView.addSubview(cancelButton)
-        
-//        addButton(topScrollView)
-        
-//        addButton(bottomScrollView)
     }
     
     // 上部的滚动视图
@@ -131,13 +127,11 @@ extension YMHomeShareView {
             button.x = buttonX
             button.width = buttonW
             button.height = buttonH
-            button.y = 23
             scrollView.addSubview(button)
             button.y = buttonY
             UIView.animateWithDuration(kAnimationDuration, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: UIViewAnimationOptions(rawValue: 0), animations: {
                     button.y = 23
-                }, completion: { (_) in
-            })
+                }, completion: nil)
             if index == shares.count - 1 {
                 scrollView.contentSize = CGSizeMake(CGRectGetMaxX(button.frame) + 2 * kMargin, topScrollView.height)
             }

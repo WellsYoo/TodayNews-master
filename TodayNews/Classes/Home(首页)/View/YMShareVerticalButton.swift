@@ -9,15 +9,9 @@
 //
 
 import UIKit
-
+/// ![](http://obna9emby.bkt.clouddn.com/news/home-share-vertical-button.png)
 class YMShareVerticalButton: UIButton {
 
-    var homeShare: YMHomeShare? {
-        didSet {
-            
-        }
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         titleLabel?.textAlignment = .Center

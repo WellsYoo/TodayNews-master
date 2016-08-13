@@ -41,6 +41,7 @@ class YMHomeNoImageCell: YMHomeTopicCell {
             if let label = newsTopic?.label {
                 stickLabel.setTitle(" \(label) ", forState: .Normal)
                 stickLabel.hidden = false
+                closeButton.hidden = (label == "置顶") ?  true : false
             }
         }
     }

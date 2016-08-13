@@ -52,6 +52,4 @@ extension YMVideoSearchController {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         searchBar.resignFirstResponder()
     }
-    
-    
 }

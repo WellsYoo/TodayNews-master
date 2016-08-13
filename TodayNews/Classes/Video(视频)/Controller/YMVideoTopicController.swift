@@ -35,15 +35,6 @@ class YMVideoTopicController: UITableViewController {
         tableView.separatorStyle = .None
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-}
-
-extension YMVideoTopicController {
-    
     /// 添加上拉刷新和下拉刷新
     private func setupRefresh() {
         pullRefreshTime = NSDate().timeIntervalSince1970
@@ -59,6 +50,15 @@ extension YMVideoTopicController {
             self!.tableView.reloadData()
         }
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+}
+
+extension YMVideoTopicController {
     
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

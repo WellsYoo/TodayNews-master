@@ -12,8 +12,6 @@ import UIKit
 
 class YMCollectionViewController: UITableViewController {
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

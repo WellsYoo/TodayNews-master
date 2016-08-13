@@ -14,12 +14,12 @@ import SnapKit
 /// ![](http://obna9emby.bkt.clouddn.com/news/popView_spec.png)
 class YMPopView: UIView {
 
-    var filterWord: [YMFilterWord]? {
+    var filterWords: [YMFilterWord]? {
         didSet {
             let buttonW: CGFloat = (SCREENW - 30 - 26 - 7) * 0.5
             let buttonH: CGFloat = 30
-            for index in 0..<filterWord!.count {
-                let word = filterWord![index]
+            for index in 0..<filterWords!.count {
+                let word = filterWords![index]
                 let button = UIButton()
                 button.setTitle(word.name, forState: .Normal)
                 button.titleLabel?.font = UIFont.systemFontOfSize(15)
@@ -34,12 +34,6 @@ class YMPopView: UIView {
                 button.y = CGFloat(Int(index / 2)) * (buttonH + 7) + 5
                 button.addTarget(self, action: #selector(wordButtonClick(_:)), forControlEvents: .TouchUpInside)
                 buttonBGView.addSubview(button)
-                if index ==  (filterWord!.count - 1) {
-                    bgView.snp_updateConstraints(closure: { (make) in
-                        make.height.equalTo(CGRectGetMaxY(button.frame) + 65)
-                    })
-                    self.bgView.layoutIfNeeded()
-                }
             }
         }
     }
@@ -48,25 +42,8 @@ class YMPopView: UIView {
         print("点击了 --- \(button.titleLabel!.text!)")
     }
     
-    var topY: CGFloat? {
-        didSet {
-            
-        }
-    }
-    
-    /// 显示弹出框
-    class func show(filterWords: [YMFilterWord], topY: CGFloat) {
-        let popView = YMPopView()
-        popView.topY = topY
-        popView.filterWord = filterWords
-        popView.frame = UIScreen.mainScreen().bounds
-        let window = UIApplication.sharedApplication().keyWindow
-        window?.addSubview(popView)
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = YMColor(0, g: 0, b: 0, a: 0.5)
         
         setupUI()
     }
@@ -81,9 +58,7 @@ class YMPopView: UIView {
         bgView.addSubview(buttonBGView)
         
         bgView.snp_makeConstraints { (make) in
-            make.right.equalTo(self).offset(-15)
-            make.bottom.equalTo(self).offset(-kMargin)
-            make.size.equalTo(CGSizeMake(SCREENW - 30, 177))
+            make.edges.equalTo(self)
         }
         
         popArraw.snp_makeConstraints { (make) in
@@ -104,10 +79,10 @@ class YMPopView: UIView {
         }
         
         buttonBGView.snp_makeConstraints { (make) in
-            make.top.equalTo(interestButton.snp_bottom).offset(10)
+            make.top.equalTo(interestButton.snp_bottom).offset(3)
             make.left.equalTo(bgView.snp_left).offset(13)
             make.right.equalTo(bgView.snp_right).offset(-13)
-            make.bottom.equalTo(bgView.snp_bottom).offset(-13)
+            make.bottom.equalTo(bgView.snp_bottom)
         }
     }
     
@@ -121,7 +96,7 @@ class YMPopView: UIView {
     /// 白色 view
     private lazy var bgView: UIView = {
         let bgView = UIView()
-        bgView.layer.cornerRadius = kCornerRadius
+        bgView.layer.cornerRadius = 10
         bgView.layer.masksToBounds = true
         bgView.backgroundColor = UIColor.whiteColor()
         return bgView
@@ -158,7 +133,4 @@ class YMPopView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.removeFromSuperview()
-    }
 }

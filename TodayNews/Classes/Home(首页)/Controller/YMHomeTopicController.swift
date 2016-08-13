@@ -51,36 +51,6 @@ class YMHomeTopicController: UITableViewController {
         return homeSearchBar
     }()
     
-//    private lazy var searchController: UISearchController = {
-//        let searchController = UISearchController(searchResultsController: nil)
-////        searchController.searchResultsUpdater = self
-//        searchController.dimsBackgroundDuringPresentation = true
-//        searchController.hidesNavigationBarDuringPresentation = true
-//        searchController.searchBar.placeholder = "搜索"
-//        searchController.searchBar.barTintColor = YMGlobalColor()
-//        searchController.searchBar.sizeToFit()
-//        return searchController
-//    }()
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-}
-
-extension YMHomeTopicController: UITextFieldDelegate {
-    
-    // MARK: - UITextFieldDelegate
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        // 创建搜索内容控制器
-        let searchContentVC = YMSearchContentViewController()
-//        searchContentVC.delegate = self
-        let nav = YMNavigationController(rootViewController: searchContentVC)
-        presentViewController(nav, animated: false, completion: nil)
-        return true
-    }
-    
     /// 添加上拉刷新和下拉刷新
     private func setupRefresh() {
         pullRefreshTime = NSDate().timeIntervalSince1970
@@ -97,6 +67,57 @@ extension YMHomeTopicController: UITextFieldDelegate {
         }
     }
     
+    /// 显示弹出屏蔽新闻内容
+    private func showPopView(filterWords: [YMFilterWord], point: CGPoint) {
+        let popVC = YMPopViewController()
+        popVC.filterWords = filterWords
+        /// 设置转场动画的代理
+        // 默认情况下，modal 会移除以前控制器的 view，替换为当前弹出的控制器
+        // 如果自定义转场，就不会移除以前控制器的 view
+        popVC.transitioningDelegate = popViewAnimator
+        switch filterWords.count {
+            case 0:
+                popViewAnimator.presentFrame = CGRectZero
+            case 1, 2:
+                popViewAnimator.presentFrame = CGRectMake(kHomeMargin, point.y, SCREENW - 2 * kHomeMargin, 104)
+
+            case 3, 4:
+                popViewAnimator.presentFrame = CGRectMake(kHomeMargin, point.y, SCREENW - 2 * kHomeMargin, 141)
+
+            case 5, 6:
+                popViewAnimator.presentFrame = CGRectMake(kHomeMargin, point.y, SCREENW - 2 * kHomeMargin, 178)
+            default:
+                popViewAnimator.presentFrame = CGRectZero
+        }
+        /// 设置转场的样式
+        popVC.modalPresentationStyle = .Custom
+        presentViewController(popVC, animated: true, completion: nil)
+    }
+    
+    // MARK: - 转场动画， 一定要定义一个属性来保存自定义转场对象，否则会报错
+    private lazy var popViewAnimator: YMPopViewAnimator = {
+        let popViewAnimator = YMPopViewAnimator()
+        return popViewAnimator
+    }()
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+
+extension YMHomeTopicController: UITextFieldDelegate {
+    
+    // MARK: - UITextFieldDelegate
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        // 创建搜索内容控制器
+        let searchContentVC = YMSearchContentViewController()
+//        searchContentVC.delegate = self
+        let nav = YMNavigationController(rootViewController: searchContentVC)
+        presentViewController(nav, animated: false, completion: nil)
+        return true
+    }
+    
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.tableViewNoDataOrNewworkFail(newsTopics.count)
@@ -105,15 +126,15 @@ extension YMHomeTopicController: UITextFieldDelegate {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let newsTopic = newsTopics[indexPath.row]
-        let tableViewSuperView = tableView.superview
         
         if newsTopic.image_list.count != 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(topicSmallCellID) as! YMHomeSmallCell
             cell.newsTopic = newsTopic
-            cell.closeButtonClick({ (filterWords) in
-                let buttonRect = cell.closeButton.convertRect(cell.closeButton.frame, fromView: tableViewSuperView!.superview)
-                // < -517 的时候，尖角在下面
-                YMPopView.show(filterWords, topY: buttonRect.minY)
+            cell.closeButtonClick({ [weak self] (filterWords) in
+                // closeButton 相对于 tableView 的坐标
+                let point = self!.view.convertPoint(cell.frame.origin, fromView: tableView)
+                let convertPoint = CGPointMake(point.x, point.y + cell.closeButton.y)
+                self!.showPopView(filterWords, point: convertPoint)
             })
             return cell
         } else {
@@ -121,34 +142,36 @@ extension YMHomeTopicController: UITextFieldDelegate {
                 if newsTopic.video_detail_info?.video_id != nil || newsTopic.large_image_list.count != 0 {
                     let cell = tableView.dequeueReusableCellWithIdentifier(topicLargeCellID) as! YMHomeLargeCell
                     cell.newsTopic = newsTopic
-                    cell.closeButtonClick({ (filterWords) in
-                        let buttonRect = cell.closeButton.convertRect(cell.closeButton.frame, fromView: tableViewSuperView!.superview)
-                        // < -517 的时候，尖角在下面
-                        YMPopView.show(filterWords, topY: buttonRect.minY)
+                    cell.closeButtonClick({ [weak self] (filterWords) in
+                        // closeButton 相对于 tableView 的坐标
+                        let point = self!.view.convertPoint(cell.frame.origin, fromView: tableView)
+                        let convertPoint = CGPointMake(point.x, point.y + cell.closeButton.y)
+                        self!.showPopView(filterWords, point: convertPoint)
                     })
                     return cell
                 } else {
                     let cell = tableView.dequeueReusableCellWithIdentifier(topicMiddleCellID) as! YMHomeMiddleCell
                     cell.newsTopic = newsTopic
-                    cell.closeButtonClick({ (filterWords) in
-                        let buttonRect = cell.closeButton.convertRect(cell.closeButton.frame, fromView: tableViewSuperView!.superview)
-                        // < -517 的时候，尖角在下面
-                        YMPopView.show(filterWords, topY: buttonRect.minY)
+                    cell.closeButtonClick({ [weak self] (filterWords) in
+                        // closeButton 相对于 tableView 的坐标
+                        let point = self!.view.convertPoint(cell.frame.origin, fromView: tableView)
+                        let convertPoint = CGPointMake(point.x, point.y + cell.closeButton.y)
+                        self!.showPopView(filterWords, point: convertPoint)
                     })
                     return cell
                 }
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier(topicNoImageCellID) as! YMHomeNoImageCell
                 cell.newsTopic = newsTopic
-                cell.closeButtonClick({ (filterWords) in
-                    let buttonRect = cell.closeButton.convertRect(cell.closeButton.frame, fromView: tableViewSuperView!.superview)
-                    // < -517 的时候，尖角在下面
-                    YMPopView.show(filterWords, topY: buttonRect.minY)
+                cell.closeButtonClick({ [weak self] (filterWords) in
+                    // closeButton 相对于 tableView 的坐标
+                    let point = self!.view.convertPoint(cell.frame.origin, fromView: tableView)
+                    let convertPoint = CGPointMake(point.x, point.y + cell.closeButton.y)
+                    self!.showPopView(filterWords, point: convertPoint)
                 })
                 return cell
             }
         }
-        
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

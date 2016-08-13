@@ -62,14 +62,6 @@ class YMHomeViewController: UIViewController {
         return titleView
     }()
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-}
-
-extension YMHomeViewController: UIScrollViewDelegate {
-    
     /// 有多少条文章更新
     private func showRefreshTipView() {
         YMNetworkTool.shareNetworkTool.loadArticleRefreshTip { [weak self] (count) in
@@ -115,6 +107,14 @@ extension YMHomeViewController: UIScrollViewDelegate {
             self!.scrollView.setContentOffset(offset, animated: true)
         }
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+
+extension YMHomeViewController: UIScrollViewDelegate {
     
     // MARK: - UIScrollViewDelegate
     func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {

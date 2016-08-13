@@ -22,6 +22,10 @@ class YMAccountManageController: UITableViewController {
         view.backgroundColor = YMGlobalColor()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .Plain, target: self, action: #selector(finishBBItemClick))
     }
+    
+    func finishBBItemClick() {
+        navigationController?.popViewControllerAnimated(true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -30,10 +34,6 @@ class YMAccountManageController: UITableViewController {
 }
 
 extension YMAccountManageController {
-    
-    func finishBBItemClick() {
-        navigationController?.popViewControllerAnimated(true)
-    }
     
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

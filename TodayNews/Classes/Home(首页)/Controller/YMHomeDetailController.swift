@@ -79,6 +79,11 @@ class YMHomeDetailController: UIViewController {
         return webView
     }()
     
+    /// 更多按钮点击
+    func homeDetailBBItemClick() {
+        YMHomeShareView.show()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,11 +91,6 @@ class YMHomeDetailController: UIViewController {
 }
 
 extension YMHomeDetailController {
-    
-    /// 更多按钮点击
-    func homeDetailBBItemClick() {
-        YMHomeShareView.show()
-    }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .Default
