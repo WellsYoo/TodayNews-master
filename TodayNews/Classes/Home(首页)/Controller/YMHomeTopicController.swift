@@ -41,6 +41,7 @@ class YMHomeTopicController: UITableViewController {
         tableView.registerClass(YMHomeNoImageCell.self, forCellReuseIdentifier: topicNoImageCellID)
         // 预设定 cell 的高度为 97
         tableView.estimatedRowHeight = 97
+        
         tableView.tableHeaderView = homeSearchBar
     }
     

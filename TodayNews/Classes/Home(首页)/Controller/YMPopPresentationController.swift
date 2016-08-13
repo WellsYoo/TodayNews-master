@@ -27,11 +27,7 @@ class YMPopPresentationController: UIPresentationController {
 //        presentedView() // 被展现的视图
         containerView?.insertSubview(coverView, atIndex: 0)
         // 修改弹出视图的尺寸
-//        if presentFrame == CGRectZero {
-//            presentedView()?.frame = CGRectMake(15, 100, SCREENW - 30, 177)
-//        } else {
-            presentedView()?.frame = presentFrame
-//        }
+        presentedView()?.frame = presentFrame
     }
     
     private lazy var coverView: UIView = {

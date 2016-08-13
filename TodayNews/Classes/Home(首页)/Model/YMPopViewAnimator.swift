@@ -16,20 +16,33 @@ class YMPopViewAnimator: NSObject, UIViewControllerTransitioningDelegate, UIView
     var isPresent: Bool = false
     
     // MARK: - UIViewControllerTransitioningDelegate
-    // 告诉系统由哪个控制器来实现代理
+    /**
+     告诉系统由哪个控制器来实现代理
+     - parameter presented:  被展现的视图
+     - parameter presenting: 展现的视图
+     - returns: YMPopPresentationController iOS 8 以后推出的专门负责转场动画的控制器
+     */
     func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         let popPC = YMPopPresentationController(presentedViewController: presented, presentingViewController: presenting)
         popPC.presentFrame = presentFrame
         return popPC
     }
     
-    // 告诉系统谁来负责 modal 的展现动画
+    /**
+     告诉系统谁来负责 modal 的展现动画
+     - parameter presented:  被展现的视图
+     - parameter presenting: 展现的视图
+     - returns: 由谁管理
+     */
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         isPresent = true
         return self
     }
-    
-    // 告诉系统谁来负责 modal 的消失动画
+    /**
+     告诉系统谁来负责 modal 的消失动画
+     - parameter dismissed: 消失的控制器
+     - returns: 由谁管理
+     */
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         isPresent = false
         return self
@@ -37,11 +50,12 @@ class YMPopViewAnimator: NSObject, UIViewControllerTransitioningDelegate, UIView
     
     // MARK: - UIViewControllerAnimatedTransitioning
     // MARK: - 只要实现了下面两个方法，那么系统默认就没有了，所有东西都需要自己实现
-    // 动画时长
+    /** 动画时长*/
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.5
     }
     
+    /** 负责转场动画的效果*/
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         if isPresent {
             // 展开
