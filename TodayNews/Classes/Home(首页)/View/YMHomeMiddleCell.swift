@@ -62,6 +62,13 @@ class YMHomeMiddleCell: YMHomeTopicCell {
         
         addSubview(rightImageView)
         
+        addSubview(timeButton)
+        
+        timeButton.snp_makeConstraints { (make) in
+            make.right.equalTo(rightImageView.snp_right).offset(-5)
+            make.bottom.equalTo(rightImageView.snp_bottom).offset(-5)
+        }
+        
         rightImageView.snp_makeConstraints { (make) in
             make.top.equalTo(self).offset(kHomeMargin)
             make.size.equalTo(CGSizeMake(108, 70))
@@ -73,6 +80,19 @@ class YMHomeMiddleCell: YMHomeTopicCell {
             make.left.top.equalTo(self).offset(kHomeMargin)
         }
     }
+    
+    /// 右下角的视频时长
+    private lazy var timeButton: UIButton = {
+        let timeButton = UIButton()
+        timeButton.hidden = true
+        timeButton.userInteractionEnabled = false
+        timeButton.layer.cornerRadius = 8
+        timeButton.layer.masksToBounds = true
+        timeButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        timeButton.titleLabel?.font = UIFont.systemFontOfSize(12)
+        timeButton.setImage(UIImage(named: "palyicon_video_textpage_7x10_"), forState: .Normal)
+        return timeButton
+    }()
     
     /// 右边图片
     private lazy var rightImageView: UIImageView = {

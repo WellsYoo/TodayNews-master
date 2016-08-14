@@ -62,7 +62,6 @@ extension YMVideoTopicController: YMVideoTopicCellDelegate {
     
     // MARK: - YMVideoTopicCellDelegate
     func videoTopicCell(videoTopicCell: YMVideoTopicCell, nameButtonClick nameButton: UIButton) {
-        let videoTopic = videoTopicCell.videoTopic
         let userVC = YMVideoUserController()
         
         navigationController?.pushViewController(userVC, animated: true)
