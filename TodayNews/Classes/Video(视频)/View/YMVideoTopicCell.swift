@@ -32,11 +32,15 @@ class YMVideoTopicCell: UITableViewCell {
                 commentButton.setTitle("\(videoTopic!.comment_count!)", forState: .Normal)
             }
             if let videoDetailInfo = videoTopic?.video_detail_info {
-                if videoDetailInfo.video_watch_count >= 10000 {
-                    let watch_count = videoDetailInfo.video_watch_count! / 10000
-                    countLabel.text = "\(watch_count)万次播放"
+                if let watchCount = videoDetailInfo.video_watch_count {
+                    if watchCount >= 10000 {
+                        let watch_count = watchCount / 10000
+                        countLabel.text = "\(watch_count)万次播放"
+                    } else {
+                        countLabel.text = "\(watchCount)次播放"
+                    }
                 } else {
-                    countLabel.text = "\(videoDetailInfo.video_watch_count!)次播放"
+                    countLabel.text = "0 次播放"
                 }
                 
                 let largeImageList = videoTopic?.large_image_list.first

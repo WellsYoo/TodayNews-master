@@ -41,17 +41,15 @@ extension YMVideoUserController: UIScrollViewDelegate {
     
     // MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        print("\(headerView.backButton)-------")
-        print("\(headerView.careButton)-------")
-        print(headerView.moreButton)
-        print(scrollView.contentOffset.y)
         let offsetY = scrollView.contentOffset.y
         
+        headerView.topView.y = offsetY
         if offsetY > -20 {
-            headerView.topView.y = 0
-            headerView.backButton.centerY = headerView.topView.centerY
-            headerView.careButton.centerY = headerView.topView.centerY
-            headerView.moreButton.centerY = headerView.topView.centerY
+            headerView.backButton.centerY = headerView.topView.centerY + kMargin
+            headerView.careButton.centerY = headerView.backButton.centerY
+            headerView.moreButton.centerY = headerView.backButton.centerY
+        } else {
+            headerView.backButton.centerY = headerView.topView.centerY + kMargin
         }
     }
 }

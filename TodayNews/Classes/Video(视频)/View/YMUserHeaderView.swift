@@ -10,6 +10,8 @@
 
 import UIKit
 
+
+
 /// ![](http://obna9emby.bkt.clouddn.com/news/video-detail-user-header.png)
 class YMUserHeaderView: UIView {
 
@@ -26,12 +28,7 @@ class YMUserHeaderView: UIView {
     
     
     func setupUI() {
-        /// 添加顶部View
-        addSubview(topView)
-        /// 添加返回按钮，关注按钮，更多按钮
-        addSubview(backButton)
-        addSubview(careButton)
-        addSubview(moreButton)
+        
         /// 添加头像，昵称，介绍
         addSubview(avatarImageView)
         addSubview(nameLabel)
@@ -43,6 +40,19 @@ class YMUserHeaderView: UIView {
         /// 添加 全部按钮，视频按钮
         bottomView.addSubview(allButton)
         bottomView.addSubview(videoButton)
+        bottomView.addSubview(redView)
+        /// 添加顶部View
+        addSubview(topView)
+        /// 添加返回按钮，关注按钮，更多按钮
+        addSubview(backButton)
+        addSubview(careButton)
+        addSubview(moreButton)
+        
+        redView.snp_makeConstraints { (make) in
+            make.centerX.equalTo(videoButton)
+            make.size.equalTo(CGSizeMake(40, 2))
+            make.bottom.equalTo(lineView2.snp_top)
+        }
         
         allButton.snp_makeConstraints { (make) in
             make.left.top.bottom.equalTo(bottomView)
@@ -82,22 +92,23 @@ class YMUserHeaderView: UIView {
         
         nameLabel.snp_makeConstraints { (make) in
             make.centerX.equalTo(self)
-            make.top.equalTo(avatarImageView.snp_bottom).offset(12)
+            make.top.equalTo(avatarImageView.snp_bottom).offset(kHomeMargin)
         }
         
         avatarImageView.snp_makeConstraints { (make) in
             make.centerX.equalTo(self)
             make.size.equalTo(CGSizeMake(66, 66))
-            make.top.equalTo(topView.snp_bottom).offset(18)
+            make.top.equalTo(topView.snp_bottom).offset(20)
         }
         
         topView.snp_makeConstraints { (make) in
-            make.left.top.right.equalTo(self)
-            make.height.equalTo(44)
+            make.left.right.equalTo(self)
+            make.top.equalTo(self).offset(-20)
+            make.height.equalTo(64)
         }
         
         backButton.snp_makeConstraints { (make) in
-            make.centerY.equalTo(topView)
+            make.centerY.equalTo(topView).offset(kMargin)
             make.left.equalTo(topView).offset(kHomeMargin)
         }
         
@@ -116,7 +127,7 @@ class YMUserHeaderView: UIView {
     /// 顶部View
     lazy var topView: UIView = {
         let topView = UIView()
-        topView.backgroundColor = UIColor.redColor()
+        topView.backgroundColor = UIColor.whiteColor()
         return topView
     }()
     
@@ -133,12 +144,15 @@ class YMUserHeaderView: UIView {
     lazy var careButton: UIButton = {
         let careButton = UIButton()
         careButton.setTitle("关注", forState: .Normal)
+        careButton.setTitle("已关注", forState: .Selected)
         careButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        careButton.titleLabel?.font = UIFont.systemFontOfSize(17)
+        careButton.setTitleColor(UIColor.lightGrayColor(), forState: .Selected)
+        careButton.titleLabel?.font = UIFont.systemFontOfSize(15)
         careButton.layer.cornerRadius = kCornerRadius
         careButton.layer.masksToBounds = true
         careButton.layer.borderColor = UIColor.blackColor().CGColor
         careButton.layer.borderWidth = klineWidth
+        careButton.addTarget(self, action: #selector(careButtonClick(_:)), forControlEvents: .TouchUpInside)
         return careButton
     }()
     
@@ -175,7 +189,7 @@ class YMUserHeaderView: UIView {
         let introduceLabel = UILabel()
         introduceLabel.text = "介绍介绍介绍介绍介绍介绍"
         introduceLabel.font = UIFont.systemFontOfSize(13)
-        introduceLabel.textColor = YMColor(200, g: 200, b: 200, a: 1.0)
+        introduceLabel.textColor = UIColor.lightGrayColor()
         introduceLabel.textAlignment = .Center
         return introduceLabel
     }()
@@ -199,6 +213,7 @@ class YMUserHeaderView: UIView {
         allButton.setTitle("全部", forState: .Normal)
         allButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         allButton.titleLabel?.font = UIFont.systemFontOfSize(18)
+        allButton.addTarget(self, action: #selector(allButtonClick(_:)), forControlEvents: .TouchUpInside)
         return allButton
     }()
     
@@ -206,8 +221,10 @@ class YMUserHeaderView: UIView {
     lazy var videoButton: UIButton = {
         let videoButton = UIButton()
         videoButton.setTitle("视频", forState: .Normal)
+        videoButton.selected = true
         videoButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         videoButton.titleLabel?.font = UIFont.systemFontOfSize(18)
+        videoButton.addTarget(self, action: #selector(videoButtonClick(_:)), forControlEvents: .TouchUpInside)
         return videoButton
     }()
     
@@ -231,7 +248,9 @@ class YMUserHeaderView: UIView {
     }
     
     /// 关注按钮点击
-    func careButtonClick() {
+    func careButtonClick(button: UIButton) {
+        button.selected = !button.selected
+        button.layer.borderColor = button.selected ? UIColor.lightGrayColor().CGColor : UIColor.blackColor().CGColor
         
     }
     
@@ -241,17 +260,22 @@ class YMUserHeaderView: UIView {
     }
     
     /// 全部按钮点击
-    func allButtonClick() {
-        
+    func allButtonClick(button: UIButton) {
+        button.selected = !button.selected
+        UIView.animateWithDuration(kAnimationDuration) { 
+            self.redView.centerX = button.centerX
+        }
     }
     
     /// 视频按钮点击
-    func videoButtonClick() {
-        
+    func videoButtonClick(button: UIButton) {
+        button.selected = !button.selected
+        UIView.animateWithDuration(kAnimationDuration) {
+            self.redView.centerX = button.centerX
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
