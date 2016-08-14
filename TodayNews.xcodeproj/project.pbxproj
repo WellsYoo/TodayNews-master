@@ -94,6 +94,8 @@
 		949F32671D5E9FB900620DB1 /* YMPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F32661D5E9FB900620DB1 /* YMPopViewController.swift */; };
 		949F32691D5EA32100620DB1 /* YMPopPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F32681D5EA32100620DB1 /* YMPopPresentationController.swift */; };
 		949F326B1D5EB51800620DB1 /* YMPopViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F326A1D5EB51800620DB1 /* YMPopViewAnimator.swift */; };
+		949F326E1D5FFCC300620DB1 /* YMVideoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F326D1D5FFCC300620DB1 /* YMVideoDetailController.swift */; };
+		949F32701D5FFCE400620DB1 /* YMVideoUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F326F1D5FFCE400620DB1 /* YMVideoUserController.swift */; };
 		94D584FB1D55883300E4CAFE /* YMHomeTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */; };
 		94D584FD1D5704F500E4CAFE /* UIImage+Extendion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */; };
 		94D584FF1D57051000E4CAFE /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */; };
@@ -214,6 +216,8 @@
 		949F32661D5E9FB900620DB1 /* YMPopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMPopViewController.swift; sourceTree = "<group>"; };
 		949F32681D5EA32100620DB1 /* YMPopPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMPopPresentationController.swift; sourceTree = "<group>"; };
 		949F326A1D5EB51800620DB1 /* YMPopViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMPopViewAnimator.swift; sourceTree = "<group>"; };
+		949F326D1D5FFCC300620DB1 /* YMVideoDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoDetailController.swift; sourceTree = "<group>"; };
+		949F326F1D5FFCE400620DB1 /* YMVideoUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMVideoUserController.swift; sourceTree = "<group>"; };
 		94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeTopicController.swift; sourceTree = "<group>"; };
 		94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extendion.swift"; sourceTree = "<group>"; };
 		94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -557,6 +561,8 @@
 				947564E71D4BADD500AC6B72 /* YMVideoViewController.swift */,
 				9403759A1D4F9FE000C7B135 /* YMVideoSearchController.swift */,
 				94DD98A21D5401CB00331B6B /* YMVideoTopicController.swift */,
+				949F326D1D5FFCC300620DB1 /* YMVideoDetailController.swift */,
+				949F326F1D5FFCE400620DB1 /* YMVideoUserController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -810,6 +816,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				949F32701D5FFCE400620DB1 /* YMVideoUserController.swift in Sources */,
 				949F32651D5DB1F800620DB1 /* YMShareVerticalButton.swift in Sources */,
 				946B44C21D5D36A700D03FC3 /* YMHomdeDetailUserView.swift in Sources */,
 				947565071D4C3BD100AC6B72 /* YMMineCellModel.swift in Sources */,
@@ -833,6 +840,7 @@
 				947564F11D4BADD500AC6B72 /* YMVideoViewController.swift in Sources */,
 				9479ED041D58B9AC00EF7337 /* YMHomeSmallCell.swift in Sources */,
 				9479ED151D59CE2F00EF7337 /* YMFirstIntroduceController.swift in Sources */,
+				949F326E1D5FFCC300620DB1 /* YMVideoDetailController.swift in Sources */,
 				947564FD1D4C2AA500AC6B72 /* YMMineHeaderBottomView.swift in Sources */,
 				9475650F1D4CAC8E00AC6B72 /* YMSettingModel.swift in Sources */,
 				94D584FB1D55883300E4CAFE /* YMHomeTopicController.swift in Sources */,

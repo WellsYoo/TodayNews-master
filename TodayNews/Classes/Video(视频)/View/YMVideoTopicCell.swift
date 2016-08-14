@@ -7,14 +7,21 @@
 //
 
 import UIKit
+
+protocol YMVideoTopicCellDelegate: NSObjectProtocol {
+    func videoTopicCell(videoTopicCell: YMVideoTopicCell, nameButtonClick nameButton: UIButton)
+}
+
 /// ![](http://obna9emby.bkt.clouddn.com/news/video-cell.png)
 class YMVideoTopicCell: UITableViewCell {
+    
+    weak var delegate: YMVideoTopicCellDelegate?
     
     var videoTopic: YMNewsTopic? {
         didSet {
             titleLabel.text = String(videoTopic!.title!)
             let mediaInfo = videoTopic!.media_info
-            nameLabel.text = mediaInfo?.name
+            nameLabel.setTitle(mediaInfo?.name, forState: .Normal)
             avatarImageView.setCircleHeader(mediaInfo!.avatar_url!)
             if videoTopic!.comment_count! == 0 {
                 commentButton.setTitle("评论", forState: .Normal)
@@ -54,7 +61,7 @@ class YMVideoTopicCell: UITableViewCell {
     /// 用户头像
     @IBOutlet weak var avatarImageView: UIImageView!
     /// 用户昵称
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UIButton!
     /// 播放数量
     @IBOutlet weak var countLabel: UILabel!
     /// 评论按钮
@@ -76,6 +83,11 @@ class YMVideoTopicCell: UITableViewCell {
         print(#function)
         playButton.selected = !playButton.selected
         
+    }
+    
+    /// 用户名称点击
+    @IBAction func nameButtonClick(sender: UIButton) {
+        delegate?.videoTopicCell(self, nameButtonClick: sender)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

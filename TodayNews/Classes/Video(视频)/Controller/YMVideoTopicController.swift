@@ -58,7 +58,16 @@ class YMVideoTopicController: UITableViewController {
 
 }
 
-extension YMVideoTopicController {
+extension YMVideoTopicController: YMVideoTopicCellDelegate {
+    
+    // MARK: - YMVideoTopicCellDelegate
+    func videoTopicCell(videoTopicCell: YMVideoTopicCell, nameButtonClick nameButton: UIButton) {
+        let videoTopic = videoTopicCell.videoTopic
+        let userVC = YMVideoUserController()
+        
+        navigationController?.pushViewController(userVC, animated: true)
+        
+    }
     
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,11 +77,14 @@ extension YMVideoTopicController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(videoTopicCellID) as! YMVideoTopicCell
         cell.videoTopic = newsTopics[indexPath.row]
+        cell.delegate = self
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+        let videoDetailVC = YMVideoDetailController()
+        videoDetailVC.videoTopic = newsTopics[indexPath.row]
+        navigationController?.pushViewController(videoDetailVC, animated: true)
     }
 }

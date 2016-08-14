@@ -31,12 +31,6 @@
                                             <constraint firstAttribute="width" constant="28" id="o49-zO-ZZz"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Dp-iQ-yf9">
-                                        <rect key="frame" x="51" y="0.0" width="37.5" height="49"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6x9-jb-6BR">
                                         <rect key="frame" x="241" y="0.0" width="29" height="49"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -57,9 +51,19 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWD-OK-I2K">
+                                        <rect key="frame" x="53" y="0.0" width="46" height="49"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nameButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9dq-tJ-ekg"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="RWD-OK-I2K" secondAttribute="bottom" id="04T-gM-gYZ"/>
                                     <constraint firstItem="mpk-wn-NeN" firstAttribute="leading" secondItem="s4z-LW-jua" secondAttribute="leading" constant="15" id="2rS-7D-5oI"/>
                                     <constraint firstAttribute="trailing" secondItem="cOC-6a-HlQ" secondAttribute="trailing" id="9Br-F8-P6n"/>
                                     <constraint firstItem="5pF-HW-cUN" firstAttribute="top" secondItem="s4z-LW-jua" secondAttribute="top" id="EFb-d4-gYs"/>
@@ -67,13 +71,12 @@
                                     <constraint firstItem="6x9-jb-6BR" firstAttribute="leading" secondItem="5pF-HW-cUN" secondAttribute="trailing" constant="10" id="JJj-Vn-LaO"/>
                                     <constraint firstItem="cOC-6a-HlQ" firstAttribute="leading" secondItem="6x9-jb-6BR" secondAttribute="trailing" id="LE7-RP-5dS"/>
                                     <constraint firstAttribute="bottom" secondItem="5pF-HW-cUN" secondAttribute="bottom" id="RTB-OQ-oZC"/>
+                                    <constraint firstItem="RWD-OK-I2K" firstAttribute="leading" secondItem="mpk-wn-NeN" secondAttribute="trailing" constant="10" id="Rhe-Nu-N3A"/>
+                                    <constraint firstItem="RWD-OK-I2K" firstAttribute="top" secondItem="s4z-LW-jua" secondAttribute="top" id="ScH-QF-dBM"/>
                                     <constraint firstAttribute="height" constant="49" id="VeQ-Hd-Oed"/>
-                                    <constraint firstAttribute="bottom" secondItem="3Dp-iQ-yf9" secondAttribute="bottom" id="d4U-Tg-r0G"/>
                                     <constraint firstAttribute="bottom" secondItem="cOC-6a-HlQ" secondAttribute="bottom" id="dh1-mh-oIH"/>
                                     <constraint firstItem="cOC-6a-HlQ" firstAttribute="top" secondItem="s4z-LW-jua" secondAttribute="top" id="eOI-Ps-R74"/>
-                                    <constraint firstItem="3Dp-iQ-yf9" firstAttribute="leading" secondItem="mpk-wn-NeN" secondAttribute="trailing" constant="8" id="gDQ-9l-3sz"/>
                                     <constraint firstAttribute="bottom" secondItem="6x9-jb-6BR" secondAttribute="bottom" id="kmR-0X-Zoq"/>
-                                    <constraint firstItem="3Dp-iQ-yf9" firstAttribute="top" secondItem="s4z-LW-jua" secondAttribute="top" id="uOK-Em-BlJ"/>
                                     <constraint firstItem="6x9-jb-6BR" firstAttribute="top" secondItem="s4z-LW-jua" secondAttribute="top" id="vGq-gd-Tec"/>
                                 </constraints>
                             </view>
@@ -137,7 +140,7 @@
                 <outlet property="commentButton" destination="6x9-jb-6BR" id="RIE-mO-CT1"/>
                 <outlet property="countLabel" destination="5pF-HW-cUN" id="zaM-Xd-4Zn"/>
                 <outlet property="moreButton" destination="cOC-6a-HlQ" id="UFS-M4-NOB"/>
-                <outlet property="nameLabel" destination="3Dp-iQ-yf9" id="E9N-4r-rCs"/>
+                <outlet property="nameLabel" destination="RWD-OK-I2K" id="nXz-BA-Xj2"/>
                 <outlet property="playButton" destination="33R-eP-afv" id="kK4-nw-0ka"/>
                 <outlet property="timeLabel" destination="GCq-Uu-QTe" id="chW-bn-nJ9"/>
                 <outlet property="titleLabel" destination="Tgh-p6-tOU" id="0UA-MV-VXE"/>
