@@ -18,6 +18,8 @@
 		940FC7641D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FC7631D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift */; };
 		9410A1F81D61F917009C4882 /* YMActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9410A1F61D61F917009C4882 /* YMActivityController.swift */; };
 		9410A1F91D61F917009C4882 /* YMActivityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9410A1F71D61F917009C4882 /* YMActivityController.xib */; };
+		9410A1FC1D620A62009C4882 /* YMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9410A1FA1D620A62009C4882 /* YMLoginViewController.swift */; };
+		9410A1FD1D620A62009C4882 /* YMLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9410A1FB1D620A62009C4882 /* YMLoginViewController.xib */; };
 		945025F51D59D33800C7F3B9 /* YMConcernDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025DC1D59D33800C7F3B9 /* YMConcernDetailViewController.swift */; };
 		945025F61D59D33800C7F3B9 /* YMNewCareSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945025DD1D59D33800C7F3B9 /* YMNewCareSearchViewController.swift */; };
 		945025F71D59D33800C7F3B9 /* YMNewCareSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945025DE1D59D33800C7F3B9 /* YMNewCareSearchViewController.xib */; };
@@ -144,6 +146,8 @@
 		940FC7631D4E48A900F53ADE /* YMMineNoLoginHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMMineNoLoginHeaderView.swift; sourceTree = "<group>"; };
 		9410A1F61D61F917009C4882 /* YMActivityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMActivityController.swift; sourceTree = "<group>"; };
 		9410A1F71D61F917009C4882 /* YMActivityController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMActivityController.xib; sourceTree = "<group>"; };
+		9410A1FA1D620A62009C4882 /* YMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMLoginViewController.swift; sourceTree = "<group>"; };
+		9410A1FB1D620A62009C4882 /* YMLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMLoginViewController.xib; sourceTree = "<group>"; };
 		945025DC1D59D33800C7F3B9 /* YMConcernDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMConcernDetailViewController.swift; sourceTree = "<group>"; };
 		945025DD1D59D33800C7F3B9 /* YMNewCareSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNewCareSearchViewController.swift; sourceTree = "<group>"; };
 		945025DE1D59D33800C7F3B9 /* YMNewCareSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMNewCareSearchViewController.xib; sourceTree = "<group>"; };
@@ -628,6 +632,8 @@
 			children = (
 				9479ED131D59CE2F00EF7337 /* YMFirstIntroduceController.swift */,
 				9479ED141D59CE2F00EF7337 /* YMFirstIntroduceController.xib */,
+				9410A1FA1D620A62009C4882 /* YMLoginViewController.swift */,
+				9410A1FB1D620A62009C4882 /* YMLoginViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -758,6 +764,7 @@
 				947565191D4CBCAA00AC6B72 /* YMAccountCell.xib in Resources */,
 				252764311D4F50FB0078C143 /* YMSettingHeaderView.xib in Resources */,
 				9410A1F91D61F917009C4882 /* YMActivityController.xib in Resources */,
+				9410A1FD1D620A62009C4882 /* YMLoginViewController.xib in Resources */,
 				945026001D59D33800C7F3B9 /* YMNewCareBottomCell.xib in Resources */,
 				9475651F1D4CC3B700AC6B72 /* YMHelpViewController.xib in Resources */,
 				9479ED161D59CE2F00EF7337 /* YMFirstIntroduceController.xib in Resources */,
@@ -919,6 +926,7 @@
 				945025FE1D59D33800C7F3B9 /* YMCareheaderView.swift in Sources */,
 				9450260F1D59D47F00C7F3B9 /* YMScrollTitleView.swift in Sources */,
 				947564EB1D4BADD500AC6B72 /* YMBaseViewController.swift in Sources */,
+				9410A1FC1D620A62009C4882 /* YMLoginViewController.swift in Sources */,
 				947564FF1D4C2BD600AC6B72 /* YMMineHeaderIconButton.swift in Sources */,
 				947565251D4CF3E900AC6B72 /* YMNetworkTool.swift in Sources */,
 				9403759B1D4F9FE000C7B135 /* YMVideoSearchController.swift in Sources */,

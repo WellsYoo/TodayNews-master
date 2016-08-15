@@ -150,7 +150,13 @@ extension YMMineViewController: YMMineHeaderViewDelegae, YMMineHeaderBottomViewD
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                let loginVC = YMLoginViewController()
+                loginVC.title = "登录"
+                navigationController?.pushViewController(loginVC, animated: true)
+            }
+        } else if indexPath.section == 1 {
             if indexPath.row == 1 {
                 let offlineVC = YMOfflineTableViewController()
                 offlineVC.title = "离线下载"
