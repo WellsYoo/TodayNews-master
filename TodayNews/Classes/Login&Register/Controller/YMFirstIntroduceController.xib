@@ -14,7 +14,99 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_Introduce_explore_320x164_" translatesAutoresizingMaskIntoConstraints="NO" id="cYy-zr-Sb8">
+                    <rect key="frame" x="140" y="64" width="320" height="164"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="320" id="Jws-7y-sta"/>
+                        <constraint firstAttribute="height" constant="164" id="tYo-mz-xFh"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCG-SO-MeY">
+                    <rect key="frame" x="242" y="550" width="117" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="稍后再说，立即进入">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="enterButtonClick:" destination="-1" eventType="touchUpInside" id="B7b-LH-uMA"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CaX-cd-Jxf">
+                    <rect key="frame" x="242" y="572" width="117" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="l4Z-nO-6Ya"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zER-P8-vRU">
+                    <rect key="frame" x="208" y="475" width="184" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="184" id="GvF-ED-hpv"/>
+                        <constraint firstAttribute="height" constant="35" id="Hgl-Z7-rZY"/>
+                    </constraints>
+                    <state key="normal" image="first_sinabutton_Introduce_247x47_"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkV-SQ-pCE">
+                    <rect key="frame" x="208" y="430" width="184" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="Plw-ju-405"/>
+                        <constraint firstAttribute="width" constant="184" id="gDy-Sr-Vvo"/>
+                    </constraints>
+                    <state key="normal" image="first_qqbutton_Introduce_247x47_"/>
+                    <connections>
+                        <action selector="QQButtonClick:" destination="-1" eventType="touchUpInside" id="u17-Eb-tpY"/>
+                        <action selector="weiboButtonClick:" destination="-1" eventType="touchUpInside" id="ufk-IL-IRS"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o6T-XP-A09">
+                    <rect key="frame" x="208" y="385" width="184" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="Di2-En-qfX"/>
+                        <constraint firstAttribute="width" constant="184" id="UKX-Pd-2Ve"/>
+                    </constraints>
+                    <state key="normal" image="first_weixinbutton_Introduce_247x47_"/>
+                    <connections>
+                        <action selector="wechatButtonClick:" destination="-1" eventType="touchUpInside" id="B2C-vd-hJZ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHw-wf-8sy">
+                    <rect key="frame" x="208" y="340" width="184" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="oMW-jp-YYX"/>
+                        <constraint firstAttribute="width" constant="184" id="plL-DJ-hor"/>
+                    </constraints>
+                    <state key="normal" image="cellphonebutton_Introduce_184x35_"/>
+                    <connections>
+                        <action selector="mobileButtonClick:" destination="-1" eventType="touchUpInside" id="mQ7-Tg-43S"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="zER-P8-vRU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1mo-wN-dqk"/>
+                <constraint firstItem="CaX-cd-Jxf" firstAttribute="bottom" secondItem="MCG-SO-MeY" secondAttribute="bottom" constant="-5" id="3mG-52-bs8"/>
+                <constraint firstItem="CaX-cd-Jxf" firstAttribute="width" secondItem="MCG-SO-MeY" secondAttribute="width" id="57a-IZ-2N9"/>
+                <constraint firstItem="cYy-zr-Sb8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="6jR-G1-fg9"/>
+                <constraint firstItem="zER-P8-vRU" firstAttribute="top" secondItem="qkV-SQ-pCE" secondAttribute="bottom" constant="10" id="QRN-ld-Zml"/>
+                <constraint firstAttribute="bottom" secondItem="MCG-SO-MeY" secondAttribute="bottom" constant="22" id="Rvd-bo-Vso"/>
+                <constraint firstItem="o6T-XP-A09" firstAttribute="centerX" secondItem="qkV-SQ-pCE" secondAttribute="centerX" id="Spf-jX-ih7"/>
+                <constraint firstItem="o6T-XP-A09" firstAttribute="top" secondItem="sHw-wf-8sy" secondAttribute="bottom" constant="10" id="T2v-CR-zTt"/>
+                <constraint firstItem="qkV-SQ-pCE" firstAttribute="centerX" secondItem="zER-P8-vRU" secondAttribute="centerX" id="WvJ-AP-CGD"/>
+                <constraint firstItem="qkV-SQ-pCE" firstAttribute="top" secondItem="o6T-XP-A09" secondAttribute="bottom" constant="10" id="YfL-GU-R1q"/>
+                <constraint firstItem="CaX-cd-Jxf" firstAttribute="centerX" secondItem="MCG-SO-MeY" secondAttribute="centerX" id="daE-RP-uJ2"/>
+                <constraint firstItem="cYy-zr-Sb8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="eBq-0U-nkD"/>
+                <constraint firstItem="MCG-SO-MeY" firstAttribute="top" secondItem="zER-P8-vRU" secondAttribute="bottom" constant="40" id="fec-m7-tFa"/>
+                <constraint firstItem="sHw-wf-8sy" firstAttribute="centerX" secondItem="o6T-XP-A09" secondAttribute="centerX" id="laj-JV-79f"/>
+                <constraint firstItem="MCG-SO-MeY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zVQ-bu-aVj"/>
+            </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="background_Introduce_explore_320x164_" width="320" height="164"/>
+        <image name="cellphonebutton_Introduce_184x35_" width="184" height="35"/>
+        <image name="first_qqbutton_Introduce_247x47_" width="247" height="47"/>
+        <image name="first_sinabutton_Introduce_247x47_" width="247" height="47"/>
+        <image name="first_weixinbutton_Introduce_247x47_" width="247" height="47"/>
+    </resources>
 </document>

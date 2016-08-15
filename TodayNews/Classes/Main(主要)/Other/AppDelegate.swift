@@ -13,10 +13,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = YMTabBarController()
+        // 创建 根控制器
+        // 检测用户是不是第一次启动
+        if !NSUserDefaults.standardUserDefaults().boolForKey(YMFirstLaunch) {
+            window?.rootViewController = YMFirstIntroduceController()
+            NSUserDefaults.standardUserDefaults().setObject(true, forKey: YMFirstLaunch)
+        } else {
+            window?.rootViewController = YMTabBarController()
+        }
         window?.makeKeyAndVisible()
         
         return true

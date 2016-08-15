@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// ![](http://obna9emby.bkt.clouddn.com/news/%E5%90%AF%E5%8A%A8_spec.png)
 class YMFirstIntroduceController: UIViewController {
 
     override func viewDidLoad() {
@@ -21,4 +22,23 @@ class YMFirstIntroduceController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func mobileButtonClick(sender: UIButton) {
+        
+    }
+    
+    @IBAction func wechatButtonClick(sender: UIButton) {
+        
+    }
+    
+    @IBAction func QQButtonClick(sender: UIButton) {
+        
+    }
+    
+    @IBAction func weiboButtonClick(sender: UIButton) {
+        
+    }
+    
+    @IBAction func enterButtonClick(sender: UIButton) {
+        UIApplication.sharedApplication().keyWindow?.rootViewController = YMTabBarController()
+    }
 }
