@@ -150,7 +150,13 @@ extension YMMineViewController: YMMineHeaderViewDelegae, YMMineHeaderBottomViewD
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+        if indexPath.section == 1 {
+            if indexPath.row == 1 {
+                let offlineVC = YMOfflineTableViewController()
+                offlineVC.title = "离线下载"
+                navigationController?.pushViewController(offlineVC, animated: true)
+            }
+        }
     }
     
     // MARK: - UIScrollViewDelagate

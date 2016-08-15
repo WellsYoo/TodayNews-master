@@ -79,16 +79,16 @@ class YMSettingViewController: YMBaseViewController {
         let alertController = UIAlertController(title: "设置字体大小", message: nil, preferredStyle: .ActionSheet)
         let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
         let smallAction = UIAlertAction(title: "小", style: .Default, handler: { (_) in
-            
+            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["networkMode": "小"])
         })
         let middleAction = UIAlertAction(title: "中", style: .Default, handler: { (_) in
-            
+            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["networkMode": "中"])
         })
         let bigAction = UIAlertAction(title: "大", style: .Default, handler: { (_) in
-            
+            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["networkMode": "大"])
         })
         let largeAction = UIAlertAction(title: "特大", style: .Default, handler: { (_) in
-            
+            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["networkMode": "特大"])
         })
         alertController.addAction(cancelAction)
         alertController.addAction(smallAction)
@@ -103,13 +103,13 @@ class YMSettingViewController: YMBaseViewController {
         let alertController = UIAlertController(title: "非Wifi网络流量", message: nil, preferredStyle: .ActionSheet)
         let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
         let bestFlowAction = UIAlertAction(title: "最佳效果（下载大图）", style: .Default, handler: { (_) in
-            
+            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["fontSize": "最佳效果（下载大图）"])
         })
         let betterFlowAction = UIAlertAction(title: "较省流量（智能下图）", style: .Default, handler: { (_) in
-            
+            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["fontSize": "较省流量（智能下图）"])
         })
         let leastFlowAction = UIAlertAction(title: "极省流量（不下载图）", style: .Default, handler: { (_) in
-            
+            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["fontSize": "极省流量（不下载图）"])
         })
         alertController.addAction(cancelAction)
         alertController.addAction(bestFlowAction)
@@ -171,16 +171,37 @@ extension YMSettingViewController: UITableViewDelegate, UITableViewDataSource, Y
         let cell = tableView.dequeueReusableCellWithIdentifier(settingCellID) as! YMSettingCell
         let cellArray = settings[indexPath.section] as! [YMSettingModel]
         cell.setting = cellArray[indexPath.row]
-        if indexPath.section == 3 {
+        if indexPath.section == 0 {
+            if indexPath.row == 1 {
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changeFontSize(_:)), name: "fontSize", object: self)
+            }
+        } else if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changeNeworkMode(_:)), name: "networkMode", object: self)
+            } else if indexPath.row == 1 {
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(loadCacheSize(_:)), name: "cacheSizeM", object: self)
+            }
+         } else if indexPath.section == 3 {
             if indexPath.row == 1 {
                 cell.selectionStyle = .None
             }
-        } else if indexPath.section == 1 {
-            if indexPath.row == 1 {
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(loadCacheSize(_:)), name: "cacheSizeM", object: self)
-            }
         }
         return cell
+    }
+    
+    func changeFontSize(notification: NSNotification) {
+        let userInfo = notification.userInfo as! [String: AnyObject]
+        let indexPath = NSIndexPath(forRow: 1, inSection: 0)
+        let cell = tableView?.cellForRowAtIndexPath(indexPath) as! YMSettingCell
+        cell.rightTitleLabel.text = userInfo["fontSize"] as? String
+    }
+    
+    /// 改变网络模式
+    func changeNeworkMode(notification: NSNotification) {
+        let userInfo = notification.userInfo as! [String: AnyObject]
+        let indexPath = NSIndexPath(forRow: 0, inSection: 1)
+        let cell = tableView?.cellForRowAtIndexPath(indexPath) as! YMSettingCell
+        cell.rightTitleLabel.text = userInfo["networkMode"] as? String
     }
     
     /// 获取缓存大小
@@ -216,7 +237,10 @@ extension YMSettingViewController: UITableViewDelegate, UITableViewDataSource, Y
         }
         
         if indexPath.section == 2 {
-            if indexPath.row == 2 {
+            if indexPath.row == 0 { // 推送通知
+                let url = NSURL(string: UIApplicationOpenSettingsURLString)
+                UIApplication.sharedApplication().openURL(url!)
+            } else if indexPath.row == 2 {
                 let autoPlayVideoVC = YMAutoPlayVideoController()
                 autoPlayVideoVC.title = "自动播放视频"
                 navigationController?.pushViewController(autoPlayVideoVC, animated: true)

@@ -47,7 +47,7 @@
 			<key>subtitle</key>
 			<string></string>
 			<key>rightTitle</key>
-			<string>较省流量(只能下图)</string>
+			<string>较省流量（智能下图）</string>
 			<key>isHiddenRightTitle</key>
 			<false/>
 			<key>isHiddenLine</key>
@@ -159,7 +159,7 @@
 			<key>subtitle</key>
 			<string></string>
 			<key>rightTitle</key>
-			<string>5.7.0</string>
+			<string>5.7.1</string>
 			<key>isHiddenRightTitle</key>
 			<false/>
 			<key>isHiddenLine</key>

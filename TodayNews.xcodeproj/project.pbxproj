@@ -101,6 +101,9 @@
 		949F32861D6030BD00620DB1 /* YMUserHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F32851D6030BD00620DB1 /* YMUserHeaderView.swift */; };
 		949F32881D6098D200620DB1 /* YMVideoUserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949F32871D6098D200620DB1 /* YMVideoUserController.xib */; };
 		949F328A1D61651200620DB1 /* YMMediaEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F32891D61651200620DB1 /* YMMediaEntry.swift */; };
+		949F32CB1D61BA0600620DB1 /* YMOfflineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F32C91D61BA0600620DB1 /* YMOfflineTableViewController.swift */; };
+		949F32CF1D61BA4300620DB1 /* YMOfflineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F32CD1D61BA4300620DB1 /* YMOfflineCell.swift */; };
+		949F32D01D61BA4300620DB1 /* YMOfflineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949F32CE1D61BA4300620DB1 /* YMOfflineCell.xib */; };
 		94D584FB1D55883300E4CAFE /* YMHomeTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */; };
 		94D584FD1D5704F500E4CAFE /* UIImage+Extendion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */; };
 		94D584FF1D57051000E4CAFE /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */; };
@@ -228,6 +231,9 @@
 		949F32851D6030BD00620DB1 /* YMUserHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMUserHeaderView.swift; sourceTree = "<group>"; };
 		949F32871D6098D200620DB1 /* YMVideoUserController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMVideoUserController.xib; sourceTree = "<group>"; };
 		949F32891D61651200620DB1 /* YMMediaEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMMediaEntry.swift; sourceTree = "<group>"; };
+		949F32C91D61BA0600620DB1 /* YMOfflineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMOfflineTableViewController.swift; sourceTree = "<group>"; };
+		949F32CD1D61BA4300620DB1 /* YMOfflineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMOfflineCell.swift; sourceTree = "<group>"; };
+		949F32CE1D61BA4300620DB1 /* YMOfflineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMOfflineCell.xib; sourceTree = "<group>"; };
 		94D584FA1D55883300E4CAFE /* YMHomeTopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMHomeTopicController.swift; sourceTree = "<group>"; };
 		94D584FC1D5704F500E4CAFE /* UIImage+Extendion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extendion.swift"; sourceTree = "<group>"; };
 		94D584FE1D57051000E4CAFE /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -522,6 +528,7 @@
 				9475651A1D4CC2A900AC6B72 /* YMAutoPlayVideoController.swift */,
 				9475651C1D4CC3B700AC6B72 /* YMHelpViewController.swift */,
 				9475651D1D4CC3B700AC6B72 /* YMHelpViewController.xib */,
+				949F32C91D61BA0600620DB1 /* YMOfflineTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -551,6 +558,8 @@
 				947565171D4CBCAA00AC6B72 /* YMAccountCell.xib */,
 				2527642E1D4F50F10078C143 /* YMSettingHeaderView.swift */,
 				252764301D4F50FB0078C143 /* YMSettingHeaderView.xib */,
+				949F32CD1D61BA4300620DB1 /* YMOfflineCell.swift */,
+				949F32CE1D61BA4300620DB1 /* YMOfflineCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -738,6 +747,7 @@
 				9475650D1D4C5AA500AC6B72 /* YMSettingPlist.plist in Resources */,
 				946B44C01D5CCA6F00D03FC3 /* YMHomeDetailBottomView.xib in Resources */,
 				947564771D4B86FE00AC6B72 /* Assets.xcassets in Resources */,
+				949F32D01D61BA4300620DB1 /* YMOfflineCell.xib in Resources */,
 				945026061D59D33800C7F3B9 /* YMNewCareNoLoginCell.xib in Resources */,
 				947565191D4CBCAA00AC6B72 /* YMAccountCell.xib in Resources */,
 				252764311D4F50FB0078C143 /* YMSettingHeaderView.xib in Resources */,
@@ -862,10 +872,12 @@
 				949F326E1D5FFCC300620DB1 /* YMVideoDetailController.swift in Sources */,
 				947564FD1D4C2AA500AC6B72 /* YMMineHeaderBottomView.swift in Sources */,
 				9475650F1D4CAC8E00AC6B72 /* YMSettingModel.swift in Sources */,
+				949F32CB1D61BA0600620DB1 /* YMOfflineTableViewController.swift in Sources */,
 				94D584FB1D55883300E4CAFE /* YMHomeTopicController.swift in Sources */,
 				945025F81D59D33800C7F3B9 /* YMNewCareViewController.swift in Sources */,
 				949F32861D6030BD00620DB1 /* YMUserHeaderView.swift in Sources */,
 				9450260A1D59D33800C7F3B9 /* YMsearchCell.swift in Sources */,
+				949F32CF1D61BA4300620DB1 /* YMOfflineCell.swift in Sources */,
 				945025F91D59D33800C7F3B9 /* YMSearchContentViewController.swift in Sources */,
 				945025FC1D59D33800C7F3B9 /* YMKeyword.swift in Sources */,
 				940375991D4F9BCB00C7B135 /* YMVideoTitleView.swift in Sources */,

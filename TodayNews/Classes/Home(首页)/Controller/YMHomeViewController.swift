@@ -83,6 +83,8 @@ class YMHomeViewController: UIViewController {
         // 返回标题的数量
         titleView.titleArrayClosure { [weak self] (titleArray) in
             self!.homeTitles = titleArray
+            // 归档标题数据
+            self!.archiveTitles(titleArray)
             for topTitle in titleArray {
                 let topicVC = YMHomeTopicController()
                 topicVC.topTitle = topTitle
@@ -108,9 +110,22 @@ class YMHomeViewController: UIViewController {
         }
     }
     
+    /// 归档标题数据
+    private func archiveTitles(titles: [YMHomeTopTitle]) {
+        let path: NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!
+        let filePath = path.stringByAppendingPathComponent("top_titles.archive")
+        // 归档
+        NSKeyedArchiver.archiveRootObject(titles, toFile: filePath)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit {
+        /// 在这个控制器里写这句话，好像没用，因为这个控制器在运行过程中不会被销毁
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }
 

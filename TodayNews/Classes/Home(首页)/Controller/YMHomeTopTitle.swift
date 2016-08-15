@@ -8,7 +8,7 @@
 
 import Foundation
 
-class YMHomeTopTitle: NSObject {
+class YMHomeTopTitle: NSObject, NSCoding {
     
     var category: String?
 
@@ -41,4 +41,26 @@ class YMHomeTopTitle: NSObject {
         name = dict["name"] as? String
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init()
+        category = aDecoder.decodeObjectForKey("category") as? String
+        tip_new = aDecoder.decodeObjectForKey("tip_new") as? Int
+        default_add = aDecoder.decodeObjectForKey("default_add") as? Int
+        web_url = aDecoder.decodeObjectForKey("web_url") as? String
+        concern_id = aDecoder.decodeObjectForKey("concern_id") as? String
+        icon_url = aDecoder.decodeObjectForKey("icon_url") as? String
+        flags = aDecoder.decodeObjectForKey("flags") as? Int
+        type = aDecoder.decodeObjectForKey("type") as? Int
+        name = aDecoder.decodeObjectForKey("name") as? String
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+//        aCoder.encodeObject(category, forKey: "category")
+//        aCoder.encodeObject(category, forKey: "category")
+//        aCoder.encodeObject(category, forKey: "category")
+//        aCoder.encodeObject(category, forKey: "category")
+//        aCoder.encodeObject(category, forKey: "category")
+        
+        
+    }
 }
