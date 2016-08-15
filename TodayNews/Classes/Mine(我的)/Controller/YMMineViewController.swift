@@ -155,6 +155,10 @@ extension YMMineViewController: YMMineHeaderViewDelegae, YMMineHeaderBottomViewD
                 let offlineVC = YMOfflineTableViewController()
                 offlineVC.title = "离线下载"
                 navigationController?.pushViewController(offlineVC, animated: true)
+            } else if indexPath.row == 2{
+                let activityVC = YMActivityController()
+                activityVC.title = "活动"
+                navigationController?.pushViewController(activityVC, animated: true)
             }
         }
     }

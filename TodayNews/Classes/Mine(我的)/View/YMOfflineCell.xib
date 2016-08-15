@@ -14,12 +14,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQc-yf-yLD">
-                        <rect key="frame" x="25" y="0.0" width="42" height="43.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="air_download_option_20x20_" highlightedImage="air_download_option_press_20x20_" translatesAutoresizingMaskIntoConstraints="NO" id="80E-2n-oUL">
                         <rect key="frame" x="270" y="12" width="20" height="20"/>
                         <constraints>
@@ -27,6 +21,12 @@
                             <constraint firstAttribute="width" constant="20" id="pgF-9M-GPZ"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQc-yf-yLD">
+                        <rect key="frame" x="25" y="0.0" width="42" height="43.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="GQc-yf-yLD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7Bc-cm-yvb"/>
@@ -36,6 +36,10 @@
                     <constraint firstAttribute="bottom" secondItem="GQc-yf-yLD" secondAttribute="bottom" id="feP-r4-kVd"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="GQc-yf-yLD" id="asE-ea-7MX"/>
+                <outlet property="selectedImageView" destination="80E-2n-oUL" id="9mP-Fy-Wev"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>
