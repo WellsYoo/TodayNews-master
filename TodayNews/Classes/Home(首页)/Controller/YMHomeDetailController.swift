@@ -28,7 +28,6 @@ class YMHomeDetailController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-        
     }
     
     private func setupUI() {

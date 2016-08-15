@@ -204,6 +204,27 @@ class YMNetworkTool: NSObject {
         }
     }
     
+    /// 获取发布用户的信息
+    func loadVideoMediaEntry(entry_id: Int, finished:(mediaEntry: YMMediaEntry) -> ()) {
+        let url = BASE_URL + "entry/profile/v1/?"
+        let params = ["entry_id": entry_id]
+        Alamofire
+            .request(.GET, url, parameters: params)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    SVProgressHUD.showErrorWithStatus("加载失败...")
+                    return
+                }
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    if let data = json["data"].dictionaryObject {
+                        let media = YMMediaEntry(dict: data)
+                        finished(mediaEntry: media)
+                    }
+                }
+        }
+    }
+    
     /// -------------------------- 关 心 --------------------------
     //
     /// 获取新的 关心数据列表

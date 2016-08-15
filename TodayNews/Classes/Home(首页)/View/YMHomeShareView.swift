@@ -24,7 +24,11 @@ class YMHomeShareView: UIView {
             homeShareView.bgView.frame = CGRectMake(0, SCREENH - 290, SCREENW, 290)
             }) { (_) in
                 homeShareView.addButton(homeShareView.topScrollView)
-                homeShareView.addButton(homeShareView.bottomScrollView)
+                /// 延时操作
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.2 * Double(NSEC_PER_SEC)))
+                dispatch_after(delayTime, dispatch_get_main_queue(), {
+                    homeShareView.addButton(homeShareView.bottomScrollView)
+                })
         }
     }
     
@@ -122,7 +126,7 @@ extension YMHomeShareView {
             button.titleLabel?.font = UIFont.systemFontOfSize(13)
             button.setTitleColor(UIColor.blackColor(), forState: .Normal)
             button.addTarget(self, action: #selector(shareButtonClick(_:)), forControlEvents: .TouchUpInside)
-            let buttonX = CGFloat(index) * buttonW + 3 * kMargin
+            let buttonX = CGFloat(index) * buttonW + 2 * kMargin
             
             button.x = buttonX
             button.width = buttonW

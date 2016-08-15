@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 let settingCellID = "settingCellID"
 /// ![](http://obna9emby.bkt.clouddn.com/news/%E8%AE%BE%E7%BD%AE.png)
@@ -18,10 +19,23 @@ class YMSettingViewController: YMBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // 从沙盒读取缓存数据的大小
+        calcuateCacheSizeFromSandBox()
+        // 从 plis 加载数据
         loadSettingFromPlist()
-        
+        /// 设置 UI
         setupUI()
+    }
+    
+    /// 从沙盒读取缓存数据的大小
+    private func calcuateCacheSizeFromSandBox() {
+        let cache = KingfisherManager.sharedManager.cache
+        cache.calculateDiskCacheSizeWithCompletionHandler { (size) in
+            // 转换成 M
+            let sizeM = Double(size) / 1024.0 / 1024.0
+            let sizeString = String(format: "%.2fM", sizeM)
+            NSNotificationCenter.defaultCenter().postNotificationName("cacheSizeM", object: self, userInfo: ["cacheSize": sizeString])
+        }
     }
     
     private func setupUI() {
@@ -109,7 +123,12 @@ class YMSettingViewController: YMBaseViewController {
         let alertController = UIAlertController(title: "确定清除所有缓存？问答草稿、离线内容及图片均会被清除", message: nil, preferredStyle: .ActionSheet)
         let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
         let okAction = UIAlertAction(title: "确定", style: .Default, handler: { (_) in
-            
+            let cache = KingfisherManager.sharedManager.cache
+            cache.clearDiskCache()
+            cache.clearMemoryCache()
+            cache.cleanExpiredDiskCache()
+            let sizeString = "0.00M"
+            NSNotificationCenter.defaultCenter().postNotificationName("cacheSizeM", object: self, userInfo: ["cacheSize": sizeString])
         })
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
@@ -123,13 +142,19 @@ class YMSettingViewController: YMBaseViewController {
         return headerView
     }()
 
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
 }
 
 extension YMSettingViewController: UITableViewDelegate, UITableViewDataSource, YMSettingHeaderViewDelegate {
     
     // MARK: - YMSettingHeaderViewDelegate
     func settingHeaderView(headerView: YMSettingHeaderView, accountManageButton: UIButton) {
-        
+        let accountManageVC = YMAccountManageController()
+        accountManageVC.title = "账号管理"
+        navigationController?.pushViewController(accountManageVC, animated: true)
     }
     
     // MARK: - UITableViewDataSource
@@ -146,12 +171,24 @@ extension YMSettingViewController: UITableViewDelegate, UITableViewDataSource, Y
         let cell = tableView.dequeueReusableCellWithIdentifier(settingCellID) as! YMSettingCell
         let cellArray = settings[indexPath.section] as! [YMSettingModel]
         cell.setting = cellArray[indexPath.row]
-        if indexPath.section == 4 {
+        if indexPath.section == 3 {
             if indexPath.row == 1 {
                 cell.selectionStyle = .None
             }
+        } else if indexPath.section == 1 {
+            if indexPath.row == 1 {
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(loadCacheSize(_:)), name: "cacheSizeM", object: self)
+            }
         }
         return cell
+    }
+    
+    /// 获取缓存大小
+    func loadCacheSize(notification: NSNotification) {
+        let userInfo = notification.userInfo as! [String: AnyObject]
+        let indexPath = NSIndexPath(forRow: 1, inSection: 1)
+        let cell = tableView?.cellForRowAtIndexPath(indexPath) as! YMSettingCell
+        cell.rightTitleLabel.text = userInfo["cacheSize"] as? String
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -160,20 +197,15 @@ extension YMSettingViewController: UITableViewDelegate, UITableViewDataSource, Y
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if indexPath.section == 0 {
-            let accountManageVC = YMAccountManageController()
-            accountManageVC.title = "账号管理"
-            navigationController?.pushViewController(accountManageVC, animated: true)
-        }
         
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
             if indexPath.row == 1 {
                 // 设置字体大小
                 setupFontAlertController()
             }
         }
         
-        if indexPath.section == 2 {
+        if indexPath.section == 1 {
             if indexPath.row == 0 {
                 // 网络流量
                 setupNetworkAlertController()
@@ -183,7 +215,7 @@ extension YMSettingViewController: UITableViewDelegate, UITableViewDataSource, Y
             }
         }
         
-        if indexPath.section == 3 {
+        if indexPath.section == 2 {
             if indexPath.row == 2 {
                 let autoPlayVideoVC = YMAutoPlayVideoController()
                 autoPlayVideoVC.title = "自动播放视频"
@@ -191,7 +223,7 @@ extension YMSettingViewController: UITableViewDelegate, UITableViewDataSource, Y
             }
         }
         
-        if indexPath.section == 4 {
+        if indexPath.section == 3 {
             
         }
     }

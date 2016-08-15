@@ -63,9 +63,8 @@ extension YMVideoTopicController: YMVideoTopicCellDelegate {
     // MARK: - YMVideoTopicCellDelegate
     func videoTopicCell(videoTopicCell: YMVideoTopicCell, nameButtonClick nameButton: UIButton) {
         let userVC = YMVideoUserController()
-        
+        userVC.mediaInfo = videoTopicCell.videoTopic?.media_info
         navigationController?.pushViewController(userVC, animated: true)
-        
     }
     
     // MARK: - Table view data source
@@ -77,6 +76,10 @@ extension YMVideoTopicController: YMVideoTopicCellDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier(videoTopicCellID) as! YMVideoTopicCell
         cell.videoTopic = newsTopics[indexPath.row]
         cell.delegate = self
+        /// 更多按钮点击回调
+        cell.moreButtonClosure = {
+            YMHomeShareView.show()
+        }
         return cell
     }
     

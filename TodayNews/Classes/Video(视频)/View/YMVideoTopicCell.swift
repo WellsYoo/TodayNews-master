@@ -17,6 +17,9 @@ class YMVideoTopicCell: UITableViewCell {
     
     weak var delegate: YMVideoTopicCellDelegate?
     
+    /// 更多按钮点击回调
+    var moreButtonClosure: (() -> ())?
+    
     var videoTopic: YMNewsTopic? {
         didSet {
             titleLabel.text = String(videoTopic!.title!)
@@ -70,8 +73,6 @@ class YMVideoTopicCell: UITableViewCell {
     @IBOutlet weak var countLabel: UILabel!
     /// 评论按钮
     @IBOutlet weak var commentButton: UIButton!
-    /// 更多按钮
-    @IBOutlet weak var moreButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -87,6 +88,11 @@ class YMVideoTopicCell: UITableViewCell {
         print(#function)
         playButton.selected = !playButton.selected
         
+    }
+    
+    /// 更多按钮点击
+    @IBAction func moreButtonClick(sender: UIButton) {
+        moreButtonClosure?()
     }
     
     /// 用户名称点击

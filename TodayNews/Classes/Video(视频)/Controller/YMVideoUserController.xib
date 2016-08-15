@@ -7,8 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YMVideoUserController" customModule="TodayNews" customModuleProvider="target">
             <connections>
-                <outlet property="scrollView" destination="PMW-Ln-RVx" id="xFs-5b-xF8"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ePG-YI-KrZ"/>
+                <outlet property="webView" destination="2ya-Y0-Cgr" id="Nbg-K9-xFb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -16,19 +16,20 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMW-Ln-RVx">
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ya-Y0-Cgr">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="delegate" destination="-1" id="tHH-Kt-9w6"/>
+                        <outlet property="delegate" destination="-1" id="oAN-HN-1ol"/>
                     </connections>
-                </scrollView>
+                </webView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="PMW-Ln-RVx" secondAttribute="trailing" id="Ves-l8-qXN"/>
-                <constraint firstAttribute="bottom" secondItem="PMW-Ln-RVx" secondAttribute="bottom" id="g7X-fc-ifz"/>
-                <constraint firstItem="PMW-Ln-RVx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hQR-uw-YNz"/>
-                <constraint firstItem="PMW-Ln-RVx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nFT-07-LGI"/>
+                <constraint firstAttribute="trailing" secondItem="2ya-Y0-Cgr" secondAttribute="trailing" id="159-so-rCh"/>
+                <constraint firstItem="2ya-Y0-Cgr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QQA-ne-LVT"/>
+                <constraint firstAttribute="bottom" secondItem="2ya-Y0-Cgr" secondAttribute="bottom" id="i8Y-KR-lEP"/>
+                <constraint firstItem="2ya-Y0-Cgr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xEf-u1-ROD"/>
             </constraints>
         </view>
     </objects>

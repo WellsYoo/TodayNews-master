@@ -6,15 +6,40 @@
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
 //  用户顶部 view
-//
+//  暂时没有使用
 
 import UIKit
-
-
+import Kingfisher
 
 /// ![](http://obna9emby.bkt.clouddn.com/news/video-detail-user-header.png)
 class YMUserHeaderView: UIView {
-
+    
+    var media: YMMediaEntry? {
+        didSet {
+            let url = media?.icon
+            avatarImageView.kf_setImageWithURL(NSURL(string: url!)!)
+            avatarImageView.kf_setImageWithURL(NSURL(string: url!)!, placeholderImage: UIImage(named: "home_head_default_29x29_"), optionsInfo: nil, progressBlock: { (receivedSize, totalSize) in
+                self.progressView.width = SCREENW * CGFloat(receivedSize / totalSize)
+                }) { (image, error, cacheType, imageURL) in
+                    self.progressView.hidden = true
+            }
+            nameLabel.text = media?.name
+            introduceLabel.text = media?.describe
+            careButton.selected = media!.is_subscribed
+        }
+    }
+    
+    /// 返回按钮点击回调
+    var backButtonClosure: (()->())?
+    /// 关注按钮点击回调
+    var careButtonClosure: ((button: UIButton)->())?
+    /// 更多按钮点击回调
+    var moreButtonClosure: (() -> ())?
+    /// 全部按钮点击回调
+    var allButtonClosure: (() -> ())?
+    /// 视频按钮点击回调
+    var videoButtonClosure: (() -> ())?
+    
     class func userHeaderView() -> YMUserHeaderView {
         let frame = CGRectMake(0, 0, SCREENW, 278)
         return YMUserHeaderView(frame: frame)
@@ -43,10 +68,17 @@ class YMUserHeaderView: UIView {
         bottomView.addSubview(redView)
         /// 添加顶部View
         addSubview(topView)
+        topView.addSubview(progressView)
         /// 添加返回按钮，关注按钮，更多按钮
         addSubview(backButton)
         addSubview(careButton)
         addSubview(moreButton)
+        
+        progressView.snp_makeConstraints { (make) in
+            make.left.equalTo(bottomView)
+            make.size.equalTo(CGSizeMake(100, 2))
+            make.top.equalTo(topView.snp_top).offset(20)
+        }
         
         redView.snp_makeConstraints { (make) in
             make.centerX.equalTo(videoButton)
@@ -85,14 +117,15 @@ class YMUserHeaderView: UIView {
         
         introduceLabel.snp_makeConstraints { (make) in
             make.centerX.equalTo(self)
+            make.width.equalTo(SCREENW - 40)
             make.top.equalTo(nameLabel.snp_bottom).offset(12)
-            make.height.equalTo(25)
             make.bottom.equalTo(bottomView.snp_top).offset(-kMargin)
         }
         
         nameLabel.snp_makeConstraints { (make) in
             make.centerX.equalTo(self)
-            make.top.equalTo(avatarImageView.snp_bottom).offset(kHomeMargin)
+            make.height.equalTo(25)
+            make.top.equalTo(avatarImageView.snp_bottom).offset(kMargin)
         }
         
         avatarImageView.snp_makeConstraints { (make) in
@@ -123,6 +156,12 @@ class YMUserHeaderView: UIView {
             make.right.equalTo(topView.snp_right).offset(-kMargin)
         }
     }
+    
+    private lazy var progressView: UIView = {
+        let progressView = UIView()
+        progressView.backgroundColor = YMColor(42, g: 145, b: 215, a: 1.0)
+        return progressView
+    }()
     
     /// 顶部View
     lazy var topView: UIView = {
@@ -171,13 +210,14 @@ class YMUserHeaderView: UIView {
         avatarImageView.image = UIImage(named: "home_head_default_29x29_")
         avatarImageView.layer.cornerRadius = 33
         avatarImageView.layer.masksToBounds = true
+        avatarImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        avatarImageView.layer.borderWidth = 0.5
         return avatarImageView
     }()
     
     /// 用户昵称
     private lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
-        nameLabel.text = "昵称昵称昵称昵称昵称昵称"
         nameLabel.font = UIFont.systemFontOfSize(18)
         nameLabel.textColor = UIColor.blackColor()
         nameLabel.textAlignment = .Center
@@ -187,7 +227,7 @@ class YMUserHeaderView: UIView {
     /// 介绍
     private lazy var introduceLabel: UILabel = {
         let introduceLabel = UILabel()
-        introduceLabel.text = "介绍介绍介绍介绍介绍介绍"
+        introduceLabel.numberOfLines = 0
         introduceLabel.font = UIFont.systemFontOfSize(13)
         introduceLabel.textColor = UIColor.lightGrayColor()
         introduceLabel.textAlignment = .Center
@@ -244,34 +284,38 @@ class YMUserHeaderView: UIView {
     
     /// 返回按钮点击
     func backButtonClick() {
-        
+        backButtonClosure?()
     }
     
     /// 关注按钮点击
     func careButtonClick(button: UIButton) {
         button.selected = !button.selected
         button.layer.borderColor = button.selected ? UIColor.lightGrayColor().CGColor : UIColor.blackColor().CGColor
-        
+        careButtonClosure?(button: button)
     }
     
     /// 更多按钮点击
     func moreButtonClick() {
-        
+        moreButtonClosure?()
     }
     
     /// 全部按钮点击
     func allButtonClick(button: UIButton) {
         button.selected = !button.selected
-        UIView.animateWithDuration(kAnimationDuration) { 
+        UIView.animateWithDuration(kAnimationDuration, animations: { 
             self.redView.centerX = button.centerX
+            }) { (_) in
+                self.allButtonClosure?()
         }
     }
     
     /// 视频按钮点击
     func videoButtonClick(button: UIButton) {
         button.selected = !button.selected
-        UIView.animateWithDuration(kAnimationDuration) {
+        UIView.animateWithDuration(kAnimationDuration, animations: {
             self.redView.centerX = button.centerX
+        }) { (_) in
+            self.videoButtonClosure?()
         }
     }
     
