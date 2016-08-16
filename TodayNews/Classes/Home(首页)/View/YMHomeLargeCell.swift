@@ -15,10 +15,10 @@ class YMHomeLargeCell: YMHomeTopicCell {
     var newsTopic: YMNewsTopic? {
         didSet{
             titleLabel.text = String(newsTopic!.title!)
-            
-            if newsTopic!.source_avatar != nil {
+            timeLabel.text = NSString.changeDateTime(newsTopic!.publish_time!)
+            if let sourceAvatar = newsTopic?.source_avatar {
                 nameLabel.text = newsTopic!.source
-                avatarImageView.setCircleHeader(newsTopic!.source_avatar!)
+                avatarImageView.setCircleHeader(sourceAvatar)
             }
             
             if let mediaInfo = newsTopic!.media_info {
@@ -90,7 +90,6 @@ class YMHomeLargeCell: YMHomeTopicCell {
         playButton.snp_makeConstraints { (make) in
             make.center.equalTo(largeImageView)
         }
-        
     }
     
     /// 中间的播放按钮

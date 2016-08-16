@@ -25,9 +25,41 @@
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kD-4u-8qA">
                     <rect key="frame" x="0.0" y="497" width="600" height="103"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7b-Ng-hmy">
+                            <rect key="frame" x="280" y="32" width="40" height="40"/>
+                            <state key="normal" image="weixinicon_login_40x40_"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNa-rp-njh">
+                            <rect key="frame" x="340" y="32" width="40" height="40"/>
+                            <state key="normal" image="renrenicon_login_40x40_"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HR9-hM-aTu">
+                            <rect key="frame" x="400" y="32" width="40" height="40"/>
+                            <state key="normal" image="tencenticon_login_40x40_"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axV-mo-7hu">
+                            <rect key="frame" x="220" y="32" width="40" height="40"/>
+                            <state key="normal" image="sinaicon_login_40x40_"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRZ-xe-aqv">
+                            <rect key="frame" x="160" y="32" width="40" height="40"/>
+                            <state key="normal" image="qqicon_login_40x40_"/>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="HR9-hM-aTu" firstAttribute="leading" secondItem="eNa-rp-njh" secondAttribute="trailing" constant="20" id="58w-dQ-8WX"/>
+                        <constraint firstItem="S7b-Ng-hmy" firstAttribute="centerY" secondItem="YRZ-xe-aqv" secondAttribute="centerY" id="6AG-fM-IN7"/>
+                        <constraint firstItem="eNa-rp-njh" firstAttribute="centerY" secondItem="YRZ-xe-aqv" secondAttribute="centerY" id="BXI-Cn-OgD"/>
+                        <constraint firstItem="S7b-Ng-hmy" firstAttribute="centerX" secondItem="5kD-4u-8qA" secondAttribute="centerX" id="JVe-bk-T1I"/>
+                        <constraint firstItem="S7b-Ng-hmy" firstAttribute="leading" secondItem="axV-mo-7hu" secondAttribute="trailing" constant="20" id="P78-eA-kiH"/>
+                        <constraint firstItem="S7b-Ng-hmy" firstAttribute="centerY" secondItem="5kD-4u-8qA" secondAttribute="centerY" id="XMv-ep-Vhn"/>
+                        <constraint firstItem="HR9-hM-aTu" firstAttribute="centerY" secondItem="YRZ-xe-aqv" secondAttribute="centerY" id="Ygw-gx-ja0"/>
+                        <constraint firstItem="axV-mo-7hu" firstAttribute="centerY" secondItem="YRZ-xe-aqv" secondAttribute="centerY" id="l1y-TW-J4e"/>
+                        <constraint firstItem="eNa-rp-njh" firstAttribute="leading" secondItem="S7b-Ng-hmy" secondAttribute="trailing" constant="20" id="lei-Xd-pTO"/>
                         <constraint firstAttribute="height" constant="103" id="uni-tP-4UK"/>
+                        <constraint firstItem="axV-mo-7hu" firstAttribute="leading" secondItem="YRZ-xe-aqv" secondAttribute="trailing" constant="20" id="vtC-5y-1Oj"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QpG-ZO-Swx">
@@ -133,5 +165,10 @@
     </objects>
     <resources>
         <image name="dog_65x65_" width="65" height="65"/>
+        <image name="qqicon_login_40x40_" width="40" height="40"/>
+        <image name="renrenicon_login_40x40_" width="40" height="40"/>
+        <image name="sinaicon_login_40x40_" width="40" height="40"/>
+        <image name="tencenticon_login_40x40_" width="40" height="40"/>
+        <image name="weixinicon_login_40x40_" width="40" height="40"/>
     </resources>
 </document>

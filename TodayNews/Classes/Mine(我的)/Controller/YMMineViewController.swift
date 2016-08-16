@@ -102,7 +102,9 @@ extension YMMineViewController: YMMineHeaderViewDelegae, YMMineHeaderBottomViewD
     }
     
     func noLoginHeaderView(headerView: YMMineNoLoginHeaderView, moreLoginButtonClick: UIButton) {
-        print(#function)
+        let loginVC = YMLoginViewController()
+        loginVC.title = "登录"
+        navigationController?.pushViewController(loginVC, animated: true)
     }
     
     // MARK: - YMMineHeaderViewDelegae
@@ -165,6 +167,10 @@ extension YMMineViewController: YMMineHeaderViewDelegae, YMMineHeaderBottomViewD
                 let activityVC = YMActivityController()
                 activityVC.title = "活动"
                 navigationController?.pushViewController(activityVC, animated: true)
+            } else if indexPath.row == 4 {
+                let loginVC = YMLoginViewController()
+                loginVC.title = "登录"
+                navigationController?.pushViewController(loginVC, animated: true)
             }
         }
     }

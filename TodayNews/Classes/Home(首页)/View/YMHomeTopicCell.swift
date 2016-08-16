@@ -110,7 +110,7 @@ class YMHomeTopicCell: UITableViewCell {
     /// 用户名
     lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
-        nameLabel.font = UIFont.systemFontOfSize(13)
+        nameLabel.font = UIFont.systemFontOfSize(12)
         nameLabel.textColor = UIColor.lightGrayColor()
         return nameLabel
     }()
@@ -118,7 +118,7 @@ class YMHomeTopicCell: UITableViewCell {
     /// 评论
     lazy var commentLabel: UILabel = {
         let comentLabel = UILabel()
-        comentLabel.font = UIFont.systemFontOfSize(13)
+        comentLabel.font = UIFont.systemFontOfSize(12)
         comentLabel.textColor = UIColor.lightGrayColor()
         return comentLabel
     }()
@@ -126,7 +126,7 @@ class YMHomeTopicCell: UITableViewCell {
     /// 时间
     lazy var timeLabel: UILabel = {
         let timeLabel = UILabel()
-        timeLabel.font = UIFont.systemFontOfSize(13)
+        timeLabel.font = UIFont.systemFontOfSize(12)
         timeLabel.textColor = UIColor.lightGrayColor()
         return timeLabel
     }()

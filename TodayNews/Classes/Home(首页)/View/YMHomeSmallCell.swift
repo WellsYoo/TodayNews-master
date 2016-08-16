@@ -15,16 +15,15 @@ class YMHomeSmallCell: YMHomeTopicCell {
     var newsTopic: YMNewsTopic? {
         didSet{
             titleLabel.text = String(newsTopic!.title!)
-            let mediaInfo = newsTopic!.media_info
-            
-            if newsTopic!.source_avatar != nil {
+            timeLabel.text = NSString.changeDateTime(newsTopic!.publish_time!)
+            if let sourceAvatar = newsTopic?.source_avatar {
                 nameLabel.text = newsTopic!.source
-                avatarImageView.setCircleHeader(newsTopic!.source_avatar!)
+                avatarImageView.setCircleHeader(sourceAvatar)
             }
             
-            if mediaInfo?.name != nil {
-                nameLabel.text = mediaInfo?.name
-                avatarImageView.setCircleHeader(mediaInfo!.avatar_url!)
+            if let mediaInfo = newsTopic!.media_info {
+                nameLabel.text = mediaInfo.name
+                avatarImageView.setCircleHeader(mediaInfo.avatar_url!)
             }
             
             if let commentCount = newsTopic!.comment_count {

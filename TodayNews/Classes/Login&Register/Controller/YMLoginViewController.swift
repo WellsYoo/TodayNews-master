@@ -31,5 +31,4 @@ class YMLoginViewController: UIViewController {
     @IBAction func registerButtonClick(sender: UIButton) {
         
     }
-
 }

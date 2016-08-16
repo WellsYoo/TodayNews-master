@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+/// ![](http://obna9emby.bkt.clouddn.com/news/video_spec.png)
 class YMVideoViewController: UIViewController {
     // 当前选中的 titleLabel 的 上一个 titleLabel
     var oldIndex: Int = 0
