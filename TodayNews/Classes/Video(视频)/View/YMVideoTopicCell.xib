@@ -95,6 +95,9 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33R-eP-afv">
                         <rect key="frame" x="130" y="75" width="60" height="60"/>
                         <state key="normal" image="playicon_video_60x60_"/>
+                        <connections>
+                            <action selector="playButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ult-iI-iRS"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCq-Uu-QTe">
                         <rect key="frame" x="263" y="182" width="50" height="20"/>

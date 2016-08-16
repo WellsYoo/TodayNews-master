@@ -27,7 +27,13 @@ class YMVideoDetailController: UIViewController {
     }
     
     func setupUI() {
+        view.addSubview(videoView)
         view.addSubview(backButton)
+        
+        videoView.snp_makeConstraints { (make) in
+            make.left.top.right.equalTo(view)
+            make.height.equalTo(180)
+        }
         
         backButton.snp_makeConstraints { (make) in
             make.left.equalTo(kHomeMargin)
@@ -42,6 +48,13 @@ class YMVideoDetailController: UIViewController {
         backButton.sizeToFit()
         backButton.addTarget(self, action: #selector(backButtonClick), forControlEvents: .TouchUpInside)
         return backButton
+    }()
+    
+    /// 顶部视频 view
+    private lazy var videoView: UIView = {
+        let videoView = UIView()
+        videoView.backgroundColor = UIColor.blackColor()
+        return videoView
     }()
     
     func backButtonClick() {

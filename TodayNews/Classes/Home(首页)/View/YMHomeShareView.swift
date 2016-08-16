@@ -17,7 +17,7 @@ class YMHomeShareView: UIView {
     class func show() {
         let homeShareView = YMHomeShareView()
         homeShareView.frame = UIScreen.mainScreen().bounds
-        homeShareView.backgroundColor = YMColor(0, g: 0, b: 0, a: 0.5)
+        homeShareView.backgroundColor = YMColor(0, g: 0, b: 0, a: 0.3)
         let window = UIApplication.sharedApplication().keyWindow
         window?.addSubview(homeShareView)
         UIView.animateWithDuration(kAnimationDuration, animations: { 

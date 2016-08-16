@@ -17,6 +17,7 @@ protocol YMVideoTitleViewDelegate: NSObjectProtocol {
     func videoTitle(videoTitle: YMVideoTitleView, didSelectVideoTitleLable titleLabel: YMTitleLabel)
     func videoTitle(videoTitle: YMVideoTitleView, didClickSearchButton searchButton: UIButton)
 }
+
 /// ![](http://obna9emby.bkt.clouddn.com/news/video-title.png)
 class YMVideoTitleView: UIView {
     weak var delegate: YMVideoTitleViewDelegate?

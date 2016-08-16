@@ -9,7 +9,12 @@
 import UIKit
 
 protocol YMVideoTopicCellDelegate: NSObjectProtocol {
+    /// 昵称按钮点击
     func videoTopicCell(videoTopicCell: YMVideoTopicCell, nameButtonClick nameButton: UIButton)
+    /// 播放按钮点击
+    func videoTopicCell(videoTopicCell: YMVideoTopicCell, playButtonClick playButton: UIButton)
+    /// 背景点击
+    func videoTopicCell(videoTopicCell: YMVideoTopicCell, tapBgImageViewClick bgImageView: UIImageView)
 }
 
 /// ![](http://obna9emby.bkt.clouddn.com/news/video-cell.png)
@@ -78,6 +83,8 @@ class YMVideoTopicCell: UITableViewCell {
         super.awakeFromNib()
         //如果发现控件的位置和尺寸不是自己设置的，那么有可能是自动伸缩属性导致
         autoresizingMask = .None
+        playButton.setImage(UIImage(named: "new_play_video_60x60_"), forState: .Normal)
+        playButton.setImage(UIImage(named: "new_pause_video_60x60_"), forState: .Selected)
         bgImageView.userInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapBgImageViewClick(_:)))
         bgImageView.addGestureRecognizer(tap)
@@ -85,9 +92,15 @@ class YMVideoTopicCell: UITableViewCell {
     
     /// 背景图片添加点击方法
     func tapBgImageViewClick(tapGesture: UITapGestureRecognizer) {
-        print(#function)
         playButton.selected = !playButton.selected
-        
+        let bgImageView = tapGesture.view as! UIImageView
+        delegate?.videoTopicCell(self, tapBgImageViewClick: bgImageView)
+    }
+    
+    /// 更多按钮点击
+    @IBAction func playButtonClick(sender: UIButton) {
+        sender.selected = !sender.selected
+        delegate?.videoTopicCell(self, playButtonClick: sender)
     }
     
     /// 更多按钮点击

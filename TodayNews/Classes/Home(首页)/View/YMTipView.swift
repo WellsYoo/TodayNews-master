@@ -11,6 +11,7 @@
 import UIKit
 import SnapKit
 
+/// ![](http://obna9emby.bkt.clouddn.com/news/home-tip.png)
 class YMTipView: UIView {
 
     override init(frame: CGRect) {

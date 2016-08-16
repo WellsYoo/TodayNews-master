@@ -5,7 +5,7 @@
 //  Created by 杨蒙 on 16/8/4.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
-//  这个类没有调用
+//  这个类没有调用，使用一个类显示 5 种 cell，但是显示有问题
 //
 
 import UIKit

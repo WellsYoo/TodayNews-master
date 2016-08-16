@@ -9,6 +9,7 @@
 //
 
 import UIKit
+import SnapKit
 
 let videoTopicCellID = "YMVideTopicCell"
 
@@ -53,6 +54,11 @@ class YMVideoTopicController: UITableViewController {
         }
     }
     
+    private lazy var playView: YMPlayerView = {
+        let playView = YMPlayerView()
+        return playView
+    }()
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -63,10 +69,28 @@ class YMVideoTopicController: UITableViewController {
 extension YMVideoTopicController: YMVideoTopicCellDelegate {
     
     // MARK: - YMVideoTopicCellDelegate
+    /// 昵称按钮点击
     func videoTopicCell(videoTopicCell: YMVideoTopicCell, nameButtonClick nameButton: UIButton) {
         let userVC = YMVideoUserController()
         userVC.mediaInfo = videoTopicCell.videoTopic?.media_info
         navigationController?.pushViewController(userVC, animated: true)
+    }
+    
+    /// 播放按钮点击
+    func videoTopicCell(videoTopicCell: YMVideoTopicCell, playButtonClick playButton: UIButton) {
+        
+    }
+    
+    /// 背景图片点击
+    func videoTopicCell(videoTopicCell: YMVideoTopicCell, tapBgImageViewClick bgImageView: UIImageView) {
+        
+        bgImageView.addSubview(playView)
+        
+        playView.snp_makeConstraints { (make) in
+            make.edges.equalTo(bgImageView)
+        }
+        
+        
     }
     
     // MARK: - Table view data source
@@ -77,6 +101,7 @@ extension YMVideoTopicController: YMVideoTopicCellDelegate {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(videoTopicCellID) as! YMVideoTopicCell
         cell.videoTopic = newsTopics[indexPath.row]
+        cell.selectionStyle = .None
         cell.delegate = self
         /// 更多按钮点击回调
         cell.moreButtonClosure = {
@@ -86,7 +111,6 @@ extension YMVideoTopicController: YMVideoTopicCellDelegate {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let videoDetailVC = YMVideoDetailController()
         videoDetailVC.videoTopic = newsTopics[indexPath.row]
         navigationController?.pushViewController(videoDetailVC, animated: true)
