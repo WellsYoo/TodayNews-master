@@ -107,7 +107,8 @@ extension YMVideoTopicController: YMVideoTopicCellDelegate {
             print(urlString)
         } catch {}
         
-        let item = AVPlayerItem(URL: NSURL(string: "http://v4.pstatp.com/3776d864ea7e638c625eb568a277af19/57b4739a/video/c/b7a915efcca34b9fbcc2f5e31068c8e0/")!)
+        let item = AVPlayerItem(URL: NSURL(string: "http://v7.pstatp.com/9cf8cc279daaecbda412a1815940f773/57b4eb86/video/c/4a9885265252431cb9a52d0b2d0d4511/")!)
+        
         playerView.playerItem = item
         
         // 覆盖按钮点击

@@ -13,11 +13,14 @@ import SnapKit
 import AVFoundation
 
 class YMPlayerView: UIView {
+    /// 定时器
+    var progressTimer: NSTimer?
     
     var playerItem: AVPlayerItem? {
         didSet {
             player.replaceCurrentItemWithPlayerItem(playerItem)
             player.play()
+            addProgressTimer()
         }
     }
     // 覆盖按钮回调
@@ -36,9 +39,6 @@ class YMPlayerView: UIView {
         addSubview(progressView)
         // 设置播放器
         playerLayer.player = player
-        // 设置 frame 320 : 209，参见 YMVideoTopicCell 中 背景的大小
-        playerLayer.frame = CGRectMake(0, 0, SCREENW, SCREENW * 209 / 320)
-        playerLayer.backgroundColor = UIColor.cyanColor().CGColor
         // 添加播放器的 layer
         layer.addSublayer(playerLayer)
         // 添加覆盖按钮
@@ -86,14 +86,6 @@ class YMPlayerView: UIView {
         return coverButton
     }()
     
-    /// 覆盖按钮点击
-    func coverButtonClick(button: UIButton) {
-        button.selected = !button.selected
-        playButton.hidden = !button.selected
-        bottomToolBar.hidden = !button.selected
-        coverButtonClosure?(coverButton: button)
-    }
-    
     /// 播放按钮
     lazy var playButton: UIButton = {
         let playButton = UIButton()
@@ -103,12 +95,6 @@ class YMPlayerView: UIView {
         playButton.addTarget(self, action: #selector(playButtonClick(_:)), forControlEvents: .TouchUpInside)
         return playButton
     }()
-    
-    /// 播放按钮点击
-    func playButtonClick(button: UIButton) {
-        button.selected = !button.selected
-        
-    }
     
     /// 底部进度条
     lazy var bottomToolBar: YMProgressView = {
@@ -134,3 +120,96 @@ class YMPlayerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+extension YMPlayerView {
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        playerLayer.frame = layer.bounds
+    }
+    
+    /// 覆盖按钮点击
+    func coverButtonClick(button: UIButton) {
+        button.selected = !button.selected
+        playButton.hidden = !button.selected
+        bottomToolBar.hidden = !button.selected
+        coverButtonClosure?(coverButton: button)
+    }
+    
+    /// 播放按钮点击
+    func playButtonClick(button: UIButton) {
+        button.selected = !button.selected
+        if button.selected {
+            player.play()
+            addProgressTimer()
+        } else {
+            player.pause()
+            removeProgressTimer()
+        }
+    }
+    
+    /// 定时器操作
+    private func addProgressTimer() {
+        progressTimer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(updateProgressInfo), userInfo: nil, repeats: true)
+        // 必须加到主循环队列
+        NSRunLoop.mainRunLoop().addTimer(progressTimer!, forMode: NSRunLoopCommonModes)
+    }
+    
+    /// 移除定时器
+    private func removeProgressTimer() {
+        progressTimer?.invalidate()
+        progressTimer = nil
+    }
+    
+    /// 更新时间
+    func updateProgressInfo() {
+        bottomToolBar.currentTimeLabel.text = currentTimeString()
+        bottomToolBar.totalTimeLabel.text = durationTimeString()
+        bottomToolBar.slider.value = Float(CMTimeGetSeconds(player.currentTime()) / CMTimeGetSeconds(player.currentItem!.duration))
+    }
+    
+    /// 当前时间
+    private func currentTimeString() -> String {
+        let currentTime = CMTimeGetSeconds(player.currentTime())
+        let minute = currentTime / 60
+        let second = currentTime % 60
+        return String(format: "%02d:%02d", minute, second)
+    }
+    
+    /// 总时间
+    private func durationTimeString() -> String {
+        let duration = CMTimeGetSeconds(player.currentItem!.duration)
+        let minute = duration / 60
+        let second = duration % 60
+        return String(format: "%02d:%02d", minute, second)
+    }
+}
+
+/// 底部进度条，当前时间，滑块，时长，全屏按钮
+//class YMProgressView: UIView {
+//    /// 当前时间
+//    @IBOutlet weak var currentTimeLabel: UILabel!
+//    /// 总时长
+//    @IBOutlet weak var totalTimeLabel: UILabel!
+//    /// 播放进度
+//    @IBOutlet weak var slider: UISlider!
+//    /// 全屏按钮
+//    @IBOutlet weak var fullScreenButton: UIButton!
+//    
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//        fullScreenButton.setImage(UIImage(named: "video_fullscreen"), forState: .Normal)
+//        fullScreenButton.setImage(UIImage(named: "video_minimize"), forState: .Selected)
+//    }
+//    
+//    /// 全屏按钮点击
+//    @IBAction func fullScreenButtonClick(sender: UIButton) {
+//        sender.selected = !sender.selected
+//        
+//    }
+//    
+//    /// 滑块值发生变化
+//    @IBAction func sliderValueChanged(sender: UISlider) {
+//        print(sender.value)
+//    }
+//}
