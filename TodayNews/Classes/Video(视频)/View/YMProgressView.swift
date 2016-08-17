@@ -32,6 +32,6 @@ class YMProgressView: UIView {
     
     /// 滑块值发生变化
     @IBAction func sliderValueChanged(sender: UISlider) {
-        
+        print(sender.value)
     }
 }

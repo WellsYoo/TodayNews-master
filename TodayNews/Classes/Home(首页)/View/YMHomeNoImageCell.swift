@@ -15,7 +15,10 @@ class YMHomeNoImageCell: YMHomeTopicCell {
     var newsTopic: YMNewsTopic? {
         didSet{
             titleLabel.text = String(newsTopic!.title!)
-            timeLabel.text = NSString.changeDateTime(newsTopic!.publish_time!)
+            if let publishTime = newsTopic?.publish_time {
+                timeLabel.text = NSString.changeDateTime(publishTime)
+            }
+            
             if let sourceAvatar = newsTopic?.source_avatar {
                 nameLabel.text = newsTopic!.source
                 avatarImageView.setCircleHeader(sourceAvatar)

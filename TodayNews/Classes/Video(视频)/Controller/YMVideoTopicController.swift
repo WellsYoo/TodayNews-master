@@ -76,21 +76,20 @@ extension YMVideoTopicController: YMVideoTopicCellDelegate {
         navigationController?.pushViewController(userVC, animated: true)
     }
     
-    /// 播放按钮点击
-    func videoTopicCell(videoTopicCell: YMVideoTopicCell, playButtonClick playButton: UIButton) {
-        
-    }
-    
     /// 背景图片点击
     func videoTopicCell(videoTopicCell: YMVideoTopicCell, tapBgImageViewClick bgImageView: UIImageView) {
-        
+        videoTopicCell.titleLabel.hidden = true
+        videoTopicCell.playButton.hidden = true
+        videoTopicCell.timeLabel.hidden = true
         bgImageView.addSubview(playView)
         
         playView.snp_makeConstraints { (make) in
             make.edges.equalTo(bgImageView)
         }
         
-        
+        playView.coverButtonClosure = { (coverButton) in
+            videoTopicCell.titleLabel.hidden = !coverButton.selected
+        }
     }
     
     // MARK: - Table view data source
@@ -108,6 +107,10 @@ extension YMVideoTopicController: YMVideoTopicCellDelegate {
             YMHomeShareView.show()
         }
         return cell
+    }
+    
+    func injected() {
+        print("I've been injected: \(self)")
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

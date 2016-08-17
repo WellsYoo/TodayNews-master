@@ -6,7 +6,7 @@
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
 //  视频界面，点击用户名 -> 用户详情 --> 底部的 cell
-//
+//  暂时没有调用
 
 import UIKit
 import Kingfisher

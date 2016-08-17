@@ -11,8 +11,6 @@ import UIKit
 protocol YMVideoTopicCellDelegate: NSObjectProtocol {
     /// 昵称按钮点击
     func videoTopicCell(videoTopicCell: YMVideoTopicCell, nameButtonClick nameButton: UIButton)
-    /// 播放按钮点击
-    func videoTopicCell(videoTopicCell: YMVideoTopicCell, playButtonClick playButton: UIButton)
     /// 背景点击
     func videoTopicCell(videoTopicCell: YMVideoTopicCell, tapBgImageViewClick bgImageView: UIImageView)
 }
@@ -95,12 +93,6 @@ class YMVideoTopicCell: UITableViewCell {
         playButton.selected = !playButton.selected
         let bgImageView = tapGesture.view as! UIImageView
         delegate?.videoTopicCell(self, tapBgImageViewClick: bgImageView)
-    }
-    
-    /// 更多按钮点击
-    @IBAction func playButtonClick(sender: UIButton) {
-        sender.selected = !sender.selected
-        delegate?.videoTopicCell(self, playButtonClick: sender)
     }
     
     /// 更多按钮点击
