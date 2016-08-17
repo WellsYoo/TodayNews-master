@@ -12,14 +12,13 @@ protocol YMVideoTopicCellDelegate: NSObjectProtocol {
     /// 昵称按钮点击
     func videoTopicCell(videoTopicCell: YMVideoTopicCell, nameButtonClick nameButton: UIButton)
     /// 背景点击
-    func videoTopicCell(videoTopicCell: YMVideoTopicCell, tapBgImageViewClick bgImageView: UIImageView)
+    func videoTopicCell(videoTopicCell: YMVideoTopicCell, bgImageButtonClick bgImageButton: UIButton)
 }
 
 /// ![](http://obna9emby.bkt.clouddn.com/news/video-cell.png)
 class YMVideoTopicCell: UITableViewCell {
     
     weak var delegate: YMVideoTopicCellDelegate?
-    
     /// 更多按钮点击回调
     var moreButtonClosure: (() -> ())?
     
@@ -46,11 +45,11 @@ class YMVideoTopicCell: UITableViewCell {
                         countLabel.text = "\(watchCount)次播放"
                     }
                 } else {
-                    countLabel.text = "0 次播放"
+                    countLabel.text = "0次播放"
                 }
                 
                 let largeImageList = videoTopic?.large_image_list.first
-                bgImageView.kf_setImageWithURL(NSURL(string: largeImageList!.url!)!)
+                bgImageButton.kf_setBackgroundImageWithURL(NSURL(string: largeImageList!.url!)!, forState: .Normal)
             }
             
             /// 格式化时间
@@ -63,7 +62,7 @@ class YMVideoTopicCell: UITableViewCell {
     /// 标题 label
     @IBOutlet weak var titleLabel: UILabel!
     /// 背景图片
-    @IBOutlet weak var bgImageView: UIImageView!
+    @IBOutlet weak var bgImageButton: UIButton!
     /// 播放按钮
     @IBOutlet weak var playButton: UIButton!
     /// 时间 label
@@ -76,6 +75,8 @@ class YMVideoTopicCell: UITableViewCell {
     @IBOutlet weak var countLabel: UILabel!
     /// 评论按钮
     @IBOutlet weak var commentButton: UIButton!
+    /// 加载图片，转圈圈
+    @IBOutlet weak var loadingImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -83,18 +84,14 @@ class YMVideoTopicCell: UITableViewCell {
         autoresizingMask = .None
         playButton.setImage(UIImage(named: "new_play_video_60x60_"), forState: .Normal)
         playButton.setImage(UIImage(named: "new_pause_video_60x60_"), forState: .Selected)
-        bgImageView.userInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapBgImageViewClick(_:)))
-        bgImageView.addGestureRecognizer(tap)
+        bgImageButton.userInteractionEnabled = true
     }
     
-    /// 背景图片添加点击方法
-    func tapBgImageViewClick(tapGesture: UITapGestureRecognizer) {
+    /// 背景按钮添加点击方法
+    @IBAction func bgImageButtonClick(sender: UIButton) {
         playButton.selected = !playButton.selected
-        let bgImageView = tapGesture.view as! UIImageView
-        delegate?.videoTopicCell(self, tapBgImageViewClick: bgImageView)
+        delegate?.videoTopicCell(self, bgImageButtonClick: bgImageButton)
     }
-    
     /// 更多按钮点击
     @IBAction func moreButtonClick(sender: UIButton) {
         moreButtonClosure?()
@@ -107,7 +104,7 @@ class YMVideoTopicCell: UITableViewCell {
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

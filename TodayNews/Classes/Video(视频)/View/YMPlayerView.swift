@@ -5,13 +5,22 @@
 //  Created by 杨蒙 on 16/8/16.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
+// 播放视频的 view，只作为播放视频容器
+//
 
 import UIKit
 import SnapKit
+import AVFoundation
 
-/// 播放视频的 view，只用来播放视频
 class YMPlayerView: UIView {
     
+    var playerItem: AVPlayerItem? {
+        didSet {
+            player.replaceCurrentItemWithPlayerItem(playerItem)
+            player.play()
+        }
+    }
+    // 覆盖按钮回调
     var coverButtonClosure: ((coverButton: UIButton)->())?
     
     override init(frame: CGRect) {
@@ -19,17 +28,20 @@ class YMPlayerView: UIView {
         backgroundColor = UIColor.blackColor()
         // 布局 UI
         setupUI()
-        // 添加动画
-        addAnimation()
     }
     
     /// 布局 UI
     func setupUI() {
-        // 添加加载图片
-        addSubview(loadingImageView)
         // 添加底部进度
         addSubview(progressView)
-        
+        // 设置播放器
+        playerLayer.player = player
+        // 设置 frame 320 : 209，参见 YMVideoTopicCell 中 背景的大小
+        playerLayer.frame = CGRectMake(0, 0, SCREENW, SCREENW * 209 / 320)
+        playerLayer.backgroundColor = UIColor.cyanColor().CGColor
+        // 添加播放器的 layer
+        layer.addSublayer(playerLayer)
+        // 添加覆盖按钮
         addSubview(coverButton)
         // 播放按钮
         addSubview(playButton)
@@ -52,33 +64,19 @@ class YMPlayerView: UIView {
             make.bottom.left.right.equalTo(self)
             make.height.equalTo(40)
         }
-        
-        loadingImageView.snp_makeConstraints { (make) in
-            make.center.equalTo(self)
-            make.size.equalTo(CGSizeMake(24, 24))
-        }
     }
     
-    /// 添加动画
-    func addAnimation() {
-        let animation = CABasicAnimation(keyPath: "transform.rotation.z")
-        animation.duration = 1
-        // 绕 z 轴旋转 180°
-        animation.toValue = M_PI * 2.0
-        animation.cumulative = true
-        animation.removedOnCompletion = false
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        // 如果是在 OC 里，应这样写 animation.repeatCount = HUGE_VALF;
-        animation.repeatCount = Float.infinity
-        animation.fillMode = kCAFillModeForwards
-        loadingImageView.layer.addAnimation(animation, forKey: animation.keyPath)
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-            self.loadingImageView.layer.removeAllAnimations()
-            self.loadingImageView.hidden = true
-            self.playButton.selected = true
-        }
-    }
+    /// 播放器的 Layer
+    lazy var playerLayer: AVPlayerLayer = {
+        let playerLayer = AVPlayerLayer()
+        return playerLayer
+    }()
+    
+    /// 播放器
+    private lazy var player: AVPlayer = {
+        let player = AVPlayer()
+        return player
+    }()
     
     /// 覆盖一层按钮
     lazy var coverButton: UIButton = {
@@ -111,13 +109,6 @@ class YMPlayerView: UIView {
         button.selected = !button.selected
         
     }
-    
-    /// 加载图片，转圈圈
-    lazy var loadingImageView: UIImageView = {
-        let loadingImageView = UIImageView()
-        loadingImageView.image = UIImage(named: "refreshicon_loading_24x24_")
-        return loadingImageView
-    }()
     
     /// 底部进度条
     lazy var bottomToolBar: YMProgressView = {

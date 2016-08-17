@@ -14,10 +14,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="269.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TUu-J4-DpB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="209.5"/>
-                        <color key="backgroundColor" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
-                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pql-g6-vIq" userLabel="背景图片">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="209"/>
+                        <connections>
+                            <action selector="bgImageButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="c67-cs-7i5"/>
+                        </connections>
+                    </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nV-jU-TeZ">
                         <rect key="frame" x="0.0" y="209" width="320" height="60"/>
                         <subviews>
@@ -92,12 +94,25 @@
                             <constraint firstItem="s4z-LW-jua" firstAttribute="top" secondItem="5nV-jU-TeZ" secondAttribute="top" id="mNv-2r-1iu"/>
                         </constraints>
                     </view>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="refreshicon_loading_24x24_" translatesAutoresizingMaskIntoConstraints="NO" id="FRZ-XT-za5">
+                        <rect key="frame" x="148" y="93" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="DGa-Vn-v1Z"/>
+                            <constraint firstAttribute="width" constant="24" id="KxN-An-YbD"/>
+                        </constraints>
+                    </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33R-eP-afv">
                         <rect key="frame" x="130" y="75" width="60" height="60"/>
                         <state key="normal" image="playicon_video_60x60_"/>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgh-p6-tOU">
+                        <rect key="frame" x="15" y="15" width="290" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCq-Uu-QTe">
-                        <rect key="frame" x="263" y="182" width="50" height="20"/>
+                        <rect key="frame" x="265" y="184" width="50" height="20"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="GRx-cp-kJl"/>
@@ -113,35 +128,36 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgh-p6-tOU">
-                        <rect key="frame" x="15" y="15" width="290" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="5nV-jU-TeZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="05a-2G-zci"/>
+                    <constraint firstItem="5nV-jU-TeZ" firstAttribute="top" secondItem="Pql-g6-vIq" secondAttribute="bottom" id="2JM-Yb-Vwm"/>
                     <constraint firstItem="Tgh-p6-tOU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="2XL-5u-kM7"/>
-                    <constraint firstItem="TUu-J4-DpB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2pQ-AH-Hqf"/>
+                    <constraint firstItem="FRZ-XT-za5" firstAttribute="centerX" secondItem="33R-eP-afv" secondAttribute="centerX" id="3g3-Ch-KzV"/>
                     <constraint firstAttribute="bottom" secondItem="5nV-jU-TeZ" secondAttribute="bottom" id="4Gu-XG-PTw"/>
+                    <constraint firstAttribute="trailing" secondItem="Pql-g6-vIq" secondAttribute="trailing" id="4VZ-qg-uBO"/>
                     <constraint firstItem="33R-eP-afv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-30" id="6AN-yE-Elo"/>
-                    <constraint firstItem="5nV-jU-TeZ" firstAttribute="top" secondItem="TUu-J4-DpB" secondAttribute="bottom" id="HMl-a7-fre"/>
+                    <constraint firstItem="FRZ-XT-za5" firstAttribute="centerY" secondItem="33R-eP-afv" secondAttribute="centerY" id="AXq-Pb-nfv"/>
+                    <constraint firstItem="33R-eP-afv" firstAttribute="centerX" secondItem="Pql-g6-vIq" secondAttribute="centerX" id="Fjr-Hs-NRf"/>
                     <constraint firstAttribute="trailing" secondItem="Tgh-p6-tOU" secondAttribute="trailing" constant="15" id="Km5-Zp-c2e"/>
+                    <constraint firstItem="Pql-g6-vIq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="LFn-JN-SJK"/>
+                    <constraint firstItem="Pql-g6-vIq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Md9-3i-fJH"/>
                     <constraint firstItem="33R-eP-afv" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="OWA-uI-NEL"/>
-                    <constraint firstAttribute="trailing" secondItem="TUu-J4-DpB" secondAttribute="trailing" id="QgS-pA-s83"/>
-                    <constraint firstItem="GCq-Uu-QTe" firstAttribute="bottom" secondItem="TUu-J4-DpB" secondAttribute="bottom" constant="-7" id="ack-Hj-wCe"/>
-                    <constraint firstItem="GCq-Uu-QTe" firstAttribute="trailing" secondItem="TUu-J4-DpB" secondAttribute="trailing" constant="-7" id="cv7-Py-pIu"/>
+                    <constraint firstItem="GCq-Uu-QTe" firstAttribute="bottom" secondItem="Pql-g6-vIq" secondAttribute="bottom" constant="-5" id="bHN-5Z-LJX"/>
+                    <constraint firstItem="FRZ-XT-za5" firstAttribute="centerX" secondItem="Pql-g6-vIq" secondAttribute="centerX" id="fNo-Cj-YjI"/>
                     <constraint firstItem="Tgh-p6-tOU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="hsJ-ng-GM7"/>
-                    <constraint firstItem="TUu-J4-DpB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="kTT-ek-bnH"/>
+                    <constraint firstItem="GCq-Uu-QTe" firstAttribute="trailing" secondItem="Pql-g6-vIq" secondAttribute="trailing" constant="-5" id="jMF-OA-n0X"/>
+                    <constraint firstItem="FRZ-XT-za5" firstAttribute="centerY" secondItem="Pql-g6-vIq" secondAttribute="centerY" id="p4h-D7-qhw"/>
                     <constraint firstAttribute="trailing" secondItem="5nV-jU-TeZ" secondAttribute="trailing" id="rjS-Nx-Pp0"/>
+                    <constraint firstItem="33R-eP-afv" firstAttribute="centerY" secondItem="Pql-g6-vIq" secondAttribute="centerY" id="tUR-Ts-EFV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatarImageView" destination="mpk-wn-NeN" id="ibJ-Zs-30E"/>
-                <outlet property="bgImageView" destination="TUu-J4-DpB" id="LUu-9b-bAj"/>
+                <outlet property="bgImageButton" destination="Pql-g6-vIq" id="NO8-Ej-rew"/>
                 <outlet property="commentButton" destination="6x9-jb-6BR" id="RIE-mO-CT1"/>
                 <outlet property="countLabel" destination="5pF-HW-cUN" id="zaM-Xd-4Zn"/>
+                <outlet property="loadingImageView" destination="FRZ-XT-za5" id="1G7-MV-B4f"/>
                 <outlet property="nameLabel" destination="RWD-OK-I2K" id="nXz-BA-Xj2"/>
                 <outlet property="playButton" destination="33R-eP-afv" id="kK4-nw-0ka"/>
                 <outlet property="timeLabel" destination="GCq-Uu-QTe" id="chW-bn-nJ9"/>
@@ -155,5 +171,6 @@
         <image name="home_head_default_29x29_" width="29" height="29"/>
         <image name="more_video_20x20_" width="20" height="20"/>
         <image name="playicon_video_60x60_" width="60" height="60"/>
+        <image name="refreshicon_loading_24x24_" width="24" height="24"/>
     </resources>
 </document>

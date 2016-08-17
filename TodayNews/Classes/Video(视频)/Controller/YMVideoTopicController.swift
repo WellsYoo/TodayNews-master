@@ -10,11 +10,16 @@
 
 import UIKit
 import SnapKit
+import AVFoundation
 
 let videoTopicCellID = "YMVideTopicCell"
 
 class YMVideoTopicController: UITableViewController {
-
+    
+    var lastSelectCell: YMVideoTopicCell?
+    
+    var playView: YMPlayerView?
+    
     // 下拉刷新的时间
     private var pullRefreshTime: NSTimeInterval?
     // 记录点击的顶部标题
@@ -54,11 +59,6 @@ class YMVideoTopicController: UITableViewController {
         }
     }
     
-    private lazy var playView: YMPlayerView = {
-        let playView = YMPlayerView()
-        return playView
-    }()
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -76,19 +76,68 @@ extension YMVideoTopicController: YMVideoTopicCellDelegate {
         navigationController?.pushViewController(userVC, animated: true)
     }
     
-    /// 背景图片点击
-    func videoTopicCell(videoTopicCell: YMVideoTopicCell, tapBgImageViewClick bgImageView: UIImageView) {
+    /// 背景按钮点击
+    func videoTopicCell(videoTopicCell: YMVideoTopicCell, bgImageButtonClick bgImageButton: UIButton) {
+        if lastSelectCell != nil {
+            // 上次选中的 cell
+            lastSelectCell?.playButton.hidden = false
+            lastSelectCell?.playButton.selected = false
+            lastSelectCell?.titleLabel.hidden = false
+            lastSelectCell?.timeLabel.hidden = false
+            lastSelectCell?.loadingImageView.hidden = true
+            playView!.removeFromSuperview()
+        }
+        
+        // 当前选中的 cell
         videoTopicCell.titleLabel.hidden = true
         videoTopicCell.playButton.hidden = true
         videoTopicCell.timeLabel.hidden = true
-        bgImageView.addSubview(playView)
         
-        playView.snp_makeConstraints { (make) in
-            make.edges.equalTo(bgImageView)
+        let playerView = YMPlayerView()
+        bgImageButton.addSubview(playerView)
+        playView = playerView
+        
+        playerView.snp_makeConstraints { (make) in
+            make.edges.equalTo(bgImageButton)
         }
         
-        playView.coverButtonClosure = { (coverButton) in
+        // 添加视频链接
+        do {
+            let urlString = try String(contentsOfURL: NSURL(string: videoTopicCell.videoTopic!.url!)!)
+            print(urlString)
+        } catch {}
+        
+        let item = AVPlayerItem(URL: NSURL(string: "http://v4.pstatp.com/3776d864ea7e638c625eb568a277af19/57b4739a/video/c/b7a915efcca34b9fbcc2f5e31068c8e0/")!)
+        playerView.playerItem = item
+        
+        // 覆盖按钮点击
+        playerView.coverButtonClosure = { (coverButton) in
             videoTopicCell.titleLabel.hidden = !coverButton.selected
+        }
+        
+        addAnimation(videoTopicCell.loadingImageView)
+        lastSelectCell = videoTopicCell
+    }
+    
+    /// 添加动画
+    func addAnimation(loading: UIImageView) {
+        loading.hidden = false
+        let animation = CABasicAnimation(keyPath: "transform.rotation.z")
+        animation.duration = 1
+        // 绕 z 轴旋转 180°
+        animation.toValue = M_PI * 2.0
+        animation.cumulative = true
+        animation.removedOnCompletion = false
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        // 如果是在 OC 里，应这样写 animation.repeatCount = HUGE_VALF;
+        animation.repeatCount = Float.infinity
+        animation.fillMode = kCAFillModeForwards
+        loading.layer.addAnimation(animation, forKey: animation.keyPath)
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            loading.layer.removeAllAnimations()
+            loading.hidden = true
+            self.playView!.playButton.selected = true
         }
     }
     
@@ -107,10 +156,6 @@ extension YMVideoTopicController: YMVideoTopicCellDelegate {
             YMHomeShareView.show()
         }
         return cell
-    }
-    
-    func injected() {
-        print("I've been injected: \(self)")
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
