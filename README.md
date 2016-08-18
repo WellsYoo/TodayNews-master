@@ -10,7 +10,7 @@
 
 ### [github 地址](https://github.com/hrscy/TodayNews)
 
-### [codeData 地址](http://www.codedata.cn/cdetail/Swift/Demo/1471514673634279)
+### [CodeData 地址](http://www.codedata.cn/cdetail/Swift/Demo/1471514673634279)
 
 ## 环境设置
 - 项目环境
