@@ -4,6 +4,8 @@
 
 ## 说明
 
+首先声明，今日头条是我经常用的 app 之一，模仿今日头条也是因为感兴趣，代码仅用于学习交流。
+
 项目中有的地方代码写的不是很简洁，毕竟自己能力有限，对 Swift 使用不是很熟练，还请各位朋友不喜勿喷。下面有项目的完整源码，喜欢的朋友可以下载下来，如果您感觉我写的代码对您有所帮助，还请在 github 给个 star，非常感谢您的支持！~
 
 ### [github 地址](https://github.com/hrscy/TodayNews)
@@ -53,7 +55,7 @@
 
 #### 下载地址请看 [postman](https://pan.baidu.com/s/1slxQIdv).
 
-#### 数据请求的具体方式，请看 `YMNetworkTool.swift`。
+#### 数据请求的具体方式，请看 [YMNetworkTool.swift](https://github.com/hrscy/TodayNews/blob/master/TodayNews/Classes/Main(%E4%B8%BB%E8%A6%81)/Tools/YMNetworkTool.swift)。
 
 # 首页
 
@@ -133,7 +135,7 @@ override var frame: CGRect {
 
 具体判断情况请看 `Model` 里的 `YMNewsTopic.swift` 类。
 
-### YMHomeDetailController.swift
+### [YMHomeDetailController.swift](https://github.com/hrscy/TodayNews/blob/master/TodayNews/Classes/Home(%E9%A6%96%E9%A1%B5)/Controller/YMHomeDetailController.swift)
 
 详情有下面几种方式：
 
