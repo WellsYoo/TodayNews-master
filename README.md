@@ -10,7 +10,7 @@
 
 ### [github 地址](https://github.com/hrscy/TodayNews)
 
-### [codaData 地址](http://www.codedata.cn/cdetail/Swift/Demo/1471514673634279)
+### [codeData 地址](http://www.codedata.cn/cdetail/Swift/Demo/1471514673634279)
 
 ## 环境设置
 - 项目环境
@@ -51,9 +51,9 @@
 
 ## 数据请求
 
-#### 今日头条的接口文件请看： [news.json](https://github.com/hrscy/TodayNews/blob/master/news.json)，需要提前安装 postman，然后把该文件导入到 postman 进行查看.
+#### 今日头条的接口文件请看： [news.json](https://github.com/hrscy/TodayNews/blob/master/news.json)，需要提前安装 postman，然后把该文件导入到 postman 进行查看，可以打开谷歌浏览器，找到扩展程序，添加新的扩展，搜索 postman。
 
-#### 下载地址请看 [postman](https://pan.baidu.com/s/1slxQIdv).
+#### 下载地址请看 [postman](https://pan.baidu.com/s/1slxQIdv)，下载完成后，直接拖入到谷歌浏览器的扩展程序界面即可。
 
 #### 数据请求的具体方式，请看 [YMNetworkTool.swift](https://github.com/hrscy/TodayNews/blob/master/TodayNews/Classes/Main(%E4%B8%BB%E8%A6%81)/Tools/YMNetworkTool.swift)。
 
@@ -86,7 +86,7 @@ navigationController?.navigationBarHidden = true
 
 那么 `preferredStatusBarStyle()` 就会被正常调用了。
 
-还有一点关于隐藏导航栏的注意点请看 [YMMineViewController.swift](YMMineViewController.md)。
+还有一点关于隐藏导航栏的注意点请看 [YMMineViewController.swift](https://github.com/hrscy/TodayNews/blob/master/documents/%E6%88%91%E7%9A%84/Controller/YMMineViewController.md)。
 
 #### 2.关于导航栏的 titleView
 
@@ -139,10 +139,10 @@ override var frame: CGRect {
 
 详情有下面几种方式：
 
-/// ![](http://obna9emby.bkt.clouddn.com/news/home-detail-1.jpg)
-/// ![](http://obna9emby.bkt.clouddn.com/news/home-detail-2.jpg)
-/// ![](http://obna9emby.bkt.clouddn.com/news/home-detail-3.jpg)
-/// ![](http://obna9emby.bkt.clouddn.com/news/home-detail-4.jpg)
+![](http://obna9emby.bkt.clouddn.com/news/home-detail-1.jpg)
+![](http://obna9emby.bkt.clouddn.com/news/home-detail-2.jpg)
+![](http://obna9emby.bkt.clouddn.com/news/home-detail-3.jpg)
+![](http://obna9emby.bkt.clouddn.com/news/home-detail-4.jpg)
 
 为了实现简单，这里使用 `webView` 来实现
 
