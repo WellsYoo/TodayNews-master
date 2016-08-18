@@ -41,7 +41,7 @@
 
 ## 数据请求
 
-#### 今日头条的接口文件请看： [news.json]()，需要提前安装 postman，然后把该文件导入到 postman 进行查看.
+#### 今日头条的接口文件请看： [news.json](https://github.com/hrscy/TodayNews/blob/master/news.json)，需要提前安装 postman，然后把该文件导入到 postman 进行查看.
 
 #### 下载地址请看 [postman](https://pan.baidu.com/s/1slxQIdv).
 
