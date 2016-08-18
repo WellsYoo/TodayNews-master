@@ -85,6 +85,8 @@ extension YMVideoTopicController: YMVideoTopicCellDelegate {
             lastSelectCell?.titleLabel.hidden = false
             lastSelectCell?.timeLabel.hidden = false
             lastSelectCell?.loadingImageView.hidden = true
+            playView?.player.currentItem?.cancelPendingSeeks()
+            playView?.player.currentItem?.asset.cancelLoading()
             playView!.removeFromSuperview()
         }
         

@@ -73,7 +73,7 @@ class YMPlayerView: UIView {
     }()
     
     /// 播放器
-    private lazy var player: AVPlayer = {
+    lazy var player: AVPlayer = {
         let player = AVPlayer()
         return player
     }()
