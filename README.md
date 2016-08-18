@@ -1,6 +1,4 @@
-# TodayNews
-
-# 模仿今日头条 app
+# Swift开源项目-模仿今日头条
 
 ![](http://obna9emby.bkt.clouddn.com/news/news.gif)
 
