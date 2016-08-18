@@ -18,8 +18,36 @@
 	- Alamofire ：网络请求
 	- SwiftyJSON：解析 json
 	- MJRefresh： 上拉刷新和下拉刷新
+	
+## 实现的功能
 
-## 首页
+1. 获取今日头条的接口
+2. 完成首页的布局和数据的显示
+3. 实现首页顶部导航栏滚动
+4. 新闻详情界面简单实现
+5. 点击屏蔽按钮，弹出屏蔽视图（坐标有一些问题）
+6. 完成视频界面顶部导航栏滚动
+7. 完成视频界面布局和数据获取
+8. 用户界面简单实现
+9. 完成关注界面布局和数据的获取
+10. 完成关注界面，添加关注功能
+11. 完成搜索功能
+12. 完成个人界面的布局
+13. 完成设置界面的布局
+14. 完成离线下载界面布局
+15. 活动界面简单实现
+16. 登录界面的简单实现
+17. 启动界面的简单实现
+
+## 数据请求
+
+#### 今日头条的接口文件请看： [news.json]()，需要提前安装 postman，然后把该文件导入到 postman 进行查看.
+
+#### 下载地址请看 [postman](https://pan.baidu.com/s/1slxQIdv).
+
+#### 数据请求的具体方式，请看 `YMNetworkTool.swift`。
+
+# 首页
 
 ### [YMHomeViewController.md](https://github.com/hrscy/TodayNews/blob/master/documents/%E9%A6%96%E9%A1%B5/Controller/YMHomeViewController.md)
 
