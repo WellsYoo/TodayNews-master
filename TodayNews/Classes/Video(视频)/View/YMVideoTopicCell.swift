@@ -15,6 +15,7 @@ protocol YMVideoTopicCellDelegate: NSObjectProtocol {
     func videoTopicCell(videoTopicCell: YMVideoTopicCell, bgImageButtonClick bgImageButton: UIButton)
 }
 
+/// ![](http://obna9emby.bkt.clouddn.com/news/video-cell-1_spec.png)
 /// ![](http://obna9emby.bkt.clouddn.com/news/video-cell.png)
 class YMVideoTopicCell: UITableViewCell {
     

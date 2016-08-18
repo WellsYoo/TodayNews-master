@@ -7,7 +7,7 @@
 //
 //
 //  主页顶部标题
-//
+//  与首页的标题类似
 
 import UIKit
 import SnapKit
@@ -29,7 +29,6 @@ class YMVideoTitleView: UIView {
     /// 存放 label 的宽度
     private var labelWidths = [CGFloat]()
     /// 顶部导航栏右边加号按钮点击
-//    var searchBtnClickClosure: (() -> ())?
     /// 向外界传递 titles 数组
     var videoTitlesClosure: ((titleArray: [YMVideoTopTitle])->())?
     /// 记录当前选中的下标

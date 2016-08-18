@@ -1,2 +1,0 @@
-/Users/yangmeng/Library/Developer/Xcode/DerivedData/TodayNews-ayqjtkafqnxqhoaebzigzyylaglh/Build/Products/Debug-iphonesimulator/TodayNews.app
-

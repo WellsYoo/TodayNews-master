@@ -5,8 +5,8 @@
 //  Created by 杨蒙 on 16/8/16.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
-// 播放视频的 view，只作为播放视频容器
-//
+//  播放视频的 view，只作为播放视频容器
+//  以前没有做视频的经验，所以视频这部分做的不太好，这部分可以忽略~ (๑￣ ̫ ￣๑)
 
 import UIKit
 import SnapKit
@@ -101,6 +101,7 @@ class YMPlayerView: UIView {
         let bottomToolBar = NSBundle.mainBundle().loadNibNamed(String(YMProgressView), owner: nil
             , options: nil).last as! YMProgressView
         bottomToolBar.hidden = true
+        bottomToolBar.delegate = self
         return bottomToolBar
     }()
     
@@ -121,8 +122,15 @@ class YMPlayerView: UIView {
     }
 }
 
-extension YMPlayerView {
+extension YMPlayerView: YMProgressViewDelegate {
     
+    // MARK: - YMProgressViewDelegate
+    func progressView(progressView: YMProgressView, slider: UISlider) {
+        let currentTime = CMTimeGetSeconds(player.currentItem!.duration) * Float64(slider.value)
+        player.seekToTime(CMTimeMakeWithSeconds(currentTime, CLOCK_ALARM_MINRES), toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+    }
+    
+    // 布局
     override func layoutSubviews() {
         super.layoutSubviews()
         playerLayer.frame = layer.bounds
@@ -148,7 +156,7 @@ extension YMPlayerView {
         }
     }
     
-    /// 定时器操作
+    /// 添加定时器
     private func addProgressTimer() {
         progressTimer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(updateProgressInfo), userInfo: nil, repeats: true)
         // 必须加到主循环队列
@@ -170,13 +178,14 @@ extension YMPlayerView {
     
     /// 当前时间
     private func currentTimeString() -> String {
-        let currentTime = CMTimeGetSeconds(player.currentTime())
+        let currentTime: Float64 = CMTimeGetSeconds(player.currentTime())
         let minute = currentTime / 60
         let second = currentTime % 60
+        // 这里有一个 bug，就是 minute 和 second 不能转成 Int 类型的，程序会崩溃
         return String(format: "%02d:%02d", minute, second)
     }
     
-    /// 总时间
+    /// 时长
     private func durationTimeString() -> String {
         let duration = CMTimeGetSeconds(player.currentItem!.duration)
         let minute = duration / 60
@@ -184,32 +193,3 @@ extension YMPlayerView {
         return String(format: "%02d:%02d", minute, second)
     }
 }
-
-/// 底部进度条，当前时间，滑块，时长，全屏按钮
-//class YMProgressView: UIView {
-//    /// 当前时间
-//    @IBOutlet weak var currentTimeLabel: UILabel!
-//    /// 总时长
-//    @IBOutlet weak var totalTimeLabel: UILabel!
-//    /// 播放进度
-//    @IBOutlet weak var slider: UISlider!
-//    /// 全屏按钮
-//    @IBOutlet weak var fullScreenButton: UIButton!
-//    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        fullScreenButton.setImage(UIImage(named: "video_fullscreen"), forState: .Normal)
-//        fullScreenButton.setImage(UIImage(named: "video_minimize"), forState: .Selected)
-//    }
-//    
-//    /// 全屏按钮点击
-//    @IBAction func fullScreenButtonClick(sender: UIButton) {
-//        sender.selected = !sender.selected
-//        
-//    }
-//    
-//    /// 滑块值发生变化
-//    @IBAction func sliderValueChanged(sender: UISlider) {
-//        print(sender.value)
-//    }
-//}

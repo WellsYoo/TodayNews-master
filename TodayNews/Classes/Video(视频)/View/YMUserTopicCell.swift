@@ -13,7 +13,6 @@ import Kingfisher
 
 class YMUserTopicCell: UITableViewCell {
     
-    
     /// 标题
     @IBOutlet weak var titleLabel: UILabel!
     /// 观看次数

@@ -5,10 +5,19 @@
 //  Created by 杨蒙 on 16/8/16.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
+//  视频播放时底部的进度条
+//
 
 import UIKit
 
+protocol YMProgressViewDelegate: NSObjectProtocol {
+    func progressView(progressView: YMProgressView, slider: UISlider)
+}
+
 class YMProgressView: UIView {
+    
+    var delegate: YMProgressViewDelegate?
+    
     /// 当前时间
     @IBOutlet weak var currentTimeLabel: UILabel!
     /// 总时长
@@ -32,6 +41,11 @@ class YMProgressView: UIView {
     
     /// 滑块值发生变化
     @IBAction func sliderValueChanged(sender: UISlider) {
-        print(sender.value)
+        delegate?.progressView(self, slider: sender)
     }
+    
+    @IBAction func slider(sender: UISlider) {
+        
+    }
+    
 }

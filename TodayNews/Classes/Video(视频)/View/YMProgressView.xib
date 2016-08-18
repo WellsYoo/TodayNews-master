@@ -37,6 +37,7 @@
                     <rect key="frame" x="60" y="5" width="453" height="31"/>
                     <color key="minimumTrackTintColor" red="0.96470588239999999" green="0.35686274509999999" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
+                        <action selector="slider:" destination="iN0-l3-epB" eventType="touchUpInside" id="ke6-AX-b0S"/>
                         <action selector="sliderValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="wSC-VB-nf1"/>
                     </connections>
                 </slider>

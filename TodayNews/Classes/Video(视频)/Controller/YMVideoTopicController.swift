@@ -13,7 +13,7 @@ import SnapKit
 import AVFoundation
 
 let videoTopicCellID = "YMVideTopicCell"
-
+/// ![](http://obna9emby.bkt.clouddn.com/news/topicVC.png)
 class YMVideoTopicController: UITableViewController {
     
     var lastSelectCell: YMVideoTopicCell?
@@ -102,12 +102,10 @@ extension YMVideoTopicController: YMVideoTopicCellDelegate {
         }
         
         // 添加视频链接
-        do {
-            let urlString = try String(contentsOfURL: NSURL(string: videoTopicCell.videoTopic!.url!)!)
-            print(urlString)
-        } catch {}
-        
-        let item = AVPlayerItem(URL: NSURL(string: "http://v7.pstatp.com/9cf8cc279daaecbda412a1815940f773/57b4eb86/video/c/4a9885265252431cb9a52d0b2d0d4511/")!)
+        // 说明：今日头条的返回的视频是一个网址，但是获取不到视频的真实地址，所以用了一个视频来代替返回数据，
+        // 另外，还请大家不要吐槽这个视频，毕竟现在的视频全是『宝宝』的视频。。(˶‾᷄ ⁻̫ ‾᷅˵)
+        // 嗯嗯，一切为了技术~ ୧( ⁼̴̶̤̀ω⁼̴̶̤́ )૭
+        let item = AVPlayerItem(URL: NSURL(string: "http://wvideo.spriteapp.cn/video/2016/0817/57b3bc156c6ef_wpd.mp4")!)
         
         playerView.playerItem = item
         

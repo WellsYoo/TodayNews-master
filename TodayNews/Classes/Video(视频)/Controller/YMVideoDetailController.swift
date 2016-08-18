@@ -27,19 +27,29 @@ class YMVideoDetailController: UIViewController {
     }
     
     func setupUI() {
-        view.addSubview(videoView)
+        view.addSubview(webView)
         view.addSubview(backButton)
-        
-        videoView.snp_makeConstraints { (make) in
-            make.left.top.right.equalTo(view)
-            make.height.equalTo(180)
+        webView.snp_makeConstraints { (make) in
+            make.edges.equalTo(view)
         }
         
         backButton.snp_makeConstraints { (make) in
             make.left.equalTo(kHomeMargin)
             make.top.equalTo(kMargin)
         }
+        
+        let url = NSURL(string: videoTopic!.url!)
+        let request = NSURLRequest(URL: url!)
+        webView.loadRequest(request)
     }
+    
+    private lazy var webView: UIWebView = {
+        let webView = UIWebView()
+        /// 自动对页面进行缩放以适应屏幕
+        webView.scalesPageToFit = true
+        webView.dataDetectorTypes = .All
+        return webView
+    }()
     
     /// 返回按钮
     lazy var backButton: UIButton = {
@@ -48,13 +58,6 @@ class YMVideoDetailController: UIViewController {
         backButton.sizeToFit()
         backButton.addTarget(self, action: #selector(backButtonClick), forControlEvents: .TouchUpInside)
         return backButton
-    }()
-    
-    /// 顶部视频 view
-    private lazy var videoView: UIView = {
-        let videoView = UIView()
-        videoView.backgroundColor = UIColor.blackColor()
-        return videoView
     }()
     
     func backButtonClick() {
