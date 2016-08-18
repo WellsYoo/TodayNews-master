@@ -52,8 +52,9 @@ class YMHomeTopicController: UITableViewController {
     
     func tabBarSelected() {
         //如果是连点 2 次，并且 如果选中的是当前导航控制器，刷新
-        if lastSelectedIndex != tabBarController?.selectedIndex && view.isShowingOneKeyWindow() {
+        if lastSelectedIndex == tabBarController?.selectedIndex {
             tableView.mj_header.beginRefreshing()
+            print("----")
         }
         lastSelectedIndex = tabBarController!.selectedIndex
     }
