@@ -16,6 +16,7 @@ protocol YMSearchContentViewControllerDelegate: NSObjectProtocol {
 
 let searchContentCellID = "YMsearchCell"
 
+/// ![](http://obna9emby.bkt.clouddn.com/news/search-care.png)
 class YMSearchContentViewController: YMBaseViewController {
 
     var keywords = [YMKeyword]()

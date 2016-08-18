@@ -79,16 +79,16 @@ class YMSettingViewController: YMBaseViewController {
         let alertController = UIAlertController(title: "设置字体大小", message: nil, preferredStyle: .ActionSheet)
         let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
         let smallAction = UIAlertAction(title: "小", style: .Default, handler: { (_) in
-            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["networkMode": "小"])
+            NSNotificationCenter.defaultCenter().postNotificationName("fontSize", object: self, userInfo: ["fontSize": "小"])
         })
         let middleAction = UIAlertAction(title: "中", style: .Default, handler: { (_) in
-            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["networkMode": "中"])
+            NSNotificationCenter.defaultCenter().postNotificationName("fontSize", object: self, userInfo: ["fontSize": "中"])
         })
         let bigAction = UIAlertAction(title: "大", style: .Default, handler: { (_) in
-            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["networkMode": "大"])
+            NSNotificationCenter.defaultCenter().postNotificationName("fontSize", object: self, userInfo: ["fontSize": "大"])
         })
         let largeAction = UIAlertAction(title: "特大", style: .Default, handler: { (_) in
-            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["networkMode": "特大"])
+            NSNotificationCenter.defaultCenter().postNotificationName("fontSize", object: self, userInfo: ["fontSize": "特大"])
         })
         alertController.addAction(cancelAction)
         alertController.addAction(smallAction)
@@ -103,13 +103,13 @@ class YMSettingViewController: YMBaseViewController {
         let alertController = UIAlertController(title: "非Wifi网络流量", message: nil, preferredStyle: .ActionSheet)
         let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
         let bestFlowAction = UIAlertAction(title: "最佳效果（下载大图）", style: .Default, handler: { (_) in
-            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["fontSize": "最佳效果（下载大图）"])
+            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["networkMode": "最佳效果（下载大图）"])
         })
         let betterFlowAction = UIAlertAction(title: "较省流量（智能下图）", style: .Default, handler: { (_) in
-            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["fontSize": "较省流量（智能下图）"])
+            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["networkMode": "较省流量（智能下图）"])
         })
         let leastFlowAction = UIAlertAction(title: "极省流量（不下载图）", style: .Default, handler: { (_) in
-            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["fontSize": "极省流量（不下载图）"])
+            NSNotificationCenter.defaultCenter().postNotificationName("networkMode", object: self, userInfo: ["networkMode": "极省流量（不下载图）"])
         })
         alertController.addAction(cancelAction)
         alertController.addAction(bestFlowAction)

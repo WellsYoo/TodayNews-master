@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// ![](http://obna9emby.bkt.clouddn.com/news/login_spec.png)
 class YMLoginViewController: UIViewController {
 
     @IBOutlet weak var registerButton: UIButton!

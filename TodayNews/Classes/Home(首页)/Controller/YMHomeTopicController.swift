@@ -15,6 +15,8 @@ let topicNoImageCellID = "YMHomeNoImageCell"
 
 class YMHomeTopicController: UITableViewController {
     
+    /// 上一次选中 tabBar 的索引
+    var lastSelectedIndex = Int()
     // 下拉刷新的时间
     private var pullRefreshTime: NSTimeInterval?
     // 记录点击的顶部标题
@@ -43,6 +45,17 @@ class YMHomeTopicController: UITableViewController {
         tableView.estimatedRowHeight = 97
         
         tableView.tableHeaderView = homeSearchBar
+        
+        // 添加监听，监听 tabbar 的点击
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(tabBarSelected), name: YMTabBarDidSelectedNotification, object: nil)
+    }
+    
+    func tabBarSelected() {
+        //如果是连点 2 次，并且 如果选中的是当前导航控制器，刷新
+        if lastSelectedIndex != tabBarController?.selectedIndex && view.isShowingOneKeyWindow() {
+            tableView.mj_header.beginRefreshing()
+        }
+        lastSelectedIndex = tabBarController!.selectedIndex
     }
     
     private lazy var homeSearchBar: YMHomeSearchBar = {

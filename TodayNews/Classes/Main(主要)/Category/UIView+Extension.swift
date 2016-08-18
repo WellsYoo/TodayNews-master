@@ -10,6 +10,18 @@ import UIKit
 
 extension UIView {
     
+    func isShowingOneKeyWindow() -> Bool {
+        // 主窗口
+        let keyWindow = UIApplication.sharedApplication().keyWindow
+        // 以主窗口左上角为坐标原点，计算 self 的矩形框
+        let newFrame = keyWindow?.convertRect(frame, fromView: superview)
+        let winBounds = keyWindow?.bounds
+        // 主窗口的bounds 和 self的矩形框 是否有重叠
+        let intersects = CGRectIntersectsRect(newFrame!, winBounds!)
+        
+        return !hidden && alpha > 0.01 && self.window == keyWindow && intersects
+    }
+    
     /// 裁剪 view 的圆角
     func clipRectCorner(direction: UIRectCorner, cornerRadius: CGFloat) {
         let cornerSize = CGSizeMake(cornerRadius, cornerRadius)

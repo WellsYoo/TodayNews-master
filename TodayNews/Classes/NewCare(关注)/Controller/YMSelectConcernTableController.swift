@@ -10,7 +10,7 @@
 
 import UIKit
 import Kingfisher
-
+/// ![](http://obna9emby.bkt.clouddn.com/news/care-3.png)
 let concernDetailCellID = "concernDetailCellID"
 
 class YMSelectConcernTableController: UIViewController {
@@ -97,7 +97,7 @@ extension YMSelectConcernTableController: UITableViewDataSource, UITableViewDele
     
     /// 分享按钮点击
     func blurImageView(blurImage: YMBlurImageView, shareButton: UIButton) {
-        
+        YMHomeShareView.show()
     }
     
     // MARK: - UITableViewDelegate
@@ -119,38 +119,6 @@ extension YMSelectConcernTableController: UITableViewDataSource, UITableViewDele
         } else {
             
         }
-//        if offsetY <= 0 {
-//            bgImageView.snp_updateConstraints(closure: { (make) in
-//                make.height.equalTo(150)
-//            })
-//            bgImageView.avaterImageView.alpha = 1
-//            bgImageView.peopleCountLabel.alpha = 1
-//            bgImageView.topicCountLabel.alpha = 1
-//            bgImageView.introduceButton.alpha = 1
-//            bgImageView.refreshImageView.alpha = 0
-//            bgImageView.titltButton.snp_remakeConstraints(closure: { (make) in
-//                make.top.equalTo(bgImageView.snp_bottom).offset(-70)
-//                make.left.equalTo(bgImageView.snp_left).offset(85)
-//            })
-//            bgImageView.coverButton.hidden = true
-//        } else if offsetY > 0 && offsetY <= 86{
-//            var tempFrame = bgImageView.frame
-//            tempFrame.size.height = 150 - offsetY
-//            bgImageView.frame = tempFrame
-//            bgImageView.snp_updateConstraints(closure: { (make) in
-//                make.height.equalTo(tempFrame.size.height)
-//            })
-//            bgImageView.avaterImageView.alpha = 1 / offsetY
-//            bgImageView.peopleCountLabel.alpha = 1 / offsetY
-//            bgImageView.topicCountLabel.alpha = 1 / offsetY
-//            bgImageView.introduceButton.alpha = 1 / offsetY
-//            bgImageView.titltButton.centerX = SCREENW * 0.5
-//            bgImageView.titltButton.snp_updateConstraints(closure: { (make) in
-//                make.centerX.equalTo(bgImageView)
-//                make.top.equalTo(bgImageView.snp_top).offset(45)
-//            })
-//            bgImageView.refreshImageView.alpha = offsetY * 0.01
-//        }
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
