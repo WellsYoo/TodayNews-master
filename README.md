@@ -427,3 +427,5 @@ navigationController?.navigationBarHidden = true
 
 ![启动](http://obna9emby.bkt.clouddn.com/news/%E5%90%AF%E5%8A%A8_spec.png)
 
+对于代码中出现的问题，可以及时联系我，我会继续修改。
+
