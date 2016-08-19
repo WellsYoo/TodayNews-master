@@ -8,6 +8,8 @@
 
 项目中有的地方代码写的不是很简洁，毕竟自己能力有限，对 Swift 使用不是很熟练，还请各位朋友不喜勿喷。下面有项目的完整源码，喜欢的朋友可以下载下来，如果您感觉我写的代码对您有所帮助，还请在 github 给个 star，非常感谢您的支持！~
 
+#### 对于代码中出现的问题，可以及时联系我，我会继续修改。
+
 ### [github 地址](https://github.com/hrscy/TodayNews)
 
 ### [CodeData 地址](http://www.codedata.cn/cdetail/Swift/Demo/1471514673634279)
@@ -426,6 +428,3 @@ navigationController?.navigationBarHidden = true
 ![登录](http://obna9emby.bkt.clouddn.com/news/login_spec.png)
 
 ![启动](http://obna9emby.bkt.clouddn.com/news/%E5%90%AF%E5%8A%A8_spec.png)
-
-对于代码中出现的问题，可以及时联系我，我会继续修改。
-
