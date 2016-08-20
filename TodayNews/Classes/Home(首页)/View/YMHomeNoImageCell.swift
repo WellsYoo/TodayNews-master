@@ -30,11 +30,7 @@ class YMHomeNoImageCell: YMHomeTopicCell {
             }
             
             if let commentCount = newsTopic!.comment_count {
-                if commentCount >= 10000 {
-                    commentLabel.text = "\(commentCount / 10000)万评论"
-                } else {
-                    commentLabel.text = "\(commentCount)评论"
-                }
+                commentCount >= 10000 ? (commentLabel.text = "\(commentCount / 10000)万评论") : (commentLabel.text = "\(commentCount)评论")
             } else {
                 commentLabel.hidden = true
             }

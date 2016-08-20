@@ -174,7 +174,7 @@ extension YMScrollTitleView {
     
     /// 当点击标题的时候，检查是否需要改变 label 的位置
     func adjustTitleOffSetToCurrentIndex(currentIndex: Int, oldIndex: Int) {
-        if oldIndex == currentIndex {
+        guard oldIndex != currentIndex else {
             return
         }
         // 重新设置 label 的状态

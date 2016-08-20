@@ -39,16 +39,10 @@ class YMVideoTopicCell: UITableViewCell {
             }
             if let videoDetailInfo = videoTopic?.video_detail_info {
                 if let watchCount = videoDetailInfo.video_watch_count {
-                    if watchCount >= 10000 {
-                        let watch_count = watchCount / 10000
-                        countLabel.text = "\(watch_count)万次播放"
-                    } else {
-                        countLabel.text = "\(watchCount)次播放"
-                    }
+                    watchCount >= 10000 ? (countLabel.text = "\(watchCount / 10000)万次播放") : (countLabel.text = "\(watchCount)次播放")
                 } else {
                     countLabel.text = "0次播放"
                 }
-                
                 let largeImageList = videoTopic?.large_image_list.first
                 bgImageButton.kf_setBackgroundImageWithURL(NSURL(string: largeImageList!.url!)!, forState: .Normal)
             }

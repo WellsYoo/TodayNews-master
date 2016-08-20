@@ -206,14 +206,6 @@ class YMNewsTopic: NSObject {
             titleH = NSString.boundingRectWithString(title!, size: CGSizeMake(titleW, CGFloat(MAXFLOAT)), fontSize: 17)
             cellHeight = 2 * kHomeMargin + titleH + imageH + 2 * kMargin + 16
         }
-        
-        // 整个 cell 的高度 有四种情况：
-        // 首先判断 imageLists 是否有值
-//        if imageLists?.count != 0 {
-//            
-//        } else {
-//            
-//        }
     }
 }
 
