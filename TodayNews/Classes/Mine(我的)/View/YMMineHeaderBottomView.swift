@@ -11,17 +11,14 @@
 import UIKit
 import Kingfisher
 
-protocol YMMineHeaderBottomViewDelegate: NSObjectProtocol {
-    
-    func headerBottomView(bottomView: YMMineHeaderBottomView, collectionButton: YMVerticalButton)
-    func headerBottomView(bottomView: YMMineHeaderBottomView, nightButton: YMVerticalButton)
-    func headerBottomView(bottomView: YMMineHeaderBottomView, settingButton: YMVerticalButton)
-    
-}
-
 class YMMineHeaderBottomView: UIView {
-
-    weak var delegate: YMMineHeaderBottomViewDelegate?
+    
+    /// 收藏按钮回调
+    var collectionButtonClosure: ((collectionButton: UIButton) -> ())?
+    /// 夜间按钮回调
+    var nightButtonClosure: ((nightButton: UIButton) -> ())?
+    /// 设置按钮回调
+    var settingButtonClosure: ((settingButton: UIButton) -> ())?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -104,14 +101,14 @@ class YMMineHeaderBottomView: UIView {
     }
     
     func collectionBtnClick(button: YMVerticalButton) {
-        delegate?.headerBottomView(self, collectionButton: button)
+        collectionButtonClosure?(collectionButton: button)
     }
     
     func nightBtnClick(button: YMVerticalButton) {
-        delegate?.headerBottomView(self, nightButton: button)
+        nightButtonClosure?(nightButton: button)
     }
     
     func settingBtnClick(button: YMVerticalButton) {
-        delegate?.headerBottomView(self, settingButton: button)
+        settingButtonClosure?(settingButton: button)
     }
 }

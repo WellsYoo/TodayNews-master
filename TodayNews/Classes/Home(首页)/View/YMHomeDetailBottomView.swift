@@ -28,7 +28,7 @@ class YMHomeDetailBottomView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         commentCountLabel.sizeToFit()
-        textFiled.placeholder = "  写评轮..."
+        textFiled.placeholder = "  写评论..."
         textFiled.layer.cornerRadius = 15
         textFiled.layer.masksToBounds = true
         textFiled.layer.borderColor = YMColor(220, g: 220, b: 220, a: 1.0).CGColor

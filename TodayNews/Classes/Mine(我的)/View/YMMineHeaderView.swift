@@ -11,13 +11,10 @@
 import UIKit
 import SnapKit
 
-protocol YMMineHeaderViewDelegae: NSObjectProtocol {
-    func headerView(headerView: YMMineHeaderView, headPhotoBbutton: YMMineHeaderIconButton)
-}
-
 class YMMineHeaderView: UIView {
     
-    weak var delegate: YMMineHeaderViewDelegae?
+    /// 头像按钮点击的回调
+    var headerViewClosure: ((iconButton: UIButton) -> ())?
     
     class func headerView() -> YMMineHeaderView {
         let frame = CGRectMake(0, 0, SCREENW, 260)
@@ -83,7 +80,7 @@ class YMMineHeaderView: UIView {
     
     /// 头像按钮点击
     func headPhotoBtnClick(button: YMMineHeaderIconButton) {
-        delegate?.headerView(self, headPhotoBbutton: button)
+        headerViewClosure?(iconButton: button)
     }
     
     required init?(coder aDecoder: NSCoder) {

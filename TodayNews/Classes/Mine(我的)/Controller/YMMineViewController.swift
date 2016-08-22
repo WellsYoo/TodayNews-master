@@ -53,17 +53,38 @@ class YMMineViewController: UITableViewController {
         tableView.tableFooterView = footerView
         tableView.rowHeight = kMineCellH
         tableView.separatorStyle = .None
-        if NSUserDefaults.standardUserDefaults().boolForKey(isLogin) {
-            tableView.tableHeaderView = headerView
-        } else {
-            tableView.tableHeaderView = noLoginHeaderView
+        NSUserDefaults.standardUserDefaults().boolForKey(isLogin) ? (tableView.tableHeaderView = headerView) : (tableView.tableHeaderView = noLoginHeaderView)
+        headerView.headerViewClosure = { (iconButton) in
+            print(iconButton)
         }
+        
+        headerView.bottomView.collectionButtonClosure = { (collectionButton) in
+            let collectionVC = YMCollectionViewController()
+            collectionVC.title = "收藏"
+            self.navigationController?.pushViewController(collectionVC, animated: true)
+        }
+        
+        headerView.bottomView.nightButtonClosure = { (nightButton) in
+            print(nightButton)
+        }
+
+        headerView.bottomView.settingButtonClosure = { (settingButton) in
+            let settingVC = YMSettingViewController()
+            settingVC.title = "设置"
+            self.navigationController?.pushViewController(settingVC, animated: true)
+        }
+        
+        noLoginHeaderView.bottomView.collectionButtonClosure = headerView.bottomView.collectionButtonClosure
+        
+        noLoginHeaderView.bottomView.nightButtonClosure = headerView.bottomView.nightButtonClosure
+        
+        noLoginHeaderView.bottomView.settingButtonClosure = headerView.bottomView.settingButtonClosure
+        
     }
     
     /// 懒加载，创建 未登录 headerView
     private lazy var noLoginHeaderView: YMMineNoLoginHeaderView = {
         let noLoginHeaderView = YMMineNoLoginHeaderView.noLoginHeaderView()
-        noLoginHeaderView.bottomView.delegate = self
         noLoginHeaderView.delegate = self
         return noLoginHeaderView
     }()
@@ -71,8 +92,6 @@ class YMMineViewController: UITableViewController {
     /// 懒加载，创建 headerView
     private lazy var headerView: YMMineHeaderView = {
         let headerView = YMMineHeaderView.headerView()
-        headerView.delegate = self
-        headerView.bottomView.delegate = self
         return headerView
     }()
     
@@ -82,7 +101,7 @@ class YMMineViewController: UITableViewController {
     }
 }
 
-extension YMMineViewController: YMMineHeaderViewDelegae, YMMineHeaderBottomViewDelegate, YMMineNoLoginHeaderViewDelegate {
+extension YMMineViewController: YMMineNoLoginHeaderViewDelegate {
     
     // MARK: - YMMineNoLoginHeaderViewDelegate
     func noLoginHeaderView(headerView: YMMineNoLoginHeaderView, mobileLoginButtonClick: UIButton) {
@@ -105,28 +124,6 @@ extension YMMineViewController: YMMineHeaderViewDelegae, YMMineHeaderBottomViewD
         let loginVC = YMLoginViewController()
         loginVC.title = "登录"
         navigationController?.pushViewController(loginVC, animated: true)
-    }
-    
-    // MARK: - YMMineHeaderViewDelegae
-    func headerView(headerView: YMMineHeaderView, headPhotoBbutton: YMMineHeaderIconButton) {
-        print(#function)
-    }
-    
-    // MARK: - YMMineHeaderBottomViewDelegate
-    func headerBottomView(bottomView: YMMineHeaderBottomView,  collectionButton: YMVerticalButton) {
-        let collectionVC = YMCollectionViewController()
-        collectionVC.title = "收藏"
-        navigationController?.pushViewController(collectionVC, animated: true)
-    }
-    
-    func headerBottomView(bottomView: YMMineHeaderBottomView, nightButton: YMVerticalButton) {
-        print(#function)
-    }
-    
-    func headerBottomView(bottomView: YMMineHeaderBottomView, settingButton: YMVerticalButton) {
-        let settingVC = YMSettingViewController()
-        settingVC.title = "设置"
-        navigationController?.pushViewController(settingVC, animated: true)
     }
     
     // MARK: - UITableViewDataSource
