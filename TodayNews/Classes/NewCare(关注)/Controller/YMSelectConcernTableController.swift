@@ -10,9 +10,9 @@
 
 import UIKit
 import Kingfisher
-/// ![](http://obna9emby.bkt.clouddn.com/news/care-3.png)
-let concernDetailCellID = "concernDetailCellID"
 
+let concernDetailCellID = "concernDetailCellID"
+/// ![](http://obna9emby.bkt.clouddn.com/news/care-3.png)
 class YMSelectConcernTableController: UIViewController {
 
     var tableView: UITableView?

@@ -49,8 +49,8 @@ enum YMOtherLoginButtonType: Int {
 /// iid 未登录用户 id，只要安装了今日头条就会生成一个 iid
 /// 可以在自己的手机上安装一个今日头条，然后通过 charles 抓取一下这个 iid，
 /// 替换成自己的，再进行测试
-let IID = 5034850950
-let device_id = 6096495334
+let IID: String = "5034850950"
+let device_id: String = "6096495334"
 let version_code = "5.7.1"
 /// tabBar 被点击的通知
 let YMTabBarDidSelectedNotification = "YMTabBarDidSelectedNotification"

@@ -45,7 +45,7 @@ class YMNetworkTool: NSObject {
                       "aid": 13,
                       "iid": IID]
         Alamofire
-            .request(.GET, url, parameters: params)
+            .request(.GET, url, parameters: params as? [String : AnyObject])
             .responseJSON { (response) in
                 guard response.result.isSuccess else {
                     SVProgressHUD.showErrorWithStatus("加载失败...")
@@ -75,7 +75,7 @@ class YMNetworkTool: NSObject {
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             let nowTime = NSDate().timeIntervalSince1970
             Alamofire
-                .request(.GET, url, parameters: params as? [String : AnyObject])
+                .request(.GET, url, parameters: params)
                 .responseJSON { (response) in
                     tableView.mj_header.endRefreshing()
                     guard response.result.isSuccess else {
@@ -151,7 +151,7 @@ class YMNetworkTool: NSObject {
                       "aid": 13,
                       "iid": IID]
         Alamofire
-            .request(.GET, url, parameters: params)
+            .request(.GET, url, parameters: params as? [String : AnyObject])
             .responseJSON { (response) in
                 guard response.result.isSuccess else {
                     SVProgressHUD.showErrorWithStatus("加载失败...")
@@ -184,7 +184,7 @@ class YMNetworkTool: NSObject {
                       "device_platform": "iphone",
                       "os_version": "9.3.2"]
         Alamofire
-            .request(.GET, url, parameters: params as? [String : AnyObject])
+            .request(.GET, url, parameters: params)
             .responseJSON { (response) in
                 guard response.result.isSuccess else {
                     SVProgressHUD.showErrorWithStatus("加载失败...")
@@ -328,7 +328,7 @@ class YMNetworkTool: NSObject {
         let url = BASE_URL + "concern/v1/commit/care/"
         let params = ["iid": IID, "concern_id": concernID]
         Alamofire
-            .request(.POST, url, parameters: params as? [String : AnyObject])
+            .request(.POST, url, parameters: params)
         .responseJSON { (response) in
             guard response.result.isSuccess else {
                 SVProgressHUD.showErrorWithStatus("加载失败...")
