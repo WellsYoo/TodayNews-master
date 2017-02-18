@@ -1,7 +1,5 @@
 # Swift开源项目-模仿今日头条
 
-## **目前正在适配 Swift3，因为时间不多，目前只是完成了部分内容，还在更新中，感兴趣的朋友请移步** [https://github.com/hrscy/TodayNews-Swift](https://github.com/hrscy/TodayNews-Swift)。
-
 ![](http://obna9emby.bkt.clouddn.com/news/news.gif)
 
 ## 说明
