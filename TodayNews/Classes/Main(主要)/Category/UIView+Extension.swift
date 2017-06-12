@@ -3,7 +3,7 @@
 //  LongLian369
 //
 //  Created by 杨蒙 on 16/7/3.
-//  Copyright © 2016年 北京龙链科技有限公司. All rights reserved.
+//  Copyright © 2016年 . All rights reserved.
 //
 
 import UIKit
