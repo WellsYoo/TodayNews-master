@@ -9,7 +9,7 @@
 
 import UIKit
 
-class NewCareViewController: UIViewController {
+class MicroTouTiaoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

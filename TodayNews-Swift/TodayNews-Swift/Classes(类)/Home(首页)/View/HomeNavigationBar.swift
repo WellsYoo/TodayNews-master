@@ -15,9 +15,9 @@ class HomeNavigationBar: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        // 添加今日头条 图片
         addSubview(toutiaoImageView)
-        
+        // 添加 搜索框
         addSubview(searchBar)
         
         toutiaoImageView.snp.makeConstraints { (make) in

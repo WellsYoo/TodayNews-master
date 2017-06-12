@@ -16,7 +16,7 @@ class PageContentView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: layout)
         backgroundColor = UIColor.globalBackgroundColor()
         //自适应大小
-//        autoresizingMask = .flexibleWidth | .flexibleHeight
+        autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
     }
     

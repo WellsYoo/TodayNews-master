@@ -35,7 +35,7 @@ class MyTabBarController: UITabBarController {
     private func addChildViewControllers() {
         addChildViewController(childController: HomeViewController(), title: "首页", imageName: "home_tabbar_32x32_", selectedImage: "home_tabbar_press_32x32_")
         addChildViewController(childController: VideoViewController(), title: "视频", imageName: "video_tabbar_32x32_", selectedImage: "video_tabbar_press_32x32_")
-        addChildViewController(childController: NewCareViewController(), title: "关注", imageName: "newcare_tabbar_32x32_", selectedImage: "newcare_tabbar_press_32x32_")
+        addChildViewController(childController: MicroTouTiaoViewController(), title: "关注", imageName: "newcare_tabbar_32x32_", selectedImage: "nweitoutiao_tabbar_press_32x32_")
         addChildViewController(childController: MineViewController(), title: "未登录", imageName: "no_login_tabbar_32x32_", selectedImage: "no_login_tabbar_press_32x32_")
     }
     

@@ -12,7 +12,6 @@
 		94310EBC1E49F5E900D0AF7C /* TodayNews_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94310EBB1E49F5E900D0AF7C /* TodayNews_SwiftUITests.swift */; };
 		94310EF01E4B3B0D00D0AF7C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94310ED81E4B3B0D00D0AF7C /* HomeViewController.swift */; };
 		94310EF11E4B3B0D00D0AF7C /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94310EDE1E4B3B0D00D0AF7C /* MineViewController.swift */; };
-		94310EF21E4B3B0D00D0AF7C /* NewCareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94310EE31E4B3B0D00D0AF7C /* NewCareViewController.swift */; };
 		94310EF31E4B3B0D00D0AF7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94310EE71E4B3B0D00D0AF7C /* AppDelegate.swift */; };
 		94310EF51E4B3B0D00D0AF7C /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94310EE91E4B3B0D00D0AF7C /* MyNavigationController.swift */; };
 		94310EF61E4B3B0D00D0AF7C /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94310EEA1E4B3B0D00D0AF7C /* MyTabBarController.swift */; };
@@ -28,9 +27,10 @@
 		94325DDC1E54979000800C2F /* VerticalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94325DDB1E54979000800C2F /* VerticalButton.swift */; };
 		94325DDE1E54A17B00800C2F /* MineCell.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94325DDD1E54A17B00800C2F /* MineCell.plist */; };
 		94325FDD1E55E0F300800C2F /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94325FDC1E55E0F300800C2F /* NetworkTool.swift */; };
-		94325FE11E55E25E00800C2F /* CareAddChannelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94325FE01E55E25E00800C2F /* CareAddChannelController.xib */; };
 		94325FE31E55EABC00800C2F /* VideoTopTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94325FE21E55EABC00800C2F /* VideoTopTitle.swift */; };
-		9444EE9C1E50601100D05F5F /* CareAddChannelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9444EE9B1E50601100D05F5F /* CareAddChannelController.swift */; };
+		943D2EFD1EEE83CF00B36FCB /* CareAddChannelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D2EF81EEE83CF00B36FCB /* CareAddChannelController.swift */; };
+		943D2EFE1EEE83CF00B36FCB /* CareAddChannelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943D2EF91EEE83CF00B36FCB /* CareAddChannelController.xib */; };
+		943D2EFF1EEE83CF00B36FCB /* MicroTouTiaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D2EFA1EEE83CF00B36FCB /* MicroTouTiaoViewController.swift */; };
 		9444EE9E1E51DCF400D05F5F /* HomeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9444EE9D1E51DCF400D05F5F /* HomeSearchViewController.swift */; };
 		945766341EED7FCA006EBB57 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945766331EED7FCA006EBB57 /* UIColor+Extension.swift */; };
 		945766361EED8BF8006EBB57 /* HomeTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945766351EED8BF8006EBB57 /* HomeTopViewController.swift */; };
@@ -78,7 +78,6 @@
 		94310EBD1E49F5E900D0AF7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94310ED81E4B3B0D00D0AF7C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		94310EDE1E4B3B0D00D0AF7C /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
-		94310EE31E4B3B0D00D0AF7C /* NewCareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCareViewController.swift; sourceTree = "<group>"; };
 		94310EE71E4B3B0D00D0AF7C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94310EE81E4B3B0D00D0AF7C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94310EE91E4B3B0D00D0AF7C /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
@@ -95,9 +94,10 @@
 		94325DDB1E54979000800C2F /* VerticalButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalButton.swift; sourceTree = "<group>"; };
 		94325DDD1E54A17B00800C2F /* MineCell.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MineCell.plist; sourceTree = "<group>"; };
 		94325FDC1E55E0F300800C2F /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
-		94325FE01E55E25E00800C2F /* CareAddChannelController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CareAddChannelController.xib; sourceTree = "<group>"; };
 		94325FE21E55EABC00800C2F /* VideoTopTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTopTitle.swift; sourceTree = "<group>"; };
-		9444EE9B1E50601100D05F5F /* CareAddChannelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CareAddChannelController.swift; sourceTree = "<group>"; };
+		943D2EF81EEE83CF00B36FCB /* CareAddChannelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CareAddChannelController.swift; sourceTree = "<group>"; };
+		943D2EF91EEE83CF00B36FCB /* CareAddChannelController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CareAddChannelController.xib; sourceTree = "<group>"; };
+		943D2EFA1EEE83CF00B36FCB /* MicroTouTiaoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicroTouTiaoViewController.swift; sourceTree = "<group>"; };
 		9444EE9D1E51DCF400D05F5F /* HomeSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSearchViewController.swift; sourceTree = "<group>"; };
 		945766331EED7FCA006EBB57 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		945766351EED8BF8006EBB57 /* HomeTopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTopViewController.swift; sourceTree = "<group>"; };
@@ -203,8 +203,8 @@
 			children = (
 				94310ED61E4B3B0D00D0AF7C /* Home(首页) */,
 				94310EEB1E4B3B0D00D0AF7C /* Video(视频) */,
+				943D2EF61EEE83CF00B36FCB /* Weitoutiao(微头条) */,
 				94310EDC1E4B3B0D00D0AF7C /* Mine(我的) */,
-				94310EE11E4B3B0D00D0AF7C /* Newcare(关注) */,
 				94310EDB1E4B3B0D00D0AF7C /* Login&Reister(登录&注册) */,
 				94310EFC1E505B8E00D0AF7C /* Main(主要) */,
 				94310EE61E4B3B0D00D0AF7C /* Others(其他) */,
@@ -297,40 +297,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		94310EE11E4B3B0D00D0AF7C /* Newcare(关注) */ = {
-			isa = PBXGroup;
-			children = (
-				94310EE21E4B3B0D00D0AF7C /* Controller */,
-				94310EE41E4B3B0D00D0AF7C /* Model */,
-				94310EE51E4B3B0D00D0AF7C /* View */,
-			);
-			path = "Newcare(关注)";
-			sourceTree = "<group>";
-		};
-		94310EE21E4B3B0D00D0AF7C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				94310EE31E4B3B0D00D0AF7C /* NewCareViewController.swift */,
-				9444EE9B1E50601100D05F5F /* CareAddChannelController.swift */,
-				94325FE01E55E25E00800C2F /* CareAddChannelController.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		94310EE41E4B3B0D00D0AF7C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		94310EE51E4B3B0D00D0AF7C /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		94310EE61E4B3B0D00D0AF7C /* Others(其他) */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,6 +373,40 @@
 				94325FDC1E55E0F300800C2F /* NetworkTool.swift */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		943D2EF61EEE83CF00B36FCB /* Weitoutiao(微头条) */ = {
+			isa = PBXGroup;
+			children = (
+				943D2EF71EEE83CF00B36FCB /* Controller */,
+				943D2EFB1EEE83CF00B36FCB /* Model */,
+				943D2EFC1EEE83CF00B36FCB /* View */,
+			);
+			path = "Weitoutiao(微头条)";
+			sourceTree = "<group>";
+		};
+		943D2EF71EEE83CF00B36FCB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				943D2EF81EEE83CF00B36FCB /* CareAddChannelController.swift */,
+				943D2EF91EEE83CF00B36FCB /* CareAddChannelController.xib */,
+				943D2EFA1EEE83CF00B36FCB /* MicroTouTiaoViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		943D2EFB1EEE83CF00B36FCB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		943D2EFC1EEE83CF00B36FCB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		CD98D7B9F59F69D0C00887D2 /* Pods */ = {
@@ -533,8 +533,8 @@
 			files = (
 				94325DDA1E5495AC00800C2F /* NoLoginHeaderView.xib in Resources */,
 				94AF165D1E56D627008E961D /* VideoTopicCell.xib in Resources */,
+				943D2EFE1EEE83CF00B36FCB /* CareAddChannelController.xib in Resources */,
 				94310EA31E49F5E800D0AF7C /* Assets.xcassets in Resources */,
-				94325FE11E55E25E00800C2F /* CareAddChannelController.xib in Resources */,
 				94325DD61E5209FE00800C2F /* SearchDefaultBackgroundView.xib in Resources */,
 				94325DDE1E54A17B00800C2F /* MineCell.plist in Resources */,
 			);
@@ -613,12 +613,11 @@
 				94310EF71E4B3B0D00D0AF7C /* VideoViewController.swift in Sources */,
 				94325DD41E5209F500800C2F /* SearchDefaultBackgroundView.swift in Sources */,
 				94631EF21EED178400061A7E /* PageContentView.swift in Sources */,
-				94310EF21E4B3B0D00D0AF7C /* NewCareViewController.swift in Sources */,
 				94AF165F1E56DBFA008E961D /* NewsTopic.swift in Sources */,
 				94AF16551E568B85008E961D /* VideoTitleView.swift in Sources */,
-				9444EE9C1E50601100D05F5F /* CareAddChannelController.swift in Sources */,
 				94325DDC1E54979000800C2F /* VerticalButton.swift in Sources */,
 				94310EFB1E50502400D0AF7C /* HomeNavigationBar.swift in Sources */,
+				943D2EFD1EEE83CF00B36FCB /* CareAddChannelController.swift in Sources */,
 				94310EF01E4B3B0D00D0AF7C /* HomeViewController.swift in Sources */,
 				94AE9C4E1EED01C2004D79FB /* SearchNavigationView.swift in Sources */,
 				94AF165C1E56D627008E961D /* VideoTopicCell.swift in Sources */,
@@ -628,6 +627,7 @@
 				94325FDD1E55E0F300800C2F /* NetworkTool.swift in Sources */,
 				945766361EED8BF8006EBB57 /* HomeTopViewController.swift in Sources */,
 				94325DD21E51E63E00800C2F /* HomeSearchBar.swift in Sources */,
+				943D2EFF1EEE83CF00B36FCB /* MicroTouTiaoViewController.swift in Sources */,
 				94AF16591E56D2E6008E961D /* VideoTopicController.swift in Sources */,
 				945766341EED7FCA006EBB57 /* UIColor+Extension.swift in Sources */,
 				94631EEE1EED174000061A7E /* PageView.swift in Sources */,
