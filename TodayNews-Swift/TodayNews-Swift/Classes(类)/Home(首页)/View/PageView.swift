@@ -47,7 +47,7 @@ class PageView: UIView {
     }()
     
     fileprivate lazy var pageContentView: PageContentView = {
-        let pageContentView = PageContentView.collectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        let pageContentView = PageContentView.collectionView(frame: CGRect.zero)
         pageContentView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: homeTopIdentifier)
         pageContentView.delegate = self
         pageContentView.dataSource = self

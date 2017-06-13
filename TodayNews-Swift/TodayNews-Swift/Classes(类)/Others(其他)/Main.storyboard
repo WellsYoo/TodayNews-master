@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZFc-Hy-6RX">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--首页-->
+        <scene sceneID="Bsv-c4-JSR">
+            <objects>
+                <navigationController id="NLN-UK-Mfa" customClass="MyNavigationController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="首页" image="home_tabbar_32x32_" selectedImage="home_tabbar_press_32x32_" id="xgw-FX-3Cy"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bDw-xB-DWJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Tlm-AK-MZO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZHx-Uy-pTE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1359" y="-195"/>
+        </scene>
+        <!--首页-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="首页" id="U79-50-Snk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-589" y="-195"/>
+        </scene>
+        <!--未登录-->
+        <scene sceneID="MQw-tw-dX9">
+            <objects>
+                <navigationController id="dSQ-ma-nLf" customClass="MyNavigationController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="未登录" image="no_login_tabbar_32x32_" selectedImage="no_login_tabbar_press_32x32_" id="ZFc-Qz-77B"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fzP-Rk-CYJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vFf-ev-6Dx" kind="relationship" relationship="rootViewController" id="QVh-fe-Ch0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SQL-kd-9aK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1359" y="1901"/>
+        </scene>
+        <!--我的-->
+        <scene sceneID="to0-VY-yqL">
+            <objects>
+                <tableViewController id="vFf-ev-6Dx" customClass="MineViewController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4mI-1s-S7b">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="vFf-ev-6Dx" id="P0X-DS-cAA"/>
+                            <outlet property="delegate" destination="vFf-ev-6Dx" id="8QG-1z-5Tt"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="我的" id="daQ-cA-l6r"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F32-2w-d5X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-563" y="1908"/>
+        </scene>
+        <!--My Tab Bar Controller-->
+        <scene sceneID="p84-dk-EJC">
+            <objects>
+                <tabBarController id="ZFc-Hy-6RX" customClass="MyTabBarController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="sex-Yx-44C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="NLN-UK-Mfa" kind="relationship" relationship="viewControllers" id="JPk-wq-hcz"/>
+                        <segue destination="lip-JD-saC" kind="relationship" relationship="viewControllers" id="gZR-YI-m2D"/>
+                        <segue destination="Ln8-4u-hAS" kind="relationship" relationship="viewControllers" id="5py-fc-eqi"/>
+                        <segue destination="dSQ-ma-nLf" kind="relationship" relationship="viewControllers" id="uMD-Lu-a5M"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ds4-FL-9Z4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2882" y="715"/>
+        </scene>
+        <!--微头条-->
+        <scene sceneID="d14-rk-HU6">
+            <objects>
+                <navigationController id="Ln8-4u-hAS" customClass="MyNavigationController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="微头条" image="weitoutiao_tabbar_32x32_" selectedImage="weitoutiao_tabbar_press_32x32_" id="aCs-Jz-gzM"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="95H-Gi-0er">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="XuN-6E-9nT" kind="relationship" relationship="rootViewController" id="95c-5o-Lmc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dIt-kn-2KM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1358" y="1209"/>
+        </scene>
+        <!--视频-->
+        <scene sceneID="szu-2l-naR">
+            <objects>
+                <navigationController id="lip-JD-saC" customClass="MyNavigationController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="视频" image="video_tabbar_32x32_" selectedImage="video_tabbar_press_32x32_" id="RCy-8l-nmw"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KNF-6o-EGe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="C4z-mT-yN8" kind="relationship" relationship="rootViewController" id="nZV-ya-XlG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PKw-Xh-itI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1359" y="503"/>
+        </scene>
+        <!--视频-->
+        <scene sceneID="9FV-33-RC2">
+            <objects>
+                <viewController id="C4z-mT-yN8" customClass="VideoViewController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C6b-8e-Ug0"/>
+                        <viewControllerLayoutGuide type="bottom" id="7uK-ac-Oye"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Epz-NC-Pfr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="视频" id="g4o-nu-Rwp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YOg-OF-Aes" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-588" y="502"/>
+        </scene>
+        <!--微头条-->
+        <scene sceneID="nQz-wN-ydK">
+            <objects>
+                <viewController id="XuN-6E-9nT" customClass="WeiTouTiaoViewController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dPV-nQ-NMC"/>
+                        <viewControllerLayoutGuide type="bottom" id="bCH-O0-Iix"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="E0b-yy-wLW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="微头条" id="DEd-c4-691">
+                        <barButtonItem key="rightBarButtonItem" image="follow_title_profile_18x18_" id="Ifk-El-2aS">
+                            <connections>
+                                <segue destination="QFt-Zv-Mmy" kind="push" id="QEt-LM-21t"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vgb-FV-a4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-588" y="1232"/>
+        </scene>
+        <!--Add Friend View Controller-->
+        <scene sceneID="Do9-Ic-xEL">
+            <objects>
+                <viewController id="QFt-Zv-Mmy" customClass="AddFriendViewController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Urx-Ky-keb"/>
+                        <viewControllerLayoutGuide type="bottom" id="h8u-99-84g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kFM-qj-WK0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="f2G-r8-sfb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d7M-TI-arq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="216" y="1232"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="follow_title_profile_18x18_" width="18" height="18"/>
+        <image name="home_tabbar_32x32_" width="32" height="32"/>
+        <image name="home_tabbar_press_32x32_" width="32" height="32"/>
+        <image name="no_login_tabbar_32x32_" width="32" height="32"/>
+        <image name="no_login_tabbar_press_32x32_" width="32" height="32"/>
+        <image name="video_tabbar_32x32_" width="32" height="32"/>
+        <image name="video_tabbar_press_32x32_" width="32" height="32"/>
+        <image name="weitoutiao_tabbar_32x32_" width="32" height="32"/>
+        <image name="weitoutiao_tabbar_press_32x32_" width="32" height="32"/>
+    </resources>
+</document>

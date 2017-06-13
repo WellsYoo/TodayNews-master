@@ -27,6 +27,8 @@ let kTabBarHeight: CGFloat = 49.0
 let khomePageTitleHeight: CGFloat = 40.0
 /// 首页新闻间距
 let kHomeMargin: CGFloat = 15.0
+/// 我的界面 头部视图 的高度
+let kMineHeaderViewHieght: CGFloat = 218
 
 /// 屏幕的宽
 let screenWidth = UIScreen.main.bounds.width

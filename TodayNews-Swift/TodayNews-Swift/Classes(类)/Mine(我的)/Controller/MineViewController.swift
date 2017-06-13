@@ -2,21 +2,22 @@
 //  MineViewController.swift
 //  TodayNews-Swift
 //
-//  Created by 杨蒙 on 17/2/7.
-//  Copyright © 2017年 hrscy. All rights reserved.
+//  Created by 杨蒙 on 2017/6/13.
+//  Copyright © 2017年 杨蒙. All rights reserved.
 //
-// 4.我的 控制器
 
 import UIKit
 
-class MineViewController: UITableViewController, UINavigationControllerDelegate {
+class MineViewController: UITableViewController {
 
-    var bgImageViewHeight: CGFloat = 0
-    var bgImageViewWidth: CGFloat = 0
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
     }
     
     override func viewDidLoad() {
@@ -25,29 +26,77 @@ class MineViewController: UITableViewController, UINavigationControllerDelegate 
         setupUI()
         
     }
-    
-    private func setupUI() {
-        view.backgroundColor = UIColor.globalBackgroundColor()
-        
-        tableView.rowHeight = 40
-        tableView.tableHeaderView = noLoginHeaderView
-        bgImageViewHeight = noLoginHeaderView.bgImageView.height
-        bgImageViewWidth = noLoginHeaderView.bgImageView.width
-        tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0)
-        tableView.tableFooterView = UIView()
-        
-    }
 
-    lazy var noLoginHeaderView: NoLoginHeaderView = {
+    // 头部视图
+    fileprivate lazy var noLoginHeaderView: NoLoginHeaderView = {
         let noLoginHeaderView = NoLoginHeaderView.headerView()
         return noLoginHeaderView
     }()
+    
+
+}
+
+extension MineViewController {
+    
+    fileprivate func setupUI() {
+        view.backgroundColor = UIColor.globalBackgroundColor()
+        self.automaticallyAdjustsScrollViewInsets = false
+        tableView.tableHeaderView = noLoginHeaderView
+        tableView.tableFooterView = UIView()
+        tableView.separatorColor = UIColor(r: 230, g: 230, b: 230)
+    }
+    
+}
+
+extension MineViewController {
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Table view data source
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return 2
+        case 1:
+            return 2
+        case 2:
+            return 3
+        default:
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+            case 0:
+                return 36
+            case 1, 2:
+                return 36
+            default:
+                return 0
+        }
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
         cell.accessoryType = .disclosureIndicator
         if indexPath.section == 0 {
-            cell.textLabel?.text = "消息通知"
+            if indexPath.row == 0 {
+                cell.textLabel?.text = "我的关注"
+            } else if indexPath.row == 1 {
+                cell.textLabel?.text = "消息通知"
+            }
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
                 cell.textLabel?.text = "头条商城"
@@ -67,57 +116,9 @@ class MineViewController: UITableViewController, UINavigationControllerDelegate 
         }
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return 2
-        case 2:
-            return 3
-        default:
-            return 0
-        }
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-    }
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        if offsetY < 0{
-            var tempFrame = noLoginHeaderView.frame
-            tempFrame.origin.y = offsetY
-            tempFrame.size.height = bgImageViewHeight - offsetY
-            tempFrame.size.width = bgImageViewWidth - offsetY
-            noLoginHeaderView.bgImageView.frame = tempFrame
-        }
-        
-    }
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-}
-
-extension MineViewController {
-    
     
 }

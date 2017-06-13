@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="LuY-Q3-IGQ" customClass="MineHeaderView" customModule="ShopKeeper" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine-background" translatesAutoresizingMaskIntoConstraints="NO" id="CtL-iX-itn">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="Sia-UL-0ZZ"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="apl-0M-PSs" userLabel="头像">
+                    <rect key="frame" x="15" y="70" width="80" height="80"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="FnV-4t-1fj"/>
+                        <constraint firstAttribute="height" constant="80" id="Kaz-J4-fTe"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="40"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店铺：大宝宝宝宝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfJ-Do-f7p">
+                    <rect key="frame" x="113" y="80" width="147" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ud2-dD-KhI">
+                    <rect key="frame" x="113" y="115" width="92" height="30"/>
+                    <state key="normal" title="管理个人资料">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="mineManageMineInfoButtonClick" destination="LuY-Q3-IGQ" eventType="touchUpInside" id="pPP-YT-Tyu"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3C-BN-Eqh">
+                    <rect key="frame" x="330" y="92.5" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="39u-yr-z0N"/>
+                        <constraint firstAttribute="width" constant="35" id="rWc-q4-jYG"/>
+                    </constraints>
+                    <state key="normal" image="mine-setting"/>
+                    <connections>
+                        <action selector="mineSettingButtonClick" destination="LuY-Q3-IGQ" eventType="touchUpInside" id="9eB-Be-v5F"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="CtL-iX-itn" secondAttribute="trailing" id="08M-VA-bOO"/>
+                <constraint firstItem="CtL-iX-itn" firstAttribute="top" secondItem="LuY-Q3-IGQ" secondAttribute="top" id="1iF-A9-aia"/>
+                <constraint firstItem="f3C-BN-Eqh" firstAttribute="centerY" secondItem="apl-0M-PSs" secondAttribute="centerY" id="96X-Oe-3Lg"/>
+                <constraint firstItem="Ud2-dD-KhI" firstAttribute="bottom" secondItem="apl-0M-PSs" secondAttribute="bottom" constant="-5" id="OKw-RW-yKL"/>
+                <constraint firstItem="apl-0M-PSs" firstAttribute="leading" secondItem="LuY-Q3-IGQ" secondAttribute="leading" constant="15" id="WVG-fC-zRW"/>
+                <constraint firstItem="apl-0M-PSs" firstAttribute="centerY" secondItem="LuY-Q3-IGQ" secondAttribute="centerY" constant="10" id="XHB-II-VVf"/>
+                <constraint firstAttribute="trailing" secondItem="f3C-BN-Eqh" secondAttribute="trailing" constant="10" id="c5f-bo-14j"/>
+                <constraint firstItem="CtL-iX-itn" firstAttribute="leading" secondItem="LuY-Q3-IGQ" secondAttribute="leading" id="eOr-5x-5DA"/>
+                <constraint firstItem="Ud2-dD-KhI" firstAttribute="leading" secondItem="PfJ-Do-f7p" secondAttribute="leading" id="ovX-mC-C4n"/>
+                <constraint firstAttribute="bottom" secondItem="CtL-iX-itn" secondAttribute="bottom" id="rFp-aF-s7R"/>
+                <constraint firstItem="PfJ-Do-f7p" firstAttribute="leading" secondItem="apl-0M-PSs" secondAttribute="trailing" constant="18" id="szs-sa-urt"/>
+                <constraint firstItem="PfJ-Do-f7p" firstAttribute="top" secondItem="apl-0M-PSs" secondAttribute="top" constant="10" id="taI-vu-eaI"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="backgroundImageView" destination="CtL-iX-itn" id="Tam-H3-poV"/>
+                <outlet property="shopNameLabel" destination="PfJ-Do-f7p" id="4om-nt-Sag"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="mine-avatar" width="55" height="55"/>
+        <image name="mine-background" width="320" height="155"/>
+        <image name="mine-setting" width="20" height="20"/>
+    </resources>
+</document>

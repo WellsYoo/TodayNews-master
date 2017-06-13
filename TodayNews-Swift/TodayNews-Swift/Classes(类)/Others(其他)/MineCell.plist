@@ -5,12 +5,50 @@
 	<array>
 		<dict>
 			<key>title</key>
+			<string>我的关注</string>
+			<key>subtitle</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>title</key>
 			<string>消息通知</string>
 			<key>subtitle</key>
 			<string></string>
 		</dict>
 	</array>
-	<array/>
-	<array/>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>头条商城</string>
+			<key>subtitle</key>
+			<string>邀请好友得200元现金奖励</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>京东特供</string>
+			<key>subtitle</key>
+			<string>京东618 新人领188元红包</string>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>我要爆料</string>
+			<key>subtitle</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>用户反馈</string>
+			<key>subtitle</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>系统设置</string>
+			<key>subtitle</key>
+			<string></string>
+		</dict>
+	</array>
 </array>
 </plist>
