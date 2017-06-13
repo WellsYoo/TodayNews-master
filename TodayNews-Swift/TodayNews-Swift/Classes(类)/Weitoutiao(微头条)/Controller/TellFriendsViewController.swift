@@ -16,6 +16,7 @@ class TellFriendsViewController: UITableViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TellFriendsViewCell")
+        tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {

@@ -3,7 +3,7 @@
 //  TodayNews-Swift
 //
 //  Created by 杨蒙 on 17/2/7.
-//  Copyright © 2017年 杨蒙. All rights reserved.
+//  Copyright © 2017年 hsrcy. All rights reserved.
 //
 // 2.视频 控制器
 

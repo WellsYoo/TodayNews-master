@@ -12,6 +12,12 @@ import SnapKit
 
 class HomeViewController: UIViewController {
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 设置导航栏颜色
+        navigationController?.navigationBar.barTintColor = UIColor.globalRedColor()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +49,6 @@ extension HomeViewController {
         view.backgroundColor = UIColor.globalBackgroundColor()
         // 设置导航栏属性
         navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.barTintColor = UIColor.globalRedColor()
         // 自定义导航栏
         navigationItem.titleView = homeNavigationBar
         // 添加 滚动分页视图
@@ -56,6 +61,9 @@ extension HomeViewController {
         }
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
 }
 

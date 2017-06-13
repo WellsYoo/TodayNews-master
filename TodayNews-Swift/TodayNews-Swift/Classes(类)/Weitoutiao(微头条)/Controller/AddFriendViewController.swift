@@ -35,9 +35,6 @@ class AddFriendViewController: UIViewController, UIWebViewDelegate {
 extension AddFriendViewController {
     
     fileprivate func setupUI() {
-        navigationItem.title = "添加好友"
-        // 设置 添加好友按钮
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "告诉朋友", style: .plain, target: self, action: #selector(tellFriendsButtonClick))
         
         view.backgroundColor = UIColor.white
         webView.delegate = self
@@ -46,11 +43,6 @@ extension AddFriendViewController {
         let request = URLRequest(url: url!)
         webView.loadRequest(request)
     }
-}
-
-extension AddFriendViewController {
-    // 告诉朋友 按钮点击
-    @objc fileprivate func tellFriendsButtonClick() {
-        navigationController?.pushViewController(TellFriendsViewController(), animated: true)
-    }
+    
+    
 }

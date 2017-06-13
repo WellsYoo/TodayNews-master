@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 
 class HomeSearchViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

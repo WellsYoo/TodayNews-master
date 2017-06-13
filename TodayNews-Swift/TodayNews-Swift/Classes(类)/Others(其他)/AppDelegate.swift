@@ -15,14 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        // 创建窗口
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        // 检测用户是不是第一次启动
-//        
-//        let tabBarController = MyTabBarController()
-//        
-//        window?.rootViewController = tabBarController
-//        window?.makeKeyAndVisible()
+        // 创建窗口
+        window = UIWindow(frame: UIScreen.main.bounds)
+        // 检测用户是不是第一次启动
+        
+        let tabBarController = MyTabBarController()
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
         return true
     }
 

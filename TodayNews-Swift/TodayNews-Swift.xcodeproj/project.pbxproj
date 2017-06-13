@@ -11,7 +11,6 @@
 		94310EB11E49F5E800D0AF7C /* TodayNews_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94310EB01E49F5E800D0AF7C /* TodayNews_SwiftTests.swift */; };
 		94310EBC1E49F5E900D0AF7C /* TodayNews_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94310EBB1E49F5E900D0AF7C /* TodayNews_SwiftUITests.swift */; };
 		94310EF01E4B3B0D00D0AF7C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94310ED81E4B3B0D00D0AF7C /* HomeViewController.swift */; };
-		94310EF11E4B3B0D00D0AF7C /* MineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94310EDE1E4B3B0D00D0AF7C /* MineTableViewController.swift */; };
 		94310EF31E4B3B0D00D0AF7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94310EE71E4B3B0D00D0AF7C /* AppDelegate.swift */; };
 		94310EF71E4B3B0D00D0AF7C /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94310EED1E4B3B0D00D0AF7C /* VideoViewController.swift */; };
 		94310EF91E4B405500D0AF7C /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94310EF81E4B405500D0AF7C /* Const.swift */; };
@@ -34,11 +33,12 @@
 		94631EEE1EED174000061A7E /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94631EED1EED174000061A7E /* PageView.swift */; };
 		94631EF01EED175600061A7E /* PageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94631EEF1EED175600061A7E /* PageTitleView.swift */; };
 		94631EF21EED178400061A7E /* PageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94631EF11EED178400061A7E /* PageContentView.swift */; };
+		9471946D1EEFBD2E00DD469E /* WeitoutiaoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9471946C1EEFBD2E00DD469E /* WeitoutiaoHeaderView.swift */; };
+		9471946F1EEFBD3700DD469E /* WeitoutiaoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9471946E1EEFBD3700DD469E /* WeitoutiaoHeaderView.xib */; };
 		9476F77F1EEE961B0091C6E3 /* TellFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F77E1EEE961B0091C6E3 /* TellFriendsViewController.swift */; };
 		9476F7811EEEA5580091C6E3 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F7801EEEA5580091C6E3 /* AddFriendViewController.swift */; };
 		9476F7851EEF67900091C6E3 /* NoLoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F7841EEF67900091C6E3 /* NoLoginHeaderView.swift */; };
 		9476F78A1EEF690B0091C6E3 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F7881EEF690B0091C6E3 /* MineHeaderView.swift */; };
-		9476F78B1EEF690B0091C6E3 /* MineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9476F7891EEF690B0091C6E3 /* MineHeaderView.xib */; };
 		9476F78F1EEF69EF0091C6E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9476F78E1EEF69EF0091C6E3 /* Main.storyboard */; };
 		9476F7911EEF6A400091C6E3 /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F7901EEF6A400091C6E3 /* MineViewController.swift */; };
 		94AE9C4E1EED01C2004D79FB /* SearchNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AE9C4D1EED01C2004D79FB /* SearchNavigationView.swift */; };
@@ -49,6 +49,7 @@
 		94AF165D1E56D627008E961D /* VideoTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AF165B1E56D627008E961D /* VideoTopicCell.xib */; };
 		94AF165F1E56DBFA008E961D /* NewsTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AF165E1E56DBFA008E961D /* NewsTopic.swift */; };
 		94AF16611E56DFFC008E961D /* VideoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AF16601E56DFFC008E961D /* VideoDetailController.swift */; };
+		94FFAD9E1EF0397A00F489DC /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FFAD9D1EF0397A00F489DC /* UIImage+Extension.swift */; };
 		BA7DF4D1079C9E896D0CE6AC /* Pods_TodayNews_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB8B6ECDB85313D09FF0EFA /* Pods_TodayNews_Swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +82,6 @@
 		94310EBB1E49F5E900D0AF7C /* TodayNews_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayNews_SwiftUITests.swift; sourceTree = "<group>"; };
 		94310EBD1E49F5E900D0AF7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94310ED81E4B3B0D00D0AF7C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		94310EDE1E4B3B0D00D0AF7C /* MineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineTableViewController.swift; sourceTree = "<group>"; };
 		94310EE71E4B3B0D00D0AF7C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94310EE81E4B3B0D00D0AF7C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94310EED1E4B3B0D00D0AF7C /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
@@ -105,11 +105,12 @@
 		94631EED1EED174000061A7E /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		94631EEF1EED175600061A7E /* PageTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageTitleView.swift; sourceTree = "<group>"; };
 		94631EF11EED178400061A7E /* PageContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentView.swift; sourceTree = "<group>"; };
+		9471946C1EEFBD2E00DD469E /* WeitoutiaoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeitoutiaoHeaderView.swift; sourceTree = "<group>"; };
+		9471946E1EEFBD3700DD469E /* WeitoutiaoHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeitoutiaoHeaderView.xib; sourceTree = "<group>"; };
 		9476F77E1EEE961B0091C6E3 /* TellFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TellFriendsViewController.swift; sourceTree = "<group>"; };
 		9476F7801EEEA5580091C6E3 /* AddFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		9476F7841EEF67900091C6E3 /* NoLoginHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoLoginHeaderView.swift; sourceTree = "<group>"; };
 		9476F7881EEF690B0091C6E3 /* MineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
-		9476F7891EEF690B0091C6E3 /* MineHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineHeaderView.xib; sourceTree = "<group>"; };
 		9476F78E1EEF69EF0091C6E3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9476F7901EEF6A400091C6E3 /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		94AE9C4D1EED01C2004D79FB /* SearchNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchNavigationView.swift; sourceTree = "<group>"; };
@@ -120,6 +121,7 @@
 		94AF165B1E56D627008E961D /* VideoTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoTopicCell.xib; sourceTree = "<group>"; };
 		94AF165E1E56DBFA008E961D /* NewsTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTopic.swift; sourceTree = "<group>"; };
 		94AF16601E56DFFC008E961D /* VideoDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDetailController.swift; sourceTree = "<group>"; };
+		94FFAD9D1EF0397A00F489DC /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		E0151791A3800E72065DFC8E /* Pods-TodayNews-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews-Swift/Pods-TodayNews-Swift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -284,7 +286,6 @@
 			isa = PBXGroup;
 			children = (
 				9476F7901EEF6A400091C6E3 /* MineViewController.swift */,
-				94310EDE1E4B3B0D00D0AF7C /* MineTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -300,7 +301,6 @@
 			isa = PBXGroup;
 			children = (
 				9476F7881EEF690B0091C6E3 /* MineHeaderView.swift */,
-				9476F7891EEF690B0091C6E3 /* MineHeaderView.xib */,
 				94325DD91E5495AC00800C2F /* NoLoginHeaderView.xib */,
 				94325DDB1E54979000800C2F /* VerticalButton.swift */,
 				9476F7841EEF67900091C6E3 /* NoLoginHeaderView.swift */,
@@ -374,6 +374,7 @@
 			children = (
 				94310EFE1E505BAF00D0AF7C /* UIView+Extension.swift */,
 				945766331EED7FCA006EBB57 /* UIColor+Extension.swift */,
+				94FFAD9D1EF0397A00F489DC /* UIImage+Extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -400,8 +401,8 @@
 			isa = PBXGroup;
 			children = (
 				943D2EFA1EEE83CF00B36FCB /* WeiTouTiaoViewController.swift */,
-				9476F77E1EEE961B0091C6E3 /* TellFriendsViewController.swift */,
 				9476F7801EEEA5580091C6E3 /* AddFriendViewController.swift */,
+				9476F77E1EEE961B0091C6E3 /* TellFriendsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -416,6 +417,8 @@
 		943D2EFC1EEE83CF00B36FCB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9471946C1EEFBD2E00DD469E /* WeitoutiaoHeaderView.swift */,
+				9471946E1EEFBD3700DD469E /* WeitoutiaoHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -509,7 +512,6 @@
 				TargetAttributes = {
 					94310E971E49F5E800D0AF7C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = CK4C7KZJ97;
 						ProvisioningStyle = Automatic;
 					};
 					94310EAB1E49F5E800D0AF7C = {
@@ -554,10 +556,10 @@
 				94325DDA1E5495AC00800C2F /* NoLoginHeaderView.xib in Resources */,
 				94AF165D1E56D627008E961D /* VideoTopicCell.xib in Resources */,
 				9476F78F1EEF69EF0091C6E3 /* Main.storyboard in Resources */,
-				9476F78B1EEF690B0091C6E3 /* MineHeaderView.xib in Resources */,
 				94310EA31E49F5E800D0AF7C /* Assets.xcassets in Resources */,
 				94325DD61E5209FE00800C2F /* SearchDefaultBackgroundView.xib in Resources */,
 				94325DDE1E54A17B00800C2F /* MineCell.plist in Resources */,
+				9471946F1EEFBD3700DD469E /* WeitoutiaoHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,11 +656,12 @@
 				945766341EED7FCA006EBB57 /* UIColor+Extension.swift in Sources */,
 				94631EEE1EED174000061A7E /* PageView.swift in Sources */,
 				94310EF91E4B405500D0AF7C /* Const.swift in Sources */,
+				9471946D1EEFBD2E00DD469E /* WeitoutiaoHeaderView.swift in Sources */,
 				9476F7811EEEA5580091C6E3 /* AddFriendViewController.swift in Sources */,
-				94310EF11E4B3B0D00D0AF7C /* MineTableViewController.swift in Sources */,
 				94310EFF1E505BAF00D0AF7C /* UIView+Extension.swift in Sources */,
 				94AF16571E56A2D6008E961D /* HomeTopTitle.swift in Sources */,
 				9476F78A1EEF690B0091C6E3 /* MineHeaderView.swift in Sources */,
+				94FFAD9E1EF0397A00F489DC /* UIImage+Extension.swift in Sources */,
 				9476F7911EEF6A400091C6E3 /* MineViewController.swift in Sources */,
 				94325FE31E55EABC00800C2F /* VideoTopTitle.swift in Sources */,
 				9444EE9E1E51DCF400D05F5F /* HomeSearchViewController.swift in Sources */,
@@ -797,7 +800,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 15399070815@163.com (95KN66CE3D)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = CK4C7KZJ97;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/TodayNews-Swift/Classes(类)/Others(其他)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -817,7 +820,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 15399070815@163.com (95KN66CE3D)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = CK4C7KZJ97;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/TodayNews-Swift/Classes(类)/Others(其他)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

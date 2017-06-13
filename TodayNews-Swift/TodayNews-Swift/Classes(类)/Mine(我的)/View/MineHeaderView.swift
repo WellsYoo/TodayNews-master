@@ -15,7 +15,6 @@ class MineHeaderView: UIView {
     /** 背景图片*/
     @IBOutlet weak var backgroundImageView: UIImageView!
     
-    
     /// 初始化方法
     ///
     /// - Returns: MineHeaderView

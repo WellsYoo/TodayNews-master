@@ -32,8 +32,6 @@ class MineViewController: UITableViewController {
         let noLoginHeaderView = NoLoginHeaderView.headerView()
         return noLoginHeaderView
     }()
-    
-
 }
 
 extension MineViewController {
@@ -43,7 +41,7 @@ extension MineViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.tableHeaderView = noLoginHeaderView
         tableView.tableFooterView = UIView()
-        tableView.separatorColor = UIColor(r: 230, g: 230, b: 230)
+        tableView.separatorColor = UIColor(r: 220, g: 220, b: 220)
     }
     
 }
@@ -58,23 +56,23 @@ extension MineViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
-            return 2
-        case 1:
-            return 2
-        case 2:
-            return 3
-        default:
-            return 0
+            case 0:
+                return 2
+            case 1:
+                return 2
+            case 2:
+                return 3
+            default:
+                return 0
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -89,7 +87,7 @@ extension MineViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: "mineCell")
         cell.accessoryType = .disclosureIndicator
         if indexPath.section == 0 {
             if indexPath.row == 0 {
@@ -117,6 +115,21 @@ extension MineViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+    }
+    
+    // MARK: - UIScrollViewDelagate
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y;
+        if offsetY < 0 {
+            let totalOffset = kMineHeaderViewHieght + abs(offsetY)
+            let f = totalOffset / kMineHeaderViewHieght
+            noLoginHeaderView.bgImageView.frame = CGRect(x: -screenWidth * (f - 1) * 0.5, y: offsetY, width: screenWidth * f, height: totalOffset)
+        }
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }

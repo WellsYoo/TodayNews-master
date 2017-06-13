@@ -3,7 +3,7 @@
 //  TodayNews-Swift
 //
 //  Created by 杨蒙 on 17/2/12.
-//  Copyright © 2017年 杨蒙. All rights reserved.
+//  Copyright © 2017年 hrscy. All rights reserved.
 //
 
 import UIKit
