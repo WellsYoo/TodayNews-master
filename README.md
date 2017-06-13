@@ -1,6 +1,13 @@
 # Swift开源项目-模仿今日头条
 
+
+
+# 2017.06.12 
+# 目前在适配 Swift 3.1，只完成了部分功能，后面会继续更新。感兴趣的朋友可以移步我的 [github](https://github.com/hrscy/TodayNews/tree/master/TodayNews-Swift)。
+
 ![](http://obna9emby.bkt.clouddn.com/news/news.gif)
+
+# 2016.08.18
 
 ## 说明
 
@@ -16,21 +23,21 @@
 
 ## 环境设置
 - 项目环境
-	- Xcode 7.3.1（低于这个版本会报错）。
-	- Swift 2.2
-	- iOS 8.0 +
+ - Xcode 7.3.1（低于这个版本会报错）。
+ - Swift 2.2
+ - iOS 8.0 +
 
 - 使用 cocoaPods 管理第三方库， 如果电脑没有安装 cocoapods，请先安装 cocoapods。安装方式可参考：[最新版 CocoaPods 的安装流程](http://www.tuicool.com/articles/7VvuAr3)
 
 - 项目中使用到的第三方库
-	- SnapKit： 布局
-	- Kingfisher： 缓存图片
-	- SVProgressHUD：提示框
-	- FDFullscreenPopGesture：侧滑
-	- Alamofire ：网络请求
-	- SwiftyJSON：解析 json
-	- MJRefresh： 上拉刷新和下拉刷新
-	
+ - SnapKit： 布局
+ - Kingfisher： 缓存图片
+ - SVProgressHUD：提示框
+ - FDFullscreenPopGesture：侧滑
+ - Alamofire ：网络请求
+ - SwiftyJSON：解析 json
+ - MJRefresh： 上拉刷新和下拉刷新
+
 ## 实现的功能
 
 1. 获取今日头条的接口
@@ -232,15 +239,15 @@ public func containerViewDidLayoutSubviews()
 
 下面说一下，具体的判断过程：
 
-|image_list|middle_image|large_image_list|video_detail_info|
-|----------|------------|----------------|-----------------|
-|   nil    |    nil     |       nil      |       nil       |
-|   nil    |   不为 nil  |    不为 nil     |       nil       |
-|   nil    |   不为 nil  |      nil       |      nil        |
-| 不为 nil  |   不为 nil  |    不为 nil     |    不为 nil     |
-| 不为 nil  |   不为 nil  |    不为 nil     |       nil      |
-| 不为 nil  |   不为 nil  |      nil       |    不为 nil     |
-| 不为 nil  |   不为 nil  |      nil       |       nil      |
+| image_list | middle_image | large_image_list | video_detail_info |
+| ---------- | ------------ | ---------------- | ----------------- |
+| nil        | nil          | nil              | nil               |
+| nil        | 不为 nil       | 不为 nil           | nil               |
+| nil        | 不为 nil       | nil              | nil               |
+| 不为 nil     | 不为 nil       | 不为 nil           | 不为 nil            |
+| 不为 nil     | 不为 nil       | 不为 nil           | nil               |
+| 不为 nil     | 不为 nil       | nil              | 不为 nil            |
+| 不为 nil     | 不为 nil       | nil              | nil               |
 
 还有一些其他情况，比如有个数据里没有 `image_list` 这个字段，这种情况我没做判断，一般程序崩溃都是因为这个原因。但是实际上，我是先判断 `image_list` 是否有值，如果有值，则显示三张图片，如果为 `nil`，再判断 `middle_image` 的情况。
 
@@ -408,9 +415,9 @@ navigationController?.navigationBarHidden = true
 从文件加载 cell 的数据，使用通知的方式，实现了清除缓存，以及改变字体大小，改变下载方式。
 
 ### YMOfflineTableViewController.swift
- 
+
 我的 -> 离线 -> 离线下载
- 
+
 ![](http://obna9emby.bkt.clouddn.com/news/offline-download_spec.png)
 
 对于标题的选中与未选中，使用归档的方式，`YMHomeTopTitle` 附加一个字段来判断选中与未选中，然后存储到沙盒中，具体实现可看代码。
