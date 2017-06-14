@@ -16,8 +16,6 @@ class AddFriendViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupUI()
     }
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
@@ -25,24 +23,15 @@ class AddFriendViewController: UIViewController, UIWebViewDelegate {
         return true
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-    
 }
 
 extension AddFriendViewController {
     
-    fileprivate func setupUI() {
-        
-        view.backgroundColor = UIColor.white
-        webView.delegate = self
-        let urlString = "https://is.snssdk.com/concern/v1/guide/page/?iid=5034850950"
-        let url = URL(string: urlString)
-        let request = URLRequest(url: url!)
-        webView.loadRequest(request)
+    /// 马上登录按钮点击
+    @IBAction func loginButtonClicked() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let moreLoginVC = storyboard.instantiateViewController(withIdentifier: "LoginPopViewController") as! LoginPopViewController
+        moreLoginVC.modalSize = (width: .custom(size: Float(screenWidth - 76)), height: .custom(size: Float(screenHeight - 262)))
+        present(moreLoginVC, animated: true, completion: nil)
     }
-    
-    
 }
