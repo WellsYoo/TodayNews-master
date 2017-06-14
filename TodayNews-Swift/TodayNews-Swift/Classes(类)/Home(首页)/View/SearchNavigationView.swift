@@ -76,5 +76,13 @@ extension SearchNavigationView {
     @objc fileprivate func cancelButtonClick() {
         delegate?.cancelButtonClicked()
     }
+    
+    /// 重写 frame
+    override var frame: CGRect {
+        didSet {
+            let newFrame = CGRect(x: 0, y: 0, width: screenWidth, height: 44)
+            super.frame = newFrame
+        }
+    }
 }
 

@@ -16,7 +16,7 @@ class MyTabBarController: UITabBarController {
         let tabBar = UITabBar.appearance()
         tabBar.tintColor = UIColor(red: 245 / 255, green: 90 / 255, blue: 93 / 255, alpha: 1/0)
         
-        addChildViewControllers()
+//        addChildViewControllers()
     }
     
     override func didReceiveMemoryWarning() {

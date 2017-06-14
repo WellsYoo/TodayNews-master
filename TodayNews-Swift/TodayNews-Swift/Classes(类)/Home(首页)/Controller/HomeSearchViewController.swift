@@ -27,7 +27,6 @@ class HomeSearchViewController: UIViewController {
     // 导航栏
     fileprivate lazy var searchNavigationView: SearchNavigationView = {
         let searchNavigationView = SearchNavigationView()
-        searchNavigationView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
         searchNavigationView.delegate = self
         return searchNavigationView
     }()
@@ -76,6 +75,6 @@ extension HomeSearchViewController {
 extension HomeSearchViewController: SearchNavigationViewDelegate {
     /// 导航栏取消按钮点击
     func cancelButtonClicked() {
-        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: false)
     }
 }

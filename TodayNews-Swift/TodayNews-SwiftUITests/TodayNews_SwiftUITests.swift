@@ -2,8 +2,8 @@
 //  TodayNews_SwiftUITests.swift
 //  TodayNews-SwiftUITests
 //
-//  Created by 杨蒙 on 17/2/7.
-//  Copyright © 2017年 杨蒙. All rights reserved.
+//  Created by 杨蒙 on 2017/6/14.
+//  Copyright © 2017年 hrscy. All rights reserved.
 //
 
 import XCTest

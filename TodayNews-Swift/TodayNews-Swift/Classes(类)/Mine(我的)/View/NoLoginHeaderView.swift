@@ -8,8 +8,16 @@
 
 import UIKit
 
-class NoLoginHeaderView: UIView {
+protocol NoLoginHeaderViewDelegate {
+    /// 更多登录方式按钮点击
+    func noLoginHeaderViewMoreLoginButotnClicked()
+    
+}
 
+class NoLoginHeaderView: UIView {
+    
+    var delegate: NoLoginHeaderViewDelegate?
+    
     @IBOutlet weak var bgImageView: UIImageView!
     
     override func awakeFromNib() {
@@ -20,5 +28,10 @@ class NoLoginHeaderView: UIView {
         let headerView = Bundle.main.loadNibNamed(String(describing: self), owner: nil
             , options: nil)?.last as! NoLoginHeaderView
         return headerView
+    }
+    
+    /// 更多登录方式按钮点击
+    @IBAction func moreLoginButtonCLicked() {
+        delegate?.noLoginHeaderViewMoreLoginButotnClicked()
     }
 }

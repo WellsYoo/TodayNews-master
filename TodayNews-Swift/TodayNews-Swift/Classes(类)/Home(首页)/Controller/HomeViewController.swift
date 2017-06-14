@@ -31,7 +31,7 @@ class HomeViewController: UIViewController {
     
     // 自定义导航栏
     fileprivate lazy var homeNavigationBar: HomeNavigationBar = {
-        let homeNavigationBar = HomeNavigationBar(frame: CGRect(x: 0, y: 0, width: screenWidth, height: kNavBarHeight))
+        let homeNavigationBar = HomeNavigationBar()
         homeNavigationBar.searchBar.delegate = self
         return homeNavigationBar
     }()
@@ -79,7 +79,7 @@ extension HomeViewController: PageViewDelegate {
 extension HomeViewController: UITextFieldDelegate {
     /// UITextFieldDelegate
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        navigationController?.pushViewController(HomeSearchViewController(), animated: true)
+        navigationController?.pushViewController(HomeSearchViewController(), animated: false)
         return true
     }
 }

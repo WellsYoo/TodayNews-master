@@ -24,14 +24,22 @@ class MineViewController: UITableViewController {
         super.viewDidLoad()
         
         setupUI()
-        
     }
 
     // 头部视图
     fileprivate lazy var noLoginHeaderView: NoLoginHeaderView = {
         let noLoginHeaderView = NoLoginHeaderView.headerView()
+        noLoginHeaderView.delegate = self
         return noLoginHeaderView
     }()
+}
+
+// MARK: - NoLoginHeaderViewDelegate 未登录界面代理
+extension MineViewController: NoLoginHeaderViewDelegate {
+    /// 更多登录方式按钮点击
+    func noLoginHeaderViewMoreLoginButotnClicked() {
+        present(UIViewController(), animated: false, completion: nil)
+    }
 }
 
 extension MineViewController {
