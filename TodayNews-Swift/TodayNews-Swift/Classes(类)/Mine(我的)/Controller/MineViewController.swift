@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IBAnimatable
 
 class MineViewController: UITableViewController {
 
@@ -38,7 +39,10 @@ class MineViewController: UITableViewController {
 extension MineViewController: NoLoginHeaderViewDelegate {
     /// 更多登录方式按钮点击
     func noLoginHeaderViewMoreLoginButotnClicked() {
-        present(UIViewController(), animated: false, completion: nil)
+        let storyboard = UIStoryboard(name: "MoreLoginViewController", bundle: nil)
+        let moreLoginVC = storyboard.instantiateViewController(withIdentifier: "MoreLoginViewController") as! MoreLoginViewController
+        moreLoginVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - 40)))
+        present(moreLoginVC, animated: true, completion: nil)
     }
 }
 
@@ -50,6 +54,8 @@ extension MineViewController {
         tableView.tableHeaderView = noLoginHeaderView
         tableView.tableFooterView = UIView()
         tableView.separatorColor = UIColor(r: 220, g: 220, b: 220)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
 }

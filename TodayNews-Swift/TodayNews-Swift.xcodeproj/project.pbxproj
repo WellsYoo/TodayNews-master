@@ -29,15 +29,11 @@
 		9416715C1EF0D51600479C1D /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941671231EF0D51600479C1D /* MyTabBarController.swift */; };
 		9416715D1EF0D51600479C1D /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941671251EF0D51600479C1D /* NetworkTool.swift */; };
 		9416715E1EF0D51600479C1D /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941671281EF0D51600479C1D /* MineViewController.swift */; };
-		9416715F1EF0D51600479C1D /* MoreLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941671291EF0D51600479C1D /* MoreLoginViewController.swift */; };
-		941671601EF0D51600479C1D /* MoreLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9416712C1EF0D51600479C1D /* MoreLoginView.swift */; };
-		941671611EF0D51600479C1D /* MoreLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9416712D1EF0D51600479C1D /* MoreLoginView.xib */; };
 		941671621EF0D51600479C1D /* NoLoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9416712E1EF0D51600479C1D /* NoLoginHeaderView.swift */; };
 		941671631EF0D51600479C1D /* NoLoginHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9416712F1EF0D51600479C1D /* NoLoginHeaderView.xib */; };
 		941671641EF0D51600479C1D /* VerticalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941671301EF0D51600479C1D /* VerticalButton.swift */; };
 		941671651EF0D51600479C1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941671321EF0D51600479C1D /* AppDelegate.swift */; };
 		941671661EF0D51600479C1D /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941671331EF0D51600479C1D /* Const.swift */; };
-		941671671EF0D51600479C1D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 941671341EF0D51600479C1D /* Info.plist */; };
 		941671681EF0D51600479C1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941671351EF0D51600479C1D /* Main.storyboard */; };
 		941671691EF0D51600479C1D /* MineCell.plist in Resources */ = {isa = PBXBuildFile; fileRef = 941671361EF0D51600479C1D /* MineCell.plist */; };
 		9416716A1EF0D51600479C1D /* VideoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941671391EF0D51600479C1D /* VideoDetailController.swift */; };
@@ -53,6 +49,8 @@
 		941671741EF0D51600479C1D /* WeiTouTiaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941671471EF0D51600479C1D /* WeiTouTiaoViewController.swift */; };
 		941671751EF0D51600479C1D /* WeitoutiaoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9416714A1EF0D51600479C1D /* WeitoutiaoHeaderView.swift */; };
 		941671761EF0D51600479C1D /* WeitoutiaoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9416714B1EF0D51600479C1D /* WeitoutiaoHeaderView.xib */; };
+		94E2EE141EF0E0E200A74739 /* MoreLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94E2EE131EF0E0E200A74739 /* MoreLoginViewController.storyboard */; };
+		94E2EE161EF0FD1D00A74739 /* MoreLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E2EE151EF0FD1D00A74739 /* MoreLoginViewController.swift */; };
 		CD9A718A37CF6B2366C74D14 /* Pods_TodayNews_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE24391CDD6688B9558B17 /* Pods_TodayNews_Swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,9 +99,6 @@
 		941671231EF0D51600479C1D /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		941671251EF0D51600479C1D /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
 		941671281EF0D51600479C1D /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
-		941671291EF0D51600479C1D /* MoreLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreLoginViewController.swift; sourceTree = "<group>"; };
-		9416712C1EF0D51600479C1D /* MoreLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreLoginView.swift; sourceTree = "<group>"; };
-		9416712D1EF0D51600479C1D /* MoreLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreLoginView.xib; sourceTree = "<group>"; };
 		9416712E1EF0D51600479C1D /* NoLoginHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoLoginHeaderView.swift; sourceTree = "<group>"; };
 		9416712F1EF0D51600479C1D /* NoLoginHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoLoginHeaderView.xib; sourceTree = "<group>"; };
 		941671301EF0D51600479C1D /* VerticalButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalButton.swift; sourceTree = "<group>"; };
@@ -125,6 +120,8 @@
 		941671471EF0D51600479C1D /* WeiTouTiaoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiTouTiaoViewController.swift; sourceTree = "<group>"; };
 		9416714A1EF0D51600479C1D /* WeitoutiaoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeitoutiaoHeaderView.swift; sourceTree = "<group>"; };
 		9416714B1EF0D51600479C1D /* WeitoutiaoHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeitoutiaoHeaderView.xib; sourceTree = "<group>"; };
+		94E2EE131EF0E0E200A74739 /* MoreLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MoreLoginViewController.storyboard; sourceTree = "<group>"; };
+		94E2EE151EF0FD1D00A74739 /* MoreLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreLoginViewController.swift; sourceTree = "<group>"; };
 		9854703469E3899FBD30648A /* Pods-TodayNews-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews-Swift/Pods-TodayNews-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		CAFE24391CDD6688B9558B17 /* Pods_TodayNews_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayNews_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E769FD6392FB83D23A4F7127 /* Pods-TodayNews-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews-Swift/Pods-TodayNews-Swift.release.xcconfig"; sourceTree = "<group>"; };
@@ -249,9 +246,9 @@
 		9416710C1EF0D51600479C1D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9416710F1EF0D51600479C1D /* HomeViewController.swift */,
 				9416710D1EF0D51600479C1D /* HomeSearchViewController.swift */,
 				9416710E1EF0D51600479C1D /* HomeTopViewController.swift */,
-				9416710F1EF0D51600479C1D /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -337,7 +334,8 @@
 			isa = PBXGroup;
 			children = (
 				941671281EF0D51600479C1D /* MineViewController.swift */,
-				941671291EF0D51600479C1D /* MoreLoginViewController.swift */,
+				94E2EE151EF0FD1D00A74739 /* MoreLoginViewController.swift */,
+				94E2EE131EF0E0E200A74739 /* MoreLoginViewController.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -352,8 +350,6 @@
 		9416712B1EF0D51600479C1D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9416712C1EF0D51600479C1D /* MoreLoginView.swift */,
-				9416712D1EF0D51600479C1D /* MoreLoginView.xib */,
 				9416712E1EF0D51600479C1D /* NoLoginHeaderView.swift */,
 				9416712F1EF0D51600479C1D /* NoLoginHeaderView.xib */,
 				941671301EF0D51600479C1D /* VerticalButton.swift */,
@@ -425,9 +421,9 @@
 		941671441EF0D51600479C1D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				941671471EF0D51600479C1D /* WeiTouTiaoViewController.swift */,
 				941671451EF0D51600479C1D /* AddFriendViewController.swift */,
 				941671461EF0D51600479C1D /* TellFriendsViewController.swift */,
-				941671471EF0D51600479C1D /* WeiTouTiaoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -565,9 +561,8 @@
 				941670E41EF0D43100479C1D /* Assets.xcassets in Resources */,
 				941671691EF0D51600479C1D /* MineCell.plist in Resources */,
 				941671681EF0D51600479C1D /* Main.storyboard in Resources */,
-				941671671EF0D51600479C1D /* Info.plist in Resources */,
 				941671761EF0D51600479C1D /* WeitoutiaoHeaderView.xib in Resources */,
-				941671611EF0D51600479C1D /* MoreLoginView.xib in Resources */,
+				94E2EE141EF0E0E200A74739 /* MoreLoginViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,7 +650,6 @@
 				941671701EF0D51600479C1D /* VideoTopicCell.swift in Sources */,
 				9416714D1EF0D51600479C1D /* HomeTopViewController.swift in Sources */,
 				941671551EF0D51600479C1D /* SearchDefaultBackgroundView.swift in Sources */,
-				941671601EF0D51600479C1D /* MoreLoginView.swift in Sources */,
 				9416715D1EF0D51600479C1D /* NetworkTool.swift in Sources */,
 				9416716B1EF0D51600479C1D /* VideoTopicController.swift in Sources */,
 				9416715C1EF0D51600479C1D /* MyTabBarController.swift in Sources */,
@@ -670,11 +664,11 @@
 				941671641EF0D51600479C1D /* VerticalButton.swift in Sources */,
 				941671511EF0D51600479C1D /* HomeSearchBar.swift in Sources */,
 				941671541EF0D51600479C1D /* PageView.swift in Sources */,
-				9416715F1EF0D51600479C1D /* MoreLoginViewController.swift in Sources */,
 				9416716A1EF0D51600479C1D /* VideoDetailController.swift in Sources */,
 				941671751EF0D51600479C1D /* WeitoutiaoHeaderView.swift in Sources */,
 				9416714F1EF0D51600479C1D /* HomeTopTitle.swift in Sources */,
 				941671651EF0D51600479C1D /* AppDelegate.swift in Sources */,
+				94E2EE161EF0FD1D00A74739 /* MoreLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,11 +802,12 @@
 			baseConfigurationReference = 9854703469E3899FBD30648A /* Pods-TodayNews-Swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = CK4C7KZJ97;
 				INFOPLIST_FILE = "$(SRCROOT)/TodayNews-Swift/Classes(类)/Others(其他)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-63.comTodayNews-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = "-63.com.TodayNews-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -823,11 +818,12 @@
 			baseConfigurationReference = E769FD6392FB83D23A4F7127 /* Pods-TodayNews-Swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = CK4C7KZJ97;
 				INFOPLIST_FILE = "$(SRCROOT)/TodayNews-Swift/Classes(类)/Others(其他)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-63.comTodayNews-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = "-63.com.TodayNews-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
