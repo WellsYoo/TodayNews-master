@@ -25,6 +25,8 @@ class MineViewController: UITableViewController {
         super.viewDidLoad()
         
         setupUI()
+        /// 我的 我的界面 cell 数据
+        NetworkTool.loadMineCellData()
     }
 
     // 头部视图

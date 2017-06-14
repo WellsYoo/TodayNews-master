@@ -7,13 +7,35 @@
 //
 
 import UIKit
+import AdSupport
+
+/// 屏幕的宽
+let screenWidth = UIScreen.main.bounds.width
+/// 屏幕的高
+let screenHeight = UIScreen.main.bounds.height
 
 /// iid 未登录用户 id，只要安装了今日头条就会生成一个 iid
 /// 可以在自己的手机上安装一个今日头条，然后通过 charles 抓取一下这个 iid，
 /// 替换成自己的，再进行测试
 let IID: String = "5034850950"
+
 let device_id: String = "6096495334"
-let version_code = "5.9.8"
+
+let app_name = "news_article"
+
+let channel = "App%20Store"
+
+let device_platform = "iphone"
+
+let resolution = "\(screenWidth * 2)*\(screenHeight * 2)"
+/// idfv
+let idfv = UIDevice.current.identifierForVendor?.uuidString
+/// 版本号
+let versionCode = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+/// 系统版本号
+let systemVersion = UIDevice.current.systemVersion
+/// idfa
+let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
 
 /// 服务器地址
 let BASE_URL = "http://lf.snssdk.com/"
@@ -32,10 +54,7 @@ let kWeiTouTiaoHeaderHieght: CGFloat = 45
 /// 我的界面 头部视图 的高度
 let kMineHeaderViewHieght: CGFloat = 218
 
-/// 屏幕的宽
-let screenWidth = UIScreen.main.bounds.width
-/// 屏幕的高
-let screenHeight = UIScreen.main.bounds.height
+
 
 /// iPhone 5
 let isIPhone5 = screenHeight == 568 ? true : false
@@ -43,3 +62,9 @@ let isIPhone5 = screenHeight == 568 ? true : false
 let isIPhone6 = screenHeight == 667 ? true : false
 /// iPhone 6P
 let isIPhone6P = screenHeight == 736 ? true : false
+
+
+
+
+
+

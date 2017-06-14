@@ -52,6 +52,7 @@
 		94E2EE141EF0E0E200A74739 /* MoreLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94E2EE131EF0E0E200A74739 /* MoreLoginViewController.storyboard */; };
 		94E2EE161EF0FD1D00A74739 /* MoreLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E2EE151EF0FD1D00A74739 /* MoreLoginViewController.swift */; };
 		94E2EE1A1EF124F000A74739 /* LoginPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E2EE191EF124F000A74739 /* LoginPopViewController.swift */; };
+		94E2EE1C1EF13F8B00A74739 /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E2EE1B1EF13F8B00A74739 /* MineCell.swift */; };
 		CD9A718A37CF6B2366C74D14 /* Pods_TodayNews_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFE24391CDD6688B9558B17 /* Pods_TodayNews_Swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +125,7 @@
 		94E2EE131EF0E0E200A74739 /* MoreLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MoreLoginViewController.storyboard; sourceTree = "<group>"; };
 		94E2EE151EF0FD1D00A74739 /* MoreLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreLoginViewController.swift; sourceTree = "<group>"; };
 		94E2EE191EF124F000A74739 /* LoginPopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopViewController.swift; sourceTree = "<group>"; };
+		94E2EE1B1EF13F8B00A74739 /* MineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
 		9854703469E3899FBD30648A /* Pods-TodayNews-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews-Swift/Pods-TodayNews-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		CAFE24391CDD6688B9558B17 /* Pods_TodayNews_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayNews_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E769FD6392FB83D23A4F7127 /* Pods-TodayNews-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews-Swift/Pods-TodayNews-Swift.release.xcconfig"; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 		9416712A1EF0D51600479C1D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				94E2EE1B1EF13F8B00A74739 /* MineCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 				941671521EF0D51600479C1D /* PageContentView.swift in Sources */,
 				9416714E1EF0D51600479C1D /* HomeViewController.swift in Sources */,
 				941671721EF0D51600479C1D /* AddFriendViewController.swift in Sources */,
+				94E2EE1C1EF13F8B00A74739 /* MineCell.swift in Sources */,
 				941671641EF0D51600479C1D /* VerticalButton.swift in Sources */,
 				941671511EF0D51600479C1D /* HomeSearchBar.swift in Sources */,
 				941671541EF0D51600479C1D /* PageView.swift in Sources */,

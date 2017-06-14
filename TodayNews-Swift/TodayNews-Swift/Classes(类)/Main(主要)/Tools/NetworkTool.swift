@@ -12,6 +12,8 @@ import SwiftyJSON
 
 class NetworkTool {
     
+    
+    
     /// -------------------------- 首 页 -------------------------
     /// 获取首页顶部标题内容
     class func loadHomeTitlesData(finished:@escaping (_ topTitles: [HomeTopTitle])->()) {
@@ -78,7 +80,7 @@ class NetworkTool {
     class func loadVideoTitlesData(finished:@escaping (_ videoTitles: [VideoTopTitle])->()) {
         let url = BASE_URL + "video_api/get_category/v1/?"
         let params = ["device_id": device_id,
-                      "version_code": "5.9.8",
+                      "version_code": versionCode,
                       "app_name": "news_article",
                       "channel": "App%20Store",
                       "device_platform": "iphone",
@@ -91,7 +93,7 @@ class NetworkTool {
                       "idfv": "9E7F056D-4902-4CA5-B77F-5EFE0B0D112C",
                       "ssmix": "a",
                       "iid": IID,
-                      "os_version": "9.3.2"]
+                      "os_version": systemVersion]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return
@@ -123,19 +125,35 @@ class NetworkTool {
     
     /// 我的
     /// 我的界面 cell 数据
-    /**
-     https://is.snssdk.com/
-     user/tab/tabs/?version_code=6.1.6&app_name=news_article&vid=9E7F056D-4902-4CA5-B77F-5EFE0B0D112C&device_id=24694333167&channel=App%20Store&resolution=640*1136&aid=13&ab_version=136694,136399,126064,122834,130106,126065,123476,128826,134127,136025,134288,126071,116023,135625,125503,125174,133018,136199,136063,126059,136772,136733,135633,122948,31651,134436,135291,131207,134432,114338,136037,132275&ab_feature=z1&openudid=fad94bc66e60ce903ed1a20efec5f94b82c42cee&live_sdk_version=1.6.5&idfv=9E7F056D-4902-4CA5-B77F-5EFE0B0D112C&ac=WIFI&os_version=9.3.2&ssmix=a&device_platform=iphone&iid=11145096950&ab_client=a1,f2,f7,e1&device_type=iPhone%205S&idfa=12D3CE1F-D56F-4DFD-9896-A4379014B6BE
-     
-     */
     class func loadMineCellData() {
         let url = BASE_URL + "user/tab/tabs/?"
-        let params = ["":""]
+        let params = ["version_code": versionCode,
+                      "iid": IID]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
-            
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                let json = JSON(value)
+                if let message = json["message"].string {
+                    if message == "success" {
+                        if let data = json["data"].dictionary {
+                            if let sections = data["sections"]?.arrayObject {
+                                print(sections)
+                                var sectionArray = [AnyObject]()
+                                var rows = [MineCell]()
+//                                for section in sections {
+//                                    for row in section {
+//                                        let mineCell = MineCell(dict: row)
+//                                        rows.append(mineCell)
+//                                    }
+//                                    sectionArray.append(rows as AnyObject)
+//                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
-    
-    
-    
 }
