@@ -1,14 +1,12 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, "8.0"
+platform :ios, '9.0'
 use_frameworks!
 
 target "TodayNews" do
-pod "SnapKit"
-pod "Kingfisher"
-pod "SVProgressHUD"
-pod "FDFullscreenPopGesture", "~> 1.1"
-pod "Alamofire"
-pod "SwiftyJSON"
-pod "MJRefresh"
-
+    pod 'SnapKit', '~> 3.2.0'
+    pod 'Kingfisher', '~>3.10.1'
+    pod 'Alamofire', '~> 4.4.0'
+    pod 'SwiftyJSON', '~> 3.1.4'
+    pod 'IBAnimatable'
+    pod 'AlamofireObjectMapper', '~> 4.0'
 end
