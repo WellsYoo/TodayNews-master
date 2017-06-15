@@ -1,11 +1,14 @@
 # Swift开源项目-模仿今日头条
 
+# 2017.06.15
 
+## 删除 Swift 2.2 相关代码，继续适配 Swift 3.1。
 
 # 2017.06.12 
-# 目前在适配 Swift 3.1，只完成了部分功能，后面会继续更新。感兴趣的朋友可以移步我的 [github](https://github.com/hrscy/TodayNews/tree/master/TodayNews-Swift)。
-# TodayNews-Swift
-## Swift开源项目-模仿今日头条-基于 Swift3.0。
+
+# 目前在适配 Swift 3.1，只完成了部分功能，后面会继续更新。
+# TodayNews
+## Swift开源项目-模仿今日头条-基于 Swift3.1。
 
 ## 环境设置
 
@@ -41,20 +44,20 @@
 
 ## 环境设置
 - 项目环境
- - Xcode 7.3.1（低于这个版本会报错）。
- - Swift 2.2
- - iOS 8.0 +
+- Xcode 7.3.1（低于这个版本会报错）。
+- Swift 2.2
+- iOS 8.0 +
 
 - 使用 cocoaPods 管理第三方库， 如果电脑没有安装 cocoapods，请先安装 cocoapods。安装方式可参考：[最新版 CocoaPods 的安装流程](http://www.tuicool.com/articles/7VvuAr3)
 
 - 项目中使用到的第三方库
- - SnapKit： 布局
- - Kingfisher： 缓存图片
- - SVProgressHUD：提示框
- - FDFullscreenPopGesture：侧滑
- - Alamofire ：网络请求
- - SwiftyJSON：解析 json
- - MJRefresh： 上拉刷新和下拉刷新
+- SnapKit： 布局
+- Kingfisher： 缓存图片
+- SVProgressHUD：提示框
+- FDFullscreenPopGesture：侧滑
+- Alamofire ：网络请求
+- SwiftyJSON：解析 json
+- MJRefresh： 上拉刷新和下拉刷新
 
 ## 实现的功能
 
