@@ -115,7 +115,7 @@ class NetworkTool {
     /// --------------------------  微  头  条  --------------------------
     
     /// 获取微头条数据
-    class func loadWeiTouTiaoData() {
+    class func loadWeiTouTiaoData(completionHandler: @escaping (_ weitoutiaos: [WeiTouTiao]) -> ()) {
         let url = BASE_URL + "api/news/feed/v54/?"
         let params = ["version_code": versionCode,
                       "iid": IID,
@@ -139,14 +139,19 @@ class NetworkTool {
                 if let message = json["message"].string {
                     if message == "success" {
                         if let dataJSONs = json["data"].array {
+                            var weitoutiaos = [WeiTouTiao]()
                             for dataJSON in dataJSONs {
                                 if let content = dataJSON["content"].string {
+                                    
                                     let data = content.data(using: String.Encoding.utf8)! as Data
                                     let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                                    print(dict!)
-                                    print("---------------------------------------")
+                                    print(dict)
+                                    print("-------------------------")
+                                    let weitoutiao = WeiTouTiao(dict: dict as! [String : AnyObject])
+                                    weitoutiaos.append(weitoutiao)
                                 }
                             }
+                            completionHandler(weitoutiaos)
                         }
                     }
                 }

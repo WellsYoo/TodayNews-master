@@ -11,12 +11,19 @@ import UIKit
 import SnapKit
 
 class WeiTouTiaoViewController: UIViewController {
+    /// 微头条数据
+    fileprivate var microNews = [WeiTouTiao]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
-        NetworkTool.loadWeiTouTiaoData()
+        /// 获取微头条数据
+        NetworkTool.loadWeiTouTiaoData { (weitoutiaos) in
+            self.notNetworkView.isHidden = weitoutiaos.count != 0 ? true : false
+            self.microNews = weitoutiaos
+            self.tableView.reloadData()
+        }
     }
 
     fileprivate lazy var headerView: WeitoutiaoHeaderView = {
@@ -83,7 +90,6 @@ extension WeiTouTiaoViewController {
             make.left.bottom.right.equalTo(bgView)
             make.top.equalTo(headerView.snp.bottom)
         }
-        notNetworkView.isHidden = true
     }
     
 }
@@ -112,11 +118,12 @@ extension WeiTouTiaoViewController: WeitoutiaoHeaderViewDelegate {
 extension WeiTouTiaoViewController: UITableViewDelegate, UITableViewDataSource {
     /// UITableViewDelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return microNews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WeiTouTiaoCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WeiTouTiaoCell") as! WeiTouTiaoCell
+        cell.weitoutiao = microNews[indexPath.row]
         return cell
     }
     

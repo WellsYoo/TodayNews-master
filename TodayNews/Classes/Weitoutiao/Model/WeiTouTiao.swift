@@ -15,48 +15,49 @@ class WeiTouTiao {
     // 内容
     var content: String?
     /// 点赞数量
-    var like_count: Int = 0
+    var like_count: Int?
     
-    var digg_count: Int = 0
+    var digg_count: Int?
     
-    var bury_count: Int = 0
+    var bury_count: Int?
     /// 阅读量
-    var read_count: Int = 0
+    var read_count: Int?
     /// 评论数量
-    var comment_count: Int = 0
+    var comment_count: Int?
     
-    var behot_time: Int = 0
-    var create_time: Int = 0
+    var behot_time: Int?
+    var create_time: Int?
     
-    var cursor: Int = 0
+    var cursor: Int?
     
-    var default_text_line: Int = 0
+    var default_text_line: Int?
     
-    var cell_flag: Int = 0
+    var cell_flag: Int?
     
-    var cell_layout_style: Int = 0
+    var cell_layout_style: Int?
     
-    var cell_type: Int = 0
+    var cell_type: Int?
     
     var cell_ui_type: String?
     
-    var follow: Int = 0
+    var follow: Int?
     
-    var inner_ui_flag: Int = 0
+    var inner_ui_flag: Int?
     
-    var is_stick: Int = 0
+    var is_stick: Int?
     
     var large_image_list = [WTTLargeImageList]()
     var ugc_cut_image_list = [WTTUgcCutImageList]()
     var thumb_image_list = [WTTThumbImageList]()
     
-    var ui_type: Int = 0
+    var ui_type: Int?
     
     var user: WTTUser?
+    var user_info: WTTUser?
     
-    var user_digg: Int = 0
+    var user_digg: Int?
     
-    var user_repin: Int = 0
+    var user_repin: Int?
     
     var user_verified: Bool?
     
@@ -64,7 +65,7 @@ class WeiTouTiao {
     
     var log_pb: LogPB?
     
-    var max_text_line: Int = 0
+    var max_text_line: Int?
     
     var rid: String?
     
@@ -72,7 +73,7 @@ class WeiTouTiao {
     
     var share_url: String?
     
-    var stick_style: Int = 0
+    var stick_style: Int?
     
     var comments: [AnyObject]?
     
@@ -87,32 +88,38 @@ class WeiTouTiao {
             }
         }
         content = dict["content"] as? String
-        like_count = dict["like_count"] as! Int
-        digg_count = dict["digg_count"] as! Int
-        bury_count = dict["bury_count"] as! Int
-        read_count = dict["read_count"] as! Int
-        comment_count = dict["comment_count"] as! Int
-        behot_time = dict["behot_time"] as! Int
-        create_time = dict["create_time"] as! Int
-        cursor = dict["cursor"] as! Int
-        default_text_line = dict["default_text_line"] as! Int
-        cell_flag = dict["cell_flag"] as! Int
-        cell_layout_style = dict["cell_layout_style"] as! Int
+        like_count = dict["like_count"] as? Int
+        digg_count = dict["digg_count"] as? Int
+        bury_count = dict["bury_count"] as? Int
+        read_count = dict["read_count"] as? Int
+        comment_count = dict["comment_count"] as? Int
+        behot_time = dict["behot_time"] as? Int
+        create_time = dict["create_time"] as? Int
+        cursor = dict["cursor"] as? Int
+        default_text_line = dict["default_text_line"] as? Int
+        cell_flag = dict["cell_flag"] as? Int
+        cell_layout_style = dict["cell_layout_style"] as? Int
         cell_ui_type = dict["cell_ui_type"] as? String
-        cell_type = dict["cell_type"] as! Int
-        follow = dict["follow"] as! Int
-        inner_ui_flag = dict["inner_ui_flag"] as! Int
-        user = WTTUser(dict: dict["user"] as! [String : AnyObject] )
-        user_digg = dict["user_digg"] as! Int
+        cell_type = dict["cell_type"] as? Int
+        follow = dict["follow"] as? Int
+        inner_ui_flag = dict["inner_ui_flag"] as? Int
+        if let userTemp = dict["user"] {
+            user = WTTUser(dict: userTemp as! [String : AnyObject] )
+        } else if let userInfoTemp = dict["user_info"] {
+            user_info = WTTUser(dict: userInfoTemp as! [String : AnyObject] )
+        }
+        user_digg = dict["user_digg"] as? Int
         user_verified = dict["user_verified"] as? Bool
-        user_repin = dict["user_repin"] as! Int
+        user_repin = dict["user_repin"] as? Int
         verified_content = dict["verified_content"] as? String
-        log_pb = LogPB(dict: dict["log_pb"] as! [String : AnyObject])
-        max_text_line = dict["max_text_line"] as! Int
+        if let logPb = dict["log_pb"] {
+            log_pb = LogPB(dict: logPb as! [String : AnyObject])
+        }
+        max_text_line = dict["max_text_line"] as? Int
         rid = dict["rid"] as? String
         schema = dict["schema"] as? String
         share_url = dict["share_url"] as? String
-        stick_style = dict["user_id"] as! Int
+        stick_style = dict["user_id"] as? Int
         user_verified = dict["user_verified"] as? Bool
         title = dict["title"] as? String
     }
@@ -123,16 +130,19 @@ class WTTUser {
     var avatar_url: String?
     
     var desc: String?
+    var description: String?
     
     var is_following: Bool?
+    var follower_count: Int?
+    var follow: Int?
     
     var is_friend: Bool?
     
     var schema: String?
     
     var screen_name: String?
+    var name: String?
     
-    var user_auth_info: String?
     var userAuthInfo: WTTUserAuthInfo?
     
     var user_id: String?
@@ -143,35 +153,45 @@ class WTTUser {
         user_id = dict["user_id"] as? String
         user_verified = dict["user_verified"] as? Bool
         is_following = dict["is_following"] as? Bool
+        is_friend = dict["is_friend"] as? Bool
+        follower_count = dict["follower_count"] as? Int
+        follow = dict["follow"] as? Int
         avatar_url = dict["avatar_url"] as? String
         desc = dict["desc"] as? String
+        description = dict["description"] as? String
         schema = dict["schema"] as? String
         screen_name = dict["screen_name"] as? String
-        user_auth_info = dict["user_auth_info"] as? String
-        let data = user_auth_info!.data(using: String.Encoding.utf8)! as Data
-        let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-        userAuthInfo = WTTUserAuthInfo(dict: dict as! [String : AnyObject])
+        name = dict["name"] as? String
+        
+        if let user_auth_info = dict["user_auth_info"] {
+            if user_auth_info as! String == "" {
+                return
+            }
+            let data = user_auth_info.data(using: String.Encoding.utf8.rawValue)! as Data
+            let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            userAuthInfo = WTTUserAuthInfo(dict: dict as! [String : AnyObject])
+        }
     }
     
 }
 
 class WTTUserAuthInfo {
     
-    var auth_type: Int = 0
+    var auth_type: Int?
     var auth_info: String?
     
     init(dict: [String: AnyObject]) {
-        auth_type = dict["auth_type"] as! Int
+        auth_type = dict["auth_type"] as? Int
         auth_info = dict["auth_info"] as? String
     }
 }
 
 class WTTUgcCutImageList {
     
-    var height: CGFloat = 0
-    var width: CGFloat = 0
+    var height: CGFloat?
+    var width: CGFloat?
     
-    var type: Int = 0
+    var type: Int?
     
     var uri: String?
     
@@ -180,9 +200,9 @@ class WTTUgcCutImageList {
     var url_list: [WTTURLList]?
     
     init(dict: [String: AnyObject]) {
-        height = dict["height"] as! CGFloat
-        width = dict["width"] as! CGFloat
-        type = dict["type"] as! Int
+        height = dict["height"] as? CGFloat
+        width = dict["width"] as? CGFloat
+        type = dict["type"] as? Int
         uri = dict["uri"] as? String
         url = dict["url"] as? String
         url_list = dict["url_list"] as? [WTTURLList]
@@ -191,10 +211,10 @@ class WTTUgcCutImageList {
 
 class WTTThumbImageList {
     
-    var height: CGFloat = 0
-    var width: CGFloat = 0
+    var height: CGFloat?
+    var width: CGFloat?
     
-    var type: Int = 0
+    var type: Int?
     
     var uri: String?
     
@@ -203,9 +223,9 @@ class WTTThumbImageList {
     var url_list: [WTTURLList]?
     
     init(dict: [String: AnyObject]) {
-        height = dict["height"] as! CGFloat
-        width = dict["width"] as! CGFloat
-        type = dict["type"] as! Int
+        height = dict["height"] as? CGFloat
+        width = dict["width"] as? CGFloat
+        type = dict["type"] as? Int
         uri = dict["uri"] as? String
         url = dict["url"] as? String
         url_list = dict["url_list"] as? [WTTURLList]
@@ -214,31 +234,30 @@ class WTTThumbImageList {
 
 class LogPB {
     
-    var impr_id: Int = 0
+    var impr_id: Int?
     
     init(dict: [String: AnyObject]) {
-        impr_id = dict["impr_id"] as! Int
+        impr_id = dict["impr_id"] as? Int
     }
 }
 
 class WTTLargeImageList {
     
-    var height: CGFloat = 0
-    var width: CGFloat = 0
+    var height: CGFloat?
+    var width: CGFloat?
     
-    var type: Int = 0
+    var type: Int?
     
     var uri: String?
     
     var url: String?
     
     var url_list: [WTTURLList]?
-    
-    
+
     init(dict: [String: AnyObject]) {
-        height = dict["height"] as! CGFloat
-        width = dict["width"] as! CGFloat
-        type = dict["type"] as! Int
+        height = dict["height"] as? CGFloat
+        width = dict["width"] as? CGFloat
+        type = dict["type"] as? Int
         uri = dict["uri"] as? String
         url = dict["url"] as? String
         url_list = dict["url_list"] as? [WTTURLList]

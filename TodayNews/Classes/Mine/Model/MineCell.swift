@@ -6,9 +6,9 @@
 //  Copyright © 2017年 hrscy. All rights reserved.
 //
 
-import ObjectMapper
+import Foundation
 
-class MineCellModel: Mappable {
+class MineCellModel {
     
     var grey_text: String?
 //    var icons: [String: AnyObject]?
@@ -17,15 +17,4 @@ class MineCellModel: Mappable {
     var key: String?
     var tip_new: Int = 0
     
-    required init?(map: Map){
-        
-    }
-    
-    func mapping(map: Map) {
-        grey_text <- map["grey_text"]
-        text <- map["text"]
-        url <- map["url"]
-        key <- map["key"]
-        tip_new <- map["tip_new"]
-    }
 }

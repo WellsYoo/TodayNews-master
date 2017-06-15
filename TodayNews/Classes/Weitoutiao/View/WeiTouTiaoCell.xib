@@ -208,6 +208,13 @@
                     <constraint firstItem="XHq-4C-vDf" firstAttribute="top" secondItem="lKJ-Tn-FuZ" secondAttribute="bottom" constant="10" id="vf5-hu-veS"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="avatarImageView" destination="EHS-oi-HQI" id="G2b-47-XqZ"/>
+                <outlet property="commentCountButton" destination="2Wx-gg-qZz" id="dbN-tX-qfy"/>
+                <outlet property="feedShareCountButton" destination="x2B-Yw-al9" id="nkz-G0-QKw"/>
+                <outlet property="likeCountButton" destination="85q-pB-JBB" id="ZRQ-Pw-FcU"/>
+                <outlet property="userNameLabel" destination="nii-hR-WIW" id="aju-mi-PGK"/>
+            </connections>
             <point key="canvasLocation" x="54" y="73"/>
         </tableViewCell>
     </objects>
