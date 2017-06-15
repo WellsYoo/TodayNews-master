@@ -60,6 +60,7 @@
 		94B916A11EF21EE300AC91B9 /* WeitoutiaoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B9166F1EF21EE300AC91B9 /* WeitoutiaoHeaderView.swift */; };
 		94B916A21EF21EE300AC91B9 /* WeitoutiaoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B916701EF21EE300AC91B9 /* WeitoutiaoHeaderView.xib */; };
 		94B916A41EF2311700AC91B9 /* WeiTouTiao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B916A31EF2311700AC91B9 /* WeiTouTiao.swift */; };
+		94B916A61EF2C34F00AC91B9 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B916A51EF2C34F00AC91B9 /* Date+Extension.swift */; };
 		EE46BE76FC8C234C92296B82 /* Pods_TodayNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280B7838DD62799363838C22 /* Pods_TodayNews.framework */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +143,7 @@
 		94B9166F1EF21EE300AC91B9 /* WeitoutiaoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeitoutiaoHeaderView.swift; sourceTree = "<group>"; };
 		94B916701EF21EE300AC91B9 /* WeitoutiaoHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeitoutiaoHeaderView.xib; sourceTree = "<group>"; };
 		94B916A31EF2311700AC91B9 /* WeiTouTiao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiTouTiao.swift; sourceTree = "<group>"; };
+		94B916A51EF2C34F00AC91B9 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		F6D7F701F546AA6431D7BF3A /* Pods-TodayNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews/Pods-TodayNews.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -254,9 +256,9 @@
 		94B9162A1EF21EE200AC91B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				94B9162D1EF21EE200AC91B9 /* HomeViewController.swift */,
 				94B9162B1EF21EE200AC91B9 /* HomeSearchViewController.swift */,
 				94B9162C1EF21EE200AC91B9 /* HomeTopViewController.swift */,
-				94B9162D1EF21EE200AC91B9 /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -300,6 +302,7 @@
 				94B9163C1EF21EE200AC91B9 /* UIColor+Extension.swift */,
 				94B9163D1EF21EE200AC91B9 /* UIImage+Extension.swift */,
 				94B9163E1EF21EE200AC91B9 /* UIView+Extension.swift */,
+				94B916A51EF2C34F00AC91B9 /* Date+Extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				94B9167D1EF21EE300AC91B9 /* UIColor+Extension.swift in Sources */,
 				94B916941EF21EE300AC91B9 /* VideoTitleView.swift in Sources */,
 				94B916751EF21EE300AC91B9 /* HomeNavigationBar.swift in Sources */,
+				94B916A61EF2C34F00AC91B9 /* Date+Extension.swift in Sources */,
 				94B916951EF21EE300AC91B9 /* VideoTopicCell.swift in Sources */,
 				94B916721EF21EE300AC91B9 /* HomeTopViewController.swift in Sources */,
 				94B9167A1EF21EE300AC91B9 /* SearchDefaultBackgroundView.swift in Sources */,

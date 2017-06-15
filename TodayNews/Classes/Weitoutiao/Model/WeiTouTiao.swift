@@ -20,13 +20,66 @@ class WeiTouTiao {
     var digg_count: Int?
     
     var bury_count: Int?
-    /// 阅读量
-    var read_count: Int?
+    
     /// 评论数量
     var comment_count: Int?
+    /// 阅读量
+    var read_count: Int?
+    var readCount: String? {
+        get {
+            guard let count = read_count else {
+                return ""
+            }
+            guard count >= 10000 else {
+                return String(describing: count)
+            }
+            return String(format: "%.1f万", Float(count) / 10000.0)
+        }
+    }
     
-    var behot_time: Int?
-    var create_time: Int?
+    var behot_time: TimeInterval?
+    var create_time: TimeInterval?
+    var publish_time: TimeInterval?
+    var createTime: String? {
+        get {
+            //创建时间
+            var createDate: Date?
+            if let publicTime = publish_time {
+                createDate = Date(timeIntervalSince1970: publicTime)
+            } else if let createTime = create_time {
+                createDate = Date(timeIntervalSince1970: createTime)
+            } else {
+                createDate = Date(timeIntervalSince1970: behot_time!)
+            }
+            let fmt = DateFormatter()
+            fmt.locale = Locale(identifier: "zh_CN")
+            fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            //当前时间
+            let now = Date()
+            //日历
+            let calender = Calendar.current
+            let comps: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from: createDate!, to: now)
+            guard (createDate?.isThisYear())! else { // 今年
+                fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                return fmt.string(from: createDate!)
+            }
+            if (createDate?.isYesterday())! { // 昨天
+                fmt.dateFormat = "昨天 HH:mm";
+                return fmt.string(from: createDate!)
+            } else if (createDate?.isToday())! {
+                if comps.hour! >= 1 {
+                    return String(format: "%.d小时前", comps.hour!)
+                } else if comps.minute! >= 1 {
+                    return String(format: "%d分钟前", comps.minute!)
+                } else {
+                    return "刚刚";
+                }
+            } else {
+                fmt.dateFormat = "MM-dd HH:mm";
+                return fmt.string(from: createDate!)
+            }
+        }
+    }
     
     var cursor: Int?
     
@@ -79,6 +132,9 @@ class WeiTouTiao {
     
     var title: String?
     
+    var position: WTTPosition?
+    
+    
     init(dict: [String: AnyObject]) {
         /// 遍历举报的内容
         if let filterWords = dict["filter_words"] as? [AnyObject] {
@@ -93,8 +149,9 @@ class WeiTouTiao {
         bury_count = dict["bury_count"] as? Int
         read_count = dict["read_count"] as? Int
         comment_count = dict["comment_count"] as? Int
-        behot_time = dict["behot_time"] as? Int
-        create_time = dict["create_time"] as? Int
+        behot_time = dict["behot_time"] as? TimeInterval
+        create_time = dict["create_time"] as? TimeInterval
+        publish_time = dict["publish_time"] as? TimeInterval
         cursor = dict["cursor"] as? Int
         default_text_line = dict["default_text_line"] as? Int
         cell_flag = dict["cell_flag"] as? Int
@@ -115,6 +172,9 @@ class WeiTouTiao {
         if let logPb = dict["log_pb"] {
             log_pb = LogPB(dict: logPb as! [String : AnyObject])
         }
+        if let positionDict = dict["position"] {
+            position = WTTPosition(dict: positionDict as! [String : AnyObject])
+        }
         max_text_line = dict["max_text_line"] as? Int
         rid = dict["rid"] as? String
         schema = dict["schema"] as? String
@@ -123,6 +183,15 @@ class WeiTouTiao {
         user_verified = dict["user_verified"] as? Bool
         title = dict["title"] as? String
     }
+}
+
+class WTTPosition  {
+    var position: String?
+    
+    init(dict: [String: AnyObject]) {
+        position = dict["position"] as? String
+    }
+    
 }
 
 class WTTUser {

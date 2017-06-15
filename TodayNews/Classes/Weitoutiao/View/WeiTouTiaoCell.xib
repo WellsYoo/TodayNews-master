@@ -42,7 +42,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tg0-MU-tf5">
-                                <rect key="frame" x="58" y="35.5" width="128" height="14.5"/>
+                                <rect key="frame" x="58" y="35.5" width="133" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jP1-Jd-QRn" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="201" y="18" width="58" height="28"/>
+                                <rect key="frame" x="206" y="18" width="58" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="Ryd-oN-AnW"/>
                                     <constraint firstAttribute="width" constant="58" id="TUH-ar-JvU"/>
@@ -97,13 +97,14 @@
                             <constraint firstItem="LaX-dc-cdb" firstAttribute="top" secondItem="TrX-J4-PcK" secondAttribute="top" id="N5F-ow-gag"/>
                             <constraint firstItem="N3U-xb-WvO" firstAttribute="centerY" secondItem="EHS-oi-HQI" secondAttribute="centerY" id="N5f-xP-bpZ"/>
                             <constraint firstItem="LaX-dc-cdb" firstAttribute="leading" secondItem="TrX-J4-PcK" secondAttribute="leading" id="P2U-Qf-5VS"/>
+                            <constraint firstItem="jP1-Jd-QRn" firstAttribute="leading" secondItem="nii-hR-WIW" secondAttribute="trailing" priority="250" constant="33" id="PaL-0c-4O1"/>
                             <constraint firstItem="nii-hR-WIW" firstAttribute="top" secondItem="EHS-oi-HQI" secondAttribute="top" constant="3" id="Qwx-BZ-j38"/>
                             <constraint firstItem="zhl-bf-0JN" firstAttribute="centerY" secondItem="nii-hR-WIW" secondAttribute="centerY" id="TrQ-t8-nAZ"/>
+                            <constraint firstItem="N3U-xb-WvO" firstAttribute="leading" secondItem="jP1-Jd-QRn" secondAttribute="trailing" constant="15" id="XV0-92-jP0"/>
                             <constraint firstAttribute="bottom" secondItem="EHS-oi-HQI" secondAttribute="bottom" id="acd-ge-XQT"/>
                             <constraint firstItem="EHS-oi-HQI" firstAttribute="leading" secondItem="TrX-J4-PcK" secondAttribute="leading" constant="15" id="d8Q-28-L05"/>
                             <constraint firstItem="jP1-Jd-QRn" firstAttribute="centerY" secondItem="EHS-oi-HQI" secondAttribute="centerY" id="eih-QI-ium"/>
                             <constraint firstItem="zhl-bf-0JN" firstAttribute="leading" secondItem="nii-hR-WIW" secondAttribute="trailing" constant="4" id="etU-q5-ucW"/>
-                            <constraint firstItem="N3U-xb-WvO" firstAttribute="leading" secondItem="jP1-Jd-QRn" secondAttribute="trailing" constant="20" id="gvk-tP-bYS"/>
                             <constraint firstAttribute="trailing" secondItem="LaX-dc-cdb" secondAttribute="trailing" id="hY9-PL-xMg"/>
                             <constraint firstAttribute="trailing" secondItem="N3U-xb-WvO" secondAttribute="trailing" constant="15" id="rrV-gX-WSU"/>
                             <constraint firstItem="tg0-MU-tf5" firstAttribute="bottom" secondItem="EHS-oi-HQI" secondAttribute="bottom" id="ubI-Up-WCv"/>
@@ -170,8 +171,14 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="_borderSides" value="Top"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阅读量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVg-Ts-0v1">
-                                <rect key="frame" x="15" y="0.0" width="37" height="14.5"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVg-Ts-0v1">
+                                <rect key="frame" x="15" y="0.0" width="25" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阅读" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mag-qf-YFl">
+                                <rect key="frame" x="43" y="0.0" width="25" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -180,8 +187,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="PVd-M5-qCz" secondAttribute="bottom" id="DoS-QN-BHd"/>
+                            <constraint firstItem="mag-qf-YFl" firstAttribute="centerY" secondItem="NVg-Ts-0v1" secondAttribute="centerY" id="OPm-S0-gWB"/>
                             <constraint firstItem="PVd-M5-qCz" firstAttribute="leading" secondItem="egT-Xr-ni3" secondAttribute="leading" id="S9M-ke-HuG"/>
                             <constraint firstItem="NVg-Ts-0v1" firstAttribute="top" secondItem="egT-Xr-ni3" secondAttribute="top" id="deC-wm-VSe"/>
+                            <constraint firstItem="mag-qf-YFl" firstAttribute="leading" secondItem="NVg-Ts-0v1" secondAttribute="trailing" constant="3" id="ggv-BC-kbx"/>
                             <constraint firstItem="NVg-Ts-0v1" firstAttribute="leading" secondItem="egT-Xr-ni3" secondAttribute="leading" constant="15" id="o1r-Df-hdq"/>
                             <constraint firstAttribute="trailing" secondItem="PVd-M5-qCz" secondAttribute="trailing" id="qWp-4B-GGB"/>
                             <constraint firstAttribute="height" constant="58" id="ud1-uu-bjq"/>
@@ -211,9 +220,13 @@
             <connections>
                 <outlet property="avatarImageView" destination="EHS-oi-HQI" id="G2b-47-XqZ"/>
                 <outlet property="commentCountButton" destination="2Wx-gg-qZz" id="dbN-tX-qfy"/>
+                <outlet property="createTimeLabel" destination="tg0-MU-tf5" id="do8-hR-W3g"/>
                 <outlet property="feedShareCountButton" destination="x2B-Yw-al9" id="nkz-G0-QKw"/>
                 <outlet property="likeCountButton" destination="85q-pB-JBB" id="ZRQ-Pw-FcU"/>
+                <outlet property="positionLabel" destination="NVg-Ts-0v1" id="yqT-vc-hpn"/>
+                <outlet property="readCountLabel" destination="mag-qf-YFl" id="P6q-kM-gmG"/>
                 <outlet property="userNameLabel" destination="nii-hR-WIW" id="aju-mi-PGK"/>
+                <outlet property="verifiedImageView" destination="zhl-bf-0JN" id="ipb-ic-9fO"/>
             </connections>
             <point key="canvasLocation" x="54" y="73"/>
         </tableViewCell>
