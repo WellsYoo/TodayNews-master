@@ -26,6 +26,9 @@ let app_name = "news_article"
 let channel = "App%20Store"
 
 let device_platform = "iphone"
+/// 当前时间
+let date = Date()
+let currentTimeInterval = UInt64(date.timeIntervalSince1970 * 1000)
 
 let resolution = "\(screenWidth * 2)*\(screenHeight * 2)"
 /// idfv

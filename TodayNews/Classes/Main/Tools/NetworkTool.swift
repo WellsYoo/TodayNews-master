@@ -116,15 +116,13 @@ class NetworkTool {
     
     /// 获取微头条数据
     class func loadWeiTouTiaoData() {
-        /**
-         version_code=6.1.6&app_name=news_article&vid=9E7F056D-4902-4CA5-B77F-5EFE0B0D112C&device_id=6096495334&idfv=9E7F056D-4902-4CA5-B77F-5EFE0B0D112C&ac=WIFI&os_version=9.3.2&iid=5034850950&idfa=12D3CE1F-D56F-4DFD-9896-A4379014B6BE&category=weitoutiao&city=%E6%9D%AD%E5%B7%9E&concern_id=6368255615201970690&count=20&cp=539d461c44069q1&last_refresh_sub_entrance_interval=4805&min_behot_time=1497448512
-         */
-        let url = BASE_URL + " api/news/feed/v54/?"
+        let url = BASE_URL + "api/news/feed/v54/?"
         let params = ["version_code": versionCode,
                       "iid": IID,
                       "category": "weitoutiao",
                       "count": 20,
-                      "min_behot_time": "",
+//                      "min_behot_time": currentTimeInterval,
+                      "device_id": device_id,
 //                      "app_name": app_name,
 //                      "idfv": idfv,
 //                      "idfa": idfa,
@@ -140,8 +138,15 @@ class NetworkTool {
                 let json = JSON(value)
                 if let message = json["message"].string {
                     if message == "success" {
-                        if let data = json["data"].dictionary {
-                            print(data)
+                        if let dataJSONs = json["data"].array {
+                            for dataJSON in dataJSONs {
+                                if let content = dataJSON["content"].string {
+                                    let data = content.data(using: String.Encoding.utf8)! as Data
+                                    let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                                    print(dict!)
+                                    print("---------------------------------------")
+                                }
+                            }
                         }
                     }
                 }

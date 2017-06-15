@@ -14,7 +14,6 @@ class HeaderTextViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        postBarButton.isEnabled = false
         
     }
 

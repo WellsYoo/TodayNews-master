@@ -12,7 +12,7 @@
         <!--My Navigation Controller-->
         <scene sceneID="H9q-Ok-9T8">
             <objects>
-                <navigationController storyboardIdentifier="TextNavigationController" id="1mX-Ek-cOk" customClass="MyNavigationController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TextNavigationController" id="1mX-Ek-cOk" customClass="MyNavigationController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZeY-Y2-bOb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -28,7 +28,7 @@
         <!--Header Text View Controller-->
         <scene sceneID="Ppd-yl-xMF">
             <objects>
-                <viewController id="mQS-iO-OKe" customClass="HeaderTextViewController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mQS-iO-OKe" customClass="HeaderTextViewController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vuR-NN-P2Y"/>
                         <viewControllerLayoutGuide type="bottom" id="GdX-MO-0FB"/>
@@ -45,7 +45,7 @@
                                 <action selector="cancelBarButtonClicked:" destination="mQS-iO-OKe" id="skT-N1-6vN"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="发布" id="Oo9-dV-QxM">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="发布" id="Oo9-dV-QxM">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                     </navigationItem>

@@ -59,6 +59,7 @@
 		94B916A01EF21EE300AC91B9 /* WeiTouTiaoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B9166E1EF21EE300AC91B9 /* WeiTouTiaoCell.xib */; };
 		94B916A11EF21EE300AC91B9 /* WeitoutiaoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B9166F1EF21EE300AC91B9 /* WeitoutiaoHeaderView.swift */; };
 		94B916A21EF21EE300AC91B9 /* WeitoutiaoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B916701EF21EE300AC91B9 /* WeitoutiaoHeaderView.xib */; };
+		94B916A41EF2311700AC91B9 /* WeiTouTiao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B916A31EF2311700AC91B9 /* WeiTouTiao.swift */; };
 		EE46BE76FC8C234C92296B82 /* Pods_TodayNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280B7838DD62799363838C22 /* Pods_TodayNews.framework */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +141,7 @@
 		94B9166E1EF21EE300AC91B9 /* WeiTouTiaoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiTouTiaoCell.xib; sourceTree = "<group>"; };
 		94B9166F1EF21EE300AC91B9 /* WeitoutiaoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeitoutiaoHeaderView.swift; sourceTree = "<group>"; };
 		94B916701EF21EE300AC91B9 /* WeitoutiaoHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeitoutiaoHeaderView.xib; sourceTree = "<group>"; };
+		94B916A31EF2311700AC91B9 /* WeiTouTiao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiTouTiao.swift; sourceTree = "<group>"; };
 		F6D7F701F546AA6431D7BF3A /* Pods-TodayNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews/Pods-TodayNews.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -230,12 +232,11 @@
 			isa = PBXGroup;
 			children = (
 				94B916291EF21EE200AC91B9 /* Home */,
-				94B916391EF21EE200AC91B9 /* Login&Reister */,
-				94B9163A1EF21EE200AC91B9 /* Main */,
-				94B916441EF21EE200AC91B9 /* Mine */,
-				94B9164F1EF21EE200AC91B9 /* Others */,
 				94B916551EF21EE200AC91B9 /* Video */,
 				94B916611EF21EE300AC91B9 /* Weitoutiao */,
+				94B916441EF21EE200AC91B9 /* Mine */,
+				94B9163A1EF21EE200AC91B9 /* Main */,
+				94B9164F1EF21EE200AC91B9 /* Others */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -281,13 +282,6 @@
 				94B916381EF21EE200AC91B9 /* SearchNavigationView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		94B916391EF21EE200AC91B9 /* Login&Reister */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Login&Reister";
 			sourceTree = "<group>";
 		};
 		94B9163A1EF21EE200AC91B9 /* Main */ = {
@@ -429,12 +423,12 @@
 		94B916621EF21EE300AC91B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				94B916681EF21EE300AC91B9 /* WeiTouTiaoViewController.swift */,
 				94B916631EF21EE300AC91B9 /* AddFriendViewController.swift */,
 				94B916641EF21EE300AC91B9 /* HeaderTextViewController.swift */,
 				94B916651EF21EE300AC91B9 /* LoginPopViewController.swift */,
 				94B916661EF21EE300AC91B9 /* TellFriendsViewController.swift */,
 				94B916671EF21EE300AC91B9 /* WeiTouTiaoHeader.storyboard */,
-				94B916681EF21EE300AC91B9 /* WeiTouTiaoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -442,6 +436,7 @@
 		94B916691EF21EE300AC91B9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				94B916A31EF2311700AC91B9 /* WeiTouTiao.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -701,6 +696,7 @@
 				94B9169D1EF21EE300AC91B9 /* NotNetworkView.swift in Sources */,
 				94B916861EF21EE300AC91B9 /* MineCell.swift in Sources */,
 				94B9168F1EF21EE300AC91B9 /* VideoDetailController.swift in Sources */,
+				94B916A41EF2311700AC91B9 /* WeiTouTiao.swift in Sources */,
 				94B916741EF21EE300AC91B9 /* HomeTopTitle.swift in Sources */,
 				94B9168A1EF21EE300AC91B9 /* AppDelegate.swift in Sources */,
 			);

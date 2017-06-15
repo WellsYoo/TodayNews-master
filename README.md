@@ -22,10 +22,6 @@
 
 
 
-
-
-
-
 ![](http://obna9emby.bkt.clouddn.com/news/news.gif)
 
 # 2016.08.18
@@ -37,27 +33,6 @@
 项目中有的地方代码写的不是很简洁，毕竟自己能力有限，对 Swift 使用不是很熟练，还请各位朋友不喜勿喷。下面有项目的完整源码，喜欢的朋友可以下载下来，如果您感觉我写的代码对您有所帮助，还请在 github 给个 star，非常感谢您的支持！~
 
 #### 对于代码中出现的问题，可以及时联系我，我会继续修改。
-
-### [github 地址](https://github.com/hrscy/TodayNews)
-
-### [CodeData 地址](http://www.codedata.cn/cdetail/Swift/Demo/1471514673634279)
-
-## 环境设置
-- 项目环境
-- Xcode 7.3.1（低于这个版本会报错）。
-- Swift 2.2
-- iOS 8.0 +
-
-- 使用 cocoaPods 管理第三方库， 如果电脑没有安装 cocoapods，请先安装 cocoapods。安装方式可参考：[最新版 CocoaPods 的安装流程](http://www.tuicool.com/articles/7VvuAr3)
-
-- 项目中使用到的第三方库
-- SnapKit： 布局
-- Kingfisher： 缓存图片
-- SVProgressHUD：提示框
-- FDFullscreenPopGesture：侧滑
-- Alamofire ：网络请求
-- SwiftyJSON：解析 json
-- MJRefresh： 上拉刷新和下拉刷新
 
 ## 实现的功能
 
@@ -85,7 +60,7 @@
 
 #### 下载地址请看 [postman](https://pan.baidu.com/s/1slxQIdv)，下载完成后，直接拖入到谷歌浏览器的扩展程序界面即可。
 
-#### 数据请求的具体方式，请看 [YMNetworkTool.swift](https://github.com/hrscy/TodayNews/blob/master/TodayNews/Classes/Main(%E4%B8%BB%E8%A6%81)/Tools/YMNetworkTool.swift)。
+#### 数据请求的具体方式，请看 [NetworkTool.swift](https://github.com/hrscy/TodayNews/blob/master/TodayNews/Classes/Main(%E4%B8%BB%E8%A6%81)/Tools/YMNetworkTool.swift)。
 
 # 首页
 

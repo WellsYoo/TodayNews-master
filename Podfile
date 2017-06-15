@@ -8,5 +8,4 @@ target "TodayNews" do
     pod 'Alamofire', '~> 4.4.0'
     pod 'SwiftyJSON', '~> 3.1.4'
     pod 'IBAnimatable'
-    pod 'AlamofireObjectMapper', '~> 4.0'
 end
