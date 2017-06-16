@@ -14,7 +14,7 @@ class NetworkTool {
     
     
     
-    /// -------------------------- 首 页 -------------------------
+    /// -------------------------- 首 页 home -------------------------
     /// 获取首页顶部标题内容
     class func loadHomeTitlesData(finished:@escaping (_ topTitles: [HomeTopTitle])->()) {
         let url = BASE_URL + "article/category/get_subscribed/v1/?"
@@ -74,7 +74,7 @@ class NetworkTool {
         }
     }
     
-    /// -------------------------- 视 频 --------------------------
+    /// -------------------------- 视 频 video --------------------------
     
     /// 获取视频顶部标题内容
     class func loadVideoTitlesData(finished:@escaping (_ videoTitles: [VideoTopTitle])->()) {
@@ -112,7 +112,7 @@ class NetworkTool {
         }
     }
     
-    /// --------------------------  微  头  条  --------------------------
+    // --------------------------  微  头  条  --------------------------
     
     /// 获取微头条数据
     class func loadWeiTouTiaoData(completionHandler: @escaping (_ weitoutiaos: [WeiTouTiao]) -> ()) {
@@ -136,32 +136,34 @@ class NetworkTool {
             }
             if let value = response.result.value {
                 let json = JSON(value)
-                if let message = json["message"].string {
-                    if message == "success" {
-                        if let dataJSONs = json["data"].array {
-                            var weitoutiaos = [WeiTouTiao]()
-                            for dataJSON in dataJSONs {
-                                if let content = dataJSON["content"].string {
-                                    
-                                    let data = content.data(using: String.Encoding.utf8)! as Data
-                                    let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                                    print(dict)
-                                    print("-------------------------")
-                                    let weitoutiao = WeiTouTiao(dict: dict as! [String : AnyObject])
-                                    weitoutiaos.append(weitoutiao)
-                                }
-                            }
-                            completionHandler(weitoutiaos)
-                        }
+                guard let message = json["message"].string else {
+                    return
+                }
+                guard message == "success" else {
+                    return
+                }
+                guard let dataJSONs = json["data"].array else {
+                    return
+                }
+                var weitoutiaos = [WeiTouTiao]()
+                for dataJSON in dataJSONs {
+                    if let content = dataJSON["content"].string {
+                        
+                        let data = content.data(using: String.Encoding.utf8)! as Data
+                        let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                        print(dict)
+                        print("-------------------------")
+                        let weitoutiao = WeiTouTiao(dict: dict as! [String : AnyObject])
+                        weitoutiaos.append(weitoutiao)
                     }
                 }
+                completionHandler(weitoutiaos)
             }
         }
         
     }
     
-    
-    /// 我的
+    // --------------------------------- 我的 mine  ---------------------------------
     /// 我的界面 cell 数据
     class func loadMineCellData() {
         let url = BASE_URL + "user/tab/tabs/?"

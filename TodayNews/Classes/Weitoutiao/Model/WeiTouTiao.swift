@@ -12,8 +12,8 @@ import UIKit
 class WeiTouTiao {
     /// 过滤内容
     var filter_words = [WTTFilterWord]()
-    // 内容
-    var content: String?
+    
+    var level: Int?
     /// 点赞数量
     var like_count: Int?
     
@@ -99,6 +99,7 @@ class WeiTouTiao {
     
     var is_stick: Int?
     
+    var image_list = [WTTImageList]()
     var large_image_list = [WTTLargeImageList]()
     var ugc_cut_image_list = [WTTUgcCutImageList]()
     var thumb_image_list = [WTTThumbImageList]()
@@ -123,7 +124,7 @@ class WeiTouTiao {
     var rid: String?
     
     var schema: String?
-    
+    var share_count: Int?
     var share_url: String?
     
     var stick_style: Int?
@@ -134,8 +135,107 @@ class WeiTouTiao {
     
     var position: WTTPosition?
     
+    // -------------------  article  ---------------------
+    var content: String?
+    var abstract: String?
+    var actionExtra: WTTActionExtra?
+    var aggr_type: Int?
+    var article_sub_type: Int?
+    var article_type: Int?
+    var article_url: String?
+    var display_url: String?
+    var ban_comment: Int?
+    
+    var group_flags: Int?
+    var group_id: String?
+    var group_source: Int?
+    var has_image: Bool?
+    var has_video: Bool?
+    var has_m3u8_video: Bool?
+    var has_mp4_video: Bool?
+    var hot: Bool?
+    var is_subject: Bool?
+    var item_id: String?
+    var item_version: Int?
+
+    var middle_image: WTTMiddleImage?
+    var media_info: WTTMediaInfo?
+    var media_name: String?
+    var preload_web: Int?
+    var show_portrait: Bool?
+    var show_portrait_article: Bool?
+    
+    var source: String?
+    var source_icon_style: Int?
+    var source_open_url: String?
+    var tag: String?
+    var tag_id: String?
+    var tip: Int?
+    var url: String?
+    
+    var video_detail_info: WTTVideoDetailInfo?
+    var video_duration: Int?
+    var video_id: String?
+    var video_proportion_article: String?
+    var video_source: String?
+    var video_style: Int?
     
     init(dict: [String: AnyObject]) {
+        
+        video_duration = dict["video_duration"] as? Int
+        video_id = dict["video_id"] as? String
+        video_proportion_article = dict["video_proportion_article"] as? String
+        video_source = dict["video_source"] as? String
+        video_style = dict["video_style"] as? Int
+        
+        url = dict["url"] as? String
+        tip = dict["tip"] as? Int
+        tag_id = dict["tag_id"] as? String
+        tag = dict["tag"] as? String
+        source_open_url = dict["source_open_url"] as? String
+        source_icon_style = dict["source_icon_style"] as? Int
+        source = dict["source"] as? String
+        show_portrait_article = dict["show_portrait_article"] as? Bool
+        show_portrait = dict["show_portrait"] as? Bool
+        preload_web = dict["preload_web"] as? Int
+        media_name = dict["media_name"] as? String
+        
+        if let middleImage = dict["middle_image"] as? [String: AnyObject] {
+            middle_image = WTTMiddleImage(dict: middleImage)
+        }
+        if let mediaInfo = dict["media_info"] as? [String: AnyObject] {
+            media_info = WTTMediaInfo(dict: mediaInfo)
+        }
+        if let videoDetailInfo = dict["video_detail_info"] as? [String: AnyObject] {
+            video_detail_info = WTTVideoDetailInfo(dict: videoDetailInfo)
+        }
+        
+        group_flags = dict["group_flags"] as? Int
+        group_id = dict["group_id"] as? String
+        group_source = dict["group_source"] as? Int
+        has_image = dict["has_image"] as? Bool
+        has_video = dict["has_video"] as? Bool
+        has_m3u8_video = dict["has_m3u8_video"] as? Bool
+        has_mp4_video = dict["has_mp4_video"] as? Bool
+        hot = dict["hot"] as? Bool
+        is_subject = dict["is_subject"] as? Bool
+        item_id = dict["item_id"] as? String
+        ban_comment = dict["ban_comment"] as? Int
+        item_version = dict["item_version"] as? Int
+        
+        aggr_type = dict["aggr_type"] as? Int
+        article_sub_type = dict["article_sub_type"] as? Int
+        article_type = dict["article_type"] as? Int
+        article_url = dict["article_url"] as? String
+        display_url = dict["display_url"] as? String
+        ban_comment = dict["ban_comment"] as? Int
+        content = dict["content"] as? String
+        abstract = dict["abstract"] as? String
+        if let action_extra = dict["action_extra"] {
+            let data = action_extra.data(using: String.Encoding.utf8.rawValue)! as Data
+            let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            actionExtra = WTTActionExtra(dict: dict as! [String : AnyObject])
+        }
         /// 遍历举报的内容
         if let filterWords = dict["filter_words"] as? [AnyObject] {
             for item in filterWords {
@@ -143,7 +243,7 @@ class WeiTouTiao {
                 filter_words.append(filterWord)
             }
         }
-        content = dict["content"] as? String
+        level = dict["level"] as? Int
         like_count = dict["like_count"] as? Int
         digg_count = dict["digg_count"] as? Int
         bury_count = dict["bury_count"] as? Int
@@ -160,10 +260,10 @@ class WeiTouTiao {
         cell_type = dict["cell_type"] as? Int
         follow = dict["follow"] as? Int
         inner_ui_flag = dict["inner_ui_flag"] as? Int
-        if let userTemp = dict["user"] {
-            user = WTTUser(dict: userTemp as! [String : AnyObject] )
-        } else if let userInfoTemp = dict["user_info"] {
-            user_info = WTTUser(dict: userInfoTemp as! [String : AnyObject] )
+        if let userTemp = dict["user"] as? [String : AnyObject]  {
+            user = WTTUser(dict: userTemp)
+        } else if let userInfoTemp = dict["user_info"] as? [String : AnyObject]  {
+            user_info = WTTUser(dict: userInfoTemp)
         }
         user_digg = dict["user_digg"] as? Int
         user_verified = dict["user_verified"] as? Bool
@@ -172,16 +272,26 @@ class WeiTouTiao {
         if let logPb = dict["log_pb"] {
             log_pb = LogPB(dict: logPb as! [String : AnyObject])
         }
-        if let positionDict = dict["position"] {
-            position = WTTPosition(dict: positionDict as! [String : AnyObject])
+        if let positionDict = dict["position"] as? [String : AnyObject] {
+            position = WTTPosition(dict: positionDict)
         }
         max_text_line = dict["max_text_line"] as? Int
         rid = dict["rid"] as? String
         schema = dict["schema"] as? String
         share_url = dict["share_url"] as? String
+        share_count = dict["share_count"] as? Int
         stick_style = dict["user_id"] as? Int
         user_verified = dict["user_verified"] as? Bool
         title = dict["title"] as? String
+        
+    }
+}
+
+class WTTActionExtra {
+    var channel_id: String?
+    
+    init(dict: [String: AnyObject]) {
+        channel_id = dict["channel_id"] as? String
     }
 }
 
@@ -255,6 +365,128 @@ class WTTUserAuthInfo {
     }
 }
 
+class WTTMediaInfo {
+    
+    var avatar_url: String?
+    var name: String?
+    var media_id: Int?
+    var user_verified: Int?
+    
+    init(dict: [String: AnyObject]) {
+        
+        avatar_url = dict["avatar_url"] as? String
+        name = dict["name"] as? String
+        user_verified = dict["user_verified"] as? Int
+        media_id = dict["media_id"] as? Int
+    }
+}
+
+class WTTVideoDetailInfo {
+    
+    var direct_play: Int?
+    var group_flags: Int?
+    var show_pgc_subscribe: Int?
+    var video_id: String?
+    var video_preloading_flag: Bool?
+    var video_type: Int?
+    var video_watch_count: Int?
+    var video_watching_count: Int?
+    var detail_video_large_image: WTTDetailVideoLargeImage?
+    
+    init(dict: [String: AnyObject]) {
+        
+        video_watching_count = dict["video_watching_count"] as? Int
+        video_watch_count = dict["video_watch_count"] as? Int
+        video_type = dict["video_type"] as? Int
+        video_preloading_flag = dict["video_preloading_flag"] as? Bool
+        video_id = dict["video_id"] as? String
+        direct_play = dict["direct_play"] as? Int
+        group_flags = dict["group_flags"] as? Int
+        show_pgc_subscribe = dict["show_pgc_subscribe"] as? Int
+        if let detailVideoLargeImage = dict["detail_video_large_image"] as? [String: AnyObject] {
+            detail_video_large_image = WTTDetailVideoLargeImage(dict: detailVideoLargeImage)
+        }
+    }
+}
+
+class WTTDetailVideoLargeImage {
+    
+    var height: Int?
+    var width: Int?
+    
+    var url: String?
+    
+    var url_list = [WTTURLList]()
+    
+    init(dict: [String: AnyObject]) {
+        
+        height = dict["height"] as? Int
+        width = dict["width"] as? Int
+        url = dict["url"] as? String
+        if let urllists = dict["url_list"] as? [AnyObject] {
+            for urlDict in urllists {
+                let wtrURLList = WTTURLList(dict: urlDict as! [String: AnyObject])
+                url_list.append(wtrURLList)
+            }
+        }
+    }
+}
+
+class WTTMiddleImage {
+    
+    var height: CGFloat?
+    var width: CGFloat?
+    
+    var url: String?
+    
+    var url_list = [WTTURLList]()
+    
+    init(dict: [String: AnyObject]) {
+        
+        height = dict["height"] as? CGFloat
+        width = dict["width"] as? CGFloat
+        if let urlString = dict["url"] as? String {
+            if urlString.hasSuffix(".webp") {
+                let index = urlString.index(urlString.endIndex, offsetBy: -5)
+                url = urlString.substring(to: index)
+            } else {
+                url = urlString as String
+            }
+        }
+        if let urllists = dict["url_list"] as? [AnyObject] {
+            for urlDict in urllists {
+                let wtrURLList = WTTURLList(dict: urlDict as! [String: AnyObject])
+                url_list.append(wtrURLList)
+            }
+        }
+    }
+}
+
+class WTTImageList {
+    
+    var height: CGFloat?
+    var width: CGFloat?
+    
+    var type: Int?
+    
+    var url: String?
+    
+    var url_list = [WTTURLList]()
+    
+    init(dict: [String: AnyObject]) {
+        type = dict["type"] as? Int
+        height = dict["hight"] as? CGFloat
+        width = dict["width"] as? CGFloat
+        url = dict["url"] as? String
+        if let urllists = dict["url_list"] as? [AnyObject] {
+            for urlDict in urllists {
+                let wtrURLList = WTTURLList(dict: urlDict as! [String: AnyObject])
+                url_list.append(wtrURLList)
+            }
+        }
+    }
+}
+
 class WTTUgcCutImageList {
     
     var height: CGFloat?
@@ -266,7 +498,7 @@ class WTTUgcCutImageList {
     
     var url: String?
     
-    var url_list: [WTTURLList]?
+    var url_list = [WTTURLList]()
     
     init(dict: [String: AnyObject]) {
         height = dict["height"] as? CGFloat
@@ -274,7 +506,13 @@ class WTTUgcCutImageList {
         type = dict["type"] as? Int
         uri = dict["uri"] as? String
         url = dict["url"] as? String
-        url_list = dict["url_list"] as? [WTTURLList]
+        
+        if let urllists = dict["url_list"] as? [AnyObject] {
+            for urlDict in urllists {
+                let wtrURLList = WTTURLList(dict: urlDict as! [String: AnyObject])
+                url_list.append(wtrURLList)
+            }
+        }
     }
 }
 
@@ -289,7 +527,7 @@ class WTTThumbImageList {
     
     var url: String?
     
-    var url_list: [WTTURLList]?
+    var url_list = [WTTURLList]()
     
     init(dict: [String: AnyObject]) {
         height = dict["height"] as? CGFloat
@@ -297,18 +535,15 @@ class WTTThumbImageList {
         type = dict["type"] as? Int
         uri = dict["uri"] as? String
         url = dict["url"] as? String
-        url_list = dict["url_list"] as? [WTTURLList]
+        if let urllists = dict["url_list"] as? [AnyObject] {
+            for urlDict in urllists {
+                let wtrURLList = WTTURLList(dict: urlDict as! [String: AnyObject])
+                url_list.append(wtrURLList)
+            }
+        }
     }
 }
 
-class LogPB {
-    
-    var impr_id: Int?
-    
-    init(dict: [String: AnyObject]) {
-        impr_id = dict["impr_id"] as? Int
-    }
-}
 
 class WTTLargeImageList {
     
@@ -321,7 +556,7 @@ class WTTLargeImageList {
     
     var url: String?
     
-    var url_list: [WTTURLList]?
+    var url_list = [WTTURLList]()
 
     init(dict: [String: AnyObject]) {
         height = dict["height"] as? CGFloat
@@ -329,7 +564,21 @@ class WTTLargeImageList {
         type = dict["type"] as? Int
         uri = dict["uri"] as? String
         url = dict["url"] as? String
-        url_list = dict["url_list"] as? [WTTURLList]
+        if let urllists = dict["url_list"] as? [AnyObject] {
+            for urlDict in urllists {
+                let wtrURLList = WTTURLList(dict: urlDict as! [String: AnyObject])
+                url_list.append(wtrURLList)
+            }
+        }
+    }
+}
+
+class LogPB {
+    
+    var impr_id: Int?
+    
+    init(dict: [String: AnyObject]) {
+        impr_id = dict["impr_id"] as? Int
     }
 }
 

@@ -17,7 +17,10 @@ class WeiTouTiaoCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     /// 创建时间
     @IBOutlet weak var createTimeLabel: UILabel!
-    
+    // 关注按钮
+    @IBOutlet weak var careButton: AnimatableButton!
+    /// 内容
+    @IBOutlet weak var contentLabel: UILabel!
     /// 点赞数量
     @IBOutlet weak var likeCountButton: UIButton!
     /// 评论数量
@@ -42,13 +45,13 @@ class WeiTouTiaoCell: UITableViewCell {
             }
             verifiedImageView.isHidden = !weitoutiao!.user_verified!
             if let like_count = weitoutiao?.like_count {
-                commentCountButton.setTitle((like_count == 0 ? "喜欢": String(like_count)), for: .normal)
+                likeCountButton.setTitle((like_count == 0 ? "喜欢": String(like_count)), for: .normal)
             }
             if let comment_count = weitoutiao?.comment_count {
                 commentCountButton.setTitle((comment_count == 0 ? "评论": String(comment_count)), for: .normal)
             }
             if let digg_count = weitoutiao?.digg_count {
-                commentCountButton.setTitle((digg_count == 0 ? "转发": String(digg_count)), for: .normal)
+                feedShareCountButton.setTitle((digg_count == 0 ? "转发": String(digg_count)), for: .normal)
             }
             if let position = weitoutiao?.position {
                 positionLabel.text = position.position
@@ -57,6 +60,7 @@ class WeiTouTiaoCell: UITableViewCell {
             readCountLabel.text = (weitoutiao?.readCount!)! + "阅读"
             readCountLabel.isHidden = (weitoutiao?.readCount!.isEmpty)!
             createTimeLabel.text = weitoutiao?.createTime
+            contentLabel.text = weitoutiao?.title
         }
     }
     
@@ -64,12 +68,25 @@ class WeiTouTiaoCell: UITableViewCell {
         super.awakeFromNib()
         avatarImageView.layer.cornerRadius = 18
         avatarImageView.layer.masksToBounds = true
+        careButton.setTitle("已关注", for: .selected)
+        careButton.setTitleColor(UIColor(r: 0, g: 0, b: 0, alpha: 0.6), for: .selected)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func careButtonClicked(_ sender: AnimatableButton) {
+        sender.isSelected = !sender.isSelected
+        
+    }
+    
+    /// 屏蔽按钮点击
+    @IBAction func closeButton() {
+        
     }
     
 }
