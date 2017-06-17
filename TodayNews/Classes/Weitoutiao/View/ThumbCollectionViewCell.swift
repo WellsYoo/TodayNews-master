@@ -15,7 +15,8 @@ class ThumbCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        thumbImageView.layer.borderColor = UIColor(r: 240, g: 240, b: 240).cgColor
+        thumbImageView.layer.borderWidth = 1
     }
     
     var thumbImageURL: String? {

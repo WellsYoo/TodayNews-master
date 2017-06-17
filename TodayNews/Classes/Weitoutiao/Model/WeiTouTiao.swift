@@ -157,16 +157,21 @@ class WeiTouTiao {
                 height += videoHeight
             }
             if thumb_image_list.count != 0 {
-                let imageW = (screenWidth - kMargin * 2 - 6) / 3
+                // 1 or 2
+                let imageWidth1or2 = (screenWidth - kMargin * 2 - 6) * 0.5
+                // >= 3
+                let imageW = (screenWidth - kMargin * 2 - 12) / 3
                 switch thumb_image_list.count {
-                case 1...3:
-                    height += imageW
-                case 4...6:
-                    height += (imageW * 2 + 3)
-                case 7...9:
-                    height += (imageW * 3 + 6)
-                default:
-                    height += 0
+                    case 1, 2:
+                        height += imageWidth1or2
+                    case 3:
+                        height += imageW
+                    case 4...6:
+                        height += (imageW * 2 + 3)
+                    case 7...9:
+                        height += (imageW * 3 + 6)
+                    default:
+                        height += 0
                 }
             }
             return CGFloat(50 + 58 + 30) + height

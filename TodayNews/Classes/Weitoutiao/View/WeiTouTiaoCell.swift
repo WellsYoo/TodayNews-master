@@ -10,7 +10,14 @@ import UIKit
 import Kingfisher
 import IBAnimatable
 
+protocol WeitoutiaoCellDelegate {
+    
+    func weiTouTiaoCelloffeedShareButtonClicked(weitoutiaoCell: WeiTouTiaoCell)
+}
+
 class WeiTouTiaoCell: UITableViewCell {
+    
+    var delegate: WeitoutiaoCellDelegate?
     /// 头像
     @IBOutlet weak var avatarImageView: AnimatableImageView!
     /// 用户名
@@ -76,19 +83,17 @@ class WeiTouTiaoCell: UITableViewCell {
             }
             if let video_detail_info = weitoutiao?.video_detail_info {
                 let detail_video_large_image = video_detail_info.detail_video_large_image
-                videoImageView.kf.setImage(with: URL(string: (detail_video_large_image?.url)!))
-                self.middleView.addSubview(videoImageView)
-                videoImageView.snp.makeConstraints({ (make) in
+                videoView.imageButton.kf.setBackgroundImage(with: URL(string: (detail_video_large_image?.url)!), for: .normal)
+                self.middleView.addSubview(videoView)
+                videoView.snp.makeConstraints({ (make) in
                     make.top.left.bottom.right.equalTo(self.middleView)
                 })
             }
             if weitoutiao?.thumb_image_list.count != 0 {
                 self.middleView.addSubview(thumbCollectionView)
-                
                 thumbCollectionView.snp.makeConstraints({ (make) in
                     make.top.left.bottom.right.equalTo(self.middleView)
                 })
-                
             }
         }
     }
@@ -108,15 +113,16 @@ class WeiTouTiaoCell: UITableViewCell {
     }
     
     // 视频图片
-    private lazy var videoImageView: UIImageView = {
-        let videoImageView = UIImageView()
-        return videoImageView
+    private lazy var videoView: CellVideoView = {
+        let videoView = CellVideoView.cellVideoView()
+        return videoView
     }()
     
     /// 缩略图
     private lazy var thumbCollectionView: ThumbCollectionView = {
         let thumbCollectionView = ThumbCollectionView.collectionViewWithFrame(frame: CGRect.zero)
         thumbCollectionView.register(UINib(nibName: String(describing: ThumbCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ThumbCollectionViewCell.self))
+        thumbCollectionView.isScrollEnabled = false
         thumbCollectionView.delegate = self
         thumbCollectionView.dataSource = self
         return thumbCollectionView
@@ -136,8 +142,6 @@ extension WeiTouTiaoCell: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.thumbImageURL = (thumbImage?.url)!
         return cell
     }
-    
-    
 }
 
 extension WeiTouTiaoCell {
@@ -153,7 +157,7 @@ extension WeiTouTiaoCell {
     }
     /// 转发按钮点击
     @IBAction func feedShareButtonClicked() {
-        
+        delegate?.weiTouTiaoCelloffeedShareButtonClicked(weitoutiaoCell: self)
     }
     /// 关注按钮点击
     @IBAction func careButtonClicked(_ sender: AnimatableButton) {

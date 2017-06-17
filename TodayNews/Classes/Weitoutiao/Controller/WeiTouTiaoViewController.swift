@@ -127,6 +127,7 @@ extension WeiTouTiaoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeiTouTiaoCell") as! WeiTouTiaoCell
+        cell.delegate = self
         cell.weitoutiao = microNews[indexPath.row]
         return cell
     }
@@ -144,5 +145,25 @@ extension WeiTouTiaoViewController: UITableViewDelegate, UITableViewDataSource {
             })
         }
     }
+}
+
+// MARK: - WeitoutiaoCellDelegate
+extension WeiTouTiaoViewController: WeitoutiaoCellDelegate {
     
+    func weiTouTiaoCelloffeedShareButtonClicked(weitoutiaoCell: WeiTouTiaoCell) {
+        let storyboard = UIStoryboard(name: "WeiTouTiaoHeader", bundle: nil)
+        let feedShareVC = storyboard.instantiateViewController(withIdentifier: "FeedShareViewController") as! FeedShareViewController
+        let weitoutiao = weitoutiaoCell.weitoutiao
+        if weitoutiao!.title!.isEqual(to: "") {
+            feedShareVC.content = String(describing: weitoutiao!.content!)
+        } else {
+            feedShareVC.content = String(describing: weitoutiao!.title!)
+        }
+        if let video_detail_info = weitoutiao?.video_detail_info {
+            let detail_video_large_image = video_detail_info.detail_video_large_image
+            feedShareVC.thumbImageURL = detail_video_large_image?.url
+        }
+        let navigationVC = MyNavigationController(rootViewController: feedShareVC)
+        present(navigationVC, animated: true, completion: nil)
+    }
 }
