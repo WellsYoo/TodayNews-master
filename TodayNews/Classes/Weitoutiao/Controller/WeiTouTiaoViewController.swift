@@ -38,7 +38,6 @@ class WeiTouTiaoViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 300
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: String(describing: WeiTouTiaoCell.self), bundle: nil), forCellReuseIdentifier: "WeiTouTiaoCell")
         return tableView
@@ -121,6 +120,11 @@ extension WeiTouTiaoViewController: UITableViewDelegate, UITableViewDataSource {
         return microNews.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let weitoutiao = microNews[indexPath.row]
+        return weitoutiao.cellH!
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeiTouTiaoCell") as! WeiTouTiaoCell
         cell.weitoutiao = microNews[indexPath.row]
@@ -129,7 +133,6 @@ extension WeiTouTiaoViewController: UITableViewDelegate, UITableViewDataSource {
     
     /// UIScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         let offsetY = scrollView.contentOffset.y;
         if case 0...kWeiTouTiaoHeaderHieght = offsetY { // 向上滑动
             bgView.snp.updateConstraints({ (make) in

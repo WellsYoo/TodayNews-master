@@ -130,13 +130,51 @@ class WeiTouTiao {
     var stick_style: Int?
     
     var comments: [AnyObject]?
+    var content: NSString?
+    var contentH: CGFloat? {
+        get {
+            return content?.getTextHeight()
+        }
+    }
     
-    var title: String?
+    var title: NSString?
+    var titleH: CGFloat? {
+        get {
+            return title?.getTextHeight()
+        }
+    }
+    var cellH: CGFloat? {
+        get {
+            var height: CGFloat = 0
+            if title!.isEqual(to: "") {
+                height += contentH!
+            } else {
+                height += titleH!
+            }
+            if let videoDetailInfo = video_detail_info {
+                let width = screenWidth - kMargin * 2
+                let videoHeight = width * (videoDetailInfo.detail_video_large_image?.height)! / (videoDetailInfo.detail_video_large_image?.width)!
+                height += videoHeight
+            }
+            if thumb_image_list.count != 0 {
+                let imageW = (screenWidth - kMargin * 2 - 6) / 3
+                switch thumb_image_list.count {
+                case 1...3:
+                    height += imageW
+                case 4...6:
+                    height += (imageW * 2 + 3)
+                case 7...9:
+                    height += (imageW * 3 + 6)
+                default:
+                    height += 0
+                }
+            }
+            return CGFloat(50 + 58 + 30) + height
+        }
+    }
     
     var position: WTTPosition?
-    
     // -------------------  article  ---------------------
-    var content: String?
     var abstract: String?
     var actionExtra: WTTActionExtra?
     var aggr_type: Int?
@@ -209,6 +247,12 @@ class WeiTouTiao {
         if let videoDetailInfo = dict["video_detail_info"] as? [String: AnyObject] {
             video_detail_info = WTTVideoDetailInfo(dict: videoDetailInfo)
         }
+        if let thumbImageList = dict["thumb_image_list"] as? [AnyObject] {
+            for item in thumbImageList {
+                let thumbImage = WTTThumbImageList(dict: item as! [String: AnyObject])
+                thumb_image_list.append(thumbImage)
+            }
+        }
         
         group_flags = dict["group_flags"] as? Int
         group_id = dict["group_id"] as? String
@@ -229,7 +273,7 @@ class WeiTouTiao {
         article_url = dict["article_url"] as? String
         display_url = dict["display_url"] as? String
         ban_comment = dict["ban_comment"] as? Int
-        content = dict["content"] as? String
+        content = dict["content"] as? NSString
         abstract = dict["abstract"] as? String
         if let action_extra = dict["action_extra"] {
             let data = action_extra.data(using: String.Encoding.utf8.rawValue)! as Data
@@ -282,7 +326,7 @@ class WeiTouTiao {
         share_count = dict["share_count"] as? Int
         stick_style = dict["user_id"] as? Int
         user_verified = dict["user_verified"] as? Bool
-        title = dict["title"] as? String
+        title = dict["title"] as? NSString
         
     }
 }
@@ -307,31 +351,36 @@ class WTTPosition  {
 class WTTUser {
     
     var avatar_url: String?
-    
     var desc: String?
     var description: String?
+    var media_id: Int?
+    var create_time: TimeInterval?
+    var last_update: String?
+    var type: Int?
     
     var is_following: Bool?
+    var is_followed: Bool?
+    var is_friend: Bool?
     var follower_count: Int?
     var follow: Int?
     
-    var is_friend: Bool?
-    
     var schema: String?
-    
     var screen_name: String?
     var name: String?
     
     var userAuthInfo: WTTUserAuthInfo?
-    
-    var user_id: String?
-    
+    var user_id: Int?
     var user_verified: Bool?
     
     init(dict: [String: AnyObject]) {
-        user_id = dict["user_id"] as? String
+        type = dict["type"] as? Int
+        last_update = dict["last_update"] as? String
+        media_id = dict["media_id"] as? Int
+        create_time = dict["create_time"] as? TimeInterval
+        user_id = dict["user_id"] as? Int
         user_verified = dict["user_verified"] as? Bool
         is_following = dict["is_following"] as? Bool
+        is_followed = dict["is_followed"] as? Bool
         is_friend = dict["is_friend"] as? Bool
         follower_count = dict["follower_count"] as? Int
         follow = dict["follow"] as? Int
@@ -411,8 +460,8 @@ class WTTVideoDetailInfo {
 
 class WTTDetailVideoLargeImage {
     
-    var height: Int?
-    var width: Int?
+    var height: CGFloat?
+    var width: CGFloat?
     
     var url: String?
     
@@ -420,8 +469,8 @@ class WTTDetailVideoLargeImage {
     
     init(dict: [String: AnyObject]) {
         
-        height = dict["height"] as? Int
-        width = dict["width"] as? Int
+        height = dict["height"] as? CGFloat
+        width = dict["width"] as? CGFloat
         url = dict["url"] as? String
         if let urllists = dict["url_list"] as? [AnyObject] {
             for urlDict in urllists {

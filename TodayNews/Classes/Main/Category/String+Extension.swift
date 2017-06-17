@@ -6,7 +6,7 @@
 //  Copyright © 2017年 hrscy. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension String {
     subscript (range: Range<Int>) -> String {
@@ -22,5 +22,13 @@ extension String {
             let strRange = Range(startIndex..<endIndex)
             self.replaceSubrange(strRange, with: newValue)
         }
+    }
+}
+
+extension NSString {
+    /// 计算文本的高度
+    func getTextHeight() -> CGFloat {
+        let size = CGSize(width: screenWidth - kMargin * 2, height: CGFloat(MAXFLOAT))
+        return (self.boundingRect(with: size, options: .usesFontLeading, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil).size.height)
     }
 }
