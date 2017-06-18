@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class VideoTopicCell: UITableViewCell {
     
@@ -17,7 +18,7 @@ class VideoTopicCell: UITableViewCell {
     /// 时间 label
     @IBOutlet weak var timeLabel: UILabel!
     /// 背景图片
-    @IBOutlet weak var bgImageView: UIImageView!
+    @IBOutlet weak var bgImageButton: UIButton!
     /// 用户头像
     @IBOutlet weak var headButton: UIButton!
     /// 用户昵称
@@ -32,7 +33,7 @@ class VideoTopicCell: UITableViewCell {
     
     var videoTopic: NewsTopic? {
         didSet {
-        
+            bgImageButton.kf.setImage(with: URL(string: (videoTopic?.video_detail_info?.detail_video_large_image?.url)!), for: .normal)
         }
     }
 

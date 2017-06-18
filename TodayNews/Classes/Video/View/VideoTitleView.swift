@@ -23,25 +23,56 @@ class VideoTitleView: UIView {
     /// 存放标题 label 数组
     var labels = [TitleLabel]()
     /// 存放 label 的宽度
-    private var labelWidths = [CGFloat]()
+    fileprivate var labelWidths = [CGFloat]()
     /// 向外界传递 titles 数组
     var videoTitlesClosure: ((_ titleArray: [VideoTopTitle])->())?
     /// 记录当前选中的下标
-    private var currentIndex = 0
+    fileprivate var currentIndex = 0
     /// 记录上一个下标
-    private var oldIndex = 0
+    fileprivate var oldIndex = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         // 加载标题数据
         NetworkTool.loadVideoTitlesData { (videoTopTitles) in
+            // 添加推荐标题
+            let dict = ["category": "video", "name": "推荐"]
+            let videoTopTitle = VideoTopTitle(dict: dict as [String : AnyObject])
+            self.titles.append(videoTopTitle)
             self.titles += videoTopTitles
             self.setupUI()
         }
     }
     
-    private func setupUI() {
+    /// 设置滚动视图
+    fileprivate lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsHorizontalScrollIndicator = false
+        return scrollView
+    }()
+    
+    /// 顶部搜索按钮
+    fileprivate lazy var titleSearchButton: UIButton = {
+        let titleSearchButton = UIButton()
+        titleSearchButton.addTarget(self, action: #selector(titleSearchButtonClick), for: .touchUpInside)
+        titleSearchButton.setImage(UIImage(named: "search_24x24_"), for: .normal)
+        return titleSearchButton
+    }()
+    
+    /// 顶部搜索按钮点击
+    @objc private func titleSearchButtonClick(button: UIButton) {
+        delegate?.videoTitle(videoTitle: self, didClickSearchButton: button)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension VideoTitleView {
+    
+    fileprivate func setupUI() {
         // 添加滚动视图
         addSubview(scrollView)
         // 添加搜索按钮
@@ -171,30 +202,6 @@ class VideoTitleView: UIView {
             let newFrame = CGRect(x: 0, y: 0, width: screenWidth, height: 44)
             super.frame = newFrame
         }
-    }
-    
-    /// 设置滚动视图
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.showsHorizontalScrollIndicator = false
-        return scrollView
-    }()
-    
-    /// 顶部搜索按钮
-    private lazy var titleSearchButton: UIButton = {
-        let titleSearchButton = UIButton()
-        titleSearchButton.addTarget(self, action: #selector(titleSearchButtonClick), for: .touchUpInside)
-        titleSearchButton.setImage(UIImage(named: "search_24x24_"), for: .normal)
-        return titleSearchButton
-    }()
-    
-    /// 顶部搜索按钮点击
-    @objc private func titleSearchButtonClick(button: UIButton) {
-        delegate?.videoTitle(videoTitle: self, didClickSearchButton: button)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 

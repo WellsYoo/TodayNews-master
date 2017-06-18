@@ -13,6 +13,9 @@ import IBAnimatable
 protocol WeitoutiaoCellDelegate {
     
     func weiTouTiaoCelloffeedShareButtonClicked(weitoutiaoCell: WeiTouTiaoCell)
+    /// 头像区域点击
+    func weiTouTiaoCellofHeaderButtonClicked()
+    
 }
 
 class WeiTouTiaoCell: UITableViewCell {
@@ -42,6 +45,10 @@ class WeiTouTiaoCell: UITableViewCell {
     @IBOutlet weak var verifiedImageView: UIImageView!
     /// 中间 View
     @IBOutlet weak var middleView: UIView!
+    /// 头像区域点击
+    var headerButtonClick: (()->())?
+    
+    
     
     var weitoutiao: WeiTouTiao? {
         didSet {
@@ -128,6 +135,7 @@ class WeiTouTiaoCell: UITableViewCell {
         return thumbCollectionView
     }()
     
+    
 }
 
 extension WeiTouTiaoCell: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -145,6 +153,13 @@ extension WeiTouTiaoCell: UICollectionViewDelegate, UICollectionViewDataSource {
 }
 
 extension WeiTouTiaoCell {
+    
+    /// 头像区域点击
+    @IBAction func headerButtonClicked() {
+        // 使用闭包
+//        headerButtonClick?()
+        delegate?.weiTouTiaoCellofHeaderButtonClicked()
+    }
     
     /// 点赞按钮
     @IBAction func likeButtonClicked() {

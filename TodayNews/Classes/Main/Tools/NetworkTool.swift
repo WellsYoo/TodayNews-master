@@ -42,7 +42,7 @@ class NetworkTool {
     }
     
     /// 获取首页不同分类的新闻内容(和视频内容使用一个接口)
-    class func loadHomeCategoryNewsFeed(category: String, tableView: UITableView, finished:@escaping (_ nowTime: TimeInterval,_ newsTopics: [NewsTopic])->()) {
+    class func loadHomeCategoryNewsFeed(category: String, finished:@escaping (_ nowTime: TimeInterval,_ newsTopics: [NewsTopic])->()) {
         let url = BASE_URL + "api/news/feed/v39/?"
         let params = ["device_id": device_id,
                       "category": category,
@@ -67,7 +67,6 @@ class NetworkTool {
                     } catch {
                         
                     }
-                    
                 }
                 finished(nowTime, topics)
             }

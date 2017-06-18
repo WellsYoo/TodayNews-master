@@ -8,6 +8,7 @@
 
 
 import UIKit
+import Alamofire
 
 class WeiTouTiao {
     /// 过滤内容
@@ -160,16 +161,16 @@ class WeiTouTiao {
                 // 1 or 2
                 let imageWidth1or2 = (screenWidth - kMargin * 2 - 6) * 0.5
                 // >= 3
-                let imageW = (screenWidth - kMargin * 2 - 12) / 3
+                let imageH = (screenWidth - kMargin * 2 - 12) / 3
                 switch thumb_image_list.count {
                     case 1, 2:
                         height += imageWidth1or2
                     case 3:
-                        height += imageW
+                        height += imageH
                     case 4...6:
-                        height += (imageW * 2 + 3)
+                        height += (imageH * 2 + 3)
                     case 7...9:
-                        height += (imageW * 3 + 6)
+                        height += (imageH * 3 + 6)
                     default:
                         height += 0
                 }
@@ -187,6 +188,9 @@ class WeiTouTiao {
     var article_type: Int?
     var article_url: String?
     var display_url: String?
+    var htmlStrng: String?
+    
+    
     var ban_comment: Int?
     
     var group_flags: Int?
@@ -277,6 +281,12 @@ class WeiTouTiao {
         article_type = dict["article_type"] as? Int
         article_url = dict["article_url"] as? String
         display_url = dict["display_url"] as? String
+//        if let displayURL = dict["display_url"] as? String {
+//            Alamofire.request(displayURL).responseString(completionHandler: { (resposn) in
+//                print("resposn====\(resposn)")
+//            })
+//        }
+        
         ban_comment = dict["ban_comment"] as? Int
         content = dict["content"] as? NSString
         abstract = dict["abstract"] as? String
