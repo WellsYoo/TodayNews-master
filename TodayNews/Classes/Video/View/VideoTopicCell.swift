@@ -22,25 +22,32 @@ class VideoTopicCell: UITableViewCell {
     /// 用户头像
     @IBOutlet weak var headButton: UIButton!
     /// 用户昵称
-    @IBOutlet weak var nameButton: UIButton!
+    @IBOutlet weak var nameLable: UILabel!
     /// 评论数量
     @IBOutlet weak var commentButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        headButton.layer.cornerRadius = 15
+        headButton.layer.masksToBounds = true
     }
     
     var videoTopic: WeiTouTiao? {
         didSet {
-            bgImageButton.kf.setImage(with: URL(string: (videoTopic?.video_detail_info?.detail_video_large_image?.url)!), for: .normal)
+            bgImageButton.kf.setBackgroundImage(with: URL(string: (videoTopic?.video_detail_info?.detail_video_large_image?.url)!), for: .normal)
             titleLabel.text = String(describing: videoTopic!.title!)
+            if let user_info = videoTopic!.user_info {
+                headButton.kf.setImage(with: URL(string: user_info.avatar_url!)!, for: .normal)
+                nameLable.text = user_info.name!
+            }
+            commentButton.setTitle(String(describing: videoTopic!.comment_count!), for: .normal)
+            playCountLabel.text = videoTopic!.readCount! + "次播放"
+            timeLabel.text = videoTopic!.video_duration!
         }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
@@ -48,6 +55,12 @@ class VideoTopicCell: UITableViewCell {
     @IBAction func headButtonClick(_ sender: UIButton) {
         
     }
+    
+    /// 关注按钮点击
+    @IBAction func feedButtonClick(_ sender: UIButton) {
+        
+    }
+    
     /// 评论数量按钮点击
     @IBAction func commentButtonClick(_ sender: UIButton) {
         

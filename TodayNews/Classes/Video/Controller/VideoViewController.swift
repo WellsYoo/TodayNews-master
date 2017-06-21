@@ -23,6 +23,12 @@ class VideoViewController: UIViewController {
     
     fileprivate lazy var pageContentView: PageContentView = {
         let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)//上左下右
+        //定义每个UICollectionView 横向的间距
+        layout.minimumLineSpacing = 0
+        //定义每个UICollectionView 纵向的间距
+        layout.minimumInteritemSpacing = 0
         layout.itemSize = CGSize(width: screenWidth, height: screenHeight - kNavBarHeight - kTabBarHeight)
         let pageContentView = PageContentView(frame: CGRect.zero, collectionViewLayout: layout)
         pageContentView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "VideoViewCell")
@@ -66,7 +72,6 @@ extension VideoViewController {
                 self.addChildViewController(vc)
             }
             self.pageContentView.reloadData()
-            //            self.scrollViewDidEndScrollingAnimation(self.pageContentView)
         }
     }
 }
@@ -88,28 +93,34 @@ extension VideoViewController: VideoTitleViewDelegate {
 // MARK: - UIScrollViewDelegate
 extension VideoViewController: UIScrollViewDelegate {
     /// UIScrollViewDelegate
-    //    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-    //        // 当前索引
-    //        let index = Int(scrollView.contentOffset.x / screenWidth)
-    //
-    //    }
-    //    // scrollView 刚开始滑动时
-    //    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-    //        // 当前索引
-    //        let index = Int(scrollView.contentOffset.x / screenWidth)
-    ////        // 记录刚开始拖拽是的 index
-    //        self.oldIndex = index
-    //    }
-    
-    // scrollView 结束滑动
-    //    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-    //        scrollViewDidEndScrollingAnimation(scrollView)
-    //        // 当前索引
-    //        let index = Int(scrollView.contentOffset.x / screenWidth)
-    //        // 与刚开始拖拽时的 index 进行比较
-    //        // 检查是否需要改变 label 的位置
-    //        titleView.adjustVideoTitleOffSetToCurrentIndex(currentIndex: index, oldIndex: self.oldIndex)
-    //    }
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        // 当前索引
+        let index = Int(scrollView.contentOffset.x / screenWidth)
+        // 取出子控制器
+        let vc = childViewControllers[index]
+        vc.view.x = scrollView.contentOffset.x
+        vc.view.y = 0
+        vc.view.height = scrollView.height
+        scrollView.addSubview(vc.view)
+    }
+
+    // scrollView 刚开始滑动时
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        // 当前索引
+        let index = Int(scrollView.contentOffset.x / screenWidth)
+        // 记录刚开始拖拽是的 index
+        self.oldIndex = index
+    }
+
+    /// scrollView 结束滑动
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        scrollViewDidEndScrollingAnimation(scrollView)
+        // 当前索引
+        let index = Int(scrollView.contentOffset.x / screenWidth)
+        // 与刚开始拖拽时的 index 进行比较
+        // 检查是否需要改变 label 的位置
+        titleView.adjustVideoTitleOffSetToCurrentIndex(currentIndex: index, oldIndex: self.oldIndex)
+    }
 }
 
 // MARK: - UICollectionViewDataSource

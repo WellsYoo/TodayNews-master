@@ -16,7 +16,7 @@ class PageContentView: UICollectionView {
         backgroundColor = UIColor.globalBackgroundColor()
         //自适应大小
         autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
+        isPagingEnabled = true
     }
     
     class func collectionView(frame: CGRect) -> PageContentView {
@@ -40,11 +40,11 @@ private class PageContentViewLayout: UICollectionViewFlowLayout {
         //定义每个UICollectionView 的大小
         itemSize = CGSize(width: screenWidth, height: screenHeight - kNavBarHeight - kTabBarHeight - khomePageTitleHeight)
         //定义每个UICollectionView 横向的间距
-        minimumLineSpacing = 0;
+        minimumLineSpacing = 0
         //定义每个UICollectionView 纵向的间距
-        minimumInteritemSpacing = 0;
+        minimumInteritemSpacing = 0
         //定义 UICollectionView 的边距
-        sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);//上左下右
+        sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)//上左下右
         // 设置滚动方向
         scrollDirection = .horizontal
         // 隐藏水平方向指示器

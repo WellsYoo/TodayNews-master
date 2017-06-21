@@ -221,15 +221,32 @@ class WeiTouTiao {
     var url: String?
     
     var video_detail_info: WTTVideoDetailInfo?
-    var video_duration: Int?
+    var videoDuration: Int?
+    var video_duration: String? {
+        get {
+            /// 格式化时间
+            let hour = videoDuration! / 3600
+            let minute = (videoDuration! / 60) % 60
+            let second = videoDuration! % 60
+            if hour > 0 {
+                return String(format: "%02d:%02d:%02d", hour, minute, second)
+            }
+            return String(format: "%02d:%02d", minute, second)
+        }
+    }
     var video_id: String?
     var video_proportion_article: String?
     var video_source: String?
     var video_style: Int?
     
+    var keywords: String?
+    
+    
     init(dict: [String: AnyObject]) {
         
-        video_duration = dict["video_duration"] as? Int
+        keywords = dict["keywords"] as? String
+        
+        videoDuration = dict["video_duration"] as? Int
         video_id = dict["video_id"] as? String
         video_proportion_article = dict["video_proportion_article"] as? String
         video_source = dict["video_source"] as? String
@@ -435,13 +452,15 @@ class WTTMediaInfo {
     var name: String?
     var media_id: Int?
     var user_verified: Int?
+    var follow: Bool?
+    
     
     init(dict: [String: AnyObject]) {
-        
         avatar_url = dict["avatar_url"] as? String
         name = dict["name"] as? String
         user_verified = dict["user_verified"] as? Int
         media_id = dict["media_id"] as? Int
+        follow = dict["follow"] as? Bool
     }
 }
 
