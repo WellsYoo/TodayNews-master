@@ -20,8 +20,6 @@ class HomeTopTitle {
     
     var name: String?
     
-    var isSelected: Bool = true
-    
     init(dict: [String: AnyObject]) {
         category = dict["category"] as? String
         web_url = dict["web_url"] as? String

@@ -10,14 +10,14 @@
 
 import UIKit
 
-protocol SearchNavigationViewDelegate {
+protocol SearchNavigationViewDelegate: class {
     func cancelButtonClicked()
 }
 
 /// 搜索界面导航栏
 class SearchNavigationView: UIView {
     
-    var delegate: SearchNavigationViewDelegate?
+    weak var delegate: SearchNavigationViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

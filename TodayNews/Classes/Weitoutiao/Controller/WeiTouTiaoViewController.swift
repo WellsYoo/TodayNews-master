@@ -129,7 +129,6 @@ extension WeiTouTiaoViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeiTouTiaoCell") as! WeiTouTiaoCell
         cell.delegate = self
         cell.weitoutiao = microNews[indexPath.row]
-        cell.delegate = self
         // 使用闭包
 //        cell.headerButtonClick = {
 //            let userVC = WeiTouTiaoUserController()

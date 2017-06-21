@@ -19,13 +19,14 @@ class VideoTitleView: UIView {
     
     weak var delegate: VideoTitleViewDelegate?
     /// 顶部标题数组
-    var titles = [VideoTopTitle]()
+    var titles = [TopTitle]()
     /// 存放标题 label 数组
     var labels = [TitleLabel]()
+    var videoTopicVCs = [VideoTopicController]()
     /// 存放 label 的宽度
     fileprivate var labelWidths = [CGFloat]()
     /// 向外界传递 titles 数组
-    var videoTitlesClosure: ((_ titleArray: [VideoTopTitle])->())?
+    var videoTitlesClosure: ((_ titleArray: [TopTitle], _ videoTopicVCs: [VideoTopicController])->())?
     /// 记录当前选中的下标
     fileprivate var currentIndex = 0
     /// 记录上一个下标
@@ -35,12 +36,15 @@ class VideoTitleView: UIView {
         super.init(frame: frame)
         
         // 加载标题数据
-        NetworkTool.loadVideoTitlesData { (videoTopTitles) in
+        NetworkTool.loadVideoTitlesData { (videoTopTitles, videoTopicVCs) in
             // 添加推荐标题
             let dict = ["category": "video", "name": "推荐"]
-            let videoTopTitle = VideoTopTitle(dict: dict as [String : AnyObject])
+            let videoTopTitle = TopTitle(dict: dict as [String : AnyObject])
             self.titles.append(videoTopTitle)
             self.titles += videoTopTitles
+            let videoTopicVC = VideoTopicController()
+            self.videoTopicVCs.append(videoTopicVC)
+            self.videoTopicVCs += videoTopicVCs
             self.setupUI()
         }
     }
@@ -93,7 +97,7 @@ extension VideoTitleView {
         /// 设置 label 的位置
         setupVideoLabelsPosition()
         
-        videoTitlesClosure?(titles)
+        videoTitlesClosure?(titles, videoTopicVCs)
     }
     
     /// 添加 label
@@ -142,7 +146,7 @@ extension VideoTitleView {
     }
     
     /// 暴露给外界，向外界传递 topic 数组
-    func videoTitleArrayClosure(closure: @escaping (_ titleArray: [VideoTopTitle])->()) {
+    func videoTitleArrayClosure(closure: @escaping (_ titleArray: [TopTitle], _ videoTopicVCs: [VideoTopicController])->()) {
         videoTitlesClosure = closure
     }
     

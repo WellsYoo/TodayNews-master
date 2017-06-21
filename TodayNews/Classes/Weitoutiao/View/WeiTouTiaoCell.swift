@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import IBAnimatable
 
-protocol WeitoutiaoCellDelegate {
+protocol WeitoutiaoCellDelegate: class {
     
     func weiTouTiaoCelloffeedShareButtonClicked(weitoutiaoCell: WeiTouTiaoCell)
     /// 头像区域点击
@@ -20,7 +20,7 @@ protocol WeitoutiaoCellDelegate {
 
 class WeiTouTiaoCell: UITableViewCell {
     
-    var delegate: WeitoutiaoCellDelegate?
+    weak var delegate: WeitoutiaoCellDelegate?
     /// 头像
     @IBOutlet weak var avatarImageView: AnimatableImageView!
     /// 用户名

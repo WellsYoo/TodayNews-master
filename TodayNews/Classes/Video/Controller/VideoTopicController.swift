@@ -11,9 +11,9 @@ import UIKit
 class VideoTopicController: UIViewController {
 
     // 记录点击的顶部标题
-    var videoTitle: VideoTopTitle?
+    var videoTitle: TopTitle?
     // 存放新闻主题的数组
-    fileprivate var newsTopics = [NewsTopic]()
+    fileprivate var newsTopics = [WeiTouTiao]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class VideoTopicController: UIViewController {
 
         NetworkTool.loadHomeCategoryNewsFeed(category: videoTitle!.category!) { (nowTime, newsTopics) in
             self.newsTopics = newsTopics
-//            self.tableView.reloadData()
+            self.tableView.reloadData()
         }
     }
     
@@ -60,13 +60,12 @@ extension VideoTopicController {
 extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return newsTopics.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTopicCell.self)) as! VideoTopicCell
-//        cell.videoTopic = newsTopics[indexPath.row]
-        /// 更多按钮点击回调
+        cell.videoTopic = newsTopics[indexPath.row]
         return cell
     }
     

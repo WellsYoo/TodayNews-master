@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol NoLoginHeaderViewDelegate {
+protocol NoLoginHeaderViewDelegate: class {
     /// 更多登录方式按钮点击
     func noLoginHeaderViewMoreLoginButotnClicked()
     
@@ -16,7 +16,7 @@ protocol NoLoginHeaderViewDelegate {
 
 class NoLoginHeaderView: UIView {
     
-    var delegate: NoLoginHeaderViewDelegate?
+    weak var delegate: NoLoginHeaderViewDelegate?
     
     @IBOutlet weak var bgImageView: UIImageView!
     

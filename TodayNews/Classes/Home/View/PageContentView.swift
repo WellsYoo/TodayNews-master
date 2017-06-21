@@ -7,11 +7,10 @@
 //
 //  分页内容
 //
-
 import UIKit
 
 class PageContentView: UICollectionView {
-
+    
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         backgroundColor = UIColor.globalBackgroundColor()

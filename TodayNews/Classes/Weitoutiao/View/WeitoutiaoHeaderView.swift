@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol WeitoutiaoHeaderViewDelegate {
+protocol WeitoutiaoHeaderViewDelegate: class {
     /// 文字按钮点击了
     func headerViewTextButtonClicked()
     /// 图片按钮点击了
@@ -19,7 +19,7 @@ protocol WeitoutiaoHeaderViewDelegate {
 
 class WeitoutiaoHeaderView: UIView {
 
-    var delegate:WeitoutiaoHeaderViewDelegate?
+    weak var delegate:WeitoutiaoHeaderViewDelegate?
     
     class func headerView() -> WeitoutiaoHeaderView {
         return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last as! WeitoutiaoHeaderView

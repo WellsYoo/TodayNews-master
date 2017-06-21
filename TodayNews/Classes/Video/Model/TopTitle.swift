@@ -8,10 +8,12 @@
 
 import Foundation
 
-class VideoTopTitle {
+class TopTitle {
     var category: String?
     
     var tip_new: Int?
+    
+    var concern_id: String?
     
     var web_url: String?
     
@@ -24,7 +26,7 @@ class VideoTopTitle {
     var name: String?
     
     init(dict: [String: AnyObject]) {
-        
+        concern_id = dict["concern_id"] as? String
         category = dict["category"] as? String
         tip_new = dict["tip_new"] as? Int
         web_url = dict["web_url"] as? String

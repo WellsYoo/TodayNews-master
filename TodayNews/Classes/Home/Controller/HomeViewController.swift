@@ -35,12 +35,6 @@ class HomeViewController: UIViewController {
         homeNavigationBar.searchBar.delegate = self
         return homeNavigationBar
     }()
-    
-    fileprivate lazy var pageView: PageView = {
-        let pageView = PageView()
-        pageView.delegate = self
-        return pageView
-    }()
 }
 
 extension HomeViewController {
@@ -51,27 +45,11 @@ extension HomeViewController {
         navigationController?.navigationBar.barStyle = .black
         // 自定义导航栏
         navigationItem.titleView = homeNavigationBar
-        // 添加 滚动分页视图
-        view.addSubview(pageView)
         
-        pageView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(view)
-            make.top.equalTo(view.snp.top).offset(kNavBarHeight)
-            make.bottom.equalTo(view.snp.bottom).offset(-kTabBarHeight)
-        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
-    }
-    
-}
-
-// MARK: - PageViewDelegate
-extension HomeViewController: PageViewDelegate {
-    /// 右侧按钮点击
-    func pageViewRightButtonClicked() {
-        
     }
 }
 

@@ -31,9 +31,10 @@ class VideoTopicCell: UITableViewCell {
         
     }
     
-    var videoTopic: NewsTopic? {
+    var videoTopic: WeiTouTiao? {
         didSet {
             bgImageButton.kf.setImage(with: URL(string: (videoTopic?.video_detail_info?.detail_video_large_image?.url)!), for: .normal)
+            titleLabel.text = String(describing: videoTopic!.title!)
         }
     }
 

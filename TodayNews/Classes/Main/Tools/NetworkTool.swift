@@ -42,7 +42,7 @@ class NetworkTool {
     }
     
     /// 获取首页不同分类的新闻内容(和视频内容使用一个接口)
-    class func loadHomeCategoryNewsFeed(category: String, finished:@escaping (_ nowTime: TimeInterval,_ newsTopics: [NewsTopic])->()) {
+    class func loadHomeCategoryNewsFeed(category: String, finished:@escaping (_ nowTime: TimeInterval,_ newsTopics: [WeiTouTiao])->()) {
         let url = BASE_URL + "api/news/feed/v39/?"
         let params = ["device_id": device_id,
                       "category": category,
@@ -55,14 +55,14 @@ class NetworkTool {
             if let value = response.result.value {
                 let json = JSON(value)
                 let datas = json["data"].array
-                var topics = [NewsTopic]()
+                var topics = [WeiTouTiao]()
                 for data in datas! {
                     let content = data["content"].stringValue
                     let contentData: NSData = content.data(using: String.Encoding.utf8)! as NSData
                     do {
                         let dict = try JSONSerialization.jsonObject(with: contentData as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
                         print(dict)
-                        let topic = NewsTopic(dict: dict as! [String : AnyObject])
+                        let topic = WeiTouTiao(dict: dict as! [String : AnyObject])
                         topics.append(topic)
                     } catch {
                         
@@ -76,7 +76,7 @@ class NetworkTool {
     /// -------------------------- 视 频 video --------------------------
     
     /// 获取视频顶部标题内容
-    class func loadVideoTitlesData(finished:@escaping (_ videoTitles: [VideoTopTitle])->()) {
+    class func loadVideoTitlesData(completionHandler:@escaping (_ videoTitles: [TopTitle], _ videoTopicVCs: [VideoTopicController])->()) {
         let url = BASE_URL + "video_api/get_category/v1/?"
         let params = ["device_id": device_id,
                       "version_code": versionCode,
@@ -100,12 +100,15 @@ class NetworkTool {
             if let value = response.result.value {
                 let json = JSON(value)
                 if let data = json["data"].arrayObject {
-                    var titles = [VideoTopTitle]()
+                    var titles = [TopTitle]()
+                    var videoTopicVCs = [VideoTopicController]()
                     for dict in data {
-                        let title = VideoTopTitle(dict: dict as! [String: AnyObject])
+                        let title = TopTitle(dict: dict as! [String: AnyObject])
+                        let videoTopicVC = VideoTopicController()
+                        videoTopicVCs.append(videoTopicVC)
                         titles.append(title)
                     }
-                    finished(titles)
+                    completionHandler(titles, videoTopicVCs)
                 }
             }
         }
