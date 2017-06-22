@@ -17,7 +17,7 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t78-TE-do9">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="194"/>
-                    <state key="normal" image="video_play_icon_44x44_"/>
+                    <state key="normal" image="new_play_video_44x44_"/>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -36,6 +36,6 @@
         </view>
     </objects>
     <resources>
-        <image name="video_play_icon_44x44_" width="44" height="44"/>
+        <image name="new_play_video_44x44_" width="44" height="44"/>
     </resources>
 </document>

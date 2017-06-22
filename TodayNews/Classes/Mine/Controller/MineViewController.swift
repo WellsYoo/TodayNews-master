@@ -11,7 +11,7 @@ import IBAnimatable
 
 class MineViewController: UITableViewController {
 
-    var sections = [AnyObject]()
+    fileprivate var sections = [AnyObject]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,7 +29,12 @@ class MineViewController: UITableViewController {
         setupUI()
         /// 我的 我的界面 cell 数据
         NetworkTool.loadMineCellData { (sectionArray) in
-            self.sections = sectionArray
+            let dict = ["text": "我的关注", "grey_text": ""]
+            let myConcern = MineCellModel(dict: dict as [String : AnyObject])
+            var myConcerns = [MineCellModel]()
+            myConcerns.append(myConcern)
+            self.sections.append(myConcerns as AnyObject)
+            self.sections += sectionArray
             self.tableView.reloadData()
         }
     }
@@ -60,46 +65,51 @@ extension MineViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.tableHeaderView = noLoginHeaderView
         tableView.tableFooterView = UIView()
-        tableView.separatorColor = UIColor(r: 220, g: 220, b: 220)
+        tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
+        tableView.register(UINib(nibName: String(describing: MineFirstSectionCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MineFirstSectionCell.self))
+        tableView.register(UINib(nibName: String(describing: MineOtherCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MineOtherCell.self))
     }
     
 }
 
+// MARK: - // MARK: - Table view data source
 extension MineViewController {
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
     
-    // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-            case 0:
-                return 36
-            case 1, 2:
-                return 36
-            default:
-                return 0
-        }
+        return 44
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 1 ? 1 : 10
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 10))
+        view.backgroundColor = UIColor.globalBackgroundColor()
+        return view
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "mineCell")
-        cell.accessoryType = .disclosureIndicator
-        let rows = sections[indexPath.section]
-        let mineCellModel = rows[indexPath.row] as! MineCellModel
-        cell.textLabel?.text = mineCellModel.text!
-        cell.textLabel?.text = mineCellModel.grey_text!
+        if indexPath.section == 0 && indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MineFirstSectionCell.self)) as! MineFirstSectionCell
+            let mineCellModel = sections[0][0]  as! MineCellModel
+            cell.mineCellModel = mineCellModel
+            return cell
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MineOtherCell.self)) as! MineOtherCell
+        let mineCellModel = sections[indexPath.section][indexPath.row]  as! MineCellModel
+        cell.mineCellModel = mineCellModel
         return cell
     }
 
@@ -121,5 +131,4 @@ extension MineViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
 }

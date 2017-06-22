@@ -12,7 +12,7 @@
         <!--首页-->
         <scene sceneID="Bsv-c4-JSR">
             <objects>
-                <navigationController id="NLN-UK-Mfa" customClass="MyNavigationController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="NLN-UK-Mfa" customClass="MyNavigationController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="home_tabbar_32x32_" selectedImage="home_tabbar_press_32x32_" id="xgw-FX-3Cy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bDw-xB-DWJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -29,7 +29,7 @@
         <!--首页-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -48,7 +48,7 @@
         <!--未登录-->
         <scene sceneID="MQw-tw-dX9">
             <objects>
-                <navigationController id="dSQ-ma-nLf" customClass="MyNavigationController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="dSQ-ma-nLf" customClass="MyNavigationController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="未登录" image="no_login_tabbar_32x32_" selectedImage="no_login_tabbar_press_32x32_" id="ZFc-Qz-77B"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fzP-Rk-CYJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -65,8 +65,8 @@
         <!--我的-->
         <scene sceneID="to0-VY-yqL">
             <objects>
-                <tableViewController id="vFf-ev-6Dx" customClass="MineViewController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4mI-1s-S7b">
+                <tableViewController id="vFf-ev-6Dx" customClass="MineViewController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4mI-1s-S7b">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -81,7 +81,7 @@
         <!--My Tab Bar Controller-->
         <scene sceneID="p84-dk-EJC">
             <objects>
-                <tabBarController id="ZFc-Hy-6RX" customClass="MyTabBarController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="ZFc-Hy-6RX" customClass="MyTabBarController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="sex-Yx-44C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -101,7 +101,7 @@
         <!--微头条-->
         <scene sceneID="d14-rk-HU6">
             <objects>
-                <navigationController id="Ln8-4u-hAS" customClass="MyNavigationController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="Ln8-4u-hAS" customClass="MyNavigationController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="微头条" image="weitoutiao_tabbar_32x32_" selectedImage="weitoutiao_tabbar_press_32x32_" id="aCs-Jz-gzM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="95H-Gi-0er">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -118,7 +118,7 @@
         <!--视频-->
         <scene sceneID="szu-2l-naR">
             <objects>
-                <navigationController id="lip-JD-saC" customClass="MyNavigationController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="lip-JD-saC" customClass="MyNavigationController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="视频" image="video_tabbar_32x32_" selectedImage="video_tabbar_press_32x32_" id="RCy-8l-nmw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KNF-6o-EGe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -135,7 +135,7 @@
         <!--视频-->
         <scene sceneID="9FV-33-RC2">
             <objects>
-                <viewController id="C4z-mT-yN8" customClass="VideoViewController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="C4z-mT-yN8" customClass="VideoViewController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C6b-8e-Ug0"/>
                         <viewControllerLayoutGuide type="bottom" id="7uK-ac-Oye"/>
@@ -154,7 +154,7 @@
         <!--微头条-->
         <scene sceneID="PCg-dX-Khc">
             <objects>
-                <viewController id="t7C-Q2-p6f" customClass="WeiTouTiaoViewController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="t7C-Q2-p6f" customClass="WeiTouTiaoViewController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FlU-sh-MIb"/>
                         <viewControllerLayoutGuide type="bottom" id="WGt-HM-Rf1"/>
@@ -179,7 +179,7 @@
         <!--添加好友-->
         <scene sceneID="Do9-Ic-xEL">
             <objects>
-                <viewController id="QFt-Zv-Mmy" customClass="AddFriendViewController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QFt-Zv-Mmy" customClass="AddFriendViewController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Urx-Ky-keb"/>
                         <viewControllerLayoutGuide type="bottom" id="h8u-99-84g"/>
@@ -263,7 +263,7 @@
         <!--Login Pop View Controller-->
         <scene sceneID="bir-pb-1cN">
             <objects>
-                <viewController storyboardIdentifier="LoginPopViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p1l-ta-TuY" customClass="LoginPopViewController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginPopViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p1l-ta-TuY" customClass="LoginPopViewController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fHU-bg-J4l"/>
                         <viewControllerLayoutGuide type="bottom" id="TdL-ac-a4m"/>
@@ -397,7 +397,7 @@
         <!--Tell Friends View Controller-->
         <scene sceneID="Ezy-j4-dla">
             <objects>
-                <tableViewController id="qMl-g1-YDC" customClass="TellFriendsViewController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="qMl-g1-YDC" customClass="TellFriendsViewController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TRy-qK-UPq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

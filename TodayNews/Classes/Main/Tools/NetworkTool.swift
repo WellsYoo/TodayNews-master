@@ -249,8 +249,8 @@ class NetworkTool {
                         if let data = json["data"].dictionary {
                             if let sections = data["sections"]?.arrayObject {
                                 var sectionArray = [AnyObject]()
-                                var rows = [MineCellModel]()
                                 for section in sections {
+                                    var rows = [MineCellModel]()
                                     for row in section as! [AnyObject] {
                                         let mineCell = MineCellModel(dict: row as! [String : AnyObject])
                                         rows.append(mineCell)

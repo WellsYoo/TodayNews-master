@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		946D2D8D1EF7763B0060A9C3 /* NavTitleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D2D8C1EF7763B0060A9C3 /* NavTitleStyle.swift */; };
+		947BE9391EFB8A47009E7961 /* MineOtherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947BE9371EFB8A47009E7961 /* MineOtherCell.swift */; };
+		947BE93A1EFB8A47009E7961 /* MineOtherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947BE9381EFB8A47009E7961 /* MineOtherCell.xib */; };
+		947BE93D1EFB8A5E009E7961 /* MineFirstSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947BE93B1EFB8A5E009E7961 /* MineFirstSectionCell.swift */; };
+		947BE93E1EFB8A5E009E7961 /* MineFirstSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947BE93C1EFB8A5E009E7961 /* MineFirstSectionCell.xib */; };
 		94B916021EF21E4A00AC91B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94B916011EF21E4A00AC91B9 /* Assets.xcassets */; };
 		94B916101EF21E4A00AC91B9 /* TodayNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B9160F1EF21E4A00AC91B9 /* TodayNewsTests.swift */; };
 		94B9161B1EF21E4A00AC91B9 /* TodayNewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B9161A1EF21E4A00AC91B9 /* TodayNewsUITests.swift */; };
@@ -32,7 +36,7 @@
 		94B916831EF21EE300AC91B9 /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B916461EF21EE200AC91B9 /* MineViewController.swift */; };
 		94B916841EF21EE300AC91B9 /* MoreLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94B916471EF21EE200AC91B9 /* MoreLoginViewController.storyboard */; };
 		94B916851EF21EE300AC91B9 /* MoreLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B916481EF21EE200AC91B9 /* MoreLoginViewController.swift */; };
-		94B916861EF21EE300AC91B9 /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B9164A1EF21EE200AC91B9 /* MineCell.swift */; };
+		94B916861EF21EE300AC91B9 /* MineCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B9164A1EF21EE200AC91B9 /* MineCellModel.swift */; };
 		94B916871EF21EE300AC91B9 /* NoLoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B9164C1EF21EE200AC91B9 /* NoLoginHeaderView.swift */; };
 		94B916881EF21EE300AC91B9 /* NoLoginHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B9164D1EF21EE200AC91B9 /* NoLoginHeaderView.xib */; };
 		94B916891EF21EE300AC91B9 /* VerticalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B9164E1EF21EE200AC91B9 /* VerticalButton.swift */; };
@@ -98,6 +102,10 @@
 		02685576E86BA3B5571B5E4D /* Pods-TodayNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews/Pods-TodayNews.release.xcconfig"; sourceTree = "<group>"; };
 		280B7838DD62799363838C22 /* Pods_TodayNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		946D2D8C1EF7763B0060A9C3 /* NavTitleStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavTitleStyle.swift; sourceTree = "<group>"; };
+		947BE9371EFB8A47009E7961 /* MineOtherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineOtherCell.swift; sourceTree = "<group>"; };
+		947BE9381EFB8A47009E7961 /* MineOtherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineOtherCell.xib; sourceTree = "<group>"; };
+		947BE93B1EFB8A5E009E7961 /* MineFirstSectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineFirstSectionCell.swift; sourceTree = "<group>"; };
+		947BE93C1EFB8A5E009E7961 /* MineFirstSectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineFirstSectionCell.xib; sourceTree = "<group>"; };
 		94B915F71EF21E4A00AC91B9 /* TodayNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B916011EF21E4A00AC91B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94B9160B1EF21E4A00AC91B9 /* TodayNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,7 +135,7 @@
 		94B916461EF21EE200AC91B9 /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		94B916471EF21EE200AC91B9 /* MoreLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MoreLoginViewController.storyboard; sourceTree = "<group>"; };
 		94B916481EF21EE200AC91B9 /* MoreLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreLoginViewController.swift; sourceTree = "<group>"; };
-		94B9164A1EF21EE200AC91B9 /* MineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
+		94B9164A1EF21EE200AC91B9 /* MineCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineCellModel.swift; sourceTree = "<group>"; };
 		94B9164C1EF21EE200AC91B9 /* NoLoginHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoLoginHeaderView.swift; sourceTree = "<group>"; };
 		94B9164D1EF21EE200AC91B9 /* NoLoginHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoLoginHeaderView.xib; sourceTree = "<group>"; };
 		94B9164E1EF21EE200AC91B9 /* VerticalButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalButton.swift; sourceTree = "<group>"; };
@@ -374,7 +382,7 @@
 		94B916491EF21EE200AC91B9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				94B9164A1EF21EE200AC91B9 /* MineCell.swift */,
+				94B9164A1EF21EE200AC91B9 /* MineCellModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -385,6 +393,10 @@
 				94B9164C1EF21EE200AC91B9 /* NoLoginHeaderView.swift */,
 				94B9164D1EF21EE200AC91B9 /* NoLoginHeaderView.xib */,
 				94B9164E1EF21EE200AC91B9 /* VerticalButton.swift */,
+				947BE93B1EFB8A5E009E7961 /* MineFirstSectionCell.swift */,
+				947BE93C1EFB8A5E009E7961 /* MineFirstSectionCell.xib */,
+				947BE9371EFB8A47009E7961 /* MineOtherCell.swift */,
+				947BE9381EFB8A47009E7961 /* MineOtherCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -621,8 +633,10 @@
 				94B916881EF21EE300AC91B9 /* NoLoginHeaderView.xib in Resources */,
 				94B916A01EF21EE300AC91B9 /* WeiTouTiaoCell.xib in Resources */,
 				94B916F61EF5144200AC91B9 /* PostFirstCell.xib in Resources */,
+				947BE93E1EFB8A5E009E7961 /* MineFirstSectionCell.xib in Resources */,
 				94B916961EF21EE300AC91B9 /* VideoTopicCell.xib in Resources */,
 				94B9167B1EF21EE300AC91B9 /* SearchDefaultBackgroundView.xib in Resources */,
+				947BE93A1EFB8A47009E7961 /* MineOtherCell.xib in Resources */,
 				94B916F01EF50A9100AC91B9 /* CellVideoView.xib in Resources */,
 				94B916021EF21E4A00AC91B9 /* Assets.xcassets in Resources */,
 				94B9169B1EF21EE300AC91B9 /* WeiTouTiaoHeader.storyboard in Resources */,
@@ -720,6 +734,7 @@
 				94B9167D1EF21EE300AC91B9 /* UIColor+Extension.swift in Sources */,
 				94B916941EF21EE300AC91B9 /* VideoTitleView.swift in Sources */,
 				94B916751EF21EE300AC91B9 /* HomeNavigationBar.swift in Sources */,
+				947BE9391EFB8A47009E7961 /* MineOtherCell.swift in Sources */,
 				94B916A61EF2C34F00AC91B9 /* Date+Extension.swift in Sources */,
 				94B916951EF21EE300AC91B9 /* VideoTopicCell.swift in Sources */,
 				94B916721EF21EE300AC91B9 /* HomeTopViewController.swift in Sources */,
@@ -735,6 +750,7 @@
 				94B916831EF21EE300AC91B9 /* MineViewController.swift in Sources */,
 				94B916A81EF35EAE00AC91B9 /* String+Extension.swift in Sources */,
 				94B9167F1EF21EE300AC91B9 /* UIView+Extension.swift in Sources */,
+				947BE93D1EFB8A5E009E7961 /* MineFirstSectionCell.swift in Sources */,
 				94B916771EF21EE300AC91B9 /* PageContentView.swift in Sources */,
 				94B916931EF21EE300AC91B9 /* TopTitle.swift in Sources */,
 				94B916921EF21EE300AC91B9 /* NewsTopic.swift in Sources */,
@@ -750,7 +766,7 @@
 				94B916851EF21EE300AC91B9 /* MoreLoginViewController.swift in Sources */,
 				94B9169D1EF21EE300AC91B9 /* NotNetworkView.swift in Sources */,
 				946D2D8D1EF7763B0060A9C3 /* NavTitleStyle.swift in Sources */,
-				94B916861EF21EE300AC91B9 /* MineCell.swift in Sources */,
+				94B916861EF21EE300AC91B9 /* MineCellModel.swift in Sources */,
 				94B9168F1EF21EE300AC91B9 /* VideoDetailController.swift in Sources */,
 				94B916A41EF2311700AC91B9 /* WeiTouTiao.swift in Sources */,
 				94B916741EF21EE300AC91B9 /* HomeTopTitle.swift in Sources */,

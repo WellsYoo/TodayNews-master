@@ -22,7 +22,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1z-f6-BSm">
                         <rect key="frame" x="0.0" y="0.0" width="370" height="172.5"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <state key="normal" image="video_play_icon_44x44_" backgroundImage="titlebar_shadow_20x64_"/>
+                        <state key="normal" image="new_play_video_44x44_" backgroundImage="titlebar_shadow_20x64_"/>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9eX-GD-Bni" userLabel="底部">
                         <rect key="frame" x="0.0" y="172.5" width="370" height="54"/>
@@ -178,8 +178,8 @@
     <resources>
         <image name="More_24x24_" width="24" height="24"/>
         <image name="comment_24x24_" width="24" height="24"/>
+        <image name="new_play_video_44x44_" width="44" height="44"/>
         <image name="titlebar_shadow_20x64_" width="20" height="64"/>
         <image name="video_add_24x24_" width="24" height="24"/>
-        <image name="video_play_icon_44x44_" width="44" height="44"/>
     </resources>
 </document>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Pom-p6-pHi" customClass="MineFirstSectionCell" customModule="TodayNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pom-p6-pHi" id="GYi-rc-36g">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting_rightarrow_8x14_" translatesAutoresizingMaskIntoConstraints="NO" id="DY7-nm-ySS">
+                        <rect key="frame" x="297" y="15" width="8" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="1my-Dz-nsW"/>
+                            <constraint firstAttribute="width" constant="8" id="QNB-TQ-xgs"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ja1-2u-biX">
+                        <rect key="frame" x="15" y="0.0" width="31" height="43.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THz-iB-VC6">
+                        <rect key="frame" x="251.5" y="0.0" width="35.5" height="43.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUo-0z-12q">
+                        <rect key="frame" x="15" y="43" width="305" height="1"/>
+                        <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="bAN-oY-gcl"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="THz-iB-VC6" firstAttribute="top" secondItem="GYi-rc-36g" secondAttribute="top" id="1JH-ZA-hXf"/>
+                    <constraint firstAttribute="bottom" secondItem="oUo-0z-12q" secondAttribute="bottom" id="1Sb-2g-FoX"/>
+                    <constraint firstItem="Ja1-2u-biX" firstAttribute="top" secondItem="GYi-rc-36g" secondAttribute="top" id="8cr-lG-9Y2"/>
+                    <constraint firstItem="DY7-nm-ySS" firstAttribute="leading" secondItem="THz-iB-VC6" secondAttribute="trailing" constant="10" id="HAs-1j-EbQ"/>
+                    <constraint firstItem="Ja1-2u-biX" firstAttribute="leading" secondItem="GYi-rc-36g" secondAttribute="leading" constant="15" id="OqG-4H-pQO"/>
+                    <constraint firstItem="oUo-0z-12q" firstAttribute="leading" secondItem="GYi-rc-36g" secondAttribute="leading" constant="15" id="Taa-7T-pJm"/>
+                    <constraint firstItem="DY7-nm-ySS" firstAttribute="centerY" secondItem="GYi-rc-36g" secondAttribute="centerY" id="nCX-gn-uWf"/>
+                    <constraint firstAttribute="trailing" secondItem="DY7-nm-ySS" secondAttribute="trailing" constant="15" id="pWU-tq-4WP"/>
+                    <constraint firstAttribute="bottom" secondItem="THz-iB-VC6" secondAttribute="bottom" id="qwt-4X-fhZ"/>
+                    <constraint firstAttribute="bottom" secondItem="Ja1-2u-biX" secondAttribute="bottom" id="tby-U1-fjL"/>
+                    <constraint firstAttribute="trailing" secondItem="oUo-0z-12q" secondAttribute="trailing" id="yDu-Oz-TMb"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="leftlabel" destination="Ja1-2u-biX" id="9Bc-Az-e50"/>
+                <outlet property="rightLabel" destination="THz-iB-VC6" id="eSD-1N-Xd8"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="setting_rightarrow_8x14_" width="8" height="14"/>
+    </resources>
+</document>
