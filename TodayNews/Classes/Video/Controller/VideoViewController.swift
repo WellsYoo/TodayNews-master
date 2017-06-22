@@ -21,6 +21,7 @@ class VideoViewController: UIViewController {
         setupUI()
     }
     
+    /// 设置分页
     fileprivate lazy var pageContentView: PageContentView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal

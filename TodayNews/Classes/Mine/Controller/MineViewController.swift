@@ -11,6 +11,8 @@ import IBAnimatable
 
 class MineViewController: UITableViewController {
 
+    var sections = [AnyObject]()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
@@ -26,7 +28,10 @@ class MineViewController: UITableViewController {
         
         setupUI()
         /// 我的 我的界面 cell 数据
-        NetworkTool.loadMineCellData()
+        NetworkTool.loadMineCellData { (sectionArray) in
+            self.sections = sectionArray
+            self.tableView.reloadData()
+        }
     }
 
     // 头部视图
@@ -68,27 +73,13 @@ extension MineViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-            case 0:
-                return 2
-            case 1:
-                return 2
-            case 2:
-                return 3
-            default:
-                return 0
-        }
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return sections[section].count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -105,29 +96,10 @@ extension MineViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "mineCell")
         cell.accessoryType = .disclosureIndicator
-        if indexPath.section == 0 {
-            if indexPath.row == 0 {
-                cell.textLabel?.text = "我的关注"
-            } else if indexPath.row == 1 {
-                cell.textLabel?.text = "消息通知"
-            }
-        } else if indexPath.section == 1 {
-            if indexPath.row == 0 {
-                cell.textLabel?.text = "头条商城"
-                cell.detailTextLabel?.text = "邀请好友得200元现金奖励"
-            } else if indexPath.row == 1 {
-                cell.textLabel?.text = "京东特供"
-                cell.detailTextLabel?.text = "新人领188元红包"
-            }
-        } else if indexPath.section == 2 {
-            if indexPath.row == 0 {
-                cell.textLabel?.text = "我要爆料"
-            } else if indexPath.row == 1 {
-                cell.textLabel?.text = "用户反馈"
-            } else if indexPath.row == 2 {
-                cell.textLabel?.text = "系统设置"
-            }
-        }
+        let rows = sections[indexPath.section]
+        let mineCellModel = rows[indexPath.row] as! MineCellModel
+        cell.textLabel?.text = mineCellModel.text!
+        cell.textLabel?.text = mineCellModel.grey_text!
         return cell
     }
 

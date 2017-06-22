@@ -15,6 +15,15 @@ class MineCellModel {
     var text: String?
     var url: String?
     var key: String?
-    var tip_new: Int = 0
+    var tip_new: Int?
+    
+    init(dict: [String: AnyObject]) {
+        grey_text = dict["grey_text"] as? String
+        text = dict["text"] as? String
+        url = dict["url"] as? String
+        key = dict["key"] as? String
+        tip_new = dict["tip_new"] as? Int
+        
+    }
     
 }

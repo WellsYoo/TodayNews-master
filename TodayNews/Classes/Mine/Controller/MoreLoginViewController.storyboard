@@ -12,7 +12,7 @@
         <!--More Login View Controller-->
         <scene sceneID="gyj-2E-D46">
             <objects>
-                <viewController storyboardIdentifier="MoreLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="56C-x1-a9r" customClass="MoreLoginViewController" customModule="TodayNews_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MoreLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="56C-x1-a9r" customClass="MoreLoginViewController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H7W-sk-77b"/>
                         <viewControllerLayoutGuide type="bottom" id="XzH-9C-8mR"/>

@@ -33,7 +33,7 @@ class VideoTopicController: UIViewController {
         tableView.rowHeight = 232
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UINib(nibName: "VideoTopicCell", bundle: nil), forCellReuseIdentifier: "VideoTopicCell")
+        tableView.register(UINib(nibName: String(describing: VideoTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: VideoTopicCell.self))
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         return tableView
     }()
@@ -66,6 +66,7 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTopicCell.self)) as! VideoTopicCell
         cell.videoTopic = newsTopics[indexPath.row]
+        cell.delegate = self
         return cell
     }
     
@@ -73,5 +74,13 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
         let videoDetailVC = VideoDetailController()
         //        videoDetailVC.videoTopic = newsTopics[indexPath.row]
         navigationController?.pushViewController(videoDetailVC, animated: true)
+    }
+}
+
+extension VideoTopicController: VideoTopicCellDelegate {
+    /// 头像区域点击了
+    func videoheadTopicCellButtonClick() {
+        let userVC = WeiTouTiaoUserController()
+        navigationController?.pushViewController(userVC, animated: true)
     }
 }

@@ -9,8 +9,14 @@
 import UIKit
 import Kingfisher
 
+protocol VideoTopicCellDelegate: class {
+    /// 用户头像区域点击
+    func videoheadTopicCellButtonClick()
+}
+
 class VideoTopicCell: UITableViewCell {
     
+    weak var delegate: VideoTopicCellDelegate?
     /// 标题 label
     @IBOutlet weak var titleLabel: UILabel!
     /// 播放数量
@@ -53,7 +59,7 @@ class VideoTopicCell: UITableViewCell {
     
     /// 用户昵称点击
     @IBAction func headButtonClick(_ sender: UIButton) {
-        
+        delegate?.videoheadTopicCellButtonClick()
     }
     
     /// 关注按钮点击

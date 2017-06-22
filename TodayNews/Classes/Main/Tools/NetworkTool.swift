@@ -234,7 +234,7 @@ class NetworkTool {
     
     // --------------------------------- 我的 mine  ---------------------------------
     /// 我的界面 cell 数据
-    class func loadMineCellData() {
+    class func loadMineCellData(completionHandler: @escaping (_ sectionsArray: [AnyObject])->()) {
         let url = BASE_URL + "user/tab/tabs/?"
         let params = ["version_code": versionCode,
                       "iid": IID]
@@ -248,16 +248,16 @@ class NetworkTool {
                     if message == "success" {
                         if let data = json["data"].dictionary {
                             if let sections = data["sections"]?.arrayObject {
-                                print(sections)
-//                                var sectionArray = [AnyObject]()
-//                                var rows = [MineCell]()
-//                                for section in sections {
-//                                    for row in section {
-//                                        let mineCell = MineCell(dict: row)
-//                                        rows.append(mineCell)
-//                                    }
-//                                    sectionArray.append(rows as AnyObject)
-//                                }
+                                var sectionArray = [AnyObject]()
+                                var rows = [MineCellModel]()
+                                for section in sections {
+                                    for row in section as! [AnyObject] {
+                                        let mineCell = MineCellModel(dict: row as! [String : AnyObject])
+                                        rows.append(mineCell)
+                                    }
+                                    sectionArray.append(rows as AnyObject)
+                                }
+                                completionHandler(sectionArray)
                             }
                         }
                     }
