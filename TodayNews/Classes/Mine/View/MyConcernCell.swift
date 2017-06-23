@@ -1,0 +1,31 @@
+//
+//  MyConcernCell.swift
+//  TodayNews
+//
+//  Created by 杨蒙 on 2017/6/23.
+//  Copyright © 2017年 hrscy. All rights reserved.
+//
+
+import UIKit
+import Kingfisher
+
+
+class MyConcernCell: UICollectionViewCell {
+    
+    @IBOutlet weak var imageView: UIImageView!
+
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    var myConcern: MyConcern? {
+        didSet {
+            imageView.kf.setImage(with: URL(string: (myConcern?.icon)!))
+            nameLabel.text = myConcern?.name!
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+}

@@ -12,46 +12,36 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MineOtherCell" customModule="TodayNews" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="39.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting_rightarrow_8x14_" translatesAutoresizingMaskIntoConstraints="NO" id="nL2-2n-iHC">
-                        <rect key="frame" x="297" y="15" width="8" height="14"/>
+                        <rect key="frame" x="297" y="13" width="8" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="BG6-dc-2V7"/>
                             <constraint firstAttribute="width" constant="8" id="u8V-Jm-SB8"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4K-JB-Ntg">
-                        <rect key="frame" x="15" y="0.0" width="31" height="43.5"/>
+                        <rect key="frame" x="15" y="0.0" width="31" height="39.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQC-1B-1Y0">
-                        <rect key="frame" x="251.5" y="0.0" width="35.5" height="43.5"/>
+                        <rect key="frame" x="251.5" y="0.0" width="35.5" height="39.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXb-rG-ORd">
-                        <rect key="frame" x="15" y="43" width="305" height="1"/>
-                        <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="wwf-aY-24K"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="i4K-JB-Ntg" secondAttribute="bottom" id="BPR-G5-pKn"/>
                     <constraint firstItem="nL2-2n-iHC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DLX-VH-UKo"/>
                     <constraint firstItem="nL2-2n-iHC" firstAttribute="leading" secondItem="cQC-1B-1Y0" secondAttribute="trailing" constant="10" id="Db1-SW-D0H"/>
-                    <constraint firstAttribute="trailing" secondItem="ZXb-rG-ORd" secondAttribute="trailing" id="RDD-a3-Qj9"/>
-                    <constraint firstAttribute="bottom" secondItem="ZXb-rG-ORd" secondAttribute="bottom" id="Ugi-3V-3Fa"/>
-                    <constraint firstItem="ZXb-rG-ORd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="a8o-Sr-esE"/>
                     <constraint firstAttribute="trailing" secondItem="nL2-2n-iHC" secondAttribute="trailing" constant="15" id="aL4-T1-4nY"/>
                     <constraint firstItem="i4K-JB-Ntg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="cdC-yh-ggk"/>
                     <constraint firstItem="cQC-1B-1Y0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fk6-Zv-8kZ"/>

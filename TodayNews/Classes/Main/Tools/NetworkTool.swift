@@ -139,10 +139,7 @@ class NetworkTool {
             }
             if let value = response.result.value {
                 let json = JSON(value)
-                guard let message = json["message"].string else {
-                    return
-                }
-                guard message == "success" else {
+                guard json["message"].string == "success" else {
                     return
                 }
                 guard let dataJSONs = json["data"].array else {
@@ -179,10 +176,7 @@ class NetworkTool {
             }
             if let value = response.result.value {
                 let json = JSON(value)
-                guard let message = json["message"].string else {
-                    return
-                }
-                guard message == "success" else {
+                guard json["message"].string == "success" else {
                     return
                 }
                 guard let data = json["data"].dictionary else {
@@ -214,10 +208,7 @@ class NetworkTool {
             }
             if let value = response.result.value {
                 let json = JSON(value)
-                guard let message = json["message"].string else {
-                    return
-                }
-                guard message == "success" else {
+                guard json["message"].string == "success" else {
                     return
                 }
                 guard let data = json["data"].dictionary else {
@@ -244,23 +235,48 @@ class NetworkTool {
             }
             if let value = response.result.value {
                 let json = JSON(value)
-                if let message = json["message"].string {
-                    if message == "success" {
-                        if let data = json["data"].dictionary {
-                            if let sections = data["sections"]?.arrayObject {
-                                var sectionArray = [AnyObject]()
-                                for section in sections {
-                                    var rows = [MineCellModel]()
-                                    for row in section as! [AnyObject] {
-                                        let mineCell = MineCellModel(dict: row as! [String : AnyObject])
-                                        rows.append(mineCell)
-                                    }
-                                    sectionArray.append(rows as AnyObject)
-                                }
-                                completionHandler(sectionArray)
+                guard json["message"].string == "success" else {
+                    return
+                }
+                if let data = json["data"].dictionary {
+                    if let sections = data["sections"]?.arrayObject {
+                        var sectionArray = [AnyObject]()
+                        for section in sections {
+                            var rows = [MineCellModel]()
+                            for row in section as! [AnyObject] {
+                                let mineCell = MineCellModel(dict: row as! [String : AnyObject])
+                                rows.append(mineCell)
                             }
+                            sectionArray.append(rows as AnyObject)
                         }
+                        completionHandler(sectionArray)
                     }
+                }
+            }
+        }
+    }
+    
+    /// 我的关注 
+    class func loadMyFollow(completionHandler: @escaping (_ concerns: [MyConcern])->()) {
+        let url = BASE_URL + "concern/v2/follow/my_follow/?"
+        let params = ["version_code": versionCode,
+                      "iid": IID]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                let json = JSON(value)
+                guard json["message"].string == "success" else {
+                    return
+                }
+                if let datas = json["data"].arrayObject {
+                    var concerns = [MyConcern]()
+                    for data in datas {
+                        let myConcern = MyConcern(dict: data as! [String: AnyObject])
+                        concerns.append(myConcern)
+                    }
+                    completionHandler(concerns)
                 }
             }
         }

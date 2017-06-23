@@ -27,3 +27,24 @@ class MineCellModel {
     }
     
 }
+
+class MyConcern {
+    
+    var name: String?
+    var url: String?
+    var total_count: Int?
+    var description: String?
+    var time: String?
+    var type: String?
+    var icon: String?
+    
+    init(dict: [String: AnyObject]) {
+        name = dict["name"] as? String
+        url = dict["url"] as? String
+        total_count = dict["total_count"] as? Int
+        description = dict["description"] as? String
+        time = dict["time"] as? String
+        type = dict["type"] as? String
+        icon = dict["icon"] as? String
+    }
+}

@@ -12,6 +12,7 @@ import IBAnimatable
 class MineViewController: UITableViewController {
 
     fileprivate var sections = [AnyObject]()
+    fileprivate var concerns = [MyConcern]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,6 +37,11 @@ class MineViewController: UITableViewController {
             self.sections.append(myConcerns as AnyObject)
             self.sections += sectionArray
             self.tableView.reloadData()
+        }
+        NetworkTool.loadMyFollow { (concerns) in
+            self.concerns = concerns
+            let indexSet = IndexSet(integer: 0)
+            self.tableView.reloadSections(indexSet, with: .automatic)
         }
     }
 
@@ -65,7 +71,7 @@ extension MineViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.tableHeaderView = noLoginHeaderView
         tableView.tableFooterView = UIView()
-        tableView.separatorStyle = .none
+        tableView.separatorColor = UIColor(r: 240, g: 240, b: 240)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
@@ -87,7 +93,14 @@ extension MineViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        if indexPath.section == 0 && indexPath.row == 0 {
+            if concerns.count == 0 || concerns.count == 1 {
+                return 40
+            } else if concerns.count > 1 {
+                return 114
+            }
+        }
+        return 40
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -105,6 +118,16 @@ extension MineViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MineFirstSectionCell.self)) as! MineFirstSectionCell
             let mineCellModel = sections[0][0]  as! MineCellModel
             cell.mineCellModel = mineCellModel
+            if indexPath.row == 0 || indexPath.row == 1 {
+                cell.collectionView.isHidden = true
+            }
+            if concerns.count == 1 {
+                cell.myConcern = concerns[0]
+            }
+            if concerns.count > 1 {
+                cell.concerns = concerns
+                cell.collectionView.isHidden = false
+            }
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MineOtherCell.self)) as! MineOtherCell
