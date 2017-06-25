@@ -53,17 +53,27 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuk-dA-9no">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                <connections>
+                                    <action selector="titleButtonClicked" destination="Pom-p6-pHi" eventType="touchUpInside" id="wCX-JS-t4P"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="2Tf-ch-ohM"/>
                             <constraint firstAttribute="trailing" secondItem="DY7-nm-ySS" secondAttribute="trailing" constant="15" id="393-ET-4lO"/>
                             <constraint firstAttribute="bottom" secondItem="THz-iB-VC6" secondAttribute="bottom" id="5nL-lc-liC"/>
+                            <constraint firstItem="iuk-dA-9no" firstAttribute="top" secondItem="3TB-CB-pvU" secondAttribute="top" id="Ash-3o-uof"/>
                             <constraint firstItem="DY7-nm-ySS" firstAttribute="leading" secondItem="THz-iB-VC6" secondAttribute="trailing" constant="10" id="Dfm-NG-A6z"/>
                             <constraint firstItem="DY7-nm-ySS" firstAttribute="centerY" secondItem="3TB-CB-pvU" secondAttribute="centerY" id="GX4-qD-ddY"/>
                             <constraint firstAttribute="bottom" secondItem="Ja1-2u-biX" secondAttribute="bottom" id="J8P-Ra-EpO"/>
+                            <constraint firstAttribute="trailing" secondItem="iuk-dA-9no" secondAttribute="trailing" id="MXw-yA-Akp"/>
+                            <constraint firstItem="iuk-dA-9no" firstAttribute="leading" secondItem="3TB-CB-pvU" secondAttribute="leading" id="bYq-RQ-1w7"/>
                             <constraint firstItem="z5Q-3x-LY2" firstAttribute="centerY" secondItem="3TB-CB-pvU" secondAttribute="centerY" id="hdp-US-JVy"/>
                             <constraint firstItem="Ja1-2u-biX" firstAttribute="top" secondItem="3TB-CB-pvU" secondAttribute="top" id="ied-lU-94U"/>
+                            <constraint firstAttribute="bottom" secondItem="iuk-dA-9no" secondAttribute="bottom" id="k0T-Ap-wum"/>
                             <constraint firstItem="Ja1-2u-biX" firstAttribute="leading" secondItem="3TB-CB-pvU" secondAttribute="leading" constant="10" id="kg7-Ji-3Y4"/>
                             <constraint firstItem="THz-iB-VC6" firstAttribute="leading" secondItem="z5Q-3x-LY2" secondAttribute="trailing" constant="10" id="nSI-u7-2jo"/>
                             <constraint firstItem="THz-iB-VC6" firstAttribute="top" secondItem="3TB-CB-pvU" secondAttribute="top" id="oJ2-pH-5xl"/>

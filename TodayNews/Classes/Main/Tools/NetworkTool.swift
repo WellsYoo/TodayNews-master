@@ -281,4 +281,28 @@ class NetworkTool {
             }
         }
     }
+    
+    /// 关注详情
+    class func loadOneFollowDetail(userId: Int, completionHandler: @escaping (_ follewDetail: FollowDetail)->()) {
+        let url = BASE_URL + "user/profile/homepage/v3/?"
+        let params = ["version_code": versionCode,
+                      "iid": IID,
+                      "user_id": userId,
+                      "refer": "all"] as [String : Any]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                let json = JSON(value)
+                guard json["message"].string == "success" else {
+                    return
+                }
+                let followDetail = FollowDetail(dict: json["data"].dictionaryObject! as [String : AnyObject])
+                completionHandler(followDetail)
+            }
+        }
+    }
+    
+    
 }

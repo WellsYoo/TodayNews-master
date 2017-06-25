@@ -117,8 +117,10 @@ extension MineViewController {
         if indexPath.section == 0 && indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MineFirstSectionCell.self)) as! MineFirstSectionCell
             let mineCellModel = sections[0][0]  as! MineCellModel
+            cell.selectionStyle = .none
+            cell.delegate = self
             cell.mineCellModel = mineCellModel
-            if indexPath.row == 0 || indexPath.row == 1 {
+            if concerns.count == 0 || concerns.count == 1 {
                 cell.collectionView.isHidden = true
             }
             if concerns.count == 1 {
@@ -153,5 +155,19 @@ extension MineViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+}
+
+extension MineViewController: MineFirstSectionCellDelegate {
+    /// 点击了 第一个 cell 的标题
+    func mineFirstSectionCellTitleButtonClicked() {
+        let myConcernVC = MyConcernController()
+        navigationController?.pushViewController(myConcernVC, animated: true)
+    }
+    /// 点击了第几个关注
+    func mineFirstSectionCellDidSelected(myConcern: MyConcern) {
+        let followDetail = FollowDetailViewController()
+        followDetail.userid = myConcern.userid ?? 0
+        navigationController?.pushViewController(followDetail, animated: true)
     }
 }

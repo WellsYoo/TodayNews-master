@@ -37,12 +37,6 @@ class VideoTopicController: UIViewController {
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         return tableView
     }()
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 }
 
 extension VideoTopicController {
