@@ -259,8 +259,7 @@ class NetworkTool {
     /// 我的关注 
     class func loadMyFollow(completionHandler: @escaping (_ concerns: [MyConcern])->()) {
         let url = BASE_URL + "concern/v2/follow/my_follow/?"
-        let params = ["version_code": versionCode,
-                      "iid": IID]
+        let params = ["version_code": versionCode]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return
@@ -276,6 +275,7 @@ class NetworkTool {
                         let myConcern = MyConcern(dict: data as! [String: AnyObject])
                         concerns.append(myConcern)
                     }
+                    print(json)
                     completionHandler(concerns)
                 }
             }
@@ -285,10 +285,7 @@ class NetworkTool {
     /// 关注详情
     class func loadOneFollowDetail(userId: Int, completionHandler: @escaping (_ follewDetail: FollowDetail)->()) {
         let url = BASE_URL + "user/profile/homepage/v3/?"
-        let params = ["version_code": versionCode,
-                      "iid": IID,
-                      "user_id": userId,
-                      "refer": "all"] as [String : Any]
+        let params = ["user_id": userId] as [String : Any]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return

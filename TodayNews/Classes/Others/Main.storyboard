@@ -81,7 +81,7 @@
         <!--My Tab Bar Controller-->
         <scene sceneID="p84-dk-EJC">
             <objects>
-                <tabBarController id="ZFc-Hy-6RX" customClass="MyTabBarController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MyTabBarController" id="ZFc-Hy-6RX" customClass="MyTabBarController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="sex-Yx-44C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

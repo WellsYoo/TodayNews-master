@@ -116,7 +116,8 @@ extension MineViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MineFirstSectionCell.self)) as! MineFirstSectionCell
-            let mineCellModel = sections[0][0]  as! MineCellModel
+            let section = sections[0] as! [AnyObject]
+            let mineCellModel = section[0]  as! MineCellModel
             cell.selectionStyle = .none
             cell.delegate = self
             cell.mineCellModel = mineCellModel
@@ -133,7 +134,8 @@ extension MineViewController {
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MineOtherCell.self)) as! MineOtherCell
-        let mineCellModel = sections[indexPath.section][indexPath.row]  as! MineCellModel
+        let section = sections[indexPath.section] as! [AnyObject]
+        let mineCellModel = section[indexPath.row]  as! MineCellModel
         cell.mineCellModel = mineCellModel
         return cell
     }
