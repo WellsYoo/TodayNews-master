@@ -12,8 +12,6 @@
 		947BE93A1EFB8A47009E7961 /* MineOtherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947BE9381EFB8A47009E7961 /* MineOtherCell.xib */; };
 		947BE93D1EFB8A5E009E7961 /* MineFirstSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947BE93B1EFB8A5E009E7961 /* MineFirstSectionCell.swift */; };
 		947BE93E1EFB8A5E009E7961 /* MineFirstSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947BE93C1EFB8A5E009E7961 /* MineFirstSectionCell.xib */; };
-		947BE94F1EFD639C009E7961 /* MyConcernCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947BE94D1EFD639C009E7961 /* MyConcernCell.swift */; };
-		947BE9501EFD639C009E7961 /* MyConcernCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947BE94E1EFD639C009E7961 /* MyConcernCell.xib */; };
 		94B916021EF21E4A00AC91B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94B916011EF21E4A00AC91B9 /* Assets.xcassets */; };
 		94B916101EF21E4A00AC91B9 /* TodayNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B9160F1EF21E4A00AC91B9 /* TodayNewsTests.swift */; };
 		94B9161B1EF21E4A00AC91B9 /* TodayNewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B9161A1EF21E4A00AC91B9 /* TodayNewsUITests.swift */; };
@@ -182,18 +180,8 @@
 		94B916F71EF5144D00AC91B9 /* PostSecondCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostSecondCell.swift; sourceTree = "<group>"; };
 		94B916F81EF5144D00AC91B9 /* PostSecondCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostSecondCell.xib; sourceTree = "<group>"; };
 		94B916FD1EF666C600AC91B9 /* WeiTouTiaoUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiTouTiaoUserController.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-<<<<<<< HEAD
 		EFA225101EFD75540035B92F /* MyConcernCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyConcernCell.swift; sourceTree = "<group>"; };
 		EFA225111EFD75540035B92F /* MyConcernCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyConcernCell.xib; sourceTree = "<group>"; };
-=======
-		94FCD3D71F0132C300EC2584 /* AdvertiseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvertiseViewController.swift; sourceTree = "<group>"; };
-		94FCD3D91F01367100EC2584 /* AdvertiseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvertiseViewController.xib; sourceTree = "<group>"; };
->>>>>>> bf3efec26c9277a1ebae6c89a1564ce51f5e1edf
-=======
-		EFA225101EFD75540035B92F /* MyConcernCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyConcernCell.swift; sourceTree = "<group>"; };
-		EFA225111EFD75540035B92F /* MyConcernCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyConcernCell.xib; sourceTree = "<group>"; };
->>>>>>> 6559a864a251373521b95f3fad92a0951a7b1ea8
 		F6D7F701F546AA6431D7BF3A /* Pods-TodayNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews/Pods-TodayNews.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -658,14 +646,7 @@
 				94B916F01EF50A9100AC91B9 /* CellVideoView.xib in Resources */,
 				94B916021EF21E4A00AC91B9 /* Assets.xcassets in Resources */,
 				94B9169B1EF21EE300AC91B9 /* WeiTouTiaoHeader.storyboard in Resources */,
-<<<<<<< HEAD
 				EFA225131EFD75540035B92F /* MyConcernCell.xib in Resources */,
-=======
-				947BE9501EFD639C009E7961 /* MyConcernCell.xib in Resources */,
->>>>>>> bf3efec26c9277a1ebae6c89a1564ce51f5e1edf
-=======
-				EFA225131EFD75540035B92F /* MyConcernCell.xib in Resources */,
->>>>>>> 6559a864a251373521b95f3fad92a0951a7b1ea8
 				94B9168E1EF21EE300AC91B9 /* MineCell.plist in Resources */,
 				94B916B21EF4041E00AC91B9 /* ThumbCollectionViewCell.xib in Resources */,
 				94B916A21EF21EE300AC91B9 /* WeitoutiaoHeaderView.xib in Resources */,
@@ -791,15 +772,7 @@
 				94B9169C1EF21EE300AC91B9 /* WeiTouTiaoViewController.swift in Sources */,
 				94B916851EF21EE300AC91B9 /* MoreLoginViewController.swift in Sources */,
 				94B9169D1EF21EE300AC91B9 /* NotNetworkView.swift in Sources */,
-<<<<<<< HEAD
-<<<<<<< HEAD
 				EFA225121EFD75540035B92F /* MyConcernCell.swift in Sources */,
-=======
-				947BE94F1EFD639C009E7961 /* MyConcernCell.swift in Sources */,
->>>>>>> bf3efec26c9277a1ebae6c89a1564ce51f5e1edf
-=======
-				EFA225121EFD75540035B92F /* MyConcernCell.swift in Sources */,
->>>>>>> 6559a864a251373521b95f3fad92a0951a7b1ea8
 				946D2D8D1EF7763B0060A9C3 /* NavTitleStyle.swift in Sources */,
 				94B916861EF21EE300AC91B9 /* MineCellModel.swift in Sources */,
 				94B9168F1EF21EE300AC91B9 /* VideoDetailController.swift in Sources */,
