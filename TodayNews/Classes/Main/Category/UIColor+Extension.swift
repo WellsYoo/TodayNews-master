@@ -23,7 +23,7 @@ extension UIColor {
         return UIColor(red: r / 255, green: g / 255, blue: b / 255, alpha: a)
     }
     
-    /// 红色
+    /// 橙色
     class func globalRedColor() -> UIColor {
         return UIColor(r: 210, g: 63, b: 66)
     }

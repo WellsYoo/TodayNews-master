@@ -139,7 +139,11 @@ extension MineViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        if indexPath.section == 0 {
+            let myConcernVC = MyConcernController()
+            myConcernVC.myConcerns = concerns
+            navigationController?.pushViewController(myConcernVC, animated: true)
+        }
     }
     
     // MARK: - UIScrollViewDelagate

@@ -272,7 +272,7 @@ class NetworkTool {
                         let myConcern = MyConcern(dict: data as! [String: AnyObject])
                         concerns.append(myConcern)
                     }
-                    print(json)
+                    
                     completionHandler(concerns)
                 }
             }
@@ -292,11 +292,10 @@ class NetworkTool {
                 guard json["message"].string == "success" else {
                     return
                 }
+                print(json)
                 let followDetail = FollowDetail(dict: json["data"].dictionaryObject! as [String : AnyObject])
                 completionHandler(followDetail)
             }
         }
     }
-    
-    
 }
