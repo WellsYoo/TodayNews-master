@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallpaper_profile_night" translatesAutoresizingMaskIntoConstraints="NO" id="vGS-O5-MtI">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
+                    <rect key="frame" x="0.0" y="-20" width="375" height="238"/>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOD-8W-umN">
                     <rect key="frame" x="0.0" y="30" width="375" height="66"/>
@@ -111,7 +111,7 @@
                 <constraint firstAttribute="trailing" secondItem="vGS-O5-MtI" secondAttribute="trailing" id="H9G-wg-hDe"/>
                 <constraint firstItem="Uo8-Cp-YSS" firstAttribute="bottom" secondItem="vGS-O5-MtI" secondAttribute="bottom" id="I69-8f-gD3"/>
                 <constraint firstItem="JZ6-Us-8lD" firstAttribute="top" secondItem="jOD-8W-umN" secondAttribute="bottom" constant="20" id="ZBm-8T-eaO"/>
-                <constraint firstItem="vGS-O5-MtI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cXc-Bc-vdG"/>
+                <constraint firstItem="vGS-O5-MtI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-20" id="cXc-Bc-vdG"/>
                 <constraint firstItem="vGS-O5-MtI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lTl-ui-EgI"/>
                 <constraint firstItem="Uo8-Cp-YSS" firstAttribute="top" secondItem="JZ6-Us-8lD" secondAttribute="bottom" constant="14" id="mX6-Hn-LPJ"/>
                 <constraint firstItem="jOD-8W-umN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mhn-6Q-Dq8"/>

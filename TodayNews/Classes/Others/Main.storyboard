@@ -179,7 +179,7 @@
         <!--添加好友-->
         <scene sceneID="Do9-Ic-xEL">
             <objects>
-                <viewController id="QFt-Zv-Mmy" customClass="AddFriendViewController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddFriendViewController" id="QFt-Zv-Mmy" customClass="AddFriendViewController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Urx-Ky-keb"/>
                         <viewControllerLayoutGuide type="bottom" id="h8u-99-84g"/>

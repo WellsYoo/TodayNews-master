@@ -17,6 +17,13 @@ class MineViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+        NetworkTool.loadMyFollow { (concerns) in
+            self.concerns = concerns
+            if concerns.count != 0 {
+                let indexSet = IndexSet(integer: 0)
+                self.tableView.reloadSections(indexSet, with: .automatic)
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -38,11 +45,7 @@ class MineViewController: UITableViewController {
             self.sections += sectionArray
             self.tableView.reloadData()
         }
-        NetworkTool.loadMyFollow { (concerns) in
-            self.concerns = concerns
-            let indexSet = IndexSet(integer: 0)
-            self.tableView.reloadSections(indexSet, with: .automatic)
-        }
+        
     }
 
     // 头部视图
@@ -68,12 +71,10 @@ extension MineViewController {
     
     fileprivate func setupUI() {
         view.backgroundColor = UIColor.globalBackgroundColor()
-        self.automaticallyAdjustsScrollViewInsets = false
+        self.automaticallyAdjustsScrollViewInsets = true
         tableView.tableHeaderView = noLoginHeaderView
         tableView.tableFooterView = UIView()
         tableView.separatorColor = UIColor(r: 240, g: 240, b: 240)
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
         tableView.register(UINib(nibName: String(describing: MineFirstSectionCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MineFirstSectionCell.self))
         tableView.register(UINib(nibName: String(describing: MineOtherCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MineOtherCell.self))
@@ -94,11 +95,7 @@ extension MineViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 && indexPath.row == 0 {
-            if concerns.count == 0 || concerns.count == 1 {
-                return 40
-            } else if concerns.count > 1 {
-                return 114
-            }
+            return (concerns.count == 0 || concerns.count == 1) ? 40 : 114
         }
         return 40
     }
@@ -164,6 +161,7 @@ extension MineViewController: MineFirstSectionCellDelegate {
     /// 点击了 第一个 cell 的标题
     func mineFirstSectionCellTitleButtonClicked() {
         let myConcernVC = MyConcernController()
+        myConcernVC.myConcerns = concerns
         navigationController?.pushViewController(myConcernVC, animated: true)
     }
     /// 点击了第几个关注

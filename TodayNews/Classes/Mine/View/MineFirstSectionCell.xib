@@ -29,7 +29,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ja1-2u-biX">
-                                <rect key="frame" x="10" y="0.0" width="31" height="39"/>
+                                <rect key="frame" x="15" y="0.0" width="31" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -74,7 +74,7 @@
                             <constraint firstItem="z5Q-3x-LY2" firstAttribute="centerY" secondItem="3TB-CB-pvU" secondAttribute="centerY" id="hdp-US-JVy"/>
                             <constraint firstItem="Ja1-2u-biX" firstAttribute="top" secondItem="3TB-CB-pvU" secondAttribute="top" id="ied-lU-94U"/>
                             <constraint firstAttribute="bottom" secondItem="iuk-dA-9no" secondAttribute="bottom" id="k0T-Ap-wum"/>
-                            <constraint firstItem="Ja1-2u-biX" firstAttribute="leading" secondItem="3TB-CB-pvU" secondAttribute="leading" constant="10" id="kg7-Ji-3Y4"/>
+                            <constraint firstItem="Ja1-2u-biX" firstAttribute="leading" secondItem="3TB-CB-pvU" secondAttribute="leading" constant="15" id="kg7-Ji-3Y4"/>
                             <constraint firstItem="THz-iB-VC6" firstAttribute="leading" secondItem="z5Q-3x-LY2" secondAttribute="trailing" constant="10" id="nSI-u7-2jo"/>
                             <constraint firstItem="THz-iB-VC6" firstAttribute="top" secondItem="3TB-CB-pvU" secondAttribute="top" id="oJ2-pH-5xl"/>
                         </constraints>
