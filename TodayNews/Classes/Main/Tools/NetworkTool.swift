@@ -197,9 +197,7 @@ class NetworkTool {
     /// 点击了取消关注按钮
     class func loadUnfollowInfo(user_id: Int, completionHandler: @escaping (_ isFllowing: Bool)->()) {
         let url = BASE_URL + "/2/relation/unfollow/?"
-        let params = ["version_code": versionCode,
-                      "app_name": app_name,
-                      "iid": IID,
+        let params = ["iid": IID,
                       "user_id": user_id,
                       "device_id": device_id] as [String : Any]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
@@ -227,8 +225,7 @@ class NetworkTool {
     /// 我的界面 cell 数据
     class func loadMineCellData(completionHandler: @escaping (_ sectionsArray: [AnyObject])->()) {
         let url = BASE_URL + "user/tab/tabs/?"
-        let params = ["version_code": versionCode,
-                      "iid": IID]
+        let params = ["iid": IID]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return
@@ -259,8 +256,7 @@ class NetworkTool {
     /// 我的关注 
     class func loadMyFollow(completionHandler: @escaping (_ concerns: [MyConcern])->()) {
         let url = BASE_URL + "concern/v2/follow/my_follow/?"
-        let params = ["version_code": versionCode,
-                      "iid": IID]
+        let params = ["device_id": device_id]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return
@@ -276,9 +272,31 @@ class NetworkTool {
                         let myConcern = MyConcern(dict: data as! [String: AnyObject])
                         concerns.append(myConcern)
                     }
+                    print(json)
                     completionHandler(concerns)
                 }
             }
         }
     }
+    
+    /// 关注详情
+    class func loadOneFollowDetail(userId: Int, completionHandler: @escaping (_ follewDetail: FollowDetail)->()) {
+        let url = BASE_URL + "user/profile/homepage/v3/?"
+        let params = ["user_id": userId] as [String : Any]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                let json = JSON(value)
+                guard json["message"].string == "success" else {
+                    return
+                }
+                let followDetail = FollowDetail(dict: json["data"].dictionaryObject! as [String : AnyObject])
+                completionHandler(followDetail)
+            }
+        }
+    }
+    
+    
 }
