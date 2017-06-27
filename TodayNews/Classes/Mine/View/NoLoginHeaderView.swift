@@ -22,7 +22,7 @@ class NoLoginHeaderView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.height = screenWidth * 0.595
+        self.height = screenHeight * 0.4
     }
     
     class func headerView() -> NoLoginHeaderView {

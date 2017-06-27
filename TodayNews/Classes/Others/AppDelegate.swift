@@ -15,13 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // 改为 从 storyboard 启动
-//        // 创建窗口
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        
-//        let tabBarController = MyTabBarController()
-//        
-//        window?.rootViewController = tabBarController
-//        window?.makeKeyAndVisible()
+        // 创建窗口
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let advertiseVC = AdvertiseViewController()
+        window?.rootViewController = advertiseVC
+        window?.makeKeyAndVisible()
         
         return true
     }

@@ -9,8 +9,16 @@
 import UIKit
 import Kingfisher
 
+protocol MineFirstSectionCellDelegate: class {
+    /// 点击了 第一个 cell 的标题
+    func mineFirstSectionCellTitleButtonClicked()
+    /// 点击了第几个关注
+    func mineFirstSectionCellDidSelected(myConcern: MyConcern)
+}
+
 class MineFirstSectionCell: UITableViewCell {
 
+    weak var delegate: MineFirstSectionCellDelegate?
     /// 标题
     @IBOutlet weak var leftlabel: UILabel!
     /// 如果有一个关注，头像显示在右边
@@ -35,9 +43,6 @@ class MineFirstSectionCell: UITableViewCell {
     
     var concerns = [MyConcern]() {
         didSet {
-            for concern in concerns {
-                print(concern.name!)
-            }
             self.collectionView.reloadData()
         }
     }
@@ -56,6 +61,9 @@ class MineFirstSectionCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func titleButtonClicked() {
+        delegate?.mineFirstSectionCellTitleButtonClicked()
+    }
 }
 
 extension MineFirstSectionCell: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -68,6 +76,11 @@ extension MineFirstSectionCell: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: MyConcernCell.self), for: indexPath) as! MyConcernCell
         cell.myConcern = concerns[indexPath.item]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let myConcern = concerns[indexPath.row]
+        delegate?.mineFirstSectionCellDidSelected(myConcern: myConcern)
     }
     
 }

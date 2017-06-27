@@ -12,6 +12,10 @@
 		947BE93A1EFB8A47009E7961 /* MineOtherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947BE9381EFB8A47009E7961 /* MineOtherCell.xib */; };
 		947BE93D1EFB8A5E009E7961 /* MineFirstSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947BE93B1EFB8A5E009E7961 /* MineFirstSectionCell.swift */; };
 		947BE93E1EFB8A5E009E7961 /* MineFirstSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947BE93C1EFB8A5E009E7961 /* MineFirstSectionCell.xib */; };
+		947BE94F1EFD639C009E7961 /* MyConcernCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947BE94D1EFD639C009E7961 /* MyConcernCell.swift */; };
+		947BE9501EFD639C009E7961 /* MyConcernCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947BE94E1EFD639C009E7961 /* MyConcernCell.xib */; };
+		947BE9521F0000E4009E7961 /* FollowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947BE9511F0000E4009E7961 /* FollowDetailViewController.swift */; };
+		947BE9541F0004F7009E7961 /* MyConcernController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947BE9531F0004F7009E7961 /* MyConcernController.swift */; };
 		94B916021EF21E4A00AC91B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94B916011EF21E4A00AC91B9 /* Assets.xcassets */; };
 		94B916101EF21E4A00AC91B9 /* TodayNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B9160F1EF21E4A00AC91B9 /* TodayNewsTests.swift */; };
 		94B9161B1EF21E4A00AC91B9 /* TodayNewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B9161A1EF21E4A00AC91B9 /* TodayNewsUITests.swift */; };
@@ -78,6 +82,8 @@
 		94B916F91EF5144D00AC91B9 /* PostSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B916F71EF5144D00AC91B9 /* PostSecondCell.swift */; };
 		94B916FA1EF5144D00AC91B9 /* PostSecondCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B916F81EF5144D00AC91B9 /* PostSecondCell.xib */; };
 		94B916FE1EF666C600AC91B9 /* WeiTouTiaoUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B916FD1EF666C600AC91B9 /* WeiTouTiaoUserController.swift */; };
+		94FCD3D81F0132C300EC2584 /* AdvertiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FCD3D71F0132C300EC2584 /* AdvertiseViewController.swift */; };
+		94FCD3DA1F01367100EC2584 /* AdvertiseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FCD3D91F01367100EC2584 /* AdvertiseViewController.xib */; };
 		EE46BE76FC8C234C92296B82 /* Pods_TodayNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280B7838DD62799363838C22 /* Pods_TodayNews.framework */; };
 		EFA225121EFD75540035B92F /* MyConcernCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA225101EFD75540035B92F /* MyConcernCell.swift */; };
 		EFA225131EFD75540035B92F /* MyConcernCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFA225111EFD75540035B92F /* MyConcernCell.xib */; };
@@ -108,6 +114,10 @@
 		947BE9381EFB8A47009E7961 /* MineOtherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineOtherCell.xib; sourceTree = "<group>"; };
 		947BE93B1EFB8A5E009E7961 /* MineFirstSectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineFirstSectionCell.swift; sourceTree = "<group>"; };
 		947BE93C1EFB8A5E009E7961 /* MineFirstSectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineFirstSectionCell.xib; sourceTree = "<group>"; };
+		947BE94D1EFD639C009E7961 /* MyConcernCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyConcernCell.swift; sourceTree = "<group>"; };
+		947BE94E1EFD639C009E7961 /* MyConcernCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyConcernCell.xib; sourceTree = "<group>"; };
+		947BE9511F0000E4009E7961 /* FollowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowDetailViewController.swift; sourceTree = "<group>"; };
+		947BE9531F0004F7009E7961 /* MyConcernController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyConcernController.swift; sourceTree = "<group>"; };
 		94B915F71EF21E4A00AC91B9 /* TodayNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B916011EF21E4A00AC91B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94B9160B1EF21E4A00AC91B9 /* TodayNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,8 +190,13 @@
 		94B916F71EF5144D00AC91B9 /* PostSecondCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostSecondCell.swift; sourceTree = "<group>"; };
 		94B916F81EF5144D00AC91B9 /* PostSecondCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostSecondCell.xib; sourceTree = "<group>"; };
 		94B916FD1EF666C600AC91B9 /* WeiTouTiaoUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiTouTiaoUserController.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		EFA225101EFD75540035B92F /* MyConcernCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyConcernCell.swift; sourceTree = "<group>"; };
 		EFA225111EFD75540035B92F /* MyConcernCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyConcernCell.xib; sourceTree = "<group>"; };
+=======
+		94FCD3D71F0132C300EC2584 /* AdvertiseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvertiseViewController.swift; sourceTree = "<group>"; };
+		94FCD3D91F01367100EC2584 /* AdvertiseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvertiseViewController.xib; sourceTree = "<group>"; };
+>>>>>>> bf3efec26c9277a1ebae6c89a1564ce51f5e1edf
 		F6D7F701F546AA6431D7BF3A /* Pods-TodayNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews/Pods-TodayNews.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -351,6 +366,8 @@
 			children = (
 				94B916401EF21EE200AC91B9 /* MyNavigationController.swift */,
 				94B916411EF21EE200AC91B9 /* MyTabBarController.swift */,
+				94FCD3D71F0132C300EC2584 /* AdvertiseViewController.swift */,
+				94FCD3D91F01367100EC2584 /* AdvertiseViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -379,6 +396,8 @@
 				94B916461EF21EE200AC91B9 /* MineViewController.swift */,
 				94B916471EF21EE200AC91B9 /* MoreLoginViewController.storyboard */,
 				94B916481EF21EE200AC91B9 /* MoreLoginViewController.swift */,
+				947BE9531F0004F7009E7961 /* MyConcernController.swift */,
+				947BE9511F0000E4009E7961 /* FollowDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -403,6 +422,8 @@
 				947BE93C1EFB8A5E009E7961 /* MineFirstSectionCell.xib */,
 				947BE9371EFB8A47009E7961 /* MineOtherCell.swift */,
 				947BE9381EFB8A47009E7961 /* MineOtherCell.xib */,
+				947BE94D1EFD639C009E7961 /* MyConcernCell.swift */,
+				947BE94E1EFD639C009E7961 /* MyConcernCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -646,12 +667,17 @@
 				94B916F01EF50A9100AC91B9 /* CellVideoView.xib in Resources */,
 				94B916021EF21E4A00AC91B9 /* Assets.xcassets in Resources */,
 				94B9169B1EF21EE300AC91B9 /* WeiTouTiaoHeader.storyboard in Resources */,
+<<<<<<< HEAD
 				EFA225131EFD75540035B92F /* MyConcernCell.xib in Resources */,
+=======
+				947BE9501EFD639C009E7961 /* MyConcernCell.xib in Resources */,
+>>>>>>> bf3efec26c9277a1ebae6c89a1564ce51f5e1edf
 				94B9168E1EF21EE300AC91B9 /* MineCell.plist in Resources */,
 				94B916B21EF4041E00AC91B9 /* ThumbCollectionViewCell.xib in Resources */,
 				94B916A21EF21EE300AC91B9 /* WeitoutiaoHeaderView.xib in Resources */,
 				94B9168D1EF21EE300AC91B9 /* Main.storyboard in Resources */,
 				94B916FA1EF5144D00AC91B9 /* PostSecondCell.xib in Resources */,
+				94FCD3DA1F01367100EC2584 /* AdvertiseViewController.xib in Resources */,
 				94B9169E1EF21EE300AC91B9 /* NotNetworkView.xib in Resources */,
 				94B916841EF21EE300AC91B9 /* MoreLoginViewController.storyboard in Resources */,
 			);
@@ -755,7 +781,9 @@
 				94B916AE1EF4039B00AC91B9 /* ThumbCollectionView.swift in Sources */,
 				94B9169A1EF21EE300AC91B9 /* TellFriendsViewController.swift in Sources */,
 				94B916831EF21EE300AC91B9 /* MineViewController.swift in Sources */,
+				947BE9541F0004F7009E7961 /* MyConcernController.swift in Sources */,
 				94B916A81EF35EAE00AC91B9 /* String+Extension.swift in Sources */,
+				947BE9521F0000E4009E7961 /* FollowDetailViewController.swift in Sources */,
 				94B9167F1EF21EE300AC91B9 /* UIView+Extension.swift in Sources */,
 				947BE93D1EFB8A5E009E7961 /* MineFirstSectionCell.swift in Sources */,
 				94B916771EF21EE300AC91B9 /* PageContentView.swift in Sources */,
@@ -770,9 +798,14 @@
 				94B916891EF21EE300AC91B9 /* VerticalButton.swift in Sources */,
 				94B916791EF21EE300AC91B9 /* PageView.swift in Sources */,
 				94B9169C1EF21EE300AC91B9 /* WeiTouTiaoViewController.swift in Sources */,
+				94FCD3D81F0132C300EC2584 /* AdvertiseViewController.swift in Sources */,
 				94B916851EF21EE300AC91B9 /* MoreLoginViewController.swift in Sources */,
 				94B9169D1EF21EE300AC91B9 /* NotNetworkView.swift in Sources */,
+<<<<<<< HEAD
 				EFA225121EFD75540035B92F /* MyConcernCell.swift in Sources */,
+=======
+				947BE94F1EFD639C009E7961 /* MyConcernCell.swift in Sources */,
+>>>>>>> bf3efec26c9277a1ebae6c89a1564ce51f5e1edf
 				946D2D8D1EF7763B0060A9C3 /* NavTitleStyle.swift in Sources */,
 				94B916861EF21EE300AC91B9 /* MineCellModel.swift in Sources */,
 				94B9168F1EF21EE300AC91B9 /* VideoDetailController.swift in Sources */,
