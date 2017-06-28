@@ -11,6 +11,7 @@ import Kingfisher
 
 class ConcernHeaderView: UIView {
     
+    /// 背景图片
     @IBOutlet weak var bgImageView: UIImageView!
     /// 头像
     @IBOutlet weak var avaterImageView: UIImageView!

@@ -19,14 +19,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallpaper_profile_night" translatesAutoresizingMaskIntoConstraints="NO" id="zv5-WL-gyr">
-                            <rect key="frame" x="0.0" y="-20" width="375" height="144"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="zv5-WL-gyr" secondAttribute="bottom" id="9oo-Xq-oKx"/>
                         <constraint firstAttribute="height" constant="124" id="AWl-QB-hpm"/>
-                        <constraint firstItem="zv5-WL-gyr" firstAttribute="top" secondItem="hvs-5Q-DTY" secondAttribute="top" constant="-20" id="Cv9-wE-tLE"/>
+                        <constraint firstItem="zv5-WL-gyr" firstAttribute="top" secondItem="hvs-5Q-DTY" secondAttribute="top" id="Cv9-wE-tLE"/>
                         <constraint firstItem="zv5-WL-gyr" firstAttribute="leading" secondItem="hvs-5Q-DTY" secondAttribute="leading" id="MIU-NX-GTy"/>
                         <constraint firstAttribute="trailing" secondItem="zv5-WL-gyr" secondAttribute="trailing" id="dPj-LN-qSy"/>
                     </constraints>
@@ -50,14 +50,14 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayz-gy-e3c" userLabel="名称">
-                            <rect key="frame" x="15" y="50" width="39.5" height="19.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayz-gy-e3c" userLabel="名称">
+                            <rect key="frame" x="15" y="50" width="33" height="19.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toutiaohao_34x14_" translatesAutoresizingMaskIntoConstraints="NO" id="Ejr-lL-8uD" userLabel="头条号">
-                            <rect key="frame" x="58.5" y="53" width="34" height="14"/>
+                            <rect key="frame" x="52" y="53.5" width="34" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="34" id="Inr-qW-94V"/>
                                 <constraint firstAttribute="height" constant="14" id="n0K-If-muw"/>

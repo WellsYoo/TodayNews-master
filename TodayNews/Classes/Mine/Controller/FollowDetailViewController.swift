@@ -39,12 +39,17 @@ class FollowDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    /// 导航条
+    fileprivate lazy var navView: ConcernNavigationView = {
+        let navView = ConcernNavigationView.concernNavView()
+        navView.delegate = self
+        return navView
+    }()
     /// 头部
     fileprivate lazy var headerView: ConcernHeaderView = {
         let headerView = ConcernHeaderView.headerView()
         return headerView
     }()
-    
     /// scrolView
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: UIScreen.main.bounds)
@@ -53,16 +58,29 @@ class FollowDetailViewController: UIViewController {
         scrollView.delegate = self
         return scrollView
     }()
-    
 }
 
 extension FollowDetailViewController {
     
     fileprivate func setupUI() {
+        automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor.white
         view.addSubview(scrollView)
         scrollView.addSubview(headerView)
         scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 200)
+        view.addSubview(navView)
+    }
+}
+
+// MARK: - ConcernNavigationViewDelegate
+extension FollowDetailViewController: ConcernNavigationViewDelegate {
+    /// 返回按钮点击
+    func concernHeaderViewReturnButtonClicked() {
+        navigationController?.popViewController(animated: true)
+    }
+    /// 更多按钮点击
+    func concernHeaderViewMoreButtonClicked() {
+        
     }
 }
 
@@ -75,6 +93,19 @@ extension FollowDetailViewController: UIScrollViewDelegate {
             let totalOffset = kConcernHeaderViewHieght + abs(offsetY)
             let f = totalOffset / kConcernHeaderViewHieght
             headerView.bgImageView.frame = CGRect(x: -screenWidth * (f - 1) * 0.5, y: offsetY, width: screenWidth * f, height: totalOffset)
+            navView.backgroundColor = UIColor.clear
+        }
+        if offsetY > 0 {
+            var alpha = offsetY / kNavBarHeight
+            alpha = min(alpha, 1)
+            navView.backgroundColor = UIColor.white.withAlphaComponent(alpha)
+            if alpha >= 1 {
+                navView.returnButton.setImage(UIImage(named: "lefterbackicon_titlebar_24x24_"), for: .normal)
+                navView.moreButton.setImage(UIImage(named: "More_24x24_"), for: .normal)
+            } else {
+                navView.returnButton.setImage(UIImage(named: "leftbackicon_white_titlebar_24x24_"), for: .normal)
+                navView.moreButton.setImage(UIImage(named: "more_titlebar_24x24_"), for: .normal)
+            }
         }
     }
 }

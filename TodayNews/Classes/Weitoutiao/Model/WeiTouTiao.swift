@@ -454,6 +454,11 @@ class WTTMediaInfo {
     var user_verified: Int?
     var follow: Bool?
     
+    var is_star_user: Bool?
+    var recommend_reason: String?
+    var recommend_type: Int?
+    var user_id: Int?
+    var verified_content: String?
     
     init(dict: [String: AnyObject]) {
         avatar_url = dict["avatar_url"] as? String
@@ -461,6 +466,11 @@ class WTTMediaInfo {
         user_verified = dict["user_verified"] as? Int
         media_id = dict["media_id"] as? Int
         follow = dict["follow"] as? Bool
+        is_star_user = dict["is_star_user"] as? Bool
+        recommend_reason = dict["recommend_reason"] as? String
+        verified_content = dict["verified_content"] as? String
+        recommend_type = dict["recommend_type"] as? Int
+        user_id = dict["user_id"] as? Int
     }
 }
 

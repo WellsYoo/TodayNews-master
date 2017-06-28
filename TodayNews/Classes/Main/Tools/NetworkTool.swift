@@ -61,7 +61,6 @@ class NetworkTool {
                     let contentData: NSData = content.data(using: String.Encoding.utf8)! as NSData
                     do {
                         let dict = try JSONSerialization.jsonObject(with: contentData as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
-                        print(dict)
                         let topic = WeiTouTiao(dict: dict as! [String : AnyObject])
                         topics.append(topic)
                     } catch {
@@ -119,20 +118,10 @@ class NetworkTool {
     /// 获取微头条数据
     class func loadWeiTouTiaoData(completionHandler: @escaping (_ weitoutiaos: [WeiTouTiao]) -> ()) {
         let url = BASE_URL + "api/news/feed/v54/?"
-        let params = ["version_code": versionCode,
-                      "iid": IID,
-                      "app_name": app_name,
+        let params = ["iid": IID,
                       "category": "weitoutiao",
                       "count": 20,
-//                      "min_behot_time": currentTimeInterval,
-                      "device_id": device_id,
-//                      "app_name": app_name,
-//                      "idfv": idfv,
-//                      "idfa": idfa,
-//                      "ac": "WIFI",
-//                      "city": "",
-//                      "concern_id": ""
-                        ] as [String : Any]
+                      "device_id": device_id] as [String : Any]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return
@@ -148,13 +137,12 @@ class NetworkTool {
                 var weitoutiaos = [WeiTouTiao]()
                 for dataJSON in dataJSONs {
                     if let content = dataJSON["content"].string {
-                        
                         let data = content.data(using: String.Encoding.utf8)! as Data
                         let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                        print(dict)
-                        print("-------------------------")
                         let weitoutiao = WeiTouTiao(dict: dict as! [String : AnyObject])
                         weitoutiaos.append(weitoutiao)
+                        print(dict)
+                        print("---------------")
                     }
                 }
                 completionHandler(weitoutiaos)
@@ -292,7 +280,6 @@ class NetworkTool {
                 guard json["message"].string == "success" else {
                     return
                 }
-                print(json)
                 let followDetail = FollowDetail(dict: json["data"].dictionaryObject! as [String : AnyObject])
                 completionHandler(followDetail)
             }

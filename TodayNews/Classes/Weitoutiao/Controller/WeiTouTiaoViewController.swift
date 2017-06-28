@@ -128,11 +128,6 @@ extension WeiTouTiaoViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeiTouTiaoCell") as! WeiTouTiaoCell
         cell.weitoutiao = microNews[indexPath.row]
         cell.delegate = self
-        // 使用闭包
-//        cell.headerButtonClick = {
-//            let userVC = WeiTouTiaoUserController()
-//            self.navigationController?.pushViewController(userVC, animated: true)
-//        }
         return cell
     }
     
@@ -155,8 +150,13 @@ extension WeiTouTiaoViewController: UITableViewDelegate, UITableViewDataSource {
 extension WeiTouTiaoViewController: WeitoutiaoCellDelegate {
     
     /// cell 顶部用户名区域点击
-    func weiTouTiaoCellofHeaderButtonClicked() {
-        let userVC = WeiTouTiaoUserController()
+    func weiTouTiaoCellofHeaderButtonClicked(weitoutiao: WeiTouTiao) {
+        let userVC = FollowDetailViewController()
+        if let user = weitoutiao.user {
+            userVC.userid = user.user_id!
+        } else if let user_info = weitoutiao.user_info {
+            userVC.userid = user_info.user_id!
+        }
         navigationController?.pushViewController(userVC, animated: true)
     }
     

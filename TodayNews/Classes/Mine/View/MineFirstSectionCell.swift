@@ -49,6 +49,7 @@ class MineFirstSectionCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.collectionView.collectionViewLayout = MyConcernFlowLayout()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.register(UINib(nibName: String(describing: MyConcernCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: MyConcernCell.self))
@@ -88,7 +89,7 @@ extension MineFirstSectionCell: UICollectionViewDelegate, UICollectionViewDataSo
 class MyConcernFlowLayout: UICollectionViewFlowLayout {
     
     override func prepare() {
-        itemSize = CGSize(width: 58, height: 74)
+        itemSize = CGSize(width: 58, height: 73)
         //定义每个UICollectionView 横向的间距
         minimumLineSpacing = 0;
         //定义每个UICollectionView 纵向的间距

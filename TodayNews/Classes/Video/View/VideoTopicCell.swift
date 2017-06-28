@@ -11,7 +11,7 @@ import Kingfisher
 
 protocol VideoTopicCellDelegate: class {
     /// 用户头像区域点击
-    func videoheadTopicCellButtonClick()
+    func videoheadTopicCellButtonClick(videoTopic: WeiTouTiao)
 }
 
 class VideoTopicCell: UITableViewCell {
@@ -59,7 +59,7 @@ class VideoTopicCell: UITableViewCell {
     
     /// 用户昵称点击
     @IBAction func headButtonClick(_ sender: UIButton) {
-        delegate?.videoheadTopicCellButtonClick()
+        delegate?.videoheadTopicCellButtonClick(videoTopic: videoTopic!)
     }
     
     /// 关注按钮点击

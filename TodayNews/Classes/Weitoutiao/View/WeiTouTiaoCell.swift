@@ -14,7 +14,7 @@ protocol WeitoutiaoCellDelegate: class {
     
     func weiTouTiaoCelloffeedShareButtonClicked(weitoutiaoCell: WeiTouTiaoCell)
     /// 头像区域点击
-    func weiTouTiaoCellofHeaderButtonClicked()
+    func weiTouTiaoCellofHeaderButtonClicked(weitoutiao: WeiTouTiao)
     
 }
 
@@ -47,8 +47,6 @@ class WeiTouTiaoCell: UITableViewCell {
     @IBOutlet weak var middleView: UIView!
     /// 头像区域点击
     var headerButtonClick: (()->())?
-    
-    
     
     var weitoutiao: WeiTouTiao? {
         didSet {
@@ -158,7 +156,7 @@ extension WeiTouTiaoCell {
     @IBAction func headerButtonClicked() {
         // 使用闭包
 //        headerButtonClick?()
-        delegate?.weiTouTiaoCellofHeaderButtonClicked()
+        delegate?.weiTouTiaoCellofHeaderButtonClicked(weitoutiao: weitoutiao!)
     }
     
     /// 点赞按钮

@@ -73,8 +73,9 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
 
 extension VideoTopicController: VideoTopicCellDelegate {
     /// 头像区域点击了
-    func videoheadTopicCellButtonClick() {
-        let userVC = WeiTouTiaoUserController()
+    func videoheadTopicCellButtonClick(videoTopic: WeiTouTiao) {
+        let userVC = FollowDetailViewController()
+        userVC.userid = videoTopic.media_info!.user_id!
         navigationController?.pushViewController(userVC, animated: true)
     }
 }

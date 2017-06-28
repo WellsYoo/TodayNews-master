@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="wbM-U6-pWV" customClass="ConcernNavigationView" customModule="TodayNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGc-s6-BN6">
+                    <rect key="frame" x="10" y="21" width="34" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="SKH-xN-cOD"/>
+                        <constraint firstAttribute="width" constant="34" id="nJ1-pB-WJb"/>
+                    </constraints>
+                    <state key="normal" image="leftbackicon_white_titlebar_24x24_"/>
+                    <connections>
+                        <action selector="returnButtonClicked:" destination="wbM-U6-pWV" eventType="touchUpInside" id="obw-7a-Qwz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TrI-Pf-NTt">
+                    <rect key="frame" x="326" y="21" width="34" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="Qxl-Pj-qbu"/>
+                        <constraint firstAttribute="width" constant="34" id="qBP-IV-oak"/>
+                    </constraints>
+                    <state key="normal" image="more_titlebar_24x24_"/>
+                    <connections>
+                        <action selector="moreButtonClicked:" destination="wbM-U6-pWV" eventType="touchUpInside" id="Jcv-l3-bnA"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="TrI-Pf-NTt" secondAttribute="trailing" constant="15" id="6Ru-f7-Hyd"/>
+                <constraint firstItem="dGc-s6-BN6" firstAttribute="leading" secondItem="wbM-U6-pWV" secondAttribute="leading" constant="10" id="BAU-SE-g2A"/>
+                <constraint firstItem="TrI-Pf-NTt" firstAttribute="centerY" secondItem="dGc-s6-BN6" secondAttribute="centerY" id="by8-Ri-FyG"/>
+                <constraint firstAttribute="bottom" secondItem="dGc-s6-BN6" secondAttribute="bottom" constant="10" id="sOc-7b-PG6"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="moreButton" destination="TrI-Pf-NTt" id="3o6-NH-mjW"/>
+                <outlet property="returnButton" destination="dGc-s6-BN6" id="qX1-Bo-Bf8"/>
+            </connections>
+            <point key="canvasLocation" x="10.5" y="540.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="leftbackicon_white_titlebar_24x24_" width="24" height="24"/>
+        <image name="more_titlebar_24x24_" width="24" height="24"/>
+    </resources>
+</document>
