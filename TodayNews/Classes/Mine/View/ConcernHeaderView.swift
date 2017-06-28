@@ -62,7 +62,7 @@ class ConcernHeaderView: UIView {
     
     /// 展开按钮点击了
     @IBAction func unfoldButtonClicked() {
-        ///  还有问题
+        ///  还有问题，后面会改
         /// 更新描述的高度
         if follewDetail!.descriptionH! > descriptionLabelHeight.constant {
             descriptionLabelHeight.constant = follewDetail!.descriptionH!
