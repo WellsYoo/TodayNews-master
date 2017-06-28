@@ -6,7 +6,7 @@
 //  Copyright © 2017年 hrscy. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class MineCellModel {
     
@@ -71,9 +71,40 @@ class FollowDetail {
     var share_url: String?
     var show_private_letter: Int?
     var followers_count: Int?
+    var followings_count: Int?
+    var followersCount: String? {
+        get {
+            guard let count = followers_count else {
+                return "0"
+            }
+            guard count >= 10000 else {
+                return String(describing: count)
+            }
+            return String(format: "%.1f万", Float(count) / 10000.0)
+        }
+    }
+    
+    var followingsCount: String? {
+        get {
+            guard let count = followings_count else {
+                return "0"
+            }
+            guard count >= 10000 else {
+                return String(describing: count)
+            }
+            return String(format: "%.1f万", Float(count) / 10000.0)
+        }
+    }
+    
     var status: Int?
     var media_id: Int?
-    var description: String?
+    var description: NSString?
+    var descriptionH: CGFloat? {
+        get {
+            return description?.getTextHeight(width: screenWidth - kMargin - 55)
+        }
+    }
+    
     var apply_auth_url: String?
     var bg_img_url: String?
     var verified_content: String?
@@ -87,7 +118,6 @@ class FollowDetail {
     var industry: String?
     var ugc_publish_media_id: Int?
     var avatar_url: String?
-    var followings_count: Int?
     
     init(dict: [String: AnyObject]) {
         article_limit_enable = dict["article_limit_enable"] as? Int
@@ -109,7 +139,7 @@ class FollowDetail {
         followers_count = dict["followers_count"] as? Int
         status = dict["status"] as? Int
         media_id = dict["media_id"] as? Int
-        description = dict["description"] as? String
+        description = dict["description"] as? NSString
         apply_auth_url = dict["apply_auth_url"] as? String
         bg_img_url = dict["bg_img_url"] as? String
         verified_content = dict["verified_content"] as? String

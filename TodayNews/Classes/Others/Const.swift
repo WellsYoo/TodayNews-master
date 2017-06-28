@@ -55,8 +55,9 @@ let kHomeMargin: CGFloat = 15.0
 /// 微头条界面 头部视图 的高度
 let kWeiTouTiaoHeaderHieght: CGFloat = 45
 /// 我的界面 头部视图 的高度
-let kMineHeaderViewHieght: CGFloat = 218
-
+let kMineHeaderViewHieght: CGFloat = screenHeight * 0.38
+/// 关注详情界面 头部视图 的高度
+let kConcernHeaderViewHieght: CGFloat = screenHeight * 0.538
 
 
 /// iPhone 5

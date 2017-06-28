@@ -10,6 +10,8 @@ import UIKit
 import Kingfisher
 
 class ConcernHeaderView: UIView {
+    
+    @IBOutlet weak var bgImageView: UIImageView!
     /// 头像
     @IBOutlet weak var avaterImageView: UIImageView!
     /// 名称
@@ -18,6 +20,8 @@ class ConcernHeaderView: UIView {
     @IBOutlet weak var concernButton: UIButton!
     /// 描述
     @IBOutlet weak var descriptionLabel: UILabel!
+    /// 描述高度
+    @IBOutlet weak var descriptionLabelHeight: NSLayoutConstraint!
     /// 展开按钮
     @IBOutlet weak var unfoldButton: UIButton!
     /// 关注数量
@@ -35,48 +39,63 @@ class ConcernHeaderView: UIView {
         avaterImageView.layer.borderWidth = 1
         concernButton.layer.borderColor = UIColor.lightGray.cgColor
         concernButton.layer.borderWidth = 1
-        
+        self.width = screenWidth
+        self.height = kConcernHeaderViewHieght
     }
     
     var follewDetail: FollowDetail? {
         didSet {
-//            avaterImageView.kf.setImage(with: URL(string: (follewDetail?.avatar_url!)!))
+            avaterImageView.kf.setImage(with: URL(string: (follewDetail?.avatar_url!)!))
             if let screen_name = follewDetail?.screen_name {
+                print("name=\(screen_name)")
                 nameLabel.text = screen_name
             } else if let name = follewDetail?.name {
                 nameLabel.text = name
             }
-            if let description = follewDetail?.description {
-                descriptionLabel.text = description
+            if let description = follewDetail!.description {
+                descriptionLabel.text = String(describing: description)
             }
-            concernCountLabel.text = String(describing: follewDetail?.followings_count!)
-            fansCountLabel.text = String(describing: follewDetail?.followers_count!)
+            concernCountLabel.text = follewDetail!.followingsCount!
+            fansCountLabel.text = follewDetail!.followersCount!
         }
     }
     
     /// 展开按钮点击了
     @IBAction func unfoldButtonClicked() {
-        
+        ///  还有问题
+        /// 更新描述的高度
+        if follewDetail!.descriptionH! > descriptionLabelHeight.constant {
+            descriptionLabelHeight.constant = follewDetail!.descriptionH!
+            self.height += (follewDetail!.descriptionH! - descriptionLabelHeight.constant)
+            UIView.animate(withDuration: 0.2, animations: { 
+                self.layoutIfNeeded()
+            }, completion: { (_) in
+                self.unfoldButton.isHidden = true
+            })
+        }
     }
     
     /// 动态按钮点击
     @IBAction func dynamicButtonClicked(_ sender: UIButton) {
+        self.indicatorConstraint.constant = 0
         UIView.animate(withDuration: 0.2) { 
-            self.indicatorConstraint.constant = 0
+            self.layoutIfNeeded()
         }
     }
     
     /// 文章按钮点击
     @IBAction func articleButtonClicked(_ sender: UIButton) {
+        self.indicatorConstraint.constant = sender.width
         UIView.animate(withDuration: 0.2) {
-            self.indicatorConstraint.constant += sender.width
+            self.layoutIfNeeded()
         }
     }
     
     /// 视频按钮点击
     @IBAction func videoButtonClicked(_ sender: UIButton) {
+        self.indicatorConstraint.constant = 2 * sender.width
         UIView.animate(withDuration: 0.2) {
-            self.indicatorConstraint.constant += 2 * sender.width
+            self.layoutIfNeeded()
         }
     }
     

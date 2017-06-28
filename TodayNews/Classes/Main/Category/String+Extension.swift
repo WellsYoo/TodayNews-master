@@ -27,8 +27,8 @@ extension String {
 
 extension NSString {
     /// 计算文本的高度
-    func getTextHeight() -> CGFloat {
-        let size = CGSize(width: screenWidth - kMargin * 2, height: CGFloat(MAXFLOAT))
+    func getTextHeight(width: CGFloat) -> CGFloat {
+        let size = CGSize(width: width, height: CGFloat(MAXFLOAT))
         return (self.boundingRect(with: size, options: .usesFontLeading, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil).size.height)
     }
 }

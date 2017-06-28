@@ -134,14 +134,14 @@ class WeiTouTiao {
     var content: NSString?
     var contentH: CGFloat? {
         get {
-            return content?.getTextHeight()
+            return content?.getTextHeight(width: screenWidth - kMargin * 2)
         }
     }
     
     var title: NSString?
     var titleH: CGFloat? {
         get {
-            return title?.getTextHeight()
+            return title?.getTextHeight(width: screenWidth - kMargin * 2)
         }
     }
     var cellH: CGFloat? {

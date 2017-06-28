@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FollowDetailViewController" customModule="TodayNews" customModuleProvider="target">
             <connections>
-                <outlet property="scrollView" destination="HhK-Kl-F9U" id="xuJ-S5-2kT"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ACg-AF-Txw"/>
             </connections>
         </placeholder>
@@ -19,18 +18,7 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HhK-Kl-F9U">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                </scrollView>
-            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="HhK-Kl-F9U" secondAttribute="bottom" id="F15-mq-Q5F"/>
-                <constraint firstItem="HhK-Kl-F9U" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GIj-IO-U0X"/>
-                <constraint firstItem="HhK-Kl-F9U" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Stn-gg-cgB"/>
-                <constraint firstAttribute="trailing" secondItem="HhK-Kl-F9U" secondAttribute="trailing" id="ZzO-4r-GV3"/>
-            </constraints>
         </view>
     </objects>
 </document>
