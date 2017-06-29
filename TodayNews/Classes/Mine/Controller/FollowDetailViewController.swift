@@ -31,6 +31,7 @@ class FollowDetailViewController: UIViewController {
         
         NetworkTool.loadOneFollowDetail(userId: userid) { (followDetail) in
             self.headerView.follewDetail = followDetail
+            self.navView.titleLabel.text = followDetail.screen_name!
         }
     }
 
@@ -95,7 +96,7 @@ extension FollowDetailViewController: UIScrollViewDelegate {
             headerView.bgImageView.frame = CGRect(x: -screenWidth * (f - 1) * 0.5, y: offsetY, width: screenWidth * f, height: totalOffset)
             navView.backgroundColor = UIColor.clear
         }
-        if offsetY > 0 {
+        if offsetY > 0 && offsetY <= kConcernHeaderViewHieght * 0.24 {
             var alpha = offsetY / kNavBarHeight
             alpha = min(alpha, 1)
             navView.backgroundColor = UIColor.white.withAlphaComponent(alpha)
@@ -106,6 +107,13 @@ extension FollowDetailViewController: UIScrollViewDelegate {
                 navView.returnButton.setImage(UIImage(named: "leftbackicon_white_titlebar_24x24_"), for: .normal)
                 navView.moreButton.setImage(UIImage(named: "more_titlebar_24x24_"), for: .normal)
             }
+            headerView.concernButton.isHidden = false
+            navView.concernButton.isHidden = true
+            navView.titleLabel.isHidden = true
+        } else if offsetY > kConcernHeaderViewHieght * 0.24 {
+            headerView.concernButton.isHidden = true
+            navView.concernButton.isHidden = false
+            navView.titleLabel.isHidden = false
         }
     }
 }

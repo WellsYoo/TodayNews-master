@@ -45,7 +45,6 @@ class MineViewController: UITableViewController {
             self.sections += sectionArray
             self.tableView.reloadData()
         }
-        
     }
 
     // 头部视图

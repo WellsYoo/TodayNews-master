@@ -101,7 +101,9 @@ class FollowDetail {
     var description: NSString?
     var descriptionH: CGFloat? {
         get {
-            return description?.getTextHeight(width: screenWidth - kMargin - 55)
+            let size = CGSize(width: screenWidth - 2 * kMargin, height: CGFloat(MAXFLOAT))
+            return description!.boundingRect(with: size, options: .usesFontLeading, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)], context: nil
+            ).size.height
         }
     }
     

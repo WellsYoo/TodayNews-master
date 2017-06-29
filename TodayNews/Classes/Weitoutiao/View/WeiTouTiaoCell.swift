@@ -117,13 +117,13 @@ class WeiTouTiaoCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    // 视频图片
+    // MARK: 视频图片
     private lazy var videoView: CellVideoView = {
         let videoView = CellVideoView.cellVideoView()
         return videoView
     }()
     
-    /// 缩略图
+    // MARK: 缩略图
     private lazy var thumbCollectionView: ThumbCollectionView = {
         let thumbCollectionView = ThumbCollectionView.collectionViewWithFrame(frame: CGRect.zero)
         thumbCollectionView.register(UINib(nibName: String(describing: ThumbCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ThumbCollectionViewCell.self))
@@ -136,6 +136,7 @@ class WeiTouTiaoCell: UITableViewCell {
     
 }
 
+// MARK: - UICollectionViewDelegate
 extension WeiTouTiaoCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -152,27 +153,27 @@ extension WeiTouTiaoCell: UICollectionViewDelegate, UICollectionViewDataSource {
 
 extension WeiTouTiaoCell {
     
-    /// 头像区域点击
+    // MARK: 头像区域点击
     @IBAction func headerButtonClicked() {
         // 使用闭包
 //        headerButtonClick?()
         delegate?.weiTouTiaoCellofHeaderButtonClicked(weitoutiao: weitoutiao!)
     }
     
-    /// 点赞按钮
+    // MARK: 点赞按钮
     @IBAction func likeButtonClicked() {
         
     }
     
-    /// 评论按钮点击
+    // MARK: 评论按钮点击
     @IBAction func commentButtonClicked() {
         
     }
-    /// 转发按钮点击
+    // MARK: 转发按钮点击
     @IBAction func feedShareButtonClicked() {
         delegate?.weiTouTiaoCelloffeedShareButtonClicked(weitoutiaoCell: self)
     }
-    /// 关注按钮点击
+    // MARK: 关注按钮点击
     @IBAction func careButtonClicked(_ sender: AnimatableButton) {
         
         var userId: Int = 0
@@ -204,7 +205,7 @@ extension WeiTouTiaoCell {
         }
     }
     
-    /// 屏蔽按钮点击
+    // MARK: 屏蔽按钮点击
     @IBAction func closeButton() {
         
     }

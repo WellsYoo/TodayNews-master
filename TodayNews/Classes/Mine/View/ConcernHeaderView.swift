@@ -25,10 +25,13 @@ class ConcernHeaderView: UIView {
     @IBOutlet weak var descriptionLabelHeight: NSLayoutConstraint!
     /// 展开按钮
     @IBOutlet weak var unfoldButton: UIButton!
+    @IBOutlet weak var unfoldButtonWidth: NSLayoutConstraint!
     /// 关注数量
     @IBOutlet weak var concernCountLabel: UILabel!
     /// 粉丝数量
     @IBOutlet weak var fansCountLabel: UILabel!
+    
+    @IBOutlet weak var bottomView: UIView!
     /// 指示器
     @IBOutlet weak var indicatorView: UIView!
     /// 指示器的约束
@@ -48,7 +51,6 @@ class ConcernHeaderView: UIView {
         didSet {
             avaterImageView.kf.setImage(with: URL(string: (follewDetail?.avatar_url!)!))
             if let screen_name = follewDetail?.screen_name {
-                print("name=\(screen_name)")
                 nameLabel.text = screen_name
             } else if let name = follewDetail?.name {
                 nameLabel.text = name
@@ -58,50 +60,54 @@ class ConcernHeaderView: UIView {
             }
             concernCountLabel.text = follewDetail!.followingsCount!
             fansCountLabel.text = follewDetail!.followersCount!
+            let buttonW: CGFloat = 60
+            for (index, topTab) in follewDetail!.top_tab.enumerated() {
+                let button = UIButton(frame: CGRect(x: CGFloat(index) * buttonW, y: 0, width: buttonW, height: 40))
+                button.setTitle(topTab.show_name, for: .normal)
+                button.addTarget(self, action: #selector(bottomViewButtonClicked(_:)), for: .touchUpInside)
+                button.setTitleColor(UIColor.black, for: .normal)
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+                button.tag = index
+                bottomView.addSubview(button)
+            }
         }
     }
     
     /// 展开按钮点击了
     @IBAction func unfoldButtonClicked() {
-        ///  还有问题，后面会改
         /// 更新描述的高度
-        if follewDetail!.descriptionH! > descriptionLabelHeight.constant {
-            descriptionLabelHeight.constant = follewDetail!.descriptionH!
-            self.height += (follewDetail!.descriptionH! - descriptionLabelHeight.constant)
-            UIView.animate(withDuration: 0.2, animations: { 
-                self.layoutIfNeeded()
-            }, completion: { (_) in
-                self.unfoldButton.isHidden = true
-            })
-        }
+        descriptionLabelHeight.constant = follewDetail!.descriptionH! * 2
+        unfoldButtonWidth.constant = 0
+        self.height = kConcernHeaderViewHieght + follewDetail!.descriptionH!
+        UIView.animate(withDuration: 0.2, animations: {
+            self.layoutIfNeeded()
+        }, completion: { (_) in
+            self.unfoldButton.isHidden = true
+        })
     }
     
-    /// 动态按钮点击
-    @IBAction func dynamicButtonClicked(_ sender: UIButton) {
-        self.indicatorConstraint.constant = 0
-        UIView.animate(withDuration: 0.2) { 
-            self.layoutIfNeeded()
-        }
-    }
-    
-    /// 文章按钮点击
-    @IBAction func articleButtonClicked(_ sender: UIButton) {
-        self.indicatorConstraint.constant = sender.width
-        UIView.animate(withDuration: 0.2) {
-            self.layoutIfNeeded()
-        }
-    }
-    
-    /// 视频按钮点击
-    @IBAction func videoButtonClicked(_ sender: UIButton) {
-        self.indicatorConstraint.constant = 2 * sender.width
-        UIView.animate(withDuration: 0.2) {
-            self.layoutIfNeeded()
+    func bottomViewButtonClicked(_ sender: UIButton) {
+        switch sender.tag {
+            case 0:  /// 动态按钮点击
+                self.indicatorConstraint.constant = 14
+                UIView.animate(withDuration: 0.2) {
+                    self.layoutIfNeeded()
+                }
+            case 1: /// 文章按钮点击
+                self.indicatorConstraint.constant = sender.width + 14
+                UIView.animate(withDuration: 0.2) {
+                    self.layoutIfNeeded()
+                }
+            case 2: /// 视频/问答按钮点击
+                self.indicatorConstraint.constant = 2 * sender.width + 14
+                UIView.animate(withDuration: 0.2) {
+                    self.layoutIfNeeded()
+                }
+            default: break
         }
     }
     
     class func headerView() -> ConcernHeaderView {
         return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last as! ConcernHeaderView
     }
-    
 }

@@ -26,6 +26,28 @@
                         <action selector="returnButtonClicked:" destination="wbM-U6-pWV" eventType="touchUpInside" id="obw-7a-Qwz"/>
                     </connections>
                 </button>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efu-LS-8E5">
+                    <rect key="frame" x="123" y="38" width="128" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8GV-Gx-cZ1" userLabel="关注按钮">
+                    <rect key="frame" x="261" y="25" width="60" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="CPJ-Pc-uQk"/>
+                        <constraint firstAttribute="height" constant="26" id="Yuc-yR-yxc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="已关注">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TrI-Pf-NTt">
                     <rect key="frame" x="326" y="21" width="34" height="34"/>
                     <constraints>
@@ -42,14 +64,21 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="TrI-Pf-NTt" secondAttribute="trailing" constant="15" id="6Ru-f7-Hyd"/>
                 <constraint firstItem="dGc-s6-BN6" firstAttribute="leading" secondItem="wbM-U6-pWV" secondAttribute="leading" constant="10" id="BAU-SE-g2A"/>
+                <constraint firstItem="TrI-Pf-NTt" firstAttribute="leading" secondItem="8GV-Gx-cZ1" secondAttribute="trailing" constant="5" id="O0G-wm-jTz"/>
+                <constraint firstItem="8GV-Gx-cZ1" firstAttribute="leading" secondItem="efu-LS-8E5" secondAttribute="trailing" constant="10" id="SEZ-w7-UuN"/>
                 <constraint firstItem="TrI-Pf-NTt" firstAttribute="centerY" secondItem="dGc-s6-BN6" secondAttribute="centerY" id="by8-Ri-FyG"/>
                 <constraint firstAttribute="bottom" secondItem="dGc-s6-BN6" secondAttribute="bottom" constant="10" id="sOc-7b-PG6"/>
+                <constraint firstItem="efu-LS-8E5" firstAttribute="centerX" secondItem="wbM-U6-pWV" secondAttribute="centerX" id="tOy-eQ-1EI"/>
+                <constraint firstItem="TrI-Pf-NTt" firstAttribute="centerY" secondItem="8GV-Gx-cZ1" secondAttribute="centerY" id="tWj-SD-VlV"/>
+                <constraint firstItem="8GV-Gx-cZ1" firstAttribute="centerY" secondItem="efu-LS-8E5" secondAttribute="centerY" id="zc1-kS-eeo"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="concernButton" destination="8GV-Gx-cZ1" id="b7n-dc-vBR"/>
                 <outlet property="moreButton" destination="TrI-Pf-NTt" id="3o6-NH-mjW"/>
                 <outlet property="returnButton" destination="dGc-s6-BN6" id="qX1-Bo-Bf8"/>
+                <outlet property="titleLabel" destination="efu-LS-8E5" id="7LJ-NA-Frq"/>
             </connections>
             <point key="canvasLocation" x="10.5" y="540.5"/>
         </view>

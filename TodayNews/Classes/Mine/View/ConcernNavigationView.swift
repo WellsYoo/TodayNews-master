@@ -16,19 +16,25 @@ protocol ConcernNavigationViewDelegate: class {
 }
 
 class ConcernNavigationView: UIView {
-
+    
     weak var delegate: ConcernNavigationViewDelegate?
+    /// 标题
+    @IBOutlet weak var titleLabel: UILabel!
+    /// 关注按钮
+    @IBOutlet weak var concernButton: UIButton!
     /// 返回按钮
     @IBOutlet weak var returnButton: UIButton!
     /// 更多按钮
     @IBOutlet weak var moreButton: UIButton!
-
+    
     class func concernNavView() -> ConcernNavigationView {
         return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last as! ConcernNavigationView
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        concernButton.layer.borderColor = UIColor.lightGray.cgColor
+        concernButton.layer.borderWidth = 1
         width = screenWidth
         height = 64
     }

@@ -5,7 +5,7 @@
 //  Created by 杨蒙 on 17/2/7.
 //  Copyright © 2017年 hrscy. All rights reserved.
 //
-// 3.关注 控制器
+// 3.微头条 控制器
 
 import UIKit
 import SnapKit
@@ -44,12 +44,12 @@ class WeiTouTiaoViewController: UIViewController {
     }()
     
     /// 没有数据时显示
-    lazy var notNetworkView: NotNetworkView = {
+    fileprivate lazy var notNetworkView: NotNetworkView = {
         let notNetworkView = NotNetworkView.noNetworkView()
         return notNetworkView
     }()
     
-    lazy var bgView: UIView = {
+    fileprivate lazy var bgView: UIView = {
         let bgView = UIView()
         return bgView
     }()

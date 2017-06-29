@@ -18,6 +18,7 @@ extension UIColor {
     class func globalBackgroundColor() -> UIColor {
         return UIColor(r: 245, g: 245, b: 245)
     }
+    
     /// RGBA的颜色设置
     func myColor(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {
         return UIColor(red: r / 255, green: g / 255, blue: b / 255, alpha: a)
