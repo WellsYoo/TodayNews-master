@@ -12,6 +12,8 @@ import UIKit
 
 class FollowDetailViewController: UIViewController {
     
+    var followDetail: FollowDetail?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
@@ -30,14 +32,21 @@ class FollowDetailViewController: UIViewController {
         setupUI()
         
         NetworkTool.loadOneFollowDetail(userId: userid) { (followDetail) in
+            self.followDetail = followDetail
             self.headerView.follewDetail = followDetail
             self.navView.titleLabel.text = followDetail.screen_name!
+            for toptab in followDetail.top_tab {
+                let topTabVC = TopTabViewController()
+                topTabVC.topTab = toptab
+                self.addChildViewController(topTabVC)
+            }
+            self.scrollView.addSubview(self.pageContentView)
+            
+            self.pageContentView.snp.makeConstraints { (make) in
+                make.top.equalTo(self.headerView.snp.bottom)
+                make.left.right.bottom.equalTo(self.scrollView)
+            }
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     /// 导航条
@@ -46,11 +55,13 @@ class FollowDetailViewController: UIViewController {
         navView.delegate = self
         return navView
     }()
+    
     /// 头部
     fileprivate lazy var headerView: ConcernHeaderView = {
         let headerView = ConcernHeaderView.headerView()
         return headerView
     }()
+    
     /// scrolView
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: UIScreen.main.bounds)
@@ -59,6 +70,40 @@ class FollowDetailViewController: UIViewController {
         scrollView.delegate = self
         return scrollView
     }()
+    
+    /// 设置分页
+    fileprivate lazy var pageContentView: PageContentView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)//上左下右
+        //定义每个UICollectionView 横向的间距
+        layout.minimumLineSpacing = 0
+        //定义每个UICollectionView 纵向的间距
+        layout.minimumInteritemSpacing = 0
+        layout.itemSize = CGSize(width: screenWidth, height: screenHeight - kNavBarHeight - kTabBarHeight)
+        let pageContentView = PageContentView(frame: CGRect.zero, collectionViewLayout: layout)
+        pageContentView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "FollowDetailTopTabCell")
+        pageContentView.delegate = self
+        pageContentView.dataSource = self
+        return pageContentView
+    }()
+}
+
+extension FollowDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return followDetail!.top_tab.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FollowDetailTopTabCell", for: indexPath)
+        let topTabVC = childViewControllers[indexPath.row] as! TopTabViewController
+        cell.contentView.addSubview(topTabVC.view)
+        topTabVC.view.snp.makeConstraints { (make) in
+            make.top.left.bottom.right.equalTo(cell)
+        }
+        return cell
+    }
 }
 
 extension FollowDetailViewController {
@@ -69,6 +114,7 @@ extension FollowDetailViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(headerView)
         scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 200)
+        
         view.addSubview(navView)
     }
 }

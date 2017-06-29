@@ -298,12 +298,6 @@ class WeiTouTiao {
         article_type = dict["article_type"] as? Int
         article_url = dict["article_url"] as? String
         display_url = dict["display_url"] as? String
-//        if let displayURL = dict["display_url"] as? String {
-//            Alamofire.request(displayURL).responseString(completionHandler: { (resposn) in
-//                print("resposn====\(resposn)")
-//            })
-//        }
-        
         ban_comment = dict["ban_comment"] as? Int
         content = dict["content"] as? NSString
         abstract = dict["abstract"] as? String

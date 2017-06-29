@@ -75,10 +75,18 @@ class ConcernHeaderView: UIView {
     
     /// 展开按钮点击了
     @IBAction func unfoldButtonClicked() {
-        /// 更新描述的高度
-        descriptionLabelHeight.constant = follewDetail!.descriptionH! * 2
         unfoldButtonWidth.constant = 0
-        self.height = kConcernHeaderViewHieght + follewDetail!.descriptionH!
+        /// 更新描述的高度
+        if isIPhone5 {
+            descriptionLabelHeight.constant = follewDetail!.descriptionH! * 2
+            self.height = kConcernHeaderViewHieght + follewDetail!.descriptionH!
+        } else if isIPhone6 {
+            descriptionLabelHeight.constant = follewDetail!.descriptionH! * 2.5
+            self.height = kConcernHeaderViewHieght + follewDetail!.descriptionH! + 10
+        } else if isIPhone6P {
+            descriptionLabelHeight.constant = follewDetail!.descriptionH! * 3
+            self.height = kConcernHeaderViewHieght + follewDetail!.descriptionH! + 10
+        }
         UIView.animate(withDuration: 0.2, animations: {
             self.layoutIfNeeded()
         }, completion: { (_) in
