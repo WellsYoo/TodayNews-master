@@ -46,7 +46,11 @@ class VideoTopicCell: UITableViewCell {
                 headButton.kf.setImage(with: URL(string: user_info.avatar_url!)!, for: .normal)
                 nameLable.text = user_info.name!
             }
-            commentButton.setTitle(String(describing: videoTopic!.comment_count!), for: .normal)
+            if videoTopic!.comment_count! == 0 {
+                commentButton.setTitle("评论", for: .normal)
+            } else {
+                commentButton.setTitle(String(describing: videoTopic!.comment_count!), for: .normal)
+            }
             playCountLabel.text = videoTopic!.readCount! + "次播放"
             timeLabel.text = videoTopic!.video_duration!
         }

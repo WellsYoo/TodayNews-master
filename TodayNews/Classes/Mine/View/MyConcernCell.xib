@@ -40,6 +40,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="all_v_avatar_18x18_" translatesAutoresizingMaskIntoConstraints="NO" id="7Hk-1N-MRc">
+                        <rect key="frame" x="34" y="29" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="IHm-If-MPY"/>
+                            <constraint firstAttribute="width" constant="15" id="dg8-ed-78v"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
@@ -47,14 +54,20 @@
                 <constraint firstItem="rEX-nX-FgQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="MTK-hY-pqt"/>
                 <constraint firstItem="rEX-nX-FgQ" firstAttribute="top" secondItem="AvX-Lw-FMS" secondAttribute="bottom" id="SNR-Ms-z56"/>
                 <constraint firstAttribute="bottom" secondItem="rEX-nX-FgQ" secondAttribute="bottom" id="cC6-qb-4dU"/>
+                <constraint firstItem="7Hk-1N-MRc" firstAttribute="trailing" secondItem="AvX-Lw-FMS" secondAttribute="trailing" id="lAc-0u-uFu"/>
+                <constraint firstItem="7Hk-1N-MRc" firstAttribute="bottom" secondItem="AvX-Lw-FMS" secondAttribute="bottom" id="twl-xL-98s"/>
                 <constraint firstItem="AvX-Lw-FMS" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="vfZ-om-fra"/>
             </constraints>
             <size key="customSize" width="100" height="109"/>
             <connections>
+                <outlet property="avatarVImageView" destination="7Hk-1N-MRc" id="bHZ-jI-ZBe"/>
                 <outlet property="imageView" destination="AvX-Lw-FMS" id="Vhz-p7-VjS"/>
                 <outlet property="nameLabel" destination="rEX-nX-FgQ" id="f0M-Kz-Qb6"/>
             </connections>
             <point key="canvasLocation" x="59" y="-15"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="all_v_avatar_18x18_" width="18" height="18"/>
+    </resources>
 </document>

@@ -81,10 +81,8 @@ class WeiTouTiaoCell: UITableViewCell {
             readCountLabel.text = weitoutiao!.readCount! + "阅读"
             readCountLabel.isHidden = (weitoutiao?.readCount!.isEmpty)!
             createTimeLabel.text = weitoutiao!.createTime
-            if weitoutiao!.title!.isEqual(to: "") {
+            if weitoutiao!.content != nil {
                 contentLabel.text = String(describing: weitoutiao!.content!)
-            } else {
-                contentLabel.text = String(describing: weitoutiao!.title!)
             }
             if let video_detail_info = weitoutiao?.video_detail_info {
                 let detail_video_large_image = video_detail_info.detail_video_large_image
@@ -99,7 +97,24 @@ class WeiTouTiaoCell: UITableViewCell {
                 thumbCollectionView.snp.makeConstraints({ (make) in
                     make.top.left.bottom.right.equalTo(self.middleView)
                 })
+                // 1 or 2
+                let imageWidth1or2 = (screenWidth - kMargin * 2 - 6) * 0.5
+                // >= 3
+                let imageH = (screenWidth - kMargin * 2 - 12) / 3
+                switch weitoutiao!.thumb_image_list.count {
+                    case 1, 2:
+                        thumbCollectionView.height = imageWidth1or2
+                    case 3:
+                        thumbCollectionView.height = imageH
+                    case 4...6:
+                        thumbCollectionView.height = imageH * 2 + 3 + 20
+                    case 7...9:
+                        thumbCollectionView.height = imageH * 3 + 6 + 20
+                    default:
+                        height += 0
+                }
             }
+            
         }
     }
     
@@ -148,6 +163,21 @@ extension WeiTouTiaoCell: UICollectionViewDelegate, UICollectionViewDataSource {
         let thumbImage = weitoutiao?.thumb_image_list[indexPath.item]
         cell.thumbImageURL = (thumbImage?.url)!
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        // 1 or 2
+        let imageWidth1or2 = (screenWidth - kMargin * 2 - 6) * 0.5
+        // >= 3
+        let imageH = (screenWidth - kMargin * 2 - 12) / 3
+        switch weitoutiao!.thumb_image_list.count {
+        case 1, 2:
+            return CGSize(width: imageWidth1or2, height: imageWidth1or2)
+        case 3...9:
+            return CGSize(width: imageH, height: imageH)
+        default:
+            return CGSize(width: 0, height: 0)
+        }
     }
 }
 

@@ -147,10 +147,8 @@ class WeiTouTiao {
     var cellH: CGFloat? {
         get {
             var height: CGFloat = 0
-            if title!.isEqual(to: "") {
+            if content != nil {
                 height += contentH!
-            } else {
-                height += titleH!
             }
             if let videoDetailInfo = video_detail_info {
                 let width = screenWidth - kMargin * 2
@@ -170,7 +168,7 @@ class WeiTouTiao {
                     case 4...6:
                         height += (imageH * 2 + 3)
                     case 7...9:
-                        height += (imageH * 3 + 6)
+                        height += (imageH * 3 + 6 + 50)
                     default:
                         height += 0
                 }

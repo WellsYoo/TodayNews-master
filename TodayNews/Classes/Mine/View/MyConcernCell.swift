@@ -12,6 +12,8 @@ import Kingfisher
 
 class MyConcernCell: UICollectionViewCell {
     
+    @IBOutlet weak var avatarVImageView: UIImageView!
+    
     @IBOutlet weak var imageView: UIImageView!
 
     @IBOutlet weak var nameLabel: UILabel!
@@ -20,6 +22,9 @@ class MyConcernCell: UICollectionViewCell {
         didSet {
             imageView.kf.setImage(with: URL(string: (myConcern?.icon)!))
             nameLabel.text = myConcern?.name!
+            if let isVerify = myConcern!.is_verify {
+                avatarVImageView.isHidden = !isVerify
+            }
         }
     }
     

@@ -15,6 +15,12 @@ class ConcernHeaderView: UIView {
     @IBOutlet weak var bgImageView: UIImageView!
     /// 头像
     @IBOutlet weak var avaterImageView: UIImageView!
+    /// V
+    @IBOutlet weak var allVAvatarImageView: UIImageView!
+    /// 头条认证
+    @IBOutlet weak var verfiedLabel: UILabel!
+    /// 认证内容
+    @IBOutlet weak var verifiedContenLabel: UILabel!
     /// 名称
     @IBOutlet weak var nameLabel: UILabel!
     /// 关注按钮
@@ -69,6 +75,16 @@ class ConcernHeaderView: UIView {
                 button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
                 button.tag = index
                 bottomView.addSubview(button)
+            }
+            allVAvatarImageView.isHidden = !follewDetail!.user_verified!
+            if follewDetail!.user_verified! {
+                verfiedLabel.isHidden = false
+                verifiedContenLabel.isHidden = false
+                verfiedLabel.text = "头条认证："
+                verifiedContenLabel.text = follewDetail!.user_auth_info!.auth_info!
+            } else {
+                verfiedLabel.isHidden = true
+                verifiedContenLabel.isHidden = true
             }
         }
     }

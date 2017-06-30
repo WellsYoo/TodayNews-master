@@ -57,7 +57,7 @@ let kWeiTouTiaoHeaderHieght: CGFloat = 45
 /// 我的界面 头部视图 的高度
 let kMineHeaderViewHieght: CGFloat = screenHeight * 0.38
 /// 关注详情界面 头部视图 的高度
-var kConcernHeaderViewHieght: CGFloat = 306
+var kConcernHeaderViewHieght: CGFloat = 330
 
 
 /// iPhone 5
