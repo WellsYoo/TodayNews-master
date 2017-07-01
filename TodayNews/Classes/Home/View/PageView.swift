@@ -9,8 +9,6 @@ import UIKit
 import SnapKit
 
 let buttonW: CGFloat = 40
-let homeTopIdentifier: String = "homeTopIdentifier"
-
 
 protocol PageViewDelegate {
     /// 右侧按钮点击
@@ -31,7 +29,7 @@ class PageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate lazy var titleScrollView: PageTitleView = {
+    lazy var titleScrollView: PageTitleView = {
         let titleScrollView = PageTitleView()
         return titleScrollView
     }()
@@ -39,17 +37,15 @@ class PageView: UIView {
     // 懒加载 右侧按钮
     fileprivate lazy var rightButton: UIButton = {
         let rightButton = UIButton()
-        rightButton.setImage(UIImage(named: "add_channel_titlbar_16x16_"), for: .normal)
+        rightButton.setImage(UIImage(named: "add_channel_titlbar_thin_new_16x16_"), for: .normal)
         rightButton.setTitleColor(UIColor.white, for: .normal)
         rightButton.addTarget(self, action: #selector(rightButtonClicked), for: .touchUpInside)
         return rightButton
     }()
     
-    fileprivate lazy var pageContentView: PageContentView = {
+    lazy var pageContentView: PageContentView = {
         let pageContentView = PageContentView.collectionView(frame: CGRect.zero)
-        pageContentView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: homeTopIdentifier)
-        pageContentView.delegate = self
-        pageContentView.dataSource = self
+        pageContentView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "homeTopicViewCell")
         return pageContentView
     }()
 }
@@ -68,6 +64,7 @@ extension PageView {
             make.top.left.equalTo(self)
             make.right.equalTo(rightButton.snp.left)
             make.bottom.equalTo(pageContentView.snp.top)
+            make.height.equalTo(buttonW)
         }
         
         rightButton.snp.makeConstraints { (make) in
@@ -87,23 +84,4 @@ extension PageView {
         delegate?.pageViewRightButtonClicked()
     }
     
-}
-
-// MARK: - UICollectionViewDelegate
-extension PageView: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: homeTopIdentifier, for: indexPath)
-        let topVC = HomeTopViewController()
-        cell.contentView.addSubview(topVC.view)
-        
-        topVC.view.snp.makeConstraints { (make) in
-            make.top.left.bottom.right.equalTo(cell)
-        }
-        return cell
-    }
 }

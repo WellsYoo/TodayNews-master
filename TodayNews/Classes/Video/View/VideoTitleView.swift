@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-protocol VideoTitleViewDelegate: NSObjectProtocol {
+protocol VideoTitleViewDelegate: class {
     /// 点击了标题
     func videoTitle(videoTitle: VideoTitleView, didSelectVideoTitleLable titleLabel: TitleLabel)
     func videoTitle(videoTitle: VideoTitleView, didClickSearchButton searchButton: UIButton)
@@ -50,7 +50,7 @@ class VideoTitleView: UIView {
     }
     
     /// 设置滚动视图
-    fileprivate lazy var scrollView: UIScrollView = {
+    lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
         return scrollView

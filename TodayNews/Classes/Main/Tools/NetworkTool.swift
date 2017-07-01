@@ -16,7 +16,7 @@ class NetworkTool {
     
     /// -------------------------- 首 页 home -------------------------
     /// 获取首页顶部标题内容
-    class func loadHomeTitlesData(finished:@escaping (_ topTitles: [HomeTopTitle])->()) {
+    class func loadHomeTitlesData(finished:@escaping (_ topTitles: [HomeTopTitle], _ homeTopicVCs: [HomeTopViewController])->()) {
         let url = BASE_URL + "article/category/get_subscribed/v1/?"
         let params = ["device_id": device_id,
                       "aid": 13,
@@ -30,11 +30,14 @@ class NetworkTool {
                 let dataDict = json["data"].dictionary
                 if let data = dataDict!["data"]!.arrayObject {
                     var topics = [HomeTopTitle]()
+                    var homeTopicVCs = [HomeTopViewController]()
                     for dict in data {
                         let title = HomeTopTitle(dict: dict as! [String: AnyObject])
                         topics.append(title)
+                        let homeTopicVC = HomeTopViewController()
+                        homeTopicVCs.append(homeTopicVC)
                     }
-                    finished(topics)
+                    finished(topics, homeTopicVCs)
                 }
             }
         }
@@ -62,6 +65,8 @@ class NetworkTool {
                     do {
                         let dict = try JSONSerialization.jsonObject(with: contentData as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
                         let topic = WeiTouTiao(dict: dict as! [String : AnyObject])
+                        print(dict)
+                        print("---------------------------------")
                         topics.append(topic)
                     } catch {
                         
@@ -141,8 +146,6 @@ class NetworkTool {
                         let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
                         let weitoutiao = WeiTouTiao(dict: dict as! [String : AnyObject])
                         weitoutiaos.append(weitoutiao)
-                        print(dict)
-                        print("---------------")
                     }
                 }
                 completionHandler(weitoutiaos)
