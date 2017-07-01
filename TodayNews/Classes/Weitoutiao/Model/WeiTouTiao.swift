@@ -134,7 +134,8 @@ class WeiTouTiao {
     var content: NSString?
     var contentH: CGFloat? {
         get {
-            return content?.getTextHeight(width: screenWidth - kMargin * 2)
+            let height = content!.getTextHeight(width: screenWidth - kMargin * 2)
+            return height
         }
     }
     
@@ -168,7 +169,7 @@ class WeiTouTiao {
                     case 4...6:
                         height += (imageH * 2 + 3)
                     case 7...9:
-                        height += (imageH * 3 + 6 + 50)
+                        height += (imageH * 3 + 6)
                     default:
                         height += 0
                 }

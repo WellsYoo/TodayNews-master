@@ -29,6 +29,6 @@ extension NSString {
     /// 计算文本的高度
     func getTextHeight(width: CGFloat) -> CGFloat {
         let size = CGSize(width: width, height: CGFloat(MAXFLOAT))
-        return (self.boundingRect(with: size, options: .usesFontLeading, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil).size.height)
+        return (self.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil).size.height)
     }
 }

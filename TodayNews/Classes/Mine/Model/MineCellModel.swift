@@ -136,9 +136,9 @@ class FollowDetail {
             top_tab.append(topTab)
         }
         if let userAuthInfo = dict["user_auth_info"] {
-            if !userAuthInfo.isEmpty {
-                let data = userAuthInfo.data(using: String.Encoding.utf8.rawValue)! as Data
-                let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            let data = userAuthInfo.data(using: String.Encoding.utf8.rawValue)! as Data
+            let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            if dict != nil {
                 user_auth_info = UserAuthInfo(dict: dict as! [String : AnyObject])
             }
         }

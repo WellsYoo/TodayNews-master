@@ -39,6 +39,7 @@ class WeiTouTiaoViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: String(describing: WeiTouTiaoCell.self), bundle: nil), forCellReuseIdentifier: String(describing: WeiTouTiaoCell.self))
         return tableView
     }()
     
@@ -124,7 +125,7 @@ extension WeiTouTiaoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed(String(describing: WeiTouTiaoCell.self), owner: nil, options: nil)?.last as! WeiTouTiaoCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WeiTouTiaoCell.self), for: indexPath) as! WeiTouTiaoCell
         cell.weitoutiao = microNews[indexPath.row]
         cell.delegate = self
         return cell

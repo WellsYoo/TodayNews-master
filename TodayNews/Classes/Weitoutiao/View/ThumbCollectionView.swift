@@ -24,6 +24,7 @@ class ThumbCollectionView: UICollectionView {
         let layout = CollectionViewFlowLayout()
         return ThumbCollectionView(frame: frame, collectionViewLayout: layout)
     }
+    
 
 }
 
@@ -32,8 +33,8 @@ class CollectionViewFlowLayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()
         //定义每个UICollectionView 的大小
-        let itemWidth = (screenWidth - kMargin * 2 - 12) / 3
-        itemSize = CGSize(width: itemWidth, height: itemWidth)
+//        let itemWidth = (screenWidth - kMargin * 2 - 12) / 3
+//        itemSize = CGSize(width: itemWidth, height: itemWidth)
         //定义每个UICollectionView 横向的间距
         minimumLineSpacing = 0;
         //定义每个UICollectionView 纵向的间距
@@ -41,4 +42,6 @@ class CollectionViewFlowLayout: UICollectionViewFlowLayout {
         //定义每个UICollectionView 的边距距
         self.sectionInset = UIEdgeInsetsMake(0, 3, 3, 3);//上左下右
     }
+    
+    
 }

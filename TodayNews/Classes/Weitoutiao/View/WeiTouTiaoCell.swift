@@ -98,12 +98,18 @@ class WeiTouTiaoCell: UITableViewCell {
                     make.top.left.bottom.right.equalTo(self.middleView)
                 })
                 // 1 or 2
-                let imageWidth1or2 = (screenWidth - kMargin * 2 - 6) * 0.5
+                let imageHeight1or2 = (screenWidth - kMargin * 2 - 6) * 0.5
                 // >= 3
                 let imageH = (screenWidth - kMargin * 2 - 12) / 3
                 switch weitoutiao!.thumb_image_list.count {
-                    case 1, 2:
-                        thumbCollectionView.height = imageWidth1or2
+                    case 1:
+                        thumbCollectionView.snp.remakeConstraints({ (make) in
+                            make.width.equalTo(screenWidth * 0.7)
+                            make.top.left.equalTo(self.middleView)
+                            make.height.equalTo(imageHeight1or2)
+                        })
+                    case 2:
+                        thumbCollectionView.height = imageHeight1or2
                     case 3:
                         thumbCollectionView.height = imageH
                     case 4...6:
@@ -147,12 +153,10 @@ class WeiTouTiaoCell: UITableViewCell {
         thumbCollectionView.dataSource = self
         return thumbCollectionView
     }()
-    
-    
 }
 
 // MARK: - UICollectionViewDelegate
-extension WeiTouTiaoCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension WeiTouTiaoCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (weitoutiao?.thumb_image_list.count)!
@@ -165,14 +169,16 @@ extension WeiTouTiaoCell: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        // 1 or 2
-        let imageWidth1or2 = (screenWidth - kMargin * 2 - 6) * 0.5
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        //  2
+        let imageWidthIs2 = (screenWidth - kMargin * 2 - 6) * 0.5
         // >= 3
         let imageH = (screenWidth - kMargin * 2 - 12) / 3
         switch weitoutiao!.thumb_image_list.count {
-        case 1, 2:
-            return CGSize(width: imageWidth1or2, height: imageWidth1or2)
+        case 1:
+            return CGSize(width: screenWidth * 0.7, height: imageWidthIs2)
+        case 2:
+            return CGSize(width: imageWidthIs2, height: imageWidthIs2)
         case 3...9:
             return CGSize(width: imageH, height: imageH)
         default:
