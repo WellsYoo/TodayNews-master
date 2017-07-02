@@ -13,6 +13,8 @@
 		94189EDF1F05331B000864A7 /* TopTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94189EDD1F05331B000864A7 /* TopTabViewController.swift */; };
 		94189EE01F05331B000864A7 /* TopTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94189EDE1F05331B000864A7 /* TopTabViewController.xib */; };
 		946D2D8D1EF7763B0060A9C3 /* NavTitleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D2D8C1EF7763B0060A9C3 /* NavTitleStyle.swift */; };
+		947625B51F092A7300457295 /* HomeTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947625B31F092A7300457295 /* HomeTopicCell.swift */; };
+		947625B61F092A7300457295 /* HomeTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947625B41F092A7300457295 /* HomeTopicCell.xib */; };
 		947BE9391EFB8A47009E7961 /* MineOtherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947BE9371EFB8A47009E7961 /* MineOtherCell.swift */; };
 		947BE93A1EFB8A47009E7961 /* MineOtherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947BE9381EFB8A47009E7961 /* MineOtherCell.xib */; };
 		947BE93D1EFB8A5E009E7961 /* MineFirstSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947BE93B1EFB8A5E009E7961 /* MineFirstSectionCell.swift */; };
@@ -121,6 +123,8 @@
 		94189EDD1F05331B000864A7 /* TopTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTabViewController.swift; sourceTree = "<group>"; };
 		94189EDE1F05331B000864A7 /* TopTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopTabViewController.xib; sourceTree = "<group>"; };
 		946D2D8C1EF7763B0060A9C3 /* NavTitleStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavTitleStyle.swift; sourceTree = "<group>"; };
+		947625B31F092A7300457295 /* HomeTopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTopicCell.swift; sourceTree = "<group>"; };
+		947625B41F092A7300457295 /* HomeTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTopicCell.xib; sourceTree = "<group>"; };
 		947BE9371EFB8A47009E7961 /* MineOtherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineOtherCell.swift; sourceTree = "<group>"; };
 		947BE9381EFB8A47009E7961 /* MineOtherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineOtherCell.xib; sourceTree = "<group>"; };
 		947BE93B1EFB8A5E009E7961 /* MineFirstSectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineFirstSectionCell.swift; sourceTree = "<group>"; };
@@ -344,6 +348,8 @@
 				94B916361EF21EE200AC91B9 /* SearchDefaultBackgroundView.swift */,
 				94B916371EF21EE200AC91B9 /* SearchDefaultBackgroundView.xib */,
 				94B916381EF21EE200AC91B9 /* SearchNavigationView.swift */,
+				947625B31F092A7300457295 /* HomeTopicCell.swift */,
+				947625B41F092A7300457295 /* HomeTopicCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -688,6 +694,7 @@
 				94B9169B1EF21EE300AC91B9 /* WeiTouTiaoHeader.storyboard in Resources */,
 				EFA225131EFD75540035B92F /* MyConcernCell.xib in Resources */,
 				94B9168E1EF21EE300AC91B9 /* MineCell.plist in Resources */,
+				947625B61F092A7300457295 /* HomeTopicCell.xib in Resources */,
 				94B916B21EF4041E00AC91B9 /* ThumbCollectionViewCell.xib in Resources */,
 				94189ECB1F03CB56000864A7 /* ConcernNavigationView.xib in Resources */,
 				94A76F481F033EE2008BFDE5 /* ConcernHeaderView.xib in Resources */,
@@ -798,6 +805,7 @@
 				94B916A11EF21EE300AC91B9 /* WeitoutiaoHeaderView.swift in Sources */,
 				94B916AE1EF4039B00AC91B9 /* ThumbCollectionView.swift in Sources */,
 				94B9169A1EF21EE300AC91B9 /* TellFriendsViewController.swift in Sources */,
+				947625B51F092A7300457295 /* HomeTopicCell.swift in Sources */,
 				94B916831EF21EE300AC91B9 /* MineViewController.swift in Sources */,
 				94B916A81EF35EAE00AC91B9 /* String+Extension.swift in Sources */,
 				94B9167F1EF21EE300AC91B9 /* UIView+Extension.swift in Sources */,
