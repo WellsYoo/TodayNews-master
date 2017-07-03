@@ -11,6 +11,8 @@ import UIKit
 import Alamofire
 
 class WeiTouTiao {
+    ///  置顶
+    var label: String?
     /// 过滤内容
     var filter_words = [WTTFilterWord]()
     
@@ -243,6 +245,7 @@ class WeiTouTiao {
     
     init(dict: [String: AnyObject]) {
         
+        label = dict["label"] as? String
         keywords = dict["keywords"] as? String
         
         videoDuration = dict["video_duration"] as? Int

@@ -22,7 +22,7 @@ class HomeTopViewController: UIViewController {
         
         NetworkTool.loadHomeCategoryNewsFeed(category: homeTopTitle!.category!) { (nowTime, newsTopics) in
             self.newsTopics = newsTopics
-//            self.tableView.reloadData()
+            self.tableView.reloadData()
         }
     }
     
@@ -33,7 +33,7 @@ class HomeTopViewController: UIViewController {
         tableView.rowHeight = 232
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UINib(nibName: String(describing: VideoTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: VideoTopicCell.self))
+        tableView.register(UINib(nibName: String(describing: HomeTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: HomeTopicCell.self))
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         return tableView
     }()
@@ -59,14 +59,14 @@ extension HomeTopViewController {
 extension HomeTopViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return newsTopics.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTopicCell.self))
-//        cell.videoTopic = newsTopics[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HomeTopicCell.self)) as! HomeTopicCell
+        cell.weitoutiao = newsTopics[indexPath.row]
 //        cell.delegate = self
-        return cell!
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
