@@ -40,7 +40,7 @@ class VideoTopicCell: UITableViewCell {
     
     var videoTopic: WeiTouTiao? {
         didSet {
-            bgImageButton.kf.setBackgroundImage(with: URL(string: (videoTopic?.video_detail_info?.detail_video_large_image?.url)!), for: .normal)
+            bgImageButton.kf.setBackgroundImage(with: URL(string: (videoTopic!.video_detail_info?.detail_video_large_image?.url)!), for: .normal)
             titleLabel.text = String(describing: videoTopic!.title!)
             if let user_info = videoTopic!.user_info {
                 headButton.kf.setImage(with: URL(string: user_info.avatar_url!)!, for: .normal)

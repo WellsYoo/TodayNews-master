@@ -16,7 +16,7 @@ class NetworkTool {
     
     /// -------------------------- 首 页 home -------------------------
     /// 获取首页顶部标题内容
-    class func loadHomeTitlesData(finished:@escaping (_ topTitles: [HomeTopTitle], _ homeTopicVCs: [HomeTopViewController])->()) {
+    class func loadHomeTitlesData(fromViewController: String,completionHandler:@escaping (_ topTitles: [TopicTitle], _ homeTopicVCs: [TopicViewController])->()) {
         let url = BASE_URL + "article/category/get_subscribed/v1/?"
         let params = ["device_id": device_id,
                       "aid": 13,
@@ -29,22 +29,25 @@ class NetworkTool {
                 let json = JSON(value)
                 let dataDict = json["data"].dictionary
                 if let data = dataDict!["data"]!.arrayObject {
-                    var titles = [HomeTopTitle]()
-                    var homeTopicVCs = [HomeTopViewController]()
+                    var titles = [TopicTitle]()
+                    var homeTopicVCs = [TopicViewController]()
+                    
                     // 添加推荐标题
                     let recommendDict = ["category": "__all__", "name": "推荐"]
-                    let recommend = HomeTopTitle(dict: recommendDict as [String : AnyObject])
+                    let recommend = TopicTitle(dict: recommendDict as [String : AnyObject])
                     titles.append(recommend)
                     // 添加控制器
-                    let firstVC = HomeTopViewController()
+                    let firstVC = TopicViewController()
+                    firstVC.topicTitle = recommend
                     homeTopicVCs.append(firstVC)
                     for dict in data {
-                        let title = HomeTopTitle(dict: dict as! [String: AnyObject])
-                        titles.append(title)
-                        let homeTopicVC = HomeTopViewController()
+                        let topicTitle = TopicTitle(dict: dict as! [String: AnyObject])
+                        titles.append(topicTitle)
+                        let homeTopicVC = TopicViewController()
+                        homeTopicVC.topicTitle = topicTitle
                         homeTopicVCs.append(homeTopicVC)
                     }
-                    finished(titles, homeTopicVCs)
+                    completionHandler(titles, homeTopicVCs)
                 }
             }
         }
@@ -52,7 +55,7 @@ class NetworkTool {
     }
     
     /// 获取首页不同分类的新闻内容(和视频内容使用一个接口)
-    class func loadHomeCategoryNewsFeed(category: String, finished:@escaping (_ nowTime: TimeInterval,_ newsTopics: [WeiTouTiao])->()) {
+    class func loadHomeCategoryNewsFeed(category: String, completionHandler:@escaping (_ nowTime: TimeInterval,_ newsTopics: [WeiTouTiao])->()) {
         let url = BASE_URL + "api/news/feed/v39/?"
         let params = ["device_id": device_id,
                       "category": category,
@@ -79,7 +82,7 @@ class NetworkTool {
                         
                     }
                 }
-                finished(nowTime, topics)
+                completionHandler(nowTime, topics)
             }
         }
     }
@@ -87,7 +90,7 @@ class NetworkTool {
     /// -------------------------- 视 频 video --------------------------
     
     /// 获取视频顶部标题内容
-    class func loadVideoTitlesData(completionHandler:@escaping (_ videoTitles: [TopTitle], _ videoTopicVCs: [VideoTopicController])->()) {
+    class func loadVideoTitlesData(completionHandler:@escaping (_ videoTitles: [TopicTitle], _ videoTopicVCs: [VideoTopicController])->()) {
         let url = BASE_URL + "video_api/get_category/v1/?"
         let params = ["device_id": device_id,
                       "iid": IID]
@@ -98,11 +101,20 @@ class NetworkTool {
             if let value = response.result.value {
                 let json = JSON(value)
                 if let data = json["data"].arrayObject {
-                    var titles = [TopTitle]()
+                    var titles = [TopicTitle]()
                     var videoTopicVCs = [VideoTopicController]()
+                    // 添加推荐标题
+                    let recommendDict = ["category": "video", "name": "推荐"]
+                    let recommend = TopicTitle(dict: recommendDict as [String : AnyObject])
+                    titles.append(recommend)
+                    // 添加控制器
+                    let firstVC = VideoTopicController()
+                    firstVC.videoTitle = recommend
+                    videoTopicVCs.append(firstVC)
                     for dict in data {
-                        let title = TopTitle(dict: dict as! [String: AnyObject])
+                        let title = TopicTitle(dict: dict as! [String: AnyObject])
                         let videoTopicVC = VideoTopicController()
+                        videoTopicVC.videoTitle = title
                         videoTopicVCs.append(videoTopicVC)
                         titles.append(title)
                     }

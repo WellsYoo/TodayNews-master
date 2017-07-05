@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol HomeTopicCellDelegate: class {
+    /// 用户头像区域点击
+    func videoheadTopicCellButtonClick(videoTopic: WeiTouTiao)
+}
+
 class HomeTopicCell: UITableViewCell {
+    
+    weak var delegate: HomeTopicCellDelegate?
     /// 新闻标题
     @IBOutlet weak var newsTitleLabel: UILabel!
     /// 置顶 / 热
@@ -53,7 +60,7 @@ class HomeTopicCell: UITableViewCell {
                 specicalLabelLeading.constant = 0
                 specicalLabel.isHidden = true
             }
-            commentLabel.text = "\(weitoutiao!.comment_count!)" + "评论"
+//            commentLabel.text = "\(weitoutiao!.comment_count!)" + "评论"
             createTimeLabel.text = weitoutiao!.createTime
             
         }

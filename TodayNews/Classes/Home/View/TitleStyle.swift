@@ -15,7 +15,7 @@ class TitleStyle {
     var selectColor: UIColor = UIColor.globalRedColor()
     var fontSize: CGFloat = 16.0
     
-    var itemMargin: CGFloat = 30
+    var itemMargin: CGFloat = 15
     
     var scrollLineHeight: CGFloat = 2
     var scrollLineColor: UIColor = UIColor.globalRedColor()

@@ -72,7 +72,7 @@ class FollowDetailViewController: UIViewController {
     }()
     
     /// 设置分页
-    fileprivate lazy var pageContentView: PageContentView = {
+    fileprivate lazy var pageContentView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)//上左下右
@@ -81,7 +81,7 @@ class FollowDetailViewController: UIViewController {
         //定义每个UICollectionView 纵向的间距
         layout.minimumInteritemSpacing = 0
         layout.itemSize = CGSize(width: screenWidth, height: screenHeight - kNavBarHeight - kTabBarHeight)
-        let pageContentView = PageContentView(frame: CGRect.zero, collectionViewLayout: layout)
+        let pageContentView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         pageContentView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "FollowDetailTopTabCell")
         pageContentView.delegate = self
         pageContentView.dataSource = self

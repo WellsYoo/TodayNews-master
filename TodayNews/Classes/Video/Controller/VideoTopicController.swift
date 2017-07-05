@@ -11,13 +11,13 @@ import UIKit
 class VideoTopicController: UIViewController {
 
     // 记录点击的顶部标题
-    var videoTitle: TopTitle?
+    var videoTitle: TopicTitle?
     // 存放新闻主题的数组
     fileprivate var newsTopics = [WeiTouTiao]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupUI()
 
         NetworkTool.loadHomeCategoryNewsFeed(category: videoTitle!.category!) { (nowTime, newsTopics) in
@@ -30,7 +30,7 @@ class VideoTopicController: UIViewController {
         let tableView = UITableView()
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
-        tableView.rowHeight = 232
+        tableView.rowHeight = screenHeight * 0.4
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: String(describing: VideoTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: VideoTopicCell.self))

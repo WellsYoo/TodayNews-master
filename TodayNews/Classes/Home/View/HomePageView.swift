@@ -8,25 +8,61 @@
 
 import UIKit
 
+private let kContentCellID = "kContentCellID"
+
+protocol HomePageViewDelegate : class {
+    func pageView(_ pageView : HomePageView, targetIndex : Int)
+}
+
 class HomePageView: UIView {
 
-    fileprivate var titles: [HomeTopTitle]
-    fileprivate var childVcs: [HomeTopViewController]
-    fileprivate var parentVc: UIViewController
-    fileprivate var style: TitleStyle
+    weak var homePageDelegate: HomePageViewDelegate?
     
-    fileprivate var titleView: HomeTitleView!
+    fileprivate var startOffsetX: CGFloat = 0
+    fileprivate var isForbidScroll: Bool = false
     
-    init(frame: CGRect, titles: [HomeTopTitle], childVcs: [HomeTopViewController], parentVc: UIViewController, style: TitleStyle) {
-        self.titles = titles
-        self.childVcs = childVcs
-        self.parentVc = parentVc
-        self.style = style
-        
+    var titles: [TopicTitle]? {
+        didSet {
+            titleView.titles = titles
+        }
+    }
+    
+    var childVcs: [TopicViewController]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupUI()
+        
     }
+        
+    fileprivate lazy var titleView: HomeTitleView = {
+        let titleView = HomeTitleView()
+        titleView.titleDelegate = self
+        return titleView
+    }()
+    
+    lazy var collectionView : UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: screenWidth, height: screenHeight - kNavBarHeight - 40)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: layout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = UIColor.white
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: kContentCellID)
+        collectionView.isPagingEnabled = true
+        collectionView.scrollsToTop = false
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
+    }()
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -36,26 +72,80 @@ class HomePageView: UIView {
 extension HomePageView {
     
     fileprivate func setupUI() {
+        backgroundColor = UIColor.white
         
-        setupTitleView()
-        
-        setupContentView()
-    }
-    
-    private func setupTitleView() {
-        let titleFrame = CGRect(x: 0, y: 0, width: bounds.width, height: style.titleHeight)
-        titleView = HomeTitleView(frame: titleFrame, titles: titles, style : style)
         addSubview(titleView)
+        addSubview(collectionView)
+        
+        titleView.snp.makeConstraints { (make) in
+            make.top.left.right.equalTo(self)
+            make.height.equalTo(40)
+            make.bottom.equalTo(collectionView.snp.top)
+        }
+        
+        collectionView.snp.makeConstraints { (make) in
+            make.left.bottom.right.equalTo(self)
+        }
+        
+        homePageDelegate = titleView
+    }
+}
+
+extension HomePageView : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.width, height: collectionView.height)
     }
     
-    private func setupContentView() {
-        // 取到类型一定是可选类型
-        let contentFrame = CGRect(x: 0, y: style.titleHeight, width: bounds.width, height: bounds.height - style.titleHeight)
-        let contentView = HomeContentView(frame: contentFrame, titles: titles, childVcs: childVcs, parentVc: parentVc)
-        addSubview(contentView)
-        contentView.backgroundColor = UIColor.white
-        // contentView&titleView代理设置
-        titleView.delegate = contentView
-        contentView.delegate = titleView as? HomeContentViewDelegate
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return childVcs!.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kContentCellID, for: indexPath)
+        for subView in cell.contentView.subviews {
+            subView.removeFromSuperview()
+        }
+        let childVc = childVcs![indexPath.item]
+        childVc.view.frame = cell.contentView.bounds
+        cell.contentView.addSubview(childVc.view)
+        return cell
+    }
+}
+
+// MARK:- UICollectionView的delegate
+extension HomePageView : UICollectionViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        contentEndScroll()
+        scrollView.isScrollEnabled = true
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            contentEndScroll()
+        } else {
+            scrollView.isScrollEnabled = false
+        }
+    }
+    
+    private func contentEndScroll() {
+        // 获取滚动到的位置
+        let currentIndex = Int(collectionView.contentOffset.x / collectionView.bounds.width)
+        // 通知titleView进行调整
+        homePageDelegate?.pageView(self, targetIndex: currentIndex)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isForbidScroll = false
+        
+        startOffsetX = scrollView.contentOffset.x
+    }
+}
+
+// MARK:- 遵守HYTitleViewDelegate
+extension HomePageView : HomeTitleViewDelegate {
+    func titleView(_ titleView: HomeTitleView, targetIndex: Int) {
+        let indexPath = IndexPath(item: targetIndex, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
     }
 }

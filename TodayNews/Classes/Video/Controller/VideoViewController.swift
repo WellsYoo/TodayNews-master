@@ -8,40 +8,60 @@
 // 2.视频 控制器
 import UIKit
 
+protocol VideoViewControllerDelegate : class {
+    func videoViewController(_ videoViewController : VideoViewController, targetIndex : Int)
+}
+
 class VideoViewController: UIViewController {
-    // 当前选中的 titleLabel 的 上一个 titleLabel
-    var oldIndex: Int = 0
     
-    var titles = [TopTitle]()
-    var videoTopicVCs = [VideoTopicController]()
+    weak var delegate: VideoViewControllerDelegate?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    fileprivate var startOffsetX: CGFloat = 0
+    fileprivate var isForbidScroll: Bool = false
+    
+    var titles = [TopicTitle]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupUI()
+        self.setupUI()
+        
+        NetworkTool.loadVideoTitlesData { (videoTitles, videoTopicVCs) in
+            self.titles = videoTitles
+            self.titleView.titles = videoTitles
+            for childVC in videoTopicVCs {
+                self.addChildViewController(childVC)
+            }
+            self.collectionView.reloadData()
+        }
     }
-    
-    /// 设置分页
-    fileprivate lazy var pageContentView: PageContentView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)//上左下右
-        //定义每个UICollectionView 横向的间距
-        layout.minimumLineSpacing = 0
-        //定义每个UICollectionView 纵向的间距
-        layout.minimumInteritemSpacing = 0
-        layout.itemSize = CGSize(width: screenWidth, height: screenHeight - kNavBarHeight - kTabBarHeight)
-        let pageContentView = PageContentView(frame: CGRect.zero, collectionViewLayout: layout)
-        pageContentView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "VideoViewCell")
-        pageContentView.delegate = self
-        pageContentView.dataSource = self
-        return pageContentView
-    }()
     
     fileprivate lazy var titleView: VideoTitleView = {
         let titleView = VideoTitleView()
         titleView.delegate = self
         return titleView
+    }()
+    
+    fileprivate lazy var collectionView : UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: screenWidth, height: screenHeight - kNavBarHeight - 40)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "VideoTopicViewCell")
+        collectionView.isPagingEnabled = true
+        collectionView.scrollsToTop = false
+        collectionView.backgroundColor = UIColor.white
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
     }()
     
     override func didReceiveMemoryWarning() {
@@ -55,76 +75,81 @@ extension VideoViewController {
     // 设置 UI
     fileprivate func setupUI() {
         view.backgroundColor = UIColor.globalBackgroundColor()
-        //不要自动调整inset
+        navigationController?.navigationBar.shadowImage = UIImage()
+        // 不要自动调整inset
         automaticallyAdjustsScrollViewInsets = false
+        // 设置标题view
         navigationItem.titleView = titleView
         
-        view.addSubview(pageContentView)
+        view.addSubview(collectionView)
         
-        pageContentView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(view)
+        collectionView.snp.makeConstraints { (make) in
             make.top.equalTo(view.snp.top).offset(kNavBarHeight)
-            make.bottom.equalTo(view.snp.bottom).offset(-kTabBarHeight)
+            make.left.bottom.right.equalTo(view)
         }
         
-        titleView.videoTitleArrayClosure { (titleArray, videoTopicVCs) in
-            self.titles = titleArray
-            for vc in videoTopicVCs {
-                self.addChildViewController(vc)
-            }
-            self.pageContentView.reloadData()
-        }
     }
 }
 
-// MARK: - VideoTitleViewDelegate
-extension VideoViewController: VideoTitleViewDelegate {
-    /// VideoTitleViewDelegate
-    func videoTitle(videoTitle: VideoTitleView, didClickSearchButton searchButton: UIButton) {
-        print("点击了搜索按钮")
+extension VideoViewController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.width, height: collectionView.height)
     }
     
-    func videoTitle(videoTitle: VideoTitleView, didSelectVideoTitleLable titleLabel: TitleLabel) {
-        var offset = self.pageContentView.contentOffset
-        offset.x = CGFloat(titleLabel.tag) * self.pageContentView.width
-        self.pageContentView.setContentOffset(offset, animated: true)
-    }
-}
-
-// MARK: - UIScrollViewDelegate
-extension VideoViewController: UIScrollViewDelegate {
-    // scrollView 刚开始滑动时
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        // 当前索引
-        let index = Int(scrollView.contentOffset.x / screenWidth)
-        // 记录刚开始拖拽是的 index
-        self.oldIndex = index
-    }
-
-    /// scrollView 结束滑动
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        // 当前索引
-        let index = Int(scrollView.contentOffset.x / screenWidth)
-        // 与刚开始拖拽时的 index 进行比较
-        // 检查是否需要改变 label 的位置
-        titleView.adjustVideoTitleOffSetToCurrentIndex(currentIndex: index, oldIndex: self.oldIndex)
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-extension VideoViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return titles.count
+        return childViewControllers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoViewCell", for: indexPath)
-        let topVC = childViewControllers[indexPath.row] as! VideoTopicController
-        topVC.videoTitle = titles[indexPath.row]
-        cell.contentView.addSubview(topVC.view)
-        topVC.view.snp.makeConstraints { (make) in
-            make.top.left.bottom.right.equalTo(cell)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoTopicViewCell", for: indexPath)
+        for subView in cell.contentView.subviews {
+            subView.removeFromSuperview()
         }
+        let childVc = childViewControllers[indexPath.item]
+        childVc.view.frame = cell.contentView.bounds
+        cell.contentView.addSubview(childVc.view)
         return cell
+    }
+}
+
+// MARK:- UICollectionView的delegate
+extension VideoViewController : UICollectionViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        contentEndScroll()
+        scrollView.isScrollEnabled = true
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            contentEndScroll()
+        } else {
+            scrollView.isScrollEnabled = false
+        }
+    }
+    
+    private func contentEndScroll() {
+        // 获取滚动到的位置
+        let currentIndex = Int(collectionView.contentOffset.x / collectionView.bounds.width)
+        // 通知titleView进行调整
+        delegate?.videoViewController(self, targetIndex: currentIndex)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isForbidScroll = false
+        
+        startOffsetX = scrollView.contentOffset.x
+    }
+}
+
+// MARK:- 遵守HYTitleViewDelegate
+extension VideoViewController : VideoTitleViewDelegate {
+    func titleView(_ titleView: VideoTitleView, targetIndex : Int) {
+        let indexPath = IndexPath(item: targetIndex, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+    }
+    
+    func videoTitle(videoTitle: VideoTitleView, didClickSearchButton searchButton: UIButton) {
+        
     }
 }

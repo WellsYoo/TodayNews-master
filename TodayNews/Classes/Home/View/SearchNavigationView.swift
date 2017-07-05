@@ -52,6 +52,7 @@ class SearchNavigationView: UIView {
 extension SearchNavigationView {
     
     fileprivate func setupUI() {
+        
         // 添加搜索框
         addSubview(searchBar)
         // 添加取消按钮
