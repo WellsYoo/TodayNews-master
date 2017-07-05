@@ -12,6 +12,16 @@ class HomeTopViewController: UIViewController {
 
     // 记录点击的顶部标题
     var homeTopTitle: HomeTopTitle?
+    var fromController: String? {
+        didSet {
+            if fromController == String(describing: HomeViewController.self) {
+                tableView.register(UINib(nibName: String(describing: HomeTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: HomeTopicCell.self))
+            } else {
+                tableView.register(UINib(nibName: String(describing: VideoTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: VideoTopicCell.self))
+            }
+        }
+    }
+    
     // 存放新闻主题的数组
     fileprivate var newsTopics = [WeiTouTiao]()
     
@@ -33,7 +43,6 @@ class HomeTopViewController: UIViewController {
         tableView.rowHeight = 232
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UINib(nibName: String(describing: HomeTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: HomeTopicCell.self))
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         return tableView
     }()
@@ -57,16 +66,28 @@ extension HomeTopViewController {
 
 // MARK: - Table view data source
 extension HomeTopViewController: UITableViewDelegate, UITableViewDataSource {
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        
+//    }
+    
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsTopics.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HomeTopicCell.self)) as! HomeTopicCell
-        cell.weitoutiao = newsTopics[indexPath.row]
-//        cell.delegate = self
-        return cell
+        if fromController  == String(describing: HomeViewController.self) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HomeTopicCell.self)) as! HomeTopicCell
+            cell.weitoutiao = newsTopics[indexPath.row]
+            //        cell.delegate = self
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTopicCell.self)) as! VideoTopicCell
+            cell.videoTopic = newsTopics[indexPath.row]
+            cell.delegate = self
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
