@@ -29,7 +29,9 @@ class HomeTopicCell: UITableViewCell {
     
     var weitoutiao: WeiTouTiao? {
         didSet {
-            newsTitleLabel.text = String(weitoutiao!.title!)
+            if let title = weitoutiao?.title {
+                newsTitleLabel.text = String(title)
+            }
             if let hot_label = weitoutiao?.label {
                 if hot_label == "置顶" || hot_label == "热" {
                     hotLabel.isHidden = false
@@ -69,4 +71,48 @@ class HomeTopicCell: UITableViewCell {
         
     }
     
+    // MARK: 缩略图
+    private lazy var thumbCollectionView: ThumbCollectionView = {
+        let thumbCollectionView = ThumbCollectionView.collectionViewWithFrame(frame: CGRect.zero)
+        thumbCollectionView.register(UINib(nibName: String(describing: ThumbCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ThumbCollectionViewCell.self))
+        thumbCollectionView.isScrollEnabled = false
+        thumbCollectionView.delegate = self
+        thumbCollectionView.dataSource = self
+        return thumbCollectionView
+    }()
 }
+
+// MARK: - UICollectionViewDelegate
+extension HomeTopicCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (weitoutiao?.thumb_image_list.count)!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ThumbCollectionViewCell.self), for: indexPath) as! ThumbCollectionViewCell
+        let thumbImage = weitoutiao?.thumb_image_list[indexPath.item]
+        cell.thumbImageURL = (thumbImage?.url)!
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        //  2
+        let imageWidthIs2 = (screenWidth - kMargin * 2 - 6) * 0.5
+        // >= 3
+        let imageH = (screenWidth - kMargin * 2 - 12) / 3
+        switch weitoutiao!.thumb_image_list.count {
+        case 1:
+            return CGSize(width: screenWidth * 0.7, height: imageWidthIs2)
+        case 2:
+            return CGSize(width: imageWidthIs2, height: imageWidthIs2)
+        case 3...9:
+            return CGSize(width: imageH, height: imageH)
+        default:
+            return CGSize(width: 0, height: 0)
+        }
+    }
+}
+
+
+

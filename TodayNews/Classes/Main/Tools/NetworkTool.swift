@@ -29,15 +29,22 @@ class NetworkTool {
                 let json = JSON(value)
                 let dataDict = json["data"].dictionary
                 if let data = dataDict!["data"]!.arrayObject {
-                    var topics = [HomeTopTitle]()
+                    var titles = [HomeTopTitle]()
                     var homeTopicVCs = [HomeTopViewController]()
+                    // 添加推荐标题
+                    let recommendDict = ["category": "__all__", "name": "推荐"]
+                    let recommend = HomeTopTitle(dict: recommendDict as [String : AnyObject])
+                    titles.append(recommend)
+                    // 添加控制器
+                    let firstVC = HomeTopViewController()
+                    homeTopicVCs.append(firstVC)
                     for dict in data {
                         let title = HomeTopTitle(dict: dict as! [String: AnyObject])
-                        topics.append(title)
+                        titles.append(title)
                         let homeTopicVC = HomeTopViewController()
                         homeTopicVCs.append(homeTopicVC)
                     }
-                    finished(topics, homeTopicVCs)
+                    finished(titles, homeTopicVCs)
                 }
             }
         }
@@ -83,20 +90,7 @@ class NetworkTool {
     class func loadVideoTitlesData(completionHandler:@escaping (_ videoTitles: [TopTitle], _ videoTopicVCs: [VideoTopicController])->()) {
         let url = BASE_URL + "video_api/get_category/v1/?"
         let params = ["device_id": device_id,
-                      "version_code": versionCode,
-                      "app_name": "news_article",
-                      "channel": "App%20Store",
-                      "device_platform": "iphone",
-                      "vid": "9E7F056D-4902-4CA5-B77F-5EFE0B0D112C",
-                      "aid": "13",
-                      "ab_version": "95367,106283,105703,101786,106209,101533,103923,105769,106281,106205,106784,106673,97143,31651,104832,101558,94045,105756,92438,104236,105759,105610,106702,105788,106299,103570,105857,104711,98043,105475,103630,103435",
-                      "ab_feature": "z1",
-                      "openudid": "fad94bc66e60ce903ed1a20efec5f94b82c42cee",
-                      "live_sdk_version": "1.6.5",
-                      "idfv": "9E7F056D-4902-4CA5-B77F-5EFE0B0D112C",
-                      "ssmix": "a",
-                      "iid": IID,
-                      "os_version": systemVersion]
+                      "iid": IID]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return

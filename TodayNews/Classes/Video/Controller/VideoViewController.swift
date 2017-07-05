@@ -93,18 +93,6 @@ extension VideoViewController: VideoTitleViewDelegate {
 
 // MARK: - UIScrollViewDelegate
 extension VideoViewController: UIScrollViewDelegate {
-    /// UIScrollViewDelegate
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        // 当前索引
-        let index = Int(scrollView.contentOffset.x / screenWidth)
-        // 取出子控制器
-        let vc = childViewControllers[index]
-        vc.view.x = scrollView.contentOffset.x
-        vc.view.y = 0
-        vc.view.height = scrollView.height
-        scrollView.addSubview(vc.view)
-    }
-
     // scrollView 刚开始滑动时
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         // 当前索引
@@ -115,7 +103,6 @@ extension VideoViewController: UIScrollViewDelegate {
 
     /// scrollView 结束滑动
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        scrollViewDidEndScrollingAnimation(scrollView)
         // 当前索引
         let index = Int(scrollView.contentOffset.x / screenWidth)
         // 与刚开始拖拽时的 index 进行比较
