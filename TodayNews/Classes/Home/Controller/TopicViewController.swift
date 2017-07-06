@@ -34,7 +34,9 @@ class TopicViewController: UIViewController {
         tableView.estimatedRowHeight = 232
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, kTabBarHeight, 0)
         tableView.register(UINib(nibName: String(describing: HomeTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: HomeTopicCell.self))
+        tableView.register(UINib(nibName: String(describing: VideoTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: VideoTopicCell.self))
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         return tableView
     }()
@@ -60,7 +62,11 @@ extension TopicViewController {
 extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        if topicTitle!.category == "video" {
+            return screenHeight * 0.4
+        }
+        let weitoutiao = newsTopics[indexPath.row]
+        return weitoutiao.homeCellHeight!
     }
     
     // MARK: - Table view data source
@@ -69,9 +75,14 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if topicTitle!.category == "video" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTopicCell.self)) as! VideoTopicCell
+            cell.videoTopic = newsTopics[indexPath.row]
+            cell.delegate = self
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HomeTopicCell.self)) as! HomeTopicCell
         cell.weitoutiao = newsTopics[indexPath.row]
-//        cell.delegate = self
         return cell
     }
     
@@ -82,11 +93,11 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-//extension TopicViewController: VideoTopicCellDelegate {
-//    /// 头像区域点击了
-//    func videoheadTopicCellButtonClick(videoTopic: WeiTouTiao) {
-//        let userVC = FollowDetailViewController()
-//        userVC.userid = videoTopic.media_info!.user_id!
-//        navigationController?.pushViewController(userVC, animated: true)
-//    }
-//}
+extension TopicViewController: VideoTopicCellDelegate {
+    /// 头像区域点击了
+    func videoheadTopicCellButtonClick(videoTopic: WeiTouTiao) {
+        let userVC = FollowDetailViewController()
+        userVC.userid = videoTopic.media_info!.user_id!
+        navigationController?.pushViewController(userVC, animated: true)
+    }
+}

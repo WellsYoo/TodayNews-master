@@ -36,23 +36,31 @@ class HomeTopicCell: UITableViewCell {
     
     var weitoutiao: WeiTouTiao? {
         didSet {
-            if let title = weitoutiao?.title {
+            if let title = weitoutiao!.title {
                 newsTitleLabel.text = String(title)
             }
-            if let hot_label = weitoutiao?.label {
-                if hot_label == "置顶" || hot_label == "热" {
+            if let hot_label = weitoutiao!.label {
+                if hot_label == "置顶" {
                     hotLabel.isHidden = false
                     hotLabel.text = hot_label
-                    hotLabelWidth.constant = hot_label == "置顶" ? 30 : 15
                 } else {
                     hotLabel.isHidden = true
                     hotLabelWidth.constant = 0
+                }
+            } else if let hot = weitoutiao!.hot {
+                if hot {
+                    hotLabel.text = "热"
+                    hotLabelWidth.constant = 15
+                    hotLabel.isHidden = false
+                } else {
+                    hotLabelWidth.constant = 0
+                    hotLabel.isHidden = true
                 }
             } else {
                 hotLabel.isHidden = true
                 hotLabelWidth.constant = 0
             }
-            if let source = weitoutiao?.source {
+            if let source = weitoutiao!.source {
                 specicalLabelLeading.constant = 3
                 specicalLabel.isHidden = false
                 specicalLabel.text = source
@@ -60,7 +68,9 @@ class HomeTopicCell: UITableViewCell {
                 specicalLabelLeading.constant = 0
                 specicalLabel.isHidden = true
             }
-//            commentLabel.text = "\(weitoutiao!.comment_count!)" + "评论"
+            if let comment_count = weitoutiao!.comment_count {
+                commentLabel.text = "\(comment_count)" + "评论"
+            }
             createTimeLabel.text = weitoutiao!.createTime
             
         }

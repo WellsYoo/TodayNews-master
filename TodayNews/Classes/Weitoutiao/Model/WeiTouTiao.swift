@@ -5,12 +5,47 @@
 //  Created by 杨蒙 on 2017/6/15.
 //  Copyright © 2017年 hrscy. All rights reserved.
 //
+//
+//  has_image = 1 image_list 可能有值，middle_image 可能有值，media_info
+//  image_list 有值，middle_image 有值，large_image_list，没有值，media_info 有值
+//  has_image = 0 image_list，middle_image，large_image_list，media_info 都没有值
+//
+//  has_video = 1 large_image_list 有值，media_info 有值，middle_image 有值，video_detail_info 有值
+//  has_video = 0
+//
+//
 
 
 import UIKit
 import Alamofire
 
 class WeiTouTiao {
+    
+    var homeCellHeight: CGFloat? {
+        get {
+            var height: CGFloat = 0
+            height += titleH!
+            if has_image! { // 说明有图片
+                if image_list.count > 0 {
+                    let imageW = (screenWidth - 2 * kMargin - 2 * 3) / 3
+                    let imageH = imageW * middle_image!.height! / middle_image!.width!
+                    height += imageH
+                } else {
+                    
+                }
+            }
+            
+            if has_video! { // 说明是视频
+                let videoW = screenWidth - 2 * kMargin
+                let videoH = videoW * video_detail_info!.detail_video_large_image!.height! / video_detail_info!.detail_video_large_image!.width!
+                height += videoH
+            }
+            
+            // 12 是标题距离顶部的间距，40 是底部 view 的高度，7 是 标题距离中间 view 的间距
+            return height + 12 + 40 + 7
+        }
+    }
+    
     ///  置顶
     var label: String?
     /// 过滤内容
@@ -266,15 +301,28 @@ class WeiTouTiao {
         preload_web = dict["preload_web"] as? Int
         media_name = dict["media_name"] as? String
         
-        if let middleImage = dict["middle_image"] as? [String: AnyObject] {
-            middle_image = WTTMiddleImage(dict: middleImage)
-        }
         if let mediaInfo = dict["media_info"] as? [String: AnyObject] {
             media_info = WTTMediaInfo(dict: mediaInfo)
+        }
+        if let imageList = dict["image_list"] as? [AnyObject] {
+            for item in imageList {
+                let image = WTTImageList(dict: item as! [String: AnyObject])
+                image_list.append(image)
+            }
+        }
+        if let middleImage = dict["middle_image"] as? [String: AnyObject] {
+            middle_image = WTTMiddleImage(dict: middleImage)
         }
         if let videoDetailInfo = dict["video_detail_info"] as? [String: AnyObject] {
             video_detail_info = WTTVideoDetailInfo(dict: videoDetailInfo)
         }
+        if let largeImageList = dict["large_image_list"] as? [AnyObject] {
+            for item in largeImageList {
+                let largeImage = WTTLargeImageList(dict: item as! [String: AnyObject])
+                large_image_list.append(largeImage)
+            }
+        }
+        
         if let thumbImageList = dict["thumb_image_list"] as? [AnyObject] {
             for item in thumbImageList {
                 let thumbImage = WTTThumbImageList(dict: item as! [String: AnyObject])
@@ -564,7 +612,7 @@ class WTTImageList {
     
     init(dict: [String: AnyObject]) {
         type = dict["type"] as? Int
-        height = dict["hight"] as? CGFloat
+        height = dict["height"] as? CGFloat
         width = dict["width"] as? CGFloat
         url = dict["url"] as? String
         if let urllists = dict["url_list"] as? [AnyObject] {
