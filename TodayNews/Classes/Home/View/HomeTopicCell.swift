@@ -33,6 +33,8 @@ class HomeTopicCell: UITableViewCell {
     @IBOutlet weak var createTimeLabel: UILabel!
     /// 发布时间
     @IBOutlet weak var middleView: UIView!
+    /// 右侧按钮图片
+    @IBOutlet weak var rightButton: UIButton!
     
     var weitoutiao: WeiTouTiao? {
         didSet {
@@ -73,6 +75,69 @@ class HomeTopicCell: UITableViewCell {
             }
             createTimeLabel.text = weitoutiao!.createTime
             
+            if weitoutiao!.has_image != nil  {
+                if weitoutiao!.has_image! {
+                    if weitoutiao!.image_list.count > 0 {
+                        if weitoutiao!.image_list.count == 1 {
+                            rightButton.kf.setImage(with: URL(string: weitoutiao!.image_list.first!.url!), for: .normal)
+                            rightButton.width = (screenWidth - 2 * kMargin - 2 * 6) / 3
+                        } else {
+                            middleView.addSubview(thumbCollectionView)
+                            thumbCollectionView.snp.makeConstraints({ (make) in
+                                make.top.left.bottom.right.equalTo(middleView)
+                            })
+                        }
+                    } else {
+                        if weitoutiao!.large_image_list.count > 0 {
+                            let largeImageView = UIImageView()
+                            middleView.addSubview(largeImageView)
+                            largeImageView.kf.setImage(with: URL(string: weitoutiao!.large_image_list.first!.url!))
+                            largeImageView.snp.makeConstraints({ (make) in
+                                make.top.left.bottom.right.equalTo(self.middleView)
+                            })
+                        } else {
+                            rightButton.kf.setImage(with: URL(string: weitoutiao!.middle_image!.url!), for: .normal)
+                            rightButton.width = (screenWidth - 2 * kMargin - 2 * 6) / 3
+                        }
+                    }
+                } else if weitoutiao!.has_video! {
+                    videoView.imageButton.kf.setBackgroundImage(with: URL(string: weitoutiao!.video_detail_info!.detail_video_large_image!.url!), for: .normal)
+                    self.middleView.addSubview(videoView)
+                    videoView.snp.makeConstraints({ (make) in
+                        make.top.left.bottom.right.equalTo(self.middleView)
+                    })
+                }
+            } else {
+                if weitoutiao!.thumb_image_list.count != 0 {
+                    self.middleView.addSubview(thumbCollectionView)
+                    thumbCollectionView.snp.makeConstraints({ (make) in
+                        make.top.left.bottom.right.equalTo(self.middleView)
+                    })
+                    // 1 or 2
+                    let imageHeight1or2 = (screenWidth - kMargin * 2 - 6) * 0.5
+                    // >= 3
+                    let imageH = (screenWidth - kMargin * 2 - 12) / 3
+                    switch weitoutiao!.thumb_image_list.count {
+                    case 1:
+                        thumbCollectionView.snp.remakeConstraints({ (make) in
+                            make.width.equalTo(screenWidth * 0.7)
+                            make.top.left.equalTo(self.middleView)
+                            make.height.equalTo(imageHeight1or2)
+                        })
+                    case 2:
+                        thumbCollectionView.height = imageHeight1or2
+                    case 3:
+                        thumbCollectionView.height = imageH
+                    case 4...6:
+                        thumbCollectionView.height = imageH * 2 + 3 + 20
+                    case 7...9:
+                        thumbCollectionView.height = imageH * 3 + 6 + 20
+                    default:
+                        height += 0
+                    }
+                }
+            }
+            
         }
     }
     
@@ -87,6 +152,12 @@ class HomeTopicCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
+    
+    // MARK: 视频图片
+    private lazy var videoView: CellVideoView = {
+        let videoView = CellVideoView.cellVideoView()
+        return videoView
+    }()
     
     // MARK: 缩略图
     private lazy var thumbCollectionView: ThumbCollectionView = {
@@ -103,31 +174,20 @@ class HomeTopicCell: UITableViewCell {
 extension HomeTopicCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (weitoutiao?.thumb_image_list.count)!
+        return weitoutiao!.image_list.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ThumbCollectionViewCell.self), for: indexPath) as! ThumbCollectionViewCell
-        let thumbImage = weitoutiao?.thumb_image_list[indexPath.item]
-        cell.thumbImageURL = (thumbImage?.url)!
+        let thumbImage = weitoutiao!.image_list[indexPath.item]
+        cell.thumbImageURL = (thumbImage.url)!
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //  2
-        let imageWidthIs2 = (screenWidth - kMargin * 2 - 6) * 0.5
-        // >= 3
-        let imageH = (screenWidth - kMargin * 2 - 12) / 3
-        switch weitoutiao!.thumb_image_list.count {
-        case 1:
-            return CGSize(width: screenWidth * 0.7, height: imageWidthIs2)
-        case 2:
-            return CGSize(width: imageWidthIs2, height: imageWidthIs2)
-        case 3...9:
-            return CGSize(width: imageH, height: imageH)
-        default:
-            return CGSize(width: 0, height: 0)
-        }
+        let imageW = (screenWidth - 2 * kMargin - 2 * 6) / 3
+        let imageH = imageW * 0.8
+        return CGSize(width: imageW, height: imageH)
     }
 }
 

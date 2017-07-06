@@ -8,7 +8,7 @@
 //
 //  has_image = 1 image_list 可能有值，middle_image 可能有值，media_info
 //  image_list 有值，middle_image 有值，large_image_list，没有值，media_info 有值
-//  has_image = 0 image_list，middle_image，large_image_list，media_info 都没有值
+//  has_image = 0 image_list，large_image_list，media_info 都没有值，middle_image 可能有值
 //
 //  has_video = 1 large_image_list 有值，media_info 有值，middle_image 有值，video_detail_info 有值
 //  has_video = 0
@@ -25,20 +25,52 @@ class WeiTouTiao {
         get {
             var height: CGFloat = 0
             height += titleH!
-            if has_image! { // 说明有图片
-                if image_list.count > 0 {
-                    let imageW = (screenWidth - 2 * kMargin - 2 * 3) / 3
-                    let imageH = imageW * middle_image!.height! / middle_image!.width!
-                    height += imageH
-                } else {
-                    
+            if has_image != nil  {
+                if has_image! { // 说明有图片
+                    let imageW = (screenWidth - 2 * kMargin - 2 * 6) / 3
+                    if image_list.count > 0 {
+                        if image_list.count == 1 {
+                            let imageH = imageW * 0.8
+                            return imageH
+                        } else {
+                            let imageH = imageW * 0.8
+                            height += imageH
+                        }
+                    } else {
+                        if large_image_list.count > 0 {
+                            let largeImageW = screenWidth - 2 * kMargin
+                            let largeImageH = largeImageW * 0.8
+                            height += largeImageH
+                        } else if middle_image != nil { // 只有 middle_image 有值，则显示到右侧
+                            let imageH = imageW * 0.8
+                            return imageH
+                        }
+                    }
                 }
-            }
-            
-            if has_video! { // 说明是视频
-                let videoW = screenWidth - 2 * kMargin
-                let videoH = videoW * video_detail_info!.detail_video_large_image!.height! / video_detail_info!.detail_video_large_image!.width!
-                height += videoH
+                if has_video! { // 说明是视频
+                    let videoW = screenWidth - 2 * kMargin
+                    let videoH = videoW * video_detail_info!.detail_video_large_image!.height! / video_detail_info!.detail_video_large_image!.width!
+                    height += videoH
+                }
+            } else {
+                if thumb_image_list.count != 0 {
+                    // 1 or 2
+                    let imageWidth1or2 = (screenWidth - kMargin * 2 - 6) * 0.5
+                    // >= 3
+                    let imageH = (screenWidth - kMargin * 2 - 12) / 3
+                    switch thumb_image_list.count {
+                    case 1, 2:
+                        height += imageWidth1or2
+                    case 3:
+                        height += imageH
+                    case 4...6:
+                        height += (imageH * 2 + 3)
+                    case 7...9:
+                        height += (imageH * 3 + 6)
+                    default:
+                        height += 0
+                    }
+                }
             }
             
             // 12 是标题距离顶部的间距，40 是底部 view 的高度，7 是 标题距离中间 view 的间距
@@ -614,7 +646,14 @@ class WTTImageList {
         type = dict["type"] as? Int
         height = dict["height"] as? CGFloat
         width = dict["width"] as? CGFloat
-        url = dict["url"] as? String
+        if let urlString = dict["url"] as? String {
+            if urlString.hasSuffix(".webp") {
+                let index = urlString.index(urlString.endIndex, offsetBy: -5)
+                url = urlString.substring(to: index)
+            } else {
+                url = urlString as String
+            }
+        }
         if let urllists = dict["url_list"] as? [AnyObject] {
             for urlDict in urllists {
                 let wtrURLList = WTTURLList(dict: urlDict as! [String: AnyObject])

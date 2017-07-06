@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="192" id="KGk-i7-Jjw" customClass="HomeTopicCell" customModule="TodayNews" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="192"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="153" id="KGk-i7-Jjw" customClass="HomeTopicCell" customModule="TodayNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="153"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="191.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="152.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJb-4l-nSq" userLabel="新闻标题">
@@ -25,7 +25,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cV-Wt-JWc" userLabel="底部">
-                        <rect key="frame" x="0.0" y="151.5" width="320" height="40"/>
+                        <rect key="frame" x="0.0" y="112.5" width="305" height="40"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="置顶" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gf-1k-pxK" userLabel="置顶/热">
                                 <rect key="frame" x="15" y="13" width="30" height="14.5"/>
@@ -103,8 +103,15 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjN-0g-VnR">
+                                <rect key="frame" x="15" y="39" width="275" height="1"/>
+                                <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="aDz-5Y-upI"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ui-h5-3Vf">
-                                <rect key="frame" x="288" y="13" width="17" height="14"/>
+                                <rect key="frame" x="273" y="13" width="17" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="2tP-P8-7N9"/>
                                     <constraint firstAttribute="width" constant="17" id="xNJ-tn-CWR"/>
@@ -112,13 +119,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <state key="normal" image="add_textpage_17x12_"/>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjN-0g-VnR">
-                                <rect key="frame" x="15" y="39" width="290" height="1"/>
-                                <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="aDz-5Y-upI"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -141,11 +141,11 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8k-kF-NQd" userLabel="中间">
-                        <rect key="frame" x="15" y="38.5" width="290" height="113"/>
+                        <rect key="frame" x="15" y="38.5" width="290" height="73.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6k-3R-78X" userLabel="右侧按钮">
-                        <rect key="frame" x="305" y="12" width="0.0" height="140"/>
+                        <rect key="frame" x="305" y="12" width="0.0" height="128.5"/>
                         <constraints>
                             <constraint firstAttribute="width" id="Odj-v2-sFQ"/>
                         </constraints>
@@ -154,12 +154,12 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="V8k-kF-NQd" firstAttribute="top" secondItem="CJb-4l-nSq" secondAttribute="bottom" constant="7" id="3LK-Jn-QXT"/>
+                    <constraint firstItem="E6k-3R-78X" firstAttribute="bottom" secondItem="2cV-Wt-JWc" secondAttribute="bottom" constant="-12" id="5CO-i0-Ygp"/>
+                    <constraint firstItem="E6k-3R-78X" firstAttribute="leading" secondItem="2cV-Wt-JWc" secondAttribute="trailing" id="7TR-9a-wtH"/>
                     <constraint firstAttribute="bottom" secondItem="2cV-Wt-JWc" secondAttribute="bottom" id="DF2-cf-mOD"/>
                     <constraint firstItem="V8k-kF-NQd" firstAttribute="trailing" secondItem="CJb-4l-nSq" secondAttribute="trailing" id="NxF-Ab-7VK"/>
                     <constraint firstItem="E6k-3R-78X" firstAttribute="top" secondItem="CJb-4l-nSq" secondAttribute="top" id="PHJ-Zo-ebe"/>
                     <constraint firstItem="CJb-4l-nSq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="ayA-3s-MW7"/>
-                    <constraint firstAttribute="trailing" secondItem="2cV-Wt-JWc" secondAttribute="trailing" id="byB-m8-lj1"/>
-                    <constraint firstItem="2cV-Wt-JWc" firstAttribute="top" secondItem="E6k-3R-78X" secondAttribute="bottom" id="nNN-dd-Rox"/>
                     <constraint firstItem="CJb-4l-nSq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="o4d-qX-tJx"/>
                     <constraint firstItem="V8k-kF-NQd" firstAttribute="leading" secondItem="CJb-4l-nSq" secondAttribute="leading" id="q7G-uV-JAx"/>
                     <constraint firstAttribute="trailing" secondItem="E6k-3R-78X" secondAttribute="trailing" constant="15" id="rMo-mK-6AU"/>
@@ -177,10 +177,11 @@
                 <outlet property="middleView" destination="V8k-kF-NQd" id="AdE-ok-udE"/>
                 <outlet property="nameLabel" destination="bHK-7j-NrO" id="x0b-MH-9RO"/>
                 <outlet property="newsTitleLabel" destination="CJb-4l-nSq" id="AbH-H1-wuK"/>
+                <outlet property="rightButton" destination="E6k-3R-78X" id="yrr-WC-U2X"/>
                 <outlet property="specicalLabel" destination="rTy-WY-mrq" id="DAY-zC-WxX"/>
                 <outlet property="specicalLabelLeading" destination="qlh-D0-xtD" id="qPe-B0-Uah"/>
             </connections>
-            <point key="canvasLocation" x="34" y="-20"/>
+            <point key="canvasLocation" x="34" y="-39.5"/>
         </tableViewCell>
     </objects>
     <resources>
