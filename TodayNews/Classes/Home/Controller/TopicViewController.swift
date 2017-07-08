@@ -58,7 +58,7 @@ class TopicViewController: UIViewController {
 extension TopicViewController: ToutiaohaoHeaderViewDelegate {
     
     func toutiaohaoHeaderViewMoreConcernButtonClicked() {
-        
+        navigationController?.pushViewController(ConcernToutiaohaoController(), animated: true)
     }
     
 }

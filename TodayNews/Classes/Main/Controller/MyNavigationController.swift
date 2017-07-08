@@ -25,7 +25,7 @@ class MyNavigationController: UINavigationController {
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if viewControllers.count > 0 {
             viewController.hidesBottomBarWhenPushed = true
-            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "lefterbackicon_titlebar_24x24_"), style: .plain, target: self, action: #selector(navigationBack))
+            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "leftbackicon_white_titlebar_24x24_"), style: .plain, target: self, action: #selector(navigationBack))
         }
         super.pushViewController(viewController, animated: true)
     }

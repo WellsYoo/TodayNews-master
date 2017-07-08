@@ -87,6 +87,30 @@ class NetworkTool {
         }
     }
     
+    /// 获取头条号 关注
+    class func loadEntryList(completionHandler:@escaping (_ concerns: [ConcernToutiaohao])->()) {
+        let url = BASE_URL + "entry/list/v1/?"
+        let params = ["device_id": device_id,
+                      "iid": IID]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                let json = JSON(value)
+                if let data = json["data"].arrayObject {
+                    var concerns = [ConcernToutiaohao]()
+                    for item in data {
+                        let concern = ConcernToutiaohao(dict: item as! [String : AnyObject])
+                        concerns.append(concern)
+                    }
+                    completionHandler(concerns)
+                }
+            }
+        }
+    }
+    
+    
     /// -------------------------- 视 频 video --------------------------
     
     /// 获取视频顶部标题内容
@@ -162,9 +186,7 @@ class NetworkTool {
     /// 点击了关注按钮
     class func loadFollowInfo(user_id: Int, completionHandler: @escaping (_ isFllowing: Bool)->()) {
         let url = BASE_URL + "2/relation/follow/v2/?"
-        let params = ["version_code": versionCode,
-                      "app_name": app_name,
-                      "iid": IID,
+        let params = ["iid": IID,
                       "user_id": user_id,
                       "device_id": device_id] as [String : Any]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
