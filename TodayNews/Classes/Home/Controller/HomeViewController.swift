@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
         // 自定义导航栏
         navigationItem.titleView = homeNavigationBar
         
+        automaticallyAdjustsScrollViewInsets = false
         /// 获取标题数据
         NetworkTool.loadHomeTitlesData(fromViewController: String(describing: HomeViewController.self)) { (topTitles, homeTopicVCs) in
             // 将所有子控制器添加到父控制器中

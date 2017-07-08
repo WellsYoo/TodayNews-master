@@ -1,16 +1,15 @@
 //
-//  AllConcernsCell.swift
+//  ToutiaohaoCell.swift
 //  TodayNews
 //
-//  Created by 杨蒙 on 2017/6/27.
+//  Created by 杨蒙 on 2017/7/8.
 //  Copyright © 2017年 hrscy. All rights reserved.
 //
 
 import UIKit
-import Kingfisher
 import IBAnimatable
 
-class AllConcernsCell: UITableViewCell {
+class ToutiaohaoCell: UITableViewCell {
     
     @IBOutlet weak var iconImageView: UIImageView!
     
@@ -18,23 +17,13 @@ class AllConcernsCell: UITableViewCell {
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    var weitoutiao: WeiTouTiao? {
-        didSet{
+    @IBOutlet weak var badgeLabel: AnimatableLabel!
     
-        }
-    }
-    
-    var myConcern: MyConcern? {
-        didSet {
-            iconImageView.kf.setImage(with: URL(string: (myConcern?.icon!)!))
-            concernNameLabel.text = myConcern?.name!
-            descriptionLabel.text = myConcern?.description!
-        }
-    }
+    @IBOutlet weak var timeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

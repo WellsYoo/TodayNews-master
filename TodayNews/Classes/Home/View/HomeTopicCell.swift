@@ -35,6 +35,7 @@ class HomeTopicCell: UITableViewCell {
     @IBOutlet weak var middleView: UIView!
     /// 右侧按钮图片
     @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var rightButtonWidth: NSLayoutConstraint!
     
     var weitoutiao: WeiTouTiao? {
         didSet {
@@ -80,7 +81,8 @@ class HomeTopicCell: UITableViewCell {
                     if weitoutiao!.image_list.count > 0 {
                         if weitoutiao!.image_list.count == 1 {
                             rightButton.kf.setImage(with: URL(string: weitoutiao!.image_list.first!.url!), for: .normal)
-                            rightButton.width = (screenWidth - 2 * kMargin - 2 * 6) / 3
+                            rightButtonWidth.constant = (screenWidth - 2 * kMargin - 20) / 3
+                            rightButton.layoutIfNeeded()
                         } else {
                             middleView.addSubview(thumbCollectionView)
                             thumbCollectionView.snp.makeConstraints({ (make) in

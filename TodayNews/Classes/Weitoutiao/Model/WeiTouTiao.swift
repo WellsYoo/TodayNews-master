@@ -24,7 +24,10 @@ class WeiTouTiao {
     var homeCellHeight: CGFloat? {
         get {
             var height: CGFloat = 0
-            height += titleH!
+            if titleH != nil {
+                height += titleH!
+            }
+            
             if has_image != nil  {
                 if has_image! { // 说明有图片
                     let imageW = (screenWidth - 2 * kMargin - 2 * 6) / 3

@@ -21,11 +21,23 @@ class TopicViewController: UIViewController {
         
         setupUI()
         
+        if self.topicTitle!.category == "subscription" { // 头条号
+            tableView.tableHeaderView = toutiaohaoHeaderView
+        }
+        
         NetworkTool.loadHomeCategoryNewsFeed(category: topicTitle!.category!) { (nowTime, newsTopics) in
             self.newsTopics = newsTopics
+            
             self.tableView.reloadData()
         }
     }
+    
+    fileprivate  lazy var toutiaohaoHeaderView: ToutiaohaoHeaderView = {
+        let toutiaohaoHeaderView = ToutiaohaoHeaderView()
+        toutiaohaoHeaderView.height = 56
+        toutiaohaoHeaderView.delegate = self
+        return toutiaohaoHeaderView
+    }()
     
     fileprivate lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -40,10 +52,13 @@ class TopicViewController: UIViewController {
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         return tableView
     }()
+    
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+extension TopicViewController: ToutiaohaoHeaderViewDelegate {
+    
+    func toutiaohaoHeaderViewMoreConcernButtonClicked() {
+        
     }
     
 }
@@ -51,7 +66,6 @@ class TopicViewController: UIViewController {
 extension TopicViewController {
     fileprivate func setupUI() {
         view.addSubview(tableView)
-        
         tableView.snp.makeConstraints { (make) in
             make.top.left.bottom.right.equalTo(view)
         }
@@ -64,6 +78,8 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if topicTitle!.category == "video" {
             return screenHeight * 0.4
+        } else if topicTitle!.category == "subscription" { // 头条号
+            return 68
         }
         let weitoutiao = newsTopics[indexPath.row]
         return weitoutiao.homeCellHeight!
@@ -71,14 +87,23 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsTopics.count
+        if topicTitle!.category == "subscription" {
+            return 10
+        } else {
+            return newsTopics.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if topicTitle!.category == "video" {
+        
+        if topicTitle!.category == "video" { // 视频
             let cell = Bundle.main.loadNibNamed(String(describing: VideoTopicCell.self), owner: nil, options: nil)?.last as! VideoTopicCell
             cell.videoTopic = newsTopics[indexPath.row]
             cell.delegate = self
+            return cell
+        } else if topicTitle!.category == "subscription" { // 头条号
+            let cell = Bundle.main.loadNibNamed(String(describing: ToutiaohaoCell.self), owner: nil, options: nil)?.last as! ToutiaohaoCell
+//            cell.myConcern = myConcerns[indexPath.row]
             return cell
         }
         let cell = Bundle.main.loadNibNamed(String(describing: HomeTopicCell.self), owner: nil, options: nil)?.last as! HomeTopicCell

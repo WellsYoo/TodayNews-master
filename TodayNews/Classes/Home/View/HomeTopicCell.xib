@@ -178,6 +178,7 @@
                 <outlet property="nameLabel" destination="bHK-7j-NrO" id="x0b-MH-9RO"/>
                 <outlet property="newsTitleLabel" destination="CJb-4l-nSq" id="AbH-H1-wuK"/>
                 <outlet property="rightButton" destination="E6k-3R-78X" id="yrr-WC-U2X"/>
+                <outlet property="rightButtonWidth" destination="Odj-v2-sFQ" id="vlS-ms-NgG"/>
                 <outlet property="specicalLabel" destination="rTy-WY-mrq" id="DAY-zC-WxX"/>
                 <outlet property="specicalLabelLeading" destination="qlh-D0-xtD" id="qPe-B0-Uah"/>
             </connections>

@@ -15,7 +15,7 @@ protocol HomeTitleViewDelegate: class {
 
 class HomeTitleView: UIView {
 
-    weak var titleDelegate: HomeTitleViewDelegate?
+    weak var delegate: HomeTitleViewDelegate?
     
     var titles: [TopicTitle]? {
         didSet {
@@ -136,8 +136,6 @@ extension HomeTitleView {
         // 取出用户点击的View
         let targetLabel = tapGes.view as! HomeTitleLabel
         
-        targetLabel.currentScale = 1.1
-        
         // 调整title
         adjustTitleLabel(targetIndex: targetLabel.tag)
         
@@ -148,7 +146,7 @@ extension HomeTitleView {
         })
         
         // 通知代理
-        titleDelegate?.titleView(self, targetIndex: currentIndex)
+        delegate?.titleView(self, targetIndex: currentIndex)
     }
     
     fileprivate func adjustTitleLabel(targetIndex : Int) {
@@ -162,19 +160,37 @@ extension HomeTitleView {
         // 2.切换文字的颜色
         targetLabel.textColor = UIColor.globalRedColor()
         sourceLabel.textColor = UIColor(r: 0, g: 0, b: 0, alpha: 0.7)
+        sourceLabel.currentScale = 1.0
+        targetLabel.currentScale = 1.1
+        
+        // 调整bottomLine
+        UIView.animate(withDuration: 0.25, animations: {
+            self.bottomLine.centerX = sourceLabel.centerX
+            self.bottomLine.width = sourceLabel.width
+        })
+        
+        
         
         // 3.记录下标值
         currentIndex = targetIndex
         
         // 4.调整位置
-        var offsetX = targetLabel.x - scrollView.width * 0.5
+        // 当前偏移量
+        var offsetX = targetLabel.centerX - scrollView.width * 0.5
         if offsetX < 0 {
             offsetX = 0
         }
-        if offsetX > (scrollView.contentSize.width - scrollView.bounds.width) {
-            offsetX = scrollView.contentSize.width - scrollView.bounds.width
+        // 最大偏移量
+        var maxOffsetX = scrollView.contentSize.width - scrollView.width
+        
+        if maxOffsetX < 0 {
+            maxOffsetX = 0
         }
-        scrollView.setContentOffset(CGPoint(x: offsetX, y : 0), animated: true)
+        
+        if offsetX > maxOffsetX {
+            offsetX = maxOffsetX
+        }
+        scrollView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
     }
     
     /// 右侧按钮点击
@@ -187,17 +203,9 @@ extension HomeTitleView {
 extension HomeTitleView : HomePageViewDelegate {
     
     func pageView(_ pageView: HomePageView, targetIndex: Int) {
+        
         adjustTitleLabel(targetIndex: targetIndex)
 
-        // 取出Label
-        let targetLabel = titleLabels[targetIndex]
-        let sourceLabel = titleLabels[currentIndex]
-        
-        targetLabel.textColor = UIColor(r: 0, g: 0, b: 0, alpha: 0.7)
-        sourceLabel.textColor = UIColor.globalRedColor()
-        
-        bottomLine.x = sourceLabel.x
-        bottomLine.width = sourceLabel.width
     }
     
 }
