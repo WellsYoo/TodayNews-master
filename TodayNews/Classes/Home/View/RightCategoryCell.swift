@@ -27,6 +27,13 @@ class RightCategoryCell: UITableViewCell {
             concernButton.isSelected = subConcern!.is_subscribed!
             if subConcern!.is_subscribed! {
                 concernButton.layer.borderColor = UIColor.lightGray.cgColor
+                concernButton.isSelected = true
+                concernButton.setTitle("已关注", for: .selected)
+            } else {
+                concernButton.setTitle("关注", for: .normal)
+                concernButton.layer.borderColor = UIColor(r: 42, g: 144, b: 215).cgColor
+                concernButton.layer.borderWidth = 1
+                concernButton.isSelected = false
             }
         }
     }
@@ -35,8 +42,6 @@ class RightCategoryCell: UITableViewCell {
         super.awakeFromNib()
         iconImageView.layer.borderWidth = 1
         iconImageView.layer.borderColor = UIColor.globalBackgroundColor().cgColor
-        concernButton.setTitle("关注", for: .normal)
-        concernButton.setTitle("已关注", for: .selected)
         concernButton.setTitleColor(UIColor.lightGray, for: .selected)
         concernButton.setTitleColor(UIColor(r: 42, g: 144, b: 215), for: .normal)
         concernButton.layer.borderColor = UIColor(r: 42, g: 144, b: 215).cgColor

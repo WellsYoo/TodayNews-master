@@ -56,6 +56,21 @@ class ConcernHeaderView: UIView {
     var follewDetail: FollowDetail? {
         didSet {
             avaterImageView.kf.setImage(with: URL(string: (follewDetail?.avatar_url!)!))
+            if let isFollowing = follewDetail!.is_following {
+                if isFollowing {
+                    concernButton.layer.borderColor = UIColor.lightGray.cgColor
+                    concernButton.layer.borderWidth = 1
+                    concernButton.isSelected = true
+                    concernButton.setTitleColor(UIColor.lightGray, for: .selected)
+                    concernButton.setTitle("已关注", for: .selected)
+                } else {
+                    concernButton.setTitle("关注", for: .normal)
+                    concernButton.setTitleColor(UIColor(r: 42, g: 144, b: 215), for: .normal)
+                    concernButton.layer.borderColor = UIColor(r: 42, g: 144, b: 215).cgColor
+                    concernButton.layer.borderWidth = 1
+                    concernButton.isSelected = false
+                }
+            }
             if let screen_name = follewDetail?.screen_name {
                 nameLabel.text = screen_name
             } else if let name = follewDetail?.name {

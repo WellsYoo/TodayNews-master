@@ -17,13 +17,7 @@ class MineViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
-        NetworkTool.loadMyFollow { (concerns) in
-            self.concerns = concerns
-            if concerns.count != 0 {
-                let indexSet = IndexSet(integer: 0)
-                self.tableView.reloadSections(indexSet, with: .automatic)
-            }
-        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -44,7 +38,15 @@ class MineViewController: UITableViewController {
             self.sections.append(myConcerns as AnyObject)
             self.sections += sectionArray
             self.tableView.reloadData()
+            NetworkTool.loadMyFollow { (concerns) in
+                self.concerns = concerns
+                if concerns.count != 0 {
+                    let indexSet = IndexSet(integer: 0)
+                    self.tableView.reloadSections(indexSet, with: .automatic)
+                }
+            }
         }
+        
     }
 
     // 头部视图

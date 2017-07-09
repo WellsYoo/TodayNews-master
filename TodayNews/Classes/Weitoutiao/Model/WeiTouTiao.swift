@@ -28,8 +28,8 @@ class WeiTouTiao {
                 height += titleH!
             }
             
-            if has_image != nil  {
-                if has_image! { // 说明有图片
+            if let hasImage = has_image  {
+                if hasImage { // 说明有图片
                     let imageW = (screenWidth - 2 * kMargin - 2 * 6) / 3
                     if image_list.count > 0 {
                         if image_list.count == 1 {

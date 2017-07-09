@@ -112,9 +112,15 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let videoDetailVC = VideoDetailController()
-        //        videoDetailVC.videoTopic = newsTopics[indexPath.row]
-        navigationController?.pushViewController(videoDetailVC, animated: true)
+        if topicTitle!.category == "video" {
+            let videoDetailVC = VideoDetailController()
+            //        videoDetailVC.videoTopic = newsTopics[indexPath.row]
+            navigationController?.pushViewController(videoDetailVC, animated: true)
+        } else {
+            let topicDetailVC = TopicDetailController()
+            navigationController?.pushViewController(topicDetailVC, animated: true)
+        }
+        
     }
 }
 

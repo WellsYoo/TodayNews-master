@@ -37,7 +37,6 @@ class ConcernToutiaohaoController: UIViewController {
             self.leftTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
         }
     }
-
 }
 
 extension ConcernToutiaohaoController: UITableViewDelegate, UITableViewDataSource {
