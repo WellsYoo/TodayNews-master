@@ -141,8 +141,8 @@ extension HomeTitleView {
         
         // 调整bottomLine
         UIView.animate(withDuration: 0.25, animations: {
-            self.bottomLine.centerX = targetLabel.centerX
             self.bottomLine.width = targetLabel.width
+            self.bottomLine.centerX = targetLabel.centerX
         })
         
         // 通知代理
