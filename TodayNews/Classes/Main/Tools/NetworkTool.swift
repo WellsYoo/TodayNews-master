@@ -67,22 +67,39 @@ class NetworkTool {
             }
             if let value = response.result.value {
                 let json = JSON(value)
-                let datas = json["data"].array
+                guard let dataJSONs = json["data"].array else {
+                    return
+                }
                 var topics = [WeiTouTiao]()
-                for data in datas! {
+                for data in dataJSONs {
                     let content = data["content"].stringValue
                     let contentData: NSData = content.data(using: String.Encoding.utf8)! as NSData
                     do {
                         let dict = try JSONSerialization.jsonObject(with: contentData as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
                         let topic = WeiTouTiao(dict: dict as! [String : AnyObject])
-                        print(dict)
-                        print("---------------------------------")
                         topics.append(topic)
                     } catch {
                         
                     }
                 }
                 completionHandler(nowTime, topics)
+            }
+        }
+    }
+    
+    /// 获取新闻详情数据
+    class func loadNewsDetail(groupID: String) {
+        let url = "http://lf.snssdk.com/2/article/information/v16/?"
+        let params = ["device_id": device_id,
+                      "device_platform": "iphone",
+                      "group_id": groupID]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                let json = JSON(value)
+                print(json)
             }
         }
     }

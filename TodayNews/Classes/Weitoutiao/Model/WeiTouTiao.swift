@@ -217,6 +217,13 @@ class WeiTouTiao {
             return title?.getTextHeight(width: screenWidth - kMargin * 2)
         }
     }
+    var newDetailTitleHeight: CGFloat? {
+        get {
+            let size = CGSize(width: screenWidth - 2 * kMargin, height: CGFloat(MAXFLOAT))
+            return title?.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil).size.height
+        }
+    }
+    
     var cellH: CGFloat? {
         get {
             var height: CGFloat = 0
@@ -265,7 +272,7 @@ class WeiTouTiao {
     var ban_comment: Int?
     
     var group_flags: Int?
-    var group_id: String?
+    var group_id: Int?
     var group_source: Int?
     var has_image: Bool?
     var has_video: Bool?
@@ -273,7 +280,7 @@ class WeiTouTiao {
     var has_mp4_video: Bool?
     var hot: Bool?
     var is_subject: Bool?
-    var item_id: String?
+    var item_id: Int?
     var item_version: Int?
 
     var middle_image: WTTMiddleImage?
@@ -287,7 +294,7 @@ class WeiTouTiao {
     var source_icon_style: Int?
     var source_open_url: String?
     var tag: String?
-    var tag_id: String?
+    var tag_id: Int?
     var tip: Int?
     var url: String?
     
@@ -326,7 +333,7 @@ class WeiTouTiao {
         
         url = dict["url"] as? String
         tip = dict["tip"] as? Int
-        tag_id = dict["tag_id"] as? String
+        tag_id = dict["tag_id"] as? Int
         tag = dict["tag"] as? String
         source_open_url = dict["source_open_url"] as? String
         source_icon_style = dict["source_icon_style"] as? Int
@@ -366,7 +373,7 @@ class WeiTouTiao {
         }
         
         group_flags = dict["group_flags"] as? Int
-        group_id = dict["group_id"] as? String
+        group_id = dict["group_id"] as? Int
         group_source = dict["group_source"] as? Int
         has_image = dict["has_image"] as? Bool
         has_video = dict["has_video"] as? Bool
@@ -374,7 +381,7 @@ class WeiTouTiao {
         has_mp4_video = dict["has_mp4_video"] as? Bool
         hot = dict["hot"] as? Bool
         is_subject = dict["is_subject"] as? Bool
-        item_id = dict["item_id"] as? String
+        item_id = dict["item_id"] as? Int
         ban_comment = dict["ban_comment"] as? Int
         item_version = dict["item_version"] as? Int
         

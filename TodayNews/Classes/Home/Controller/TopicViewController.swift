@@ -116,8 +116,14 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
             let videoDetailVC = VideoDetailController()
             //        videoDetailVC.videoTopic = newsTopics[indexPath.row]
             navigationController?.pushViewController(videoDetailVC, animated: true)
+        } else if topicTitle!.category == "subscription" {
+            
         } else {
+            let cell = tableView.cellForRow(at: indexPath) as! HomeTopicCell
             let topicDetailVC = TopicDetailController()
+            topicDetailVC.weitoutiao = cell.weitoutiao!
+//            topicDetailVC.groupID = String(cell.weitoutiao!.group_id!)
+            
             navigationController?.pushViewController(topicDetailVC, animated: true)
         }
         
