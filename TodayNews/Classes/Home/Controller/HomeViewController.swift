@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.globalBackgroundColor()
-        // 设置导航栏属性
+        // 设置状态栏属性
         navigationController?.navigationBar.barStyle = .black
         // 自定义导航栏
         navigationItem.titleView = homeNavigationBar

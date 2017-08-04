@@ -15,7 +15,6 @@ class TopicDetailController: UIViewController {
         didSet {
             headerView.weitoutiao = weitoutiao!
             headerView.height = 45 + 2 * kMargin + weitoutiao!.newDetailTitleHeight!
-            NetworkTool.loadNewsDetail(articleURL: weitoutiao!.article_url!)
 //            let request = URLRequest(url: URL(string: weitoutiao!.article_url!)!)
 //            webView.load(request)
             webView.frame = CGRect(x: 0, y: headerView.frame.maxY, width: screenWidth, height: screenHeight - headerView.frame.maxY)

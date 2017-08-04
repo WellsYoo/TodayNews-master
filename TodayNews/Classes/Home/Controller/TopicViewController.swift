@@ -112,27 +112,27 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if topicTitle!.category == "video" {
-            let videoDetailVC = VideoDetailController()
-            //        videoDetailVC.videoTopic = newsTopics[indexPath.row]
-            navigationController?.pushViewController(videoDetailVC, animated: true)
-        } else if topicTitle!.category == "subscription" {
-            
-        } else {
+        if indexPath.row == 0 { // 默认设置点击第一个 cell 跳转到图片详情界面
             let cell = tableView.cellForRow(at: indexPath) as! HomeTopicCell
-            if let galleryCount = cell.weitoutiao!.gallery_pic_count {
-                let newsDetailImageVC = NewsDetailImageController()
-                newsDetailImageVC.weitoutiao = cell.weitoutiao
-                present(newsDetailImageVC, animated: false, completion: nil)
+            let storyboard = UIStoryboard(name: "NewsDetailImageController", bundle: nil)
+            let newsDetailImageVC = storyboard.instantiateViewController(withIdentifier: "NewsDetailImageController") as! NewsDetailImageController
+            newsDetailImageVC.weitoutiao = cell.weitoutiao
+            present(newsDetailImageVC, animated: false, completion: nil)
+        } else {
+            if topicTitle!.category == "video" {
+                let videoDetailVC = VideoDetailController()
+                //        videoDetailVC.videoTopic = newsTopics[indexPath.row]
+                navigationController?.pushViewController(videoDetailVC, animated: true)
+            } else if topicTitle!.category == "subscription" {
+    
             } else {
+                let cell = tableView.cellForRow(at: indexPath) as! HomeTopicCell
                 let topicDetailVC = TopicDetailController()
                 topicDetailVC.weitoutiao = cell.weitoutiao!
-                //            topicDetailVC.groupID = String(cell.weitoutiao!.group_id!)
-                
+    //            topicDetailVC.groupID = String(cell.weitoutiao!.group_id!)
                 navigationController?.pushViewController(topicDetailVC, animated: true)
             }
         }
-        
     }
 }
 

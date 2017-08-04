@@ -22,6 +22,8 @@
 		947BE93A1EFB8A47009E7961 /* MineOtherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947BE9381EFB8A47009E7961 /* MineOtherCell.xib */; };
 		947BE93D1EFB8A5E009E7961 /* MineFirstSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947BE93B1EFB8A5E009E7961 /* MineFirstSectionCell.swift */; };
 		947BE93E1EFB8A5E009E7961 /* MineFirstSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947BE93C1EFB8A5E009E7961 /* MineFirstSectionCell.xib */; };
+		9496D90C1F349845001986D4 /* NewsDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9496D90A1F349845001986D4 /* NewsDetailImageCell.swift */; };
+		9496D90D1F349845001986D4 /* NewsDetailImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9496D90B1F349845001986D4 /* NewsDetailImageCell.xib */; };
 		94A11D9F1F0F0FC200DCBACC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A11D9D1F0F0FC200DCBACC /* HomeCollectionViewCell.swift */; };
 		94A11DA01F0F0FC200DCBACC /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A11D9E1F0F0FC200DCBACC /* HomeCollectionViewCell.xib */; };
 		94A698B51F105A90001733AF /* ToutiaohaoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A698B31F105A90001733AF /* ToutiaohaoHeaderView.swift */; };
@@ -106,9 +108,6 @@
 		94BF4E3A1F336D6D0061EDBE /* NewsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF4E391F336D6D0061EDBE /* NewsDetail.swift */; };
 		94BF4E3C1F336E100061EDBE /* NewsDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF4E3B1F336E100061EDBE /* NewsDetailHeaderView.swift */; };
 		94BF4E3E1F336E360061EDBE /* NewsDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BF4E3D1F336E360061EDBE /* NewsDetailHeaderView.xib */; };
-		94BF4E471F3410C70061EDBE /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BF4E421F3410C70061EDBE /* TFHpple.m */; };
-		94BF4E481F3410C70061EDBE /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BF4E441F3410C70061EDBE /* TFHppleElement.m */; };
-		94BF4E491F3410C70061EDBE /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BF4E461F3410C70061EDBE /* XPathQuery.m */; };
 		94BF4E4B1F3410E90061EDBE /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BF4E4A1F3410E90061EDBE /* libxml2.2.tbd */; };
 		94BF4E4D1F3420110061EDBE /* NewsDetailImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF4E4C1F3420110061EDBE /* NewsDetailImageController.swift */; };
 		94BF4E4F1F3425120061EDBE /* NewsDetailImageController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94BF4E4E1F3425120061EDBE /* NewsDetailImageController.storyboard */; };
@@ -153,6 +152,8 @@
 		947BE9381EFB8A47009E7961 /* MineOtherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineOtherCell.xib; sourceTree = "<group>"; };
 		947BE93B1EFB8A5E009E7961 /* MineFirstSectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineFirstSectionCell.swift; sourceTree = "<group>"; };
 		947BE93C1EFB8A5E009E7961 /* MineFirstSectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineFirstSectionCell.xib; sourceTree = "<group>"; };
+		9496D90A1F349845001986D4 /* NewsDetailImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailImageCell.swift; sourceTree = "<group>"; };
+		9496D90B1F349845001986D4 /* NewsDetailImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDetailImageCell.xib; sourceTree = "<group>"; };
 		94A11D9D1F0F0FC200DCBACC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		94A11D9E1F0F0FC200DCBACC /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		94A698B31F105A90001733AF /* ToutiaohaoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToutiaohaoHeaderView.swift; sourceTree = "<group>"; };
@@ -243,12 +244,6 @@
 		94BF4E391F336D6D0061EDBE /* NewsDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetail.swift; sourceTree = "<group>"; };
 		94BF4E3B1F336E100061EDBE /* NewsDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailHeaderView.swift; sourceTree = "<group>"; };
 		94BF4E3D1F336E360061EDBE /* NewsDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDetailHeaderView.xib; sourceTree = "<group>"; };
-		94BF4E411F3410C70061EDBE /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
-		94BF4E421F3410C70061EDBE /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
-		94BF4E431F3410C70061EDBE /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
-		94BF4E441F3410C70061EDBE /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
-		94BF4E451F3410C70061EDBE /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
-		94BF4E461F3410C70061EDBE /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		94BF4E4A1F3410E90061EDBE /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		94BF4E4C1F3420110061EDBE /* NewsDetailImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailImageController.swift; sourceTree = "<group>"; };
 		94BF4E4E1F3425120061EDBE /* NewsDetailImageController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsDetailImageController.storyboard; sourceTree = "<group>"; };
@@ -415,6 +410,8 @@
 				94A698C61F106989001733AF /* RightCategoryCell.xib */,
 				94BF4E3B1F336E100061EDBE /* NewsDetailHeaderView.swift */,
 				94BF4E3D1F336E360061EDBE /* NewsDetailHeaderView.xib */,
+				9496D90A1F349845001986D4 /* NewsDetailImageCell.swift */,
+				9496D90B1F349845001986D4 /* NewsDetailImageCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -624,22 +621,8 @@
 		94BF4E3F1F3410C70061EDBE /* Vender */ = {
 			isa = PBXGroup;
 			children = (
-				94BF4E401F3410C70061EDBE /* Hpple */,
 			);
 			path = Vender;
-			sourceTree = "<group>";
-		};
-		94BF4E401F3410C70061EDBE /* Hpple */ = {
-			isa = PBXGroup;
-			children = (
-				94BF4E411F3410C70061EDBE /* TFHpple.h */,
-				94BF4E421F3410C70061EDBE /* TFHpple.m */,
-				94BF4E431F3410C70061EDBE /* TFHppleElement.h */,
-				94BF4E441F3410C70061EDBE /* TFHppleElement.m */,
-				94BF4E451F3410C70061EDBE /* XPathQuery.h */,
-				94BF4E461F3410C70061EDBE /* XPathQuery.m */,
-			);
-			path = Hpple;
 			sourceTree = "<group>";
 		};
 		BCA504EC7911090A49B9D38B /* Pods */ = {
@@ -775,6 +758,7 @@
 				947BE93E1EFB8A5E009E7961 /* MineFirstSectionCell.xib in Resources */,
 				94BF4E3E1F336E360061EDBE /* NewsDetailHeaderView.xib in Resources */,
 				94B916961EF21EE300AC91B9 /* VideoTopicCell.xib in Resources */,
+				9496D90D1F349845001986D4 /* NewsDetailImageCell.xib in Resources */,
 				94B9167B1EF21EE300AC91B9 /* SearchDefaultBackgroundView.xib in Resources */,
 				947BE93A1EFB8A47009E7961 /* MineOtherCell.xib in Resources */,
 				94189EE01F05331B000864A7 /* TopTabViewController.xib in Resources */,
@@ -891,8 +875,8 @@
 				94B916B11EF4041E00AC91B9 /* ThumbCollectionViewCell.swift in Sources */,
 				94B9167A1EF21EE300AC91B9 /* SearchDefaultBackgroundView.swift in Sources */,
 				94B916821EF21EE300AC91B9 /* NetworkTool.swift in Sources */,
-				94BF4E481F3410C70061EDBE /* TFHppleElement.m in Sources */,
 				94A698C01F105FA0001733AF /* ConcernToutiaohao.swift in Sources */,
+				9496D90C1F349845001986D4 /* NewsDetailImageCell.swift in Sources */,
 				94B916EE1EF50A8900AC91B9 /* CellVideoView.swift in Sources */,
 				94A11D9F1F0F0FC200DCBACC /* HomeCollectionViewCell.swift in Sources */,
 				94B916811EF21EE300AC91B9 /* MyTabBarController.swift in Sources */,
@@ -914,7 +898,6 @@
 				94B916F91EF5144D00AC91B9 /* PostSecondCell.swift in Sources */,
 				94B916991EF21EE300AC91B9 /* LoginPopViewController.swift in Sources */,
 				94B916761EF21EE300AC91B9 /* HomeSearchBar.swift in Sources */,
-				94BF4E471F3410C70061EDBE /* TFHpple.m in Sources */,
 				94FF93101F0CE33200CCEFB0 /* VideoTopicController.swift in Sources */,
 				94B9169F1EF21EE300AC91B9 /* WeiTouTiaoCell.swift in Sources */,
 				94B916971EF21EE300AC91B9 /* AddFriendViewController.swift in Sources */,
@@ -927,7 +910,6 @@
 				947626C91F0C669400457295 /* HomeTitleView.swift in Sources */,
 				94A76F471F033EE2008BFDE5 /* ConcernHeaderView.swift in Sources */,
 				94B916851EF21EE300AC91B9 /* MoreLoginViewController.swift in Sources */,
-				94BF4E491F3410C70061EDBE /* XPathQuery.m in Sources */,
 				94B9169D1EF21EE300AC91B9 /* NotNetworkView.swift in Sources */,
 				94A698C31F106978001733AF /* LeftCategoryCell.swift in Sources */,
 				94A76F4E1F033F2F008BFDE5 /* FollowDetailViewController.swift in Sources */,

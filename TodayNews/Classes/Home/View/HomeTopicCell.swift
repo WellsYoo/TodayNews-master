@@ -103,11 +103,13 @@ class HomeTopicCell: UITableViewCell {
                         }
                     }
                 } else if weitoutiao!.has_video! {
-                    videoView.imageButton.kf.setBackgroundImage(with: URL(string: weitoutiao!.video_detail_info!.detail_video_large_image!.url!), for: .normal)
-                    self.middleView.addSubview(videoView)
-                    videoView.snp.makeConstraints({ (make) in
-                        make.top.left.bottom.right.equalTo(self.middleView)
-                    })
+                    if let videoDetailInfo = weitoutiao!.video_detail_info {
+                        videoView.imageButton.kf.setBackgroundImage(with: URL(string: videoDetailInfo.detail_video_large_image!.url!), for: .normal)
+                        self.middleView.addSubview(videoView)
+                        videoView.snp.makeConstraints({ (make) in
+                            make.top.left.bottom.right.equalTo(self.middleView)
+                        })
+                    }
                 }
             } else {
                 if weitoutiao!.thumb_image_list.count != 0 {

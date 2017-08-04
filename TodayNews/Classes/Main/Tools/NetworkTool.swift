@@ -91,16 +91,42 @@ class NetworkTool {
     
     
     /// 获取新闻详情数据
-    class func loadNewsDetail(articleURL: String) {
+    class func loadNewsDetail(articleURL: String, completionHandler:@escaping (_ images: [NewsDetailImage], _ abstracts: [String])->()) {
+        // 测试数据
 //        http://toutiao.com/item/6450211121520443918/
-        print(articleURL)
-        Alamofire.request(articleURL).responseString { (response) in
+        let url = "http://www.toutiao.com/a6450237670911852814/#p=1"
+        
+        Alamofire.request(url).responseString { (response) in
             guard response.result.isSuccess else {
                 return
             }
             if let value = response.result.value {
-                let json = JSON(value)
-                print(json)
+                if value.contains("<script>var BASE_DATA =") {
+                    // 获取 图片链接数组
+                    let startIndex = value.range(of: "\"sub_images\":")!.upperBound
+                    let endIndex = value.range(of: ",\"max_img_width\"")!.lowerBound
+                    let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex))
+                    let BASE_DATA = value.substring(with: range)
+                    let data = BASE_DATA.data(using: String.Encoding.utf8)! as Data
+                    let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [AnyObject]
+                    var images = [NewsDetailImage]()
+                    for image in dict! {
+                        let img = NewsDetailImage(dict: image as! [String: AnyObject])
+                        images.append(img)
+                    }
+                    // 获取 子标题
+                    let titleStartIndex = value.range(of: "\"sub_abstracts\":")!.upperBound
+                    let titlEndIndex = value.range(of: ",\"sub_titles\"")!.lowerBound
+                    let titleRange = Range(uncheckedBounds: (lower: titleStartIndex, upper: titlEndIndex))
+                    let sub_abstracts = value.substring(with: titleRange)
+                    let titleData = sub_abstracts.data(using: String.Encoding.utf8)! as Data
+                    let subAbstracts = try? JSONSerialization.jsonObject(with: titleData, options: .mutableContainers) as! [String]
+                    var abstracts = [String]()
+                    for string in subAbstracts! {
+                        abstracts.append(string)
+                    }
+                    completionHandler(images, abstracts)
+                }
             }
         }
     }
