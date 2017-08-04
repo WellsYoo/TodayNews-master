@@ -76,8 +76,8 @@ class HomeTopicCell: UITableViewCell {
             }
             createTimeLabel.text = weitoutiao!.createTime
             
-            if weitoutiao!.has_image != nil  {
-                if weitoutiao!.has_image! {
+            if let hasImage = weitoutiao!.has_image {
+                if hasImage {
                     if weitoutiao!.image_list.count > 0 {
                         if weitoutiao!.image_list.count == 1 {
                             rightButton.kf.setImage(with: URL(string: weitoutiao!.image_list.first!.url!), for: .normal)
@@ -183,6 +183,12 @@ extension HomeTopicCell: UICollectionViewDelegate, UICollectionViewDataSource, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ThumbCollectionViewCell.self), for: indexPath) as! ThumbCollectionViewCell
         let thumbImage = weitoutiao!.image_list[indexPath.item]
         cell.thumbImageURL = (thumbImage.url)!
+        if let galleryCount = weitoutiao!.gallery_pic_count {
+            if indexPath.row == 2 {
+                cell.galleryCountLabel.text = String(describing: galleryCount)
+                cell.galleryCountLabel.isHidden = false
+            }
+        }
         return cell
     }
     

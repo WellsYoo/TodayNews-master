@@ -27,7 +27,6 @@ class TopicViewController: UIViewController {
         
         NetworkTool.loadHomeCategoryNewsFeed(category: topicTitle!.category!) { (nowTime, newsTopics) in
             self.newsTopics = newsTopics
-            
             self.tableView.reloadData()
         }
     }
@@ -112,6 +111,7 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if topicTitle!.category == "video" {
             let videoDetailVC = VideoDetailController()
             //        videoDetailVC.videoTopic = newsTopics[indexPath.row]
@@ -120,11 +120,17 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
             
         } else {
             let cell = tableView.cellForRow(at: indexPath) as! HomeTopicCell
-            let topicDetailVC = TopicDetailController()
-            topicDetailVC.weitoutiao = cell.weitoutiao!
-//            topicDetailVC.groupID = String(cell.weitoutiao!.group_id!)
-            
-            navigationController?.pushViewController(topicDetailVC, animated: true)
+            if let galleryCount = cell.weitoutiao!.gallery_pic_count {
+                let newsDetailImageVC = NewsDetailImageController()
+                newsDetailImageVC.weitoutiao = cell.weitoutiao
+                present(newsDetailImageVC, animated: false, completion: nil)
+            } else {
+                let topicDetailVC = TopicDetailController()
+                topicDetailVC.weitoutiao = cell.weitoutiao!
+                //            topicDetailVC.groupID = String(cell.weitoutiao!.group_id!)
+                
+                navigationController?.pushViewController(topicDetailVC, animated: true)
+            }
         }
         
     }

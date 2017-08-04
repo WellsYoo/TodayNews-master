@@ -170,7 +170,7 @@ class WeiTouTiao {
     
     var inner_ui_flag: Int?
     
-    var is_stick: Int?
+    var is_stick: Bool?
     
     var image_list = [WTTImageList]()
     var large_image_list = [WTTLargeImageList]()
@@ -319,9 +319,12 @@ class WeiTouTiao {
     
     var keywords: String?
     
+    var gallery_pic_count: Int?
     
     init(dict: [String: AnyObject]) {
         
+        gallery_pic_count = dict["gallery_pic_count"] as? Int
+        is_stick = dict["is_stick"] as? Bool
         label = dict["label"] as? String
         keywords = dict["keywords"] as? String
         

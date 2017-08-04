@@ -33,7 +33,7 @@ class NetworkTool {
                     var homeTopicVCs = [TopicViewController]()
                     
                     // 添加推荐标题
-                    let recommendDict = ["category": "__all__", "name": "推荐"]
+                    let recommendDict = ["category": "", "name": "推荐"]
                     let recommend = TopicTitle(dict: recommendDict as [String : AnyObject])
                     titles.append(recommend)
                     // 添加控制器
@@ -72,14 +72,15 @@ class NetworkTool {
                 }
                 var topics = [WeiTouTiao]()
                 for data in dataJSONs {
-                    let content = data["content"].stringValue
-                    let contentData: NSData = content.data(using: String.Encoding.utf8)! as NSData
-                    do {
-                        let dict = try JSONSerialization.jsonObject(with: contentData as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
-                        let topic = WeiTouTiao(dict: dict as! [String : AnyObject])
-                        topics.append(topic)
-                    } catch {
-                        
+                    if let content = data["content"].string {
+                        let contentData: NSData = content.data(using: String.Encoding.utf8)! as NSData
+                        do {
+                            let dict = try JSONSerialization.jsonObject(with: contentData as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
+                            let topic = WeiTouTiao(dict: dict as! [String : AnyObject])
+                            topics.append(topic)
+                        } catch {
+                            
+                        }
                     }
                 }
                 completionHandler(nowTime, topics)
@@ -87,13 +88,13 @@ class NetworkTool {
         }
     }
     
+    
+    
     /// 获取新闻详情数据
-    class func loadNewsDetail(groupID: String) {
-        let url = "http://lf.snssdk.com/2/article/information/v16/?"
-        let params = ["device_id": device_id,
-                      "device_platform": "iphone",
-                      "group_id": groupID]
-        Alamofire.request(url, parameters: params).responseJSON { (response) in
+    class func loadNewsDetail(articleURL: String) {
+//        http://toutiao.com/item/6450211121520443918/
+        print(articleURL)
+        Alamofire.request(articleURL).responseString { (response) in
             guard response.result.isSuccess else {
                 return
             }

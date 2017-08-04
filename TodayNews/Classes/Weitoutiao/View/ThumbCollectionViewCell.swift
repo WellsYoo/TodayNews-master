@@ -10,7 +10,9 @@ import UIKit
 import Kingfisher
 
 class ThumbCollectionViewCell: UICollectionViewCell {
-
+    
+    @IBOutlet weak var galleryCountLabel: UILabel!
+    
     @IBOutlet weak var thumbImageView: UIImageView!
     
     override func awakeFromNib() {

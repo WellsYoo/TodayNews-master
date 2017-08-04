@@ -35,7 +35,6 @@ class NewsDetailHeaderView: UIView {
         super.awakeFromNib()
         concernButton.setTitle("已关注", for: .selected)
         concernButton.setTitleColor(UIColor(r: 0, g: 0, b: 0, alpha: 0.6), for: .selected)
-        titleLabel.backgroundColor = UIColor.red
         self.width = screenWidth
     }
     

@@ -6,37 +6,32 @@
 //  Copyright © 2017年 hrscy. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NewsDetail {
     
+    var title: String?
     
-    var related_news: [AnyObject]?
+    var body: String?
     
-    var ban_comment: Int?
-    
-    var user_digg: Int?
-    
-    var ban_bury: Int?
-    
-    var related_gallery: [AnyObject]?
-    
-    var is_wenda: Bool?
-    
-    var related_video_toutiao: [AnyObject]?
-    
-    var related_wenda: [AnyObject]?
-    
-    var is_stick: Int?
-    
-    var image_list = [WTTImageList]()
-    var large_image_list = [WTTLargeImageList]()
-    var ugc_cut_image_list = [WTTUgcCutImageList]()
-    var thumb_image_list = [WTTThumbImageList]()
-    
+    var images = [NewsDetailImage]()
     
     init(dict: [String: AnyObject]) {
         
     }
     
+}
+
+class NewsDetailImage {
+    
+    var src: String?
+
+    var img_width: CGFloat?
+    
+    var img_height: CGFloat?
+    
+    
+    init(dict: [String: AnyObject]) {
+        
+    }
 }

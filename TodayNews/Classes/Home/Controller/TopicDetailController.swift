@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class TopicDetailController: UIViewController {
     
@@ -14,12 +15,16 @@ class TopicDetailController: UIViewController {
         didSet {
             headerView.weitoutiao = weitoutiao!
             headerView.height = 45 + 2 * kMargin + weitoutiao!.newDetailTitleHeight!
+            NetworkTool.loadNewsDetail(articleURL: weitoutiao!.article_url!)
+//            let request = URLRequest(url: URL(string: weitoutiao!.article_url!)!)
+//            webView.load(request)
+            webView.frame = CGRect(x: 0, y: headerView.frame.maxY, width: screenWidth, height: screenHeight - headerView.frame.maxY)
         }
     }
     
     var groupID: String? {
         didSet {
-            NetworkTool.loadNewsDetail(groupID: groupID!)
+            
         }
     }
     
@@ -44,6 +49,11 @@ class TopicDetailController: UIViewController {
         headerView.y = kNavBarHeight
         return headerView
     }()
+    
+    lazy var webView: WKWebView = {
+        let webView = WKWebView()
+        return webView
+    }()
 }
 
 extension TopicDetailController {
@@ -51,6 +61,6 @@ extension TopicDetailController {
     func setupUI() {
         view.backgroundColor = UIColor.white
         view.addSubview(headerView)
-        
+        view.addSubview(webView)
     }
 }
