@@ -88,9 +88,7 @@ class NetworkTool {
         }
     }
     
-    
-    
-    /// 获取新闻详情数据
+    /// 获取图片新闻详情数据
     class func loadNewsDetail(articleURL: String, completionHandler:@escaping (_ images: [NewsDetailImage], _ abstracts: [String])->()) {
         // 测试数据
 //        http://toutiao.com/item/6450211121520443918/
@@ -126,6 +124,31 @@ class NetworkTool {
                         abstracts.append(string)
                     }
                     completionHandler(images, abstracts)
+                }
+            }
+        }
+    }
+    
+    /// 获取视频顶部标题内容
+    class func loadNewsDetailImageComments(offset: Int, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->()) {
+        let url = BASE_URL + "article/v2/tab_comments/?"
+        let params = ["offset": offset,
+                      "item_id": 6450240420034118157,
+                      "group_id": 6450237670911852814] as [String : AnyObject]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                let json = JSON(value)
+                if let data = json["data"].arrayObject {
+                    var comments = [NewsDetailImageComment]()
+                    for dict in data {
+                        let commentDict = dict as! [String: AnyObject]
+                        let comment = NewsDetailImageComment(dict: commentDict["comment"] as! [String : AnyObject])
+                        comments.append(comment)
+                    }
+                    completionHandler(comments)
                 }
             }
         }

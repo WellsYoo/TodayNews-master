@@ -112,7 +112,7 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 0 { // 默认设置点击第一个 cell 跳转到图片详情界面
+        if indexPath.row == 0 && topicTitle!.category == "" { // 默认设置点击第一个 cell 跳转到图片详情界面
             let cell = tableView.cellForRow(at: indexPath) as! HomeTopicCell
             let storyboard = UIStoryboard(name: "NewsDetailImageController", bundle: nil)
             let newsDetailImageVC = storyboard.instantiateViewController(withIdentifier: "NewsDetailImageController") as! NewsDetailImageController
@@ -124,7 +124,7 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
                 //        videoDetailVC.videoTopic = newsTopics[indexPath.row]
                 navigationController?.pushViewController(videoDetailVC, animated: true)
             } else if topicTitle!.category == "subscription" {
-    
+                
             } else {
                 let cell = tableView.cellForRow(at: indexPath) as! HomeTopicCell
                 let topicDetailVC = TopicDetailController()

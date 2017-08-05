@@ -128,7 +128,10 @@ extension NewsDetailImageController {
     
     /// 评论按钮点击
     @IBAction func commentButtonClicked(_ sender: UIButton) {
-        
+        let storyboard = UIStoryboard(name: "NewsDetailImageCommentController", bundle: nil)
+        let newDetailCommentVC = storyboard.instantiateViewController(withIdentifier: "NewsDetailImageCommentController") as! NewsDetailImageCommentController
+        newDetailCommentVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - 20)))
+        present(newDetailCommentVC, animated: true, completion: nil)
     }
     
     /// 收藏按钮点击
@@ -201,6 +204,7 @@ extension NewsDetailImageController: UICollectionViewDelegate, UICollectionViewD
                         self.vipImageView.alpha = 1
 //                    }
 //                }
+                self.abstractLabel.alpha = 1
             }, completion: { (_) in
                 self.hidden = false
                 cell.isUserInteractionEnabled = true
@@ -217,6 +221,7 @@ extension NewsDetailImageController: UICollectionViewDelegate, UICollectionViewD
                         self.vipImageView.alpha = 0
 //                    }
 //                }
+                self.abstractLabel.alpha = 0
             }, completion: { (_) in
                 self.hidden = true
                 cell.isUserInteractionEnabled = true

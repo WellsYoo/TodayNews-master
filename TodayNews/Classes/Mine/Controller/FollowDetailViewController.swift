@@ -9,8 +9,9 @@
 //
 
 import UIKit
+import IBAnimatable
 
-class FollowDetailViewController: UIViewController {
+class FollowDetailViewController: AnimatableModalViewController {
     
     var followDetail: FollowDetail?
     
@@ -123,7 +124,11 @@ extension FollowDetailViewController {
 extension FollowDetailViewController: ConcernNavigationViewDelegate {
     /// 返回按钮点击
     func concernHeaderViewReturnButtonClicked() {
-        navigationController?.popViewController(animated: true)
+        if (navigationController != nil) {
+            navigationController?.popViewController(animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     /// 更多按钮点击
     func concernHeaderViewMoreButtonClicked() {
