@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import SVProgressHUD
 
 class NewsDetailImageController: UIViewController {
     
@@ -184,7 +185,14 @@ extension NewsDetailImageController: UICollectionViewDelegate, UICollectionViewD
         cell.index = indexPath.item + 1
         cell.count = images.count
         let image = images[indexPath.item]
-        cell.imageView.kf.setImage(with: URL(string: image.url!))
+        cell.imageView.kf.setImage(with: URL(string: image.url!), placeholder: nil, options: nil, progressBlock: { (receivedSize, totalSize) in
+            let progress = Float(receivedSize) / Float(totalSize)
+            SVProgressHUD.showProgress(progress)
+            SVProgressHUD.setBackgroundColor(UIColor(r: 0, g: 0, b: 0, alpha: 0.5))
+            SVProgressHUD.setForegroundColor(UIColor.white)
+        }) { (image, error, cacheType, url) in
+            SVProgressHUD.dismiss()
+        }
         cell.abstract = abstracts[indexPath.item]
         return cell
     }

@@ -93,9 +93,16 @@ extension NewsDetailImageCommentController: UITableViewDelegate, UITableViewData
             .addDisposableTo(disposeBag)
         // 点击了 评论内容或者回复
         cell.coverReplayButton.rx.controlEvent(.touchUpInside)
-            .subscribe(onNext: { [weak self] in
+            .subscribe(onNext: {
                 
             })
             .addDisposableTo(disposeBag)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0 {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
 }

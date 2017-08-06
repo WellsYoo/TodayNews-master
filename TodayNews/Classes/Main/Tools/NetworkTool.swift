@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SVProgressHUD
 
 class NetworkTool {
     
@@ -16,7 +17,7 @@ class NetworkTool {
     
     /// -------------------------- 首 页 home -------------------------
     /// 获取首页顶部标题内容
-    class func loadHomeTitlesData(fromViewController: String,completionHandler:@escaping (_ topTitles: [TopicTitle], _ homeTopicVCs: [TopicViewController])->()) {
+    class func loadHomeTitlesData(fromViewController: String, completionHandler:@escaping (_ topTitles: [TopicTitle], _ homeTopicVCs: [TopicViewController])->()) {
         let url = BASE_URL + "article/category/get_subscribed/v1/?"
         let params = ["device_id": device_id,
                       "aid": 13,
@@ -51,7 +52,33 @@ class NetworkTool {
                 }
             }
         }
+    }
     
+    /// 点击首页加号按钮，获取频道推荐数据
+    class func loadHomeCategoryRecommend(completionHandler:@escaping (_ topTitles: [TopicTitle]) -> ()) {
+        SVProgressHUD.show(withStatus: "正在加载...")
+        SVProgressHUD.setBackgroundColor(UIColor(r: 0, g: 0, b: 0, alpha: 0.5))
+        SVProgressHUD.setForegroundColor(UIColor.white)
+        let url = BASE_URL + "article/category/get_extra/v1/?"
+        let params = ["device_id": device_id]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            SVProgressHUD.dismiss()
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                let json = JSON(value)
+                let dataDict = json["data"].dictionary
+                if let data = dataDict!["data"]!.arrayObject {
+                    var titles = [TopicTitle]()
+                    for dict in data {
+                        let topicTitle = TopicTitle(dict: dict as! [String: AnyObject])
+                        titles.append(topicTitle)
+                    }
+                    completionHandler(titles)
+                }
+            }
+        }
     }
     
     /// 获取首页不同分类的新闻内容(和视频内容使用一个接口)

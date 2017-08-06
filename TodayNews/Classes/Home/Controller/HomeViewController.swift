@@ -69,6 +69,19 @@ extension HomeViewController {
             make.left.bottom.right.equalTo(view)
             make.top.equalTo(view).offset(kNavBarHeight)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(homeTitleAddButtonClicked(notification:)), name: NSNotification.Name(rawValue: "homeTitleAddButtonClicked"), object: nil)
+    }
+    
+    /// 点击了加号按钮
+    func homeTitleAddButtonClicked(notification: Notification) {
+        let titles = notification.object as! [TopicTitle]
+        
+        let storyboard = UIStoryboard(name: "HomeAddCategoryController", bundle: nil)
+        let homeAddCategoryVC = storyboard.instantiateViewController(withIdentifier: "HomeAddCategoryController") as! HomeAddCategoryController
+        homeAddCategoryVC.homeTitles = titles
+        homeAddCategoryVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - 20)))
+        present(homeAddCategoryVC, animated: true, completion: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

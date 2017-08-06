@@ -195,7 +195,7 @@ extension HomeTitleView {
     
     /// 右侧按钮点击
     @objc fileprivate func rightButtonClicked() {
-        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "homeTitleAddButtonClicked"), object: titles)
     }
 }
 
