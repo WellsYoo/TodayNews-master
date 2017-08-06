@@ -9,5 +9,8 @@ target "TodayNews" do
     pod 'SwiftyJSON', '~> 3.1.4'
     pod 'IBAnimatable'
     pod 'Kanna', '~> 2.1.1’
+    pod 'RxSwift', '~> 3.6.1'
+    pod 'RxCocoa', '~> 3.6.1'
+    pod 'SVProgressHUD', '~> 2.1.2'
     
 end
