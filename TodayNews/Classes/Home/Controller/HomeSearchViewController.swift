@@ -10,18 +10,17 @@
 import UIKit
 import SnapKit
 
-class HomeSearchViewController: UIViewController {
+class HomeSearchViewController: UITableViewController {
+    
+    var weitoutiaos = [WeiTouTiao]()
+    
+    var offset: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // 导航栏
@@ -34,39 +33,34 @@ class HomeSearchViewController: UIViewController {
     // 搜索界面默认的背景
     fileprivate lazy var searchDefaultBGView: SearchDefaultBackgroundView = {
         let searchDefaultBGView = SearchDefaultBackgroundView.defaultBackgroundView()
+        searchDefaultBGView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 180)
         return searchDefaultBGView
     }()
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        // 设置导航栏属性
-        navigationController?.navigationBar.barStyle = .default
-        navigationController?.navigationBar.barTintColor = UIColor.white
-    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         // 设置导航栏属性
         navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.barTintColor = UIColor.globalBackgroundColor()
     }
 }
 
 extension HomeSearchViewController {
     
     fileprivate func setupUI() {
+        navigationController?.navigationBar.barStyle = .default
+        navigationController?.navigationBar.barTintColor = UIColor.white
         view.backgroundColor = UIColor.white
         // 隐藏返回按钮
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIView())
         // 设置自定义导航视图
         navigationItem.titleView = searchNavigationView
         // 添加背景 View
-        view.addSubview(searchDefaultBGView)
-        // 布局
-        searchDefaultBGView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(view)
-            make.top.equalTo(view.snp.top).offset(kNavBarHeight)
-            make.height.equalTo(188)
+        tableView.addSubview(searchDefaultBGView)
+        tableView.tableFooterView = UIView()
+        
+        NetworkTool.loadSearchResult(keyword: "", offset: offset) { (weitoutiaos) in
+            self.weitoutiaos = weitoutiaos
+            self.tableView.reloadData()
         }
     }
 }
@@ -78,3 +72,4 @@ extension HomeSearchViewController: SearchNavigationViewDelegate {
         navigationController?.popViewController(animated: false)
     }
 }
+

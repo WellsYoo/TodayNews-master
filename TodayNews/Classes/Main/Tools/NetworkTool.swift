@@ -16,6 +16,7 @@ class NetworkTool {
     
     
     /// -------------------------- 首 页 home -------------------------
+    // MARK: - 获取首页顶部标题内容
     /// 获取首页顶部标题内容
     class func loadHomeTitlesData(fromViewController: String, completionHandler:@escaping (_ topTitles: [TopicTitle], _ homeTopicVCs: [TopicViewController])->()) {
         let url = BASE_URL + "article/category/get_subscribed/v1/?"
@@ -76,6 +77,35 @@ class NetworkTool {
                         titles.append(topicTitle)
                     }
                     completionHandler(titles)
+                }
+            }
+        }
+    }
+    
+    /// 搜索
+    class func loadSearchResult(keyword: String, offset: Int, completionHandler:@escaping (_ weitoutiao: [WeiTouTiao]) -> ()) {
+        let url = BASE_URL + "api/2/wap/search_content/?"
+        let params = ["device_id": device_id,
+                      "keyword": keyword,
+                      "from": "search_tab",
+                      "count": "10",
+                      "cur_tab": "1",
+                      "format": "json",
+                      "offset": offset,
+                      "search_text": keyword] as [String: AnyObject]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                let json = JSON(value)
+                if let data = json["data"].arrayObject {
+                    var weitoutiaos = [WeiTouTiao]()
+                    for dict in data {
+                        let weitoutiao = WeiTouTiao(dict: dict as! [String: AnyObject])
+                        weitoutiaos.append(weitoutiao)
+                    }
+                    completionHandler(weitoutiaos)
                 }
             }
         }
