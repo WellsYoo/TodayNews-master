@@ -57,6 +57,10 @@ class HomeViewController: UIViewController {
         homeNavigationBar.searchBar.delegate = self
         return homeNavigationBar
     }()
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension HomeViewController {
@@ -87,6 +91,8 @@ extension HomeViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    
 }
 
 // MARK: - UITextFieldDelegate

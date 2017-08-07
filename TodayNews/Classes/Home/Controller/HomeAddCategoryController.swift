@@ -32,7 +32,7 @@ class HomeAddCategoryController: AnimatableModalViewController {
         collectionView.register(UINib(nibName: String(describing: AddCategoryCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: AddCategoryCell.self))
         collectionView.register(UINib(nibName: String(describing: MyChannelReusableView.self), bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: MyChannelReusableView.self))
         collectionView.register(UINib(nibName: String(describing: ChannelRecommendReusableView.self), bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: ChannelRecommendReusableView.self))
-        
+        collectionView.allowsMultipleSelection = true
         collectionView.delegate = self
         collectionView.dataSource = self
         // 点击首页加号按钮，获取频道推荐数据
@@ -54,7 +54,7 @@ extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewD
         if indexPath.section == 0 {
             let myChannelReuseableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: MyChannelReusableView.self), for: indexPath) as! MyChannelReusableView
             myChannelReuseableView.editChannelButton.rx.controlEvent(.touchUpInside)
-                .subscribe(onNext: { 
+                .subscribe(onNext: {   // 编辑/完成
                     
                 })
                 .addDisposableTo(disposeBag)
@@ -93,6 +93,11 @@ extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewD
             cell.titleButton.setTitle(category.name!, for: .normal)
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

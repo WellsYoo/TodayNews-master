@@ -51,6 +51,7 @@
             </constraints>
             <size key="customSize" width="141" height="55"/>
             <connections>
+                <outlet property="deleteCategoryButton" destination="gsr-XM-4tf" id="iEL-hW-y5r"/>
                 <outlet property="titleButton" destination="AYa-oj-xb6" id="mpc-Zc-Xht"/>
             </connections>
             <point key="canvasLocation" x="79.5" y="51.5"/>

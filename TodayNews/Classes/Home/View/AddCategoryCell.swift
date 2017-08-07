@@ -12,6 +12,8 @@ class AddCategoryCell: UICollectionViewCell {
 
     @IBOutlet weak var titleButton: UIButton!
     
+    @IBOutlet weak var deleteCategoryButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
