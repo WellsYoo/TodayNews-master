@@ -47,5 +47,5 @@ extension Date {
         let nowStr = fmt.string(from: now)
         return dateStr == nowStr
     }
-    
 }
+

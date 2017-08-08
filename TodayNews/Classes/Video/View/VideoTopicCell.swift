@@ -81,4 +81,12 @@ class VideoTopicCell: UITableViewCell {
         
     }
     
+    /// 背景按钮点击
+    @IBAction func bgImageButtonClick(_ sender: UIButton) {
+        /// 获取视频的真是链接
+        NetworkTool.parseVideoRealURL(video_id: videoTopic!.video_id!) { (realVideo) in
+            
+        }
+    }
+    
 }

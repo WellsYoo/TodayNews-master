@@ -211,6 +211,32 @@ class NetworkTool {
         }
     }
     
+    // 获取今日头条的视频真实链接可参考下面的博客
+    // http://blog.csdn.net/dianliang01/article/details/73163086
+    /// 解析视频的真实链接
+    class func parseVideoRealURL(video_id: String, completionHandler:@escaping (_ realVideo: RealVideo)->()) {
+        let r = arc4random() // 随机数
+        let url: NSString = "/video/urls/v/1/toutiao/mp4/\(video_id)?r=\(r)" as NSString
+        let data: NSData = url.data(using: String.Encoding.utf8.rawValue)! as NSData
+        var crc32 = data.getCRC32() // 使用 crc32 校验
+        if crc32 < 0 { // crc32 的值可能为负数
+            crc32 += 0x100000000
+        }
+        // 拼接
+        let realURL = "http://i.snssdk.com/video/urls/v/1/toutiao/mp4/\(video_id)?r=\(r)&s=\(crc32)"
+        Alamofire.request(realURL).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                let json = JSON(value)
+                let dict = json["data"].dictionaryObject
+                let video = RealVideo(dict: dict! as [String : AnyObject])
+                completionHandler(video)
+            }
+        }
+    }
+    
     /// 获取头条号 关注
     class func loadEntryList(completionHandler:@escaping (_ concerns: [ConcernToutiaohao])->()) {
         let url = BASE_URL + "entry/list/v1/?"

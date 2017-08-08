@@ -17,7 +17,6 @@
 
 
 import UIKit
-import Alamofire
 
 class WeiTouTiao {
     
@@ -267,7 +266,6 @@ class WeiTouTiao {
     var article_url: String?
     var display_url: String?
     var htmlStrng: String?
-    
     
     var ban_comment: Int?
     
@@ -792,5 +790,76 @@ class WTTFilterWord {
         id = dict["id"]  as? String
         is_selected = dict["is_selected"] as? Bool
         name = dict["name"] as? String
+    }
+}
+
+class RealVideo {
+    
+    var status: Int?
+    
+    var user_id: String?
+    
+    var video_id: String?
+    
+    var validate: Int?
+    
+    var enable_ssl: Bool?
+    
+    var video_duration: Float?
+    
+    var video_list: [String: AnyObject]?
+    
+    var video_1: Video?  // 360p
+    var video_2: Video?  // 480p
+    var video_3: Video?  // 720p
+    
+    init(dict: [String: AnyObject]) {
+        status = dict["status"]  as? Int
+        user_id = dict["user_id"] as? String
+        video_id = dict["video_id"] as? String
+        validate = dict["validate"] as? Int
+        enable_ssl = dict["enable_ssl"] as? Bool
+        video_duration = dict["video_duration"] as? Float
+        video_list = dict["video_list"] as? [String: AnyObject]
+        video_1 = Video(dict: video_list!["video_1"] as! [String: AnyObject])
+        video_2 = Video(dict: video_list!["video_2"] as! [String: AnyObject])
+        video_3 = Video(dict: video_list!["video_3"] as! [String: AnyObject])
+    }
+    
+}
+
+class Video {
+    
+    var preload_interval: Int?
+
+    var preload_max_step: Int?
+
+    var preload_min_step: Int?
+    
+    var preload_size: Int?
+    
+    var socket_buffer: Int?
+    
+    var user_video_proxy: Int?
+    
+    var vheight: Int?
+    var vwidth: Int?
+    
+    var size: Int?
+    
+    var vtype: String?
+    
+    init(dict: [String: AnyObject]) {
+        preload_interval = dict["preload_interval"] as? Int
+        preload_max_step = dict["preload_max_step"] as? Int
+        preload_min_step = dict["preload_min_step"] as? Int
+        preload_size = dict["preload_size"] as? Int
+        socket_buffer = dict["socket_buffer"] as? Int
+        user_video_proxy = dict["user_video_proxy"] as? Int
+        socket_buffer = dict["socket_buffer"] as? Int
+        vheight = dict["vheight"] as? Int
+        vwidth = dict["vwidth"] as? Int
+        size = dict["size"] as? Int
+        vtype = dict["vtype"] as? String
     }
 }
