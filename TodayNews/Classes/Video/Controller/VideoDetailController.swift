@@ -101,7 +101,7 @@ extension VideoDetailController {
             NetworkTool.loadNewsDetailComments(offset: self!.comments.count, item_id: self!.item_id, group_id: self!.group_id) { (comments) in
                 self!.comments += comments
                 self!.commentTableView.reloadData()
-                self.scrollView.contentSize = CGSize(width: screenWidth, height: self.relateTableView.height + self.commentTableView.height)
+                self!.scrollView.contentSize = CGSize(width: screenWidth, height: self!.relateTableView.height + self!.commentTableView.height)
             }
         })
     }

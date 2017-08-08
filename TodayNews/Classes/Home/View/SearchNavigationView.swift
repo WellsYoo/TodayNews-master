@@ -26,7 +26,7 @@ class SearchNavigationView: UIView {
     }
     
     /// 搜索框
-    fileprivate lazy var searchBar: HomeSearchBar = {
+    lazy var searchBar: HomeSearchBar = {
         let searchBar = HomeSearchBar.searchBar()
         searchBar.placeholder = "请输入关键字"
         searchBar.tintColor = UIColor.black

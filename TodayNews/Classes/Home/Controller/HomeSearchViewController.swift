@@ -66,10 +66,11 @@ extension HomeSearchViewController {
 }
 
 // MARK: - SearchNavigationViewDelegate
-extension HomeSearchViewController: SearchNavigationViewDelegate {
+extension HomeSearchViewController: SearchNavigationViewDelegate, UITextFieldDelegate {
     /// 导航栏取消按钮点击
     func cancelButtonClicked() {
         navigationController?.popViewController(animated: false)
     }
+    
 }
 

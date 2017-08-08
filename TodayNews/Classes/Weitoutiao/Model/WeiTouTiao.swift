@@ -821,9 +821,15 @@ class RealVideo {
         enable_ssl = dict["enable_ssl"] as? Bool
         video_duration = dict["video_duration"] as? Float
         video_list = dict["video_list"] as? [String: AnyObject]
-        video_1 = Video(dict: video_list!["video_1"] as! [String: AnyObject])
-        video_2 = Video(dict: video_list!["video_2"] as! [String: AnyObject])
-        video_3 = Video(dict: video_list!["video_3"] as! [String: AnyObject])
+        if let viddeo1 = video_list!["video_1"] {
+            video_1 = Video(dict: viddeo1 as! [String: AnyObject])
+        }
+        if let viddeo2 = video_list!["video_2"] {
+            video_2 = Video(dict: viddeo2 as! [String: AnyObject])
+        }
+        if let viddeo3 = video_list!["video_3"] {
+            video_3 = Video(dict: viddeo3 as! [String: AnyObject])
+        }
     }
     
 }

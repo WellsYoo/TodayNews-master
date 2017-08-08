@@ -165,11 +165,9 @@ extension HomeTitleView {
         
         // 调整bottomLine
         UIView.animate(withDuration: 0.25, animations: {
-            self.bottomLine.centerX = sourceLabel.centerX
-            self.bottomLine.width = sourceLabel.width
+            self.bottomLine.centerX = targetLabel.centerX
+            self.bottomLine.width = targetLabel.width
         })
-        
-        
         
         // 3.记录下标值
         currentIndex = targetIndex
