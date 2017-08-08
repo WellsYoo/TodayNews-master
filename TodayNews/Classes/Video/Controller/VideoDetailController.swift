@@ -87,6 +87,7 @@ extension VideoDetailController {
         NetworkTool.loadNewsDetailRelateNews(item_id: item_id, group_id: group_id) { (relateNews) in
             self.relateNews = relateNews
             self.relateTableView.reloadData()
+            self.scrollView.contentSize = CGSize(width: screenWidth, height: self.relateTableView.height + self.commentTableView.height)
         }
         
         // 获取评论数据
@@ -100,6 +101,7 @@ extension VideoDetailController {
             NetworkTool.loadNewsDetailComments(offset: self!.comments.count, item_id: self!.item_id, group_id: self!.group_id) { (comments) in
                 self!.comments += comments
                 self!.commentTableView.reloadData()
+                self.scrollView.contentSize = CGSize(width: screenWidth, height: self.relateTableView.height + self.commentTableView.height)
             }
         })
     }
