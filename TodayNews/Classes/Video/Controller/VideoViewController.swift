@@ -148,7 +148,7 @@ extension VideoViewController : VideoTitleViewDelegate {
         let indexPath = IndexPath(item: targetIndex, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
     }
-    
+    /// 顶部搜索按钮点击
     func videoTitle(videoTitle: VideoTitleView, didClickSearchButton searchButton: UIButton) {
         
     }

@@ -56,9 +56,6 @@
                                     <constraint firstAttribute="width" constant="45" id="kwX-LP-WKD"/>
                                 </constraints>
                                 <state key="normal" image="More_24x24_"/>
-                                <connections>
-                                    <action selector="moreButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wFd-lf-gip"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCM-R4-5gp">
                                 <rect key="frame" x="285" y="0.0" width="35" height="54"/>
@@ -66,9 +63,6 @@
                                 <state key="normal" title=" 0" image="comment_24x24_">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="commentButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6Lb-FT-qqs"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BkT-QS-h7W">
                                 <rect key="frame" x="223" y="0.0" width="52" height="54"/>
@@ -76,9 +70,6 @@
                                 <state key="normal" title=" 关注" image="video_add_24x24_">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="feedButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="t2Z-O7-7mZ"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG5-YB-5Wd">
                                 <rect key="frame" x="55" y="15" width="35.5" height="17"/>
@@ -88,9 +79,6 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAQ-Kh-MhB">
                                 <rect key="frame" x="0.0" y="0.0" width="166.5" height="54"/>
-                                <connections>
-                                    <action selector="headButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Fh0-PC-G1e"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -169,7 +157,10 @@
             <connections>
                 <outlet property="bgImageButton" destination="b1z-f6-BSm" id="jwT-6C-u2N"/>
                 <outlet property="commentButton" destination="vCM-R4-5gp" id="VD2-u6-UrM"/>
+                <outlet property="concernButton" destination="BkT-QS-h7W" id="v7B-uR-lhB"/>
                 <outlet property="headButton" destination="Tnf-Bq-Nqx" id="ZMR-ag-uRc"/>
+                <outlet property="headCoverButton" destination="rAQ-Kh-MhB" id="7Dz-vn-HgD"/>
+                <outlet property="moreButton" destination="OWB-sa-7kc" id="KP4-Ro-syi"/>
                 <outlet property="nameLable" destination="uG5-YB-5Wd" id="kkG-Fw-voh"/>
                 <outlet property="playCountLabel" destination="2fN-90-11z" id="ahl-Lp-3LU"/>
                 <outlet property="timeLabel" destination="30i-oZ-VgZ" id="fcM-St-4he"/>

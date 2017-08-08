@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class TopicViewController: UIViewController {
-
+    
+    fileprivate let disposeBag = DisposeBag()
     // 记录点击的顶部标题
     var topicTitle: TopicTitle?
     
@@ -98,7 +101,13 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
         if topicTitle!.category == "video" { // 视频
             let cell = Bundle.main.loadNibNamed(String(describing: VideoTopicCell.self), owner: nil, options: nil)?.last as! VideoTopicCell
             cell.videoTopic = newsTopics[indexPath.row]
-            cell.delegate = self
+            cell.headCoverButton.rx.controlEvent(.touchUpInside)
+                .subscribe(onNext: { [weak self] in
+                    let userVC = FollowDetailViewController()
+                    userVC.userid = cell.videoTopic!.media_info!.user_id!
+                    self!.navigationController!.pushViewController(userVC, animated: true)
+                })
+                .addDisposableTo(disposeBag)
             return cell
         } else if topicTitle!.category == "subscription" { // 头条号
             let cell = Bundle.main.loadNibNamed(String(describing: ToutiaohaoCell.self), owner: nil, options: nil)?.last as! ToutiaohaoCell
@@ -133,14 +142,5 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
                 navigationController?.pushViewController(topicDetailVC, animated: true)
             }
         }
-    }
-}
-
-extension TopicViewController: VideoTopicCellDelegate {
-    /// 头像区域点击了
-    func videoheadTopicCellButtonClick(videoTopic: WeiTouTiao) {
-        let userVC = FollowDetailViewController()
-        userVC.userid = videoTopic.media_info!.user_id!
-        navigationController?.pushViewController(userVC, animated: true)
     }
 }

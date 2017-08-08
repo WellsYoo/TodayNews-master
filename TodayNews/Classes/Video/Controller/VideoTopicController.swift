@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class VideoTopicController: UIViewController {
-
+    fileprivate let disposeBag = DisposeBag()
+    
     // 记录点击的顶部标题
     var videoTitle: TopicTitle?
     // 存放新闻主题的数组
@@ -60,22 +63,29 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTopicCell.self)) as! VideoTopicCell
         cell.videoTopic = newsTopics[indexPath.row]
-        cell.delegate = self
+        // 头像区域点击
+        cell.headCoverButton.rx.controlEvent(.touchUpInside)
+                               .subscribe(onNext: { [weak self] in
+                                    let userVC = FollowDetailViewController()
+                                    userVC.userid = cell.videoTopic!.media_info!.user_id!
+                                    self!.navigationController!.pushViewController(userVC, animated: true)
+                               })
+                               .addDisposableTo(disposeBag)
+        // 评论按钮点击
+        cell.commentButton.rx.controlEvent(.touchUpInside)
+                            .subscribe(onNext: { [weak self] in
+                                let videoDetailVC = VideoDetailController()
+                                videoDetailVC.item_id = cell.videoTopic!.item_id!
+                                videoDetailVC.group_id = cell.videoTopic!.group_id!
+                                self!.navigationController!.pushViewController(videoDetailVC, animated: true)
+                            })
+                            .addDisposableTo(disposeBag)
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let videoDetailVC = VideoDetailController()
         //        videoDetailVC.videoTopic = newsTopics[indexPath.row]
         navigationController?.pushViewController(videoDetailVC, animated: true)
-    }
-}
-
-extension VideoTopicController: VideoTopicCellDelegate {
-    /// 头像区域点击了
-    func videoheadTopicCellButtonClick(videoTopic: WeiTouTiao) {
-        let userVC = FollowDetailViewController()
-        userVC.userid = videoTopic.media_info!.user_id!
-        navigationController?.pushViewController(userVC, animated: true)
     }
 }

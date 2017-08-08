@@ -10,6 +10,7 @@ import UIKit
 import IBAnimatable
 import RxSwift
 import RxCocoa
+import MJRefresh
 
 class NewsDetailImageCommentController: AnimatableModalViewController {
 
@@ -36,6 +37,14 @@ extension NewsDetailImageCommentController {
             self.comments = comments
             self.tableView.reloadData()
         }
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
+            // 获取评论数据
+            NetworkTool.loadNewsDetailImageComments(offset: self!.comments.count) { (comments) in
+                self!.comments = comments
+                self!.tableView.reloadData()
+            }
+        })
     }
     
     /// 关闭评论按钮点击

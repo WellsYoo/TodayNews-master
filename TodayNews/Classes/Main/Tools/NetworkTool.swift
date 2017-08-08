@@ -186,7 +186,7 @@ class NetworkTool {
         }
     }
     
-    /// 获取视频顶部标题内容
+    /// 获取图片新闻详情评论
     class func loadNewsDetailImageComments(offset: Int, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->()) {
         let url = BASE_URL + "article/v2/tab_comments/?"
         let params = ["offset": offset,
@@ -206,6 +206,61 @@ class NetworkTool {
                         comments.append(comment)
                     }
                     completionHandler(comments)
+                }
+            }
+        }
+    }
+    
+    /// 获取新闻详情评论
+    class func loadNewsDetailComments(offset: Int,item_id: Int, group_id: Int, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->()) {
+        let url = BASE_URL + "article/v2/tab_comments/?"
+        let params = ["offset": offset,
+                      "item_id": item_id,
+                      "group_id": group_id] as [String : AnyObject]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                let json = JSON(value)
+                if let data = json["data"].arrayObject {
+                    var comments = [NewsDetailImageComment]()
+                    for dict in data {
+                        let commentDict = dict as! [String: AnyObject]
+                        let comment = NewsDetailImageComment(dict: commentDict["comment"] as! [String : AnyObject])
+                        comments.append(comment)
+                    }
+                    completionHandler(comments)
+                }
+            }
+        }
+    }
+    
+    /// 获取新闻详情相关新闻
+    class func loadNewsDetailRelateNews(item_id: Int, group_id: Int, completionHandler:@escaping (_ relateNews: [WeiTouTiao])->()) {
+        let url = BASE_URL + "2/article/information/v21/?"
+        let params = ["device_id": device_id,
+                      "article_page": "1",
+                      "latitude": "",
+                      "longitude": "",
+                      "item_id": item_id,
+                      "group_id": group_id,
+                      "device_platform": "iphone",
+                      "from_category": "video",] as [String : AnyObject]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                let json = JSON(value)
+                if let data = json["data"].dictionary {
+                    var relateNews = [WeiTouTiao]()
+                    let related_video_toutiao = data["related_video_toutiao"]!.arrayObject
+                    for dict in related_video_toutiao! {
+                        let news = WeiTouTiao(dict: dict as! [String: AnyObject])
+                        relateNews.append(news)
+                    }
+                    completionHandler(relateNews)
                 }
             }
         }

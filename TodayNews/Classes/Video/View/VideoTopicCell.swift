@@ -9,14 +9,8 @@
 import UIKit
 import Kingfisher
 
-protocol VideoTopicCellDelegate: class {
-    /// 用户头像区域点击
-    func videoheadTopicCellButtonClick(videoTopic: WeiTouTiao)
-}
-
 class VideoTopicCell: UITableViewCell {
-    
-    weak var delegate: VideoTopicCellDelegate?
+   
     /// 标题 label
     @IBOutlet weak var titleLabel: UILabel!
     /// 播放数量
@@ -27,10 +21,15 @@ class VideoTopicCell: UITableViewCell {
     @IBOutlet weak var bgImageButton: UIButton!
     /// 用户头像
     @IBOutlet weak var headButton: UIButton!
+    @IBOutlet weak var headCoverButton: UIButton!
     /// 用户昵称
     @IBOutlet weak var nameLable: UILabel!
+    /// 关注数量
+    @IBOutlet weak var concernButton: UIButton!
     /// 评论数量
     @IBOutlet weak var commentButton: UIButton!
+    /// 更多按钮
+    @IBOutlet weak var moreButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -61,29 +60,9 @@ class VideoTopicCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    /// 用户昵称点击
-    @IBAction func headButtonClick(_ sender: UIButton) {
-        delegate?.videoheadTopicCellButtonClick(videoTopic: videoTopic!)
-    }
-    
-    /// 关注按钮点击
-    @IBAction func feedButtonClick(_ sender: UIButton) {
-        
-    }
-    
-    /// 评论数量按钮点击
-    @IBAction func commentButtonClick(_ sender: UIButton) {
-        
-    }
-    
-    /// 更多按钮点击
-    @IBAction func moreButtonClick(_ sender: UIButton) {
-        
-    }
-    
     /// 背景按钮点击
     @IBAction func bgImageButtonClick(_ sender: UIButton) {
-        /// 获取视频的真是链接
+        /// 获取视频的真实链接
         NetworkTool.parseVideoRealURL(video_id: videoTopic!.video_id!) { (realVideo) in
             
         }
