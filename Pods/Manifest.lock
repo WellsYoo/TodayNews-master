@@ -3,6 +3,7 @@ PODS:
   - IBAnimatable (4.1.0)
   - Kanna (2.1.1)
   - Kingfisher (3.10.3)
+  - MJRefresh (3.1.12)
   - RxCocoa (3.6.1):
     - RxSwift (~> 3.6)
   - RxSwift (3.6.1)
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - IBAnimatable
   - Kanna (~> 2.1.1)
   - Kingfisher (~> 3.10.3)
+  - MJRefresh
   - RxCocoa (~> 3.6.1)
   - RxSwift (~> 3.6.1)
   - SnapKit (~> 3.2.0)
@@ -26,12 +28,13 @@ SPEC CHECKSUMS:
   IBAnimatable: 0fd2c9fd38c4798d71bcc18dbd87d473a7df2577
   Kanna: 9b4b086c218703f2b94f5b21a466217dd2f9332e
   Kingfisher: a0ac82dc5bcf0388dd74b294cf2cc13730c63436
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: fd4ab8e946f1fc0067fdd111bc464649982db5da
+PODFILE CHECKSUM: 6e2218d7038eae1c2f7bd6b1163baf28370d0b83
 
 COCOAPODS: 1.2.0.rc.1
