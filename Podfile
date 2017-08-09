@@ -13,6 +13,6 @@ target "TodayNews" do
     pod 'RxCocoa', '~> 3.6.1'
     pod 'SVProgressHUD', '~> 2.1.2'
     pod 'MJRefresh'
-    
+    pod 'BMPlayer'
     
 end
