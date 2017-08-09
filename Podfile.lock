@@ -14,11 +14,11 @@ DEPENDENCIES:
   - Alamofire (~> 4.4.0)
   - IBAnimatable
   - Kanna (~> 2.1.1)
-  - Kingfisher (~> 3.10.1)
+  - Kingfisher (~> 3.10.3)
   - RxCocoa (~> 3.6.1)
   - RxSwift (~> 3.6.1)
   - SnapKit (~> 3.2.0)
-  - SVProgressHUD
+  - SVProgressHUD (~> 2.1.2)
   - SwiftyJSON (~> 3.1.4)
 
 SPEC CHECKSUMS:
@@ -32,6 +32,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 490446c42843cb8e12d00c61ae0929e86068a4d8
+PODFILE CHECKSUM: fd4ab8e946f1fc0067fdd111bc464649982db5da
 
 COCOAPODS: 1.2.0.rc.1
