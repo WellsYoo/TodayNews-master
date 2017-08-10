@@ -855,6 +855,9 @@ class Video {
     
     var vtype: String?
     
+    var main_url: String? /// 用 base 64 加密的视频真实地址
+    var backup_url_1: String?
+    
     init(dict: [String: AnyObject]) {
         preload_interval = dict["preload_interval"] as? Int
         preload_max_step = dict["preload_max_step"] as? Int
@@ -867,5 +870,10 @@ class Video {
         vwidth = dict["vwidth"] as? Int
         size = dict["size"] as? Int
         vtype = dict["vtype"] as? String
+        
+        if let mainURL = dict["main_url"] {
+            let decodeData = NSData(base64Encoded:mainURL as! String, options:NSData.Base64DecodingOptions(rawValue: 0))
+            main_url = NSString(data: decodeData! as Data, encoding: String.Encoding.utf8.rawValue) as String?
+        }
     }
 }

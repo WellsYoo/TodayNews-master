@@ -36,6 +36,7 @@ class VideoTopicController: UIViewController {
         tableView.rowHeight = screenHeight * 0.4
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.contentSize = CGSize(width: screenWidth, height: screenHeight - kNavBarHeight - kTabBarHeight)
         tableView.register(UINib(nibName: String(describing: VideoTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: VideoTopicCell.self))
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         return tableView
@@ -84,8 +85,15 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let videoDetailVC = VideoDetailController()
-        //        videoDetailVC.videoTopic = newsTopics[indexPath.row]
-        navigationController?.pushViewController(videoDetailVC, animated: true)
+        let videoTopic = newsTopics[indexPath.row]
+        /// 获取视频的真实链接
+        NetworkTool.parseVideoRealURL(video_id: videoTopic.video_id!) { (realVideo) in
+            let videoDetailVC = VideoDetailController()
+            videoDetailVC.item_id = videoTopic.item_id!
+            videoDetailVC.group_id = videoTopic.group_id!
+            videoDetailVC.realVideo = realVideo
+            self.navigationController?.pushViewController(videoDetailVC, animated: true)
+        }
+        
     }
 }

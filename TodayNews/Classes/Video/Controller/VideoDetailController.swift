@@ -11,14 +11,21 @@ import RxSwift
 import RxCocoa
 import MJRefresh
 import SnapKit
+import BMPlayer
+import NVActivityIndicatorView
+import SVProgressHUD
 
 class VideoDetailController: UIViewController {
+    /// 播放器
+    fileprivate lazy var player = BMPlayer()
+    var changeButton = UIButton()
     
     fileprivate let disposeBag = DisposeBag()
     
     var item_id: Int = 0
     var group_id: Int = 0
     var offset: Int = 0
+    var realVideo: RealVideo?
     
     var relateNews = [WeiTouTiao]()
     var comments = [NewsDetailImageComment]()
@@ -27,6 +34,31 @@ class VideoDetailController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground,  object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.navigationBar.barStyle = .black
+        // 使用手势返回的时候，调用下面方法
+        player.autoPlay()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.barStyle = .default
+        // 使用手势返回的时候，调用下面方法
+        player.pause(allowAutoPlay: true)
+    }
+    
+    deinit {
+        // 使用手势返回的时候，调用下面方法手动销毁
+        player.prepareToDealloc()
     }
     
     fileprivate lazy var scrollView: UIScrollView = {
@@ -39,9 +71,11 @@ class VideoDetailController: UIViewController {
     fileprivate lazy var relateTableView: UITableView = {
         let tableView = UITableView()
         tableView.tableFooterView = UIView()
+        tableView.backgroundColor = UIColor.green
         tableView.rowHeight = 80
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.isScrollEnabled = false
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         tableView.register(UINib(nibName: String( describing: NewsDetailImageCommentCell.self), bundle: nil), forCellReuseIdentifier: String( describing: NewsDetailImageCommentCell.self))
         tableView.separatorStyle = .none
@@ -51,6 +85,7 @@ class VideoDetailController: UIViewController {
     // 评论
     fileprivate lazy var commentTableView: UITableView = {
         let tableView = UITableView()
+        tableView.backgroundColor = UIColor.red
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
@@ -63,31 +98,49 @@ class VideoDetailController: UIViewController {
 
 extension VideoDetailController {
     
+    func applicationWillEnterForeground() {
+        
+    }
+    
+    func applicationDidEnterBackground() {
+        player.pause(allowAutoPlay: false)
+    }
+    
+    /// 设置 UI
     fileprivate func setupUI() {
         view.backgroundColor = UIColor.white
+        
+        setupPlayerManager()
         
         view.addSubview(scrollView)
         
         scrollView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
+            make.top.equalTo(player.snp.bottom)
+            make.left.equalTo(view.snp.left)
+            make.bottom.equalTo(view.snp.bottom)
+            make.right.equalTo(view.snp.right)
         }
         
-        scrollView.addSubview(relateTableView)
+//        scrollView.addSubview(relateTableView)
         scrollView.addSubview(commentTableView)
-        
-        relateTableView.snp.makeConstraints { (make) in
-            make.left.top.right.equalTo(scrollView)
-            make.bottom.equalTo(commentTableView.snp.top)
-        }
-        
-        commentTableView.snp.makeConstraints { (make) in
-            make.left.bottom.right.equalTo(scrollView)
-        }
+        commentTableView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - screenWidth * 9.0 / 16.0)
+//        relateTableView.snp.makeConstraints { (make) in
+//            make.left.top.right.equalTo(scrollView)
+//            make.bottom.equalTo(commentTableView.snp.top)
+//        }
         
         NetworkTool.loadNewsDetailRelateNews(item_id: item_id, group_id: group_id) { (relateNews) in
             self.relateNews = relateNews
             self.relateTableView.reloadData()
-            self.scrollView.contentSize = CGSize(width: screenWidth, height: self.relateTableView.height + self.commentTableView.height)
+//            self.relateTableView.snp.updateConstraints({ (make) in
+//                make.height.equalTo(GFloat(relateNews.count * 80))
+//            })
+//            self.relateTableView.layoutIfNeeded()
+//            self.relateTableView.height = CGFloat(relateNews.count * 80)
+//            self.relateTableView.layoutIfNeeded()
+//            self.scrollView.contentSize = CGSize(width: screenWidth, height: self.relateTableView.height + screenHeight)
+//            print(self.relateTableView)
+            
         }
         
         // 获取评论数据
@@ -98,12 +151,94 @@ extension VideoDetailController {
         
         commentTableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
             // 获取评论数据
-            NetworkTool.loadNewsDetailComments(offset: self!.comments.count, item_id: self!.item_id, group_id: self!.group_id) { (comments) in
-                self!.comments += comments
+            NetworkTool.loadNewsDetailComments(offset: self!.comments.count, item_id: self!.item_id, group_id: self!.group_id) { [weak self] (comments) in
+                self!.commentTableView.mj_footer.endRefreshing()
+                if comments.count == 0 {
+                    SVProgressHUD.showInfo(withStatus: "没有更多评论啦~")
+                } else {
+                    self!.comments += comments
+                }
                 self!.commentTableView.reloadData()
-                self!.scrollView.contentSize = CGSize(width: screenWidth, height: self!.relateTableView.height + self!.commentTableView.height)
             }
         })
+    }
+    
+    // 设置播放器单例，修改属性
+    fileprivate func setupPlayerManager() {
+        resetPlayerManager()
+        
+        view.addSubview(player)
+        
+        player.snp.makeConstraints { (make) in
+            make.top.equalTo(view.snp.top)
+            make.left.equalTo(view.snp.left)
+            make.right.equalTo(view.snp.right)
+            make.height.equalTo(view.snp.width).multipliedBy(9.0 / 16.0)
+        }
+        player.delegate = self
+        
+        player.backBlock = { [weak self] (isFullScreen) in
+            if isFullScreen == true {
+                return
+            }
+            self!.navigationController?.popViewController(animated: true)
+        }
+        let asset = self.preparePlayerItem()
+        player.setVideo(resource: asset)
+    }
+    
+    
+    /**
+     准备播放器资源model
+     */
+    func preparePlayerItem() -> BMPlayerResource {
+        
+//        let res0 = BMPlayerResourceDefinition(url: URL(string: realVideo!.video_3!.main_url!)!,
+//                                              definition: "超清")
+//        let res1 = BMPlayerResourceDefinition(url: URL(string: realVideo!.video_2!.main_url!)!,
+//                                              definition: "高清")
+        let res2 = BMPlayerResourceDefinition(url: URL(string: realVideo!.video_1!.main_url!)!,
+                                              definition: "标清")
+        
+        let asset = BMPlayerResource(name: "",
+                                     definitions: [res2])
+        return asset
+    }
+    
+    /// 重置播放器
+    fileprivate func resetPlayerManager() {
+        BMPlayerConf.allowLog = false
+        BMPlayerConf.shouldAutoPlay = true
+        BMPlayerConf.tintColor = UIColor.white
+        BMPlayerConf.topBarShowInCase = .always
+        BMPlayerConf.loaderType  = NVActivityIndicatorType.ballRotateChase
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}
+
+// MARK:- BMPlayerDelegate example
+extension VideoDetailController: BMPlayerDelegate {
+    // Call back when playing state changed, use to detect is playing or not
+    func bmPlayer(player: BMPlayer, playerIsPlaying playing: Bool) {
+        print("| BMPlayerDelegate | playerIsPlaying | playing - \(playing)")
+    }
+    
+    // Call back when playing state changed, use to detect specefic state like buffering, bufferfinished
+    func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {
+        print("| BMPlayerDelegate | playerStateDidChange | state - \(state)")
+    }
+    
+    // Call back when play time change
+    func bmPlayer(player: BMPlayer, playTimeDidChange currentTime: TimeInterval, totalTime: TimeInterval) {
+        //        print("| BMPlayerDelegate | playTimeDidChange | \(currentTime) of \(totalTime)")
+    }
+    
+    // Call back when the video loaded duration changed
+    func bmPlayer(player: BMPlayer, loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval) {
+        //        print("| BMPlayerDelegate | loadedTimeDidChange | \(loadedDuration) of \(totalDuration)")
     }
 }
 
@@ -114,8 +249,12 @@ extension VideoDetailController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let comment = comments[indexPath.row]
-        return comment.cellHeight!
+        if  tableView == relateTableView  {
+            return 80
+        } else {
+            let comment = comments[indexPath.row]
+            return comment.cellHeight!
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
