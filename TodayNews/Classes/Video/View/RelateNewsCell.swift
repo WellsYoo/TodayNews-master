@@ -14,10 +14,7 @@ class RelateNewsCell: UITableViewCell {
     var relateNews: WeiTouTiao? {
         didSet {
             newTitleLabel.text = relateNews!.title! as String
-            if let user_info = relateNews!.user_info {
-                thumbImageView.kf.setImage(with: URL(string: user_info.avatar_url!)!)
-                usernameLabel.text = user_info.name!
-            }
+            thumbImageView.kf.setImage(with: URL(string: relateNews!.middle_image!.url!)!)
             playCountLabel.text = relateNews!.readCount! + "次播放"
             videoTimeLabel.text = relateNews!.video_duration!
         }

@@ -22,8 +22,8 @@ class VideoDetailController: UIViewController {
     
     fileprivate let disposeBag = DisposeBag()
     
-    var item_id: Int = 0
-    var group_id: Int = 0
+    var videoTopic: WeiTouTiao?
+    
     var offset: Int = 0
     var realVideo: RealVideo?
     
@@ -77,7 +77,7 @@ class VideoDetailController: UIViewController {
         tableView.delegate = self
         tableView.isScrollEnabled = false
         tableView.backgroundColor = UIColor.globalBackgroundColor()
-        tableView.register(UINib(nibName: String( describing: NewsDetailImageCommentCell.self), bundle: nil), forCellReuseIdentifier: String( describing: NewsDetailImageCommentCell.self))
+        tableView.register(UINib(nibName: String( describing: RelateNewsCell.self), bundle: nil), forCellReuseIdentifier: String( describing: RelateNewsCell.self))
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -94,6 +94,14 @@ class VideoDetailController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
+    
+    /// 头部
+    fileprivate lazy var relateHeaderBackView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 640 + 171))
+    fileprivate lazy var commentHeaderBackView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 640))
+    fileprivate lazy var relateHeaderView: RelateHeaderView = {
+        let headerView = RelateHeaderView.headerView()
+        return headerView
+    }()
 }
 
 extension VideoDetailController {
@@ -109,51 +117,44 @@ extension VideoDetailController {
     /// 设置 UI
     fileprivate func setupUI() {
         view.backgroundColor = UIColor.white
-        
+        // 设置播放器
         setupPlayerManager()
         
-        view.addSubview(scrollView)
+        view.addSubview(commentTableView)
         
-        scrollView.snp.makeConstraints { (make) in
+        relateHeaderView.weitoutiao = videoTopic
+        relateTableView.tableHeaderView = relateHeaderView
+        commentTableView.tableHeaderView = commentHeaderBackView
+        
+        commentHeaderBackView.addSubview(relateTableView)
+        
+        commentTableView.snp.makeConstraints { (make) in
             make.top.equalTo(player.snp.bottom)
-            make.left.equalTo(view.snp.left)
-            make.bottom.equalTo(view.snp.bottom)
-            make.right.equalTo(view.snp.right)
+            make.left.right.bottom.equalTo(view)
         }
         
-//        scrollView.addSubview(relateTableView)
-        scrollView.addSubview(commentTableView)
-        commentTableView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - screenWidth * 9.0 / 16.0)
-//        relateTableView.snp.makeConstraints { (make) in
-//            make.left.top.right.equalTo(scrollView)
-//            make.bottom.equalTo(commentTableView.snp.top)
-//        }
+        relateTableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(commentHeaderBackView)
+        }
         
-        NetworkTool.loadNewsDetailRelateNews(item_id: item_id, group_id: group_id) { (relateNews) in
+        NetworkTool.loadNewsDetailRelateNews(item_id: videoTopic!.item_id!, group_id: videoTopic!.group_id!) { (relateNews) in
             self.relateNews = relateNews
             self.relateTableView.reloadData()
-//            self.relateTableView.snp.updateConstraints({ (make) in
-//                make.height.equalTo(GFloat(relateNews.count * 80))
-//            })
-//            self.relateTableView.layoutIfNeeded()
-//            self.relateTableView.height = CGFloat(relateNews.count * 80)
-//            self.relateTableView.layoutIfNeeded()
-//            self.scrollView.contentSize = CGSize(width: screenWidth, height: self.relateTableView.height + screenHeight)
-//            print(self.relateTableView)
-            
         }
         
         // 获取评论数据
-        NetworkTool.loadNewsDetailComments(offset: offset, item_id: item_id, group_id: group_id) { (comments) in
+        NetworkTool.loadNewsDetailComments(offset: offset, item_id: videoTopic!.item_id!, group_id: videoTopic!.group_id!) { (comments) in
             self.comments = comments
             self.commentTableView.reloadData()
         }
         
         commentTableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
             // 获取评论数据
-            NetworkTool.loadNewsDetailComments(offset: self!.comments.count, item_id: self!.item_id, group_id: self!.group_id) { [weak self] (comments) in
+            NetworkTool.loadNewsDetailComments(offset: self!.comments.count, item_id: self!.videoTopic!.item_id!, group_id: self!.videoTopic!.group_id!) { [weak self] (comments) in
                 self!.commentTableView.mj_footer.endRefreshing()
                 if comments.count == 0 {
+                    SVProgressHUD.setForegroundColor(UIColor.white)
+                    SVProgressHUD.setBackgroundColor(UIColor(r: 0, g: 0, b: 0, alpha: 0.5))
                     SVProgressHUD.showInfo(withStatus: "没有更多评论啦~")
                 } else {
                     self!.comments += comments
@@ -259,7 +260,7 @@ extension VideoDetailController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == relateTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String( describing: RelateNewsCell.self), for: indexPath) as! RelateNewsCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RelateNewsCell.self), for: indexPath) as! RelateNewsCell
             cell.relateNews = relateNews[indexPath.row]
             return cell
         } else {

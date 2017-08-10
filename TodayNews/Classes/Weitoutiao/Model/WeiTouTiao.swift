@@ -100,7 +100,7 @@ class WeiTouTiao {
     var readCount: String? {
         get {
             guard let count = read_count else {
-                return ""
+                return "0"
             }
             guard count >= 10000 else {
                 return String(describing: count)

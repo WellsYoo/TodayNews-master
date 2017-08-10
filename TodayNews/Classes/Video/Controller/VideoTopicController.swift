@@ -76,8 +76,7 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
         cell.commentButton.rx.controlEvent(.touchUpInside)
                             .subscribe(onNext: { [weak self] in
                                 let videoDetailVC = VideoDetailController()
-                                videoDetailVC.item_id = cell.videoTopic!.item_id!
-                                videoDetailVC.group_id = cell.videoTopic!.group_id!
+                                videoDetailVC.videoTopic = cell.videoTopic
                                 self!.navigationController!.pushViewController(videoDetailVC, animated: true)
                             })
                             .addDisposableTo(disposeBag)
@@ -89,8 +88,7 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
         /// 获取视频的真实链接
         NetworkTool.parseVideoRealURL(video_id: videoTopic.video_id!) { (realVideo) in
             let videoDetailVC = VideoDetailController()
-            videoDetailVC.item_id = videoTopic.item_id!
-            videoDetailVC.group_id = videoTopic.group_id!
+            videoDetailVC.videoTopic = videoTopic
             videoDetailVC.realVideo = realVideo
             self.navigationController?.pushViewController(videoDetailVC, animated: true)
         }

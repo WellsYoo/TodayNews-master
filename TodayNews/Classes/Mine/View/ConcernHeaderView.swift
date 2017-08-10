@@ -66,8 +66,7 @@ class ConcernHeaderView: UIView {
                 } else {
                     concernButton.setTitle("关注", for: .normal)
                     concernButton.setTitleColor(UIColor(r: 42, g: 144, b: 215), for: .normal)
-                    concernButton.layer.borderColor = UIColor(r: 42, g: 144, b: 215).cgColor
-                    concernButton.layer.borderWidth = 1
+                    concernButton.layer.borderWidth = 0
                     concernButton.isSelected = false
                 }
             }
