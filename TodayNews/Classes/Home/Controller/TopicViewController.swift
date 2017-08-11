@@ -102,6 +102,9 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
             return screenHeight * 0.4
         } else if topicTitle!.category == "subscription" { // 头条号
             return 68
+        } else if topicTitle!.category == "essay_joke" { // 段子
+            let weitoutiao = newsTopics[indexPath.row]
+            return weitoutiao.jokeCellHeight!
         }
         let weitoutiao = newsTopics[indexPath.row]
         return weitoutiao.homeCellHeight!
@@ -159,6 +162,10 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
         } else if topicTitle!.category == "subscription" { // 头条号
             let cell = Bundle.main.loadNibNamed(String(describing: ToutiaohaoCell.self), owner: nil, options: nil)?.last as! ToutiaohaoCell
 //            cell.myConcern = myConcerns[indexPath.row]
+            return cell
+        } else if topicTitle!.category == "essay_joke" { // 段子
+            let cell = Bundle.main.loadNibNamed(String(describing: HomeJokeCell.self), owner: nil, options: nil)?.last as! HomeJokeCell
+            cell.joke = newsTopics[indexPath.row]
             return cell
         }
         let cell = Bundle.main.loadNibNamed(String(describing: HomeTopicCell.self), owner: nil, options: nil)?.last as! HomeTopicCell

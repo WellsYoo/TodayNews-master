@@ -20,6 +20,14 @@ import UIKit
 
 class WeiTouTiao {
     
+    var jokeCellHeight: CGFloat? {
+        get {
+            // 15 + 50 + 10 + contentH!
+            return 75 + contentH!
+        }
+    }
+    
+    
     var homeCellHeight: CGFloat? {
         get {
             var height: CGFloat = 0
@@ -86,12 +94,59 @@ class WeiTouTiao {
     var filter_words = [WTTFilterWord]()
     
     var level: Int?
-    /// 点赞数量
+    
     var like_count: Int?
+    var likeCount: String? {
+        get {
+            guard let count = like_count else {
+                return "顶"
+            }
+            guard count >= 10000 else {
+                return String(describing: count)
+            }
+            return String(format: "%.1f万", Float(count) / 10000.0)
+        }
+    }
+    var repin_count: Int? // 转发数量
+    var repinCount: String? {
+        get {
+            guard let count = repin_count else {
+                return ""
+            }
+            guard count >= 10000 else {
+                return String(describing: count)
+            }
+            return String(format: "%.1f万", Float(count) / 10000.0)
+        }
+    }
     
     var digg_count: Int?
+    var diggCount: String? {
+        get {
+            guard let count = digg_count else {
+                return "顶"
+            }
+            guard count >= 10000 else {
+                return String(describing: count)
+            }
+            return String(format: "%.1f万", Float(count) / 10000.0)
+        }
+    }
+    
     
     var bury_count: Int?
+    var buryCount: String? {
+        get {
+            guard let count = digg_count else {
+                return "踩"
+            }
+            guard count >= 10000 else {
+                return String(describing: count)
+            }
+            return String(format: "%.1f万", Float(count) / 10000.0)
+        }
+    }
+    
     
     /// 评论数量
     var comment_count: Int?
@@ -408,6 +463,7 @@ class WeiTouTiao {
         }
         level = dict["level"] as? Int
         like_count = dict["like_count"] as? Int
+        repin_count = dict["repin_count"] as? Int
         digg_count = dict["digg_count"] as? Int
         bury_count = dict["bury_count"] as? Int
         read_count = dict["read_count"] as? Int
