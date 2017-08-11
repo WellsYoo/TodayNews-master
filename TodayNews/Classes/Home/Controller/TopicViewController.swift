@@ -9,8 +9,15 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import BMPlayer
+import SnapKit
+import MJRefresh
+import SVProgressHUD
 
 class TopicViewController: UIViewController {
+    
+    /// 播放器
+    fileprivate lazy var player = BMPlayer()
     
     fileprivate let disposeBag = DisposeBag()
     // 记录点击的顶部标题
@@ -32,6 +39,19 @@ class TopicViewController: UIViewController {
             self.newsTopics = newsTopics
             self.tableView.reloadData()
         }
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
+            NetworkTool.loadHomeCategoryNewsFeed(category: self!.topicTitle!.category!) { (nowTime, newsTopics) in
+                if newsTopics.count == 0 {
+                    SVProgressHUD.setForegroundColor(UIColor.white)
+                    SVProgressHUD.setBackgroundColor(UIColor(r: 0, g: 0, b: 0, alpha: 0.3))
+                    SVProgressHUD.showInfo(withStatus: "没有更多新闻啦~")
+                    return
+                }
+                self!.newsTopics += newsTopics
+                self!.tableView.reloadData()
+            }
+        })
     }
     
     fileprivate  lazy var toutiaohaoHeaderView: ToutiaohaoHeaderView = {
@@ -108,6 +128,33 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
                     self!.navigationController!.pushViewController(userVC, animated: true)
                 })
                 .addDisposableTo(disposeBag)
+            // 评论按钮点击
+            cell.commentButton.rx.controlEvent(.touchUpInside)
+                .subscribe(onNext: { [weak self] in
+                    let videoDetailVC = VideoDetailController()
+                    videoDetailVC.videoTopic = cell.videoTopic
+                    self!.navigationController!.pushViewController(videoDetailVC, animated: true)
+                })
+                .addDisposableTo(disposeBag)
+            // 播放按钮点击
+            cell.bgImageButton.rx.controlEvent(.touchUpInside)
+                .subscribe(onNext: { [weak self] in
+                    cell.bgImageButton.addSubview(self!.player)
+                    self!.player.snp.makeConstraints { (make) in
+                        make.edges.equalTo(cell.bgImageButton)
+                    }
+                    /// 获取视频的真实链接
+                    NetworkTool.parseVideoRealURL(video_id: cell.videoTopic!.video_id!) { (realVideo) in
+                        self!.player.backBlock = { (isFullScreen) in
+                            if isFullScreen == true {
+                                return
+                            }
+                        }
+                        let asset = BMPlayerResource(url: URL(string: realVideo.video_1!.main_url!)!, name: cell.titleLabel.text!)
+                        self!.player.setVideo(resource: asset)
+                    }
+                })
+                .addDisposableTo(disposeBag)
             return cell
         } else if topicTitle!.category == "subscription" { // 头条号
             let cell = Bundle.main.loadNibNamed(String(describing: ToutiaohaoCell.self), owner: nil, options: nil)?.last as! ToutiaohaoCell
@@ -129,9 +176,14 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
             present(newsDetailImageVC, animated: false, completion: nil)
         } else {
             if topicTitle!.category == "video" {
-                let videoDetailVC = VideoDetailController()
-                //        videoDetailVC.videoTopic = newsTopics[indexPath.row]
-                navigationController?.pushViewController(videoDetailVC, animated: true)
+                let videoTopic = newsTopics[indexPath.row]
+                /// 获取视频的真实链接
+                NetworkTool.parseVideoRealURL(video_id: videoTopic.video_id!) { (realVideo) in
+                    let videoDetailVC = VideoDetailController()
+                    videoDetailVC.videoTopic = videoTopic
+                    videoDetailVC.realVideo = realVideo
+                    self.navigationController?.pushViewController(videoDetailVC, animated: true)
+                }
             } else if topicTitle!.category == "subscription" {
                 
             } else {
@@ -140,6 +192,19 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
                 topicDetailVC.weitoutiao = cell.weitoutiao!
     //            topicDetailVC.groupID = String(cell.weitoutiao!.group_id!)
                 navigationController?.pushViewController(topicDetailVC, animated: true)
+            }
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if player.isPlaying { // 说明有正在播放的视频
+            let imageButton = player.superview
+            let contentView = imageButton?.superview
+            let cell = contentView?.superview as! VideoTopicCell
+            let rect = tableView.convert(cell.frame, to: view)
+            if (rect.origin.y <= -cell.height) || (rect.origin.y >= screenHeight - kTabBarHeight) {
+                player.pause()
+                player.removeFromSuperview()
             }
         }
     }

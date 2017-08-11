@@ -11,6 +11,8 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import BMPlayer
+import MJRefresh
+import SVProgressHUD
 
 class VideoTopicController: UIViewController {
     /// 播放器
@@ -32,6 +34,19 @@ class VideoTopicController: UIViewController {
             self.newsTopics = newsTopics
             self.tableView.reloadData()
         }
+        
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
+            NetworkTool.loadHomeCategoryNewsFeed(category: self!.videoTitle!.category!) { (nowTime, newsTopics) in
+                if newsTopics.count == 0 {
+                    SVProgressHUD.setForegroundColor(UIColor.white)
+                    SVProgressHUD.setBackgroundColor(UIColor(r: 0, g: 0, b: 0, alpha: 0.3))
+                    SVProgressHUD.showInfo(withStatus: "没有更多视频啦~")
+                    return
+                }
+                self!.newsTopics += newsTopics
+                self!.tableView.reloadData()
+            }
+        })
     }
     
     fileprivate lazy var tableView: UITableView = {
@@ -125,10 +140,8 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
             let imageButton = player.superview
             let contentView = imageButton?.superview
             let cell = contentView?.superview as! VideoTopicCell
-            let rect = cell.convert(cell.frame, to: view)
-            print(rect)
-            print("-----")
-            if (rect.origin.y + cell.height <= -cell.height) || (rect.origin.y >= -UIScreen.main.bounds.origin.y - kTabBarHeight) {
+            let rect = tableView.convert(cell.frame, to: view)
+            if (rect.origin.y <= -cell.height) || (rect.origin.y >= screenHeight - kTabBarHeight) {
                 player.pause()
                 player.removeFromSuperview()
             }
