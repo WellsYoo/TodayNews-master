@@ -571,6 +571,19 @@ class WTTVideoDetailInfo {
     var video_type: Int?
     var video_watch_count: Int?
     var video_watching_count: Int?
+    var videoWatchCount: String? {
+        get {
+            guard let count = video_watch_count else {
+                return "0"
+            }
+            guard count >= 10000 else {
+                return String(describing: count)
+            }
+            return String(format: "%.1f万", Float(count) / 10000.0)
+        }
+    }
+    
+    
     var detail_video_large_image: WTTDetailVideoLargeImage?
     
     init(dict: [String: AnyObject]) {

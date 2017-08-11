@@ -227,6 +227,7 @@ class NetworkTool {
                         let commentDict = dict as! [String: AnyObject]
                         let comment = NewsDetailImageComment(dict: commentDict["comment"] as! [String : AnyObject])
                         comments.append(comment)
+                        
                     }
                     completionHandler(comments)
                 }

@@ -61,12 +61,6 @@ class VideoDetailController: UIViewController {
         player.prepareToDealloc()
     }
     
-    fileprivate lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        
-        return scrollView
-    }()
-    
     // 相关新闻
     fileprivate lazy var relateTableView: UITableView = {
         let tableView = UITableView()
@@ -95,9 +89,11 @@ class VideoDetailController: UIViewController {
         return tableView
     }()
     
-    /// 头部
-    fileprivate lazy var relateHeaderBackView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 640 + 171))
-    fileprivate lazy var commentHeaderBackView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 640))
+    /// 相关新闻头部的容器
+    fileprivate lazy var relateHeaderBackView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 171))
+    /// 评论的头部
+    fileprivate lazy var commentHeaderBackView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 640 + 171))
+    /// 相关新闻头部
     fileprivate lazy var relateHeaderView: RelateHeaderView = {
         let headerView = RelateHeaderView.headerView()
         return headerView

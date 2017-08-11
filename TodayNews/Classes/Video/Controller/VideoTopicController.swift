@@ -9,8 +9,13 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SnapKit
+import BMPlayer
 
 class VideoTopicController: UIViewController {
+    /// 播放器
+    fileprivate lazy var player = BMPlayer()
+    
     fileprivate let disposeBag = DisposeBag()
     
     // 记录点击的顶部标题
@@ -62,6 +67,8 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTopicCell.self)) as! VideoTopicCell
         cell.videoTopic = newsTopics[indexPath.row]
         // 头像区域点击
@@ -80,6 +87,25 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
                                 self!.navigationController!.pushViewController(videoDetailVC, animated: true)
                             })
                             .addDisposableTo(disposeBag)
+        // 播放按钮点击
+        cell.bgImageButton.rx.controlEvent(.touchUpInside)
+                            .subscribe(onNext: { [weak self] in
+                                cell.bgImageButton.addSubview(self!.player)
+                                self!.player.snp.makeConstraints { (make) in
+                                    make.edges.equalTo(cell.bgImageButton)
+                                }
+                                /// 获取视频的真实链接
+                                NetworkTool.parseVideoRealURL(video_id: cell.videoTopic!.video_id!) { (realVideo) in
+                                    self!.player.backBlock = { (isFullScreen) in
+                                        if isFullScreen == true {
+                                            return
+                                        }
+                                    }
+                                    let asset = BMPlayerResource(url: URL(string: realVideo.video_1!.main_url!)!, name: cell.titleLabel.text!)
+                                    self!.player.setVideo(resource: asset)
+                                }
+                            })
+                            .addDisposableTo(disposeBag)
         return cell
     }
 
@@ -92,6 +118,20 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
             videoDetailVC.realVideo = realVideo
             self.navigationController?.pushViewController(videoDetailVC, animated: true)
         }
-        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if player.isPlaying { // 说明有正在播放的视频
+            let imageButton = player.superview
+            let contentView = imageButton?.superview
+            let cell = contentView?.superview as! VideoTopicCell
+            let rect = cell.convert(cell.frame, to: view)
+            print(rect)
+            print("-----")
+            if (rect.origin.y + cell.height <= -cell.height) || (rect.origin.y >= -UIScreen.main.bounds.origin.y - kTabBarHeight) {
+                player.pause()
+                player.removeFromSuperview()
+            }
+        }
     }
 }
