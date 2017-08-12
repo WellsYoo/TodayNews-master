@@ -105,6 +105,11 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
         } else if topicTitle!.category == "essay_joke" { // 段子
             let weitoutiao = newsTopics[indexPath.row]
             return weitoutiao.jokeCellHeight!
+        } else if topicTitle!.category == "组图" { // 组图
+            let weitoutiao = newsTopics[indexPath.row]
+            print(weitoutiao.titleH!)
+            print("-----")
+            return weitoutiao.imageCellHeight!
         }
         let weitoutiao = newsTopics[indexPath.row]
         return weitoutiao.homeCellHeight!
@@ -166,6 +171,10 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
         } else if topicTitle!.category == "essay_joke" { // 段子
             let cell = Bundle.main.loadNibNamed(String(describing: HomeJokeCell.self), owner: nil, options: nil)?.last as! HomeJokeCell
             cell.joke = newsTopics[indexPath.row]
+            return cell
+        } else if topicTitle!.category == "组图" { // 组图
+            let cell = Bundle.main.loadNibNamed(String(describing:  HomeImageTableCell.self), owner: nil, options: nil)?.last as! HomeImageTableCell
+            cell.homeImage = newsTopics[indexPath.row]
             return cell
         }
         let cell = Bundle.main.loadNibNamed(String(describing: HomeTopicCell.self), owner: nil, options: nil)?.last as! HomeTopicCell

@@ -20,13 +20,20 @@ import UIKit
 
 class WeiTouTiao {
     
+    var imageCellHeight: CGFloat? {
+        get {
+            // imageHeight + titleH! + 10 + 40
+            let imageHeight = screenWidth * 9.0 / 16.0 + titleH!
+            return imageHeight + 50
+        }
+    }
+    
     var jokeCellHeight: CGFloat? {
         get {
             // 15 + 50 + 10 + contentH!
             return 75 + contentH!
         }
     }
-    
     
     var homeCellHeight: CGFloat? {
         get {
@@ -150,6 +157,18 @@ class WeiTouTiao {
     
     /// 评论数量
     var comment_count: Int?
+    var commentCount: String? {
+        get {
+            guard let count = comment_count else {
+                return "0"
+            }
+            guard count >= 10000 else {
+                return String(describing: count)
+            }
+            return String(format: "%.1f万", Float(count) / 10000.0)
+        }
+    }
+    
     /// 阅读量
     var read_count: Int?
     var readCount: String? {
@@ -373,9 +392,11 @@ class WeiTouTiao {
     var keywords: String?
     
     var gallery_pic_count: Int?
+    var gallary_image_count: Int?
     
     init(dict: [String: AnyObject]) {
         
+        gallary_image_count = dict["gallary_image_count"] as? Int
         gallery_pic_count = dict["gallery_pic_count"] as? Int
         is_stick = dict["is_stick"] as? Bool
         label = dict["label"] as? String
