@@ -42,6 +42,7 @@ class TopicViewController: UIViewController {
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
             NetworkTool.loadHomeCategoryNewsFeed(category: self!.topicTitle!.category!) { (nowTime, newsTopics) in
+                self!.tableView.mj_footer.endRefreshing()
                 if newsTopics.count == 0 {
                     SVProgressHUD.setForegroundColor(UIColor.white)
                     SVProgressHUD.setBackgroundColor(UIColor(r: 0, g: 0, b: 0, alpha: 0.3))
@@ -107,9 +108,10 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
             return weitoutiao.jokeCellHeight!
         } else if topicTitle!.category == "组图" { // 组图
             let weitoutiao = newsTopics[indexPath.row]
-            print(weitoutiao.titleH!)
-            print("-----")
             return weitoutiao.imageCellHeight!
+        } else if topicTitle!.category == "image_ppmm" { // 组图
+            let weitoutiao = newsTopics[indexPath.row]
+            return weitoutiao.girlCellHeight!
         }
         let weitoutiao = newsTopics[indexPath.row]
         return weitoutiao.homeCellHeight!
@@ -170,11 +172,17 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if topicTitle!.category == "essay_joke" { // 段子
             let cell = Bundle.main.loadNibNamed(String(describing: HomeJokeCell.self), owner: nil, options: nil)?.last as! HomeJokeCell
+            cell.isJoke = true
             cell.joke = newsTopics[indexPath.row]
             return cell
         } else if topicTitle!.category == "组图" { // 组图
             let cell = Bundle.main.loadNibNamed(String(describing:  HomeImageTableCell.self), owner: nil, options: nil)?.last as! HomeImageTableCell
             cell.homeImage = newsTopics[indexPath.row]
+            return cell
+        } else if topicTitle!.category == "image_ppmm" { // 组图
+            let cell = Bundle.main.loadNibNamed(String(describing:  HomeJokeCell.self), owner: nil, options: nil)?.last as! HomeJokeCell
+            cell.isJoke = false
+            cell.joke = newsTopics[indexPath.row]
             return cell
         }
         let cell = Bundle.main.loadNibNamed(String(describing: HomeTopicCell.self), owner: nil, options: nil)?.last as! HomeTopicCell
@@ -201,6 +209,12 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
                     self.navigationController?.pushViewController(videoDetailVC, animated: true)
                 }
             } else if topicTitle!.category == "subscription" {
+                
+            } else if topicTitle!.category == "组图" {
+                
+            } else if topicTitle!.category == "essay_joke" {
+                
+            } else if topicTitle!.category == "image_ppmm" {
                 
             } else {
                 let cell = tableView.cellForRow(at: indexPath) as! HomeTopicCell

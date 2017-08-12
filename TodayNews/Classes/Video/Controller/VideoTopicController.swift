@@ -41,6 +41,7 @@ class VideoTopicController: UIViewController {
                     SVProgressHUD.setForegroundColor(UIColor.white)
                     SVProgressHUD.setBackgroundColor(UIColor(r: 0, g: 0, b: 0, alpha: 0.3))
                     SVProgressHUD.showInfo(withStatus: "没有更多视频啦~")
+                    self!.tableView.mj_footer.endRefreshing()
                     return
                 }
                 self!.newsTopics += newsTopics

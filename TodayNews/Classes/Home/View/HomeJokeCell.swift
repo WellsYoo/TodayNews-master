@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HomeJokeCell: UITableViewCell {
     
+    var isJoke: Bool? {
+        didSet {
+            girlImageView.isHidden = isJoke!
+        }
+    }
+    
     var joke: WeiTouTiao? {
         didSet {
-            jokeLabel.text = joke!.content! as String
+            if let content = joke!.content {
+                jokeLabel.text = content as String
+            }
             if joke!.comment_count! == 0 {
                 commentButton.setTitle("评论", for: .normal)
             } else {
@@ -20,8 +29,13 @@ class HomeJokeCell: UITableViewCell {
             }
             likeButton.setTitle(joke!.diggCount, for: .normal)
             dislikeButton.setTitle(joke!.buryCount!, for: .normal)
+            if let largeImage = joke!.large_image {
+                girlImageView.kf.setImage(with: URL(string: largeImage.url!))
+            }
         }
     }
+    
+    @IBOutlet weak var girlImageView: UIImageView!
     
     @IBOutlet weak var jokeLabel: UILabel!
     

@@ -9,6 +9,8 @@
 
 import UIKit
 import SnapKit
+import MJRefresh
+import SVProgressHUD
 
 class WeiTouTiaoViewController: UIViewController {
     /// 微头条数据
@@ -24,6 +26,20 @@ class WeiTouTiaoViewController: UIViewController {
             self.microNews = weitoutiaos
             self.tableView.reloadData()
         }
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
+            // 加载更多
+            NetworkTool.loadWeiTouTiaoData { (weitoutiaos) in
+                self!.tableView.mj_footer.endRefreshing()
+                if weitoutiaos.count == 0 {
+                    SVProgressHUD.setForegroundColor(UIColor.white)
+                    SVProgressHUD.setBackgroundColor(UIColor(r: 0, g: 0, b: 0, alpha: 0.3))
+                    SVProgressHUD.showInfo(withStatus: "没有更多新闻啦~")
+                    return
+                }
+                self!.microNews += weitoutiaos
+                self!.tableView.reloadData()
+            }
+        })
     }
 
     fileprivate lazy var headerView: WeitoutiaoHeaderView = {

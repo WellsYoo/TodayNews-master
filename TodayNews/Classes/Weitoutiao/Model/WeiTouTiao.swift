@@ -20,6 +20,13 @@ import UIKit
 
 class WeiTouTiao {
     
+    var girlCellHeight: CGFloat? {
+        get {
+            return contentH! + 75 + screenWidth * 1.4
+        }
+    }
+    var large_image: WTTDetailVideoLargeImage?
+    
     var imageCellHeight: CGFloat? {
         get {
             // imageHeight + titleH! + 10 + 40
@@ -144,7 +151,7 @@ class WeiTouTiao {
     var bury_count: Int?
     var buryCount: String? {
         get {
-            guard let count = digg_count else {
+            guard let count = bury_count else {
                 return "踩"
             }
             guard count >= 10000 else {
@@ -279,8 +286,12 @@ class WeiTouTiao {
     var content: NSString?
     var contentH: CGFloat? {
         get {
-            let height = content!.getTextHeight(width: screenWidth - kMargin * 2)
-            return height
+            if let content = content {
+                let height = content.getTextHeight(width: screenWidth - kMargin * 2)
+                return height
+            } else {
+                return 0
+            }
         }
     }
     
@@ -395,7 +406,9 @@ class WeiTouTiao {
     var gallary_image_count: Int?
     
     init(dict: [String: AnyObject]) {
-        
+        if let largeImage = dict["large_image"] as? [String: AnyObject] {
+            large_image = WTTDetailVideoLargeImage(dict: largeImage )
+        }
         gallary_image_count = dict["gallary_image_count"] as? Int
         gallery_pic_count = dict["gallery_pic_count"] as? Int
         is_stick = dict["is_stick"] as? Bool

@@ -11,6 +11,7 @@ import IBAnimatable
 import RxSwift
 import RxCocoa
 import MJRefresh
+import SVProgressHUD
 
 class NewsDetailImageCommentController: AnimatableModalViewController {
 
@@ -41,7 +42,14 @@ extension NewsDetailImageCommentController {
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
             // 获取评论数据
             NetworkTool.loadNewsDetailImageComments(offset: self!.comments.count) { (comments) in
-                self!.comments = comments
+                self!.tableView.mj_footer.endRefreshing()
+                if comments.count == 0 {
+                    SVProgressHUD.setForegroundColor(UIColor.white)
+                    SVProgressHUD.setBackgroundColor(UIColor(r: 0, g: 0, b: 0, alpha: 0.3))
+                    SVProgressHUD.showInfo(withStatus: "没有更多评论啦~")
+                    return
+                }
+                self!.comments += comments
                 self!.tableView.reloadData()
             }
         })
