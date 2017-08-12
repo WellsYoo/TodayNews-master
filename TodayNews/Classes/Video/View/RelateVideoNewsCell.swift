@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class RelateNewsCell: UITableViewCell {
+class RelateVideoNewsCell: UITableViewCell {
     
     var relateNews: WeiTouTiao? {
         didSet {

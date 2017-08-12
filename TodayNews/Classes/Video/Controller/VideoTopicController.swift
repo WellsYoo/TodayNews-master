@@ -133,6 +133,10 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
             videoDetailVC.videoTopic = videoTopic
             videoDetailVC.realVideo = realVideo
             self.navigationController?.pushViewController(videoDetailVC, animated: true)
+            if self.player.isPlaying { // 说明有正在播放的视频
+                self.player.pause()
+                self.player.removeFromSuperview()
+            }
         }
     }
     

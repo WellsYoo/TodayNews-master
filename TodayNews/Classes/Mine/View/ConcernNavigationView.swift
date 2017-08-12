@@ -17,6 +17,13 @@ protocol ConcernNavigationViewDelegate: class {
 
 class ConcernNavigationView: UIView {
     
+    @IBOutlet weak var usernameButton: UIButton!
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var vipImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var bottomLine: UIView!
+    
     weak var delegate: ConcernNavigationViewDelegate?
     /// 标题
     @IBOutlet weak var titleLabel: UILabel!

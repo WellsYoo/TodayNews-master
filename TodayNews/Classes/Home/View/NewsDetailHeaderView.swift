@@ -49,10 +49,6 @@ class NewsDetailHeaderView: UIView {
     
     @IBOutlet weak var concernButton: UIButton!
     
-    @IBAction func concernButtonClicked(_ sender: UIButton) {
-        
-    }
-    
     class func headerView() -> NewsDetailHeaderView {
         return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last as! NewsDetailHeaderView
     }

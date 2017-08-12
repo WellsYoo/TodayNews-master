@@ -247,16 +247,17 @@ class NetworkTool {
     }
     
     /// 获取新闻详情相关新闻
-    class func loadNewsDetailRelateNews(item_id: Int, group_id: Int, completionHandler:@escaping (_ relateNews: [WeiTouTiao])->()) {
+    class func loadNewsDetailRelateNews(fromCategory: String, item_id: Int, group_id: Int, completionHandler:@escaping (_ relateNews: [WeiTouTiao])->()) {
         let url = BASE_URL + "2/article/information/v21/?"
         let params = ["device_id": device_id,
-                      "article_page": "1",
+                      "article_page": "1", // 这个参数存在的时候会出现 related_news字段，大于四条数据，注释这个字段会出现 ordered_info 字段，是四条数据
                       "latitude": "",
                       "longitude": "",
+                      "iid": IID,
                       "item_id": item_id,
                       "group_id": group_id,
                       "device_platform": "iphone",
-                      "from_category": "video",] as [String : AnyObject]
+                      "from_category": fromCategory] as [String : AnyObject]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return
@@ -265,10 +266,20 @@ class NetworkTool {
                 let json = JSON(value)
                 if let data = json["data"].dictionary {
                     var relateNews = [WeiTouTiao]()
-                    let related_video_toutiao = data["related_video_toutiao"]!.arrayObject
-                    for dict in related_video_toutiao! {
-                        let news = WeiTouTiao(dict: dict as! [String: AnyObject])
-                        relateNews.append(news)
+                    if fromCategory == "video" {
+                        if let relatedVideoToutiao = data["related_video_toutiao"] {
+                            for dict in relatedVideoToutiao.arrayObject! {
+                                let news = WeiTouTiao(dict: dict as! [String: AnyObject])
+                                relateNews.append(news)
+                            }
+                        }
+                    } else {
+                        if let ordered_info = data["related_news"] {
+                            for dict in ordered_info.arrayObject! {
+                                let news = WeiTouTiao(dict: dict as! [String: AnyObject])
+                                relateNews.append(news)
+                            }
+                        }
                     }
                     completionHandler(relateNews)
                 }

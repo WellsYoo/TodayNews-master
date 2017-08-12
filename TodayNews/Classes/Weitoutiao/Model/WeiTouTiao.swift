@@ -20,6 +20,14 @@ import UIKit
 
 class WeiTouTiao {
     
+    var relateNewsCellHeight: CGFloat? {
+        get {
+            let size = CGSize(width: screenWidth - 30 * 2, height: CGFloat(MAXFLOAT))
+            return (title!.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 15)], context: nil).size.height) + 30
+        }
+    }
+    
+    
     var girlCellHeight: CGFloat? {
         get {
             return contentH! + 75 + screenWidth * 1.4
@@ -354,6 +362,9 @@ class WeiTouTiao {
     
     var ban_comment: Int?
     
+    var impr_id: String?
+    var open_page_url: String?
+    
     var group_flags: Int?
     var group_id: Int?
     var group_source: Int?
@@ -406,6 +417,10 @@ class WeiTouTiao {
     var gallary_image_count: Int?
     
     init(dict: [String: AnyObject]) {
+        
+        impr_id = dict["impr_id"] as? String
+        open_page_url = dict["open_page_url"] as? String
+        
         if let largeImage = dict["large_image"] as? [String: AnyObject] {
             large_image = WTTDetailVideoLargeImage(dict: largeImage )
         }

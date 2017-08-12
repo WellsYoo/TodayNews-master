@@ -19,6 +19,7 @@ class VideoDetailController: UIViewController {
     /// 播放器
     fileprivate lazy var player = BMPlayer()
     var changeButton = UIButton()
+    var playTimeDidChange:((TimeInterval, TimeInterval) -> Void)?
     
     fileprivate let disposeBag = DisposeBag()
     
@@ -71,7 +72,7 @@ class VideoDetailController: UIViewController {
         tableView.delegate = self
         tableView.isScrollEnabled = false
         tableView.backgroundColor = UIColor.globalBackgroundColor()
-        tableView.register(UINib(nibName: String( describing: RelateNewsCell.self), bundle: nil), forCellReuseIdentifier: String( describing: RelateNewsCell.self))
+        tableView.register(UINib(nibName: String( describing: RelateVideoNewsCell.self), bundle: nil), forCellReuseIdentifier: String( describing: RelateVideoNewsCell.self))
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -90,9 +91,9 @@ class VideoDetailController: UIViewController {
     }()
     
     /// 相关新闻头部的容器
-    fileprivate lazy var relateHeaderBackView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 171))
+    fileprivate lazy var relateHeaderBackView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 172))
     /// 评论的头部
-    fileprivate lazy var commentHeaderBackView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 640 + 171))
+    fileprivate lazy var commentHeaderBackView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 640 + 172))
     /// 相关新闻头部
     fileprivate lazy var relateHeaderView: RelateHeaderView = {
         let headerView = RelateHeaderView.headerView()
@@ -133,7 +134,7 @@ extension VideoDetailController {
             make.edges.equalTo(commentHeaderBackView)
         }
         
-        NetworkTool.loadNewsDetailRelateNews(item_id: videoTopic!.item_id!, group_id: videoTopic!.group_id!) { (relateNews) in
+        NetworkTool.loadNewsDetailRelateNews(fromCategory: "video", item_id: videoTopic!.item_id!, group_id: videoTopic!.group_id!) { (relateNews) in
             self.relateNews = relateNews
             self.relateTableView.reloadData()
         }
@@ -256,7 +257,7 @@ extension VideoDetailController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == relateTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RelateNewsCell.self), for: indexPath) as! RelateNewsCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RelateVideoNewsCell.self), for: indexPath) as! RelateVideoNewsCell
             cell.relateNews = relateNews[indexPath.row]
             return cell
         } else {
