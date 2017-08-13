@@ -31,7 +31,6 @@ class NetworkTool {
                 if let data = dataDict!["data"]!.arrayObject {
                     var titles = [TopicTitle]()
                     var homeTopicVCs = [TopicViewController]()
-                    
                     // 添加推荐标题
                     let recommendDict = ["category": "", "name": "推荐"]
                     let recommend = TopicTitle(dict: recommendDict as [String : AnyObject])
@@ -255,9 +254,11 @@ class NetworkTool {
     }
     
     /// 获取新闻详情相关新闻
-    class func loadNewsDetailRelateNews(fromCategory: String, weitoutiao: WeiTouTiao, completionHandler:@escaping (_ relateNews: [WeiTouTiao], _ labels: [NewsDetailLabel], _ userLike: UserLike?, _ appInfo: NewsDetailAPPInfo?) -> ()) {
+    class func loadNewsDetailRelateNews(fromCategory: String, weitoutiao: WeiTouTiao, completionHandler:@escaping (_ relateNews: [WeiTouTiao], _ labels: [NewsDetailLabel], _ userLike: UserLike?, _ appInfo: NewsDetailAPPInfo?, _ filter_wrods: [WTTFilterWord]) -> ()) {
         let url = BASE_URL + "2/article/information/v21/?"
+        // version_code=6.2.6
         let params = ["device_id": device_id,
+                      "version_code": "6.2.6",
                       "article_page": weitoutiao.article_type!,
                       "aggr_type": weitoutiao.aggr_type!,
                       "latitude": "",
@@ -267,6 +268,7 @@ class NetworkTool {
                       "group_id": weitoutiao.group_id!,
                       "device_platform": "iphone",
                       "from_category": fromCategory] as [String : AnyObject]
+        
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return
@@ -278,6 +280,7 @@ class NetworkTool {
                     var labels = [NewsDetailLabel]()
                     var userLike: UserLike?
                     var appInfo: NewsDetailAPPInfo?
+                    var filter_words = [WTTFilterWord]()
                     // ---------- 暂时只找到两种情况,后面再补充 ---------------
                     // article_type 分为不同情况，0 和 1 ，返回的数据类型也不一样
                     if weitoutiao.article_type! == 0 {
@@ -285,29 +288,29 @@ class NetworkTool {
                         // ordered_info是一个数组，数组内容不定，根据其中的 name 来判断对应的字典
                         if let ordered_info = data["ordered_info"] {
                             if ordered_info.count > 0 { // 说明 ordered_info 有数据
-                                for orderInfo in ordered_info.array! { // 遍历，根据 name 来判断
-                                    let ordered = orderInfo.dictionary!
-                                    let name = ordered["name"]!.string!
+                                for orderInfo in ordered_info.arrayObject! { // 遍历，根据 name 来判断
+                                    let ordered = orderInfo as! [String: AnyObject]
+                                    let name = ordered["name"]! as! String
                                     if name == "labels" { // 新闻相关类别,数组
-                                        if let orders = ordered["data"] {
-                                            for dict in orders.arrayObject! {
+                                        if let orders = ordered["data"] as? [AnyObject] {
+                                            for dict in orders {
                                                 let label = NewsDetailLabel(dict: dict as! [String: AnyObject])
                                                 labels.append(label)
                                             }
                                         }
                                     } else if name == "like_and_rewards" { // 喜欢 / 不喜欢  字典
-                                        userLike = UserLike(dict: ordered["data"]!.dictionaryObject! as [String: AnyObject])
+                                        userLike = UserLike(dict: ordered["data"] as! [String: AnyObject])
                                     } else if name == "ad" { // 广告， 字典
-                                        let appData = ordered["data"]!.dictionary
+                                        let appData = ordered["data"] as! [String: AnyObject]
                                         // 有两种情况，一种 app，一种 mixed
-                                        if let app = appData!["app"]?.dictionaryObject {
-                                            appInfo = NewsDetailAPPInfo(dict: app as [String: AnyObject])
-                                        } else if let mixed = appData!["mixed"]?.dictionaryObject {
-                                            appInfo = NewsDetailAPPInfo(dict: mixed as [String: AnyObject])
+                                        if let app = appData["app"] {
+                                            appInfo = NewsDetailAPPInfo(dict: app as! [String: AnyObject])
+                                        } else if let mixed = appData["mixed"] {
+                                            appInfo = NewsDetailAPPInfo(dict: mixed as! [String: AnyObject])
                                         }
                                     } else if name == "related_news" { // 相关新闻  数组
-                                        if let orders = ordered["data"] {
-                                            for dict in orders.arrayObject! {
+                                        if let orders = ordered["data"] as? [AnyObject] {
+                                            for dict in orders {
                                                 let relatenews = WeiTouTiao(dict: dict as! [String: AnyObject])
                                                 relateNews.append(relatenews)
                                             }
@@ -315,6 +318,12 @@ class NetworkTool {
                                         
                                     }
                                 }
+                            }
+                        }
+                        if let filterWords = data["filter_words"]?.arrayObject {
+                            for item in filterWords {
+                                let filterWord = WTTFilterWord(dict: item as! [String: AnyObject])
+                                filter_words.append(filterWord)
                             }
                         }
                     } else if weitoutiao.article_type! == 1 { // 可能是视频
@@ -325,7 +334,7 @@ class NetworkTool {
                             }
                         }
                     }
-                    completionHandler(relateNews, labels, userLike, appInfo)
+                    completionHandler(relateNews, labels, userLike, appInfo, filter_words)
                 }
             }
         }

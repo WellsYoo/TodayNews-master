@@ -218,10 +218,17 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
                 
             } else {
                 let cell = tableView.cellForRow(at: indexPath) as! HomeTopicCell
-                let topicDetailVC = TopicDetailController()
-                topicDetailVC.weitoutiao = cell.weitoutiao!
-    //            topicDetailVC.groupID = String(cell.weitoutiao!.group_id!)
-                navigationController?.pushViewController(topicDetailVC, animated: true)
+                if let source = cell.weitoutiao!.source {
+                    if source == "悟空问答" { // 悟空问答
+                        let questionAnswerVC = QuestionAnswerController()
+                        questionAnswerVC.weitoutiao = cell.weitoutiao!
+                        navigationController?.pushViewController(questionAnswerVC, animated: true)
+                    } else {
+                        let topicDetailVC = TopicDetailController()
+                        topicDetailVC.weitoutiao = cell.weitoutiao!
+                        navigationController?.pushViewController(topicDetailVC, animated: true)
+                    }
+                }
             }
         }
     }

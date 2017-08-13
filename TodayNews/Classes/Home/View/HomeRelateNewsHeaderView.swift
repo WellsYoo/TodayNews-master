@@ -10,6 +10,12 @@ import UIKit
 import Kingfisher
 
 class HomeRelateNewsHeaderView: UIView {
+    var filter_wrods = [WTTFilterWord]() {
+        didSet {
+            dislikePopView.filterWords = filter_wrods
+        }
+    }
+    
     // 标签
     var labels = [NewsDetailLabel]() {
         didSet {
@@ -90,15 +96,10 @@ class HomeRelateNewsHeaderView: UIView {
     @IBOutlet weak var dislikeButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var closeButtonHeight: NSLayoutConstraint!
     @IBOutlet weak var downloadButton: UIButton!
     @IBOutlet weak var appNameLabel: UILabel!
     @IBOutlet weak var adLabel: UILabel!
-    @IBOutlet weak var adLabelHeight: NSLayoutConstraint!
-    @IBOutlet weak var timeHeightLabel: NSLayoutConstraint!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var downloadButtonHeight: NSLayoutConstraint!
-    @IBOutlet weak var sourceNameLabelHeight: NSLayoutConstraint!
     @IBOutlet weak var timeLabelWidth: NSLayoutConstraint!
     @IBOutlet weak var adView: UIView!
     @IBOutlet weak var adViewHeight: NSLayoutConstraint!
@@ -135,5 +136,16 @@ class HomeRelateNewsHeaderView: UIView {
         super.layoutSubviews()
         self.height = self.bottomView.frame.maxY
     }
+    
+    /// 不喜欢按钮点击
+    @IBAction func dislikeButtonClicked() {
+        UIApplication.shared.keyWindow?.addSubview(dislikePopView)
+        dislikePopView.show()
+    }
+    
+    fileprivate lazy var dislikePopView: DislikePopView = {
+        let dislikePopView = DislikePopView.popView()
+        return dislikePopView
+    }()
     
 }

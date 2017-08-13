@@ -46,10 +46,17 @@ class HomeTopicCell: UITableViewCell {
                 if hot_label == "置顶" {
                     hotLabel.isHidden = false
                     hotLabel.text = hot_label
+                } else if hot_label == "广告" {
+                    hotLabelWidth.constant = 30
+                    hotLabel.text = hot_label
+                    hotLabel.textColor = UIColor.globalBlueColor()
+                    hotLabel.layer.cornerRadius = 3
+                    hotLabel.layer.masksToBounds = true
                 } else {
                     hotLabel.isHidden = true
                     hotLabelWidth.constant = 0
                 }
+                self.layoutIfNeeded()
             } else if let hot = weitoutiao!.hot {
                 if hot {
                     hotLabel.text = "热"

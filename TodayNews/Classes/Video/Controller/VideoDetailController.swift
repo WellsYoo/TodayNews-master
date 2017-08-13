@@ -25,7 +25,7 @@ class VideoDetailController: UIViewController {
     
     var videoTopic: WeiTouTiao? {
         didSet {
-            NetworkTool.loadNewsDetailRelateNews(fromCategory: "", weitoutiao: videoTopic!) { (relateNews, labels, userLike, appInfo) in
+            NetworkTool.loadNewsDetailRelateNews(fromCategory: "", weitoutiao: videoTopic!) { (relateNews, labels, userLike, appInfo, filter_wrods) in
                 self.relateNews = relateNews
                 self.relateTableView.reloadData()
             }

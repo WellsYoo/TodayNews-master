@@ -46,8 +46,9 @@ class TopicDetailController: UIViewController {
 //            webView.load(request)
 //            webView.frame = CGRect(x: 0, y: headerView.frame.maxY, width: screenWidth, height: screenHeight - headerView.frame.maxY)
             /// 获取相关新闻
-            NetworkTool.loadNewsDetailRelateNews(fromCategory: "", weitoutiao: weitoutiao!) { (relateNews, labels, userLike, appInfo) in
+            NetworkTool.loadNewsDetailRelateNews(fromCategory: "", weitoutiao: weitoutiao!) { (relateNews, labels, userLike, appInfo , filter_wrods) in
                 /// 设置相关属性
+                self.relateHeaderView.filter_wrods = filter_wrods
                 self.relateHeaderView.userLike = userLike
                 var relateHeaderViewHeight: CGFloat = 125 // 105 顶部留白 + 中间留白X2 + 喜欢按钮
                 if labels.count > 0 { // 说明标签数组有对象
@@ -62,11 +63,6 @@ class TopicDetailController: UIViewController {
                     self.relateHeaderView.adViewHeight.constant = screenWidth * 0.65
                 } else {
                     self.relateHeaderView.adViewHeight.constant = 0
-                    self.relateHeaderView.sourceNameLabelHeight.constant = 0
-                    self.relateHeaderView.timeHeightLabel.constant = 0
-                    self.relateHeaderView.adLabelHeight.constant = 0
-                    self.relateHeaderView.downloadButtonHeight.constant = 0
-                    self.relateHeaderView.closeButtonHeight.constant = 0
                     self.relateHeaderView.appNameViewHeight.constant = 0
                     self.relateHeaderView.bottomViewHeight.constant = 0
                     self.relateHeaderView.adView.isHidden = true
@@ -144,7 +140,7 @@ class TopicDetailController: UIViewController {
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.isScrollEnabled = false
+        tableView.isScrollEnabled = false  // 设置不能滚动
         tableView.estimatedRowHeight = 44
         tableView.showsVerticalScrollIndicator = false
         tableView.register(UINib(nibName: String(describing: DetailRelateNewsCell.self), bundle: nil), forCellReuseIdentifier: String(describing: DetailRelateNewsCell.self))
@@ -196,7 +192,22 @@ extension TopicDetailController: UITableViewDelegate, UITableViewDataSource {
             cell.contenLabel.text = relatenews.title! as String
             return cell
         } else {
+            let comment = comments[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NewsDetailImageCommentCell.self), for: indexPath) as! NewsDetailImageCommentCell
+            /// 判断评论是不是作者
+            if let user = weitoutiao!.user {
+                if comment.user_id! == user.user_id! {
+                    cell.isAuthor = true
+                }
+            } else if let userInfo = weitoutiao!.user_info {
+                if comment.user_id! == userInfo.user_id! {
+                    cell.isAuthor = true
+                }
+            } else if let mediaInfo = weitoutiao!.media_info {
+                if comment.user_id! == mediaInfo.user_id! {
+                    cell.isAuthor = true
+                }
+            }
             cell.comment = comments[indexPath.row]
             cellClickedEvent(cell: cell)
             return cell
@@ -234,7 +245,7 @@ extension TopicDetailController: UITableViewDelegate, UITableViewDataSource {
             })
             .addDisposableTo(disposeBag)
     }
-    
+    /// scrollView 代理
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y;
         if offsetY > 0 {

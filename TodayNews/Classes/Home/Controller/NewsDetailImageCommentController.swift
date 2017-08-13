@@ -80,6 +80,7 @@ extension NewsDetailImageCommentController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String( describing: NewsDetailImageCommentCell.self), for: indexPath) as! NewsDetailImageCommentCell
         cell.comment = comments[indexPath.row]
+        
         cellClickedEvent(cell: cell)
         return cell
     }

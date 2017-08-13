@@ -27,7 +27,6 @@ class WeiTouTiao {
         }
     }
     
-    
     var girlCellHeight: CGFloat? {
         get {
             return contentH! + 75 + screenWidth * 1.4

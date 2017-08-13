@@ -71,6 +71,9 @@
                                             <integer key="value" value="15"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="dislikeButtonClicked" destination="rqv-ze-HE7" eventType="touchUpInside" id="xFK-Bc-a8U"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -281,7 +284,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="adLabel" destination="gST-4I-L6M" id="C17-sq-7xK"/>
-                <outlet property="adLabelHeight" destination="FCM-4b-T95" id="C5I-Bk-hOX"/>
                 <outlet property="adView" destination="6Pu-Ju-A21" id="Jf1-Dh-zKy"/>
                 <outlet property="adViewHeight" destination="45Z-GF-bSf" id="3q1-32-ADx"/>
                 <outlet property="appNameLabel" destination="b8h-c3-LCk" id="rQu-Et-UXB"/>
@@ -290,18 +292,14 @@
                 <outlet property="bottomView" destination="iN0-l3-epB" id="852-WA-wBl"/>
                 <outlet property="bottomViewHeight" destination="di4-0b-ROW" id="NCA-81-v2l"/>
                 <outlet property="closeButton" destination="X0s-XW-ptA" id="zWj-CQ-eD9"/>
-                <outlet property="closeButtonHeight" destination="YXT-2R-bOY" id="Ygt-Jq-ff4"/>
                 <outlet property="dislikeButton" destination="St2-mc-Trc" id="t4X-uh-3IP"/>
                 <outlet property="downloadButton" destination="Jj9-t2-XMT" id="OHx-ur-SdT"/>
-                <outlet property="downloadButtonHeight" destination="pbb-EI-bFK" id="ikU-a7-Enb"/>
                 <outlet property="likeButton" destination="Nef-hf-Sme" id="gGZ-Y9-0h7"/>
                 <outlet property="playButton" destination="Awl-tB-zBH" id="VlO-PO-cVy"/>
                 <outlet property="scrollView" destination="2nr-HO-BNd" id="eNR-rN-hLw"/>
                 <outlet property="scrollViewHeight" destination="sNk-Nx-J6x" id="LwL-eP-gK5"/>
                 <outlet property="sourceNameLabel" destination="4Z7-Qj-83f" id="KMf-Hv-mKJ"/>
-                <outlet property="sourceNameLabelHeight" destination="kEW-Dy-LfO" id="nus-BJ-aYB"/>
                 <outlet property="sourceTitleLabel" destination="UgS-Ho-ViW" id="c9l-2D-ShN"/>
-                <outlet property="timeHeightLabel" destination="Ccu-QW-4OQ" id="gSh-4B-TaU"/>
                 <outlet property="timeLabel" destination="LiG-1c-KEh" id="CFC-W7-Rj8"/>
                 <outlet property="timeLabelWidth" destination="vwn-2h-XIs" id="yv1-9c-Ac3"/>
                 <outlet property="titleLabel" destination="fDJ-II-VjN" id="P2n-Zc-rrS"/>
