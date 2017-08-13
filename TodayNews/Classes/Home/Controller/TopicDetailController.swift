@@ -21,6 +21,9 @@ class TopicDetailController: UIViewController {
     
     var comments = [NewsDetailImageComment]()
     var relateNews = [WeiTouTiao]()
+    var labels = [NewsDetailLabel]()
+    var userLike: UserLike?
+    var appInfo: NewsDetailAPPInfo?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -36,27 +39,62 @@ class TopicDetailController: UIViewController {
                 navView.usernameLabel.text = mediaInfo.name
                 navView.avatarImageView.kf.setImage(with: URL(string: mediaInfo.avatar_url!))
             }
+            /// 设置属性
             headerView.weitoutiao = weitoutiao!
             headerView.height = 45 + 2 * kMargin + weitoutiao!.newDetailTitleHeight!
 //            let request = URLRequest(url: URL(string: weitoutiao!.article_url!)!)
 //            webView.load(request)
 //            webView.frame = CGRect(x: 0, y: headerView.frame.maxY, width: screenWidth, height: screenHeight - headerView.frame.maxY)
             /// 获取相关新闻
-            NetworkTool.loadNewsDetailRelateNews(fromCategory: "", item_id: weitoutiao!.item_id!, group_id: weitoutiao!.group_id!) { (relateNews) in
-                var relateTableHeight: CGFloat = 0
+            NetworkTool.loadNewsDetailRelateNews(fromCategory: "", weitoutiao: weitoutiao!) { (relateNews, labels, userLike, appInfo) in
+                /// 设置相关属性
+                self.relateHeaderView.userLike = userLike
+                var relateHeaderViewHeight: CGFloat = 125 // 105 顶部留白 + 中间留白X2 + 喜欢按钮
+                if labels.count > 0 { // 说明标签数组有对象
+                    self.relateHeaderView.labels = labels
+                    relateHeaderViewHeight += 30
+                } else {
+                    self.relateHeaderView.scrollViewHeight.constant = 0
+                }
+                if let app_info = appInfo { // 广告存在
+                    self.relateHeaderView.appInfo = app_info
+                    relateHeaderViewHeight += screenWidth * 0.65
+                    self.relateHeaderView.adViewHeight.constant = screenWidth * 0.65
+                } else {
+                    self.relateHeaderView.adViewHeight.constant = 0
+                    self.relateHeaderView.sourceNameLabelHeight.constant = 0
+                    self.relateHeaderView.timeHeightLabel.constant = 0
+                    self.relateHeaderView.adLabelHeight.constant = 0
+                    self.relateHeaderView.downloadButtonHeight.constant = 0
+                    self.relateHeaderView.closeButtonHeight.constant = 0
+                    self.relateHeaderView.appNameViewHeight.constant = 0
+                    self.relateHeaderView.bottomViewHeight.constant = 0
+                    self.relateHeaderView.adView.isHidden = true
+                }
+                /// 设置 relateHeaderView 高度
+                self.relateHeaderView.height = relateHeaderViewHeight
+                self.relateHeaderView.layoutIfNeeded()
+                /// 设置相关新闻 table 的高度
+                var relateTableHeight: CGFloat = relateHeaderViewHeight
                 for relatenews in relateNews {
                     relateTableHeight += relatenews.relateNewsCellHeight!
                 }
-                self.backHeaderView.addSubview(self.headerView)
-                self.backHeaderView.addSubview(self.relateNewsTableView)
+                
+                /// 添加
+                self.relateHeaderView.backgroundColor = UIColor.red
+                self.relateNewsTableView.tableHeaderView = self.relateHeaderView
                 self.relateNewsTableView.frame = CGRect(x: 0, y: self.headerView.frame.maxY, width: screenWidth, height: relateTableHeight)
-                self.backHeaderView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: self.relateNewsTableView.frame.maxY)
-                self.tableView.tableHeaderView = self.backHeaderView
                 self.relateNews = relateNews
                 self.relateNewsTableView.reloadData()
+                self.commentBackHeaderView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: self.relateNewsTableView.frame.maxY)
+                self.commentBackHeaderView.addSubview(self.headerView)
+                self.commentBackHeaderView.addSubview(self.relateNewsTableView)
+                // 设置头部
+                self.tableView.tableHeaderView = self.commentBackHeaderView
+                
             }
             /// 获取评论
-            NetworkTool.loadNewsDetailComments(offset: 0, item_id: weitoutiao!.item_id!, group_id: weitoutiao!.group_id!) { (comments) in
+            NetworkTool.loadNewsDetailComments(offset: 0, weitoutiao: weitoutiao!) { (comments) in
                 self.comments = comments
                 self.tableView.reloadData()
             }
@@ -78,7 +116,21 @@ class TopicDetailController: UIViewController {
         setupUI()
     }
     
-    /// 头部 标题，用户名，关注按钮
+    /// 标签，广告 作为头部
+    fileprivate lazy var relateHeaderView: HomeRelateNewsHeaderView = {
+        let relateHeaderView = HomeRelateNewsHeaderView.relateNewHeaderView()
+        relateHeaderView.x = 0
+        relateHeaderView.y = 0
+        return relateHeaderView
+    }()
+    
+    /// 相关新闻列表的头部，添加
+    fileprivate lazy var relateBackHeaderView: UIView = {
+        let relateBackHeaderView = UIView()
+        return relateBackHeaderView
+    }()
+    
+    /// 头部 标题，用户名，关注按钮,添加到 commentBackHeaderView
     fileprivate lazy var headerView: NewsDetailHeaderView = {
         let headerView = NewsDetailHeaderView.headerView()
         headerView.x = 0
@@ -86,7 +138,7 @@ class TopicDetailController: UIViewController {
         return headerView
     }()
     
-    /// 相关新闻的 tableView
+    /// 相关新闻的 tableView， 添加到 commentBackHeaderView
     fileprivate lazy var relateNewsTableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -94,16 +146,15 @@ class TopicDetailController: UIViewController {
         tableView.dataSource = self
         tableView.isScrollEnabled = false
         tableView.estimatedRowHeight = 44
+        tableView.showsVerticalScrollIndicator = false
         tableView.register(UINib(nibName: String(describing: DetailRelateNewsCell.self), bundle: nil), forCellReuseIdentifier: String(describing: DetailRelateNewsCell.self))
         return tableView
     }()
     
-    
-    
-    /// 评论的头部
-    fileprivate lazy var backHeaderView: UIView = {
-        let backHeaderView = UIView()
-        return backHeaderView
+    /// 评论的头部,作为相关新闻列表的容器
+    fileprivate lazy var commentBackHeaderView: UIView = {
+        let commentBackHeaderView = UIView()
+        return commentBackHeaderView
     }()
     
     /// 导航条
@@ -218,7 +269,7 @@ extension TopicDetailController {
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
             // 获取评论数据
-            NetworkTool.loadNewsDetailComments(offset: self!.comments.count, item_id: self!.weitoutiao!.item_id!, group_id: self!.weitoutiao!.group_id!) { (comments) in
+            NetworkTool.loadNewsDetailComments(offset: self!.comments.count, weitoutiao: self!.weitoutiao!) { (comments) in
                 self!.tableView.mj_footer.endRefreshing()
                 if comments.count == 0 {
                     SVProgressHUD.setForegroundColor(UIColor.white)

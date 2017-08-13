@@ -8,19 +8,221 @@
 
 import UIKit
 
-class NewsDetail {
+/// 新闻详情界面中间 有新闻的标签或类别
+/// 比如：情感，星座，天文...
+class NewsDetailLabel {
+    
+    var word: String?
+    
+    var link: String?
+    
+    init(dict: [String: AnyObject]) {
+        word = dict["word"] as? String
+        link = dict["link"] as? String
+    }
+}
+
+/// 用户是否喜欢 / 不喜欢
+class UserLike {
+    
+    var user_like: Int?
+    
+    var like_num: Int?
+    var likeNum: String? {
+        get {
+            guard let count = like_num else {
+                return "喜欢"
+            }
+            guard count >= 10000 else {
+                return String(describing: count)
+            }
+            return String(format: "%.1f万", Float(count) / 10000.0)
+        }
+    }
+    
+    init(dict: [String: AnyObject]) {
+        if let userLike = dict["user_like"] {
+            user_like = userLike as? Int
+        }
+        if let likeNum = dict["like_num"] {
+            like_num = likeNum as? Int
+        }
+    }
+}
+
+/// 广告一般是 app 下载
+/// 广告 app 信息
+class NewsDetailAPPInfo {
+    
+    var log_extra: String?
+    
+    var open_url: String?
+    
+    var app_name: String?
+    
+    var url: String?
+    
+    /// 可能是 String / 字典
+    var image: String?
+    var appImage: AppImage?
+    
+    var rate: Int?
+    
+    var image_mode: Int?
+    
+    var appleid: String?
+    
+    var id: Int?
+    
+    var click_track_url: String?
     
     var title: String?
     
-    var body: String?
+    var display_subtype: Int?
     
-    var images = [NewsDetailImage]()
+    var download_url: String?
+    
+    var label: String?
+    
+    var source: String?
+    
+    var type: String? // 例如 "web" "app"
+    var track_url: String?
+    var show_dislike: Int?
+    var ad_id: Int?
+    var description: String?
+    var app_icon: String?
+    var button_text: String? // "查看详情" "立即下载"
+    var download_count: String?
+    var os_type: String?
+    var app_size: String?
+    var filter_words = [WTTFilterWord]()
+    var video_info: VideoInfo?
+    
+    /// mixed
+    var source_name: String? // 例如 "京东 GY"
+    var web_title: String?  // 例如 "好物钜惠【京东正品保障】GY 数据线"
+    var image_height: Int?
+    var image_width: Int?
+    /// 可能三张图片
+    var image_list = [WTTImageList]()
     
     init(dict: [String: AnyObject]) {
         
+        if let imageList = dict["image_list"] as? [AnyObject] {
+            for item in imageList {
+                let image = WTTImageList(dict: item as! [String: AnyObject])
+                image_list.append(image)
+            }
+        }
+        if let webTitle = dict["web_title"] {
+            web_title = webTitle as? String
+        }
+        if let sourceName = dict["source_name"] {
+            source_name = sourceName as? String
+        }
+        if let appName = dict["app_name"] {
+            app_name = appName as? String
+        }
+        if let descrip = dict["description"] {
+            description = descrip as? String
+        }
+        os_type = dict["os_type"] as? String
+        app_size = dict["app_size"] as? String
+        ad_id = dict["ad_id"] as? Int
+        description = dict["description"] as? String
+        app_icon = dict["app_icon"] as? String
+        button_text = dict["button_text"] as? String
+        download_count = dict["download_count"] as? String
+        
+        /// 遍历举报的内容
+        if let filterWords = dict["filter_words"] as? [AnyObject] {
+            for item in filterWords {
+                let filterWord = WTTFilterWord(dict: item as! [String: AnyObject])
+                filter_words.append(filterWord)
+            }
+        }
+        
+        show_dislike = dict["show_dislike"] as? Int
+        track_url = dict["track_url"] as? String
+        type = dict["type"] as? String
+        log_extra = dict["log_extra"] as? String
+        open_url = dict["open_url"] as? String
+        
+        /// 对 image 做判断
+        if let img = dict["image"] {
+            if img is String {
+                image = img as? String
+            } else {
+                appImage = AppImage(dict: img as! [String: AnyObject])
+            }
+        }
+        rate = dict["rate"] as? Int
+        image_mode = dict["image_mode"] as? Int
+        appleid = dict["appleid"] as? String
+        id = dict["id"] as? Int
+        title = dict["title"] as? String
+        display_subtype = dict["display_subtype"] as? Int
+        download_url = dict["download_url"] as? String
+        label = dict["label"] as? String
+        source = dict["source"] as? String
+        if let videoInfo = dict["video_info"] {
+            video_info = VideoInfo(dict: videoInfo as! [String: AnyObject])
+        }
     }
     
 }
+
+class VideoInfo {
+    var video_id: String?
+    var cover_url: String?
+    var cover_uri: String?
+    
+    var width: Int?
+    var height: Int?
+    var video_duration: Int?
+    var videoDuration: String? {
+        get {
+            /// 格式化时间
+            let hour = video_duration! / 3600
+            let minute = (video_duration! / 60) % 60
+            let second = video_duration! % 60
+            if hour > 0 {
+                return String(format: "%02d:%02d:%02d", hour, minute, second)
+            }
+            return String(format: "%02d:%02d", minute, second)
+        }
+    }
+    
+    init(dict: [String: AnyObject]) {
+        cover_uri = dict["cover_uri"] as? String
+        width = dict["width"] as? Int
+        height = dict["height"] as? Int
+        video_id = dict["video_id"] as? String
+        cover_url = dict["cover_url"] as? String
+        video_duration = dict["video_duration"] as? Int
+    }
+}
+
+class AppImage {
+    
+    var url: String?
+    var uri: String?
+    
+    var width: Int?
+    var height: Int?
+    
+    init(dict: [String: AnyObject]) {
+        uri = dict["uri"] as? String
+        width = dict["width"] as? Int
+        height = dict["height"] as? Int
+        if let url_list = dict["url_list"] as? [AnyObject] {
+            let urlDict = url_list.first as! [String: AnyObject]
+            url = urlDict["url"] as? String
+        }
+    }
+}
+
 
 class NewsDetailImage {
     

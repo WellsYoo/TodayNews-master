@@ -23,7 +23,14 @@ class VideoDetailController: UIViewController {
     
     fileprivate let disposeBag = DisposeBag()
     
-    var videoTopic: WeiTouTiao?
+    var videoTopic: WeiTouTiao? {
+        didSet {
+            NetworkTool.loadNewsDetailRelateNews(fromCategory: "", weitoutiao: videoTopic!) { (relateNews, labels, userLike, appInfo) in
+                self.relateNews = relateNews
+                self.relateTableView.reloadData()
+            }
+        }
+    }
     
     var offset: Int = 0
     var realVideo: RealVideo?
@@ -134,20 +141,15 @@ extension VideoDetailController {
             make.edges.equalTo(commentHeaderBackView)
         }
         
-        NetworkTool.loadNewsDetailRelateNews(fromCategory: "video", item_id: videoTopic!.item_id!, group_id: videoTopic!.group_id!) { (relateNews) in
-            self.relateNews = relateNews
-            self.relateTableView.reloadData()
-        }
-        
         // 获取评论数据
-        NetworkTool.loadNewsDetailComments(offset: offset, item_id: videoTopic!.item_id!, group_id: videoTopic!.group_id!) { (comments) in
+        NetworkTool.loadNewsDetailComments(offset: offset, weitoutiao: videoTopic!) { (comments) in
             self.comments = comments
             self.commentTableView.reloadData()
         }
         
         commentTableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
             // 获取评论数据
-            NetworkTool.loadNewsDetailComments(offset: self!.comments.count, item_id: self!.videoTopic!.item_id!, group_id: self!.videoTopic!.group_id!) { [weak self] (comments) in
+            NetworkTool.loadNewsDetailComments(offset: self!.comments.count, weitoutiao: self!.videoTopic!) { [weak self] (comments) in
                 self!.commentTableView.mj_footer.endRefreshing()
                 if comments.count == 0 {
                     SVProgressHUD.setForegroundColor(UIColor.white)

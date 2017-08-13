@@ -221,8 +221,16 @@ class NetworkTool {
     }
     
     /// 获取新闻详情评论
-    class func loadNewsDetailComments(offset: Int,item_id: Int, group_id: Int, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->()) {
+    class func loadNewsDetailComments(offset: Int, weitoutiao: WeiTouTiao, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->()) {
         let url = BASE_URL + "article/v2/tab_comments/?"
+        var item_id = ""
+        var group_id = ""
+        if let itemId = weitoutiao.item_id {
+            item_id = "\(itemId)"
+        }
+        if let groupId = weitoutiao.group_id {
+            group_id = "\(groupId)"
+        }
         let params = ["offset": offset,
                       "item_id": item_id,
                       "group_id": group_id] as [String : AnyObject]
@@ -247,18 +255,21 @@ class NetworkTool {
     }
     
     /// 获取新闻详情相关新闻
-    class func loadNewsDetailRelateNews(fromCategory: String, item_id: Int, group_id: Int, completionHandler:@escaping (_ relateNews: [WeiTouTiao])->()) {
-        let url = BASE_URL + "2/article/information/v21/?"
-        let params = ["device_id": device_id,
-                      "article_page": "1", // 这个参数存在的时候会出现 related_news字段，大于四条数据，注释这个字段会出现 ordered_info 字段，是四条数据
-                      "latitude": "",
-                      "longitude": "",
-                      "iid": IID,
-                      "item_id": item_id,
-                      "group_id": group_id,
-                      "device_platform": "iphone",
-                      "from_category": fromCategory] as [String : AnyObject]
-        Alamofire.request(url, parameters: params).responseJSON { (response) in
+    class func loadNewsDetailRelateNews(fromCategory: String, weitoutiao: WeiTouTiao, completionHandler:@escaping (_ relateNews: [WeiTouTiao], _ labels: [NewsDetailLabel], _ userLike: UserLike?, _ appInfo: NewsDetailAPPInfo?) -> ()) {
+//        let url = BASE_URL + "2/article/information/v21/?"
+//        let params = ["device_id": device_id,
+//                      "article_page": weitoutiao.article_type!,
+//                      "aggr_type": weitoutiao.aggr_type!,
+//                      "latitude": "",
+//                      "longitude": "",
+//                      "iid": IID,
+//                      "item_id": weitoutiao.item_id!,
+//                      "group_id": weitoutiao.group_id!,
+//                      "device_platform": "iphone",
+//                      "from_category": fromCategory] as [String : AnyObject]
+        let url = "https://is.snssdk.com/2/article/information/v21/?version_code=6.2.6&app_name=news_article&vid=712DF629-3ED9-4FD0-92DA-ADA33E32EE83&device_id=24694333167&channel=App%20Store&resolution=640*1136&aid=13&ab_version=157646,158751,159670,160288,158954,160774,155241,151126,128826,157001,159623,155247,159165,134127,158531,152027,125174,160445,156262,157852,159226,157295,152954,31651,160816,131207,160615,145585,159558,157554,152582,160240,159250,151115&ab_feature=z2&ab_group=z2&openudid=ceeefaff2ed11a55914a25876b4987ce421a71c8&live_sdk_version=1.6.5&idfv=712DF629-3ED9-4FD0-92DA-ADA33E32EE83&ac=WIFI&os_version=9.3.2&ssmix=a&device_platform=iphone&iid=13142832814&ab_client=a1,f2,f7,e1&device_type=iPhone%205S&idfa=12D3CE1F-D56F-4DFD-9896-A4379014B6BE&article_page=0&group_id=6448876339114164493&device_id=24694333167&longitude=120.1924940751782&aggr_type=1&latitude=30.19549026036954&item_id=6448329201031315981&from_category=__all__"
+//        , parameters: params
+        Alamofire.request(url).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return
             }
@@ -266,22 +277,57 @@ class NetworkTool {
                 let json = JSON(value)
                 if let data = json["data"].dictionary {
                     var relateNews = [WeiTouTiao]()
-                    if fromCategory == "video" {
+                    var labels = [NewsDetailLabel]()
+                    var userLike: UserLike?
+                    var appInfo: NewsDetailAPPInfo?
+                    // ---------- 暂时只找到两种情况,后面再补充 ---------------
+                    // article_type 分为不同情况，0 和 1 ，返回的数据类型也不一样
+                    if weitoutiao.article_type! == 0 {
+                        // ordered_info 对应新闻详情顶部的 新闻类别按钮，新欢，不喜欢按钮，app 广告， 相关新闻
+                        // ordered_info是一个数组，数组内容不定，根据其中的 name 来判断对应的字典
+                        if let ordered_info = data["ordered_info"] {
+                            if ordered_info.count > 0 { // 说明 ordered_info 有数据
+                                for orderInfo in ordered_info.array! { // 遍历，根据 name 来判断
+                                    let ordered = orderInfo.dictionary!
+                                    let name = ordered["name"]!.string!
+                                    if name == "labels" { // 新闻相关类别,数组
+                                        if let orders = ordered["data"] {
+                                            for dict in orders.arrayObject! {
+                                                let label = NewsDetailLabel(dict: dict as! [String: AnyObject])
+                                                labels.append(label)
+                                            }
+                                        }
+                                    } else if name == "like_and_rewards" { // 喜欢 / 不喜欢  字典
+                                        userLike = UserLike(dict: ordered["data"]!.dictionaryObject! as [String: AnyObject])
+                                    } else if name == "ad" { // 广告， 字典
+                                        let appData = ordered["data"]!.dictionary
+                                        // 有两种情况，一种 app，一种 mixed
+                                        if let app = appData!["app"]?.dictionaryObject {
+                                            appInfo = NewsDetailAPPInfo(dict: app as [String: AnyObject])
+                                        } else if let mixed = appData!["mixed"]?.dictionaryObject {
+                                            appInfo = NewsDetailAPPInfo(dict: mixed as [String: AnyObject])
+                                        }
+                                    } else if name == "related_news" { // 相关新闻  数组
+                                        if let orders = ordered["data"] {
+                                            for dict in orders.arrayObject! {
+                                                let relatenews = WeiTouTiao(dict: dict as! [String: AnyObject])
+                                                relateNews.append(relatenews)
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    } else if weitoutiao.article_type! == 1 { // 可能是视频
                         if let relatedVideoToutiao = data["related_video_toutiao"] {
                             for dict in relatedVideoToutiao.arrayObject! {
                                 let news = WeiTouTiao(dict: dict as! [String: AnyObject])
                                 relateNews.append(news)
                             }
                         }
-                    } else {
-                        if let ordered_info = data["related_news"] {
-                            for dict in ordered_info.arrayObject! {
-                                let news = WeiTouTiao(dict: dict as! [String: AnyObject])
-                                relateNews.append(news)
-                            }
-                        }
                     }
-                    completionHandler(relateNews)
+                    completionHandler(relateNews, labels, userLike, appInfo)
                 }
             }
         }
