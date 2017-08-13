@@ -256,20 +256,18 @@ class NetworkTool {
     
     /// 获取新闻详情相关新闻
     class func loadNewsDetailRelateNews(fromCategory: String, weitoutiao: WeiTouTiao, completionHandler:@escaping (_ relateNews: [WeiTouTiao], _ labels: [NewsDetailLabel], _ userLike: UserLike?, _ appInfo: NewsDetailAPPInfo?) -> ()) {
-//        let url = BASE_URL + "2/article/information/v21/?"
-//        let params = ["device_id": device_id,
-//                      "article_page": weitoutiao.article_type!,
-//                      "aggr_type": weitoutiao.aggr_type!,
-//                      "latitude": "",
-//                      "longitude": "",
-//                      "iid": IID,
-//                      "item_id": weitoutiao.item_id!,
-//                      "group_id": weitoutiao.group_id!,
-//                      "device_platform": "iphone",
-//                      "from_category": fromCategory] as [String : AnyObject]
-        let url = "https://is.snssdk.com/2/article/information/v21/?version_code=6.2.6&app_name=news_article&vid=712DF629-3ED9-4FD0-92DA-ADA33E32EE83&device_id=24694333167&channel=App%20Store&resolution=640*1136&aid=13&ab_version=157646,158751,159670,160288,158954,160774,155241,151126,128826,157001,159623,155247,159165,134127,158531,152027,125174,160445,156262,157852,159226,157295,152954,31651,160816,131207,160615,145585,159558,157554,152582,160240,159250,151115&ab_feature=z2&ab_group=z2&openudid=ceeefaff2ed11a55914a25876b4987ce421a71c8&live_sdk_version=1.6.5&idfv=712DF629-3ED9-4FD0-92DA-ADA33E32EE83&ac=WIFI&os_version=9.3.2&ssmix=a&device_platform=iphone&iid=13142832814&ab_client=a1,f2,f7,e1&device_type=iPhone%205S&idfa=12D3CE1F-D56F-4DFD-9896-A4379014B6BE&article_page=0&group_id=6448876339114164493&device_id=24694333167&longitude=120.1924940751782&aggr_type=1&latitude=30.19549026036954&item_id=6448329201031315981&from_category=__all__"
-//        , parameters: params
-        Alamofire.request(url).responseJSON { (response) in
+        let url = BASE_URL + "2/article/information/v21/?"
+        let params = ["device_id": device_id,
+                      "article_page": weitoutiao.article_type!,
+                      "aggr_type": weitoutiao.aggr_type!,
+                      "latitude": "",
+                      "longitude": "",
+                      "iid": IID,
+                      "item_id": weitoutiao.item_id!,
+                      "group_id": weitoutiao.group_id!,
+                      "device_platform": "iphone",
+                      "from_category": fromCategory] as [String : AnyObject]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return
             }
