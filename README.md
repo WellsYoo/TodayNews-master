@@ -1,5 +1,9 @@
 # Swift开源项目-模仿今日头条
 
+[![Build Status](https://travis-ci.org/hrscy/TodayNews.svg?branch=master)](https://travis-ci.org/hrscy/TodayNews)
+
+
+
 # 2017.06.15
 
 ## 删除 Swift 2.2 相关代码，继续适配 Swift 3.1。
