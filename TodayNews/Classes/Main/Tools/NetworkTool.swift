@@ -153,6 +153,31 @@ class NetworkTool {
         }
     }
     
+    /// 获取一般新闻详情数据
+    class func loadCommenNewsDetail(articleURL: String, completionHandler:@escaping (_ htmlString: String)->()) {
+        // 测试数据
+        let url = "http://www.toutiao.com/a6453725089820049934/"
+        
+        Alamofire.request(url).responseString { (response) in
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                if value.contains("<script>var BASE_DATA =") {
+                    // 获取 新闻内容
+                    let startIndex = value.range(of: "content: ")!.upperBound
+                    let endIndex = value.range(of: "groupId:")!.lowerBound
+                    let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex))
+                    let content = value.substring(with: range)
+                    let path = Bundle.main.path(forResource: "news_detail_1", ofType: "html")
+                    let html = try! String(contentsOfFile: path!)
+                    let htmlString = html.replacingOccurrences(of: "'新闻内容'", with: content)
+                    completionHandler(html)
+                }
+            }
+        }
+    }
+    
     /// 获取图片新闻详情数据
     class func loadNewsDetail(articleURL: String, completionHandler:@escaping (_ images: [NewsDetailImage], _ abstracts: [String])->()) {
         // 测试数据
@@ -257,8 +282,9 @@ class NetworkTool {
     class func loadNewsDetailRelateNews(fromCategory: String, weitoutiao: WeiTouTiao, completionHandler:@escaping (_ relateNews: [WeiTouTiao], _ labels: [NewsDetailLabel], _ userLike: UserLike?, _ appInfo: NewsDetailAPPInfo?, _ filter_wrods: [WTTFilterWord]) -> ()) {
         let url = BASE_URL + "2/article/information/v21/?"
         // version_code=6.2.6
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
         let params = ["device_id": device_id,
-                      "version_code": "6.2.6",
+                      "version_code": version,
                       "article_page": weitoutiao.article_type!,
                       "aggr_type": weitoutiao.aggr_type!,
                       "latitude": "",
