@@ -16,13 +16,12 @@ class MineViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
-        
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = false
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     override func viewDidLoad() {
@@ -46,7 +45,6 @@ class MineViewController: UITableViewController {
                 }
             }
         }
-        
     }
 
     // 头部视图
@@ -76,7 +74,6 @@ extension MineViewController {
         tableView.tableHeaderView = noLoginHeaderView
         tableView.tableFooterView = UIView()
         tableView.separatorColor = UIColor(r: 240, g: 240, b: 240)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
         tableView.register(UINib(nibName: String(describing: MineFirstSectionCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MineFirstSectionCell.self))
         tableView.register(UINib(nibName: String(describing: MineOtherCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MineOtherCell.self))
     }
@@ -140,10 +137,18 @@ extension MineViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 0 {
+        if indexPath.section == 0 { // 我的关注
             let myConcernVC = MyConcernController()
             myConcernVC.myConcerns = concerns
             navigationController?.pushViewController(myConcernVC, animated: true)
+        } else if indexPath.section == 1 { // 消息通知
+            
+        } else if indexPath.section == 2 { // 头条商城，京东特供
+            
+        }  else if indexPath.section == 3 { // 我要爆料，用户反馈，系统设置
+            if indexPath.row == 2 { // 系统设置
+                self.navigationController?.pushViewController(SettingViewController(), animated: true)
+            }
         }
     }
     
