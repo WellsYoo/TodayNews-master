@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.4.0)
+  - Alamofire (4.5.0)
   - BMPlayer (0.8.7):
     - BMPlayer/Full (= 0.8.7)
   - BMPlayer/Core (0.8.7)
@@ -9,7 +9,11 @@ PODS:
     - SnapKit (~> 3.2)
   - IBAnimatable (4.1.0)
   - Kanna (2.1.1)
-  - Kingfisher (3.10.3)
+  - Kingfisher (3.10.4)
+  - LeanCloud (10.1.0):
+    - LeanCloud/Storage (= 10.1.0)
+  - LeanCloud/Storage (10.1.0):
+    - Alamofire (~> 4.5)
   - MJRefresh (3.1.12)
   - NVActivityIndicatorView (3.7.0):
     - NVActivityIndicatorView/Presenter (= 3.7.0)
@@ -22,11 +26,12 @@ PODS:
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.4.0)
+  - Alamofire (~> 4.5.0)
   - BMPlayer
   - IBAnimatable
   - Kanna (~> 2.1.1)
-  - Kingfisher (~> 3.10.3)
+  - Kingfisher (~> 3.10.4)
+  - LeanCloud (~> 10.1.0)
   - MJRefresh
   - RxCocoa (~> 3.6.1)
   - RxSwift (~> 3.6.1)
@@ -35,11 +40,12 @@ DEPENDENCIES:
   - SwiftyJSON (~> 3.1.4)
 
 SPEC CHECKSUMS:
-  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   BMPlayer: 5ba9e3f3d61ccc5a24ebd9cdc24901dcf28c98bc
   IBAnimatable: 0fd2c9fd38c4798d71bcc18dbd87d473a7df2577
   Kanna: 9b4b086c218703f2b94f5b21a466217dd2f9332e
-  Kingfisher: a0ac82dc5bcf0388dd74b294cf2cc13730c63436
+  Kingfisher: dc3a4983e86d2dfa89513664983a82340c11a289
+  LeanCloud: 2a6ac9da4fcf4b6b26f519d05a31998ddc59223a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
@@ -48,6 +54,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: cf3304f5c34ce17089808f4999f8d05b73d26cf1
+PODFILE CHECKSUM: 8bae48efc8b7a3403120f22a98773ff10120e75a
 
 COCOAPODS: 1.2.0.rc.1

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LeanCloud
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,12 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // LeanCloud AppKey
+        LeanCloud.initialize(applicationID: "D32pVzUwGeJh7HqhucxOkTPe-gzGzoHsz", applicationKey: "SW2LU0O5YScEX9pvNjRsi7Cy")
         // 改为 从 storyboard 启动
         // 创建窗口
         window = UIWindow(frame: UIScreen.main.bounds)
         let advertiseVC = AdvertiseViewController()
         window?.rootViewController = advertiseVC
         window?.makeKeyAndVisible()
+        let post = LCObject(className: "TestObject")
+        post.set("words", value: "记录")
+        post.save()
         
         return true
     }
