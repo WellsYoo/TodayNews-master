@@ -20,7 +20,7 @@ class NetworkTool {
         let url = BASE_URL + "article/category/get_subscribed/v1/?"
         let params = ["device_id": device_id,
                       "aid": 13,
-                      "iid": IID] as [String : Any]
+                      "iid": IID] as [String : AnyObject]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return
@@ -47,6 +47,36 @@ class NetworkTool {
                         homeTopicVCs.append(homeTopicVC)
                     }
                     completionHandler(titles, homeTopicVCs)
+                }
+            }
+        }
+    }
+    /// 获取首页顶部标题内容
+    class func loadHomeTitlesData(completionHandler:@escaping (_ topTitles: [TopicTitle])->()) {
+        let url = BASE_URL + "article/category/get_subscribed/v1/?"
+        let params = ["device_id": device_id,
+                      "aid": 13,
+                      "iid": IID] as [String : AnyObject]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                let json = JSON(value)
+                let dataDict = json["data"].dictionary
+                if let data = dataDict!["data"]!.arrayObject {
+                    var titles = [TopicTitle]()
+                    // 添加推荐标题
+                    let recommendDict = ["category": "", "name": "推荐"]
+                    let recommend = TopicTitle(dict: recommendDict as [String : AnyObject])
+                    titles.append(recommend)
+                    for dict in data {
+                        let topicTitle = TopicTitle(dict: dict as! [String: AnyObject])
+                        titles.append(topicTitle)
+                        let homeTopicVC = TopicViewController()
+                        homeTopicVC.topicTitle = topicTitle
+                    }
+                    completionHandler(titles)
                 }
             }
         }

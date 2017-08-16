@@ -90,6 +90,10 @@ extension SettingViewController {
                 let url = URL(string: UIApplicationOpenSettingsURLString)
                 UIApplication.shared.openURL(url!)
             }
+        } else if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                navigationController?.pushViewController(OfflineDownloadController(), animated: true)
+            }
         }
     }
 }
