@@ -1,10 +1,9 @@
 # Swift开源项目-模仿今日头条
 
-[![Build Status](https://travis-ci.org/hrscy/TodayNews.svg?branch=master)](https://travis-ci.org/hrscy/TodayNews)
+[![Build Status](https://travis-ci.org/hrscy/TodayNews.svg?branch=master)](https://travis-ci.org/hrscy/TodayNews) ![swift3.1](https://img.shields.io/badge/language-swift%203.1-orange.svg)
 
-![swift3.1](https://img.shields.io/badge/language-swift%203.1-orange.svg)
-
-
+# 2017.08.15
+# 后面有时间的话会考虑出一个视频教程。
 
 # 2017.06.15
 
@@ -27,9 +26,6 @@
 -  使用 cocoaPods 管理第三方库， 如果电脑没有安装 cocoapods，请先安装 cocoapods，cocoapods 版本为 1.2.0，安装方式请参考  [iOS-CocoaPod升级cocoapods1.2.0 (适配swift3)](http://blog.csdn.net/qxuewei/article/details/53113920)。
 
 
-
-
-
 ![](http://obna9emby.bkt.clouddn.com/news/news.gif)
 
 # 2016.08.18
@@ -50,7 +46,7 @@
 4. 新闻详情界面显示广告和评论
 5. 点击标题『+』按钮弹出频道界面
 6. 获取视频真实地址
-7. 播放视频
+7. 视频播放功能
 8. 视频界面显示相关新闻和评论
 9. 完成视频界面顶部导航栏滚动
 10. 完成视频界面布局和数据获取
@@ -63,6 +59,8 @@
 17. 个人界面点击关注出现相关关注详情
 18. 活动界面简单实现
 19. 登录界面的简单实现
+20. 系统设置界面
+21. 离线下载界面
 
 ## 数据请求
 
