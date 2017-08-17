@@ -8,9 +8,12 @@
 
 import UIKit
 import IBAnimatable
+import RxSwift
+import RxCocoa
 
 class MineViewController: UITableViewController {
 
+    fileprivate let disposeBag = DisposeBag()
     fileprivate var sections = [AnyObject]()
     fileprivate var concerns = [MyConcern]()
     
@@ -45,37 +48,47 @@ class MineViewController: UITableViewController {
                 }
             }
         }
+        /// 点击头部上的一些操作
+        NoLoginHeaderViewClicked()
+        
     }
 
     // 头部视图
     fileprivate lazy var noLoginHeaderView: NoLoginHeaderView = {
         let noLoginHeaderView = NoLoginHeaderView.headerView()
-        noLoginHeaderView.delegate = self
         return noLoginHeaderView
     }()
 }
 
-// MARK: - NoLoginHeaderViewDelegate 未登录界面代理
-extension MineViewController: NoLoginHeaderViewDelegate {
-    /// 更多登录方式按钮点击
-    func noLoginHeaderViewMoreLoginButotnClicked() {
-        let storyboard = UIStoryboard(name: "MoreLoginViewController", bundle: nil)
-        let moreLoginVC = storyboard.instantiateViewController(withIdentifier: "MoreLoginViewController") as! MoreLoginViewController
-        moreLoginVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - 40)))
-        present(moreLoginVC, animated: true, completion: nil)
+// MARK: - NoLoginHeaderView 点击头部上的一些操作
+extension MineViewController {
+    /// 点击头部上的一些操作
+    fileprivate func NoLoginHeaderViewClicked() {
+        /// 更多登录方式按钮点击
+        noLoginHeaderView.moreLoginButton.rx.controlEvent(.touchUpInside)
+                                        .subscribe(onNext: { [weak self] in
+                                            // 弹出登录界面
+                                            let storyboard = UIStoryboard(name: "MoreLoginViewController", bundle: nil)
+                                            let moreLoginVC = storyboard.instantiateViewController(withIdentifier: "MoreLoginViewController") as! MoreLoginViewController
+                                            moreLoginVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - 20)))
+                                            self!.present(moreLoginVC, animated: true, completion: nil)
+                                        })
+                                        .addDisposableTo(disposeBag)
     }
 }
 
 extension MineViewController {
     
     fileprivate func setupUI() {
-        view.backgroundColor = UIColor.globalBackgroundColor()
-        self.automaticallyAdjustsScrollViewInsets = true
+        
+        /// 设置 tableView 属性
+        tableView.theme_backgroundColor = "colors.tableViewBackgroundColor"
         tableView.tableHeaderView = noLoginHeaderView
         tableView.tableFooterView = UIView()
-        tableView.separatorColor = UIColor(r: 240, g: 240, b: 240)
+        tableView.separatorStyle = .none
         tableView.register(UINib(nibName: String(describing: MineFirstSectionCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MineFirstSectionCell.self))
         tableView.register(UINib(nibName: String(describing: MineOtherCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MineOtherCell.self))
+        
     }
     
 }
@@ -104,7 +117,7 @@ extension MineViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 10))
-        view.backgroundColor = UIColor.globalBackgroundColor()
+        view.theme_backgroundColor = "colors.tableViewBackgroundColor"
         return view
     }
     

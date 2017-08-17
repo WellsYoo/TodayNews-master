@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -37,11 +37,21 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iil-Sz-dn5">
+                        <rect key="frame" x="15" y="39" width="305" height="1"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="XDx-0Z-PUm"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="iil-Sz-dn5" secondAttribute="bottom" id="41i-5G-h9S"/>
+                    <constraint firstAttribute="trailing" secondItem="iil-Sz-dn5" secondAttribute="trailing" id="6RV-Ne-Yhb"/>
                     <constraint firstAttribute="bottom" secondItem="i4K-JB-Ntg" secondAttribute="bottom" id="BPR-G5-pKn"/>
                     <constraint firstItem="nL2-2n-iHC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DLX-VH-UKo"/>
                     <constraint firstItem="nL2-2n-iHC" firstAttribute="leading" secondItem="cQC-1B-1Y0" secondAttribute="trailing" constant="10" id="Db1-SW-D0H"/>
+                    <constraint firstItem="iil-Sz-dn5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="KEh-iS-voM"/>
                     <constraint firstAttribute="trailing" secondItem="nL2-2n-iHC" secondAttribute="trailing" constant="15" id="aL4-T1-4nY"/>
                     <constraint firstItem="i4K-JB-Ntg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="cdC-yh-ggk"/>
                     <constraint firstItem="cQC-1B-1Y0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fk6-Zv-8kZ"/>
@@ -52,6 +62,8 @@
             <connections>
                 <outlet property="leftlabel" destination="i4K-JB-Ntg" id="5QQ-K5-zb4"/>
                 <outlet property="rightLabel" destination="cQC-1B-1Y0" id="gAY-cq-RlP"/>
+                <outlet property="rightTipImageView" destination="nL2-2n-iHC" id="JD5-jx-NkP"/>
+                <outlet property="separatorView" destination="iil-Sz-dn5" id="smH-Hd-FxZ"/>
             </connections>
         </tableViewCell>
     </objects>

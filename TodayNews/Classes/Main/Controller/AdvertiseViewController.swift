@@ -23,6 +23,7 @@ class AdvertiseViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let tabBarVC = sb.instantiateViewController(withIdentifier: String(describing: MyTabBarController.self))
+            
             UIApplication.shared.keyWindow?.rootViewController = tabBarVC
         }
         

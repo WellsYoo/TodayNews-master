@@ -35,7 +35,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KS-BX-gxo">
                             <rect key="frame" x="281.5" y="0.0" width="93.5" height="66"/>
-                            <state key="normal" image="weixinicon_login_profile_73x73_"/>
+                            <state key="normal" image="sinaicon_login_profile_66x66_"/>
                         </button>
                     </subviews>
                     <constraints>
@@ -49,21 +49,27 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lY-IV-2kl" customClass="VerticalButton" customModule="TodayNews" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="125" height="60"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="收藏" image="favoriteicon_profile_24x24_">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXG-Cy-E40" customClass="VerticalButton" customModule="TodayNews" customModuleProvider="target">
                             <rect key="frame" x="125" y="0.0" width="125" height="60"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="历史" image="history_profile_24x24_">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HnF-Gs-dlI" customClass="VerticalButton" customModule="TodayNews" customModuleProvider="target">
                             <rect key="frame" x="250" y="0.0" width="125" height="60"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="夜间" image="nighticon_profile_24x24_">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="dayOrNightButtonClciked:" destination="iN0-l3-epB" eventType="touchUpInside" id="9LY-oA-WBi"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -99,9 +105,6 @@
                             <real key="value" value="14"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="moreLoginButtonCLicked" destination="iN0-l3-epB" eventType="touchUpInside" id="yNy-qb-Ohv"/>
-                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -123,6 +126,14 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bgImageView" destination="vGS-O5-MtI" id="jnF-gD-uvW"/>
+                <outlet property="dayOrNightButton" destination="HnF-Gs-dlI" id="peJ-xj-QN2"/>
+                <outlet property="favoriteButton" destination="2lY-IV-2kl" id="yrx-zo-ds6"/>
+                <outlet property="historyButton" destination="wXG-Cy-E40" id="6lz-ZY-r5Y"/>
+                <outlet property="mobileButton" destination="fgZ-xu-8k9" id="PaA-Sw-B99"/>
+                <outlet property="moreLoginButton" destination="JZ6-Us-8lD" id="sxe-Cw-Obr"/>
+                <outlet property="qqButton" destination="k5T-K8-Vre" id="itD-rk-Utl"/>
+                <outlet property="sinaButton" destination="5KS-BX-gxo" id="cys-rh-epo"/>
+                <outlet property="wechatButton" destination="WyU-w5-0QX" id="R39-n8-BqD"/>
             </connections>
             <point key="canvasLocation" x="-9.5" y="-88"/>
         </view>
@@ -133,8 +144,8 @@
         <image name="history_profile_24x24_" width="24" height="24"/>
         <image name="nighticon_profile_24x24_" width="24" height="24"/>
         <image name="qqicon_login_profile_66x66_" width="66" height="66"/>
+        <image name="sinaicon_login_profile_66x66_" width="66" height="66"/>
         <image name="wallpaper_profile_night" width="320" height="180"/>
         <image name="weixinicon_login_profile_66x66_" width="66" height="66"/>
-        <image name="weixinicon_login_profile_73x73_" width="66" height="66"/>
     </resources>
 </document>

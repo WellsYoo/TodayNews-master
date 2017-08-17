@@ -14,6 +14,10 @@ class MineOtherCell: UITableViewCell {
     /// 右侧标签
     @IBOutlet weak var rightLabel: UILabel!
     
+    @IBOutlet weak var rightTipImageView: UIImageView!
+    
+    @IBOutlet weak var separatorView: UIView!
+    
     var mineCellModel: MineCellModel? {
         didSet {            
             leftlabel.text = mineCellModel?.text!
@@ -23,7 +27,12 @@ class MineOtherCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        /// 设置主题
+        separatorView.theme_backgroundColor = "colors.separatorColor"
+        rightTipImageView.theme_image = "images.arrowMoreLogin"
+        leftlabel.theme_textColor = "colors.black"
+        rightLabel.theme_textColor = "colors.mineOtherCellRightLabel"
+        contentView.theme_backgroundColor = "colors.cellBackgroundColor"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

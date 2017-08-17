@@ -12,6 +12,9 @@ import UIKit
 import IBAnimatable
 
 class MoreLoginViewController: AnimatableModalViewController {
+    
+    @IBOutlet weak var mobileView: UIView!
+    @IBOutlet weak var passwordView: UIView!
     /// 顶部标题
     @IBOutlet weak var topLabel: UILabel!
     /// 发送验证码 View
@@ -30,11 +33,30 @@ class MoreLoginViewController: AnimatableModalViewController {
     @IBOutlet weak var middleTipLabel: UILabel!
     /// 登录方式按钮
     @IBOutlet weak var loginModeButton: UIButton!
+    /// 进入头条
+    @IBOutlet weak var inTouTiaoButton: AnimatableButton!
+    /// 阅读按钮
+    @IBOutlet weak var readButton: UIButton!
+    @IBOutlet weak var readLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loginModeButton.setTitle("免密码登录", for: .selected)
-        
+        // 设置主题
+        loginModeButton.setTitle("免密码登录", for: .selected)
+        view.theme_backgroundColor = "colors.cellBackgroundColor"
+        topLabel.theme_textColor = "colors.black"
+        middleTipLabel.theme_textColor = "colors.mineOtherCellRightLabel"
+        readLabel.theme_textColor = "colors.black"
+        inTouTiaoButton.theme_backgroundColor = "colors.inTouTiaoButtonBackgroundColor"
+        readButton.theme_setImage("images.loginReadButton", forState: .normal)
+        readButton.theme_setImage("images.loginReadButtonSelected", forState: .selected)
+        mobileView.theme_backgroundColor = "colors.loginMobileViewBackgroundColor"
+        passwordView.theme_backgroundColor = "colors.loginMobileViewBackgroundColor"
+        inTouTiaoButton.theme_setTitleColor("colors.inTouTiaoButtonTextColor", forState: .normal)
+    }
+    /// 阅读按钮点击
+    @IBAction func readButtonClicked(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
     }
 }
 

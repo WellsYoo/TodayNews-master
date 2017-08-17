@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AdSupport
+import AdSupport // 广告
 
 /// 屏幕的宽
 let screenWidth = UIScreen.main.bounds.width

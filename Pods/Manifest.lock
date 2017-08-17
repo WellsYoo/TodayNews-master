@@ -23,6 +23,7 @@ PODS:
   - RxSwift (3.6.1)
   - SnapKit (3.2.0)
   - SVProgressHUD (2.1.2)
+  - SwiftTheme (0.3.3)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - RxSwift (~> 3.6.1)
   - SnapKit (~> 3.2.0)
   - SVProgressHUD (~> 2.1.2)
+  - SwiftTheme
   - SwiftyJSON (~> 3.1.4)
 
 SPEC CHECKSUMS:
@@ -52,8 +54,9 @@ SPEC CHECKSUMS:
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  SwiftTheme: 85f84747a48749b5b3df7c3e96fc0b1d45677d30
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 8bae48efc8b7a3403120f22a98773ff10120e75a
+PODFILE CHECKSUM: 60bb0931673e80e4e973e270a1f59634565b2cc8
 
 COCOAPODS: 1.2.0.rc.1

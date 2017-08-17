@@ -30,7 +30,8 @@ class MyConcernCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        nameLabel.theme_textColor = "colors.black"
+        
     }
 
 }

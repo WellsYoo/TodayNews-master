@@ -16,7 +16,7 @@ extension UIColor {
     
     /// 背景灰色
     class func globalBackgroundColor() -> UIColor {
-        return UIColor(r: 245, g: 245, b: 245)
+        return UIColor(r: 248, g: 249, b: 247)
     }
     
     /// 背景灰色

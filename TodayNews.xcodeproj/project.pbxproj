@@ -35,6 +35,10 @@
 		946F5D9F1F43C2AE001F9AC5 /* OfflineDownloadController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946F5D9D1F43C2AE001F9AC5 /* OfflineDownloadController.xib */; };
 		946F5DA21F43C778001F9AC5 /* OfflineDownloadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946F5DA01F43C778001F9AC5 /* OfflineDownloadCell.swift */; };
 		946F5DA31F43C778001F9AC5 /* OfflineDownloadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946F5DA11F43C778001F9AC5 /* OfflineDownloadCell.xib */; };
+		946F5DAF1F454D62001F9AC5 /* RefreshHeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946F5DAE1F454D62001F9AC5 /* RefreshHeder.swift */; };
+		946F5DB31F45624A001F9AC5 /* default_theme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 946F5DB11F45624A001F9AC5 /* default_theme.plist */; };
+		946F5DB41F45624A001F9AC5 /* night_theme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 946F5DB21F45624A001F9AC5 /* night_theme.plist */; };
+		946F5DB71F45B449001F9AC5 /* MyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946F5DB61F45B449001F9AC5 /* MyTheme.swift */; };
 		947625B51F092A7300457295 /* HomeTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947625B31F092A7300457295 /* HomeTopicCell.swift */; };
 		947625B61F092A7300457295 /* HomeTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947625B41F092A7300457295 /* HomeTopicCell.xib */; };
 		947626C91F0C669400457295 /* HomeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947626C81F0C669400457295 /* HomeTitleView.swift */; };
@@ -208,6 +212,10 @@
 		946F5D9D1F43C2AE001F9AC5 /* OfflineDownloadController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfflineDownloadController.xib; sourceTree = "<group>"; };
 		946F5DA01F43C778001F9AC5 /* OfflineDownloadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineDownloadCell.swift; sourceTree = "<group>"; };
 		946F5DA11F43C778001F9AC5 /* OfflineDownloadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfflineDownloadCell.xib; sourceTree = "<group>"; };
+		946F5DAE1F454D62001F9AC5 /* RefreshHeder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshHeder.swift; sourceTree = "<group>"; };
+		946F5DB11F45624A001F9AC5 /* default_theme.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = default_theme.plist; sourceTree = "<group>"; };
+		946F5DB21F45624A001F9AC5 /* night_theme.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = night_theme.plist; sourceTree = "<group>"; };
+		946F5DB61F45B449001F9AC5 /* MyTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTheme.swift; sourceTree = "<group>"; };
 		947625B31F092A7300457295 /* HomeTopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTopicCell.swift; sourceTree = "<group>"; };
 		947625B41F092A7300457295 /* HomeTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTopicCell.xib; sourceTree = "<group>"; };
 		947626C81F0C669400457295 /* HomeTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTitleView.swift; sourceTree = "<group>"; };
@@ -375,6 +383,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		946F5DAD1F454D62001F9AC5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				946F5DAE1F454D62001F9AC5 /* RefreshHeder.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		946F5DB01F456242001F9AC5 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				946F5DB11F45624A001F9AC5 /* default_theme.plist */,
+				946F5DB21F45624A001F9AC5 /* night_theme.plist */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		94B915EE1EF21E4A00AC91B9 = {
 			isa = PBXGroup;
 			children = (
@@ -532,6 +557,7 @@
 		94B9163A1EF21EE200AC91B9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				946F5DAD1F454D62001F9AC5 /* View */,
 				94B9163B1EF21EE200AC91B9 /* Category */,
 				94B9163F1EF21EE200AC91B9 /* Controller */,
 				94B916421EF21EE200AC91B9 /* Tools */,
@@ -569,6 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				94B916431EF21EE200AC91B9 /* NetworkTool.swift */,
+				946F5DB61F45B449001F9AC5 /* MyTheme.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -639,6 +666,7 @@
 		94B9164F1EF21EE200AC91B9 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				946F5DB01F456242001F9AC5 /* Theme */,
 				94B916501EF21EE200AC91B9 /* AppDelegate.swift */,
 				94B916511EF21EE200AC91B9 /* Const.swift */,
 				94B916521EF21EE200AC91B9 /* Info.plist */,
@@ -882,6 +910,7 @@
 				94B916A01EF21EE300AC91B9 /* WeiTouTiaoCell.xib in Resources */,
 				94B916F61EF5144200AC91B9 /* PostFirstCell.xib in Resources */,
 				947BE93E1EFB8A5E009E7961 /* MineFirstSectionCell.xib in Resources */,
+				946F5DB41F45624A001F9AC5 /* night_theme.plist in Resources */,
 				94BF4E3E1F336E360061EDBE /* NewsDetailHeaderView.xib in Resources */,
 				94B916961EF21EE300AC91B9 /* VideoTopicCell.xib in Resources */,
 				94DAE73D1F402FE200E81391 /* QuestionAnswerController.xib in Resources */,
@@ -902,6 +931,7 @@
 				94511AE81F36AAA1006F4C47 /* HomeAddCategoryController.storyboard in Resources */,
 				947625B61F092A7300457295 /* HomeTopicCell.xib in Resources */,
 				946F5D9F1F43C2AE001F9AC5 /* OfflineDownloadController.xib in Resources */,
+				946F5DB31F45624A001F9AC5 /* default_theme.plist in Resources */,
 				94511AF01F36B756006F4C47 /* MyChannelReusableView.xib in Resources */,
 				94DAE7391F3F311000E81391 /* HomeRelateNewsHeaderView.xib in Resources */,
 				94E07C351F43362400E8B30E /* SettingCell.xib in Resources */,
@@ -1069,6 +1099,7 @@
 				94DAE73C1F402FE200E81391 /* QuestionAnswerController.swift in Sources */,
 				94E07C311F43341700E8B30E /* SettingModel.swift in Sources */,
 				946D2D8D1EF7763B0060A9C3 /* NavTitleStyle.swift in Sources */,
+				946F5DAF1F454D62001F9AC5 /* RefreshHeder.swift in Sources */,
 				9414CC601F38A2B600C710DB /* NSData+CRC32.m in Sources */,
 				94DAE7341F3EF6A100E81391 /* DetailRelateNewsCell.swift in Sources */,
 				94B916861EF21EE300AC91B9 /* MineCellModel.swift in Sources */,
@@ -1083,6 +1114,7 @@
 				94DAE7281F3E77C100E81391 /* HomeImageTableCell.swift in Sources */,
 				94B9168A1EF21EE300AC91B9 /* AppDelegate.swift in Sources */,
 				94BF4E3C1F336E100061EDBE /* NewsDetailHeaderView.swift in Sources */,
+				946F5DB71F45B449001F9AC5 /* MyTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

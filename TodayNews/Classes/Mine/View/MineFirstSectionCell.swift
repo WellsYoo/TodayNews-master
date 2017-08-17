@@ -19,6 +19,7 @@ protocol MineFirstSectionCellDelegate: class {
 class MineFirstSectionCell: UITableViewCell {
 
     weak var delegate: MineFirstSectionCellDelegate?
+    
     /// 标题
     @IBOutlet weak var leftlabel: UILabel!
     /// 如果有一个关注，头像显示在右边
@@ -26,7 +27,11 @@ class MineFirstSectionCell: UITableViewCell {
     /// 右侧标签
     @IBOutlet weak var rightLabel: UILabel!
     
+    @IBOutlet weak var rightTipImageView: UIImageView!
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var separatorView: UIView!
     
     var mineCellModel: MineCellModel? {
         didSet {
@@ -49,6 +54,13 @@ class MineFirstSectionCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        /// 设置主题
+        separatorView.theme_backgroundColor = "colors.separatorColor"
+        leftlabel.theme_textColor = "colors.black"
+        rightLabel.theme_textColor = "colors.mineOtherCellRightLabel"
+        rightTipImageView.theme_image = "images.arrowMoreLogin"
+        contentView.theme_backgroundColor = "colors.cellBackgroundColor"
+        
         self.collectionView.collectionViewLayout = MyConcernFlowLayout()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self

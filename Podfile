@@ -15,5 +15,6 @@ target "TodayNews" do
     pod 'MJRefresh'
     pod 'BMPlayer'
     pod 'LeanCloud', '~> 10.1.0'
+    pod 'SwiftTheme'
     
 end
