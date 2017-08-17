@@ -1,4 +1,4 @@
-//
+    //
 //  TopicViewController.swift
 //  TodayNews-Swift
 //
@@ -35,11 +35,19 @@ class TopicViewController: UIViewController {
             tableView.tableHeaderView = toutiaohaoHeaderView
         }
         
-        NetworkTool.loadHomeCategoryNewsFeed(category: topicTitle!.category!) { (nowTime, newsTopics) in
-            self.newsTopics = newsTopics
-            self.tableView.reloadData()
-        }
+        let header = RefreshHeder(refreshingBlock: { [weak self] in
+            NetworkTool.loadHomeCategoryNewsFeed(category: self!.topicTitle!.category!) { (nowTime, newsTopics) in
+                self!.tableView.mj_header.endRefreshing()
+                self!.newsTopics = newsTopics
+                self!.tableView.reloadData()
+            }
+        })
+        header?.isAutomaticallyChangeAlpha = true
+        header?.lastUpdatedTimeLabel.isHidden = true
+        tableView.mj_header = header
+        tableView.mj_header.beginRefreshing()
         
+        tableView.mj_header = header
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
             NetworkTool.loadHomeCategoryNewsFeed(category: self!.topicTitle!.category!) { (nowTime, newsTopics) in
                 self!.tableView.mj_footer.endRefreshing()
@@ -70,8 +78,8 @@ class TopicViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.contentInset = UIEdgeInsetsMake(0, 0, kTabBarHeight, 0)
-//        tableView.register(UINib(nibName: String(describing: HomeTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: HomeTopicCell.self))
-//        tableView.register(UINib(nibName: String(describing: VideoTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: VideoTopicCell.self))
+        tableView.register(UINib(nibName: String(describing: HomeTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: HomeTopicCell.self))
+        tableView.register(UINib(nibName: String(describing: VideoTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: VideoTopicCell.self))
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         return tableView
     }()
@@ -129,7 +137,7 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if topicTitle!.category == "video" { // 视频
-            let cell = Bundle.main.loadNibNamed(String(describing: VideoTopicCell.self), owner: nil, options: nil)?.last as! VideoTopicCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTopicCell.self), for: indexPath) as! VideoTopicCell
             cell.videoTopic = newsTopics[indexPath.row]
             cell.headCoverButton.rx.controlEvent(.touchUpInside)
                 .subscribe(onNext: { [weak self] in
@@ -185,7 +193,7 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
             cell.joke = newsTopics[indexPath.row]
             return cell
         }
-        let cell = Bundle.main.loadNibNamed(String(describing: HomeTopicCell.self), owner: nil, options: nil)?.last as! HomeTopicCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HomeTopicCell.self), for: indexPath) as! HomeTopicCell
         cell.weitoutiao = newsTopics[indexPath.row]
         return cell
     }

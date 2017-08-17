@@ -21,11 +21,19 @@ class WeiTouTiaoViewController: UIViewController {
         
         setupUI()
         /// 获取微头条数据
-        NetworkTool.loadWeiTouTiaoData { (weitoutiaos) in
-            self.notNetworkView.isHidden = weitoutiaos.count != 0 ? true : false
-            self.microNews = weitoutiaos
-            self.tableView.reloadData()
-        }
+        let header = RefreshHeder(refreshingBlock: { [weak self] in
+            NetworkTool.loadWeiTouTiaoData { (weitoutiaos) in
+                self!.tableView.mj_header.endRefreshing()
+                self!.notNetworkView.isHidden = weitoutiaos.count != 0 ? true : false
+                self!.microNews = weitoutiaos
+                self!.tableView.reloadData()
+            }
+        })
+        header?.isAutomaticallyChangeAlpha = true
+        header?.lastUpdatedTimeLabel.isHidden = true
+        tableView.mj_header = header
+        tableView.mj_header.beginRefreshing()
+        
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
             // 加载更多
             NetworkTool.loadWeiTouTiaoData { (weitoutiaos) in

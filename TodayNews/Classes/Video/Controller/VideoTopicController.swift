@@ -30,10 +30,17 @@ class VideoTopicController: UIViewController {
         
         setupUI()
 
-        NetworkTool.loadHomeCategoryNewsFeed(category: videoTitle!.category!) { (nowTime, newsTopics) in
-            self.newsTopics = newsTopics
-            self.tableView.reloadData()
-        }
+        let header = RefreshHeder(refreshingBlock: { [weak self] in
+            NetworkTool.loadHomeCategoryNewsFeed(category: self!.videoTitle!.category!) { (nowTime, newsTopics) in
+                self!.tableView.mj_header.endRefreshing()
+                self!.newsTopics = newsTopics
+                self!.tableView.reloadData()
+            }
+        })
+        header?.isAutomaticallyChangeAlpha = true
+        header?.lastUpdatedTimeLabel.isHidden = true
+        tableView.mj_header = header
+        tableView.mj_header.beginRefreshing()
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
             NetworkTool.loadHomeCategoryNewsFeed(category: self!.videoTitle!.category!) { (nowTime, newsTopics) in
