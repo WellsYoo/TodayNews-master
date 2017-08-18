@@ -66,7 +66,7 @@ class VideoTopicController: UIViewController {
         tableView.delegate = self
         tableView.contentSize = CGSize(width: screenWidth, height: screenHeight - kNavBarHeight - kTabBarHeight)
         tableView.register(UINib(nibName: String(describing: VideoTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: VideoTopicCell.self))
-        tableView.backgroundColor = UIColor.globalBackgroundColor()
+        tableView.theme_backgroundColor = "colors.tableViewBackgroundColor"
         return tableView
     }()
 }

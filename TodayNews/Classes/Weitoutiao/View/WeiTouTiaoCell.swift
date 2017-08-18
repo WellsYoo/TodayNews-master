@@ -48,6 +48,11 @@ class WeiTouTiaoCell: UITableViewCell {
     /// 头像区域点击
     var headerButtonClick: (()->())?
     
+    @IBOutlet weak var topSeparatorView: UIView!
+    
+    @IBOutlet weak var dislikeButton: UIButton!
+    
+    
     var weitoutiao: WeiTouTiao? {
         didSet {
             if let user = weitoutiao!.user {
@@ -126,10 +131,26 @@ class WeiTouTiaoCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        readCountLabel.theme_textColor = "colors.mineOtherCellRightLabel"
+        userNameLabel.theme_textColor = "colors.black"
+        contentLabel.theme_textColor = "colors.black"
+        createTimeLabel.theme_textColor = "colors.mineOtherCellRightLabel"
+        likeCountButton.theme_setTitleColor("colors.black", forState: .normal)
+        likeCountButton.theme_setTitleColor("colors.black", forState: .selected)
+        commentCountButton.theme_setTitleColor("colors.black", forState: .normal)
+        feedShareCountButton.theme_setTitleColor("colors.black", forState: .normal)
+        likeCountButton.theme_setImage("images.weitoutiaoLikeFeed", forState: .normal)
+        likeCountButton.theme_setImage("images.weitoutiaoLikeFeedPress", forState: .selected)
+        commentCountButton.theme_setImage("images.weitoutiaoCommentFeed", forState: .normal)
+        feedShareCountButton.theme_setImage("images.weitoutiaoFeedShare", forState: .normal)
+        dislikeButton.theme_setImage("images.dislikeicon", forState: .normal)
+        careButton.theme_setTitleColor("colors.careButtonTextColor", forState: .normal)
+        topSeparatorView.theme_backgroundColor = "colors.tableViewBackgroundColor"
+        contentView.theme_backgroundColor = "colors.cellBackgroundColor"
         avatarImageView.layer.cornerRadius = 18
         avatarImageView.layer.masksToBounds = true
         careButton.setTitle("已关注", for: .selected)
-        careButton.setTitleColor(UIColor(r: 0, g: 0, b: 0, alpha: 0.6), for: .selected)
+//        careButton.setTitleColor(UIColor(r: 0, g: 0, b: 0, alpha: 0.6), for: .selected)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -50,6 +50,7 @@ class NoLoginHeaderView: UIView {
         wechatButton.theme_setImage("images.wechatButton", forState: .normal)
         qqButton.theme_setImage("images.qqButton", forState: .normal)
         sinaButton.theme_setImage("images.sinaButton", forState: .normal)
+        dayOrNightButton.isSelected = UserDefaults.standard.bool(forKey: isNight)
     }
     
     class func headerView() -> NoLoginHeaderView {
@@ -61,6 +62,7 @@ class NoLoginHeaderView: UIView {
     
     @IBAction func dayOrNightButtonClciked(_ sender: VerticalButton) {
         sender.isSelected = !sender.isSelected
+        UserDefaults.standard.set(sender.isSelected, forKey: isNight)
         /// 选中为夜间，默认为日间
         MyTheme.switchNight(sender.isSelected)
     }

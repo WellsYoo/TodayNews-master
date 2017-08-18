@@ -31,10 +31,23 @@ class VideoTopicCell: UITableViewCell {
     /// 更多按钮
     @IBOutlet weak var moreButton: UIButton!
     
+    @IBOutlet weak var bottomLineView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         headButton.layer.cornerRadius = 15
         headButton.layer.masksToBounds = true
+        contentView.theme_backgroundColor = "colors.cellBackgroundColor"
+        titleLabel.theme_textColor = "colors.black"
+        nameLable.theme_textColor = "colors.black"
+        commentButton.theme_setTitleColor("colors.black", forState: .normal)
+        concernButton.theme_setTitleColor("colors.black", forState: .normal)
+        bottomLineView.theme_backgroundColor = "colors.separatorColor"
+        playCountLabel.theme_textColor = "colors.playCountColor"
+        concernButton.theme_setImage("images.videoConcernButton", forState: .normal)
+        commentButton.theme_setImage("images.videoCommentButton", forState: .normal)
+        moreButton.theme_setImage("images.videoMoreButton", forState: .normal)
+        bgImageButton.theme_setImage("images.videoBgImageButton", forState: .normal)
     }
     
     var videoTopic: WeiTouTiao? {

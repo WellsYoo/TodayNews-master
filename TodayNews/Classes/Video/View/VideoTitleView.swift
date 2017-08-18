@@ -85,7 +85,7 @@ extension VideoTitleView {
             titleLabel.tag = index
             titleLabel.textAlignment = .center
             titleLabel.textColor = index == 0 ? style.selectColor : style.normalColor
-            
+            titleLabel.theme_textColor = index == 0 ? "colors.videoNavTitleColorSelect" : "colors.black"
             scrollView.addSubview(titleLabel)
             titleLabels.append(titleLabel)
             

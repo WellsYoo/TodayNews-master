@@ -67,6 +67,7 @@ let isIPhone6 = screenHeight == 667 ? true : false
 /// iPhone 6P
 let isIPhone6P = screenHeight == 736 ? true : false
 
+let isNight = "isNight"
 
 
 

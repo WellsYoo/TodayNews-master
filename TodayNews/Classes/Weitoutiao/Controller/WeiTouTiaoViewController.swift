@@ -24,7 +24,7 @@ class WeiTouTiaoViewController: UIViewController {
         let header = RefreshHeder(refreshingBlock: { [weak self] in
             NetworkTool.loadWeiTouTiaoData { (weitoutiaos) in
                 self!.tableView.mj_header.endRefreshing()
-                self!.notNetworkView.isHidden = weitoutiaos.count != 0 ? true : false
+//                self!.notNetworkView.isHidden = weitoutiaos.count != 0 ? true : false
                 self!.microNews = weitoutiaos
                 self!.tableView.reloadData()
             }
@@ -58,7 +58,7 @@ class WeiTouTiaoViewController: UIViewController {
     
     fileprivate lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = UIColor.globalBackgroundColor()
+        tableView.theme_backgroundColor = "colors.tableViewBackgroundColor"
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
@@ -91,7 +91,7 @@ extension WeiTouTiaoViewController {
         view.addSubview(bgView)
         bgView.addSubview(headerView)
         bgView.addSubview(tableView)
-        bgView.addSubview(notNetworkView)
+//        bgView.addSubview(notNetworkView)
         
         bgView.snp.makeConstraints { (make) in
             make.left.right.equalTo(view)
@@ -109,10 +109,10 @@ extension WeiTouTiaoViewController {
             make.left.bottom.right.equalTo(bgView)
         }
         
-        notNetworkView.snp.makeConstraints { (make) in
-            make.left.bottom.right.equalTo(bgView)
-            make.top.equalTo(headerView.snp.bottom)
-        }
+//        notNetworkView.snp.makeConstraints { (make) in
+//            make.left.bottom.right.equalTo(bgView)
+//            make.top.equalTo(headerView.snp.bottom)
+//        }
     }
 }
 

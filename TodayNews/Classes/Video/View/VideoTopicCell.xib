@@ -77,11 +77,11 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAQ-Kh-MhB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAQ-Kh-MhB">
                                 <rect key="frame" x="0.0" y="0.0" width="166.5" height="54"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uG5-YB-5Wd" firstAttribute="centerY" secondItem="Tnf-Bq-Nqx" secondAttribute="centerY" id="20A-hD-m2y"/>
                             <constraint firstAttribute="bottom" secondItem="StM-nt-oBI" secondAttribute="bottom" id="2VS-g2-Qme"/>
@@ -156,6 +156,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="bgImageButton" destination="b1z-f6-BSm" id="jwT-6C-u2N"/>
+                <outlet property="bottomLineView" destination="StM-nt-oBI" id="X0C-wH-uDk"/>
                 <outlet property="commentButton" destination="vCM-R4-5gp" id="VD2-u6-UrM"/>
                 <outlet property="concernButton" destination="BkT-QS-h7W" id="v7B-uR-lhB"/>
                 <outlet property="headButton" destination="Tnf-Bq-Nqx" id="ZMR-ag-uRc"/>

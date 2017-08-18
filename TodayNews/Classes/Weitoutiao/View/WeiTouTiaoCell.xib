@@ -68,14 +68,14 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="关注">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.17254901959999999" green="0.5568627451" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                        <color key="value" red="0.17254901960784313" green="0.55686274509803924" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -101,7 +101,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="BJW-cd-eZx" firstAttribute="leading" secondItem="TrX-J4-PcK" secondAttribute="leading" id="2KI-lY-z81"/>
                             <constraint firstItem="tg0-MU-tf5" firstAttribute="leading" secondItem="EHS-oi-HQI" secondAttribute="trailing" constant="7" id="F49-Py-mF9"/>
@@ -170,7 +170,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="85q-pB-JBB" firstAttribute="leading" secondItem="PVd-M5-qCz" secondAttribute="leading" id="DBj-2J-6OJ"/>
                                     <constraint firstAttribute="bottom" secondItem="2Wx-gg-qZz" secondAttribute="bottom" id="Duh-ni-qeB"/>
@@ -209,7 +209,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="PVd-M5-qCz" secondAttribute="bottom" id="DoS-QN-BHd"/>
                             <constraint firstItem="mag-qf-YFl" firstAttribute="centerY" secondItem="NVg-Ts-0v1" secondAttribute="centerY" id="OPm-S0-gWB"/>
@@ -223,7 +223,7 @@
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XHq-4C-vDf" userLabel="中间 View">
                         <rect key="frame" x="15" y="70" width="290" height="59.5"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                 </subviews>
                 <constraints>
@@ -248,11 +248,13 @@
                 <outlet property="commentCountButton" destination="2Wx-gg-qZz" id="mdU-zN-sYX"/>
                 <outlet property="contentLabel" destination="lKJ-Tn-FuZ" id="mg6-p4-b2p"/>
                 <outlet property="createTimeLabel" destination="tg0-MU-tf5" id="do8-hR-W3g"/>
+                <outlet property="dislikeButton" destination="N3U-xb-WvO" id="pOg-q2-SK7"/>
                 <outlet property="feedShareCountButton" destination="x2B-Yw-al9" id="O2g-xv-RCZ"/>
                 <outlet property="likeCountButton" destination="85q-pB-JBB" id="Ejg-SV-dT2"/>
                 <outlet property="middleView" destination="XHq-4C-vDf" id="pWl-cy-3WC"/>
                 <outlet property="positionLabel" destination="NVg-Ts-0v1" id="yqT-vc-hpn"/>
                 <outlet property="readCountLabel" destination="mag-qf-YFl" id="P6q-kM-gmG"/>
+                <outlet property="topSeparatorView" destination="LaX-dc-cdb" id="Kwt-MF-sTw"/>
                 <outlet property="userNameLabel" destination="nii-hR-WIW" id="aju-mi-PGK"/>
                 <outlet property="verifiedImageView" destination="zhl-bf-0JN" id="ipb-ic-9fO"/>
             </connections>

@@ -21,9 +21,9 @@ class AdvertiseViewController: UIViewController {
         view.backgroundColor = UIColor.white
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
+            self.countdownTimer?.invalidate() // 移除计时器
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let tabBarVC = sb.instantiateViewController(withIdentifier: String(describing: MyTabBarController.self))
-            
             UIApplication.shared.keyWindow?.rootViewController = tabBarVC
         }
         
@@ -41,6 +41,5 @@ class AdvertiseViewController: UIViewController {
     }
     
     @IBAction func timeButtonClicked(_ sender: Any) {
-        
     }
 }

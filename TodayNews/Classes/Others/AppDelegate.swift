@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // LeanCloud AppKey
         LeanCloud.initialize(applicationID: "D32pVzUwGeJh7HqhucxOkTPe-gzGzoHsz", applicationKey: "SW2LU0O5YScEX9pvNjRsi7Cy")
-        ThemeManager.setTheme(plistName: "default_theme", path: .mainBundle)
+        /// 设置主题颜色
+        ThemeManager.setTheme(plistName: UserDefaults.standard.bool(forKey: isNight) ? "night_theme" : "default_theme", path: .mainBundle)
         // 改为 从 storyboard 启动
         // 创建窗口
         window = UIWindow(frame: UIScreen.main.bounds)
