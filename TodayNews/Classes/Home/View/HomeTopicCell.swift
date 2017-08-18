@@ -37,6 +37,9 @@ class HomeTopicCell: UITableViewCell {
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var rightButtonWidth: NSLayoutConstraint!
     
+    @IBOutlet weak var dislikeButton: UIButton!
+    @IBOutlet weak var bottomLineView: UIView!
+    
     var weitoutiao: WeiTouTiao? {
         didSet {
             if let title = weitoutiao!.title {
@@ -156,7 +159,13 @@ class HomeTopicCell: UITableViewCell {
         super.awakeFromNib()
         hotLabel.layer.borderColor = UIColor(r: 212, g: 61, b: 61).cgColor
         hotLabel.layer.borderWidth = 0.5
-        
+        newsTitleLabel.theme_textColor = "colors.black"
+        dislikeButton.theme_setImage("images.dislikeicon", forState: .normal)
+        createTimeLabel.theme_textColor = "colors.mineOtherCellRightLabel"
+        specicalLabel.theme_textColor = "colors.mineOtherCellRightLabel"
+        bottomLineView.theme_backgroundColor = "colors.separatorColor"
+        commentLabel.theme_textColor = "colors.mineOtherCellRightLabel"
+        contentView.theme_backgroundColor = "colors.cellBackgroundColor"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

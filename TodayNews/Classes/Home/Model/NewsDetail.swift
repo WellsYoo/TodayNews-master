@@ -287,24 +287,6 @@ class NewsDetailUserInfo {
     }
 }
 
-class NewsDetailCommentInfo {
-    
-    var group_id: Int?
-    
-    var item_id: Int?
-    
-    var comments_count: Int?
-    
-    var ban_comment: Int?
-    
-    init(dict: [String: AnyObject]) {
-        group_id = dict["group_id"] as? Int
-        item_id = dict["item_id"] as? Int
-        comments_count = dict["comments_count"] as? Int
-        ban_comment = dict["ban_comment"] as? Int
-    }
-}
-
 class NewsDetailImageComment {
     
     var id: Int?

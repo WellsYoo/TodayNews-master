@@ -120,7 +120,7 @@
                                 <state key="normal" image="add_textpage_17x12_"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pjN-0g-VnR" firstAttribute="leading" secondItem="2cV-Wt-JWc" secondAttribute="leading" constant="15" id="0DQ-FN-nNz"/>
                             <constraint firstItem="otN-ky-2sF" firstAttribute="centerY" secondItem="bHK-7j-NrO" secondAttribute="centerY" id="1xc-vp-HvH"/>
@@ -169,8 +169,10 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="bottomLineView" destination="pjN-0g-VnR" id="3t0-F9-pka"/>
                 <outlet property="commentLabel" destination="otN-ky-2sF" id="Koz-kU-raB"/>
                 <outlet property="createTimeLabel" destination="V2E-ss-jdR" id="YGm-3F-CxT"/>
+                <outlet property="dislikeButton" destination="8Ui-h5-3Vf" id="oYT-ci-xtl"/>
                 <outlet property="hotLabel" destination="5Gf-1k-pxK" id="5dq-MY-Kzn"/>
                 <outlet property="hotLabelLeading" destination="5nW-HZ-MQM" id="RCY-AW-Fwf"/>
                 <outlet property="hotLabelWidth" destination="fQb-DZ-n7o" id="Hwx-Gz-YZQ"/>

@@ -12,7 +12,7 @@ class ThumbCollectionView: UICollectionView {
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.clear
         autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     

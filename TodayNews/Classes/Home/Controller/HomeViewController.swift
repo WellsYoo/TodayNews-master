@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 设置导航栏颜色
-        navigationController?.navigationBar.barTintColor = UIColor.globalRedColor()
+        navigationController?.navigationBar.theme_barTintColor = "colors.homeNavBarTintColor"
     }
     
     override func viewDidLoad() {

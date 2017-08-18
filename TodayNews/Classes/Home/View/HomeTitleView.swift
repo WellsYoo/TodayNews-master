@@ -30,7 +30,7 @@ class HomeTitleView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-       
+        theme_backgroundColor = "colors.cellBackgroundColor"
         setupUI()
     }
     
@@ -60,7 +60,7 @@ class HomeTitleView: UIView {
     // 懒加载 右侧按钮
     fileprivate lazy var rightButton: UIButton = {
         let rightButton = UIButton(frame: CGRect(x: screenWidth - 40, y: 0, width: 40, height: 40))
-        rightButton.setImage(UIImage(named: "add_channel_titlbar_thin_new_16x16_"), for: .normal)
+        rightButton.theme_setImage("images.addChannelTitlbar", forState: .normal)
         rightButton.setTitleColor(UIColor.white, for: .normal)
         rightButton.addTarget(self, action: #selector(rightButtonClicked), for: .touchUpInside)
         return rightButton
@@ -92,8 +92,7 @@ extension HomeTitleView {
             titleLabel.font = UIFont.systemFont(ofSize: 16)
             titleLabel.tag = index
             titleLabel.textAlignment = .center
-            titleLabel.textColor = index == 0 ? UIColor.globalRedColor() : UIColor(r: 0, g: 0, b: 0, alpha: 0.7)
-            
+            titleLabel.theme_textColor = index == 0 ? "colors.videoNavTitleColorSelect" : "colors.black"
             scrollView.addSubview(titleLabel)
             titleLabels.append(titleLabel)
             

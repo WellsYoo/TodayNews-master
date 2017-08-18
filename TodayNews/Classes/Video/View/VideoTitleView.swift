@@ -49,7 +49,7 @@ class VideoTitleView: UIView {
     fileprivate lazy var titleSearchButton: UIButton = {
         let titleSearchButton = UIButton()
         titleSearchButton.addTarget(self, action: #selector(titleSearchButtonClick), for: .touchUpInside)
-        titleSearchButton.setImage(UIImage(named: "search_24x24_"), for: .normal)
+        titleSearchButton.theme_setImage("images.videoSearchIcon", forState: .normal)
         return titleSearchButton
     }()
     

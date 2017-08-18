@@ -87,7 +87,10 @@ class WeiTouTiaoViewController: UIViewController {
 extension WeiTouTiaoViewController {
     
     fileprivate func setupUI() {
+        // 设置导航栏颜色
+        navigationController?.navigationBar.theme_barTintColor = "colors.otherNavBarTintColor"
         view.backgroundColor = UIColor.globalBackgroundColor()
+        navigationItem.rightBarButtonItem?.theme_tintColor = "colors.black"
         view.addSubview(bgView)
         bgView.addSubview(headerView)
         bgView.addSubview(tableView)

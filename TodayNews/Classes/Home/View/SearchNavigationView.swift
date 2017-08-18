@@ -29,8 +29,8 @@ class SearchNavigationView: UIView {
     lazy var searchBar: HomeSearchBar = {
         let searchBar = HomeSearchBar.searchBar()
         searchBar.placeholder = "请输入关键字"
-        searchBar.tintColor = UIColor.black
-        searchBar.background = UIImage(named: "searchbox_search_press_20x28_")
+        searchBar.theme_tintColor = "colors.black"
+        searchBar.background = UIImage(named: UserDefaults.standard.bool(forKey: isNight) ? "searchbox_search_night_20x28_" : "searchbox_search_20x28_")
         return searchBar
     }()
     

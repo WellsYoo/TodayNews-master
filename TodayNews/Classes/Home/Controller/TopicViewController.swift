@@ -80,7 +80,7 @@ class TopicViewController: UIViewController {
         tableView.contentInset = UIEdgeInsetsMake(0, 0, kTabBarHeight, 0)
         tableView.register(UINib(nibName: String(describing: HomeTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: HomeTopicCell.self))
         tableView.register(UINib(nibName: String(describing: VideoTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: VideoTopicCell.self))
-        tableView.backgroundColor = UIColor.globalBackgroundColor()
+        tableView.theme_backgroundColor = "colors.tableViewBackgroundColor"
         return tableView
     }()
     

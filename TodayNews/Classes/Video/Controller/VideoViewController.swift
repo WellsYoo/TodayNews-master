@@ -75,6 +75,8 @@ extension VideoViewController {
     // 设置 UI
     fileprivate func setupUI() {
         view.backgroundColor = UIColor.globalBackgroundColor()
+        // 设置导航栏颜色
+        navigationController?.navigationBar.theme_barTintColor = "colors.otherNavBarTintColor"
         navigationController?.navigationBar.shadowImage = UIImage()
         // 不要自动调整inset
         automaticallyAdjustsScrollViewInsets = false
