@@ -19,6 +19,15 @@ class NewsDetailImageCommentController: AnimatableModalViewController {
     
     var comments = [NewsDetailImageComment]()
     
+    var weitoutiao: WeiTouTiao? {
+        didSet {
+            NetworkTool.loadNewsDetailImageComments(offset: 0, item_id: weitoutiao!.item_id!, group_id: weitoutiao!.group_id!) { (comments) in
+                self.comments = comments
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -34,14 +43,9 @@ extension NewsDetailImageCommentController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: String( describing: NewsDetailImageCommentCell.self), bundle: nil), forCellReuseIdentifier: String( describing: NewsDetailImageCommentCell.self))
         
-        NetworkTool.loadNewsDetailImageComments(offset: 0) { (comments) in
-            self.comments = comments
-            self.tableView.reloadData()
-        }
-        
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
             // 获取评论数据
-            NetworkTool.loadNewsDetailImageComments(offset: self!.comments.count) { (comments) in
+            NetworkTool.loadNewsDetailImageComments(offset: self!.comments.count, item_id: self!.weitoutiao!.item_id!, group_id: self!.weitoutiao!.group_id!) { (comments) in
                 self!.tableView.mj_footer.endRefreshing()
                 if comments.count == 0 {
                     SVProgressHUD.setForegroundColor(UIColor.white)

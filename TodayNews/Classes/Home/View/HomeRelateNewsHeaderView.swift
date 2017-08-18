@@ -12,7 +12,9 @@ import Kingfisher
 class HomeRelateNewsHeaderView: UIView {
     var filter_wrods = [WTTFilterWord]() {
         didSet {
-            dislikePopView.filterWords = filter_wrods
+            if filter_wrods.count > 0 {
+                dislikePopView.filterWords = filter_wrods
+            }
         }
     }
     

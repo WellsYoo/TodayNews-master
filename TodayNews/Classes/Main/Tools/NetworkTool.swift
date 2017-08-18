@@ -172,6 +172,7 @@ class NetworkTool {
                         do {
                             let dict = try JSONSerialization.jsonObject(with: contentData as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
                             let topic = WeiTouTiao(dict: dict as! [String : AnyObject])
+                            print(dict)
                             topics.append(topic)
                         } catch {
                             
@@ -184,28 +185,71 @@ class NetworkTool {
     }
     
     /// 获取一般新闻详情数据
-    class func loadCommenNewsDetail(articleURL: String, completionHandler:@escaping (_ htmlString: String)->()) {
+    class func loadCommenNewsDetail(articleURL: String, completionHandler:@escaping (_ htmlString: String, _ images: [NewsDetailImage], _ abstracts: [String])->()) {
+        print(articleURL)
         // 测试数据
-        let url = "http://www.toutiao.com/a6453725089820049934/"
-        
-        Alamofire.request(url).responseString { (response) in
+        Alamofire.request(articleURL).responseString { (response) in
             guard response.result.isSuccess else {
                 return
             }
             if let value = response.result.value {
-                if value.contains("<script>var BASE_DATA =") {
+                var images = [NewsDetailImage]()
+                var abstracts = [String]()
+                var htmlString = String()
+                if value.contains("BASE_DATA.galleryInfo =") { // 则是图文详情
+                    // 获取 图片链接数组
+                    let startIndex = value.range(of: "\"sub_images\":")!.upperBound
+                    let endIndex = value.range(of: ",\"max_img_width\"")!.lowerBound
+                    let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex))
+                    let BASE_DATA = value.substring(with: range)
+                    let data = BASE_DATA.data(using: String.Encoding.utf8)! as Data
+                    let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [AnyObject]
+                    for image in dict! {
+                        let img = NewsDetailImage(dict: image as! [String: AnyObject])
+                        images.append(img)
+                    }
+                    // 获取 子标题
+                    let titleStartIndex = value.range(of: "\"sub_abstracts\":")!.upperBound
+                    let titlEndIndex = value.range(of: ",\"sub_titles\"")!.lowerBound
+                    let titleRange = Range(uncheckedBounds: (lower: titleStartIndex, upper: titlEndIndex))
+                    let sub_abstracts = value.substring(with: titleRange)
+                    let titleData = sub_abstracts.data(using: String.Encoding.utf8)! as Data
+                    let subAbstracts = try? JSONSerialization.jsonObject(with: titleData, options: .mutableContainers) as! [String]
+                    for string in subAbstracts! {
+                        abstracts.append(string)
+                    }
+                } else if value.contains("articleInfo: ") { // 一般的新闻
                     // 获取 新闻内容
-                    let startIndex = value.range(of: "content: ")!.upperBound
-                    let endIndex = value.range(of: "groupId:")!.lowerBound
+                    let startIndex = value.range(of: "content: '")!.upperBound
+                    let endIndex = value.range(of: "'.replace")!.lowerBound
                     let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex))
                     let content = value.substring(with: range)
+                    let contentDecode = NetworkTool.htmlDecode(content: content)
                     let path = Bundle.main.path(forResource: "news_detail_1", ofType: "html")
                     let html = try! String(contentsOfFile: path!)
-                    _ = html.replacingOccurrences(of: "'新闻内容'", with: content)
-                    completionHandler(html)
+                    // 替换本地 html 里 content 的内容，新闻内容格式可参考 jsCode2Html.html
+                    htmlString = html.replacingOccurrences(of: "新闻内容", with: contentDecode)
+                    // 加载 css文件
+                    htmlString.append("<link rel=\"stylesheet\" type=\"text/css\" href=\"news.css\" />\n ")
+                } else { // 第三方的新闻内容
+                    /// 这部分显示还有问题
+                    htmlString = value
                 }
+                completionHandler(htmlString, images, abstracts)
             }
         }
+    }
+    /// 转义字符
+    class func htmlDecode(content: String) -> String {
+        var s = String()
+        s = content.replacingOccurrences(of: "&amp;", with: "&")
+        s = s.replacingOccurrences(of: "&lt;", with: "<")
+        s = s.replacingOccurrences(of: "&gt;", with: ">")
+        s = s.replacingOccurrences(of: "&nbsp;", with: " ")
+        s = s.replacingOccurrences(of: "&#39;", with: "\'")
+        s = s.replacingOccurrences(of: "&quot;", with: "\"")
+        s = s.replacingOccurrences(of: "<br>", with: "\n")
+        return s
     }
     
     /// 获取图片新闻详情数据
@@ -219,7 +263,7 @@ class NetworkTool {
                 return
             }
             if let value = response.result.value {
-                if value.contains("<script>var BASE_DATA =") {
+                if value.contains("BASE_DATA.galleryInfo =") {
                     // 获取 图片链接数组
                     let startIndex = value.range(of: "\"sub_images\":")!.upperBound
                     let endIndex = value.range(of: ",\"max_img_width\"")!.lowerBound
@@ -250,11 +294,11 @@ class NetworkTool {
     }
     
     /// 获取图片新闻详情评论
-    class func loadNewsDetailImageComments(offset: Int, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->()) {
+    class func loadNewsDetailImageComments(offset: Int, item_id: Int, group_id: Int, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->()) {
         let url = BASE_URL + "article/v2/tab_comments/?"
         let params = ["offset": offset,
-                      "item_id": 6450240420034118157,
-                      "group_id": 6450237670911852814] as [String : AnyObject]
+                      "item_id": item_id,
+                      "group_id": group_id] as [String : AnyObject]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return
@@ -276,6 +320,7 @@ class NetworkTool {
     
     /// 获取新闻详情评论
     class func loadNewsDetailComments(offset: Int, weitoutiao: WeiTouTiao, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->()) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let url = BASE_URL + "article/v2/tab_comments/?"
         var item_id = ""
         var group_id = ""
@@ -289,6 +334,7 @@ class NetworkTool {
                       "item_id": item_id,
                       "group_id": group_id] as [String : AnyObject]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             guard response.result.isSuccess else {
                 return
             }
@@ -312,10 +358,11 @@ class NetworkTool {
     class func loadNewsDetailRelateNews(fromCategory: String, weitoutiao: WeiTouTiao, completionHandler:@escaping (_ relateNews: [WeiTouTiao], _ labels: [NewsDetailLabel], _ userLike: UserLike?, _ appInfo: NewsDetailAPPInfo?, _ filter_wrods: [WTTFilterWord]) -> ()) {
         let url = BASE_URL + "2/article/information/v21/?"
         // version_code=6.2.6
+        let article_page = weitoutiao.has_video! ? 1 : 0
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
         let params = ["device_id": device_id,
                       "version_code": version,
-                      "article_page": weitoutiao.article_type!,
+                      "article_page": article_page,
                       "aggr_type": weitoutiao.aggr_type!,
                       "latitude": "",
                       "longitude": "",
@@ -337,57 +384,51 @@ class NetworkTool {
                     var userLike: UserLike?
                     var appInfo: NewsDetailAPPInfo?
                     var filter_words = [WTTFilterWord]()
-                    // ---------- 暂时只找到两种情况,后面再补充 ---------------
-                    // article_type 分为不同情况，0 和 1 ，返回的数据类型也不一样
-                    if weitoutiao.article_type! == 0 {
+                    if let relatedVideoToutiao = data["related_video_toutiao"] {
+                        for dict in relatedVideoToutiao.arrayObject! {
+                            let news = WeiTouTiao(dict: dict as! [String: AnyObject])
+                            relateNews.append(news)
+                        }
+                    } else if let ordered_info = data["ordered_info"] {
                         // ordered_info 对应新闻详情顶部的 新闻类别按钮，新欢，不喜欢按钮，app 广告， 相关新闻
                         // ordered_info是一个数组，数组内容不定，根据其中的 name 来判断对应的字典
-                        if let ordered_info = data["ordered_info"] {
-                            if ordered_info.count > 0 { // 说明 ordered_info 有数据
-                                for orderInfo in ordered_info.arrayObject! { // 遍历，根据 name 来判断
-                                    let ordered = orderInfo as! [String: AnyObject]
-                                    let name = ordered["name"]! as! String
-                                    if name == "labels" { // 新闻相关类别,数组
-                                        if let orders = ordered["data"] as? [AnyObject] {
-                                            for dict in orders {
-                                                let label = NewsDetailLabel(dict: dict as! [String: AnyObject])
-                                                labels.append(label)
-                                            }
+                        if ordered_info.count > 0 { // 说明 ordered_info 有数据
+                            for orderInfo in ordered_info.arrayObject! { // 遍历，根据 name 来判断
+                                let ordered = orderInfo as! [String: AnyObject]
+                                let name = ordered["name"]! as! String
+                                if name == "labels" { // 新闻相关类别,数组
+                                    if let orders = ordered["data"] as? [AnyObject] {
+                                        for dict in orders {
+                                            let label = NewsDetailLabel(dict: dict as! [String: AnyObject])
+                                            labels.append(label)
                                         }
-                                    } else if name == "like_and_rewards" { // 喜欢 / 不喜欢  字典
-                                        userLike = UserLike(dict: ordered["data"] as! [String: AnyObject])
-                                    } else if name == "ad" { // 广告， 字典
-                                        let appData = ordered["data"] as! [String: AnyObject]
-                                        // 有两种情况，一种 app，一种 mixed
-                                        if let app = appData["app"] {
-                                            appInfo = NewsDetailAPPInfo(dict: app as! [String: AnyObject])
-                                        } else if let mixed = appData["mixed"] {
-                                            appInfo = NewsDetailAPPInfo(dict: mixed as! [String: AnyObject])
-                                        }
-                                    } else if name == "related_news" { // 相关新闻  数组
-                                        if let orders = ordered["data"] as? [AnyObject] {
-                                            for dict in orders {
-                                                let relatenews = WeiTouTiao(dict: dict as! [String: AnyObject])
-                                                relateNews.append(relatenews)
-                                            }
-                                        }
-                                        
                                     }
+                                } else if name == "like_and_rewards" { // 喜欢 / 不喜欢  字典
+                                    userLike = UserLike(dict: ordered["data"] as! [String: AnyObject])
+                                } else if name == "ad" { // 广告， 字典
+                                    let appData = ordered["data"] as! [String: AnyObject]
+                                    // 有两种情况，一种 app，一种 mixed
+                                    if let app = appData["app"] {
+                                        appInfo = NewsDetailAPPInfo(dict: app as! [String: AnyObject])
+                                    } else if let mixed = appData["mixed"] {
+                                        appInfo = NewsDetailAPPInfo(dict: mixed as! [String: AnyObject])
+                                    }
+                                } else if name == "related_news" { // 相关新闻  数组
+                                    if let orders = ordered["data"] as? [AnyObject] {
+                                        for dict in orders {
+                                            let relatenews = WeiTouTiao(dict: dict as! [String: AnyObject])
+                                            relateNews.append(relatenews)
+                                        }
+                                    }
+                                    
                                 }
                             }
                         }
-                        if let filterWords = data["filter_words"]?.arrayObject {
-                            for item in filterWords {
-                                let filterWord = WTTFilterWord(dict: item as! [String: AnyObject])
-                                filter_words.append(filterWord)
-                            }
-                        }
-                    } else if weitoutiao.article_type! == 1 { // 可能是视频
-                        if let relatedVideoToutiao = data["related_video_toutiao"] {
-                            for dict in relatedVideoToutiao.arrayObject! {
-                                let news = WeiTouTiao(dict: dict as! [String: AnyObject])
-                                relateNews.append(news)
-                            }
+                    }
+                    if let filterWords = data["filter_words"]?.arrayObject {
+                        for item in filterWords {
+                            let filterWord = WTTFilterWord(dict: item as! [String: AnyObject])
+                            filter_words.append(filterWord)
                         }
                     }
                     completionHandler(relateNews, labels, userLike, appInfo, filter_words)

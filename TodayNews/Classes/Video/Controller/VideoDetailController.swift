@@ -62,6 +62,7 @@ class VideoDetailController: UIViewController {
         navigationController?.navigationBar.barStyle = .default
         // 使用手势返回的时候，调用下面方法
         player.pause(allowAutoPlay: true)
+        player.removeFromSuperview()
     }
     
     deinit {
@@ -175,7 +176,6 @@ extension VideoDetailController {
             make.right.equalTo(view.snp.right)
             make.height.equalTo(view.snp.width).multipliedBy(9.0 / 16.0)
         }
-        player.delegate = self
         
         player.backBlock = { [weak self] (isFullScreen) in
             if isFullScreen == true {
@@ -216,29 +216,6 @@ extension VideoDetailController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
-    }
-}
-
-// MARK:- BMPlayerDelegate example
-extension VideoDetailController: BMPlayerDelegate {
-    // Call back when playing state changed, use to detect is playing or not
-    func bmPlayer(player: BMPlayer, playerIsPlaying playing: Bool) {
-        print("| BMPlayerDelegate | playerIsPlaying | playing - \(playing)")
-    }
-    
-    // Call back when playing state changed, use to detect specefic state like buffering, bufferfinished
-    func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {
-        print("| BMPlayerDelegate | playerStateDidChange | state - \(state)")
-    }
-    
-    // Call back when play time change
-    func bmPlayer(player: BMPlayer, playTimeDidChange currentTime: TimeInterval, totalTime: TimeInterval) {
-        //        print("| BMPlayerDelegate | playTimeDidChange | \(currentTime) of \(totalTime)")
-    }
-    
-    // Call back when the video loaded duration changed
-    func bmPlayer(player: BMPlayer, loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval) {
-        //        print("| BMPlayerDelegate | loadedTimeDidChange | \(loadedDuration) of \(totalDuration)")
     }
 }
 

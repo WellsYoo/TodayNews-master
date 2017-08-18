@@ -78,8 +78,8 @@ class TopicViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.contentInset = UIEdgeInsetsMake(0, 0, kTabBarHeight, 0)
-        tableView.register(UINib(nibName: String(describing: HomeTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: HomeTopicCell.self))
-        tableView.register(UINib(nibName: String(describing: VideoTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: VideoTopicCell.self))
+//        tableView.register(UINib(nibName: String(describing: HomeTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: HomeTopicCell.self))
+//        tableView.register(UINib(nibName: String(describing: VideoTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: VideoTopicCell.self))
         tableView.theme_backgroundColor = "colors.tableViewBackgroundColor"
         return tableView
     }()
@@ -107,6 +107,7 @@ extension TopicViewController {
 extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let weitoutiao = newsTopics[indexPath.row]
         if topicTitle!.category == "video" {
             return screenHeight * 0.4
         } else if topicTitle!.category == "subscription" { // 头条号
@@ -121,7 +122,6 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
             let weitoutiao = newsTopics[indexPath.row]
             return weitoutiao.girlCellHeight!
         }
-        let weitoutiao = newsTopics[indexPath.row]
         return weitoutiao.homeCellHeight!
     }
     
@@ -134,46 +134,51 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if topicTitle!.category == "video" { // 视频
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTopicCell.self), for: indexPath) as! VideoTopicCell
-            cell.videoTopic = newsTopics[indexPath.row]
-            cell.headCoverButton.rx.controlEvent(.touchUpInside)
-                .subscribe(onNext: { [weak self] in
-                    let userVC = FollowDetailViewController()
-                    userVC.userid = cell.videoTopic!.media_info!.user_id!
-                    self!.navigationController!.pushViewController(userVC, animated: true)
-                })
-                .addDisposableTo(disposeBag)
-            // 评论按钮点击
-            cell.commentButton.rx.controlEvent(.touchUpInside)
-                .subscribe(onNext: { [weak self] in
-                    let videoDetailVC = VideoDetailController()
-                    videoDetailVC.videoTopic = cell.videoTopic
-                    self!.navigationController!.pushViewController(videoDetailVC, animated: true)
-                })
-                .addDisposableTo(disposeBag)
-            // 播放按钮点击
-            cell.bgImageButton.rx.controlEvent(.touchUpInside)
-                .subscribe(onNext: { [weak self] in
-                    cell.bgImageButton.addSubview(self!.player)
-                    self!.player.snp.makeConstraints { (make) in
-                        make.edges.equalTo(cell.bgImageButton)
-                    }
-                    /// 获取视频的真实链接
-                    NetworkTool.parseVideoRealURL(video_id: cell.videoTopic!.video_id!) { (realVideo) in
-                        self!.player.backBlock = { (isFullScreen) in
-                            if isFullScreen == true {
-                                return
-                            }
+    /// 说明是视频，显示视频 cell
+    private func showVideoCell(indexPath: IndexPath) -> VideoTopicCell {
+        let cell = Bundle.main.loadNibNamed(String(describing: VideoTopicCell.self), owner: nil, options: nil)?.last as! VideoTopicCell
+        cell.videoTopic = newsTopics[indexPath.row]
+        cell.headCoverButton.rx.controlEvent(.touchUpInside)
+            .subscribe(onNext: { [weak self] in
+                let userVC = FollowDetailViewController()
+                userVC.userid = cell.videoTopic!.media_info!.user_id!
+                self!.navigationController!.pushViewController(userVC, animated: true)
+            })
+            .addDisposableTo(disposeBag)
+        // 评论按钮点击
+        cell.commentButton.rx.controlEvent(.touchUpInside)
+            .subscribe(onNext: { [weak self] in
+                let videoDetailVC = VideoDetailController()
+                videoDetailVC.videoTopic = cell.videoTopic
+                self!.navigationController!.pushViewController(videoDetailVC, animated: true)
+            })
+            .addDisposableTo(disposeBag)
+        // 播放按钮点击
+        cell.bgImageButton.rx.controlEvent(.touchUpInside)
+            .subscribe(onNext: { [weak self] in
+                cell.bgImageButton.addSubview(self!.player)
+                self!.player.snp.makeConstraints { (make) in
+                    make.edges.equalTo(cell.bgImageButton)
+                }
+                /// 获取视频的真实链接
+                NetworkTool.parseVideoRealURL(video_id: cell.videoTopic!.video_id!) { (realVideo) in
+                    self!.player.backBlock = { (isFullScreen) in
+                        if isFullScreen == true {
+                            return
                         }
-                        let asset = BMPlayerResource(url: URL(string: realVideo.video_1!.main_url!)!, name: cell.titleLabel.text!)
-                        self!.player.setVideo(resource: asset)
                     }
-                })
-                .addDisposableTo(disposeBag)
-            return cell
+                    let asset = BMPlayerResource(url: URL(string: realVideo.video_1!.main_url!)!, name: cell.titleLabel.text!)
+                    self!.player.setVideo(resource: asset)
+                }
+            })
+            .addDisposableTo(disposeBag)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let weitoutiao = newsTopics[indexPath.row]
+        if topicTitle!.category == "video" { // 视频
+            return showVideoCell(indexPath: indexPath)
         } else if topicTitle!.category == "subscription" { // 头条号
             let cell = Bundle.main.loadNibNamed(String(describing: ToutiaohaoCell.self), owner: nil, options: nil)?.last as! ToutiaohaoCell
 //            cell.myConcern = myConcerns[indexPath.row]
@@ -181,38 +186,39 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
         } else if topicTitle!.category == "essay_joke" { // 段子
             let cell = Bundle.main.loadNibNamed(String(describing: HomeJokeCell.self), owner: nil, options: nil)?.last as! HomeJokeCell
             cell.isJoke = true
-            cell.joke = newsTopics[indexPath.row]
+            cell.joke = weitoutiao
             return cell
         } else if topicTitle!.category == "组图" { // 组图
             let cell = Bundle.main.loadNibNamed(String(describing:  HomeImageTableCell.self), owner: nil, options: nil)?.last as! HomeImageTableCell
-            cell.homeImage = newsTopics[indexPath.row]
+            cell.homeImage = weitoutiao
             return cell
         } else if topicTitle!.category == "image_ppmm" { // 组图
             let cell = Bundle.main.loadNibNamed(String(describing:  HomeJokeCell.self), owner: nil, options: nil)?.last as! HomeJokeCell
             cell.isJoke = false
-            cell.joke = newsTopics[indexPath.row]
+            cell.joke = weitoutiao
             return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HomeTopicCell.self), for: indexPath) as! HomeTopicCell
-        cell.weitoutiao = newsTopics[indexPath.row]
+        let cell = Bundle.main.loadNibNamed(String(describing: HomeTopicCell.self), owner: nil, options: nil)?.last as! HomeTopicCell
+        cell.weitoutiao = weitoutiao
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let weitoutiao = newsTopics[indexPath.row]
         if indexPath.row == 0 && topicTitle!.category == "" { // 默认设置点击第一个 cell 跳转到图片详情界面
-            let cell = tableView.cellForRow(at: indexPath) as! HomeTopicCell
             let storyboard = UIStoryboard(name: "NewsDetailImageController", bundle: nil)
             let newsDetailImageVC = storyboard.instantiateViewController(withIdentifier: "NewsDetailImageController") as! NewsDetailImageController
-            newsDetailImageVC.weitoutiao = cell.weitoutiao
+            newsDetailImageVC.isSelectedFirstCell = true
+            weitoutiao.item_id = 6450240420034118157
+            weitoutiao.group_id = 6450237670911852814
+            newsDetailImageVC.weitoutiao = weitoutiao
             present(newsDetailImageVC, animated: false, completion: nil)
         } else {
-            if topicTitle!.category == "video" {
-                let videoTopic = newsTopics[indexPath.row]
+            if topicTitle!.category == "video" || weitoutiao.has_video! {
                 /// 获取视频的真实链接
-                NetworkTool.parseVideoRealURL(video_id: videoTopic.video_id!) { (realVideo) in
+                NetworkTool.parseVideoRealURL(video_id: weitoutiao.video_id!) { (realVideo) in
                     let videoDetailVC = VideoDetailController()
-                    videoDetailVC.videoTopic = videoTopic
+                    videoDetailVC.videoTopic = weitoutiao
                     videoDetailVC.realVideo = realVideo
                     self.navigationController?.pushViewController(videoDetailVC, animated: true)
                 }
@@ -224,20 +230,35 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
                 
             } else if topicTitle!.category == "image_ppmm" {
                 
-            } else {
-                let cell = tableView.cellForRow(at: indexPath) as! HomeTopicCell
-                if let source = cell.weitoutiao!.source {
-                    if source == "悟空问答" { // 悟空问答
-                        let questionAnswerVC = QuestionAnswerController()
-                        questionAnswerVC.weitoutiao = cell.weitoutiao!
-                        navigationController?.pushViewController(questionAnswerVC, animated: true)
-                    } else {
-                        let topicDetailVC = TopicDetailController()
-                        topicDetailVC.weitoutiao = cell.weitoutiao!
-                        navigationController?.pushViewController(topicDetailVC, animated: true)
-                    }
-                }
+            } else if (weitoutiao.source != nil && weitoutiao.source == "悟空问答") { // 悟空问答
+                let questionAnswerVC = QuestionAnswerController()
+                questionAnswerVC.weitoutiao = weitoutiao
+                navigationController?.pushViewController(questionAnswerVC, animated: true)
+            } else if (weitoutiao.has_image != nil && weitoutiao.has_image!) { // 说明有图片
+                loadNewsDetail(weitoutiao: weitoutiao)
+            } else { // 一般的新闻
+                loadNewsDetail(weitoutiao:  weitoutiao)
             }
+        }
+    }
+    /// 获取新闻详情
+    private func loadNewsDetail(weitoutiao: WeiTouTiao) {
+        if let articleURL = weitoutiao.article_url {
+            NetworkTool.loadCommenNewsDetail(articleURL: articleURL, completionHandler: { (htmlString, images, abstracts) in
+                if images.count > 0 { // 说明是图文详情
+                    let storyboard = UIStoryboard(name: "NewsDetailImageController", bundle: nil)
+                    let newsDetailImageVC = storyboard.instantiateViewController(withIdentifier: "NewsDetailImageController") as! NewsDetailImageController
+                    newsDetailImageVC.weitoutiao = weitoutiao
+                    newsDetailImageVC.images = images
+                    newsDetailImageVC.abstracts = abstracts
+                    self.present(newsDetailImageVC, animated: false, completion: nil)
+                } else { // 说明是一般的新闻
+                    let topicDetailVC = TopicDetailController()
+                    topicDetailVC.weitoutiao = weitoutiao
+                    topicDetailVC.htmlString = htmlString
+                    self.navigationController?.pushViewController(topicDetailVC, animated: true)
+                }
+            })
         }
     }
     

@@ -182,16 +182,14 @@ class VideoInfo {
     var height: Int?
     var video_duration: Int?
     var videoDuration: String? {
-        get {
-            /// 格式化时间
-            let hour = video_duration! / 3600
-            let minute = (video_duration! / 60) % 60
-            let second = video_duration! % 60
-            if hour > 0 {
-                return String(format: "%02d:%02d:%02d", hour, minute, second)
-            }
-            return String(format: "%02d:%02d", minute, second)
+        /// 格式化时间
+        let hour = video_duration! / 3600
+        let minute = (video_duration! / 60) % 60
+        let second = video_duration! % 60
+        if hour > 0 {
+            return String(format: "%02d:%02d:%02d", hour, minute, second)
         }
+        return String(format: "%02d:%02d", minute, second)
     }
     
     init(dict: [String: AnyObject]) {
@@ -299,39 +297,37 @@ class NewsDetailImageComment {
     
     var create_time: TimeInterval?
     var createTime: String? {
-        get {
-            //创建时间
-            var createDate: Date?
-            if let createTime = create_time {
-                createDate = Date(timeIntervalSince1970: createTime)
-            }
-            let fmt = DateFormatter()
-            fmt.locale = Locale(identifier: "zh_CN")
+        //创建时间
+        var createDate: Date?
+        if let createTime = create_time {
+            createDate = Date(timeIntervalSince1970: createTime)
+        }
+        let fmt = DateFormatter()
+        fmt.locale = Locale(identifier: "zh_CN")
+        fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        //当前时间
+        let now = Date()
+        //日历
+        let calender = Calendar.current
+        let comps: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from: createDate!, to: now)
+        guard (createDate?.isThisYear())! else { // 今年
             fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            //当前时间
-            let now = Date()
-            //日历
-            let calender = Calendar.current
-            let comps: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from: createDate!, to: now)
-            guard (createDate?.isThisYear())! else { // 今年
-                fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                return fmt.string(from: createDate!)
-            }
-            if (createDate?.isYesterday())! { // 昨天
-                fmt.dateFormat = "昨天 HH:mm";
-                return fmt.string(from: createDate!)
-            } else if (createDate?.isToday())! {
-                if comps.hour! >= 1 {
-                    return String(format: "%.d小时前", comps.hour!)
-                } else if comps.minute! >= 1 {
-                    return String(format: "%d分钟前", comps.minute!)
-                } else {
-                    return "刚刚";
-                }
+            return fmt.string(from: createDate!)
+        }
+        if (createDate?.isYesterday())! { // 昨天
+            fmt.dateFormat = "昨天 HH:mm";
+            return fmt.string(from: createDate!)
+        } else if (createDate?.isToday())! {
+            if comps.hour! >= 1 {
+                return String(format: "%.d小时前", comps.hour!)
+            } else if comps.minute! >= 1 {
+                return String(format: "%d分钟前", comps.minute!)
             } else {
-                fmt.dateFormat = "MM-dd HH:mm";
-                return fmt.string(from: createDate!)
+                return "刚刚";
             }
+        } else {
+            fmt.dateFormat = "MM-dd HH:mm";
+            return fmt.string(from: createDate!)
         }
     }
     
@@ -342,37 +338,30 @@ class NewsDetailImageComment {
     var text: String?
     var reply_to_comment: ReplyToComment?
     var commentText: NSString? {
-        get {
-            //
-            if let replaytoComment = reply_to_comment {
-                let totalText = (text! as String) + "//@\(replaytoComment.user_name!)：" + (replaytoComment.text! as String)
-                return totalText as NSString
-            } else {
-                return text! as NSString
-            }
+        if let replaytoComment = reply_to_comment {
+            let totalText = (text! as String) + "//@\(replaytoComment.user_name!)：" + (replaytoComment.text! as String)
+            return totalText as NSString
+        } else {
+            return text! as NSString
         }
     }
     var textH: CGFloat? {
-        get {
-            return commentText?.getTextHeight(width: screenWidth - 15 - 57)
-        }
+        return commentText?.getTextHeight(width: screenWidth - 15 - 57)
     }
     var is_following: Bool?
     
     var cellHeight: CGFloat? {
-        get {
-            /*
-            let nameButtonTop: CGFloat = 12
-            let nameButtonHeight: CGFloat = 16
-            let nameButtonBotom: CGFloat = 10
-            
-            let replayButtonTop: CGFloat = 10
-            let replayButtonHeight: CGFloat = 20
-            let replayButtonBottom: CGFloat = 10
-            */
-            // 上面这些相加
-            return textH! + 78
-        }
+        /*
+         let nameButtonTop: CGFloat = 12
+         let nameButtonHeight: CGFloat = 16
+         let nameButtonBotom: CGFloat = 10
+         
+         let replayButtonTop: CGFloat = 10
+         let replayButtonHeight: CGFloat = 20
+         let replayButtonBottom: CGFloat = 10
+         */
+        // 上面这些相加
+        return textH! + 78
     }
     
     init(dict: [String: AnyObject]) {

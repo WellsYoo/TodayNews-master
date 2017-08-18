@@ -27,6 +27,13 @@ class TopicDetailController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var htmlString: String? {
+        didSet {
+            // 需要加载 css 文件，所以 baseURL 不能为 nil
+            webView.loadHTMLString(htmlString!, baseURL: Bundle.main.bundleURL)
+        }
+    }
+    
     var weitoutiao: WeiTouTiao? {
         didSet {
             if let user = weitoutiao!.user {
@@ -42,54 +49,6 @@ class TopicDetailController: UIViewController {
             /// 设置属性
             headerView.weitoutiao = weitoutiao!
             headerView.height = 45 + 2 * kMargin + weitoutiao!.newDetailTitleHeight!
-//            NetworkTool.loadCommenNewsDetail(articleURL: "") { (htmlString) in
-//                self.webView.loadHTMLString(htmlString, baseURL: nil)
-//            }
-//            let url = "http://www.toutiao.com/a6453773299909394958/"
-            
-            /// 获取相关新闻
-            NetworkTool.loadNewsDetailRelateNews(fromCategory: "", weitoutiao: self.weitoutiao!) { (relateNews, labels, userLike, appInfo , filter_wrods) in
-                /// 设置相关属性
-                self.relateHeaderView.filter_wrods = filter_wrods
-                self.relateHeaderView.userLike = userLike
-                var relateHeaderViewHeight: CGFloat = 125 // 105 顶部留白 + 中间留白X2 + 喜欢按钮
-                if labels.count > 0 { // 说明标签数组有对象
-                    self.relateHeaderView.labels = labels
-                    relateHeaderViewHeight += 30
-                } else {
-                    self.relateHeaderView.scrollViewHeight.constant = 0
-                }
-                if let app_info = appInfo { // 广告存在
-                    self.relateHeaderView.appInfo = app_info
-                    relateHeaderViewHeight += screenWidth * 0.65
-                    self.relateHeaderView.adViewHeight.constant = screenWidth * 0.65
-                } else {
-                    self.relateHeaderView.adViewHeight.constant = 0
-                    self.relateHeaderView.appNameViewHeight.constant = 0
-                    self.relateHeaderView.bottomViewHeight.constant = 0
-                    self.relateHeaderView.adView.isHidden = true
-                }
-                /// 设置 relateHeaderView 高度
-                self.relateHeaderView.height = relateHeaderViewHeight
-                self.relateHeaderView.layoutIfNeeded()
-                /// 设置相关新闻 table 的高度
-                var relateTableHeight: CGFloat = relateHeaderViewHeight
-                for relatenews in relateNews {
-                    relateTableHeight += relatenews.relateNewsCellHeight!
-                }
-                
-                /// 添加
-                self.relateNewsTableView.tableHeaderView = self.relateHeaderView
-                self.relateNewsTableView.frame = CGRect(x: 0, y: self.webView.frame.maxY, width: screenWidth, height: relateTableHeight)
-                self.relateNews = relateNews
-                self.relateNewsTableView.reloadData()
-                self.commentBackHeaderView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: self.relateNewsTableView.frame.maxY)
-                self.commentBackHeaderView.addSubview(self.headerView)
-//                self.commentBackHeaderView.addSubview(self.webView)
-                self.commentBackHeaderView.addSubview(self.relateNewsTableView)
-                // 设置头部
-                self.tableView.tableHeaderView = self.commentBackHeaderView
-            }
             /// 获取评论
             NetworkTool.loadNewsDetailComments(offset: 0, weitoutiao: weitoutiao!) { (comments) in
                 self.comments = comments
@@ -167,7 +126,6 @@ class TopicDetailController: UIViewController {
     fileprivate lazy var webView: WKWebView = {
         let webView = WKWebView()
         webView.navigationDelegate = self as WKNavigationDelegate
-        
         return webView
     }()
 }
@@ -175,11 +133,74 @@ class TopicDetailController: UIViewController {
 extension TopicDetailController: WKNavigationDelegate {
     /// 页面加载完成之后调用
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        
-        webView.evaluateJavaScript("document.getElementById(\"content\").offsetHeight;") { (result, error) in
-            //获取页面高度，并重置webview的frame
-            
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        /// 方法一 ：根据 js 来获取高度，可以获取到高度
+        webView.evaluateJavaScript("document.body.offsetHeight;") { (result, error) in
+//            let height: CGFloat = result as! CGFloat // 获取的高度不准确
+            /// 方法二 ：根据 webview 内嵌的 scrollView 的 contentSize.height 去计算高度
+            /// 但是这种方法获取的高度是 0
+            let height = webView.scrollView.contentSize.height
+            // 设置 webview 的 frame
+            webView.frame = CGRect(x: 0, y: self.headerView.frame.maxY, width: screenWidth, height: height)
+            /// 获取相关新闻
+            NetworkTool.loadNewsDetailRelateNews(fromCategory: "", weitoutiao: self.weitoutiao!) { (relateNews, labels, userLike, appInfo , filter_wrods) in
+                /// 设置相关属性
+                self.relateHeaderView.filter_wrods = filter_wrods
+                self.relateHeaderView.userLike = userLike
+                var relateHeaderViewHeight: CGFloat = 125 // 105 顶部留白 + 中间留白X2 + 喜欢按钮
+                if labels.count > 0 { // 说明标签数组有对象
+                    self.relateHeaderView.labels = labels
+                    relateHeaderViewHeight += 30
+                } else {
+                    self.relateHeaderView.scrollViewHeight.constant = 0
+                }
+                if let app_info = appInfo { // 广告存在
+                    self.relateHeaderView.appInfo = app_info
+                    relateHeaderViewHeight += screenWidth * 0.65
+                    self.relateHeaderView.adViewHeight.constant = screenWidth * 0.65
+                } else {
+                    self.relateHeaderView.adViewHeight.constant = 0
+                    self.relateHeaderView.appNameViewHeight.constant = 0
+                    self.relateHeaderView.bottomViewHeight.constant = 0
+                    self.relateHeaderView.adView.isHidden = true
+                }
+                /// 设置 relateHeaderView 高度
+                self.relateHeaderView.height = relateHeaderViewHeight
+                self.relateHeaderView.layoutIfNeeded()
+                /// 设置相关新闻 table 的高度
+                var relateTableHeight: CGFloat = relateHeaderViewHeight
+                for relatenews in relateNews {
+                    relateTableHeight += relatenews.relateNewsCellHeight!
+                }
+                
+                /// 添加
+                self.relateNewsTableView.tableHeaderView = self.relateHeaderView
+                self.relateNewsTableView.frame = CGRect(x: 0, y: self.webView.frame.maxY, width: screenWidth, height: relateTableHeight)
+                self.relateNews = relateNews
+                self.relateNewsTableView.reloadData()
+                self.commentBackHeaderView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: self.relateNewsTableView.frame.maxY)
+                self.commentBackHeaderView.addSubview(self.headerView)
+                self.commentBackHeaderView.addSubview(self.webView)
+                self.commentBackHeaderView.addSubview(self.relateNewsTableView)
+                // 设置头部
+                self.tableView.tableHeaderView = self.commentBackHeaderView
+            }
         }
+    }
+    /// 当开始请求时，会调用此方法
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    /// 响应的内容到达主页面的时候响应,刚准备开始渲染页面应用
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        
+    }
+    
+    /// 启动时加载数据发生错误就会调用这个方法
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        print("网页加载发生错误-----\(error)")
     }
 }
 

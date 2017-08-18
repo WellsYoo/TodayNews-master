@@ -1,0 +1,841 @@
+@charset "UTF-8";
+/**
+ * 文字截断函数，可根据行数截断（只支持webkit）
+ */
+/**
+ * 实心无边线三角 ▲▼，可配置选中颜色.active
+ */
+/**
+ * 半像素边线，采用scale方法实现
+ * TODO: 支持配置夜间样式、按压样式
+ */
+.half-pixel-border-base,
+.authorbar .author-bar .sub-title-w .article-tags .article-tag,
+.authorbar .author-bar .sub-title-w .article-tags .article-tag.original,
+.forum[newimage="true"] .image {
+  position: relative;
+}
+.half-pixel-border-base::after,
+.authorbar .author-bar .sub-title-w .article-tags .article-tag::after,
+.authorbar .author-bar .sub-title-w .article-tags .article-tag.original::after,
+.forum[newimage="true"] .image::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  content: "";
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  pointer-events: none;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  .half-pixel-border-base::after,
+  .authorbar .author-bar .sub-title-w .article-tags .article-tag::after,
+  .authorbar .author-bar .sub-title-w .article-tags .article-tag.original::after,
+  .forum[newimage="true"] .image::after {
+    width: 200%;
+    height: 200%;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+  .half-pixel-border-base::after,
+  .authorbar .author-bar .sub-title-w .article-tags .article-tag::after,
+  .authorbar .author-bar .sub-title-w .article-tags .article-tag.original::after,
+  .forum[newimage="true"] .image::after {
+    width: 300%;
+    height: 300%;
+    -webkit-transform: scale(0.333333);
+            transform: scale(0.333333);
+  }
+}
+.clearfix:after,
+.clear:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+@-webkit-keyframes x-spin {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+  50% {
+    -webkit-transform: rotateZ(180deg);
+            transform: rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
+  }
+}
+@keyframes x-spin {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+  50% {
+    -webkit-transform: rotateZ(180deg);
+            transform: rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
+  }
+}
+/**
+ * 实现按钮
+ */
+.ui-button-base {
+  box-sizing: border-box;
+  min-width: 52px;
+  padding: 0 8px;
+  text-align: center;
+  border-radius: 4px;
+  outline: none;
+  background-color: transparent;
+  font-size: 14px;
+  line-height: 1.85714286;
+}
+/**
+ * 实现角标
+ */
+/*********************
+ * 基本样式
+ ********************/
+html {
+  -webkit-text-size-adjust: none;
+  overflow: hidden;
+}
+body {
+  overflow-x: hidden;
+  background-color: #ffffff;
+  font-family: -apple-system, helvetica, sans-serif;
+}
+body.night {
+  background-color: #252525;
+}
+body.opacity {
+  opacity: 0;
+}
+@font-face {
+  font-family: "iconfont";
+  src: url(../images/iconfont.ttf) format("truetype");
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  text-decoration: none;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+i {
+  font-style: normal;
+}
+/* 9宫格帖子详情页图片前端来裁剪 */
+/* copy from other module */
+.authorbar {
+  margin: 15px 15px 0;
+  height: 36px;
+}
+.authorbar .author-avatar-link {
+  float: left;
+  overflow: hidden;
+  width: 36px;
+  height: 36px;
+  margin-right: 9px;
+  border-radius: 100%;
+  background: #efefef;
+  position: relative;
+}
+.night .authorbar .author-avatar-link {
+  background: #2b2b2b;
+}
+.authorbar .author-avatar-link:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 100%;
+}
+.authorbar .author-avatar-link .author-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+.night .authorbar .author-avatar-link .author-avatar {
+  opacity: .5;
+}
+.authorbar .author-function-buttons {
+  width: 121px;
+  float: right;
+}
+.authorbar .follow-button {
+  float: right;
+  width: 72px;
+  height: 14px;
+  padding-top: 8px;
+  padding-bottom: 7px;
+  margin-left: 15px;
+  margin-top: 3px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+  text-align: center;
+  background-color: #2a90d7;
+  color: #ffffff;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  -webkit-user-select: none;
+          user-select: none;
+}
+.night .authorbar .follow-button {
+  background-color: #67778b;
+}
+.night .authorbar .follow-button {
+  color: #cacaca;
+}
+.v60 .authorbar .follow-button {
+  font-weight: 300;
+}
+.canmoving .authorbar .follow-button {
+  -webkit-transition: -webkit-transform 0.4s ease-in-out;
+  transition: -webkit-transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+}
+.authorbar .follow-button .focusicon {
+  display: inline-block;
+  width: 0px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 12px 12px;
+  font-size: 10px;
+  vertical-align: middle;
+}
+.authorbar .follow-button .focusicon:before {
+  content: "";
+}
+.authorbar .follow-button:after {
+  content: '订阅';
+}
+[topbutton-type="concern"] .authorbar .follow-button:after {
+  content: '关注';
+}
+.authorbar .follow-button.following {
+  background-color: transparent;
+  color: #999999;
+  font-weight: normal;
+}
+.night .authorbar .follow-button.following {
+  background-color: transparent;
+}
+.night .authorbar .follow-button.following {
+  color: #707070;
+}
+.authorbar .follow-button.following .focusicon {
+  margin-right: 5px;
+}
+.authorbar .follow-button.following .focusicon:before {
+  content: "";
+}
+.authorbar .follow-button.following:after {
+  content: '已订阅';
+}
+[topbutton-type="concern"] .authorbar .follow-button.following:after {
+  content: '已关注';
+}
+.authorbar .follow-button.disabled .focusicon {
+  background-image: url(../images/toast_keywords_refresh_white@2x.png);
+  -webkit-animation: 600ms linear 0s infinite x-spin;
+          animation: 600ms linear 0s infinite x-spin;
+  width: 12px;
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+  .authorbar .follow-button.disabled .focusicon {
+    background-image: url(../images/toast_keywords_refresh_white@3x.png);
+  }
+}
+.authorbar .follow-button.disabled .focusicon:before {
+  content: "";
+}
+.authorbar .follow-button.disabled:after {
+  content: "";
+}
+.authorbar .follow-button.following.disabled .focusicon {
+  background-image: url(../images/toast_keywords_refresh_gray@2x.png);
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+  .authorbar .follow-button.following.disabled .focusicon {
+    background-image: url(../images/toast_keywords_refresh_gray@3x.png);
+  }
+}
+.authorbar .follow-button.following.disabled:after {
+  content: "";
+}
+.authorbar .author-bar:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.authorbar .author-bar .name-link-w {
+  max-width: 100%;
+  margin-bottom: 2px;
+  font-size: 16px;
+  line-height: 19px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.authorbar .author-bar .name-link-w.no-intro {
+  padding-top: 9px;
+}
+.authorbar .author-bar .name-link-w .author-name-link {
+  color: #222222;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  font-weight: 500;
+}
+.night .authorbar .author-bar .name-link-w .author-name-link {
+  color: #707070;
+}
+.authorbar .author-bar .name-link-w .author-name-link[href*="//"] {
+  color: #222222;
+}
+.authorbar .author-bar .name-link-w .author-name-link[href*="//"]:active {
+  color: rgba(34, 34, 34, 0.5);
+}
+.night .authorbar .author-bar .name-link-w .author-name-link[href*="//"] {
+  color: #707070;
+}
+.night .authorbar .author-bar .name-link-w .author-name-link[href*="//"]:active {
+  color: rgba(112, 112, 112, 0.5);
+}
+.authorbar .author-bar .name-link-w .verified-icon {
+  display: inline-block;
+  margin-left: 5px;
+  width: 11px;
+  font-size: 13px;
+  color: #fec346;
+  position: relative;
+  top: -1px;
+}
+.night .authorbar .author-bar .name-link-w .verified-icon {
+  color: #977326;
+}
+.authorbar .author-bar .sub-title-w {
+  font-size: 12px;
+  line-height: 14px;
+  color: #999999;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+}
+.night .authorbar .author-bar .sub-title-w {
+  color: #707070;
+}
+.authorbar .author-bar .sub-title-w .article-tags {
+  display: inline-block;
+}
+.authorbar .author-bar .sub-title-w .article-tags .article-tag {
+  display: inline-block;
+  height: 10px;
+  margin-right: 4px;
+  padding: 2px 3px 2px;
+  vertical-align: text-bottom;
+  text-align: center;
+  font-size: 10px;
+  line-height: 10px;
+  color: #2a90d7;
+  border-radius: 3px;
+}
+.night .authorbar .author-bar .sub-title-w .article-tags .article-tag {
+  color: #67778b;
+}
+.authorbar .author-bar .sub-title-w .article-tags .article-tag::after {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: rgba(42, 144, 215, 0.5);
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  .authorbar .author-bar .sub-title-w .article-tags .article-tag::after {
+    border-radius: 6px;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+  .authorbar .author-bar .sub-title-w .article-tags .article-tag::after {
+    border-radius: 9px;
+  }
+}
+.night .authorbar .author-bar .sub-title-w .article-tags .article-tag::after {
+  border-color: rgba(103, 119, 139, 0.5);
+}
+.authorbar .author-bar .sub-title-w .article-tags .article-tag:active::after {
+  border-color: rgba(42, 144, 215, 0.5);
+}
+.night .authorbar .author-bar .sub-title-w .article-tags .article-tag:active::after {
+  border-color: rgba(103, 119, 139, 0.5);
+}
+.authorbar .author-bar .sub-title-w .article-tags .article-tag.original {
+  color: #505050;
+  border-radius: 3px;
+}
+.night .authorbar .author-bar .sub-title-w .article-tags .article-tag.original {
+  color: #707070;
+}
+.authorbar .author-bar .sub-title-w .article-tags .article-tag.original::after {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: rgba(153, 153, 153, 0.5);
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  .authorbar .author-bar .sub-title-w .article-tags .article-tag.original::after {
+    border-radius: 6px;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+  .authorbar .author-bar .sub-title-w .article-tags .article-tag.original::after {
+    border-radius: 9px;
+  }
+}
+.night .authorbar .author-bar .sub-title-w .article-tags .article-tag.original::after {
+  border-color: rgba(112, 112, 112, 0.5);
+}
+.authorbar .author-bar .sub-title-w .article-tags .article-tag.original:active::after {
+  border-color: rgba(153, 153, 153, 0);
+}
+.night .authorbar .author-bar .sub-title-w .article-tags .article-tag.original:active::after {
+  border-color: rgba(112, 112, 112, 0);
+}
+.authorbar .author-bar .sub-title-w[href*="//"] {
+  color: #999999;
+}
+.authorbar .author-bar .sub-title-w[href*="//"]:active {
+  color: rgba(80, 80, 80, 0.5);
+}
+.night .authorbar .author-bar .sub-title-w[href*="//"] {
+  color: #707070;
+}
+.night .authorbar .author-bar .sub-title-w[href*="//"]:active {
+  color: rgba(112, 112, 112, 0.5);
+}
+.mediasug-outer-container {
+  margin-top: 3px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  -webkit-transition: height 0.4s ease-in-out;
+  transition: height 0.4s ease-in-out;
+  height: 0;
+}
+[no-extra-space] .author-function-buttons {
+  width: 87px;
+}
+[no-extra-space] .mediasug-arrow-button {
+  display: none;
+}
+[no-extra-space] .follow-button {
+  -webkit-transform: translateX(0px) !important;
+          transform: translateX(0px) !important;
+}
+.server-v-icon {
+  display: inline-block;
+  background-size: contain;
+  margin-left: 5px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.night .server-v-icon {
+  -webkit-filter: brightness(0.5);
+          filter: brightness(0.5);
+}
+/* basic style */
+body {
+  margin: 0;
+}
+article {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+a {
+  color: #406599;
+}
+a:active {
+  color: rgba(64, 101, 153, 0.5);
+}
+.night a {
+  color: #67778b;
+}
+.night a:active {
+  color: rgba(103, 119, 139, 0.5);
+}
+.tt-title {
+  display: none;
+}
+/* style */
+p {
+  line-height: 1.5;
+  color: #222222;
+  margin-bottom: -2px;
+  margin-top: 5px;
+}
+.font_s p {
+  font-size: 15px;
+}
+p,
+.font_m p {
+  font-size: 17px;
+}
+.font_l p {
+  font-size: 19px;
+}
+.font_xl p {
+  font-size: 22px;
+}
+.night p {
+  color: #707070;
+}
+p.first-forum-p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+p.poi {
+  font-size: 12px !important;
+  line-height: 1.4;
+  color: #999999;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+p.poi:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.night p.poi {
+  color: #707070;
+}
+p.poi .location:before {
+  margin-right: 3px;
+  content: "\e62b";
+  font-family: "iconfont";
+  -webkit-font-smoothing: antialiased;
+}
+.tt-repost-thread p.poi {
+  margin-top: 7px;
+  margin-bottom: -8px;
+}
+/* 9宫格帖子详情页图片前端来裁剪 */
+.forum[newimage="true"] .image {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #efefef;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 118px;
+  border-radius: 0;
+}
+.forum[newimage="true"] .image::after {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0;
+  border-color: #e8e8e8;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  .forum[newimage="true"] .image::after {
+    border-radius: 0;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+  .forum[newimage="true"] .image::after {
+    border-radius: 0;
+  }
+}
+.night .forum[newimage="true"] .image::after {
+  border-color: #464646;
+}
+.forum[newimage="true"] .image.thumb {
+  background-size: 54px;
+}
+.night.forum[newimage="true"] .image {
+  background-color: #2b2b2b;
+}
+article > .forum[newimage="true"] .image {
+  margin-bottom: 20px;
+}
+.forum[newimage="true"] .image > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.night.forum[newimage="true"] .image > img {
+  opacity: 0.5;
+}
+.forum[newimage="true"] .image.none,
+.forum[newimage="true"] .image.offline,
+.forum[newimage="true"] .image.loading {
+  background-image: none;
+}
+.forum[newimage="true"][images="1"] .image {
+  margin: 0;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.forum[newimage="true"][images="4"] .image {
+  margin: 2px;
+}
+.forum[newimage="true"][images="4"] .image:nth-child(2n) {
+  margin-right: 0;
+}
+.forum[newimage="true"][images="4"] .image:nth-child(2n+1) {
+  margin-left: 0;
+}
+.forum[newimage="true"][images="9"] .image {
+  margin: 2px;
+}
+.forum[newimage="true"][images="9"] .image:nth-child(3n) {
+  margin-right: 0;
+}
+.forum[newimage="true"][images="9"] .image:nth-child(3n+1) {
+  margin-left: 0;
+}
+.forum[newimage="true"] .forum-image-subscript {
+  box-sizing: border-box;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.5);
+  min-width: 44px;
+  height: 20px;
+  border-radius: 10px;
+  font-size: 10px;
+  line-height: 20px;
+  color: #ffffff;
+  padding: 0 6px;
+  text-align: center;
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  z-index: 2;
+}
+.forum[newimage="true"] .forum-image-subscript:active {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.night .forum[newimage="true"] .forum-image-subscript {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.night .forum[newimage="true"] .forum-image-subscript:active {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.forum[newimage="true"] .forum-image-subscript:active {
+  color: rgba(255, 255, 255, 0.5);
+}
+.night .forum[newimage="true"] .forum-image-subscript {
+  color: #cacaca;
+}
+.night .forum[newimage="true"] .forum-image-subscript:active {
+  color: #e8e8e8;
+}
+.night.forum[newimage="true"] .image::after {
+  border-color: #464646;
+}
+/**
+ * 帖子转发-帖子
+ */
+.tt-repost-thread {
+  visibility: hidden;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: 7px;
+  padding: 15px;
+  background-color: #f4f5f6;
+}
+.night .tt-repost-thread {
+  background-color: #1b1b1b;
+}
+/**
+ * 帖子转发-文章
+ */
+.tt-repost-article {
+  width: 100%;
+  display: table;
+  overflow: hidden;
+  margin-top: 7px;
+  background-color: #f4f5f6;
+}
+.night .tt-repost-article {
+  background-color: #1b1b1b;
+}
+.tt-repost-article:active {
+  background-color: #e8e8e8;
+}
+.night .tt-repost-article:active {
+  background-color: #111111;
+}
+.tt-repost-article .coverwrap {
+  width: 68px;
+  height: 68px;
+  padding: 1px;
+  display: table-cell;
+}
+.tt-repost-article .cover {
+  width: 68px;
+  height: 68px;
+  position: relative;
+  background-color: #e8e8e8;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.night .tt-repost-article .cover {
+  background-color: #1b1b1b;
+}
+.night .tt-repost-article .cover {
+  opacity: .5;
+}
+.tt-repost-article .cover[image=""] {
+  background-color: #406599;
+}
+.night .tt-repost-article .cover[image=""] {
+  background-color: #67778b;
+}
+.tt-repost-article .cover[image=""]:before {
+  font-family: "iconfont";
+  content: "\e62e";
+  font-size: 36px;
+  line-height: 68px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+  color: #ffffff;
+}
+.night .tt-repost-article .cover[image=""]:before {
+  color: #252525;
+}
+.tt-repost-article .cover[type="video"]:after {
+  font-family: "iconfont";
+  content: "\e60b";
+  font-size: 14px;
+  line-height: 32px;
+  box-sizing: border-box;
+  padding-left: 9px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+  width: 31px;
+  height: 31px;
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+.tt-repost-article .titlewrap {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.tt-repost-article .titlewrap .title {
+  color: #222222;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: left;
+}
+.tt-repost-article .titlewrap .title:active {
+  color: rgba(34, 34, 34, 0.5);
+}
+.night .tt-repost-article .titlewrap .title {
+  color: #707070;
+}
+.night .tt-repost-article .titlewrap .title:active {
+  color: rgba(112, 112, 112, 0.5);
+}
+.tt-repost-article .titlewrap .author {
+  color: #999999;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  line-height: 17px;
+}
+.tt-repost-article .titlewrap .author:active {
+  color: rgba(80, 80, 80, 0.5);
+}
+.night .tt-repost-article .titlewrap .author {
+  color: #707070;
+}
+.night .tt-repost-article .titlewrap .author:active {
+  color: rgba(112, 112, 112, 0.5);
+}
+.tt-repost-delete {
+  margin-top: 7px;
+  background-color: #f4f5f6;
+  color: #999999;
+  font-size: 14px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.night .tt-repost-delete {
+  background-color: #1b1b1b;
+}
+.night .tt-repost-delete {
+  color: #707070;
+}
+@media (max-device-width: 374px) {
+  p {
+    line-height: 1.5;
+  }
+  .font_s p {
+    font-size: 13px;
+  }
+  p,
+  .font_m p {
+    font-size: 15px;
+  }
+  .font_l p {
+    font-size: 17px;
+  }
+  .font_xl p {
+    font-size: 20px;
+  }
+}

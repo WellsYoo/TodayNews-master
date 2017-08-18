@@ -21,92 +21,83 @@ import UIKit
 class WeiTouTiao {
     
     var relateNewsCellHeight: CGFloat? {
-        get {
-            let size = CGSize(width: screenWidth - 30 * 2, height: CGFloat(MAXFLOAT))
-            return (title!.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 15)], context: nil).size.height) + 30
-        }
+        let size = CGSize(width: screenWidth - 30 * 2, height: CGFloat(MAXFLOAT))
+        return (title!.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 15)], context: nil).size.height) + 30
     }
     
     var girlCellHeight: CGFloat? {
-        get {
-            return contentH! + 75 + screenWidth * 1.4
-        }
+        return contentH! + 75 + screenWidth * 1.4
     }
     var large_image: WTTDetailVideoLargeImage?
     
     var imageCellHeight: CGFloat? {
-        get {
-            // imageHeight + titleH! + 10 + 40
-            let imageHeight = screenWidth * 9.0 / 16.0 + titleH!
-            return imageHeight + 50
-        }
+        // imageHeight + titleH! + 10 + 40
+        let imageHeight = screenWidth * 9.0 / 16.0 + titleH!
+        return imageHeight + 50
     }
     
     var jokeCellHeight: CGFloat? {
-        get {
-            // 15 + 50 + 10 + contentH!
-            return 75 + contentH!
-        }
+        // 15 + 50 + 10 + contentH!
+        return 75 + contentH!
     }
     
     var homeCellHeight: CGFloat? {
-        get {
-            var height: CGFloat = 0
-            if titleH != nil {
-                height += titleH!
-            }
-            
-            if let hasImage = has_image  {
-                if hasImage { // 说明有图片
-                    let imageW = (screenWidth - 2 * kMargin - 2 * 6) / 3
-                    if image_list.count > 0 {
-                        if image_list.count == 1 {
-                            let imageH = imageW * 0.8
-                            return imageH
-                        } else {
-                            let imageH = imageW * 0.8
-                            height += imageH
-                        }
-                    } else {
-                        if large_image_list.count > 0 {
-                            let largeImageW = screenWidth - 2 * kMargin
-                            let largeImageH = largeImageW * 0.8
-                            height += largeImageH
-                        } else if middle_image != nil { // 只有 middle_image 有值，则显示到右侧
-                            let imageH = imageW * 0.8
-                            return imageH
-                        }
-                    }
-                }
-                if has_video! { // 说明是视频
-                    let videoW = screenWidth - 2 * kMargin
-                    let videoH = videoW * 0.55
-                    height += videoH
-                }
-            } else {
-                if thumb_image_list.count != 0 {
-                    // 1 or 2
-                    let imageWidth1or2 = (screenWidth - kMargin * 2 - 6) * 0.5
-                    // >= 3
-                    let imageH = (screenWidth - kMargin * 2 - 12) / 3
-                    switch thumb_image_list.count {
-                    case 1, 2:
-                        height += imageWidth1or2
-                    case 3:
-                        height += imageH
-                    case 4...6:
-                        height += (imageH * 2 + 3)
-                    case 7...9:
-                        height += (imageH * 3 + 6)
-                    default:
-                        height += 0
-                    }
-                }
-            }
-            
-            // 12 是标题距离顶部的间距，40 是底部 view 的高度，7 是 标题距离中间 view 的间距
-            return height + 12 + 40 + 7
+        var height: CGFloat = 0
+        if titleH != nil {
+            height += titleH!
         }
+        
+        if let hasImage = has_image  {
+            if hasImage { // 说明有图片
+                let imageW = (screenWidth - 2 * kMargin - 2 * 6) / 3
+                if image_list.count > 0 {
+                    if image_list.count == 1 {
+                        let imageH = imageW * 0.8
+                        return imageH
+                    } else {
+                        let imageH = imageW * 0.8
+                        height += imageH
+                    }
+                } else {
+                    if large_image_list.count > 0 {
+                        let largeImageW = screenWidth - 2 * kMargin
+                        let largeImageH = largeImageW * 0.8
+                        height += largeImageH
+                    } else if middle_image != nil { // 只有 middle_image 有值，则显示到右侧
+                        let imageH = imageW * 0.8
+                        return imageH
+                    }
+                }
+            }
+            
+        } else if let hasVide = has_video {
+            if hasVide { // 说明是视频
+                let videoW = screenWidth - 2 * kMargin
+                let videoH = videoW * 0.55
+                height += videoH
+            }
+        } else {
+            if thumb_image_list.count != 0 {
+                // 1 or 2
+                let imageWidth1or2 = (screenWidth - kMargin * 2 - 6) * 0.5
+                // >= 3
+                let imageH = (screenWidth - kMargin * 2 - 12) / 3
+                switch thumb_image_list.count {
+                case 1, 2:
+                    height += imageWidth1or2
+                case 3:
+                    height += imageH
+                case 4...6:
+                    height += (imageH * 2 + 3)
+                case 7...9:
+                    height += (imageH * 3 + 6)
+                default:
+                    height += 0
+                }
+            }
+        }
+        // 12 是标题距离顶部的间距，40 是底部 view 的高度，7 是 标题距离中间 view 的间距
+        return height + 12 + 40 + 7
     }
     
     ///  置顶
@@ -118,126 +109,112 @@ class WeiTouTiao {
     
     var like_count: Int?
     var likeCount: String? {
-        get {
-            guard let count = like_count else {
-                return "顶"
-            }
-            guard count >= 10000 else {
-                return String(describing: count)
-            }
-            return String(format: "%.1f万", Float(count) / 10000.0)
+        guard let count = like_count else {
+            return "顶"
         }
+        guard count >= 10000 else {
+            return String(describing: count)
+        }
+        return String(format: "%.1f万", Float(count) / 10000.0)
     }
     var repin_count: Int? // 转发数量
     var repinCount: String? {
-        get {
-            guard let count = repin_count else {
-                return ""
-            }
-            guard count >= 10000 else {
-                return String(describing: count)
-            }
-            return String(format: "%.1f万", Float(count) / 10000.0)
+        guard let count = repin_count else {
+            return ""
         }
+        guard count >= 10000 else {
+            return String(describing: count)
+        }
+        return String(format: "%.1f万", Float(count) / 10000.0)
     }
     
     var digg_count: Int?
     var diggCount: String? {
-        get {
-            guard let count = digg_count else {
-                return "顶"
-            }
-            guard count >= 10000 else {
-                return String(describing: count)
-            }
-            return String(format: "%.1f万", Float(count) / 10000.0)
+        guard let count = digg_count else {
+            return "顶"
         }
+        guard count >= 10000 else {
+            return String(describing: count)
+        }
+        return String(format: "%.1f万", Float(count) / 10000.0)
     }
     
     
     var bury_count: Int?
     var buryCount: String? {
-        get {
-            guard let count = bury_count else {
-                return "踩"
-            }
-            guard count >= 10000 else {
-                return String(describing: count)
-            }
-            return String(format: "%.1f万", Float(count) / 10000.0)
+        guard let count = bury_count else {
+            return "踩"
         }
+        guard count >= 10000 else {
+            return String(describing: count)
+        }
+        return String(format: "%.1f万", Float(count) / 10000.0)
     }
     
     
     /// 评论数量
     var comment_count: Int?
     var commentCount: String? {
-        get {
-            guard let count = comment_count else {
-                return "0"
-            }
-            guard count >= 10000 else {
-                return String(describing: count)
-            }
-            return String(format: "%.1f万", Float(count) / 10000.0)
+        guard let count = comment_count else {
+            return "0"
         }
+        guard count >= 10000 else {
+            return String(describing: count)
+        }
+        return String(format: "%.1f万", Float(count) / 10000.0)
     }
     
     /// 阅读量
     var read_count: Int?
     var readCount: String? {
-        get {
-            guard let count = read_count else {
-                return "0"
-            }
-            guard count >= 10000 else {
-                return String(describing: count)
-            }
-            return String(format: "%.1f万", Float(count) / 10000.0)
+        guard let count = read_count else {
+            return "0"
         }
+        guard count >= 10000 else {
+            return String(describing: count)
+        }
+        return String(format: "%.1f万", Float(count) / 10000.0)
     }
     
     var behot_time: TimeInterval?
     var create_time: TimeInterval?
     var publish_time: TimeInterval?
     var createTime: String? {
-        get {
-            //创建时间
-            var createDate: Date?
-            if let publicTime = publish_time {
-                createDate = Date(timeIntervalSince1970: publicTime)
-            } else if let createTime = create_time {
-                createDate = Date(timeIntervalSince1970: createTime)
-            } else {
-                createDate = Date(timeIntervalSince1970: behot_time!)
-            }
-            let fmt = DateFormatter()
-            fmt.locale = Locale(identifier: "zh_CN")
+        //创建时间
+        var createDate: Date?
+        if let publicTime = publish_time {
+            createDate = Date(timeIntervalSince1970: publicTime)
+        } else if let createTime = create_time {
+            createDate = Date(timeIntervalSince1970: createTime)
+        } else {
+            createDate = Date(timeIntervalSince1970: behot_time!)
+        }
+        let fmt = DateFormatter()
+        fmt.locale = Locale(identifier: "zh_CN")
+        fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        //当前时间
+        let now = Date()
+        //日历
+        let calender = Calendar.current
+        let comps: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from: createDate!, to: now)
+        guard (createDate?.isThisYear())! else { // 今年
             fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            //当前时间
-            let now = Date()
-            //日历
-            let calender = Calendar.current
-            let comps: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from: createDate!, to: now)
-            guard (createDate?.isThisYear())! else { // 今年
-                fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                return fmt.string(from: createDate!)
-            }
-            if (createDate?.isYesterday())! { // 昨天
-                fmt.dateFormat = "昨天 HH:mm";
-                return fmt.string(from: createDate!)
-            } else if (createDate?.isToday())! {
-                if comps.hour! >= 1 {
-                    return String(format: "%.d小时前", comps.hour!)
-                } else if comps.minute! >= 1 {
-                    return String(format: "%d分钟前", comps.minute!)
-                } else {
-                    return "刚刚";
-                }
+            return fmt.string(from: createDate!)
+        }
+        if (createDate?.isYesterday())! { // 昨天
+            fmt.dateFormat = "昨天 HH:mm";
+            return fmt.string(from: createDate!)
+        } else if (createDate?.isToday())! {
+            if comps.hour! >= 1 {
+                return String(format: "%.d小时前", comps.hour!)
+            } else if comps.minute! >= 1 {
+                return String(format: "%d分钟前", comps.minute!)
             } else {
-                fmt.dateFormat = "MM-dd HH:mm";
-                return fmt.string(from: createDate!)
+                return "刚刚";
             }
+        } else {
+            fmt.dateFormat = "MM-dd HH:mm";
+            return fmt.string(from: createDate!)
         }
     }
     
@@ -292,60 +269,51 @@ class WeiTouTiao {
     var comments: [AnyObject]?
     var content: NSString?
     var contentH: CGFloat? {
-        get {
-            if let content = content {
-                let height = content.getTextHeight(width: screenWidth - kMargin * 2)
-                return height
-            } else {
-                return 0
-            }
+        guard let content = content else {
+            return 0
         }
+        let height = content.getTextHeight(width: screenWidth - kMargin * 2)
+        return height
     }
     
     var title: NSString?
     var titleH: CGFloat? {
-        get {
-            return title?.getTextHeight(width: screenWidth - kMargin * 2)
-        }
+        return title?.getTextHeight(width: screenWidth - kMargin * 2)
     }
     var newDetailTitleHeight: CGFloat? {
-        get {
-            let size = CGSize(width: screenWidth - 2 * kMargin, height: CGFloat(MAXFLOAT))
-            return title?.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil).size.height
-        }
+        let size = CGSize(width: screenWidth - 2 * kMargin, height: CGFloat(MAXFLOAT))
+        return title?.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil).size.height
     }
     
     var cellH: CGFloat? {
-        get {
-            var height: CGFloat = 0
-            if content != nil {
-                height += contentH!
-            }
-            if let videoDetailInfo = video_detail_info {
-                let width = screenWidth - kMargin * 2
-                let videoHeight = width * (videoDetailInfo.detail_video_large_image?.height)! / (videoDetailInfo.detail_video_large_image?.width)!
-                height += videoHeight
-            }
-            if thumb_image_list.count != 0 {
-                // 1 or 2
-                let imageWidth1or2 = (screenWidth - kMargin * 2 - 6) * 0.5
-                // >= 3
-                let imageH = (screenWidth - kMargin * 2 - 12) / 3
-                switch thumb_image_list.count {
-                    case 1, 2:
-                        height += imageWidth1or2
-                    case 3:
-                        height += imageH
-                    case 4...6:
-                        height += (imageH * 2 + 3)
-                    case 7...9:
-                        height += (imageH * 3 + 6)
-                    default:
-                        height += 0
-                }
-            }
-            return CGFloat(50 + 58 + 30) + height
+        var height: CGFloat = 0
+        if content != nil {
+            height += contentH!
         }
+        if let videoDetailInfo = video_detail_info {
+            let width = screenWidth - kMargin * 2
+            let videoHeight = width * (videoDetailInfo.detail_video_large_image?.height)! / (videoDetailInfo.detail_video_large_image?.width)!
+            height += videoHeight
+        }
+        if thumb_image_list.count != 0 {
+            // 1 or 2
+            let imageWidth1or2 = (screenWidth - kMargin * 2 - 6) * 0.5
+            // >= 3
+            let imageH = (screenWidth - kMargin * 2 - 12) / 3
+            switch thumb_image_list.count {
+            case 1, 2:
+                height += imageWidth1or2
+            case 3:
+                height += imageH
+            case 4...6:
+                height += (imageH * 2 + 3)
+            case 7...9:
+                height += (imageH * 3 + 6)
+            default:
+                height += 0
+            }
+        }
+        return CGFloat(50 + 58 + 30) + height
     }
     
     var position: WTTPosition?
@@ -390,20 +358,23 @@ class WeiTouTiao {
     var tag_id: Int?
     var tip: Int?
     var url: String?
+    var show_tag: String? // 广告
+    
     
     var video_detail_info: WTTVideoDetailInfo?
     var videoDuration: Int?
     var video_duration: String? {
-        get {
-            /// 格式化时间
-            let hour = videoDuration! / 3600
-            let minute = (videoDuration! / 60) % 60
-            let second = videoDuration! % 60
-            if hour > 0 {
-                return String(format: "%02d:%02d:%02d", hour, minute, second)
-            }
-            return String(format: "%02d:%02d", minute, second)
+        /// 格式化时间
+        guard let duration = videoDuration else {
+            return "00:00"
         }
+        let hour = duration / 3600
+        let minute = (duration / 60) % 60
+        let second = duration % 60
+        if hour > 0 {
+            return String(format: "%02d:%02d:%02d", hour, minute, second)
+        }
+        return String(format: "%02d:%02d", minute, second)
     }
     var video_id: String?
     var video_proportion_article: String?
@@ -416,6 +387,8 @@ class WeiTouTiao {
     var gallary_image_count: Int?
     
     init(dict: [String: AnyObject]) {
+        
+        show_tag = dict["show_tag"] as? String
         
         impr_id = dict["impr_id"] as? String
         open_page_url = dict["open_page_url"] as? String
@@ -676,17 +649,14 @@ class WTTVideoDetailInfo {
     var video_watch_count: Int?
     var video_watching_count: Int?
     var videoWatchCount: String? {
-        get {
-            guard let count = video_watch_count else {
-                return "0"
-            }
-            guard count >= 10000 else {
-                return String(describing: count)
-            }
-            return String(format: "%.1f万", Float(count) / 10000.0)
+        guard let count = video_watch_count else {
+            return "0"
         }
+        guard count >= 10000 else {
+            return String(describing: count)
+        }
+        return String(format: "%.1f万", Float(count) / 10000.0)
     }
-    
     
     var detail_video_large_image: WTTDetailVideoLargeImage?
     

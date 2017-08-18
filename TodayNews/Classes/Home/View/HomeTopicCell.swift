@@ -73,19 +73,34 @@ class HomeTopicCell: UITableViewCell {
                 hotLabel.isHidden = true
                 hotLabelWidth.constant = 0
             }
+            /// 发布者
             if let source = weitoutiao!.source {
                 specicalLabelLeading.constant = 3
                 specicalLabel.isHidden = false
                 specicalLabel.text = source
+            } else if let user = weitoutiao!.user {
+                specicalLabelLeading.constant = 3
+                specicalLabel.isHidden = false
+                specicalLabel.text = user.screen_name!
+            } else if let userInfo = weitoutiao!.user_info {
+                specicalLabelLeading.constant = 3
+                specicalLabel.isHidden = false
+                specicalLabel.text = userInfo.screen_name!
+            } else if let mediaInfo = weitoutiao!.media_info {
+                specicalLabelLeading.constant = 3
+                specicalLabel.isHidden = false
+                specicalLabel.text = mediaInfo.name!
             } else {
                 specicalLabelLeading.constant = 0
                 specicalLabel.isHidden = true
             }
+            // 评论
             if let comment_count = weitoutiao!.comment_count {
                 commentLabel.text = "\(comment_count)" + "评论"
             }
+            // 发布时间
             createTimeLabel.text = weitoutiao!.createTime
-            
+            /// 是否有图片
             if let hasImage = weitoutiao!.has_image {
                 if hasImage {
                     if weitoutiao!.image_list.count > 0 {
@@ -112,7 +127,9 @@ class HomeTopicCell: UITableViewCell {
                             rightButton.width = (screenWidth - 2 * kMargin - 2 * 6) / 3
                         }
                     }
-                } else if weitoutiao!.has_video! {
+                }
+            } else if let hasVideo = weitoutiao!.has_video {
+                if hasVideo {
                     if let videoDetailInfo = weitoutiao!.video_detail_info {
                         videoView.imageButton.kf.setBackgroundImage(with: URL(string: videoDetailInfo.detail_video_large_image!.url!), for: .normal)
                         self.middleView.addSubview(videoView)

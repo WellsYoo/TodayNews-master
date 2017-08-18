@@ -17,6 +17,8 @@ class NewsDetailImageController: UIViewController {
     var images = [NewsDetailImage]()
     var abstracts = [String]()
     
+    var isSelectedFirstCell = false
+    
     @IBOutlet weak var closeButton: UIButton!
     
     @IBOutlet weak var moreButton: UIButton!
@@ -91,11 +93,13 @@ extension NewsDetailImageController {
                 }
             }
         }
-        NetworkTool.loadNewsDetail(articleURL: weitoutiao!.article_url!) { (images, abstracts) in
-            self.images = images
-            self.abstracts = abstracts
-            self.collectionView.reloadData()
-            self.setupAttributeString(index: 1) // 先设置好第一张图片的子标题
+        if isSelectedFirstCell { // 如果点击的第一个 cell 才去获取数据,其他情况数据从上一控制器传过来
+            NetworkTool.loadNewsDetail(articleURL: weitoutiao!.article_url!) { (images, abstracts) in
+                self.images = images
+                self.abstracts = abstracts
+                self.collectionView.reloadData()
+                self.setupAttributeString(index: 1) // 先设置好第一张图片的子标题
+            }
         }
     }
     
@@ -131,6 +135,7 @@ extension NewsDetailImageController {
     @IBAction func commentButtonClicked(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "NewsDetailImageCommentController", bundle: nil)
         let newDetailCommentVC = storyboard.instantiateViewController(withIdentifier: "NewsDetailImageCommentController") as! NewsDetailImageCommentController
+        newDetailCommentVC.weitoutiao = weitoutiao
         newDetailCommentVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - 20)))
         present(newDetailCommentVC, animated: true, completion: nil)
     }

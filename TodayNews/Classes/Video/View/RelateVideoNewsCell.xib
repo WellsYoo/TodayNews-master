@@ -47,31 +47,42 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGa-Ba-OGI">
-                        <rect key="frame" x="15" y="53" width="31" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGa-Ba-OGI">
+                        <rect key="frame" x="18" y="53" width="0.0" height="14.5"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="15" id="B8M-eL-CYe"/>
+                            <constraint firstAttribute="height" constant="14" id="B8M-eL-CYe"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ko-uR-eb9">
-                        <rect key="frame" x="56" y="53" width="31" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ko-uR-eb9">
+                        <rect key="frame" x="23" y="53" width="0.0" height="14.5"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="15" id="qXM-EG-O7D"/>
+                            <constraint firstAttribute="height" constant="14" id="qXM-EG-O7D"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbG-Ra-HuM">
+                        <rect key="frame" x="15" y="53" width="0.0" height="14.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="YFu-8f-mNA"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.28235294119999998" green="0.41960784309999999" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="2Ko-uR-eb9" firstAttribute="leading" secondItem="FGa-Ba-OGI" secondAttribute="trailing" constant="10" id="76J-us-jkt"/>
+                    <constraint firstItem="FGa-Ba-OGI" firstAttribute="leading" secondItem="qbG-Ra-HuM" secondAttribute="trailing" constant="3" id="1kA-vP-4OI"/>
+                    <constraint firstItem="2Ko-uR-eb9" firstAttribute="leading" secondItem="FGa-Ba-OGI" secondAttribute="trailing" constant="5" id="76J-us-jkt"/>
+                    <constraint firstItem="qbG-Ra-HuM" firstAttribute="leading" secondItem="HRu-zq-pCI" secondAttribute="leading" id="DLl-7y-932"/>
+                    <constraint firstItem="FGa-Ba-OGI" firstAttribute="centerY" secondItem="qbG-Ra-HuM" secondAttribute="centerY" id="DSa-A2-Cpa"/>
                     <constraint firstItem="FGa-Ba-OGI" firstAttribute="bottom" secondItem="HkL-lP-Uh1" secondAttribute="bottom" id="ExJ-7h-Nfk"/>
                     <constraint firstItem="2Ko-uR-eb9" firstAttribute="centerY" secondItem="FGa-Ba-OGI" secondAttribute="centerY" id="KVW-Qq-luT"/>
                     <constraint firstItem="FGa-Ba-OGI" firstAttribute="top" secondItem="HRu-zq-pCI" secondAttribute="bottom" constant="5" id="LVL-2Q-vyw"/>
-                    <constraint firstItem="FGa-Ba-OGI" firstAttribute="leading" secondItem="HRu-zq-pCI" secondAttribute="leading" id="QDN-cO-aBb"/>
                     <constraint firstItem="HRu-zq-pCI" firstAttribute="top" secondItem="HkL-lP-Uh1" secondAttribute="top" id="eUG-Em-xf5"/>
                     <constraint firstAttribute="trailing" secondItem="HkL-lP-Uh1" secondAttribute="trailing" constant="15" id="g0s-Jy-D45"/>
                     <constraint firstItem="HkL-lP-Uh1" firstAttribute="leading" secondItem="HRu-zq-pCI" secondAttribute="trailing" constant="15" id="gms-Sf-J1w"/>
@@ -83,6 +94,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="adLabel" destination="qbG-Ra-HuM" id="LSO-8k-Km5"/>
                 <outlet property="newTitleLabel" destination="HRu-zq-pCI" id="uyq-UI-Jsi"/>
                 <outlet property="playCountLabel" destination="2Ko-uR-eb9" id="cVw-4r-eKE"/>
                 <outlet property="thumbImageView" destination="HkL-lP-Uh1" id="Inq-jP-8D0"/>
