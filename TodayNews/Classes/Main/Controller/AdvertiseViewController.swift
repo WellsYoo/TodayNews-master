@@ -10,7 +10,7 @@ import UIKit
 
 class AdvertiseViewController: UIViewController {
     /// 延迟 2 秒
-    private var time: TimeInterval = 2.0
+    private var time: TimeInterval = 4.0
     
     private var countdownTimer: Timer?
     
@@ -19,20 +19,20 @@ class AdvertiseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
-            self.countdownTimer?.invalidate() // 移除计时器
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let tabBarVC = sb.instantiateViewController(withIdentifier: String(describing: MyTabBarController.self))
-            UIApplication.shared.keyWindow?.rootViewController = tabBarVC
-        }
-        
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
     
     func updateTime() {
-        time -= 1
-        timeButton.setTitle(String(format: "%.0f s 跳过", time), for: .normal)
+        if time == 0 {
+            countdownTimer?.invalidate()
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarVC = sb.instantiateViewController(withIdentifier: String(describing: MyTabBarController.self))
+            UIApplication.shared.keyWindow?.rootViewController = tabBarVC
+        } else {
+            time -= 1
+            timeButton.setTitle(String(format: "%.0f s 跳过", time), for: .normal)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,5 +41,9 @@ class AdvertiseViewController: UIViewController {
     }
     
     @IBAction func timeButtonClicked(_ sender: Any) {
+        countdownTimer?.invalidate() // 移除计时器
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarVC = sb.instantiateViewController(withIdentifier: String(describing: MyTabBarController.self))
+        UIApplication.shared.keyWindow?.rootViewController = tabBarVC
     }
 }

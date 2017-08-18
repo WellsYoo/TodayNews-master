@@ -201,7 +201,7 @@ class NetworkTool {
                     let content = value.substring(with: range)
                     let path = Bundle.main.path(forResource: "news_detail_1", ofType: "html")
                     let html = try! String(contentsOfFile: path!)
-                    let htmlString = html.replacingOccurrences(of: "'新闻内容'", with: content)
+                    _ = html.replacingOccurrences(of: "'新闻内容'", with: content)
                     completionHandler(html)
                 }
             }

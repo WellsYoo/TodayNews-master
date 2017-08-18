@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         let post = LCObject(className: "TestObject")
         post.set("words", value: "记录")
-        post.save()
+        _ = post.save()
         
         return true
     }
