@@ -172,7 +172,6 @@ class NetworkTool {
                         do {
                             let dict = try JSONSerialization.jsonObject(with: contentData as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
                             let topic = WeiTouTiao(dict: dict as! [String : AnyObject])
-                            print(dict)
                             topics.append(topic)
                         } catch {
                             
