@@ -8,7 +8,6 @@ PODS:
     - NVActivityIndicatorView (~> 3.5)
     - SnapKit (~> 3.2)
   - IBAnimatable (4.1.0)
-  - Kanna (2.1.1)
   - Kingfisher (3.10.4)
   - LeanCloud (10.1.0):
     - LeanCloud/Storage (= 10.1.0)
@@ -30,7 +29,6 @@ DEPENDENCIES:
   - Alamofire (~> 4.5.0)
   - BMPlayer
   - IBAnimatable
-  - Kanna (~> 2.1.1)
   - Kingfisher (~> 3.10.4)
   - LeanCloud (~> 10.1.0)
   - MJRefresh
@@ -45,7 +43,6 @@ SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   BMPlayer: 5ba9e3f3d61ccc5a24ebd9cdc24901dcf28c98bc
   IBAnimatable: 0fd2c9fd38c4798d71bcc18dbd87d473a7df2577
-  Kanna: 9b4b086c218703f2b94f5b21a466217dd2f9332e
   Kingfisher: dc3a4983e86d2dfa89513664983a82340c11a289
   LeanCloud: 2a6ac9da4fcf4b6b26f519d05a31998ddc59223a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
@@ -57,6 +54,6 @@ SPEC CHECKSUMS:
   SwiftTheme: 85f84747a48749b5b3df7c3e96fc0b1d45677d30
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 60bb0931673e80e4e973e270a1f59634565b2cc8
+PODFILE CHECKSUM: 9b5f03f5b20371885f5d5a753095a130300e2fa3
 
 COCOAPODS: 1.2.0.rc.1
