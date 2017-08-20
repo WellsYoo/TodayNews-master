@@ -41,7 +41,7 @@ class HomeNavigationBar: UIView {
 
     // 今日头条 图片
     lazy var toutiaoImageView: UIImageView = {
-        let toutiaoImageView = UIImageView(image: UIImage(named: "title_72x20_"))
+        let toutiaoImageView = UIImageView(image: UIImage(named: UserDefaults.standard.bool(forKey: isNight) ? "title_night_72x20_" : "title_72x20_"))
         toutiaoImageView.contentMode = .scaleAspectFill
         return toutiaoImageView
     }()

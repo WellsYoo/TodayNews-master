@@ -55,6 +55,7 @@ class HomeTopicCell: UITableViewCell {
                     hotLabel.textColor = UIColor.globalBlueColor()
                     hotLabel.layer.cornerRadius = 3
                     hotLabel.layer.masksToBounds = true
+                    hotLabel.layer.borderColor = UIColor.globalBlueColor().cgColor
                 } else {
                     hotLabel.isHidden = true
                     hotLabelWidth.constant = 0

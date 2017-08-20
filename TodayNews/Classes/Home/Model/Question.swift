@@ -6,18 +6,18 @@
 //  Copyright © 2017年 hrscy. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class QuestionAnswer {
     
-    var question: Question?
+    var question: Question? // 问题的内容
     
-    var ans_list = [Answer]()
+    var ans_list = [Answer]() // 回答的列表
     
     var offset: Int?
     
-    var module_list = [ModuleList]()
-    
+    var module_list = [ModuleList]() // 左下角的图标的内容
+
     var has_more: Bool?
     
     init(dict: [String: AnyObject]) {
@@ -65,13 +65,7 @@ class Question {
     var nice_ans_count: Int?
     var normal_ans_count: Int?
     var answer_count: Int? {
-        guard let niceAnsCount = nice_ans_count else {
-            return 0
-        }
-        guard let normalAnsCount = normal_ans_count else {
-            return 0
-        }
-        return niceAnsCount + normalAnsCount
+        return nice_ans_count! + normal_ans_count!
     }
     
     var follow_count: Int?
@@ -85,6 +79,7 @@ class Question {
     var qid: Int?
     var ans_list = [Answer]()
     var user: WTTUser?
+    var content: ContentAbstract?
     
     init(dict: [String: AnyObject]) {
         nice_ans_count = dict["nice_ans_count"] as? Int
@@ -114,6 +109,9 @@ class Question {
         }
         if let userinfo = dict["user"] as? [String: AnyObject] {
             user = WTTUser(dict: userinfo)
+        }
+        if let contentD = dict["content"] as? [String: AnyObject] {
+            content = ContentAbstract(dict: contentD)
         }
     }
 }
@@ -159,16 +157,18 @@ class Answer {
             share_data = ShareData(dict: shareData)
         }
     }
-    
 }
 
 class ContentAbstract {
-    var text: String?
+    var text: NSString?
+    var textH: CGFloat? {
+        return text!.getTextHeight(width: screenWidth - 30)
+    }
     
     var thumb_image_list = [WTTThumbImageList]()
     
     init(dict: [String: AnyObject]) {
-        text = dict["text"] as? String
+        text = dict["text"] as? NSString
         if let thumbImageList = dict["thumb_image_list"] as? [AnyObject] {
             for item in thumbImageList {
                 let thumbImage = WTTThumbImageList(dict: item as! [String: AnyObject])

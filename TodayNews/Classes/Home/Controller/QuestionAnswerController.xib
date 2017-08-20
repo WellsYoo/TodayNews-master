@@ -28,7 +28,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnG-6L-JeF">
                             <rect key="frame" x="262.5" y="0.0" width="112.5" height="44"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.97254901960784312" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="回答">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,24 +41,37 @@
                             <rect key="frame" x="0.0" y="0.0" width="262" height="44"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cMP-LD-dKg">
-                                    <rect key="frame" x="15" y="8" width="28" height="28"/>
+                                    <rect key="frame" x="15" y="10.5" width="23" height="23"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="28" id="Tqm-9s-7Kg"/>
-                                        <constraint firstAttribute="height" constant="28" id="Yzi-Jb-Q6f"/>
+                                        <constraint firstAttribute="width" constant="23" id="Tqm-9s-7Kg"/>
+                                        <constraint firstAttribute="height" constant="23" id="Yzi-Jb-Q6f"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qy-4T-Ank">
-                                    <rect key="frame" x="48" y="0.0" width="30" height="44"/>
+                                    <rect key="frame" x="43" y="0.0" width="30" height="44"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal">
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
                                 </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNA-pZ-qk0">
+                                    <rect key="frame" x="0.0" y="0.0" width="262" height="0.5"/>
+                                    <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="0.5" id="UAY-eQ-R5d"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="JNA-pZ-qk0" secondAttribute="trailing" id="1sI-Rp-3y8"/>
                                 <constraint firstAttribute="bottom" secondItem="5qy-4T-Ank" secondAttribute="bottom" id="Hls-jb-iij"/>
                                 <constraint firstItem="cMP-LD-dKg" firstAttribute="centerY" secondItem="Oda-YJ-AtW" secondAttribute="centerY" id="LVC-OU-B5P"/>
                                 <constraint firstItem="5qy-4T-Ank" firstAttribute="leading" secondItem="cMP-LD-dKg" secondAttribute="trailing" constant="5" id="NSR-c8-fJ1"/>
                                 <constraint firstItem="cMP-LD-dKg" firstAttribute="leading" secondItem="Oda-YJ-AtW" secondAttribute="leading" constant="15" id="NUR-r5-eFb"/>
                                 <constraint firstItem="5qy-4T-Ank" firstAttribute="top" secondItem="Oda-YJ-AtW" secondAttribute="top" id="aya-K8-dPk"/>
+                                <constraint firstItem="JNA-pZ-qk0" firstAttribute="top" secondItem="Oda-YJ-AtW" secondAttribute="top" id="ge0-7G-Sla"/>
+                                <constraint firstItem="JNA-pZ-qk0" firstAttribute="leading" secondItem="Oda-YJ-AtW" secondAttribute="leading" id="wZF-64-jYy"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -75,7 +88,7 @@
                         <constraint firstItem="gnG-6L-JeF" firstAttribute="top" secondItem="47Q-Nn-pF2" secondAttribute="top" id="vC2-Nf-nmX"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h1L-BK-ai4">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h1L-BK-ai4">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
