@@ -140,21 +140,12 @@ class NetworkTool {
     
     /// 获取首页不同分类的新闻内容(和视频内容使用一个接口)
     class func loadHomeCategoryNewsFeed(category: String, completionHandler:@escaping (_ nowTime: TimeInterval,_ newsTopics: [WeiTouTiao])->()) {
-        var url = String()
-        var params = [String: String]()
-        if category == "image_ppmm" { //  如果是美女分类
-            url =  "https://is.snssdk.com/api/news/feed/v58/?"
-            params = ["device_id": "24694334167",
-                          "category": category,
-                          "iid": "13142832815",
-                          "device_platform": "iphone"]
-        } else {
-            url = BASE_URL + "api/news/feed/v39/?"
-            params = ["device_id": device_id,
-                          "category": category,
-                          "iid": IID,
-                          "device_platform": "iphone"]
-        }
+        let url = BASE_URL + "api/news/feed/v58/?"
+        let params = ["device_id": device_id,
+                      "category": category,
+                      "iid": IID,
+                      "device_platform": "iphone",
+                      "version_code": versionCode]
         let nowTime = NSDate().timeIntervalSince1970
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
@@ -185,7 +176,6 @@ class NetworkTool {
     
     /// 获取一般新闻详情数据
     class func loadCommenNewsDetail(articleURL: String, completionHandler:@escaping (_ htmlString: String, _ images: [NewsDetailImage], _ abstracts: [String])->()) {
-        print(articleURL)
         // 测试数据
         Alamofire.request(articleURL).responseString { (response) in
             guard response.result.isSuccess else {
@@ -485,6 +475,20 @@ class NetworkTool {
         }
     }
     
+    /// 悟空问答
+    class func loadQuestionAnswerList(topicTitle: TopicTitle, weitoutiao: WeiTouTiao, completionHandler:@escaping (_ questionAnswer: QuestionAnswer)->()) {
+        let url = BASE_URL + "wenda/v1/question/brow/"
+        Alamofire.request(url, method: .post, parameters: weitoutiao.params!).responseJSON { (response) in
+            guard response.result.isSuccess else {
+                return
+            }
+            if let value = response.result.value {
+                let json = JSON(value)
+                let question = QuestionAnswer(dict: json.dictionaryObject! as [String : AnyObject])
+                completionHandler(question)
+            }
+        }
+    }
     
     /// -------------------------- 视 频 video --------------------------
     

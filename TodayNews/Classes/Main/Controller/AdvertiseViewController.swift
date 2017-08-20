@@ -26,7 +26,8 @@ class AdvertiseViewController: UIViewController {
         if time == 0 {
             countdownTimer?.invalidate()
             let sb = UIStoryboard(name: "Main", bundle: nil)
-            let tabBarVC = sb.instantiateViewController(withIdentifier: String(describing: MyTabBarController.self))
+            let tabBarVC = sb.instantiateViewController(withIdentifier: String(describing: MyTabBarController.self)) as! MyTabBarController
+            tabBarVC.delegate = self
             UIApplication.shared.keyWindow?.rootViewController = tabBarVC
         } else {
             time -= 1
@@ -42,8 +43,19 @@ class AdvertiseViewController: UIViewController {
     
     @IBAction func timeButtonClicked(_ sender: Any) {
         countdownTimer?.invalidate() // 移除计时器
+        /// 从 sb 创建的 tabbarController 设置代理无效...
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarVC = sb.instantiateViewController(withIdentifier: String(describing: MyTabBarController.self))
+        let tabBarVC = sb.instantiateViewController(withIdentifier: String(describing: MyTabBarController.self))as! MyTabBarController
+        tabBarVC.delegate = self
         UIApplication.shared.keyWindow?.rootViewController = tabBarVC
     }
+}
+
+// MARK: - 监听 tabbar 点击
+extension AdvertiseViewController: UITabBarControllerDelegate {
+    /// 点击了哪个 tabbar
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TabBarDidSelectedNotification"), object: nil)
+    }
+    
 }

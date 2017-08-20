@@ -354,6 +354,10 @@ class WeiTouTiao {
     var source: String?
     var source_icon_style: Int?
     var source_open_url: String?
+    
+    var open_url: String? // 如果是问答，会出现这个字段
+    var params: [String: AnyObject]? // 问答的参数
+    
     var tag: String?
     var tag_id: Int?
     var tip: Int?
@@ -415,6 +419,43 @@ class WeiTouTiao {
         source_open_url = dict["source_open_url"] as? String
         source_icon_style = dict["source_icon_style"] as? Int
         source = dict["source"] as? String
+        if let src = source {
+            if src == "悟空问答" {
+                if let openURL = dict["open_url"] as? String {
+                    open_url = openURL.removingPercentEncoding
+                    open_url = open_url?.replacingOccurrences(of: "ansid", with: "\"ansid\"")
+                    open_url = open_url?.replacingOccurrences(of: "&", with: ",")
+                    open_url = open_url?.replacingOccurrences(of: "=", with: ":")
+                    open_url = open_url?.replacingOccurrences(of: "api_param", with: "\"api_param\"")
+                    open_url = open_url?.replacingOccurrences(of: "gd_ext_json", with: "\"gd_ext_json\"")
+                    open_url = open_url?.replacingOccurrences(of: "qid", with: "\"qid\"")
+                    open_url = open_url?.replacingOccurrences(of: "\"\"qid\"\"", with: "\"qid\"")
+                    open_url = open_url?.replacingOccurrences(of: "\"\"ansid\"\"", with: "\"ansid\"")
+                    open_url = open_url?.replacingOccurrences(of: "enter_\"ansid\"", with: "enter_ansid")
+                    open_url = "{\(open_url!)"
+                    open_url?.append("}")
+                    if openURL.contains("sslocal://wenda_list?") {
+                        open_url = open_url?.replacingOccurrences(of: "sslocal://wenda_list?", with: "")
+                        let contentData: NSData = open_url!.data(using: String.Encoding.utf8)! as NSData
+                        do {
+                            let param = try JSONSerialization.jsonObject(with: contentData as Data, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary
+                            params = param as? [String: AnyObject]
+                        } catch {
+                        }
+                    } else if openURL.contains("sslocal://wenda_detail?") {
+                        open_url = open_url?.replacingOccurrences(of: "sslocal://wenda_detail?", with: "")
+                        let contentData: NSData = open_url!.data(using: String.Encoding.utf8)! as NSData
+                        do {
+                            let param = try JSONSerialization.jsonObject(with: contentData as Data, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary
+                            params = param as? [String: AnyObject]
+                            let gd_ext_json = param!["gd_ext_json"] as? [String: AnyObject]
+                            params?["qid"] = gd_ext_json!["qid"] as AnyObject
+                        } catch {
+                        }
+                    }
+                }
+            }
+        }
         show_portrait_article = dict["show_portrait_article"] as? Bool
         show_portrait = dict["show_portrait"] as? Bool
         preload_web = dict["preload_web"] as? Int
@@ -557,6 +598,7 @@ class WTTUser {
     var is_following: Bool?
     var is_followed: Bool?
     var is_friend: Bool?
+    
     var follower_count: Int?
     var follow: Int?
     
@@ -564,16 +606,25 @@ class WTTUser {
     var screen_name: String?
     var name: String?
     
+    
     var userAuthInfo: WTTUserAuthInfo?
     var user_id: Int?
     var user_verified: Bool?
     
+    // 问答
+    var user_intro: String?
+    var is_verify: Bool?
+    var uname: String?
+    
     init(dict: [String: AnyObject]) {
+        uname = dict["uname"] as? String
+        user_intro = dict["user_intro"] as? String
         type = dict["type"] as? Int
         last_update = dict["last_update"] as? String
         media_id = dict["media_id"] as? Int
         create_time = dict["create_time"] as? TimeInterval
         user_id = dict["user_id"] as? Int
+        is_verify = dict["is_verify"] as? Bool
         user_verified = dict["user_verified"] as? Bool
         is_following = dict["is_following"] as? Bool
         is_followed = dict["is_followed"] as? Bool

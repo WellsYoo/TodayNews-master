@@ -111,10 +111,10 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ui-h5-3Vf">
-                                <rect key="frame" x="273" y="13" width="17" height="14"/>
+                                <rect key="frame" x="270" y="13" width="20" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="2tP-P8-7N9"/>
-                                    <constraint firstAttribute="width" constant="17" id="xNJ-tn-CWR"/>
+                                    <constraint firstAttribute="width" constant="20" id="xNJ-tn-CWR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <state key="normal" image="add_textpage_17x12_"/>
