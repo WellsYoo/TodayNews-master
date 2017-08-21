@@ -225,7 +225,9 @@ class WeiTouTiao {
     var cell_flag: Int?
     
     var cell_layout_style: Int?
-    
+    // 50 = 他们也在用头条
+    // 0 = 三张小图，右边一张小图，
+    //
     var cell_type: Int?
     
     var cell_ui_type: String?
@@ -358,7 +360,7 @@ class WeiTouTiao {
     var open_url: String? // 如果是问答，会出现这个字段
     var params: [String: AnyObject]? // 问答的参数
     
-    var tag: String?
+    var tag: String? // ad=广告，news_car=汽车，video_music=视频，emotion=情感,news_psychology=
     var tag_id: Int?
     var tip: Int?
     var url: String?

@@ -23,6 +23,11 @@ class MyChannelReusableView: UICollectionReusableView {
         editChannelButton.layer.borderColor = UIColor.globalRedColor().cgColor
         editChannelButton.layer.borderWidth = 1
         editChannelButton.setTitle("完成", for: .selected)
+        NotificationCenter.default.addObserver(self, selector: #selector(longPressTarget), name: NSNotification.Name(rawValue: "longPressTarget"), object: nil)
+    }
+    
+    @objc private func longPressTarget() {
+        editChannelButton.isSelected = true
     }
     
     @IBOutlet weak var editChannelButton: UIButton!
@@ -30,5 +35,9 @@ class MyChannelReusableView: UICollectionReusableView {
     @IBAction func editButtonClicked(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         delegate?.channelReusableViewEditButtonClicked(sender)
+    }
+    /// 移除通知
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }

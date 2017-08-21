@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol AddCategoryCellDelagate: class {
+    func deleteCategoryButtonClicked(of cell: AddCategoryCell)
+}
+
 class AddCategoryCell: UICollectionViewCell {
 
+    weak var delegate: AddCategoryCellDelagate?
+    
     var isEdit = false {
         didSet {
             deleteCategoryButton.isHidden = !isEdit
@@ -25,4 +31,7 @@ class AddCategoryCell: UICollectionViewCell {
         // Initialization code
     }
 
+    @IBAction func deleteCategoryButtonClicked(_ sender: UIButton) {
+        delegate?.deleteCategoryButtonClicked(of: self)
+    }
 }
