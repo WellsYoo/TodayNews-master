@@ -10,6 +10,12 @@ import UIKit
 
 class AddCategoryCell: UICollectionViewCell {
 
+    var isEdit = false {
+        didSet {
+            deleteCategoryButton.isHidden = !isEdit
+        }
+    }
+    
     @IBOutlet weak var titleButton: UIButton!
     
     @IBOutlet weak var deleteCategoryButton: UIButton!

@@ -47,7 +47,7 @@ class HomeNavigationBar: UIView {
     }()
     
     // 搜索框
-    fileprivate lazy var searchBar: HomeSearchBar = {
+    lazy var searchBar: HomeSearchBar = {
         let searchBar = HomeSearchBar.searchBar()
         searchBar.placeholder = "搜你想搜的"
         searchBar.background = UIImage(named: "searchbox_search_20x28_")

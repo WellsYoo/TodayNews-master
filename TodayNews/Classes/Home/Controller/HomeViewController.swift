@@ -55,6 +55,7 @@ class HomeViewController: UIViewController {
     // 自定义导航栏
     fileprivate lazy var homeNavigationBar: HomeNavigationBar = {
         let homeNavigationBar = HomeNavigationBar()
+        homeNavigationBar.searchBar.delegate = self
         return homeNavigationBar
     }()
     

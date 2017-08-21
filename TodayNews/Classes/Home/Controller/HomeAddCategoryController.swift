@@ -8,15 +8,13 @@
 
 import UIKit
 import IBAnimatable
-import RxSwift
-import RxCocoa
 
 class HomeAddCategoryController: AnimatableModalViewController {
-    
-    fileprivate let disposeBag = DisposeBag()
-    // 我的频道
+    /// 是否编辑
+    var isEdit = false
+    // 上部 我的频道
     var homeTitles = [TopicTitle]()
-    // 频道推荐数据
+    // 下部 频道推荐数据
     var categories = [TopicTitle]()
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -24,6 +22,7 @@ class HomeAddCategoryController: AnimatableModalViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let layout = UICollectionViewFlowLayout()
+        // 每个 cell 的大小
         layout.itemSize = CGSize(width: (screenWidth - 50) * 0.25, height: 40)
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
@@ -48,16 +47,21 @@ class HomeAddCategoryController: AnimatableModalViewController {
     }
 }
 
+// MARK: - MyChannelReusableViewDelegate
+extension HomeAddCategoryController: MyChannelReusableViewDelegate {
+    /// 编辑按钮点击
+    func channelReusableViewEditButtonClicked(_ sender: UIButton) {
+        isEdit = sender.isSelected
+        collectionView.reloadData()
+    }
+}
+
 extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+    /// 头部
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if indexPath.section == 0 {
             let myChannelReuseableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: MyChannelReusableView.self), for: indexPath) as! MyChannelReusableView
-            myChannelReuseableView.editChannelButton.rx.controlEvent(.touchUpInside)
-                .subscribe(onNext: {   // 编辑/完成
-                    
-                })
-                .addDisposableTo(disposeBag)
+            myChannelReuseableView.delegate = self
             return myChannelReuseableView
         } else if indexPath.section == 1 {
             let channelreuseableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: ChannelRecommendReusableView.self), for: indexPath) as! ChannelRecommendReusableView
@@ -66,14 +70,16 @@ extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewD
         return UICollectionReusableView()
     }
     
+    
+    /// headerView 的大小
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: screenWidth, height: 50)
     }
-    
+    /// cell 的组数
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
-    
+    /// 每组 cell 的个数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return homeTitles.count
@@ -82,24 +88,38 @@ extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewD
         }
         return 0
     }
-    
+    /// cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  String(describing: AddCategoryCell.self), for: indexPath) as! AddCategoryCell
         if indexPath.section == 0 {
             let category = homeTitles[indexPath.item]
+            cell.isEdit = isEdit
             cell.titleButton.setTitle(category.name!, for: .normal)
         } else if indexPath.section == 1 {
             let category = categories[indexPath.item]
+            cell.isEdit = false
             cell.titleButton.setTitle(category.name!, for: .normal)
         }
         return cell
     }
-    
+    /// 点击了某一个 cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if indexPath.section == 1 {
+            
+        }
         
     }
+    /// 移动 cell
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        guard !isEdit || sourceIndexPath.section == 1 else {
+            return
+        }
+        /// 需要移动的 cell
+        
+//        collectionView.reloadData()
+    }
     
+    /// 每个 cell 之间的间距
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
