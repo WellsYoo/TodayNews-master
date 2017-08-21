@@ -46,10 +46,9 @@ class WeiTouTiao {
         if titleH != nil {
             height += titleH!
         }
-        
+        let imageW = (screenWidth - 2 * kMargin - 2 * 6) / 3
         if let hasImage = has_image  {
             if hasImage { // 说明有图片
-                let imageW = (screenWidth - 2 * kMargin - 2 * 6) / 3
                 if image_list.count > 0 {
                     if image_list.count == 1 {
                         let imageH = imageW * 0.8
@@ -72,6 +71,14 @@ class WeiTouTiao {
             
         } else if let hasVide = has_video {
             if hasVide { // 说明是视频
+                if middle_image != nil { // 右侧小图
+                    let imageH = imageW * 0.8
+                    return imageH
+                } else if video_detail_info != nil { // 相当于有大图
+                    let largeImageW = screenWidth - 2 * kMargin
+                    let largeImageH = largeImageW * 0.8
+                    height += largeImageH
+                }
                 let videoW = screenWidth - 2 * kMargin
                 let videoH = videoW * 0.55
                 height += videoH
@@ -392,7 +399,20 @@ class WeiTouTiao {
     var gallery_pic_count: Int?
     var gallary_image_count: Int?
     
+    /// 他们也在用
+    var user_cards = [UserCard]()
+    var has_more: Bool?
+    var show_more: String?
+    
     init(dict: [String: AnyObject]) {
+        has_more = dict["has_more"] as? Bool
+        show_more = dict["show_more"] as? String
+        if let userCards = dict["user_cards"] {
+            for item in userCards as! [AnyObject] {
+                let userCard = UserCard(dict: item as! [String: AnyObject])
+                user_cards.append(userCard)
+            }
+        }
         
         show_tag = dict["show_tag"] as? String
         

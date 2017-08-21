@@ -9,6 +9,12 @@
 import UIKit
 import AdSupport // 广告
 
+enum CellType: Int {
+    case normalCell = 0     // 一般的 cell
+    case userCell = 32      // 带有用户的 cell
+    case relationCell = 50  // 他们也在用头条
+}
+
 /// 屏幕的宽
 let screenWidth = UIScreen.main.bounds.width
 /// 屏幕的高

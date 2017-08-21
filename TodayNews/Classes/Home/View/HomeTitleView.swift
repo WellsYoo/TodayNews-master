@@ -61,6 +61,7 @@ class HomeTitleView: UIView {
     fileprivate lazy var rightButton: UIButton = {
         let rightButton = UIButton(frame: CGRect(x: screenWidth - 40, y: 0, width: 40, height: 40))
         rightButton.theme_setImage("images.addChannelTitlbar", forState: .normal)
+        rightButton.theme_setBackgroundImage("images.shadowAddTitlebar", forState: .normal)
         rightButton.setTitleColor(UIColor.white, for: .normal)
         rightButton.addTarget(self, action: #selector(rightButtonClicked), for: .touchUpInside)
         return rightButton

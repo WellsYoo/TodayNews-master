@@ -40,6 +40,8 @@ class HomeTopicCell: UITableViewCell {
     @IBOutlet weak var dislikeButton: UIButton!
     @IBOutlet weak var bottomLineView: UIView!
     
+    let rightButtonW: CGFloat = (screenWidth - 2 * kMargin - 20) / 3
+    
     var weitoutiao: WeiTouTiao? {
         didSet {
             if let title = weitoutiao!.title {
@@ -60,7 +62,7 @@ class HomeTopicCell: UITableViewCell {
                     hotLabel.isHidden = true
                     hotLabelWidth.constant = 0
                 }
-                self.layoutIfNeeded()
+                
             } else if let hot = weitoutiao!.hot {
                 if hot {
                     hotLabel.text = "热"
@@ -107,8 +109,7 @@ class HomeTopicCell: UITableViewCell {
                     if weitoutiao!.image_list.count > 0 {
                         if weitoutiao!.image_list.count == 1 {
                             rightButton.kf.setImage(with: URL(string: weitoutiao!.image_list.first!.url!), for: .normal)
-                            rightButtonWidth.constant = (screenWidth - 2 * kMargin - 20) / 3
-                            rightButton.layoutIfNeeded()
+                            rightButtonWidth.constant = rightButtonW
                         } else {
                             middleView.addSubview(thumbCollectionView)
                             thumbCollectionView.snp.makeConstraints({ (make) in
@@ -116,22 +117,25 @@ class HomeTopicCell: UITableViewCell {
                             })
                         }
                     } else {
-                        if weitoutiao!.large_image_list.count > 0 {
+                        if let middleImage = weitoutiao!.middle_image {
+                            rightButton.kf.setImage(with: URL(string: middleImage.url!), for: .normal)
+                            rightButtonWidth.constant = rightButtonW
+                        } else if weitoutiao!.large_image_list.count > 0 {
                             let largeImageView = UIImageView()
                             middleView.addSubview(largeImageView)
                             largeImageView.kf.setImage(with: URL(string: weitoutiao!.large_image_list.first!.url!))
                             largeImageView.snp.makeConstraints({ (make) in
                                 make.top.left.bottom.right.equalTo(self.middleView)
                             })
-                        } else {
-                            rightButton.kf.setImage(with: URL(string: weitoutiao!.middle_image!.url!), for: .normal)
-                            rightButton.width = (screenWidth - 2 * kMargin - 2 * 6) / 3
                         }
                     }
                 }
             } else if let hasVideo = weitoutiao!.has_video {
                 if hasVideo {
-                    if let videoDetailInfo = weitoutiao!.video_detail_info {
+                    if let middleImage = weitoutiao!.middle_image { // 右侧小图
+                        rightButton.kf.setImage(with: URL(string: middleImage.url!), for: .normal)
+                        rightButtonWidth.constant = rightButtonW
+                    } else if let videoDetailInfo = weitoutiao!.video_detail_info { // 相当于有大图
                         videoView.imageButton.kf.setBackgroundImage(with: URL(string: videoDetailInfo.detail_video_large_image!.url!), for: .normal)
                         self.middleView.addSubview(videoView)
                         videoView.snp.makeConstraints({ (make) in
@@ -169,7 +173,7 @@ class HomeTopicCell: UITableViewCell {
                     }
                 }
             }
-            
+            layoutIfNeeded()
         }
     }
     
