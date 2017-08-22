@@ -126,7 +126,6 @@ extension TopicViewController {
 extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let weitoutiao = newsTopics[indexPath.row]
         if topicTitle!.category == "video" {
             return screenHeight * 0.4
         } else if topicTitle!.category == "subscription" { // 头条号
@@ -140,13 +139,16 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
         } else if topicTitle!.category == "image_ppmm" { // 组图
             let weitoutiao = newsTopics[indexPath.row]
             return weitoutiao.girlCellHeight!
-        } else if weitoutiao.cell_type! == 32 { // 用户
+        } else {
             let weitoutiao = newsTopics[indexPath.row]
-            return weitoutiao.contentHeight!
-        } else if weitoutiao.cell_type! == 50 { // 他们也在用头条
-            return 290
+            if weitoutiao.cell_type! == 32 { // 用户
+                let weitoutiao = newsTopics[indexPath.row]
+                return weitoutiao.contentHeight!
+            } else if weitoutiao.cell_type! == 50 { // 他们也在用头条
+                return 290
+            }
+            return weitoutiao.homeCellHeight!
         }
-        return weitoutiao.homeCellHeight!
     }
     
     // MARK: - Table view data source
@@ -201,7 +203,6 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let weitoutiao = newsTopics[indexPath.row]
         if topicTitle!.category == "video" { // 视频
             return showVideoCell(indexPath: indexPath)
         } else if topicTitle!.category == "subscription" { // 头条号
@@ -211,37 +212,40 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
         } else if topicTitle!.category == "essay_joke" { // 段子
             let cell = Bundle.main.loadNibNamed(String(describing: HomeJokeCell.self), owner: nil, options: nil)?.last as! HomeJokeCell
             cell.isJoke = true
-            cell.joke = weitoutiao
+            cell.joke = newsTopics[indexPath.row]
             return cell
         } else if topicTitle!.category == "组图" { // 组图
             let cell = Bundle.main.loadNibNamed(String(describing:  HomeImageTableCell.self), owner: nil, options: nil)?.last as! HomeImageTableCell
-            cell.homeImage = weitoutiao
+            cell.homeImage = newsTopics[indexPath.row]
             return cell
         } else if topicTitle!.category == "image_ppmm" { // 组图
             let cell = Bundle.main.loadNibNamed(String(describing:  HomeJokeCell.self), owner: nil, options: nil)?.last as! HomeJokeCell
             cell.isJoke = false
-            cell.joke = weitoutiao
+            cell.joke = newsTopics[indexPath.row]
             return cell
-        } else if weitoutiao.cell_type! == 32 { // 用户
-            let cell = Bundle.main.loadNibNamed(String(describing:  HomeUserCell.self), owner: nil, options: nil)?.last as! HomeUserCell
+        } else {
+            let weitoutiao = newsTopics[indexPath.row]
+            if weitoutiao.cell_type! == 32 { // 用户
+                let cell = Bundle.main.loadNibNamed(String(describing:  HomeUserCell.self), owner: nil, options: nil)?.last as! HomeUserCell
+                cell.weitoutiao = newsTopics[indexPath.row]
+                return cell
+            } else if weitoutiao.cell_type! == 50 { // 相关关注
+                let cell = Bundle.main.loadNibNamed(String(describing:  TheyAlsoUseCell.self), owner: nil, options: nil)?.last as!  TheyAlsoUseCell
+                cell.theyUse = newsTopics[indexPath.row]
+                return cell
+            }
+            let cell = Bundle.main.loadNibNamed(String(describing: HomeTopicCell.self), owner: nil, options: nil)?.last as! HomeTopicCell
             cell.weitoutiao = weitoutiao
-            return cell
-        } else if weitoutiao.cell_type! == 50 { // 相关关注
-            let cell = Bundle.main.loadNibNamed(String(describing:  TheyAlsoUseCell.self), owner: nil, options: nil)?.last as!  TheyAlsoUseCell
-            cell.theyUse = weitoutiao
+            if weitoutiao.has_video! { // 说明是视频
+                cell.videoView.imageButton.rx.controlEvent(.touchUpInside)
+                    .subscribe(onNext: { [weak self] in
+                        /// 获取视频真实链接跳转到视频详情控制器
+                        self!.getRealVideoURL(weitoutiao: weitoutiao)
+                    })
+                    .addDisposableTo(disposeBag)
+            }
             return cell
         }
-        let cell = Bundle.main.loadNibNamed(String(describing: HomeTopicCell.self), owner: nil, options: nil)?.last as! HomeTopicCell
-        cell.weitoutiao = weitoutiao
-        if weitoutiao.has_video! { // 说明是视频
-            cell.videoView.imageButton.rx.controlEvent(.touchUpInside)
-                                    .subscribe(onNext: { [weak self] in
-                                        /// 获取视频真实链接跳转到视频详情控制器
-                                        self!.getRealVideoURL(weitoutiao: weitoutiao)
-                                    })
-                                    .addDisposableTo(disposeBag)
-        }
-        return cell
     }
     
     /// 获取视频的真实链接跳转到视频详情控制器
