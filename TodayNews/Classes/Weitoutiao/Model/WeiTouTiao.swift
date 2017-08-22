@@ -428,12 +428,14 @@ class WeiTouTiao {
         }
         has_more = dict["has_more"] as? Bool
         show_more = dict["show_more"] as? String
+        
         if let userCards = dict["user_cards"] {
             for item in userCards as! [AnyObject] {
                 let userCard = UserCard(dict: item as! [String: AnyObject])
                 user_cards.append(userCard)
             }
         }
+ 
         
         show_tag = dict["show_tag"] as? String
         

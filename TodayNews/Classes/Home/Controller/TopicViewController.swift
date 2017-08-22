@@ -207,7 +207,7 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
             return showVideoCell(indexPath: indexPath)
         } else if topicTitle!.category == "subscription" { // 头条号
             let cell = Bundle.main.loadNibNamed(String(describing: ToutiaohaoCell.self), owner: nil, options: nil)?.last as! ToutiaohaoCell
-//            cell.myConcern = myConcerns[indexPath.row]
+        // cell.myConcern = myConcerns[indexPath.row]
             return cell
         } else if topicTitle!.category == "essay_joke" { // 段子
             let cell = Bundle.main.loadNibNamed(String(describing: HomeJokeCell.self), owner: nil, options: nil)?.last as! HomeJokeCell
