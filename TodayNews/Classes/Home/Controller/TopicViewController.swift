@@ -140,6 +140,11 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
         } else if topicTitle!.category == "image_ppmm" { // 组图
             let weitoutiao = newsTopics[indexPath.row]
             return weitoutiao.girlCellHeight!
+        } else if weitoutiao.cell_type! == 32 { // 用户
+            let weitoutiao = newsTopics[indexPath.row]
+            return weitoutiao.contentHeight!
+        } else if weitoutiao.cell_type! == 50 { // 他们也在用头条
+            return 290
         }
         return weitoutiao.homeCellHeight!
     }
@@ -216,6 +221,14 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = Bundle.main.loadNibNamed(String(describing:  HomeJokeCell.self), owner: nil, options: nil)?.last as! HomeJokeCell
             cell.isJoke = false
             cell.joke = weitoutiao
+            return cell
+        } else if weitoutiao.cell_type! == 32 { // 用户
+            let cell = Bundle.main.loadNibNamed(String(describing:  HomeUserCell.self), owner: nil, options: nil)?.last as! HomeUserCell
+            cell.weitoutiao = weitoutiao
+            return cell
+        } else if weitoutiao.cell_type! == 50 { // 相关关注
+            let cell = Bundle.main.loadNibNamed(String(describing:  TheyAlsoUseCell.self), owner: nil, options: nil)?.last as!  TheyAlsoUseCell
+            cell.theyUse = weitoutiao
             return cell
         }
         let cell = Bundle.main.loadNibNamed(String(describing: HomeTopicCell.self), owner: nil, options: nil)?.last as! HomeTopicCell

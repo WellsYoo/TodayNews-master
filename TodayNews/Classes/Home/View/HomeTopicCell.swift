@@ -117,16 +117,17 @@ class HomeTopicCell: UITableViewCell {
                             })
                         }
                     } else {
-                        if let middleImage = weitoutiao!.middle_image {
-                            rightButton.kf.setImage(with: URL(string: middleImage.url!), for: .normal)
-                            rightButtonWidth.constant = rightButtonW
-                        } else if weitoutiao!.large_image_list.count > 0 {
+                        if weitoutiao!.large_image_list.count > 0 {
                             let largeImageView = UIImageView()
                             middleView.addSubview(largeImageView)
                             largeImageView.kf.setImage(with: URL(string: weitoutiao!.large_image_list.first!.url!))
                             largeImageView.snp.makeConstraints({ (make) in
                                 make.top.left.bottom.right.equalTo(self.middleView)
                             })
+                        } else if let middleImage = weitoutiao!.middle_image {
+                            rightButton.kf.setImage(with: URL(string: middleImage.url!), for: .normal)
+                            rightButtonWidth.constant = rightButtonW
+                            rightButton.layoutIfNeeded()
                         }
                     }
                 }

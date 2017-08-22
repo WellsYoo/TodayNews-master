@@ -79,9 +79,6 @@ class WeiTouTiao {
                     let largeImageH = largeImageW * 0.8
                     height += largeImageH
                 }
-                let videoW = screenWidth - 2 * kMargin
-                let videoH = videoW * 0.55
-                height += videoH
             }
         } else {
             if thumb_image_list.count != 0 {
@@ -284,6 +281,14 @@ class WeiTouTiao {
         let height = content.getTextHeight(width: screenWidth - kMargin * 2)
         return height
     }
+    var contentHeight: CGFloat? { // 用户的 cell
+        // 70 + contentHeight + 55  + 20 + 多加10
+        guard let content = content else {
+            return 0
+        }
+        let height = content.getTextHeight(width: screenWidth - kMargin * 2)
+        return height + 155
+    }
     
     var title: NSString?
     var titleH: CGFloat? {
@@ -403,8 +408,24 @@ class WeiTouTiao {
     var user_cards = [UserCard]()
     var has_more: Bool?
     var show_more: String?
+    var forward_count: Int?
+    var forwardCount: String? {
+        guard let count = forward_count else {
+            return "转发"
+        }
+        guard count >= 10000 else {
+            return String(describing: count)
+        }
+        return String(format: "%.1f万", Float(count) / 10000.0)
+    }
+    
+    
     
     init(dict: [String: AnyObject]) {
+        if let forward_info = dict["forward_info"] {
+            let forwardInfo = forward_info as! [String: AnyObject]
+            forward_count = forwardInfo["forward_count"] as? Int
+        }
         has_more = dict["has_more"] as? Bool
         show_more = dict["show_more"] as? String
         if let userCards = dict["user_cards"] {
