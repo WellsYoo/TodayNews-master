@@ -48,6 +48,7 @@ let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
 
 /// 服务器地址
 //let BASE_URL = "http://lf.snssdk.com/"
+//let BASE_URL = "http://ib.snssdk.com"
 let BASE_URL = "https://is.snssdk.com/"
 
 // 左右间距

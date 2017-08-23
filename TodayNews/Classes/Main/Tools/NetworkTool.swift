@@ -11,8 +11,51 @@ import Alamofire
 import SwiftyJSON
 import SVProgressHUD
 
-class NetworkTool {
-    
+protocol NetworkToolProtocol {
+    /// -------------------------- 首 页 home -------------------------
+    /// 获取首页顶部标题内容
+    static func loadHomeTitlesData(fromViewController: String, completionHandler:@escaping (_ topTitles: [TopicTitle], _ homeTopicVCs: [TopicViewController])->())
+    /// 获取首页顶部标题内容
+    static func loadHomeTitlesData(completionHandler:@escaping (_ topTitles: [TopicTitle])->())
+    /// 点击首页加号按钮，获取频道推荐数据
+    static func loadHomeCategoryRecommend(completionHandler:@escaping (_ topTitles: [TopicTitle]) -> ())
+    /// 搜索
+    static func loadSearchResult(keyword: String, offset: Int, completionHandler:@escaping (_ weitoutiao: [WeiTouTiao]) -> ())
+    /// 获取首页不同分类的新闻内容(和视频内容使用一个接口)
+    static func loadHomeCategoryNewsFeed(category: String, completionHandler:@escaping (_ nowTime: TimeInterval,_ newsTopics: [WeiTouTiao])->())
+    /// 获取一般新闻详情数据
+    static func loadCommenNewsDetail(articleURL: String, completionHandler:@escaping (_ htmlString: String, _ images: [NewsDetailImage], _ abstracts: [String])->())
+    /// 获取图片新闻详情数据
+    static func loadNewsDetail(articleURL: String, completionHandler:@escaping (_ images: [NewsDetailImage], _ abstracts: [String])->())
+    /// 获取图片新闻详情评论
+    static func loadNewsDetailImageComments(offset: Int, item_id: Int, group_id: Int, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->())
+    /// 获取新闻详情评论
+    static func loadNewsDetailComments(offset: Int, weitoutiao: WeiTouTiao, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->())
+    /// 获取新闻详情相关新闻
+    static func loadNewsDetailRelateNews(fromCategory: String, weitoutiao: WeiTouTiao, completionHandler:@escaping (_ relateNews: [WeiTouTiao], _ labels: [NewsDetailLabel], _ userLike: UserLike?, _ appInfo: NewsDetailAPPInfo?, _ filter_wrods: [WTTFilterWord]) -> ())
+    /// 解析视频的真实链接
+    static func parseVideoRealURL(video_id: String, completionHandler:@escaping (_ realVideo: RealVideo)->())
+    /// 获取头条号 关注
+    static func loadEntryList(completionHandler:@escaping (_ concerns: [ConcernToutiaohao])->())
+    /// 悟空问答
+    static func loadQuestionAnswerList(topicTitle: TopicTitle, weitoutiao: WeiTouTiao, completionHandler:@escaping (_ questionAnswer: QuestionAnswer)->())
+    /// -------------------------- 视 频 video --------------------------
+    /// 获取视频顶部标题内容
+    static func loadVideoTitlesData(completionHandler:@escaping (_ videoTitles: [TopicTitle], _ videoTopicVCs: [VideoTopicController])->())
+    // --------------------------  微  头  条  --------------------------
+    /// 获取微头条数据
+    static func loadWeiTouTiaoData(completionHandler: @escaping (_ weitoutiaos: [WeiTouTiao]) -> ())
+    // --------------------------------- 我的 mine  ---------------------------------
+    /// 我的界面 cell 数据
+    static func loadMineCellData(completionHandler: @escaping (_ sectionsArray: [AnyObject])->())
+    /// 我的关注
+    static func loadMyFollow(completionHandler: @escaping (_ concerns: [MyConcern])->())
+    /// 关注详情
+    static func loadOneFollowDetail(userId: Int, completionHandler: @escaping (_ follewDetail: FollowDetail)->())
+}
+
+class NetworkTool: NetworkToolProtocol {
+
     /// -------------------------- 首 页 home -------------------------
     // MARK: - 获取首页顶部标题内容
     /// 获取首页顶部标题内容

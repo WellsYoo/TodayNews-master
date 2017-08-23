@@ -13,6 +13,7 @@ import SnapKit
 import BMPlayer
 import MJRefresh
 import SVProgressHUD
+import NVActivityIndicatorView
 
 class VideoTopicController: UIViewController {
     /// 播放器
@@ -91,7 +92,6 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTopicCell.self)) as! VideoTopicCell
         cell.videoTopic = newsTopics[indexPath.row]
         // 头像区域点击
@@ -113,17 +113,20 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
         // 播放按钮点击
         cell.bgImageButton.rx.controlEvent(.touchUpInside)
                             .subscribe(onNext: { [weak self] in
+                                if self!.player.isPlaying {
+                                    self!.player.removeFromSuperview()
+                                }
+                                self!.player = BMPlayer(customControlView: BMPlayerCustomControlView())
                                 cell.bgImageButton.addSubview(self!.player)
+                                BMPlayerConf.allowLog = false
+                                BMPlayerConf.tintColor = UIColor.white
+                                BMPlayerConf.topBarShowInCase = .none
+                                BMPlayerConf.loaderType  = NVActivityIndicatorType.ballRotateChase
                                 self!.player.snp.makeConstraints { (make) in
                                     make.edges.equalTo(cell.bgImageButton)
                                 }
                                 /// 获取视频的真实链接
                                 NetworkTool.parseVideoRealURL(video_id: cell.videoTopic!.video_id!) { (realVideo) in
-                                    self!.player.backBlock = { (isFullScreen) in
-                                        if isFullScreen == true {
-                                            return
-                                        }
-                                    }
                                     let asset = BMPlayerResource(url: URL(string: realVideo.video_1!.main_url!)!, name: cell.titleLabel.text!)
                                     self!.player.setVideo(resource: asset)
                                 }
@@ -141,7 +144,6 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
             videoDetailVC.realVideo = realVideo
             self.navigationController?.pushViewController(videoDetailVC, animated: true)
             if self.player.isPlaying { // 说明有正在播放的视频
-                self.player.pause()
                 self.player.removeFromSuperview()
             }
         }

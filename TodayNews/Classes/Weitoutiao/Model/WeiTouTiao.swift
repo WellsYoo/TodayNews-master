@@ -201,6 +201,7 @@ class WeiTouTiao {
         //日历
         let calender = Calendar.current
         let comps: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from: createDate!, to: now)
+        
         guard (createDate?.isThisYear())! else { // 今年
             fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
             return fmt.string(from: createDate!)
@@ -406,7 +407,7 @@ class WeiTouTiao {
     
     /// 他们也在用
     var user_cards = [UserCard]()
-    var has_more: Bool?
+    
     var show_more: String?
     var forward_count: Int?
     var forwardCount: String? {
@@ -420,14 +421,18 @@ class WeiTouTiao {
     }
     
     
+    var has_more: Bool?
     
     init(dict: [String: AnyObject]) {
+        
+        has_more = dict["has_more"] as? Bool
+        
+        show_more = dict["show_more"] as? String
+        
         if let forward_info = dict["forward_info"] {
             let forwardInfo = forward_info as! [String: AnyObject]
             forward_count = forwardInfo["forward_count"] as? Int
         }
-        has_more = dict["has_more"] as? Bool
-        show_more = dict["show_more"] as? String
         
         if let userCards = dict["user_cards"] {
             for item in userCards as! [AnyObject] {

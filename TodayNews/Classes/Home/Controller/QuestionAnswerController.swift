@@ -8,8 +8,13 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
+import RxCocoa
 
 class QuestionAnswerController: UIViewController {
+    
+    fileprivate let disposeBag = DisposeBag()
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -73,6 +78,15 @@ extension QuestionAnswerController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: String(describing: AnswerCell.self), bundle: nil), forCellReuseIdentifier: String(describing: AnswerCell.self))
+        
+        headerView.concernQuestionButton.rx.controlEvent(.touchUpInside)
+                                            .subscribe (onNext: { [weak self] in
+                                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                                let moreLoginVC = storyboard.instantiateViewController(withIdentifier: "LoginPopViewController") as! LoginPopViewController
+                                                moreLoginVC.modalSize = (width: .custom(size: Float(screenWidth - 76)), height: .custom(size: Float(screenHeight - 262)))
+                                                self!.present(moreLoginVC, animated: true, completion: nil)
+                                            })
+                                            .addDisposableTo(disposeBag)
     }
 }
 
