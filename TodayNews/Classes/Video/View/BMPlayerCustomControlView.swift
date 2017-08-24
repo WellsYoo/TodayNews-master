@@ -14,9 +14,6 @@ class BMPlayerCustomControlView: BMPlayerControlView {
     var playTimeUIProgressView = UIProgressView()
     
     override func customizeUIComponents() {
-        // just make the view hidden
-        topMaskView.isHidden = true
-        chooseDefitionView.isHidden = true
         
         // If needs to change position remake the constraint
         progressView.snp.remakeConstraints { (make) in

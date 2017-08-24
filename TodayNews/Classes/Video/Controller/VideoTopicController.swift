@@ -20,6 +20,8 @@ class VideoTopicController: UIViewController {
     fileprivate lazy var player = BMPlayer()
     
     fileprivate let disposeBag = DisposeBag()
+    /// 上一次点击的 cell
+    var lastCell = VideoTopicCell()
     
     // 记录点击的顶部标题
     var videoTitle: TopicTitle?
@@ -112,23 +114,32 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
                             .addDisposableTo(disposeBag)
         // 播放按钮点击
         cell.bgImageButton.rx.controlEvent(.touchUpInside)
-                            .subscribe(onNext: { [weak self] in
-                                if self!.player.isPlaying {
-                                    self!.player.removeFromSuperview()
+                            .subscribe(onNext: { (_) in
+                                if self.lastCell != cell {
+                                    if self.player.isPlaying {
+                                        self.player.removeFromSuperview()
+                                        self.lastCell.titleLabel.isHidden = false
+                                        self.lastCell.playCountLabel.isHidden = false
+                                        self.lastCell.timeLabel.isHidden = false
+                                    }
                                 }
-                                self!.player = BMPlayer(customControlView: BMPlayerCustomControlView())
-                                cell.bgImageButton.addSubview(self!.player)
+                                cell.titleLabel.isHidden = true
+                                cell.playCountLabel.isHidden = true
+                                cell.timeLabel.isHidden = true
+                                self.player = BMPlayer(customControlView: BMPlayerCustomControlView())
+                                cell.bgImageButton.addSubview(self.player)
                                 BMPlayerConf.allowLog = false
                                 BMPlayerConf.tintColor = UIColor.white
                                 BMPlayerConf.topBarShowInCase = .none
                                 BMPlayerConf.loaderType  = NVActivityIndicatorType.ballRotateChase
-                                self!.player.snp.makeConstraints { (make) in
+                                self.player.snp.makeConstraints { (make) in
                                     make.edges.equalTo(cell.bgImageButton)
                                 }
                                 /// 获取视频的真实链接
                                 NetworkTool.parseVideoRealURL(video_id: cell.videoTopic!.video_id!) { (realVideo) in
                                     let asset = BMPlayerResource(url: URL(string: realVideo.video_1!.main_url!)!, name: cell.titleLabel.text!)
-                                    self!.player.setVideo(resource: asset)
+                                    self.player.setVideo(resource: asset)
+                                    self.lastCell = cell
                                 }
                             })
                             .addDisposableTo(disposeBag)
