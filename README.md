@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/hrscy/TodayNews.svg?branch=master)](https://travis-ci.org/hrscy/TodayNews) ![swift3.1](https://img.shields.io/badge/language-swift%203.1-orange.svg)
 
-
+# 2017.09.05
+## 目前正在录制视频...
 
 # 2017.08.22
 
