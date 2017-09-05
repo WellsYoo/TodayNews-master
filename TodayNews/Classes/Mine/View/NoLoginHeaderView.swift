@@ -31,7 +31,7 @@ class NoLoginHeaderView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.height = screenHeight * 0.4
+        self.height = screenHeight * 0.3
         /// 设置主题
         moreLoginButton.theme_backgroundColor = "colors.moreLoginBackgroundColor"
         moreLoginButton.theme_setTitleColor("colors.moreLoginColor", forState: .normal)

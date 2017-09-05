@@ -39,6 +39,7 @@ class MyTabBarController: UITabBarController {
         childController.tabBarItem.selectedImage = UIImage(named: selectedImage)
         childController.title = title
         let navC = MyNavigationController(rootViewController: childController)
+        navC.navigationItem.title = title
         addChildViewController(navC)
     }
 

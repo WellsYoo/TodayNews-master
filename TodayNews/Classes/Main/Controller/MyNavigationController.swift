@@ -27,6 +27,7 @@ class MyNavigationController: UINavigationController {
         // Dispose of any resources that can be recreated.
     }
     
+    /// 拦截 push 操作
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if viewControllers.count > 0 {
             viewController.hidesBottomBarWhenPushed = true

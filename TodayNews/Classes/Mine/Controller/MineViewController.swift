@@ -93,7 +93,7 @@ extension MineViewController {
     
 }
 
-// MARK: - // MARK: - Table view data source
+// MARK: - Table view data source
 extension MineViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {

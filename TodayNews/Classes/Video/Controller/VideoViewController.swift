@@ -82,7 +82,7 @@ extension VideoViewController {
         automaticallyAdjustsScrollViewInsets = false
         // 设置标题view
         navigationItem.titleView = titleView
-        
+        delegate = titleView
         view.addSubview(collectionView)
         
         collectionView.snp.makeConstraints { (make) in
@@ -139,7 +139,6 @@ extension VideoViewController : UICollectionViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         isForbidScroll = false
-        
         startOffsetX = scrollView.contentOffset.x
     }
 }
