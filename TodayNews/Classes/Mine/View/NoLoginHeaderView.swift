@@ -13,6 +13,8 @@ class NoLoginHeaderView: UIView {
     /// 更多登录方式按钮点击
     @IBOutlet weak var moreLoginButton: AnimatableButton!
     
+    @IBOutlet weak var stackView: UIStackView!
+    
     @IBOutlet weak var bgImageView: UIImageView!
     /// 手机按钮
     @IBOutlet weak var mobileButton: UIButton!
@@ -31,7 +33,7 @@ class NoLoginHeaderView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.height = screenHeight * 0.3
+        self.height = screenHeight * 0.4
         /// 设置主题
         moreLoginButton.theme_backgroundColor = "colors.moreLoginBackgroundColor"
         moreLoginButton.theme_setTitleColor("colors.moreLoginColor", forState: .normal)
@@ -51,6 +53,12 @@ class NoLoginHeaderView: UIView {
         qqButton.theme_setImage("images.qqButton", forState: .normal)
         sinaButton.theme_setImage("images.sinaButton", forState: .normal)
         dayOrNightButton.isSelected = UserDefaults.standard.bool(forKey: isNight)
+        // 设置在x轴的偏移范围
+        let effectX = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
+        effectX.maximumRelativeValue = 20
+        effectX.minimumRelativeValue = -20
+        // 为 stackView 添加运动效果
+        stackView.addMotionEffect(effectX)
     }
     
     class func headerView() -> NoLoginHeaderView {
