@@ -2,6 +2,14 @@
 
 [![Build Status](https://travis-ci.org/hrscy/TodayNews.svg?branch=master)](https://travis-ci.org/hrscy/TodayNews) ![swift3.1](https://img.shields.io/badge/language-swift%203.1-orange.svg)
 
+# 2017.09.09
+## 新增接口文档
+[接口文档]https://github.com/hrscy/TodayNews/tree/master/todayNews-docs()
+
+// TODO： 文档暂时不全，后面会继续补全。
+
+接口文档使用的是 [MKDocs](http://www.mkdocs.org/)，具体安装方法以及使用可以参考官网的介绍。
+
 # 2017.09.05
 ## 目前正在录制视频...
 
