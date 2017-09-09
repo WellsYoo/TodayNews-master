@@ -134,6 +134,7 @@
                 <outlet property="moreLoginButton" destination="JZ6-Us-8lD" id="sxe-Cw-Obr"/>
                 <outlet property="qqButton" destination="k5T-K8-Vre" id="itD-rk-Utl"/>
                 <outlet property="sinaButton" destination="5KS-BX-gxo" id="cys-rh-epo"/>
+                <outlet property="stackView" destination="jOD-8W-umN" id="zzt-wn-I9E"/>
                 <outlet property="wechatButton" destination="WyU-w5-0QX" id="R39-n8-BqD"/>
             </connections>
             <point key="canvasLocation" x="-9.5" y="-92"/>

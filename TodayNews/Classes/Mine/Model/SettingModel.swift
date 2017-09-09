@@ -29,3 +29,4 @@ class SettingModel {
         isHiddenRightTitle = dict["isHiddenRightTitle"] as? Bool
     }
 }
+

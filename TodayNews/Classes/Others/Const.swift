@@ -46,6 +46,7 @@ let systemVersion = UIDevice.current.systemVersion
 /// idfa
 let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
 
+
 /// 服务器地址
 //let BASE_URL = "http://lf.snssdk.com/"
 //let BASE_URL = "http://ib.snssdk.com"
@@ -64,7 +65,7 @@ let kHomeMargin: CGFloat = 15.0
 /// 微头条界面 头部视图 的高度
 let kWeiTouTiaoHeaderHieght: CGFloat = 45
 /// 我的界面 头部视图 的高度
-let kMineHeaderViewHieght: CGFloat = screenHeight * 0.38
+let kMineHeaderViewHieght: CGFloat = screenHeight * 0.4
 /// 关注详情界面 头部视图 的高度
 var kConcernHeaderViewHieght: CGFloat = 330
 

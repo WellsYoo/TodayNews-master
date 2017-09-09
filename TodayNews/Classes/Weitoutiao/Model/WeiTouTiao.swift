@@ -348,7 +348,7 @@ class WeiTouTiao {
     var open_page_url: String?
     
     var group_flags: Int?
-    var group_id: Int?
+    var group_id: UInt64?
     var group_source: Int?
     var has_image: Bool?
     var has_video: Bool?
@@ -356,7 +356,7 @@ class WeiTouTiao {
     var has_mp4_video: Bool?
     var hot: Bool?
     var is_subject: Bool?
-    var item_id: Int?
+    var item_id: UInt64?
     var item_version: Int?
 
     var middle_image: WTTMiddleImage?
@@ -541,7 +541,7 @@ class WeiTouTiao {
         }
         
         group_flags = dict["group_flags"] as? Int
-        group_id = dict["group_id"] as? Int
+        group_id = dict["group_id"] as? UInt64
         group_source = dict["group_source"] as? Int
         has_image = dict["has_image"] as? Bool
         has_video = dict["has_video"] as? Bool
@@ -549,7 +549,7 @@ class WeiTouTiao {
         has_mp4_video = dict["has_mp4_video"] as? Bool
         hot = dict["hot"] as? Bool
         is_subject = dict["is_subject"] as? Bool
-        item_id = dict["item_id"] as? Int
+        item_id = dict["item_id"] as? UInt64
         ban_comment = dict["ban_comment"] as? Int
         item_version = dict["item_version"] as? Int
         

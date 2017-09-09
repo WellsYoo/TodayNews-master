@@ -31,6 +31,7 @@ class MyConcern {
     
     var name: String?
     var url: String?
+    
     var total_count: Int?
     var description: String?
     var time: String?

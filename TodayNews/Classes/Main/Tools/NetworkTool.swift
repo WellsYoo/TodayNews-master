@@ -28,7 +28,7 @@ protocol NetworkToolProtocol {
     /// 获取图片新闻详情数据
     static func loadNewsDetail(articleURL: String, completionHandler:@escaping (_ images: [NewsDetailImage], _ abstracts: [String])->())
     /// 获取图片新闻详情评论
-    static func loadNewsDetailImageComments(offset: Int, item_id: Int, group_id: Int, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->())
+    static func loadNewsDetailImageComments(offset: Int, item_id: UInt64, group_id: UInt64, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->())
     /// 获取新闻详情评论
     static func loadNewsDetailComments(offset: Int, weitoutiao: WeiTouTiao, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->())
     /// 获取新闻详情相关新闻
@@ -259,12 +259,18 @@ class NetworkTool: NetworkToolProtocol {
                     let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex))
                     let content = value.substring(with: range)
                     let contentDecode = NetworkTool.htmlDecode(content: content)
-                    let path = Bundle.main.path(forResource: "news_detail_1", ofType: "html")
-                    let html = try! String(contentsOfFile: path!)
-                    // 替换本地 html 里 content 的内容，新闻内容格式可参考 jsCode2Html.html
-                    htmlString = html.replacingOccurrences(of: "新闻内容", with: contentDecode)
-                    // 加载 css文件
-                    htmlString.append("<link rel=\"stylesheet\" type=\"text/css\" href=\"news.css\" />\n ")
+                    /// 创建 html
+                    var html = "<!DOCTYPE html>"
+                        html += "<html>"
+                        html += "<head>"
+                        html += "<meta charset=utf-8>"
+                        html += "<link rel=\"stylesheet\" type=\"text/css\" href=\"news.css\" />\n"
+                        html += "</head>"
+                        html += "<body>"
+                        html += contentDecode
+                        html += "</body>"
+                        html += "</html>"
+                    htmlString = html
                 } else { // 第三方的新闻内容
                     /// 这部分显示还有问题
                     htmlString = value
@@ -328,7 +334,7 @@ class NetworkTool: NetworkToolProtocol {
     }
     
     /// 获取图片新闻详情评论
-    class func loadNewsDetailImageComments(offset: Int, item_id: Int, group_id: Int, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->()) {
+    class func loadNewsDetailImageComments(offset: Int, item_id: UInt64, group_id: UInt64, completionHandler:@escaping (_ comments: [NewsDetailImageComment])->()) {
         let url = BASE_URL + "article/v2/tab_comments/?"
         let params = ["offset": offset,
                       "item_id": item_id,
@@ -478,7 +484,7 @@ class NetworkTool: NetworkToolProtocol {
         let r = arc4random() // 随机数
         let url: NSString = "/video/urls/v/1/toutiao/mp4/\(video_id)?r=\(r)" as NSString
         let data: NSData = url.data(using: String.Encoding.utf8.rawValue)! as NSData
-        var crc32 = data.getCRC32() // 使用 crc32 校验
+        var crc32: UInt64 = UInt64(data.getCRC32()) // 使用 crc32 校验
         if crc32 < 0 { // crc32 的值可能为负数
             crc32 += 0x100000000
         }

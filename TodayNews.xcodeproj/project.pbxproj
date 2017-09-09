@@ -51,7 +51,6 @@
 		946F5DB31F45624A001F9AC5 /* default_theme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 946F5DB11F45624A001F9AC5 /* default_theme.plist */; };
 		946F5DB41F45624A001F9AC5 /* night_theme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 946F5DB21F45624A001F9AC5 /* night_theme.plist */; };
 		946F5DB71F45B449001F9AC5 /* MyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946F5DB61F45B449001F9AC5 /* MyTheme.swift */; };
-		946F5DFC1F46D0B6001F9AC5 /* news_detail_1.html in Resources */ = {isa = PBXBuildFile; fileRef = 946F5DFB1F46D0B6001F9AC5 /* news_detail_1.html */; };
 		946F5DFE1F46D7DE001F9AC5 /* jsCode2Html.html in Resources */ = {isa = PBXBuildFile; fileRef = 946F5DFD1F46D7DE001F9AC5 /* jsCode2Html.html */; };
 		946F5E001F46DB71001F9AC5 /* news.css in Resources */ = {isa = PBXBuildFile; fileRef = 946F5DFF1F46DB71001F9AC5 /* news.css */; };
 		946F5E0B1F484937001F9AC5 /* QuestionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946F5E0A1F484937001F9AC5 /* QuestionHeaderView.swift */; };
@@ -245,7 +244,6 @@
 		946F5DB11F45624A001F9AC5 /* default_theme.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = default_theme.plist; sourceTree = "<group>"; };
 		946F5DB21F45624A001F9AC5 /* night_theme.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = night_theme.plist; sourceTree = "<group>"; };
 		946F5DB61F45B449001F9AC5 /* MyTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTheme.swift; sourceTree = "<group>"; };
-		946F5DFB1F46D0B6001F9AC5 /* news_detail_1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = news_detail_1.html; sourceTree = "<group>"; };
 		946F5DFD1F46D7DE001F9AC5 /* jsCode2Html.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jsCode2Html.html; sourceTree = "<group>"; };
 		946F5DFF1F46DB71001F9AC5 /* news.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = news.css; sourceTree = "<group>"; };
 		946F5E0A1F484937001F9AC5 /* QuestionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionHeaderView.swift; sourceTree = "<group>"; };
@@ -721,7 +719,6 @@
 				94B916531EF21EE200AC91B9 /* Main.storyboard */,
 				94E07C2E1F43320400E8B30E /* settingPlist.plist */,
 				946F5DFF1F46DB71001F9AC5 /* news.css */,
-				946F5DFB1F46D0B6001F9AC5 /* news_detail_1.html */,
 				946F5DFD1F46D7DE001F9AC5 /* jsCode2Html.html */,
 			);
 			path = Others;
@@ -904,6 +901,7 @@
 				TargetAttributes = {
 					94B915F61EF21E4A00AC91B9 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = CK4C7KZJ97;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -1003,7 +1001,6 @@
 				946F5E111F48495F001F9AC5 /* QuestionHeaderView.xib in Resources */,
 				94B9168D1EF21EE300AC91B9 /* Main.storyboard in Resources */,
 				94B916FA1EF5144D00AC91B9 /* PostSecondCell.xib in Resources */,
-				946F5DFC1F46D0B6001F9AC5 /* news_detail_1.html in Resources */,
 				9414CCE41F3C968200C710DB /* RelateHeaderView.xib in Resources */,
 				94B9169E1EF21EE300AC91B9 /* NotNetworkView.xib in Resources */,
 				94A698C81F106989001733AF /* RightCategoryCell.xib in Resources */,
@@ -1320,12 +1317,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CK4C7KZJ97;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/TodayNews/Classes/Others/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-63.com.TodayNews";
+				PRODUCT_BUNDLE_IDENTIFIER = "-63.com.today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1345,12 +1342,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CK4C7KZJ97;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/TodayNews/Classes/Others/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-63.com.TodayNews";
+				PRODUCT_BUNDLE_IDENTIFIER = "-63.com.today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
