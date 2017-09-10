@@ -4,7 +4,7 @@
 
 # 2017.09.09
 ## 新增接口文档
-[接口文档]https://github.com/hrscy/TodayNews/tree/master/todayNews-docs()
+[接口文档](https://github.com/hrscy/TodayNews/tree/master/todayNews-docs)
 
 // TODO： 文档暂时不全，后面会继续补全。
 
