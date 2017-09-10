@@ -8,27 +8,27 @@
 
 - 请求参数
 
-|      参数    |  类型  | 是否必须 |   描述  | 示例  |
-| ----------- | ------ | :------: | ------- | ----- |
-| device_id   | Int    |   N   | 设备 ID  | 8800803362 |
-| iid   | Int    |   N   |  未知  | 14486549076 |
-| resolution  | String |   N   | 屏幕尺寸 | 640*1136 |
-| ab_feature  | String |   N   |  未知  | z1 |
-| ab_version  | String |   N   | 未知  | 167910,164959,124647,170019,170695,170018,164677,163247,170349,157001,170749,159165,168998,169430,134128,169448,161298,162742,170294,152026,170238,162572,169058,170520,170567,156262,170508,166324,170691,170603,169601,169318,169300,165734,170659,170713,167300,145585,168081,170578,168629,165497,161718,150353 |
-| ab_client  | String |   N  | 未知 | a1,f2,f7,e1 |
-| ab_group   | String |   N  | 未知 | z1 |
-| ac   | String |   N  | 网络连接方式 | WIFI |
-| idfa  | String |   N  | 广告标识符 | 09F2E546-BA11-465E-BEAB-9C69C897351B |
-| vid  | String |   N   |  同 idfv  | 09F2E546-BA11-465E-BEAB-9C69C897351B |
-| idfv  | String |   N  | 设备唯一标识  | DD92E107-C73C-4A8B-9567-9DF97B6203D4 |
-| os_version  | String |   N   |  系统版本  | 9.3.5 |
-| version_code  | String |   N |  app 版本  | 6.3.2 |
-| aid  | String |   N   |  未知  | 13 |
-| device_platform  | String |   N   |  手机平台  | iphone |
-| ssmix  | String |   N   |   未知  | a |
-| device_type  | String |   N   |   手机型号  | iPhone 5S |
-| channel  | String |   N   |   可能是下载渠道  | App Store |
-| app_name  | String |   N   |   app 名称？  | news_article |
+| 参数              | 类型     | 是否必须 | 描述      | 示例                                       |
+| --------------- | ------ | :--: | ------- | ---------------------------------------- |
+| device_id       | Int    |  N   | 设备 ID   | 8800803362                               |
+| iid             | Int    |  N   | 未知      | 14486549076                              |
+| resolution      | String |  N   | 屏幕尺寸    | 640*1136                                 |
+| ab_feature      | String |  N   | 未知      | z1                                       |
+| ab_version      | String |  N   | 未知      | 167910,164959,124647,170019,170695,170018,164677,163247,170349,157001,170749,159165,168998,169430,134128,169448,161298,162742,170294,152026,170238,162572,169058,170520,170567,156262,170508,166324,170691,170603,169601,169318,169300,165734,170659,170713,167300,145585,168081,170578,168629,165497,161718,150353 |
+| ab_client       | String |  N   | 未知      | a1,f2,f7,e1                              |
+| ab_group        | String |  N   | 未知      | z1                                       |
+| ac              | String |  N   | 网络连接方式  | WIFI                                     |
+| idfa            | String |  N   | 广告标识符   | 09F2E546-BA11-465E-BEAB-9C69C897351B     |
+| vid             | String |  N   | 同 idfv  | 09F2E546-BA11-465E-BEAB-9C69C897351B     |
+| idfv            | String |  N   | 设备唯一标识  | DD92E107-C73C-4A8B-9567-9DF97B6203D4     |
+| os_version      | String |  N   | 系统版本    | 9.3.5                                    |
+| version_code    | String |  N   | app 版本  | 6.3.2                                    |
+| aid             | String |  N   | 未知      | 13                                       |
+| device_platform | String |  N   | 手机平台    | iphone                                   |
+| ssmix           | String |  N   | 未知      | a                                        |
+| device_type     | String |  N   | 手机型号    | iPhone 5S                                |
+| channel         | String |  N   | 可能是下载渠道 | App Store                                |
+| app_name        | String |  N   | app 名称？ | news_article                             |
 
 返回数据示例：
 
@@ -75,10 +75,10 @@
 
 - 请求参数
 
-|      参数    |  类型  | 是否必须 |   描述  | 示例  |
-| ----------- | ------ | ------ | ------- | ----- |
-| device_id   | Int    |   N   | 设备 ID  | 8800803362 |
-| category   | String  |   N   |  新闻类别  | video |
+| 参数        | 类型     | 是否必须 | 描述    | 示例         |
+| --------- | ------ | ---- | ----- | ---------- |
+| device_id | Int    | N    | 设备 ID | 8800803362 |
+| category  | String | N    | 新闻类别  | video      |
 
 > 和视频列表数据接口相同， category 为 video
 
@@ -1594,7 +1594,217 @@
 
 返回的数据：
 ```
+{
+    "abstract":"突然泄漏的iOS 11最终测试版，提供了不少有用的信息，比如iPhone 8外形、新功能的，当然还有下面这款新品的。",
+    "action_list":[
+        {
+            "action":1,
+            "desc":"",
+            "extra":{
 
+            }
+        },
+        {
+            "action":3,
+            "desc":"",
+            "extra":{
+
+            }
+        },
+        {
+            "action":7,
+            "desc":"",
+            "extra":{
+
+            }
+        },
+        {
+            "action":9,
+            "desc":"",
+            "extra":{
+
+            }
+        }
+    ],
+    "aggr_type":1,
+    "allow_download":false,
+    "article_sub_type":0,
+    "article_type":0,
+    "article_url":"http://m.mydrivers.com/xiaozhi/newsview.aspx?tid=547815",
+    "ban_comment":0,
+    "behot_time":1505002583,
+    "bury_count":0,
+    "cell_flag":11,
+    "cell_layout_style":1,
+    "cell_type":0,
+    "comment_count":60,
+    "cursor":1505002583999,
+    "digg_count":0,
+    "display_url":"http://toutiao.com/group/6463636029491413262/",
+    "filter_words":[
+        {
+            "id":"8:0",
+            "is_selected":false,
+            "name":"看过了"
+        },
+        {
+            "id":"9:1",
+            "is_selected":false,
+            "name":"内容太水"
+        },
+        {
+            "id":"5:9103756",
+            "is_selected":false,
+            "name":"拉黑作者:驱动之家"
+        },
+        {
+            "id":"2:11781711",
+            "is_selected":false,
+            "name":"不想看:酷玩"
+        },
+        {
+            "id":"6:18151",
+            "is_selected":false,
+            "name":"不想看:iphone"
+        }
+    ],
+    "forward_info":{
+        "forward_count":0
+    },
+    "gallary_image_count":3,
+    "group_id":6463636029491413000,
+    "has_image":true,
+    "has_m3u8_video":false,
+    "has_mp4_video":0,
+    "has_video":false,
+    "hot":0,
+    "ignore_web_transform":1,
+    "image_list":[
+        {
+            "height":337,
+            "uri":"list/3155000bd00a601ef0d9",
+            "url":"http://p1.pstatp.com/list/300x196/3155000bd00a601ef0d9.webp",
+            "url_list":[
+                {
+                    "url":"http://p1.pstatp.com/list/300x196/3155000bd00a601ef0d9.webp"
+                },
+                {
+                    "url":"http://pb3.pstatp.com/list/300x196/3155000bd00a601ef0d9.webp"
+                },
+                {
+                    "url":"http://pb9.pstatp.com/list/300x196/3155000bd00a601ef0d9.webp"
+                }
+            ],
+            "width":600
+        },
+        {
+            "height":313,
+            "uri":"list/3154000be52383b12241",
+            "url":"http://p1.pstatp.com/list/300x196/3154000be52383b12241.webp",
+            "url_list":[
+                {
+                    "url":"http://p1.pstatp.com/list/300x196/3154000be52383b12241.webp"
+                },
+                {
+                    "url":"http://pb3.pstatp.com/list/300x196/3154000be52383b12241.webp"
+                },
+                {
+                    "url":"http://pb9.pstatp.com/list/300x196/3154000be52383b12241.webp"
+                }
+            ],
+            "width":558
+        },
+        {
+            "height":337,
+            "uri":"list/3155000bd00c21eb6f0b",
+            "url":"http://p1.pstatp.com/list/300x196/3155000bd00c21eb6f0b.webp",
+            "url_list":[
+                {
+                    "url":"http://p1.pstatp.com/list/300x196/3155000bd00c21eb6f0b.webp"
+                },
+                {
+                    "url":"http://pb3.pstatp.com/list/300x196/3155000bd00c21eb6f0b.webp"
+                },
+                {
+                    "url":"http://pb9.pstatp.com/list/300x196/3155000bd00c21eb6f0b.webp"
+                }
+            ],
+            "width":600
+        }
+    ],
+    "is_subject":false,
+    "item_id":6463651003429291000,
+    "item_version":0,
+    "keywords":"指示灯,AirPods,iOS,iPhone,测试版",
+    "level":0,
+    "log_pb":{
+        "impr_id":"2017091008221101000806222977799A"
+    },
+    "media_info":{
+        "avatar_url":"http://p2.pstatp.com/large/7294/6608368946",
+        "follow":false,
+        "is_star_user":false,
+        "media_id":5412942346,
+        "name":"驱动之家",
+        "recommend_reason":"",
+        "recommend_type":0,
+        "user_id":5400826420,
+        "user_verified":false,
+        "verified_content":""
+    },
+    "media_name":"驱动之家",
+    "middle_image":{
+        "height":337,
+        "uri":"list/3155000bd00a601ef0d9",
+        "url":"http://p1.pstatp.com/list/300x196/3155000bd00a601ef0d9.webp",
+        "url_list":[
+            {
+                "url":"http://p1.pstatp.com/list/300x196/3155000bd00a601ef0d9.webp"
+            },
+            {
+                "url":"http://pb3.pstatp.com/list/300x196/3155000bd00a601ef0d9.webp"
+            },
+            {
+                "url":"http://pb9.pstatp.com/list/300x196/3155000bd00a601ef0d9.webp"
+            }
+        ],
+        "width":600
+    },
+    "preload_web":1,
+    "publish_time":1504934813,
+    "read_count":25103,
+    "repin_count":37,
+    "rid":"2017091008221101000806222977799A",
+    "share_count":31,
+    "share_url":"http://toutiao.com/group/6463636029491413262/?iid=14462706438&app=news_article",
+    "show_portrait":false,
+    "show_portrait_article":false,
+    "source":"驱动之家",
+    "source_icon_style":1,
+    "source_open_url":"sslocal://profile?uid=5400826420",
+    "tag":"digital",
+    "tag_id":6463636029491413000,
+    "tip":0,
+    "title":"iPhone7S/8必备！苹果全新新品来了：怒赞",
+    "ugc_recommend":{
+        "activity":"",
+        "reason":""
+    },
+    "url":"http://m.mydrivers.com/xiaozhi/newsview.aspx?tid=547815",
+    "user_info":{
+        "avatar_url":"http://p3.pstatp.com/thumb/7294/6608368946",
+        "description":"驱动之家为您提供第一手的科技新闻资讯、产品评测、驱动下载等服务",
+        "follow":false,
+        "follower_count":0,
+        "name":"驱动之家",
+        "user_id":5400826420,
+        "user_verified":false
+    },
+    "user_repin":0,
+    "user_verified":0,
+    "verified_content":"",
+    "video_style":0
+}
 ```
 #### 9.三小图-2
 ![](img/home/首页-一般-3小图-2.png)
