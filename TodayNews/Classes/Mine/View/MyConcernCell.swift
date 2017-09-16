@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 
-class MyConcernCell: UICollectionViewCell {
+class MyConcernCell: UICollectionViewCell, RegisterCellOrNib {
     
     @IBOutlet weak var avatarVImageView: UIImageView!
     

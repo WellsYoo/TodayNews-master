@@ -55,7 +55,7 @@ class MineViewController: UITableViewController {
 
     // 头部视图
     fileprivate lazy var noLoginHeaderView: NoLoginHeaderView = {
-        let noLoginHeaderView = NoLoginHeaderView.headerView()
+        let noLoginHeaderView = NoLoginHeaderView.loadViewFromNib()
         return noLoginHeaderView
     }()
 }
@@ -86,9 +86,8 @@ extension MineViewController {
         tableView.tableHeaderView = noLoginHeaderView
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
-        tableView.register(UINib(nibName: String(describing: MineFirstSectionCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MineFirstSectionCell.self))
-        tableView.register(UINib(nibName: String(describing: MineOtherCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MineOtherCell.self))
-        
+        tableView.ym_registerCell(cell: MineFirstSectionCell.self)
+        tableView.ym_registerCell(cell: MineOtherCell.self)
     }
     
 }
@@ -123,7 +122,7 @@ extension MineViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MineFirstSectionCell.self)) as! MineFirstSectionCell
+            let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as MineFirstSectionCell
             let section = sections[0] as! [AnyObject]
             let mineCellModel = section[0]  as! MineCellModel
             cell.selectionStyle = .none
@@ -141,7 +140,7 @@ extension MineViewController {
             }
             return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MineOtherCell.self)) as! MineOtherCell
+        let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as MineOtherCell
         let section = sections[indexPath.section] as! [AnyObject]
         let mineCellModel = section[indexPath.row]  as! MineCellModel
         cell.mineCellModel = mineCellModel

@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class ConcernHeaderView: UIView {
+class ConcernHeaderView: UIView, LoadNibProtocol {
     
     /// 背景图片
     @IBOutlet weak var bgImageView: UIImageView!
@@ -145,7 +145,4 @@ class ConcernHeaderView: UIView {
         }
     }
     
-    class func headerView() -> ConcernHeaderView {
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last as! ConcernHeaderView
-    }
 }

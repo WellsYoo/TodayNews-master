@@ -20,7 +20,7 @@ class MyConcernController: UITableViewController {
         tableView.separatorColor = UIColor(r: 240, g: 240, b: 240)
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "follow_title_profile_18x18_"), style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
-        tableView.register(UINib(nibName: String(describing: AllConcernsCell.self), bundle: nil), forCellReuseIdentifier: String(describing: AllConcernsCell.self))
+        tableView.ym_registerCell(cell: AllConcernsCell.self)
     }
     
     func rightBarButtonItemClicked() {
@@ -38,7 +38,7 @@ extension MyConcernController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AllConcernsCell.self)) as! AllConcernsCell
+        let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as AllConcernsCell
         cell.myConcern = myConcerns[indexPath.row]
         return cell
     }

@@ -18,8 +18,7 @@ class OfflineDownloadController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "离线下载"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "下载", style: .plain, target: self, action: #selector(downloadBarButtonItem))
-        
-        tableView.register(UINib(nibName: String(describing: OfflineDownloadCell.self), bundle: nil), forCellReuseIdentifier: String(describing: OfflineDownloadCell.self))
+        tableView.ym_registerCell(cell: OfflineDownloadCell.self)
         NetworkTool.loadHomeTitlesData { (titles) in
             self.titles = titles
             self.tableView.reloadData()
@@ -37,7 +36,7 @@ class OfflineDownloadController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OfflineDownloadCell.self), for: indexPath) as! OfflineDownloadCell
+        let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as OfflineDownloadCell
         if indexPath.section == 0 {
             cell.topTitle = titles[indexPath.row]
         }

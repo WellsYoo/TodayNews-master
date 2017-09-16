@@ -15,7 +15,7 @@ protocol ConcernNavigationViewDelegate: class {
     func concernHeaderViewMoreButtonClicked()
 }
 
-class ConcernNavigationView: UIView {
+class ConcernNavigationView: UIView, LoadNibProtocol {
     
     @IBOutlet weak var usernameButton: UIButton!
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -33,10 +33,6 @@ class ConcernNavigationView: UIView {
     @IBOutlet weak var returnButton: UIButton!
     /// 更多按钮
     @IBOutlet weak var moreButton: UIButton!
-    
-    class func concernNavView() -> ConcernNavigationView {
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last as! ConcernNavigationView
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

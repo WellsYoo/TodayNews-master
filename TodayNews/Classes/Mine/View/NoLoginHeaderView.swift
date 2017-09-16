@@ -9,7 +9,7 @@
 import UIKit
 import IBAnimatable
 
-class NoLoginHeaderView: UIView {
+class NoLoginHeaderView: UIView, LoadNibProtocol {
     /// 更多登录方式按钮点击
     @IBOutlet weak var moreLoginButton: AnimatableButton!
     
@@ -60,13 +60,6 @@ class NoLoginHeaderView: UIView {
         // 为 stackView 添加运动效果
         stackView.addMotionEffect(effectX)
     }
-    
-    class func headerView() -> NoLoginHeaderView {
-        let headerView = Bundle.main.loadNibNamed(String(describing: self), owner: nil
-            , options: nil)?.last as! NoLoginHeaderView
-        return headerView
-    }
-    
     
     @IBAction func dayOrNightButtonClciked(_ sender: VerticalButton) {
         sender.isSelected = !sender.isSelected

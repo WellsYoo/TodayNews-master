@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import IBAnimatable
 
-class AllConcernsCell: UITableViewCell {
+class AllConcernsCell: UITableViewCell, RegisterCellOrNib {
     
     @IBOutlet weak var iconImageView: UIImageView!
     

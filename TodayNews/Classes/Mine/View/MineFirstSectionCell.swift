@@ -16,7 +16,7 @@ protocol MineFirstSectionCellDelegate: class {
     func mineFirstSectionCellDidSelected(myConcern: MyConcern)
 }
 
-class MineFirstSectionCell: UITableViewCell {
+class MineFirstSectionCell: UITableViewCell, RegisterCellOrNib {
 
     weak var delegate: MineFirstSectionCellDelegate?
     

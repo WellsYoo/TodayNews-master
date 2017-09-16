@@ -9,7 +9,7 @@
 
 import UIKit
 
-class SettingCell: UITableViewCell {
+class SettingCell: UITableViewCell, RegisterCellOrNib {
     
     var setting: SettingModel! {
         didSet {

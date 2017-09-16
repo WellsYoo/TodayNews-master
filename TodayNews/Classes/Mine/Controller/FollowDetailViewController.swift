@@ -52,14 +52,14 @@ class FollowDetailViewController: AnimatableModalViewController {
     
     /// 导航条
     fileprivate lazy var navView: ConcernNavigationView = {
-        let navView = ConcernNavigationView.concernNavView()
+        let navView = ConcernNavigationView.loadViewFromNib()
         navView.delegate = self
         return navView
     }()
     
     /// 头部
     fileprivate lazy var headerView: ConcernHeaderView = {
-        let headerView = ConcernHeaderView.headerView()
+        let headerView = ConcernHeaderView.loadViewFromNib()
         return headerView
     }()
     

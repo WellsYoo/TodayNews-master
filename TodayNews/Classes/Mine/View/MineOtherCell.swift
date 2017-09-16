@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MineOtherCell: UITableViewCell {
+class MineOtherCell: UITableViewCell, RegisterCellOrNib {
     /// 标题
     @IBOutlet weak var leftlabel: UILabel!
     /// 右侧标签

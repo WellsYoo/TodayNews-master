@@ -115,7 +115,7 @@ class TopicDetailController: UIViewController {
     
     /// 导航条
     fileprivate lazy var navView: ConcernNavigationView = {
-        let navView = ConcernNavigationView.concernNavView()
+        let navView = ConcernNavigationView.loadViewFromNib()
         navView.returnButton.setImage(UIImage(named: "lefterbackicon_titlebar_24x24_"), for: .normal)
         navView.moreButton.setImage(UIImage(named: "More_24x24_"), for: .normal)
         navView.delegate = self

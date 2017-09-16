@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OfflineDownloadCell: UITableViewCell {
+class OfflineDownloadCell: UITableViewCell, RegisterCellOrNib {
 
     var topTitle: TopicTitle? {
         didSet {

@@ -50,7 +50,7 @@ extension SettingViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingCell.self), for: indexPath) as! SettingCell
+        let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as SettingCell
         let cellArray = settings[indexPath.section] as! [SettingModel]
         cell.setting = cellArray[indexPath.row]
         if indexPath.section == 0 {
@@ -117,7 +117,7 @@ extension SettingViewController {
             }
             settings.append(sections as AnyObject)
         }
-        tableView.register(UINib(nibName: String(describing: SettingCell.self), bundle: nil), forCellReuseIdentifier: String(describing: SettingCell.self))
+        tableView.ym_registerCell(cell: SettingCell.self)
     }
     /// 从沙盒读取缓存数据的大小
     fileprivate func calcuateCacheSizeFromSandBox() {

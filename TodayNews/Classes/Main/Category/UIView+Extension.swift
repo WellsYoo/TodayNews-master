@@ -8,6 +8,29 @@
 
 import UIKit
 
+protocol LoadNibProtocol {}
+/// --------------------- UIView extension ---------------------
+extension LoadNibProtocol where Self: UIView {
+    /// 提供加载XIB方法
+    static func loadViewFromNib(name: String? = nil) -> Self {
+        return Bundle.main.loadNibNamed(name ?? "\(self)", owner: nil, options: nil)?.last as! Self
+    }
+}
+
+/// --------------------- Cell extension ---------------------
+protocol RegisterCellOrNib {
+}
+
+extension RegisterCellOrNib {
+    static var identifier: String {
+        return "\(self)"
+    }
+    
+    static var xib: UINib? {
+        return UINib(nibName: "\(self)", bundle: nil)
+    }
+}
+
 extension UIView {
     
     /// x
