@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class NewsDetailImageCommentCell: UITableViewCell {
+class NewsDetailImageCommentCell: UITableViewCell, RegisterCellOrNib {
     
     var isAuthor: Bool? {
         didSet {

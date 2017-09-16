@@ -12,7 +12,7 @@ protocol AddCategoryCellDelagate: class {
     func deleteCategoryButtonClicked(of cell: AddCategoryCell)
 }
 
-class AddCategoryCell: UICollectionViewCell {
+class AddCategoryCell: UICollectionViewCell, RegisterCellOrNib {
 
     weak var delegate: AddCategoryCellDelagate?
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailRelateNewsCell: UITableViewCell {
+class DetailRelateNewsCell: UITableViewCell, RegisterCellOrNib {
 
     @IBOutlet weak var contenLabel: UILabel!
     override func awakeFromNib() {

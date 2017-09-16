@@ -68,7 +68,7 @@ class VideoTopicController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.contentSize = CGSize(width: screenWidth, height: screenHeight - kNavBarHeight - kTabBarHeight)
-        tableView.register(UINib(nibName: String(describing: VideoTopicCell.self), bundle: nil), forCellReuseIdentifier: String(describing: VideoTopicCell.self))
+        tableView.ym_registerCell(cell: VideoTopicCell.self)
         tableView.theme_backgroundColor = "colors.tableViewBackgroundColor"
         return tableView
     }()
@@ -94,7 +94,7 @@ extension VideoTopicController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTopicCell.self)) as! VideoTopicCell
+        let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as VideoTopicCell
         cell.videoTopic = newsTopics[indexPath.row]
         // 头像区域点击
         cell.headCoverButton.rx.controlEvent(.touchUpInside)

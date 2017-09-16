@@ -198,7 +198,7 @@ class HomeTopicCell: UITableViewCell {
     
     // MARK: 视频图片
     lazy var videoView: CellVideoView = {
-        let videoView = CellVideoView.cellVideoView()
+        let videoView = CellVideoView.loadViewFromNib()
         return videoView
     }()
     

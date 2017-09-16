@@ -103,7 +103,7 @@ class TopicDetailController: UIViewController {
         tableView.isScrollEnabled = false  // 设置不能滚动
         tableView.estimatedRowHeight = 44
         tableView.showsVerticalScrollIndicator = false
-        tableView.register(UINib(nibName: String(describing: DetailRelateNewsCell.self), bundle: nil), forCellReuseIdentifier: String(describing: DetailRelateNewsCell.self))
+        tableView.ym_registerCell(cell: DetailRelateNewsCell.self)
         return tableView
     }()
     
@@ -222,13 +222,13 @@ extension TopicDetailController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == relateNewsTableView {
-            let cell = relateNewsTableView.dequeueReusableCell(withIdentifier: String(describing: DetailRelateNewsCell.self), for: indexPath) as! DetailRelateNewsCell
+            let cell = relateNewsTableView.ym_dequeueReusableCell(indexPath: indexPath) as DetailRelateNewsCell
             let relatenews = relateNews[indexPath.row]
             cell.contenLabel.text = relatenews.title! as String
             return cell
         } else {
             let comment = comments[indexPath.row]
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NewsDetailImageCommentCell.self), for: indexPath) as! NewsDetailImageCommentCell
+            let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as NewsDetailImageCommentCell
             /// 判断评论是不是作者
             if let user = weitoutiao!.user {
                 if comment.user_id! == user.user_id! {
@@ -311,7 +311,7 @@ extension TopicDetailController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(UINib(nibName: String( describing: NewsDetailImageCommentCell.self), bundle: nil), forCellReuseIdentifier: String( describing: NewsDetailImageCommentCell.self))
+        tableView.ym_registerCell(cell: NewsDetailImageCommentCell.self)
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
             // 获取评论数据

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThumbCollectionView: UICollectionView {
+class ThumbCollectionView: UICollectionView, RegisterCellOrNib {
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)

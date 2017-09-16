@@ -104,7 +104,7 @@ class VideoDetailController: UIViewController {
     fileprivate lazy var commentHeaderBackView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 640 + 172))
     /// 相关新闻头部
     fileprivate lazy var relateHeaderView: RelateHeaderView = {
-        let headerView = RelateHeaderView.headerView()
+        let headerView = RelateHeaderView.loadViewFromNib()
         return headerView
     }()
 }

@@ -41,7 +41,7 @@ extension NewsDetailImageCommentController {
     fileprivate func setupUI() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: String( describing: NewsDetailImageCommentCell.self), bundle: nil), forCellReuseIdentifier: String( describing: NewsDetailImageCommentCell.self))
+        tableView.ym_registerCell(cell: NewsDetailImageCommentCell.self)
         
         tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { [weak self] in
             // 获取评论数据
@@ -82,7 +82,7 @@ extension NewsDetailImageCommentController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String( describing: NewsDetailImageCommentCell.self), for: indexPath) as! NewsDetailImageCommentCell
+        let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as NewsDetailImageCommentCell
         cell.comment = comments[indexPath.row]
         
         cellClickedEvent(cell: cell)

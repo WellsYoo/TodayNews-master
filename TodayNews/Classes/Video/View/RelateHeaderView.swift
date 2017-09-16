@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class RelateHeaderView: UIView {
+class RelateHeaderView: UIView, LoadNibProtocol {
     
     var weitoutiao: WeiTouTiao? {
         didSet {
@@ -62,10 +62,6 @@ class RelateHeaderView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         sanjiaoButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-    }
-    
-    class func headerView() -> RelateHeaderView {
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last as! RelateHeaderView
     }
     
     @IBAction func sanjiaoButtonClicked(_ sender: UIButton) {

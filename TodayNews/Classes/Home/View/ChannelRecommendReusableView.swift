@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChannelRecommendReusableView: UICollectionReusableView {
+class ChannelRecommendReusableView: UICollectionReusableView, RegisterCellOrNib {
 
     override func awakeFromNib() {
         super.awakeFromNib()

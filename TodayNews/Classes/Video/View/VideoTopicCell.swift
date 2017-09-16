@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class VideoTopicCell: UITableViewCell {
+class VideoTopicCell: UITableViewCell, RegisterCellOrNib {
    
     /// 标题 label
     @IBOutlet weak var titleLabel: UILabel!

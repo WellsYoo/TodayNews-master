@@ -17,7 +17,7 @@ protocol WeitoutiaoHeaderViewDelegate: class {
     func headerViewVideoButtonClicked()
 }
 
-class WeitoutiaoHeaderView: UIView {
+class WeitoutiaoHeaderView: UIView, LoadNibProtocol {
 
     weak var delegate:WeitoutiaoHeaderViewDelegate?
     /// 文字按钮
@@ -26,11 +26,6 @@ class WeitoutiaoHeaderView: UIView {
     @IBOutlet weak var imageButton: UIButton!
     /// 视频按钮
     @IBOutlet weak var videoButton: UIButton!
-    
-    
-    class func headerView() -> WeitoutiaoHeaderView {
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last as! WeitoutiaoHeaderView
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

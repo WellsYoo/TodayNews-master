@@ -14,7 +14,7 @@ protocol MyChannelReusableViewDelegate: class {
 }
 
 /// 我的频道推荐
-class MyChannelReusableView: UICollectionReusableView {
+class MyChannelReusableView: UICollectionReusableView, RegisterCellOrNib {
 
     weak var delegate: MyChannelReusableViewDelegate?
     

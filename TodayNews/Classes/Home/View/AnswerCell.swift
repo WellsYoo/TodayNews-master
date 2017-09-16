@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class AnswerCell: UITableViewCell {
+class AnswerCell: UITableViewCell, RegisterCellOrNib {
     
     var answer: Answer? {
         didSet {

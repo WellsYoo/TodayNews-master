@@ -77,7 +77,7 @@ extension QuestionAnswerController {
         tableView.rowHeight = 60 // 暂时设为 60
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: String(describing: AnswerCell.self), bundle: nil), forCellReuseIdentifier: String(describing: AnswerCell.self))
+        tableView.ym_registerCell(cell: AnswerCell.self)
         
         headerView.concernQuestionButton.rx.controlEvent(.touchUpInside)
                                             .subscribe (onNext: { [weak self] in
@@ -97,7 +97,7 @@ extension QuestionAnswerController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AnswerCell.self), for: indexPath) as! AnswerCell
+        let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as AnswerCell
         cell.answer = answers[indexPath.row]
         return cell
     }

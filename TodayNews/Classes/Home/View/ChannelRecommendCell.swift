@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class ChannelRecommendCell: UICollectionViewCell {
+class ChannelRecommendCell: UICollectionViewCell, RegisterCellOrNib {
     
     @IBOutlet weak var titleButton: UIButton!
     

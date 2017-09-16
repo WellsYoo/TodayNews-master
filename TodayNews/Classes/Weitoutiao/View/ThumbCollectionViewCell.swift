@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class ThumbCollectionViewCell: UICollectionViewCell {
+class ThumbCollectionViewCell: UICollectionViewCell, RegisterCellOrNib {
     
     @IBOutlet weak var galleryCountLabel: UILabel!
     

@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class RightCategoryCell: UITableViewCell {
+class RightCategoryCell: UITableViewCell, RegisterCellOrNib {
 
     @IBOutlet weak var iconImageView: UIImageView!
     

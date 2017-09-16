@@ -52,11 +52,11 @@ class FeedShareViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row  == 0 {
-            let cell = PostFirstCell.postFirstCell()
+            let cell = PostFirstCell.loadViewFromNib()
             
             return cell
         } else {
-            let cell = PostSecondCell.postSecondCell()
+            let cell = PostSecondCell.loadViewFromNib()
             cell.videoButton.kf.setBackgroundImage(with: URL(string: thumbImageURL!), for: .normal)
             cell.contentLabel.text = content!
             return cell

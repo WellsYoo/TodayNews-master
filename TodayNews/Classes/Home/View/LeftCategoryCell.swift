@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LeftCategoryCell: UITableViewCell {
+class LeftCategoryCell: UITableViewCell, RegisterCellOrNib {
     /// 选中时显示的指示器View
     @IBOutlet weak var selectedIndicater: UIView!
     

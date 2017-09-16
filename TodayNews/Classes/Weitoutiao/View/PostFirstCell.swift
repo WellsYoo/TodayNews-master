@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostFirstCell: UITableViewCell {
+class PostFirstCell: UITableViewCell, LoadNibProtocol {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,10 +19,6 @@ class PostFirstCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    class func postFirstCell() -> PostFirstCell {
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last as! PostFirstCell
     }
     
 }

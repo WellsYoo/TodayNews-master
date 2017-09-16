@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostSecondCell: UITableViewCell {
+class PostSecondCell: UITableViewCell, LoadNibProtocol {
 
     @IBOutlet weak var videoButton: UIButton!
     
@@ -25,9 +25,4 @@ class PostSecondCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    class func postSecondCell() -> PostSecondCell {
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last as! PostSecondCell
-    }
-    
 }

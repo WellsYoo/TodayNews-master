@@ -12,7 +12,7 @@ protocol NewsDetailImageCellDelegate: class {
     func imageViewLongPressGestureRecognizer()
 }
 
-class NewsDetailImageCell: UICollectionViewCell {
+class NewsDetailImageCell: UICollectionViewCell, RegisterCellOrNib {
     
     weak var delegate: NewsDetailImageCellDelegate?
     

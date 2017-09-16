@@ -60,7 +60,7 @@ extension NewsDetailImageController {
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
-        collectionView.register(UINib(nibName: String(describing: NewsDetailImageCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: NewsDetailImageCell.self))
+        collectionView.ym_registerCell(cell: NewsDetailImageCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -185,7 +185,7 @@ extension NewsDetailImageController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: NewsDetailImageCell.self), for: indexPath) as! NewsDetailImageCell
+        let cell = collectionView.ym_dequeueReusableCell(indexPath: indexPath) as NewsDetailImageCell
         cell.delegate = self
         cell.index = indexPath.item + 1
         cell.count = images.count

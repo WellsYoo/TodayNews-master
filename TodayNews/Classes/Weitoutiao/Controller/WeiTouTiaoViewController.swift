@@ -51,7 +51,7 @@ class WeiTouTiaoViewController: UIViewController {
     }
 
     fileprivate lazy var headerView: WeitoutiaoHeaderView = {
-        let headerView = WeitoutiaoHeaderView.headerView()
+        let headerView = WeitoutiaoHeaderView.loadViewFromNib()
         headerView.delegate = self
         return headerView
     }()
@@ -152,7 +152,7 @@ extension WeiTouTiaoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed(String(describing: WeiTouTiaoCell.self), owner: nil, options: nil)?.last as! WeiTouTiaoCell
+        let cell = WeiTouTiaoCell.loadViewFromNib()
         cell.weitoutiao = microNews[indexPath.row]
         cell.delegate = self
         return cell

@@ -18,7 +18,7 @@ protocol WeitoutiaoCellDelegate: class {
     
 }
 
-class WeiTouTiaoCell: UITableViewCell {
+class WeiTouTiaoCell: UITableViewCell, LoadNibProtocol {
     
     weak var delegate: WeitoutiaoCellDelegate?
     /// 头像
@@ -161,7 +161,7 @@ class WeiTouTiaoCell: UITableViewCell {
     
     // MARK: 视频图片
     private lazy var videoView: CellVideoView = {
-        let videoView = CellVideoView.cellVideoView()
+        let videoView = CellVideoView.loadViewFromNib()
         return videoView
     }()
     

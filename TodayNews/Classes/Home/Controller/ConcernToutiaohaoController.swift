@@ -24,8 +24,8 @@ class ConcernToutiaohaoController: UIViewController {
         leftTableView.delegate = self
         rightTableView.delegate = self
         
-        leftTableView.register(UINib(nibName: String(describing: LeftCategoryCell.self), bundle: nil), forCellReuseIdentifier: String(describing: LeftCategoryCell.self))
-        rightTableView.register(UINib(nibName: String(describing: RightCategoryCell.self), bundle: nil), forCellReuseIdentifier: String(describing: RightCategoryCell.self))
+        leftTableView.ym_registerCell(cell: LeftCategoryCell.self)
+        rightTableView.ym_registerCell(cell: RightCategoryCell.self)
         
         NetworkTool.loadEntryList { (concerns) in
             self.concerns = concerns
@@ -51,11 +51,11 @@ extension ConcernToutiaohaoController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == leftTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LeftCategoryCell.self), for: indexPath) as! LeftCategoryCell
+            let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as LeftCategoryCell
             cell.concern = concerns[indexPath.row]
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RightCategoryCell.self), for: indexPath) as! RightCategoryCell
+            let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as RightCategoryCell
             cell.subConcern = subConcerns[indexPath.row]
             return cell
         }

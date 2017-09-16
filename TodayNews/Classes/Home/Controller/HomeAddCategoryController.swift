@@ -29,10 +29,10 @@ class HomeAddCategoryController: AnimatableModalViewController {
         layout.minimumInteritemSpacing = 10
         collectionView.collectionViewLayout = layout
         // 注册 cell 和头部
-        collectionView.register(UINib(nibName: String(describing: AddCategoryCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: AddCategoryCell.self))
-        collectionView.register(UINib(nibName: String(describing: ChannelRecommendCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ChannelRecommendCell.self))
-        collectionView.register(UINib(nibName: String(describing: MyChannelReusableView.self), bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: MyChannelReusableView.self))
-        collectionView.register(UINib(nibName: String(describing: ChannelRecommendReusableView.self), bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: ChannelRecommendReusableView.self))
+        collectionView.ym_registerCell(cell: AddCategoryCell.self)
+        collectionView.ym_registerCell(cell: ChannelRecommendCell.self)
+        collectionView.ym_registerSupplementaryHeaderView(reusableView: ChannelRecommendReusableView.self)
+        collectionView.ym_registerSupplementaryHeaderView(reusableView: MyChannelReusableView.self)
         collectionView.allowsMultipleSelection = true
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -102,11 +102,10 @@ extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewD
     /// 头部
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if indexPath.section == 0 {
-            let myChannelReuseableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: MyChannelReusableView.self), for: indexPath) as! MyChannelReusableView
-            myChannelReuseableView.delegate = self
+            let myChannelReuseableView = collectionView.ym_dequeueReusableSupplementaryHeaderView(indexPath: indexPath) as MyChannelReusableView
             return myChannelReuseableView
         } else if indexPath.section == 1 {
-            let channelreuseableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: ChannelRecommendReusableView.self), for: indexPath) as! ChannelRecommendReusableView
+            let channelreuseableView = collectionView.ym_dequeueReusableSupplementaryHeaderView(indexPath: indexPath) as ChannelRecommendReusableView
             return channelreuseableView
         }
         return UICollectionReusableView()
@@ -133,14 +132,14 @@ extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewD
     /// cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  String(describing: AddCategoryCell.self), for: indexPath) as! AddCategoryCell
+            let cell = collectionView.ym_dequeueReusableCell(indexPath: indexPath) as AddCategoryCell
             let category = homeTitles[indexPath.item]
             cell.isEdit = isEdit
             cell.delegate = self
             cell.titleButton.setTitle(category.name!, for: .normal)
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ChannelRecommendCell.self), for: indexPath) as! ChannelRecommendCell
+            let cell = collectionView.ym_dequeueReusableCell(indexPath: indexPath) as ChannelRecommendCell
             let category = categories[indexPath.item]
             cell.titleButton.setTitle(category.name!, for: .normal)
             return cell

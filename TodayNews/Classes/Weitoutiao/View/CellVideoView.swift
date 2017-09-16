@@ -8,12 +8,8 @@
 
 import UIKit
 
-class CellVideoView: UIView {
+class CellVideoView: UIView, LoadNibProtocol {
 
     @IBOutlet weak var imageButton: UIButton!
-    
-    class func cellVideoView() -> CellVideoView {
-        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last as! CellVideoView
-    }
 
 }
