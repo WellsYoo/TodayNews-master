@@ -16,7 +16,7 @@ class MyNavigationController: UINavigationController {
         let navBar = UINavigationBar.appearance()
         navBar.barTintColor = UIColor.white
         navBar.tintColor = UIColor(r: 0, g: 0, b: 0, alpha: 0.7)
-        navBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17)]
+        navBar.titleTextAttributes = [.font: UIFont.systemFont(ofSize: 17)]
         // 创建全局手势
         initGlobalPan()
 

@@ -23,7 +23,7 @@ class MyConcernController: UITableViewController {
         tableView.ym_registerCell(cell: AllConcernsCell.self)
     }
     
-    func rightBarButtonItemClicked() {
+    @objc func rightBarButtonItemClicked() {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let addFriendVC = storyBoard.instantiateViewController(withIdentifier: String(describing: AddFriendViewController.self)) as! AddFriendViewController
         navigationController?.pushViewController(addFriendVC, animated: true)

@@ -126,7 +126,7 @@ class HomeRelateNewsHeaderView: UIView {
         
     }
     
-    func labelButtonClciked(sender: UIButton) {
+    @objc func labelButtonClciked(sender: UIButton) {
         
     }
 

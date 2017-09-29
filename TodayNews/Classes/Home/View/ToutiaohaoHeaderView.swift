@@ -43,7 +43,7 @@ class ToutiaohaoHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func moreConcernButtonClicked() {
+    @objc func moreConcernButtonClicked() {
         delegate?.toutiaohaoHeaderViewMoreConcernButtonClicked()
     }
 

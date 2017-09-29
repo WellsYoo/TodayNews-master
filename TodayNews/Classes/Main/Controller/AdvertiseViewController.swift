@@ -22,7 +22,7 @@ class AdvertiseViewController: UIViewController {
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
     
-    func updateTime() {
+    @objc func updateTime() {
         if time == 0 {
             countdownTimer?.invalidate()
             let sb = UIStoryboard(name: "Main", bundle: nil)

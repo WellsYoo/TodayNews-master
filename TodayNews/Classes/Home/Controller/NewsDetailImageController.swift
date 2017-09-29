@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import SVProgressHUD
 
-class NewsDetailImageController: UIViewController {
+class NewsDetailImageController: UIViewController, StoryboardLoadable {
     
     var hidden: Bool = false
     
@@ -133,8 +133,7 @@ extension NewsDetailImageController {
     
     /// 评论按钮点击
     @IBAction func commentButtonClicked(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "NewsDetailImageCommentController", bundle: nil)
-        let newDetailCommentVC = storyboard.instantiateViewController(withIdentifier: "NewsDetailImageCommentController") as! NewsDetailImageCommentController
+        let newDetailCommentVC = NewsDetailImageCommentController.loadStoryboard()
         newDetailCommentVC.weitoutiao = weitoutiao
         newDetailCommentVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - 20)))
         present(newDetailCommentVC, animated: true, completion: nil)
@@ -253,16 +252,16 @@ extension NewsDetailImageController: UICollectionViewDelegate, UICollectionViewD
         let abstract = abstracts[index - 1]
         
         let size = CGSize(width: screenWidth - 2 * kMargin, height: CGFloat(MAXFLOAT))
-        let abstractHeight = abstract.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil).size.height
+        let abstractHeight = abstract.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font: UIFont.systemFont(ofSize: 18)], context: nil).size.height
         abstractLabelHeight.constant = abstractHeight + 5
         abstractLabel.layoutIfNeeded()
         
-        let abstractAttributeString = NSAttributedString(string: abstract, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17)])
+        let abstractAttributeString = NSAttributedString(string: abstract, attributes: [.font: UIFont.systemFont(ofSize: 17)])
         
-        let countAttributeString = NSMutableAttributedString(string: "/\(abstracts.count) ", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 13)])
+        let countAttributeString = NSMutableAttributedString(string: "/\(abstracts.count) ", attributes: [.font: UIFont.systemFont(ofSize: 13)])
         countAttributeString.append(abstractAttributeString)
         
-        let numberAttributeString = NSMutableAttributedString(string: String(index), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17)])
+        let numberAttributeString = NSMutableAttributedString(string: String(index), attributes: [.font: UIFont.systemFont(ofSize: 17)])
         numberAttributeString.append(countAttributeString)
         
         abstractLabel.attributedText = numberAttributeString

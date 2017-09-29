@@ -68,8 +68,7 @@ extension MineViewController {
         noLoginHeaderView.moreLoginButton.rx.controlEvent(.touchUpInside)
                                         .subscribe(onNext: { [weak self] in
                                             // 弹出登录界面
-                                            let storyboard = UIStoryboard(name: "MoreLoginViewController", bundle: nil)
-                                            let moreLoginVC = storyboard.instantiateViewController(withIdentifier: "MoreLoginViewController") as! MoreLoginViewController
+                                            let moreLoginVC = MoreLoginViewController.loadStoryboard()
                                             moreLoginVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - 20)))
                                             self!.present(moreLoginVC, animated: true, completion: nil)
                                         })

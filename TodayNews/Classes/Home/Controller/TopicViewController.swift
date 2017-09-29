@@ -261,8 +261,7 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let weitoutiao = newsTopics[indexPath.row]
         if indexPath.row == 0 && topicTitle!.category == "" { // 默认设置点击第一个 cell 跳转到图片详情界面
-            let storyboard = UIStoryboard(name: "NewsDetailImageController", bundle: nil)
-            let newsDetailImageVC = storyboard.instantiateViewController(withIdentifier: "NewsDetailImageController") as! NewsDetailImageController
+            let newsDetailImageVC = NewsDetailImageController.loadStoryboard()
             newsDetailImageVC.isSelectedFirstCell = true
             weitoutiao.item_id = 6450240420034118157
             weitoutiao.group_id = 6450237670911852814
@@ -297,8 +296,7 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
         if let articleURL = weitoutiao.article_url {
             NetworkTool.loadCommenNewsDetail(articleURL: articleURL, completionHandler: { (htmlString, images, abstracts) in
                 if images.count > 0 { // 说明是图文详情
-                    let storyboard = UIStoryboard(name: "NewsDetailImageController", bundle: nil)
-                    let newsDetailImageVC = storyboard.instantiateViewController(withIdentifier: "NewsDetailImageController") as! NewsDetailImageController
+                    let newsDetailImageVC = NewsDetailImageController.loadStoryboard()
                     newsDetailImageVC.weitoutiao = weitoutiao
                     newsDetailImageVC.images = images
                     newsDetailImageVC.abstracts = abstracts

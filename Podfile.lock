@@ -7,6 +7,7 @@ PODS:
     - BMPlayer/Core
     - NVActivityIndicatorView (~> 3.5)
     - SnapKit (~> 3.2)
+  - HandyJSON (1.7.2)
   - IBAnimatable (4.1.0)
   - Kingfisher (3.10.4)
   - LeanCloud (10.1.0):
@@ -28,6 +29,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.5.0)
   - BMPlayer
+  - HandyJSON
   - IBAnimatable
   - Kingfisher (~> 3.10.4)
   - LeanCloud (~> 10.1.0)
@@ -42,6 +44,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   BMPlayer: 5ba9e3f3d61ccc5a24ebd9cdc24901dcf28c98bc
+  HandyJSON: e7ad0483005826baba1d1c251cd98d0aa8bd8cce
   IBAnimatable: 0fd2c9fd38c4798d71bcc18dbd87d473a7df2577
   Kingfisher: dc3a4983e86d2dfa89513664983a82340c11a289
   LeanCloud: 2a6ac9da4fcf4b6b26f519d05a31998ddc59223a
@@ -54,6 +57,6 @@ SPEC CHECKSUMS:
   SwiftTheme: 85f84747a48749b5b3df7c3e96fc0b1d45677d30
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 9b5f03f5b20371885f5d5a753095a130300e2fa3
+PODFILE CHECKSUM: 861dbe20477ed21beb5116de77240a78ceb57b9a
 
 COCOAPODS: 1.2.0.rc.1

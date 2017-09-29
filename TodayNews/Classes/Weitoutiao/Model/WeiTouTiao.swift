@@ -22,7 +22,7 @@ class WeiTouTiao {
     
     var relateNewsCellHeight: CGFloat? {
         let size = CGSize(width: screenWidth - 30 * 2, height: CGFloat(MAXFLOAT))
-        return (title!.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 15)], context: nil).size.height) + 30
+        return (title!.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font: UIFont.systemFont(ofSize: 15)], context: nil).size.height) + 30
     }
     
     var girlCellHeight: CGFloat? {
@@ -297,7 +297,7 @@ class WeiTouTiao {
     }
     var newDetailTitleHeight: CGFloat? {
         let size = CGSize(width: screenWidth - 2 * kMargin, height: CGFloat(MAXFLOAT))
-        return title?.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil).size.height
+        return title?.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font: UIFont.systemFont(ofSize: 18)], context: nil).size.height
     }
     
     var cellH: CGFloat? {

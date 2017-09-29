@@ -117,6 +117,7 @@ extension SettingViewController {
             }
             settings.append(sections as AnyObject)
         }
+        
         tableView.ym_registerCell(cell: SettingCell.self)
     }
     /// 从沙盒读取缓存数据的大小

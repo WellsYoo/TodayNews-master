@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Cp-tP-y0a">
-                                <rect key="frame" x="341" y="10" width="24" height="24"/>
+                                <rect key="frame" x="341" y="30" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="6ZW-rY-mce"/>
                                     <constraint firstAttribute="width" constant="24" id="gva-I5-CSc"/>
@@ -33,13 +33,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录你的头条，精彩永不消失" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUc-Le-QGa">
-                                <rect key="frame" x="0.0" y="48" width="375" height="21.5"/>
+                                <rect key="frame" x="0.0" y="68" width="375" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" white="0.0" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Se-Vc-ExV" userLabel="手机号" customClass="AnimatableView" customModule="IBAnimatable">
-                                <rect key="frame" x="30" y="104.5" width="315" height="44"/>
+                                <rect key="frame" x="30" y="124.5" width="315" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IY1-fr-G79">
                                         <rect key="frame" x="22" y="13.5" width="198" height="17"/>
@@ -109,7 +109,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lhm-pg-JdR" userLabel="密码" customClass="AnimatableView" customModule="IBAnimatable">
-                                <rect key="frame" x="30" y="173.5" width="315" height="44"/>
+                                <rect key="frame" x="30" y="193.5" width="315" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aGW-N3-PAe">
                                         <rect key="frame" x="22" y="13.5" width="198" height="17"/>
@@ -179,7 +179,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未注册手机验证后自动登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7Y-gb-WbE">
-                                <rect key="frame" x="0.0" y="223.5" width="375" height="10"/>
+                                <rect key="frame" x="0.0" y="243.5" width="375" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="10" id="jUh-SP-rTW"/>
                                 </constraints>
@@ -188,7 +188,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCa-NP-AjO" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="30" y="239.5" width="315" height="44"/>
+                                <rect key="frame" x="30" y="259.5" width="315" height="44"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="进入头条">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -206,7 +206,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1I-xE-fBs">
-                                <rect key="frame" x="147.5" y="333.5" width="80" height="28"/>
+                                <rect key="frame" x="147.5" y="353.5" width="80" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="帐号密码登录">
                                     <color key="titleColor" red="0.28235294117647058" green="0.41960784313725491" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
@@ -216,7 +216,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我已阅读并同意“ 用户协议和隐私条款”" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nt3-sT-a8Q">
-                                <rect key="frame" x="90.5" y="293.5" width="194.5" height="10"/>
+                                <rect key="frame" x="90.5" y="313.5" width="194.5" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="10" id="zGK-0l-U01"/>
                                 </constraints>
@@ -225,7 +225,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rc3-lA-c61">
-                                <rect key="frame" x="70.5" y="291" width="15" height="15"/>
+                                <rect key="frame" x="70.5" y="311" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="P0n-Pd-yC6"/>
                                     <constraint firstAttribute="width" constant="15" id="pE7-N0-Q4A"/>

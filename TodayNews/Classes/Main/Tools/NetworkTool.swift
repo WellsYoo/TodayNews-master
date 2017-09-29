@@ -264,11 +264,13 @@ class NetworkTool: NetworkToolProtocol {
                         html += "<html>"
                         html += "<head>"
                         html += "<meta charset=utf-8>"
+                        html += "<meta content='width=device-wdith,initial-scale=1.0,maximum-scale=3.0,user-scalabel=0;' name='viewport' />"
                         html += "<link rel=\"stylesheet\" type=\"text/css\" href=\"news.css\" />\n"
                         html += "</head>"
                         html += "<body>"
                         html += contentDecode
                         html += "</body>"
+                        html += "<div></div>"
                         html += "</html>"
                     htmlString = html
                 } else { // 第三方的新闻内容

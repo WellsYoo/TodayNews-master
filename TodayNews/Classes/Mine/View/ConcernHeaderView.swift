@@ -124,7 +124,7 @@ class ConcernHeaderView: UIView, LoadNibProtocol {
         })
     }
     
-    func bottomViewButtonClicked(_ sender: UIButton) {
+    @objc func bottomViewButtonClicked(_ sender: UIButton) {
         switch sender.tag {
             case 0:  /// 动态按钮点击
                 self.indicatorConstraint.constant = 14

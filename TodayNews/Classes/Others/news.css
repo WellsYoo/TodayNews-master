@@ -1,8 +1,6 @@
-img{
-    width:95%;
-    text-align:center;
+img {
+    width: 100%
 }
-
 body, html {
     margin:10;
     padding:0;
@@ -27,9 +25,9 @@ body{
 
 .title{
     padding:10 5 5 10;
-    font-size:17px;
+    font-size:18px;
 }
 
 p {
-    font-size:45px;
+    font-size:22px;
 }

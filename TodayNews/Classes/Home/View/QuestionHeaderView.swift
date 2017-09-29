@@ -47,7 +47,7 @@ class QuestionHeaderView: UIView {
             } else {
                 contentLabel.text = question!.content!.text! as String
                 let size = CGSize(width: CGFloat(MAXFLOAT), height: 35)
-                let width = question!.content!.text!.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil).size.width
+                let width = question!.content!.text!.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font: UIFont.systemFont(ofSize: 16)], context: nil).size.width
                 // 74 = 2X间距 + 展开按钮的宽度
                 if width >= screenHeight - 74 {
                     contentLabel.width = screenWidth - 30

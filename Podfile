@@ -15,5 +15,6 @@ target "TodayNews" do
     pod 'BMPlayer'                      # 视频播放框架 https://github.com/BrikerMan/BMPlayer
     pod 'LeanCloud', '~> 10.1.0'        # 云存储功能，可作为后台，模拟登录 https://leancloud.cn/docs/sdk_down.html
     pod 'SwiftTheme'                    # 主题替换方案 https://github.com/jiecao-fm/SwiftTheme
+    pod 'HandyJSON'
     
 end

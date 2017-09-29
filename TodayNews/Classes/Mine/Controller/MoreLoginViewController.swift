@@ -11,7 +11,7 @@
 import UIKit
 import IBAnimatable
 
-class MoreLoginViewController: AnimatableModalViewController {
+class MoreLoginViewController: AnimatableModalViewController, StoryboardLoadable {
     
     @IBOutlet weak var mobileView: UIView!
     @IBOutlet weak var passwordView: UIView!

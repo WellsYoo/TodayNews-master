@@ -31,12 +31,12 @@ class NewsDetailImageCommentCell: UITableViewCell, RegisterCellOrNib {
                 likeButton.setTitle(String(comment!.digg_count!), for: .normal)
             }
             if let replayToComment = comment!.reply_to_comment {
-                let replayCommentAttributeString = NSAttributedString(string: replayToComment.text! as String, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)])
+                let replayCommentAttributeString = NSAttributedString(string: replayToComment.text! as String, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)])
                 
-                let nameAttributeString = NSMutableAttributedString(string: "@\(replayToComment.user_name!)：", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16), NSForegroundColorAttributeName: UIColor(r: 42, g: 144, b: 215)])
+                let nameAttributeString = NSMutableAttributedString(string: "@\(replayToComment.user_name!)：", attributes: [.font: UIFont.systemFont(ofSize: 16), .foregroundColor: UIColor(r: 42, g: 144, b: 215)])
                 nameAttributeString.append(replayCommentAttributeString)
                 
-                let commentAttributeString = NSMutableAttributedString(string: "\(comment!.text!)//", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)])
+                let commentAttributeString = NSMutableAttributedString(string: "\(comment!.text!)//", attributes: [.font: UIFont.systemFont(ofSize: 16)])
                 commentAttributeString.append(nameAttributeString)
                 
                 commentLabel.attributedText = commentAttributeString

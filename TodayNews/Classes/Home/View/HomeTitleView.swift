@@ -114,7 +114,7 @@ extension HomeTitleView {
             
             let topTitle = titles![i]
             
-            w = (topTitle.name! as NSString).boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height:0), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName : label.font], context: nil).width
+            w = (topTitle.name! as NSString).boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height:0), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : label.font], context: nil).width
             if i == 0 {
                 x = kMargin * 0.5
                 bottomLine.x = x

@@ -13,7 +13,7 @@ extension String {
         get {
             let startIndex = self.index(self.startIndex, offsetBy: range.lowerBound)
             let endIndex = self.index(self.startIndex, offsetBy: range.upperBound)
-            return self[Range(startIndex..<endIndex)]
+            return String(self[Range(startIndex..<endIndex)])
         }
         
         set {
@@ -29,6 +29,6 @@ extension NSString {
     /// 计算文本的高度
     func getTextHeight(width: CGFloat) -> CGFloat {
         let size = CGSize(width: width, height: CGFloat(MAXFLOAT))
-        return (self.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil).size.height)
+        return (self.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font: UIFont.systemFont(ofSize: 16)], context: nil).size.height)
     }
 }

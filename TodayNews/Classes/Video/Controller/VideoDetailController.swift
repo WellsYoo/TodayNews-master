@@ -111,11 +111,11 @@ class VideoDetailController: UIViewController {
 
 extension VideoDetailController {
     
-    func applicationWillEnterForeground() {
+    @objc func applicationWillEnterForeground() {
         
     }
     
-    func applicationDidEnterBackground() {
+    @objc func applicationDidEnterBackground() {
         player.pause(allowAutoPlay: false)
     }
     

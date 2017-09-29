@@ -22,16 +22,16 @@ class NewsDetailImageCell: UICollectionViewCell, RegisterCellOrNib {
     var abstract: String? {
         didSet {
             let size = CGSize(width: screenWidth - 2 * kMargin, height: CGFloat(MAXFLOAT))
-            let abstractHeight = abstract?.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil).size.height
+            let abstractHeight = abstract?.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font: UIFont.systemFont(ofSize: 18)], context: nil).size.height
             abstractLabelHeight.constant = abstractHeight! + 5
             self.layoutIfNeeded()
             
-            let abstractAttributeString = NSAttributedString(string: abstract!, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17)])
+            let abstractAttributeString = NSAttributedString(string: abstract!, attributes: [.font: UIFont.systemFont(ofSize: 17)])
             
-            let countAttributeString = NSMutableAttributedString(string: "/\(count!) ", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 13)])
+            let countAttributeString = NSMutableAttributedString(string: "/\(count!) ", attributes: [.font: UIFont.systemFont(ofSize: 13)])
             countAttributeString.append(abstractAttributeString)
             
-            let numberAttributeString = NSMutableAttributedString(string: String(index!), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17)])
+            let numberAttributeString = NSMutableAttributedString(string: String(index!), attributes: [.font: UIFont.systemFont(ofSize: 17)])
             numberAttributeString.append(countAttributeString)
             // 方式2 ，和图片详情控制器里在 scrollView 的的代理里设置二者择一
 //            abstractLabel.attributedText = numberAttributeString
@@ -50,7 +50,7 @@ class NewsDetailImageCell: UICollectionViewCell, RegisterCellOrNib {
         imageView.addGestureRecognizer(longRecognizer)
     }
     
-    func longRecognizerEvent() {
+    @objc func longRecognizerEvent() {
         delegate?.imageViewLongPressGestureRecognizer()
     }
 }

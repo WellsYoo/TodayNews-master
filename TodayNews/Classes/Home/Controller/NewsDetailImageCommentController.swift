@@ -13,7 +13,7 @@ import RxCocoa
 import MJRefresh
 import SVProgressHUD
 
-class NewsDetailImageCommentController: AnimatableModalViewController {
+class NewsDetailImageCommentController: AnimatableModalViewController, StoryboardLoadable {
 
     fileprivate let disposeBag = DisposeBag()
     

@@ -79,11 +79,9 @@ extension HomeViewController {
     }
     
     /// 点击了加号按钮
-    func homeTitleAddButtonClicked(notification: Notification) {
+    @objc func homeTitleAddButtonClicked(notification: Notification) {
         let titles = notification.object as! [TopicTitle]
-        
-        let storyboard = UIStoryboard(name: "HomeAddCategoryController", bundle: nil)
-        let homeAddCategoryVC = storyboard.instantiateViewController(withIdentifier: "HomeAddCategoryController") as! HomeAddCategoryController
+        let homeAddCategoryVC = HomeAddCategoryController.loadStoryboard()
         homeAddCategoryVC.homeTitles = titles
         homeAddCategoryVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - 20)))
         present(homeAddCategoryVC, animated: true, completion: nil)

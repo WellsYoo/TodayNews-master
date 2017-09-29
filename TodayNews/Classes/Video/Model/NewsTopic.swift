@@ -161,7 +161,7 @@ class NewsTopic {
                     imageH = 170
                     titleW = screenWidth - 30
                     let size = CGSize(width: titleW, height: CGFloat(MAXFLOAT))
-                    titleH = (title?.boundingRect(with: size, options: .usesFontLeading, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17)], context: nil).size.height)!
+                    titleH = (title?.boundingRect(with: size, options: .usesFontLeading, attributes: [.font: UIFont.systemFont(ofSize: 17)], context: nil).size.height)!
                     
                     // 中间有一张大图（包括视频和广告的图片），cell 的高度 = 底部间距 + 标题的高度 + 中间间距 + 图片高度 + 中间间距 + 用户头像的高度 + 底部间距
                     cellHeight = 2 * kHomeMargin + titleH + imageH + 2 * kMargin + 16
@@ -180,7 +180,7 @@ class NewsTopic {
                     // 文字宽度 screenWidth - 108 - 30 - 20
                     titleW = screenWidth - 158
                     let size = CGSize(width: titleW, height: CGFloat(MAXFLOAT))
-                    titleH = (title?.boundingRect(with: size, options: .usesFontLeading, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17)], context: nil
+                    titleH = (title?.boundingRect(with: size, options: .usesFontLeading, attributes: [.font: UIFont.systemFont(ofSize: 17)], context: nil
                         ).size.height)!
                     
                     // 比较标题和图片的高度哪个大，那么 cell 的高度就根据大的计算
@@ -190,7 +190,7 @@ class NewsTopic {
             } else { // 没有图片,也不是视频
                 titleW = screenWidth - 30
                 let size = CGSize(width: titleW, height: CGFloat(MAXFLOAT))
-                titleH = (title?.boundingRect(with: size, options: .usesFontLeading, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17)], context: nil).size.height)!
+                titleH = (title?.boundingRect(with: size, options: .usesFontLeading, attributes: [.font: UIFont.systemFont(ofSize: 17)], context: nil).size.height)!
                 // 没有图片，cell 的高度 = 底部间距 + 标题的高度 + 中间的间距 + 用户头像的高度 + 底部间距
                 cellHeight = 2 * kHomeMargin + titleH + kMargin + 16
             }
@@ -206,7 +206,7 @@ class NewsTopic {
             // 文字的宽度 screenWidth-30
             titleW = screenWidth - 30
             let size = CGSize(width: titleW, height: CGFloat(MAXFLOAT))
-            titleH = (title?.boundingRect(with: size, options: .usesFontLeading, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17)], context: nil).size.height)!
+            titleH = (title?.boundingRect(with: size, options: .usesFontLeading, attributes: [.font: UIFont.systemFont(ofSize: 17)], context: nil).size.height)!
             cellHeight = 2 * kHomeMargin + titleH + imageH + 2 * kMargin + 16
         }
     }

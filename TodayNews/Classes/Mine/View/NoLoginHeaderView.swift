@@ -25,15 +25,15 @@ class NoLoginHeaderView: UIView, LoadNibProtocol {
     /// 新浪按钮
     @IBOutlet weak var sinaButton: UIButton!
     /// 收藏按钮
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteButton: VerticalButton!
     /// 收藏按钮
-    @IBOutlet weak var historyButton: UIButton!
+    @IBOutlet weak var historyButton: VerticalButton!
     /// 日间/夜间按钮
     @IBOutlet weak var dayOrNightButton: VerticalButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.height = screenHeight * 0.4
+        self.height = kMineHeaderViewHieght
         /// 设置主题
         moreLoginButton.theme_backgroundColor = "colors.moreLoginBackgroundColor"
         moreLoginButton.theme_setTitleColor("colors.moreLoginColor", forState: .normal)

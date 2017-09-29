@@ -9,7 +9,7 @@
 import UIKit
 import IBAnimatable
 
-class HomeAddCategoryController: AnimatableModalViewController {
+class HomeAddCategoryController: AnimatableModalViewController, StoryboardLoadable {
     
     /// 是否编辑
     var isEdit = false

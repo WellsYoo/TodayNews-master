@@ -107,7 +107,7 @@ extension VideoTitleView {
             
             let topTitle = titles[i]
             
-            w = (topTitle.name! as NSString).boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height:0), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName : label.font], context: nil).width
+            w = (topTitle.name! as NSString).boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height:0), options: .usesLineFragmentOrigin, attributes: [.font : label.font], context: nil).width
             if i == 0 {
                 x = style.itemMargin * 0.5
             } else {
@@ -130,7 +130,7 @@ extension VideoTitleView {
 
 extension VideoTitleView {
     /// 顶部搜索按钮点击
-    func titleSearchButtonClick(button: UIButton) {
+    @objc func titleSearchButtonClick(button: UIButton) {
         delegate?.videoTitle(videoTitle: self, didClickSearchButton: button)
     }
     
