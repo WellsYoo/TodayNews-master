@@ -1,8 +1,13 @@
-# Swift开源项目-模仿今日头条
+# Swift 开源项目-模仿今日头条
 
 [![Build Status](https://travis-ci.org/hrscy/TodayNews.svg?branch=master)](https://travis-ci.org/hrscy/TodayNews) ![swift3.1](https://img.shields.io/badge/language-swift%203.1-orange.svg)
 
+# 2017.10.01
+
+## 目前项目编译使用的是 Xcode 9，Swift 版本是 4.0。如果使用的是 Xcode 9 以下版本，编译可能报错，请升级到 Xcode 9 ，选择 Swift 4.0，再编译运行，就不会报错了。
+
 # 2017.09.09
+
 ## 新增接口文档
 [接口文档](https://github.com/hrscy/TodayNews/tree/master/todayNews-docs)
 
