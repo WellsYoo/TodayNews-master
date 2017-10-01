@@ -14,8 +14,8 @@ class RefreshHeder: MJRefreshGifHeader {
         super.prepare()
         // 设置普通状态图片
         var images = [UIImage]()
-        for index in 0..<30 {
-            let image = UIImage(named: "dropdown_0\(index)")
+        for index in 0..<16 {
+            let image = UIImage(named: "dropdown_loading_0\(index)")
             images.append(image!)
         }
         setImages(images, for: .idle)
