@@ -6,6 +6,5 @@ pages:
   - [video.md, 视频]
   - [huoshan.md,  小视频]
   - [mine.md, 我的]
-  - [about.md, 关于]
 
 theme: readthedocs

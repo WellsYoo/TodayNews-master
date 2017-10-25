@@ -53,20 +53,24 @@ extension SettingViewController {
         let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as SettingCell
         let cellArray = settings[indexPath.section] as! [SettingModel]
         cell.setting = cellArray[indexPath.row]
-        if indexPath.section == 0 {
-            if indexPath.row == 0 { // 清理缓存
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:  // 清理缓存
                 NotificationCenter.default.addObserver(self, selector: #selector(loadCacheSize), name: NSNotification.Name(rawValue: "cacheSizeM"), object: nil)
-            } else if indexPath.row == 1 { // 字体大小
+            case 1: // 字体大小
                 NotificationCenter.default.addObserver(self, selector: #selector(changeFontSize), name: NSNotification.Name(rawValue: "fontSize"), object: nil)
-            } else if indexPath.row == 3 { //  非 WiFi 网络流量
+            case 3: //  非 WiFi 网络流量
                 NotificationCenter.default.addObserver(self, selector: #selector(changeNeworkMode), name: NSNotification.Name(rawValue: "networkMode"), object: nil)
-            } else if indexPath.row == 4 { //  非 WiFi 播放提醒
+            case 4: //  非 WiFi 播放提醒
                 NotificationCenter.default.addObserver(self, selector: #selector(changePlayNotice), name: NSNotification.Name(rawValue: "playNotice"), object: nil)
-            } else if indexPath.row == 5 { // 推送
+            case 2, 5: // 推送、摘要
                 cell.selectionStyle = .none
+            default: break
             }
-        } else if indexPath.section == 1 {
-            
+        case 1:
+            NotificationCenter.default.addObserver(self, selector: #selector(changeNeworkMode), name: NSNotification.Name(rawValue: "networkMode"), object: nil)
+        default: break
         }
         return cell
     }
@@ -130,7 +134,7 @@ extension SettingViewController {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "cacheSizeM"), object: self, userInfo: ["cacheSize": sizeString])
         }
     }
-    /// 获取缓存大小
+    /// 获取缓存大小显示到 cell
     @objc fileprivate func loadCacheSize(notification: NSNotification) {
         let userInfo = notification.userInfo as! [String: AnyObject]
         let indexPath = IndexPath(row: 0, section: 0)

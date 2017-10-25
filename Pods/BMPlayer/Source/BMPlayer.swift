@@ -39,7 +39,7 @@ open class BMPlayer: UIView {
     open var panGesture: UIPanGestureRecognizer!
     
     /// AVLayerVideoGravityType
-    open var videoGravity = AVLayerVideoGravityResizeAspect {
+    open var videoGravity = AVLayerVideoGravity.resizeAspect {
         didSet {
             self.playerLayer?.videoGravity = videoGravity
         }
@@ -314,7 +314,7 @@ open class BMPlayer: UIView {
         }
     }
     
-    @objc fileprivate func onOrientationChanged() {
+    @objc open func onOrientationChanged() {
         self.updateUI(isFullScreen)
     }
     
@@ -341,9 +341,10 @@ open class BMPlayer: UIView {
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        if let customControlView = classForCoder.storyBoardCustomControl() {
-            self.customControlView = customControlView
-        }
+        // breaks, should fix if want to have something from storyboard
+        //if let customControlView = classForCoder.storyBoardCustomControl() {
+        //    self.customControlView = customControlView
+        //}
         initUI()
         initUIData()
         configureVolume()
@@ -481,7 +482,7 @@ extension BMPlayer: BMPlayerLayerViewDelegate {
 }
 
 extension BMPlayer: BMPlayerControlViewDelegate {
-    public func controlView(controlView: BMPlayerControlView,
+    open func controlView(controlView: BMPlayerControlView,
                             didChooseDefition index: Int) {
         shouldSeekTo = currentPosition
         playerLayer?.resetPlayer()
@@ -489,7 +490,7 @@ extension BMPlayer: BMPlayerControlViewDelegate {
         playerLayer?.playAsset(asset: resource.definitions[index].avURLAsset)
     }
     
-    public func controlView(controlView: BMPlayerControlView,
+    open func controlView(controlView: BMPlayerControlView,
                             didPressButton button: UIButton) {
         if let action = BMPlayerControlView.ButtonType(rawValue: button.tag) {
             switch action {
@@ -529,7 +530,7 @@ extension BMPlayer: BMPlayerControlViewDelegate {
         }
     }
     
-    public func controlView(controlView: BMPlayerControlView,
+    open func controlView(controlView: BMPlayerControlView,
                             slider: UISlider,
                             onSliderEvent event: UIControlEvents) {
         switch event {
@@ -557,11 +558,11 @@ extension BMPlayer: BMPlayerControlViewDelegate {
         }
     }
     
-    public func controlView(controlView: BMPlayerControlView, didChangeVideoAspectRatio: BMPlayerAspectRatio) {
+    open func controlView(controlView: BMPlayerControlView, didChangeVideoAspectRatio: BMPlayerAspectRatio) {
         self.playerLayer?.aspectRatio = self.aspectRatio
     }
     
-    public func controlView(controlView: BMPlayerControlView, didChangeVideoPlaybackRate rate: Float) {
+    open func controlView(controlView: BMPlayerControlView, didChangeVideoPlaybackRate rate: Float) {
         self.playerLayer?.player?.rate = rate
     }
 }

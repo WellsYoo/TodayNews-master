@@ -8,7 +8,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/BMPlayer.svg?style=flat)](http://cocoapods.org/pods/BMPlayer)
 [![Weibo](https://img.shields.io/badge/%E5%BE%AE%E5%8D%9A-%40%E8%89%BE%E5%8A%9B%E4%BA%9A%E5%B0%94-yellow.svg?style=flat)](http://weibo.com/536445669)
 
-A video player for iOS, based on AVPlayer, support the horizontal, vertical screen. support adjust volume, brightness and seek by slide, support subtitles. 
+A video player for iOS, based on AVPlayer, support the horizontal, vertical screen. support adjust volume, brightness and seek by slide, support subtitles.
 
 [中文说明](https://github.com/BrikerMan/BMPlayer/blob/master/README.zh.md)
 
@@ -22,25 +22,37 @@ A video player for iOS, based on AVPlayer, support the horizontal, vertical scre
 - [x] Custom playrate
 - [x] Add Http header and other options to AVURLAsset
 - [x] Easy to customize
-- [x] Supporting show local and online subtitles 
-- [x] [Swift 3](https://developer.apple.com/swift/)
+- [x] Supporting show local and online subtitles
+- [x] [Swift 4](https://developer.apple.com/swift/)
 
 ## Requirements
 - iOS 8 +
-- Xcode 8 
-- Swift 3
+- Xcode 9
+- Swift 4
 
 ## Installation
 ### CocoaPods
 
-#### Swift3
-Please make sure using the latest cocoapods, update with `sudo gem install cocoapods`.
+#### Swift 4
 
-```ruby
-target 'ProjectName' do
-    use_frameworks!
-    pod 'BMPlayer'
-end
+```
+use_frameworks!
+
+pod 'BMPlayer', '~> 1.0.0'
+```
+
+#### Swift 3
+```
+use_frameworks!
+
+pod 'BMPlayer', '~> 0.9.1'
+```
+
+#### Swift 2.2
+```
+use_frameworks!
+
+pod 'BMPlayer', '~> 0.3.3'
 ```
 
 **To test the experimental caching support with [VIMediaCache](https://github.com/vitoziv/VIMediaCache), use**
@@ -49,19 +61,13 @@ end
 pod 'BMPlayer/CacheSupport', :git => 'https://github.com/BrikerMan/BMPlayer.git'
 ```
 
-#### Swift 2.2 
-```
-use_frameworks!
-
-pod 'BMPlayer', '~> 0.3.3'
-```
-
 ### Carthage
 Add `BMPlayer` in your Cartfile.
 ```
 github "BrikerMan/BMPlayer"
 ```
 Run carthage to build the framework and drag the built BMPlayer.framework into your Xcode project.
+
 ### Demo
 run `pod install` at `Example` folder before run the demo.
 
@@ -79,9 +85,11 @@ import BMPlayer
 
 player.playWithURL(URL(string: url)!)
 
-player.backBlock = { [unowned self] in
+player.backBlock = { [unowned self] (isFullScreen) in
+    if isFullScreen == true { return }
     let _ = self.navigationController?.popViewController(animated: true)
 }
+
 ```
 
 ### Code implementation by [SnapKit](https://github.com/SnapKit/SnapKit)
@@ -98,7 +106,8 @@ player.snp.makeConstraints { (make) in
     make.height.equalTo(player.snp.width).multipliedBy(9.0/16.0).priority(750)
 }
 // Back button event
-player.backBlock = { [unowned self] in
+player.backBlock = { [unowned self] (isFullScreen) in
+    if isFullScreen == true { return }
     let _ = self.navigationController?.popViewController(animated: true)
 }
 ```
@@ -118,7 +127,7 @@ let res0 = BMPlayerResourceDefinition(url: URL(string: "http://baobab.wdjcdn.com
                                       definition: "高清")
 let res1 = BMPlayerResourceDefinition(url: URL(string: "http://baobab.wdjcdn.com/1457162012752491010143.mp4")!,
                                       definition: "标清")
-   
+
 let asset = BMPlayerResource(name: "周末号外丨中国第一高楼",
                              definitions: [res0, res1],
                              cover: URL(string: "http://img.wdjimg.com/image/video/447f973848167ee5e44b67c8d4df9839_0_0.jpeg"))
@@ -131,11 +140,11 @@ player.setVideo(resource: asset)
 ```swift
 let header = ["User-Agent":"BMPlayer"]
 let options = ["AVURLAssetHTTPHeaderFieldsKey":header]
-  
+
 let definition = BMPlayerResourceDefinition(url: URL(string: "http://baobab.wdjcdn.com/1457162012752491010143.mp4")!,
                                             definition: "高清",
                                             options: options)
-  
+
 let asset = BMPlayerResource(name: "Video Name",
                              definitions: [definition])
 ```
@@ -178,6 +187,13 @@ BMPlayerConf.tintColor = UIColor.whiteColor()
 BMPlayerConf.topBarShowInCase = .Always
 // loader type, see detail：https://github.com/ninjaprox/NVActivityIndicatorView
 BMPlayerConf.loaderType  = NVActivityIndicatorType.BallRotateChase
+// enable setting the brightness by touch gesture in the player
+BMPlayerConf.enableBrightnessGestures = true
+// enable setting the volume by touch gesture in the player
+BMPlayerConf.enableVolumeGestures = true
+// enable setting the playtime by touch gesture in the player
+BMPlayerConf.enablePlaytimeGestures = true
+
 ```
 
 ## Advanced Customize
@@ -204,4 +220,3 @@ You are welcome to fork and submit pull requests.
 
 ## License
 BMPlayer is available under the MIT license. See the LICENSE file for more info.
-
