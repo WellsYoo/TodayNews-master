@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LeanCloud
 import SwiftTheme
 
 @UIApplicationMain
@@ -16,10 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        // LeanCloud AppKey
-        LeanCloud.initialize(applicationID: "D32pVzUwGeJh7HqhucxOkTPe-gzGzoHsz", applicationKey: "SW2LU0O5YScEX9pvNjRsi7Cy")
-        /// 设置主题颜色
+         /// 设置主题颜色
         ThemeManager.setTheme(plistName: UserDefaults.standard.bool(forKey: isNight) ? "night_theme" : "default_theme", path: .mainBundle)
         // 改为 从 storyboard 启动
         // 创建窗口
@@ -27,9 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let advertiseVC = AdvertiseViewController()
         window?.rootViewController = advertiseVC
         window?.makeKeyAndVisible()
-        let post = LCObject(className: "TestObject")
-        post.set("words", value: "记录")
-        _ = post.save()
         
         return true
     }
