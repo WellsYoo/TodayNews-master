@@ -4,7 +4,7 @@
 
 - 请求方式：GET
 
-- 请求地址：/api/news/feed/v64/?
+- 请求地址：/api/news/feed/v68/?
 
 - 请求参数
 

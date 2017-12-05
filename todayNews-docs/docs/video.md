@@ -1,6 +1,6 @@
 # 视频接口
 
-## 首页顶部标题接口
+## 顶部标题接口
 
 - 请求方式：GET
 
@@ -8,27 +8,27 @@
 
 - 请求参数
 
-|      参数    |  类型  | 是否必须 |   描述  | 示例  |
-| ----------- | ------ | :------: | ------- | ----- |
-| device_id   | Int    |   N   | 设备 ID  | 8800803362 |
-| iid   | Int    |   N   |  未知  | 14486549076 |
-| resolution  | String |   N   | 屏幕尺寸 | 640*1136 |
-| ab_feature  | String |   N   |  未知  | z1 |
-| ab_version  | String |   N   | 未知  | 167910,164959,124647,170019,170695,170018,164677,163247,170349,157001,170749,159165,168998,169430,134128,169448,161298,162742,170294,152026,170238,162572,169058,170520,170567,156262,170508,166324,170691,170603,169601,169318,169300,165734,170659,170713,167300,145585,168081,170578,168629,165497,161718,150353 |
-| ab_client  | String |   N  | 未知 | a1,f2,f7,e1 |
-| ab_group   | String |   N  | 未知 | z1 |
-| ac   | String |   N  | 网络连接方式 | WIFI |
-| idfa  | String |   N  | 广告标识符 | 09F2E546-BA11-465E-BEAB-9C69C897351B |
-| vid  | String |   N   |  同 idfv  | 09F2E546-BA11-465E-BEAB-9C69C897351B |
-| idfv  | String |   N  | 设备唯一标识  | DD92E107-C73C-4A8B-9567-9DF97B6203D4 |
-| os_version  | String |   N   |  系统版本  | 9.3.5 |
-| version_code  | String |   N |  app 版本  | 6.3.2 |
-| aid  | String |   N   |  未知  | 13 |
-| device_platform  | String |   N   |  手机平台  | iphone |
-| ssmix  | String |   N   |   未知  | a |
-| device_type  | String |   N   |   手机型号  | iPhone 5S |
-| channel  | String |   N   |   可能是下载渠道  | App Store |
-| app_name  | String |   N   |   app 名称？  | news_article |
+| 参数              | 类型     | 是否必须 | 描述      | 示例                                       |
+| --------------- | ------ | :--: | ------- | ---------------------------------------- |
+| device_id       | Int    |  N   | 设备 ID   | 8800803362                               |
+| iid             | Int    |  N   | 未知      | 14486549076                              |
+| resolution      | String |  N   | 屏幕尺寸    | 640*1136                                 |
+| ab_feature      | String |  N   | 未知      | z1                                       |
+| ab_version      | String |  N   | 未知      | 167910,164959,124647,170019,170695,170018,164677,163247,170349,157001,170749,159165,168998,169430,134128,169448,161298,162742,170294,152026,170238,162572,169058,170520,170567,156262,170508,166324,170691,170603,169601,169318,169300,165734,170659,170713,167300,145585,168081,170578,168629,165497,161718,150353 |
+| ab_client       | String |  N   | 未知      | a1,f2,f7,e1                              |
+| ab_group        | String |  N   | 未知      | z1                                       |
+| ac              | String |  N   | 网络连接方式  | WIFI                                     |
+| idfa            | String |  N   | 广告标识符   | 09F2E546-BA11-465E-BEAB-9C69C897351B     |
+| vid             | String |  N   | 同 idfv  | 09F2E546-BA11-465E-BEAB-9C69C897351B     |
+| idfv            | String |  N   | 设备唯一标识  | DD92E107-C73C-4A8B-9567-9DF97B6203D4     |
+| os_version      | String |  N   | 系统版本    | 9.3.5                                    |
+| version_code    | String |  N   | app 版本  | 6.3.2                                    |
+| aid             | String |  N   | 未知      | 13                                       |
+| device_platform | String |  N   | 手机平台    | iphone                                   |
+| ssmix           | String |  N   | 未知      | a                                        |
+| device_type     | String |  N   | 手机型号    | iPhone 5S                                |
+| channel         | String |  N   | 可能是下载渠道 | App Store                                |
+| app_name        | String |  N   | app 名称？ | news_article                             |
 
 返回数据示例：
 
