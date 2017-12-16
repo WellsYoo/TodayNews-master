@@ -13,7 +13,7 @@ target "TodayNews" do
     pod 'SVProgressHUD'                 # 提示功能 https://github.com/SVProgressHUD/SVProgressHUD
     pod 'MJRefresh'                     # 上拉和下拉刷新框架 https://github.com/CoderMJLee/MJRefresh
     pod 'BMPlayer'                      # 视频播放框架 https://github.com/BrikerMan/BMPlayer
-    pod 'LeanCloud', '~> 10.1.0'        # 云存储功能，可作为后台，模拟登录 https://leancloud.cn/docs/sdk_down.html
+#    pod 'LeanCloud', '~> 10.1.0'        # 云存储功能，可作为后台，模拟登录 https://leancloud.cn/docs/sdk_down.html
     pod 'SwiftTheme'                    # 主题替换方案 https://github.com/jiecao-fm/SwiftTheme
     pod 'HandyJSON','~>4.0.0-beta.1'
     
