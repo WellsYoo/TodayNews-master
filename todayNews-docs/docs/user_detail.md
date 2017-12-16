@@ -362,6 +362,40 @@
 
 **返回数据比较多，不再展示。**
 
+## 用户详情-动态-详细内容
+
+- 请求方式：GET
+- 请求地址：/ugc/thread/detail/v1/info/?
+- 请求地址：/ugc/comment/repost_detail/v1/info/? （动态 cell 如果是评论或引用则调用这个接口）
+- 请求参数
+
+| 参数     |  类型  | 是否必须 |   描述   |     示例     |
+| ------- | -----  | ------ | -------- | ----------- |
+|thread_id|   Int  |   N    | 用户动态模型中的 id_str | 1586368669366286 |
+
+**返回数据比较多，不再展示。**
+
+## 用户详情-动态-评论
+
+- 请求方式：POST
+- 请求地址：/article/v2/tab_comments/
+- 请求参数(body 体)
+
+- 请求方式：GET
+- 请求地址：/2/comment/v1/reply_list/?  （动态 cell 如果是评论或引用则调用这个接口）
+
+| 参数     |  类型  | 是否必须 |   描述   |     示例     |
+| ------- | -----  | ------ | -------- | ----------- |
+|offset|   Int  |   Y    |  | 0 |
+|forum_id|   Int  |   Y    |  | 6564242300 |
+|group_id|   Int  |   Y    |  | 1586368669366286 |
+|count|   Int  |   Y    |  | 20 |
+|fold|   Int  |   N    |  | 1 |
+|item_id|   Int  |   N    |  | 0 |
+|group_type|   Int  |   N    |  | 2 |
+
+**返回数据比较多，不再展示。**
+
 ## 用户详情-文章
 
 - 请求方式：GET
@@ -380,7 +414,27 @@
 |  version | Int    |  N   | 版本   | 2 |
 |    cp    | Int    |  N   |    | 5A1F871485672E1 |
 
-**返回数据比较多，不再展示。**
+```
+{
+    "app_url": "sslocal://thread_detail?fid=6564242300&tid=1585650748196877",
+    "go_detail_count": "214万",
+    "title": "早上来上海观复博物馆时，工作人员正在做开馆前的准备，随手拍了...",
+    "internal_visit_count_format": "214万",
+    "abstract": "早上来上海观复博物馆时，工作人员正在做开馆前的准备，随手拍了几张无人时的照片。在上海中心大厦37层上，又一次印证了我的办馆理念：没来时不能想象，来了也不能复述。",
+    "image_list": [],
+    "external_visit_count": 0,
+    "behot_time": 1512194393,
+    "datetime": "2017-12-02 13:59",
+    "source": "上头条",
+    "is_thread": true,
+    "create_time": 1512194393,
+    "source_url": "http://toutiao.com/dongtai/1585650748196877/",
+    "group_id": 1585650748196877,
+    "middle_image": "",
+    "external_visit_count_format": "0",
+    "internal_visit_count": 2140405
+}
+```
 
 ## 用户详情-视频
 

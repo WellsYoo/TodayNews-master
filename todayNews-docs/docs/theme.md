@@ -5,6 +5,8 @@
 
 |               参  数                    |   日间   |   夜间   |           描述              |
 | -------------------------------------  | -------- | ------- | -------------------------- |
+|             grayColor230               | #e6e6e6  | #717171 | 灰色 230                    |
+|             grayColor150               | #969696  | #717171 | 灰色 150                    |
 |        verifiedAgencyTextColor         | #e6b740  | #6f5b10 | 头条认证标题颜色              |
 |      userDetailSendMailTextColor       | #486495  | #6c7589 | 用户详情界面发私信按钮标题颜色  |
 |    userDetailConcernButtonTextColor    | #ffffff  | #c7c7c7 | 用户关注按钮标题颜色          |
@@ -30,12 +32,19 @@
 
 |               参   数                  |                日间                 |                     夜间                  |           描述         |
 | ------------------------------------- | ----------------------------------- | ---------------------------------------- | ---------------------- |
+|  smallvideo_all_32x32_                | smallvideo_all_32x32_               | smallvideo_all_night_32x32_              | 用户详情动态视频图标      |
+|  morebutton_dynamic_14x8_             | morebutton_dynamic_14x8_            | morebutton_dynamic_night_14x8_           | 用户详情动态更多图标      |
+|  morebutton_dynamic_press_14x8_       | morebutton_dynamic_press_14x8_      | morebutton_dynamic_press_night_14x8_     | 用户详情动态更多选中图标   |
+|  feed_like_24x24_                     | feed_like_24x24_                    | feed_like_night_24x24_                   | 用户详情动态点赞图标      |
+|  feed_like_press_24x24_               | feed_like_press_24x24_              | feed_like_press_night_24x24_             | 用户详情动态点赞选中图标   |
+|  comment_feed_24x24_                  | comment_feed_24x24_                 | comment_feed_night_24x24_                | 用户详情动态点赞选中图标   |
+|  feed_share_24x24_                    | feed_share_24x24_                   | feed_share_night_24x24_                  | 用户详情动态转发图标      |
 |  new_morewhite_titlebar_22x22_        | new_morewhite_titlebar_22x22_       | new_morewhite_titlebar_night_22x22_      | 导航栏更多图标           |
 |  new_more_titlebar_24x24_             | new_more_titlebar_24x24_            | new_more_titlebar_night_24x24_           | 导航栏更多图标           |
 |  personal_home_back_white_24x24_      | personal_home_back_white_24x24_     | personal_home_back_white_night_24x24_    | 导航栏返回图标           |
 |  personal_home_back_black_24x24_      | personal_home_back_black_24x24_     | personal_home_back_black_night_24x24_    | 导航栏返回图标           |
 |  loading_12x12_                       | loading_12x12_                      | loading_night_12x12_                     | 用户详情界面位置图标      |
-|  arrow_up_16_16x14_                    | arrow_up_16_16x14_                 | arrow_up_night_16_16x14_                 | 用户详情界面位置图标      |
+|  arrow_up_16_16x14_                   | arrow_up_16_16x14_                  | arrow_up_night_16_16x14_                 | 用户详情界面位置图标      |
 |  place_10x12_                         | place_10x12_                        | place_night_10x12_                       | 用户详情界面位置图标      |
 |  tabbar-options                       | tabbar-options_9x9_                 | tabbar-options_night_9x9_                | 用户详情界面底部 tabbar   |
 |  toutiaohao                           | toutiaohao_34x14_                   | toutiaohao_night_30x15_                  | 头条号图标               |
