@@ -2,12 +2,19 @@
 
 [![Build Status](https://travis-ci.org/hrscy/TodayNews.svg?branch=master)](https://travis-ci.org/hrscy/TodayNews) ![swift3.1](https://img.shields.io/badge/language-swift%204-orange.svg)
 
-# 2017.12.11 目前视频还在更新中...
+### **github 主页的代码和我视频中的代码，有很多部分不同，目前 github 上代码写的不是很好，不是 swift 的风格，而是 OC 的风格，所以参考意义不大。**
+
+# 2017.12.20 更新
+
+    - 620-根据话题获取 cid 进行传值
+    - 619-根据用户名获取 uid 进行传值
+    - 618-实现富文本点击回调
+    - 617-正则表达式匹配用户名话题和链接
+    - 616-自定义UILabel显示富文本
+    - 615-设置用户名高亮显示
+    - 614-显示emoji表情
 
 # 2017.12.16 目前视频进度
-
-**github 主页的代码和我视频中的代码，有很多部分不同，目前 github 上代码写的不是很好，不是 swift 的风格，而是 OC 的风格，所以参考意义不大。**
-
 ## 视频目录暂定如下，后面可能会修改：
 
 1. 项目搭建
