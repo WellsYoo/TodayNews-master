@@ -41,3 +41,4 @@ class RefreshHeder: MJRefreshGifHeader {
         stateLabel.frame = CGRect(x: 0, y: 35, width: mj_w, height: 14)
     }
 }
+
