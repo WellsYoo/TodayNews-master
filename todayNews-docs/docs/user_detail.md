@@ -271,81 +271,6 @@
 }
 ```
 
-![冯提莫](img/user_detail/user_detail_4.jpeg)
-
-```
-{
-	"message": "success",
-	"data": {
-		"status": 0,
-		"is_followed": false,
-		"current_user_id": 0,
-		"media_id": 1578974413519885,
-		"description": "这里是我的最新资讯~欢迎大家关注我，我就是冯提莫，啦啦啦。",
-		"apply_auth_url": "sslocal://apply_user_auth_info",
-		"bottom_tab": [{
-			"schema_href": "sslocal://webview?url=http%3A%2F%2Fweibo.com%2Fu%2F1672384324%3Frefer_flag%3D1001030101_%26is_all%3D1",
-			"type": "href",
-			"children": [],
-			"value": "http://weibo.com/u/1672384324?refer_flag=1001030101_&is_all=1",
-			"name": "提莫微博"
-		}, {
-			"schema_href": "sslocal://webview?url=https%3A%2F%2Fwww.douyu.com%2F71017",
-			"type": "href",
-			"children": [],
-			"value": "https://www.douyu.com/71017",
-			"name": "提莫直播"
-		}],
-		"article_limit_enable": 1,
-		"verified_agency": "头条认证",
-		"bg_img_url": "http://p3.pstatp.com/origin/bc30011684fa86d4b71",
-		"verified_content": "斗鱼签约游戏主播 歌手",
-		"screen_name": "冯提莫",
-		"is_following": true,
-		"apply_auth_entry_title": "我的认证",
-		"pgc_like_count": 0,
-		"visit_count_recent": 140363,
-		"star_chart": {},
-		"user_verified": true,
-		"top_tab": [{
-			"url": "http://issub.snssdk.com/dongtai/list/v8",
-			"is_default": true,
-			"show_name": "动态",
-			"type": "dongtai"
-		}, {
-			"url": "",
-			"is_default": false,
-			"show_name": "文章",
-			"type": "all"
-		}, {
-			"url": "",
-			"is_default": false,
-			"show_name": "视频",
-			"type": "video"
-		}],
-		"user_auth_info": "{\"auth_type\": \"1\", \"auth_info\": \"斗鱼签约游戏主播 歌手\"}",
-		"is_blocking": 0,
-		"is_blocked": 0,
-		"user_id": 69722830785,
-		"name": "冯提莫",
-		"big_avatar_url": "http://p3.pstatp.com/large/437900011eb6a1e77419",
-		"area": null,
-		"private_letter_permission": 0,
-		"gender": 0,
-		"industry": null,
-		"creator_id": 69722830785,
-		"share_url": "http://m.toutiao.com/profile/69722830785/?version_code=6.4.2&version_name=&device_platform=iphone",
-		"show_private_letter": 1,
-		"ugc_publish_media_id": 1579026362919950,
-		"avatar_url": "http://p3.pstatp.com/medium/437900011eb6a1e77419",
-		"followers_count": 258976,
-		"media_type": "2",
-		"followings_count": 1,
-		"medals": []
-	}
-}
-```
-
 ## 用户详情-动态
 
 - 请求方式：GET
@@ -373,13 +298,233 @@
 | ------- | -----  | ------ | -------- | ----------- |
 |thread_id|   Int  |   N    | 用户动态模型中的 id_str | 1586368669366286 |
 
-**返回数据比较多，不再展示。**
+![navigationBar](img/dongtai/dongtai_detail_navigationBar.png)
+
+![header](img/dongtai/dongtai_detail_header.png)
+
+```
+{
+    "err_no":0,
+    "show_repost_entrance":1,
+    "comment":{
+        "id":1586852090470414,
+        "comment_base":{
+            "id":1586852090470414,
+            "content":"这个是ar眼镜的任务 识别不是难点//@36氪:人脸识别啥时候能解决脸盲问题？感觉可以福泽很多人[机智]",
+            "status":1,
+            "create_time":1513340083,
+            "user":{
+                "info":{
+                    "user_id":8,
+                    "name":"张一鸣",
+                    "desc":"观察移动互联网带来的变革",
+                    "schema":"sslocal://profile?uid=8",
+                    "avatar_url":"http://p3.pstatp.com/thumb/db40005ee1157a3aeb0",
+                    "user_auth_info":"{"auth_type": "1", "auth_info": "今日头条创始人兼CEO"}",
+                    "user_verified":1,
+                    "verified_content":"今日头条创始人兼CEO",
+                    "medals":[
+
+                    ],
+                    "user_url":"",
+                    "remark_name":""
+                },
+                "relation":{
+                    "is_friend":0,
+                    "is_following":0,
+                    "is_followed":0
+                },
+                "relation_count":{
+                    "followings_count":1489,
+                    "followers_count":458290
+                },
+                "block":{
+                    "is_blocking":0,
+                    "is_blocked":0
+                }
+            },
+            "action":{
+                "forward_count":3,
+                "comment_count":14,
+                "read_count":525,
+                "digg_count":38,
+                "bury_count":0,
+                "user_digg":0,
+                "user_repin":0,
+                "user_bury":0,
+                "play_count":0
+            },
+            "content_rich_span":"{"links":[{"start":19,"length":4,"link":"sslocal://profile?uid=3757989448","type":0,"text":""}]}",
+            "detail_schema":"sslocal://comment_repost_detail?category_id=&comment_id=1586852090470414&enter_from=click_headline&group_id=1586852090470414&refer=",
+            "share":{
+                "share_url":"https://weitoutiao.zjurl.cn/ugc/share/comment/1586852090470414/",
+                "share_title":"微头条",
+                "share_desc":"张一鸣 : 这个是ar眼镜的任务 识别不是难点",
+                "share_weibo_desc":"",
+                "share_cover":{
+                    "uri":"",
+                    "url_list":[
+                        "http://p3.pstatp.com/thumb/db40005ee1157a3aeb0"
+                    ]
+                }
+            },
+            "group_id":1586852090470414,
+            "repost_params":{
+                "repost_type":212,
+                "fw_id":1585727870572557,
+                "fw_id_type":2,
+                "fw_user_id":0,
+                "opt_id":1586852090470414,
+                "opt_id_type":1
+            }
+        },
+        "comment_type":212,
+        "is_repost":1,
+        "show_origin":1,
+        "show_tips":"",
+        "origin_thread":{
+            "thread_id":1585727870572557,
+            "content":"开会的挑战是人脸识别 打招呼的时候快速想是谁是谁 和考试一样",
+            "title":"",
+            "create_time":1512267943,
+            "modify_time":0,
+            "forum_id":0,
+            "status":1,
+            "reason":"",
+            "share_url":"https://toutiao.com/ugc/share/thread/1585727870572557/?app=&iid=0",
+            "content_rich_span":"{"links":[]}",
+            "item_type":0,
+            "flags":0,
+            "rate":0,
+            "digg_count":1283,
+            "read_count":642390,
+            "comment_count":244,
+            "user_digg":0,
+            "user_repin":0,
+            "position":{
+                "latitude":0,
+                "longitude":0,
+                "position":"嘉兴市 桐乡市",
+                "city":""
+            },
+            "forum":{
+                "forum_id":0,
+                "forum_name":"",
+                "status":0,
+                "show_et_status":0,
+                "banner_url":"",
+                "desc":"",
+                "talk_count":0,
+                "onlookers_count":0,
+                "follower_count":0,
+                "participant_count":0,
+                "avatar_url":"",
+                "introdution_url":"",
+                "like_time":0,
+                "schema":""
+            },
+            "user":{
+                "id":0,
+                "user_id":8,
+                "name":"张一鸣",
+                "screen_name":"张一鸣",
+                "desc":"观察移动互联网带来的变革",
+                "schema":"sslocal://profile?uid=8&refer=dongtai",
+                "avatar_url":"http://p3.pstatp.com/thumb/db40005ee1157a3aeb0",
+                "user_auth_info":"{"auth_type": "1", "auth_info": "今日头条创始人兼CEO"}",
+                "user_verified":1,
+                "verified_content":"今日头条创始人兼CEO",
+                "medals":[
+
+                ],
+                "user_role_icons":null,
+                "is_friend":0,
+                "is_following":0,
+                "is_blocked":0,
+                "is_blocking":0,
+                "followers_count":0,
+                "followings_count":0,
+                "remark_name":""
+            },
+            "digg_list":null,
+            "friend_digg_list":[
+
+            ],
+            "large_image_list":[
+                {
+                    "uri":"large/w960/47770005360b462a6c63",
+                    "url":"http://p7.pstatp.com/large/w960/47770005360b462a6c63",
+                    "width":1500,
+                    "height":1124,
+                    "url_list":[
+                        {
+                            "url":"http://p7.pstatp.com/large/w960/47770005360b462a6c63"
+                        },
+                        {
+                            "url":"http://p4.pstatp.com/large/w960/47770005360b462a6c63"
+                        },
+                        {
+                            "url":"http://p.pstatp.com/large/w960/47770005360b462a6c63"
+                        }
+                    ],
+                    "type":1
+                }
+            ],
+            "thumb_image_list":[
+                {
+                    "uri":"list/640x360/47770005360b462a6c63",
+                    "url":"http://p7.pstatp.com/list/640x360/47770005360b462a6c63",
+                    "width":1500,
+                    "height":1124,
+                    "url_list":[
+                        {
+                            "url":"http://p7.pstatp.com/list/640x360/47770005360b462a6c63"
+                        },
+                        {
+                            "url":"http://p4.pstatp.com/list/640x360/47770005360b462a6c63"
+                        },
+                        {
+                            "url":"http://p.pstatp.com/list/640x360/47770005360b462a6c63"
+                        }
+                    ],
+                    "type":1
+                }
+            ],
+            "forward_info":{
+                "forward_count":163
+            },
+            "comments":[
+
+            ],
+            "user_role":0,
+            "talk_type":0,
+            "show_comments_num":0,
+            "cursor":0,
+            "digg_limit":0,
+            "show_origin":0,
+            "show_tips":"",
+            "forward_num":0,
+            "schema":"sslocal://thread_detail?fid=6564242300&gd_ext_json=%7B%22category_id%22%3A%22%22%2C%22enter_from%22%3A%22%22%2C%22group_type%22%3A%22forum_post%22%2C%22refer%22%3A%22%22%7D&tid=1585727870572557"
+        }
+    },
+    "ban_face":0
+}
+```
 
 ## 用户详情-动态-评论
 
 - 请求方式：POST
-- 请求地址：/article/v2/tab_comments/
+- 请求地址：/article/v2/tab_comments/?
 - 请求参数(body 体)
+
+| 参数     |  类型  | 是否必须 |   描述   |     示例     |
+| ------- | -----  | ------ | -------- | ----------- |
+|offset|   Int  |   Y    |  | 0 |
+|forum_id|   Int  |   Y    |  | 6564242300 |
+|group_id|   Int  |   Y    |  | 传 thread_id 吧 |
+|count|   Int  |   Y    |  | 20 |
+|item_id|   Int  |   N    |  | 0 |
+|group_type|   Int  |   N    |  | 2 |
 
 - 请求方式：GET
 - 请求地址：/2/comment/v1/reply_list/?  （动态 cell 如果是评论或引用则调用这个接口）
@@ -387,54 +532,132 @@
 | 参数     |  类型  | 是否必须 |   描述   |     示例     |
 | ------- | -----  | ------ | -------- | ----------- |
 |offset|   Int  |   Y    |  | 0 |
-|forum_id|   Int  |   Y    |  | 6564242300 |
-|group_id|   Int  |   Y    |  | 1586368669366286 |
+|id|   Int  |   Y    |  | 6564242300 |
 |count|   Int  |   Y    |  | 20 |
-|fold|   Int  |   N    |  | 1 |
-|item_id|   Int  |   N    |  | 0 |
-|group_type|   Int  |   N    |  | 2 |
 
-**返回数据比较多，不再展示。**
+![header](img/dongtai/dongtai_detail_comment.png)
+
+```
+{
+    "ban_face":false,
+    "message":"success",
+    "data":{
+        "has_more":false,
+        "total_count":14,
+        "stick_total_number":0,
+        "offset":14,
+        "stick_has_more":false,
+        "data":[
+            {
+                "content":"张总技术出身么？",
+                "create_time":1513447845,
+                "is_owner":false,
+                "user":{
+                    "is_followed":null,
+                    "description":"武汉高校圈子为你提供武汉高校一手资讯学习交友尽在武汉高校圈子",
+                    "screen_name":"武汉高校圈子",
+                    "is_following":null,
+                    "is_blocked":null,
+                    "user_verified":true,
+                    "user_auth_info":"{"auth_type": "0", "auth_info": "武汉校园资讯达人"}",
+                    "is_blocking":null,
+                    "is_pgc_author":false,
+                    "user_id":5977178102,
+                    "name":"武汉高校圈子",
+                    "author_badge":[
+
+                    ],
+                    "user_relation":0,
+                    "verified_reason":"武汉校园资讯达人",
+                    "avatar_url":"http://p1.pstatp.com/thumb/78f001f66a18434af9e"
+                },
+                "text":"张总技术出身么？",
+                "user_digg":false,
+                "id":1586965088097293,
+                "content_rich_span":"",
+                "digg_count":3
+            },
+            {
+                "content":"哈哈，人脸识别[送心][送心]",
+                "create_time":1513343023,
+                "is_owner":false,
+                "user":{
+                    "is_followed":null,
+                    "description":"资讯、美食、旅游、心情、吃喝玩乐大小事情，一网搜罗！",
+                    "screen_name":"龟话",
+                    "is_following":null,
+                    "is_blocked":null,
+                    "user_verified":false,
+                    "user_auth_info":"",
+                    "is_blocking":null,
+                    "is_pgc_author":false,
+                    "user_id":4751518306,
+                    "name":"龟话",
+                    "author_badge":[
+
+                    ],
+                    "user_relation":0,
+                    "verified_reason":"",
+                    "avatar_url":"http://p3.pstatp.com/thumb/438900033d3b90e713d7"
+                },
+                "text":"哈哈，人脸识别[送心][送心]",
+                "user_digg":false,
+                "id":1586855174661198,
+                "content_rich_span":"",
+                "digg_count":1
+            },
+            {
+                "content":"老大好[大笑]",
+                "create_time":1513341603,
+                "is_owner":false,
+                "user":{
+                    "is_followed":null,
+                    "description":"分享最潮流美食，管理资讯，厨师秘籍，厨师界关注最多的自媒体！",
+                    "screen_name":"名厨汇",
+                    "is_following":null,
+                    "is_blocked":null,
+                    "user_verified":true,
+                    "user_auth_info":"{"auth_type": "0", "auth_info": "美食达人"}",
+                    "is_blocking":null,
+                    "is_pgc_author":false,
+                    "user_id":2747621738,
+                    "name":"名厨汇",
+                    "author_badge":[
+
+                    ],
+                    "user_relation":0,
+                    "verified_reason":"美食达人",
+                    "avatar_url":"http://p1.pstatp.com/thumb/36410009bb33cd43d034"
+                },
+                "text":"老大好[大笑]",
+                "user_digg":false,
+                "id":1586853684609053,
+                "content_rich_span":"",
+                "digg_count":1
+            }
+        ],
+        "id":1586852090470414,
+        "hot_comments":[
+
+        ]
+    },
+    "stable":true
+}
+```
 
 ## 用户详情-文章
 
 - 请求方式：GET
-- 请求地址：/pgc/ma/?
+- 请求地址：/dongtai/list/v10/?
 - 请求参数
 
 | 参数     |  类型  | 是否必须 |   描述   |     示例     |
 | ------- | -----  | ------ | -------- | ----------- |
-| media_id |   Int  |   Y    | 用户的 ID | 53271122458 |
-|   uid    |   Int  |   Y    | 用户的 ID | 53271122458 |
-|     as   | Int    |  Y   |    | A1856A615F87457 |
-|  output  |   String  |   Y    |  输出 | json |
-|  count   |   Int  |   Y    |  输出 | 20 |
-| page_type|   Int  |   Y    |  | **1(文章)** |
-|   from   |   Int  |   N    | 来源 | user_profile_app |
-|  version | Int    |  N   | 版本   | 2 |
-|    cp    | Int    |  N   |    | 5A1F871485672E1 |
+| user_id |   Int  |   Y    | 用户的 ID | 53271122458 |
+|   device_id    |   Int  |   Y    | 用户的 ID | 53271122458 |
+|     iid   | Int    |  Y   |    | 53271122458 |
 
-```
-{
-    "app_url": "sslocal://thread_detail?fid=6564242300&tid=1585650748196877",
-    "go_detail_count": "214万",
-    "title": "早上来上海观复博物馆时，工作人员正在做开馆前的准备，随手拍了...",
-    "internal_visit_count_format": "214万",
-    "abstract": "早上来上海观复博物馆时，工作人员正在做开馆前的准备，随手拍了几张无人时的照片。在上海中心大厦37层上，又一次印证了我的办馆理念：没来时不能想象，来了也不能复述。",
-    "image_list": [],
-    "external_visit_count": 0,
-    "behot_time": 1512194393,
-    "datetime": "2017-12-02 13:59",
-    "source": "上头条",
-    "is_thread": true,
-    "create_time": 1512194393,
-    "source_url": "http://toutiao.com/dongtai/1585650748196877/",
-    "group_id": 1585650748196877,
-    "middle_image": "",
-    "external_visit_count_format": "0",
-    "internal_visit_count": 2140405
-}
-```
+**返回数据和动态类似**
 
 ## 用户详情-视频
 
@@ -446,6 +669,7 @@
 | ------- | -----  | ------ | -------- | ----------- |
 | media_id |   Int  |   Y    | 用户的 ID | 53271122458 |
 |   uid    |   Int  |   Y    | 用户的 ID | 53271122458 |
+|max_behot_time|   Int  |   Y    | 用户的 ID | 1510025153『秒数』 |
 |     as   | Int    |  Y   |    | A1856A615F87457 |
 |  output  |   String  |   Y    |  输出 | json |
 |  count   |   Int  |   Y    |  输出 | 20 |
@@ -453,6 +677,8 @@
 |   from   |   Int  |   N    | 来源 | user_profile_app |
 |  version | Int    |  N   | 版本   | 2 |
 |    cp    | Int    |  N   |    | 5A1F871485672E1 |
+
+> 加载更多数据时，`max_behot_time` 的参数是获取到的数据中的最后一条数据的创建时间。
 
 **返回数据比较多，不再展示。**
 
@@ -464,202 +690,207 @@
 
 | 参数     |  类型  | 是否必须 |   描述   |     示例     |
 | ------- | -----  | ------ | -------- | ----------- |
-| other_id |   Int  |   Y    | 用户的 ID | 53271122458 |
+| other_id |   Int  |   Y    | 用户的 ID | 8 |
 | format |   Int  |   Y    | 格式 | json |
-| from_channel |   Int  |   Y    | 来源 | media_channel |
+| from_channel |   Int  |   N    | 来源 | media_channel |
 | device_id       | Int    |  N   | 设备 ID   | 8800803362 |
+
+## 用户详情-问答-加载更多
+
+- 请求方式：GET
+- 请求地址：/wenda/profile/wendatab/loadmore/?
+- 请求参数
+
+| 参数     |  类型  | 是否必须 |   描述   |     示例     |
+| ------- | -----  | ------ | -------- | ----------- |
+| other_id |   Int  |   Y    | 用户的 ID | 8 |
+| format |   Int  |   Y    | 格式 | json |
+| cursor       | Int    |  N   | 指示器   | 6241683443818692866 |
+| from_channel |   Int  |   N    | 来源 | media_channel |
+| device_id       | Int    |  N   | 设备 ID   | 8800803362 |
+| count       | Int    |  N   | 加载条数   | 10 |
+| offset       | Int    |  N   |    | undefined |
+
+![马未都](img/user_detail/user_detail_wenda.png)
 
 ```
 {
-  "cursor": "6484757658522878221", 
-  "err_no": 0, 
-  "answer_question": [
-    {
-      "answer": {
-        "show_time": "2017.11.05", 
-        "content_abstract": {
-          "text": "这位同学问的问题很有灵性，这2件装备都是比较适合武器大师出的装备。再同时出的情况下，这2个装备的主动效果就有点重复了。都是造成一个减速的效果，科技枪是造成魔法伤害高并且减速40%，破败王者之刃是偷取目标25%的移动速度。而且科技枪的被动技能主要是配合武器大师的魔法伤害达到一个不错的回复能力，而破败呢就是配合武器大师的被动造成一个普通攻击的额外生命值的物理伤害。所以这2件装备，我们在对线坦克的时候可以出破败，在对线一些线上伤害高的可以出科技枪。但是马老师不建议你同时出，因为这2件装备都有点贵，有点托节奏。而且要看你的对手是什么样的段位，如果青铜白银嘛那就随便锤，如果大师王者了那还是要根据阵容来出装。", 
-          "thumb_image_list": [], 
-          "large_image_list": []
-        }, 
-        "user": {
-          "is_verify": 1, 
-          "uname": "大司马解说", 
-          "create_time": 1471766978, 
-          "user_auth_info": "{\"auth_type\":\"1\",\"auth_info\":\"\知\名\游\戏\解\说 \斗\鱼\签\约\主\播\"}", 
-          "user_id": "50329949946", 
-          "avatar_url": "http://p3.pstatp.com/thumb/216d0012235c54f782d9", 
-          "profit_amount": 0, 
-          "user_intro": "知名游戏解说 斗鱼签约主播", 
-          "profit_user": false, 
-          "medals": [], 
-          "schema": "sslocal://profile?uid=50329949946&refer=wenda"
-        }, 
-        "ans_url": "https://ic.snssdk.com/wenda/v1/wapanswer/content/?ansid=6484757658522878221", 
-        "ansid": "6484757658522878221", 
-        "is_show_bury": false, 
-        "wap_url": "https://www.wukong.com/answer/6484757658522878221/", 
-        "is_buryed": false, 
-        "bury_count": 0, 
-        "title": "", 
-        "is_delete": 0, 
-        "digg_count": 270, 
-        "content": "<p>这位同学问的问题很有灵性，这2件装备都是比较适合武器大师出的装备。再同时出的情况下，这2个装备的主动效果就有点重复了。都是造成一个减速的效果，科技枪是造成魔法伤害高并且减速40%，破败王者之刃是偷取目标25%的移动速度。而且科技枪的被动技能主要是配合武器大师的魔法伤害达到一个不错的回复能力，而破败呢就是配合武器大师的被动造成一个普通攻击的额外生命值的物理伤害。所以这2件装备，我们在对线坦克的时候可以出破败，在对线一些线上伤害高的可以出科技枪。但是马老师不建议你同时出，因为这2件装备都有点贵，有点托节奏。而且要看你的对手是什么样的段位，如果青铜白银嘛那就随便锤，如果大师王者了那还是要根据阵容来出装。</p>", 
-        "brow_count": 209544, 
-        "is_digg": false, 
-        "schema": "sslocal://wenda_detail?gd_ext_json=%7B%22article_type%22%3A%22wenda%22%2C%22author_id%22%3A%2250329949946%22%7D&ansid=6484757658522878221&api_param=%7B%22scope%22%3A%22toutiao_wenda%22%2C%22origin_from%22%3A%22click_headline%22%2C%22parent_enter_from%22%3A%22question%22%2C%22enter_from%22%3A%22answer_detail%22%7D"
-      }, 
-      "question": {
-        "content": {
-          "text": "", 
-          "pic_uri_list": [
-            {
-              "width": 720, 
-              "type": "1", 
-              "web_uri": "3ea500096cee704ef232", 
-              "height": 1280
-            }, 
-            {
-              "width": 720, 
-              "type": "1", 
-              "web_uri": "3ea30009698e9d0f0a47", 
-              "height": 1280
+    "cursor":"6241683443818692866",
+    "err_no":0,
+    "answer_question":[
+        {
+            "answer":{
+                "show_time":"2017.08.30",
+                "content_abstract":{
+                    "text":"知识应该分享的 我们只是鼓励创作 。一如既往 我们会覆盖长尾 从阳春白雪到下里巴人 只是要做好匹配。大家别吵了 上来答题吧。",
+                    "thumb_image_list":[
+
+                    ],
+                    "large_image_list":[
+
+                    ]
+                },
+                "user":{
+                    "is_verify":1,
+                    "uname":"张一鸣",
+                    "create_time":1325225113,
+                    "user_auth_info":"{"auth_type":"1","auth_info":"\u4eca\u65e5\u5934\u6761\u521b\u59cb\u4eba\u517cCEO"}",
+                    "user_id":"8",
+                    "avatar_url":"http://p3.pstatp.com/thumb/db40005ee1157a3aeb0",
+                    "profit_amount":0,
+                    "user_intro":"今日头条创始人兼CEO",
+                    "profit_user":true,
+                    "medals":[
+
+                    ],
+                    "schema":"sslocal://profile?uid=8&refer=wenda"
+                },
+                "ans_url":"https://ic.snssdk.com/wenda/v1/wapanswer/content/?ansid=6459738464865747213",
+                "ansid":"6459738464865747213",
+                "is_show_bury":false,
+                "wap_url":"https://www.wukong.com/answer/6459738464865747213/",
+                "is_buryed":false,
+                "bury_count":0,
+                "title":"",
+                "is_delete":0,
+                "digg_count":663,
+                "content":"<p>知识应该分享的 我们只是鼓励创作 。一如既往 我们会覆盖长尾 从阳春白雪到下里巴人 只是要做好匹配。大家别吵了 上来答题吧。</p>",
+                "brow_count":197576,
+                "is_digg":false,
+                "schema":"sslocal://wenda_detail?gd_ext_json=%7B%22article_type%22%3A%22wenda%22%2C%22author_id%22%3A%228%22%7D&ansid=6459738464865747213&api_param=%7B%22scope%22%3A%22toutiao_wenda%22%2C%22origin_from%22%3A%22click_headline%22%2C%22parent_enter_from%22%3A%22question%22%2C%22enter_from%22%3A%22answer_detail%22%7D"
+            },
+            "question":{
+                "content":{
+                    "text":"8月29日下午，有人在朋友圈爆料称，悟空问答签约了300多个大V，罗振宇转发后引发激烈讨论，你怎么看？",
+                    "pic_uri_list":[
+                        {
+                            "width":498,
+                            "type":"1",
+                            "web_uri":"3831000589f55c3e04ce",
+                            "height":263
+                        }
+                    ],
+                    "thumb_image_list":[
+                        {
+                            "url":"http://p1.pstatp.com/list/r498/3831000589f55c3e04ce",
+                            "url_list":[
+                                {
+                                    "url":"http://p1.pstatp.com/list/r498/3831000589f55c3e04ce"
+                                },
+                                {
+                                    "url":"http://pb3.pstatp.com/list/r498/3831000589f55c3e04ce"
+                                },
+                                {
+                                    "url":"http://pb3.pstatp.com/list/r498/3831000589f55c3e04ce"
+                                }
+                            ],
+                            "uri":"3831000589f55c3e04ce",
+                            "height":263,
+                            "width":498,
+                            "type":1
+                        }
+                    ],
+                    "large_image_list":[
+                        {
+                            "url":"http://p1.pstatp.com/large/3831000589f55c3e04ce",
+                            "url_list":[
+                                {
+                                    "url":"http://p1.pstatp.com/large/3831000589f55c3e04ce"
+                                },
+                                {
+                                    "url":"http://pb3.pstatp.com/large/3831000589f55c3e04ce"
+                                },
+                                {
+                                    "url":"http://pb3.pstatp.com/large/3831000589f55c3e04ce"
+                                }
+                            ],
+                            "uri":"3831000589f55c3e04ce",
+                            "height":263,
+                            "width":498,
+                            "type":1
+                        }
+                    ]
+                },
+                "tag_name":"",
+                "create_time":1504001788,
+                "normal_ans_count":47,
+                "user":{
+                    "is_verify":0,
+                    "uname":"用户65146878",
+                    "create_time":1433388228,
+                    "user_auth_info":"",
+                    "user_id":"4474648172",
+                    "avatar_url":"http://s0.pstatp.com/image/avatar.png",
+                    "profit_amount":78,
+                    "user_intro":"",
+                    "profit_user":true,
+                    "medals":[
+
+                    ],
+                    "schema":"sslocal://profile?uid=4474648172&refer=wenda"
+                },
+                "title":"如何看悟空问答签约大V答主？",
+                "qid":"6459638491356594445",
+                "nice_ans_count":101,
+                "tag_id":0,
+                "fold_reason":{
+                    "open_url":"sslocal://detail?groupid=6293724675596402946",
+                    "title":"为什么折叠？"
+                }
             }
-          ], 
-          "thumb_image_list": [
-            {
-              "url": "http://p3.pstatp.com/list/s192/3ea500096cee704ef232", 
-              "url_list": [
-                {
-                  "url": "http://p3.pstatp.com/list/s192/3ea500096cee704ef232"
-                }, 
-                {
-                  "url": "http://pb9.pstatp.com/list/s192/3ea500096cee704ef232"
-                }, 
-                {
-                  "url": "http://pb3.pstatp.com/list/s192/3ea500096cee704ef232"
-                }
-              ], 
-              "uri": "3ea500096cee704ef232", 
-              "height": 192, 
-              "width": 192, 
-              "type": 1
-            }, 
-            {
-              "url": "http://p9.pstatp.com/list/s192/3ea30009698e9d0f0a47", 
-              "url_list": [
-                {
-                  "url": "http://p9.pstatp.com/list/s192/3ea30009698e9d0f0a47"
-                }, 
-                {
-                  "url": "http://pb1.pstatp.com/list/s192/3ea30009698e9d0f0a47"
-                }, 
-                {
-                  "url": "http://pb3.pstatp.com/list/s192/3ea30009698e9d0f0a47"
-                }
-              ], 
-              "uri": "3ea30009698e9d0f0a47", 
-              "height": 192, 
-              "width": 192, 
-              "type": 1
-            }
-          ], 
-          "large_image_list": [
-            {
-              "url": "http://p3.pstatp.com/large/3ea500096cee704ef232", 
-              "url_list": [
-                {
-                  "url": "http://p3.pstatp.com/large/3ea500096cee704ef232"
-                }, 
-                {
-                  "url": "http://pb9.pstatp.com/large/3ea500096cee704ef232"
-                }, 
-                {
-                  "url": "http://pb3.pstatp.com/large/3ea500096cee704ef232"
-                }
-              ], 
-              "uri": "3ea500096cee704ef232", 
-              "height": 1280, 
-              "width": 720, 
-              "type": 1
-            }, 
-            {
-              "url": "http://p9.pstatp.com/large/3ea30009698e9d0f0a47", 
-              "url_list": [
-                {
-                  "url": "http://p9.pstatp.com/large/3ea30009698e9d0f0a47"
-                }, 
-                {
-                  "url": "http://pb1.pstatp.com/large/3ea30009698e9d0f0a47"
-                }, 
-                {
-                  "url": "http://pb3.pstatp.com/large/3ea30009698e9d0f0a47"
-                }
-              ], 
-              "uri": "3ea30009698e9d0f0a47", 
-              "height": 1280, 
-              "width": 720, 
-              "type": 1
-            }
-          ]
-        }, 
-        "tag_name": "", 
-        "create_time": 1509821971, 
-        "normal_ans_count": 5, 
-        "user": {
-          "is_verify": 0, 
-          "uname": "六更9728", 
-          "create_time": 1454582496, 
-          "user_auth_info": "", 
-          "user_id": "5980352250", 
-          "avatar_url": "http://p3.pstatp.com/thumb/2bd6002342d1e63b6857", 
-          "profit_amount": 0, 
-          "user_intro": "", 
-          "profit_user": false, 
-          "medals": [], 
-          "schema": "sslocal://profile?uid=5980352250&refer=wenda"
-        }, 
-        "title": "LOL的武器大师可以科技枪和破败一起出吗？", 
-        "qid": "6484635986562121998", 
-        "nice_ans_count": 3, 
-        "tag_id": 0, 
-        "fold_reason": {
-          "open_url": "sslocal://detail?groupid=6293724675596402946", 
-          "title": "为什么折叠？"
         }
-      }
-    }
-  ], 
-  "err_tips": "", 
-  "api_param": {
-    "origin_from": "out_wenda", 
-    "enter_from": "out_wenda"
-  }, 
-  "has_more": false, 
-  "login_user": {}, 
-  "total": 1, 
-  "user_data": {
-    "all_brow_cnt_str": "1696万人读过你的回答", 
-    "is_verify": 0, 
-    "curretn_month_digg_cnt_str": "本月共0人点赞", 
-    "all_digg_cnt_str": "回答获0人点赞", 
-    "current_month_brow_cnt": "1633万", 
-    "youzhi_info": [], 
-    "laomo_info": [], 
-    "uname": "", 
-    "all_brow_cnt": "1696万", 
-    "is_valid": 1, 
-    "current_month_brow_cnt_str": "本月共1633万人浏览", 
-    "user_intro": "", 
-    "current_month_digg_cnt": "0", 
-    "all_digg_cnt": "0", 
-    "user_profile_image_url": "", 
-    "ming_ren_tang": "", 
-    "schema": ""
-  }, 
-  "can_ask": false
+    ],
+    "err_tips":"",
+    "api_param":{
+        "origin_from":"out_wenda",
+        "enter_from":"out_wenda"
+    },
+    "has_more":false,
+    "login_user":{
+
+    },
+    "total":7,
+    "user_data":{
+        "all_brow_cnt_str":"5238万人读过你的回答",
+        "is_verify":0,
+        "curretn_month_digg_cnt_str":"本月共0人点赞",
+        "all_digg_cnt_str":"回答获0人点赞",
+        "current_month_brow_cnt":"98万",
+        "youzhi_info":[
+
+        ],
+        "laomo_info":[
+
+        ],
+        "uname":"",
+        "all_brow_cnt":"5238万",
+        "is_valid":1,
+        "current_month_brow_cnt_str":"本月共98万人浏览",
+        "user_intro":"",
+        "current_month_digg_cnt":"0",
+        "all_digg_cnt":"0",
+        "user_profile_image_url":"",
+        "ming_ren_tang":"",
+        "schema":""
+    },
+    "can_ask":false
 }
 ```
+## 用户详情-小视频
+
+- 请求方式：GET
+- 请求地址：/user/profile/tabs/ies/?
+- 请求参数
+
+| 参数     |  类型  | 是否必须 |   描述   |     示例     |
+| ------- | -----  | ------ | -------- | ----------- |
+| user_id |   Int  |   Y    | 用户的 ID | 53271122458 |
+| iid |   Int  |   N    | 用户的 ID | 18145386087 |
+| count |   Int  |   N    |  | 15 |
+| device_id       | Int    |  N   | 设备 ID   | 8800803362 |
+
+**数据比较多，不再展示**
+
 
 ## 关注用户（取消关注）
 
