@@ -4,6 +4,8 @@
 
 当前分支是最新项目的分支，点击 [旧项目分支](https://github.com/hrscy/TodayNews/tree/TodayNews-old)。
 
+<iframe height=498 width=510 src="http://v.youku.com/v_show/id_XMzI1NjI1NjEyNA==.html?spm=a2hzp.8244740.0.0" frameborder=0 allowfullscreen></iframe>
+
 # 2018.1.5 更新
 - 7-用户详情动态详情界面
 
