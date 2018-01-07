@@ -2,9 +2,24 @@
 
 [![Build Status](https://travis-ci.org/hrscy/TodayNews.svg?branch=master)](https://travis-ci.org/hrscy/TodayNews) ![swift3.1](https://img.shields.io/badge/language-swift%204-orange.svg)
 
-## 当前分支是最新项目的分支，点击 [旧项目分支](https://github.com/hrscy/TodayNews/tree/TodayNews-old)。
+# 当前分支是最新项目的分支，点击 [旧项目分支](https://github.com/hrscy/TodayNews/tree/TodayNews-old)。
 
-## 目前其他功能还在开发中...
+# 目前其他功能还在开发中...
+
+# 2018.1.7 更新
+
+    - 722-表情键盘添加 pageControl
+    - 721-插入表情到 textView
+    - 720-解决 collectionView 分页不正确的问题
+    - 719-设置 item 横向排列
+    - 718-修改 emoji 数组及 plist 文件
+    - 717-修改约束2
+    - 716-修改约束
+    - 715-设置 collectionView 的布局
+    - 714-显示emoji表情
+    - 713-修改表情键盘视图创建方式
+    - 712-自定义emoji的cell
+    - 711-自定义表情键盘
 
 # 2018.1.5 更新
 - 7-用户详情动态详情界面
