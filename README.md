@@ -1,4 +1,4 @@
-# Swift 开源项目-模仿今日头条
+# Swift 4 - 模仿今日头条
 
 [![Build Status](https://travis-ci.org/hrscy/TodayNews.svg?branch=master)](https://travis-ci.org/hrscy/TodayNews) ![swift3.1](https://img.shields.io/badge/language-swift%204-orange.svg)
 
