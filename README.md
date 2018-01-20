@@ -2,13 +2,29 @@
 
 [![Build Status](https://travis-ci.org/hrscy/TodayNews.svg?branch=master)](https://travis-ci.org/hrscy/TodayNews) ![swift3.1](https://img.shields.io/badge/language-swift%204-orange.svg)
 
-# 当前分支是最新项目的分支，点击 [旧项目分支](https://github.com/hrscy/TodayNews/tree/TodayNews-old)。
+# 最新代码已经上传，当前代码还不完善，还有部分功能未完成，后续会继续更新...
 
-# 视频链接会在近期发布，代码也会在近期上传。
+# 下方二维码是视频链接地址。
 
+![](asset/video.png)
 
+# **提示：**
 
-# 目前其他功能还在开发中...
+# 本系列视频实战教程需要有 Swift 语言基础，并且有过 iOS 开发相关经验。
+
+# 另外视频需要支付一部分费用，购买视频的小伙伴可以加入我的 QQ  群，我会帮有问题的小伙伴解决问题~。
+
+# 下面我上传了一些试看内容。
+
+### [101-项目搭建](http://player.youku.com/embed/XMzI1MzI3MTY4OA==)
+
+### [617-正则表达式匹配用户名话题和链接](http://player.youku.com/embed/XMzI1NjI1NjEyNA==)
+
+# 2018.1.19 更新
+
+- 10-视频界面实现
+    - 1001-解析视频的真实播放地址
+    - 1002-解决视频播放时出现的问题
 
 # 2018.1.16 更新
 
