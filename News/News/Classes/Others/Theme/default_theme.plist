@@ -4,6 +4,8 @@
 <dict>
 	<key>images</key>
 	<dict>
+		<key>arrow_down_16_16x14_</key>
+		<string>arrow_down_16_16x14_</string>
 		<key>comment_video_20x20_</key>
 		<string>comment_video_20x20_</string>
 		<key>love_video_press_20x20_</key>

@@ -77,8 +77,8 @@ class VideoCell: UITableViewCell, RegisterCellFromNib {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        bgImageButton.setImage(UIImage(named: "video_play_icon_44x44_"), for: .normal)
         theme_backgroundColor = "colors.cellBackgroundColor"
+        bgImageButton.setImage(UIImage(named: "video_play_icon_44x44_"), for: .normal)
         shareLable.theme_textColor = "colors.black"
         titleLabel.theme_textColor = "colors.moreLoginTextColor"
         nameLable.theme_textColor = "colors.black"

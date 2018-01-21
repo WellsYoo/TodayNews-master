@@ -116,6 +116,52 @@ struct OrderedInfo: HandyJSON {
 struct AD: HandyJSON {
     var mixed = Mixed()
     var is_preview: Bool = false
+    var app = App()
+}
+
+struct App: HandyJSON {
+    var log_extra: String = ""
+    var open_url: String = ""
+    var os_type: String = ""
+    var source: String = ""
+    var title: String = ""
+    var app_name: String = ""
+    var image = AppImage()
+    var button_text: String = ""
+    var image_mode: Int = 0
+    var appleid: String = ""
+    var click_track_url_list = [ClickTrackURL]()
+    var track_url_list = [TrackURL]()
+    var click_track_url: String = ""
+    var track_url: String = ""
+    var download_url: String = ""
+    var type: String = ""
+    var id: Int = 0
+    var label: String = ""
+    var app_size: String = ""
+    var filter_words = [FilterWord]()
+    var show_dislike: Int = 0
+    var download_count: String = ""
+    var rate: Int = 0
+    var ad_id: Int = 0
+    var app_icon: String = ""
+    var display_subtype: Int = 0
+    var description: String = ""
+}
+
+struct TrackURL: HandyJSON {
+    
+}
+
+struct ClickTrackURL: HandyJSON {
+    
+}
+
+struct AppImage: HandyJSON {
+    var url_list = [URLList]()
+    var height: Int = 0
+    var uri: String = ""
+    var width: Int = 0
 }
 
 struct Mixed: HandyJSON {
@@ -133,6 +179,7 @@ struct Mixed: HandyJSON {
     var is_tongtou_ad: Bool = false
     var open_url: String = ""
     var image: String = ""
+    var image_list = [ThumbImageList]()
     var source_name: String = ""
     var title: String = ""
     var type: String = ""
@@ -150,10 +197,6 @@ struct Media: HandyJSON {
     var user_decoration: String = ""
     var avatar_url: String = ""
     var name: String = ""
-    
-}
-
-struct TrackURL: HandyJSON {
     
 }
 

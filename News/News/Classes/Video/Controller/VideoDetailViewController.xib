@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoDetailViewController" customModule="News" customModuleProvider="target">
             <connections>
+                <outlet property="bottomView" destination="aKM-YT-W3c" id="btk-zE-tiu"/>
                 <outlet property="loveButton" destination="3Cy-cr-l8g" id="eYh-0g-4CI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -114,7 +115,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="aKM-YT-W3c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Qlw-jX-bHe"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="aKM-YT-W3c" secondAttribute="bottom" id="UTY-pj-JXN"/>

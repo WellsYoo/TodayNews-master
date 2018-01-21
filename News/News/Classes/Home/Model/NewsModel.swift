@@ -17,7 +17,9 @@ struct NewsModel: HandyJSON {
     var cell_flag: Int = 0
     var behot_time: Int = 0
     var tip: Int = 0
-    var publish_time: Int = 0
+    var publish_time: TimeInterval = 0
+    var publishTime: String? { return publish_time.convertString() }
+    
     var source_icon_style: Int = 0
     var tag_id: Int = 0
     var media_info = MediaInfo()
@@ -108,6 +110,17 @@ struct NewsModel: HandyJSON {
     var appleid = ""
     var description = ""
     var download_url = ""
+    var card_type: CardType = .video
+    var is_article = false
+    var is_preview = false
+    
+    
+}
+
+/// 视频类型
+enum CardType: String, HandyJSONEnum {
+    case video = "video"        // 视频
+    case adVideo = "ad_video"   // 广告视频
 }
 
 struct ADButton: HandyJSON {
@@ -143,7 +156,9 @@ struct SmallVideo: HandyJSON {
         return emojiManager.showEmoji(content: title, font: UIFont.systemFont(ofSize: 17))
     }
     
-    var create_time: Int = 0
+    var create_time: TimeInterval = 0
+    var createTime: String? { return create_time.convertString() }
+    
     var recommand_reason: String = ""
     var first_frame_image_list = [FirstFrameImage]()
     var action = SmallVideoAction()

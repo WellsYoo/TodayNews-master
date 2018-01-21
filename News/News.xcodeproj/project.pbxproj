@@ -27,6 +27,14 @@
 		942DCF701F6024B7001AD160 /* MyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942DCF6F1F6024B7001AD160 /* MyTabBar.swift */; };
 		94349D2E2012135700085ED4 /* VideoDetailUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94349D2D2012135700085ED4 /* VideoDetailUserView.swift */; };
 		94349D302012135F00085ED4 /* VideoDetailUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94349D2F2012135F00085ED4 /* VideoDetailUserView.xib */; };
+		94349D37201449AC00085ED4 /* RelatedVideoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94349D35201449AC00085ED4 /* RelatedVideoTableViewController.swift */; };
+		94349D38201449AC00085ED4 /* RelatedVideoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94349D36201449AC00085ED4 /* RelatedVideoTableViewController.xib */; };
+		94349D3A20148E1300085ED4 /* RelatedVideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94349D3920148E1300085ED4 /* RelatedVideoHeaderView.swift */; };
+		94349D3C20148E1B00085ED4 /* RelatedVideoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94349D3B20148E1B00085ED4 /* RelatedVideoHeaderView.xib */; };
+		94349D3E20148E7900085ED4 /* RelatedVideoFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94349D3D20148E7900085ED4 /* RelatedVideoFooterView.swift */; };
+		94349D4020148E8400085ED4 /* RelatedVideoFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94349D3F20148E8400085ED4 /* RelatedVideoFooterView.xib */; };
+		94349D432014907000085ED4 /* RelatedVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94349D412014907000085ED4 /* RelatedVideoCell.swift */; };
+		94349D442014907000085ED4 /* RelatedVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94349D422014907000085ED4 /* RelatedVideoCell.xib */; };
 		943572601FCFE2D900FE4A83 /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9435725F1FCFE2D900FE4A83 /* UserDetail.swift */; };
 		943572621FD0028900FE4A83 /* UserDetailBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943572611FD0028900FE4A83 /* UserDetailBottomView.swift */; };
 		943572741FD0D61100FE4A83 /* UserDetailBottomPushController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943572731FD0D61100FE4A83 /* UserDetailBottomPushController.swift */; };
@@ -207,6 +215,14 @@
 		942DCF6F1F6024B7001AD160 /* MyTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBar.swift; sourceTree = "<group>"; };
 		94349D2D2012135700085ED4 /* VideoDetailUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailUserView.swift; sourceTree = "<group>"; };
 		94349D2F2012135F00085ED4 /* VideoDetailUserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoDetailUserView.xib; sourceTree = "<group>"; };
+		94349D35201449AC00085ED4 /* RelatedVideoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedVideoTableViewController.swift; sourceTree = "<group>"; };
+		94349D36201449AC00085ED4 /* RelatedVideoTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelatedVideoTableViewController.xib; sourceTree = "<group>"; };
+		94349D3920148E1300085ED4 /* RelatedVideoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedVideoHeaderView.swift; sourceTree = "<group>"; };
+		94349D3B20148E1B00085ED4 /* RelatedVideoHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelatedVideoHeaderView.xib; sourceTree = "<group>"; };
+		94349D3D20148E7900085ED4 /* RelatedVideoFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedVideoFooterView.swift; sourceTree = "<group>"; };
+		94349D3F20148E8400085ED4 /* RelatedVideoFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelatedVideoFooterView.xib; sourceTree = "<group>"; };
+		94349D412014907000085ED4 /* RelatedVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedVideoCell.swift; sourceTree = "<group>"; };
+		94349D422014907000085ED4 /* RelatedVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelatedVideoCell.xib; sourceTree = "<group>"; };
 		9435725F1FCFE2D900FE4A83 /* UserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
 		943572611FD0028900FE4A83 /* UserDetailBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailBottomView.swift; sourceTree = "<group>"; };
 		943572731FD0D61100FE4A83 /* UserDetailBottomPushController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailBottomPushController.swift; sourceTree = "<group>"; };
@@ -742,6 +758,8 @@
 				946450AF200F17F50016A4EB /* VideoTableViewController.xib */,
 				944451AD201177FA003DC412 /* VideoDetailViewController.swift */,
 				944451AE201177FA003DC412 /* VideoDetailViewController.xib */,
+				94349D35201449AC00085ED4 /* RelatedVideoTableViewController.swift */,
+				94349D36201449AC00085ED4 /* RelatedVideoTableViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -762,6 +780,12 @@
 				94B3CE2E20102772002E230B /* VideoPlayerCustomView.swift */,
 				94349D2D2012135700085ED4 /* VideoDetailUserView.swift */,
 				94349D2F2012135F00085ED4 /* VideoDetailUserView.xib */,
+				94349D3920148E1300085ED4 /* RelatedVideoHeaderView.swift */,
+				94349D3B20148E1B00085ED4 /* RelatedVideoHeaderView.xib */,
+				94349D3D20148E7900085ED4 /* RelatedVideoFooterView.swift */,
+				94349D3F20148E8400085ED4 /* RelatedVideoFooterView.xib */,
+				94349D412014907000085ED4 /* RelatedVideoCell.swift */,
+				94349D422014907000085ED4 /* RelatedVideoCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -950,9 +974,11 @@
 				944678651FE25F94007C264A /* PreviewUserAvatarController.xib in Resources */,
 				94B0E4691FDD3A0100ABB332 /* DongtaiOriginThreadView.xib in Resources */,
 				94B856531F6CDE3C00C92E29 /* MyConcernCell.xib in Resources */,
+				94349D38201449AC00085ED4 /* RelatedVideoTableViewController.xib in Resources */,
 				9462C68A1F7E6D77009D4513 /* SettingCell.xib in Resources */,
 				947E79421FD9078C003CF9F6 /* UserDetailDongTaiCell.xib in Resources */,
 				94EB2E051FFD099900BAE862 /* UserDetailHeaderView2.xib in Resources */,
+				94349D3C20148E1B00085ED4 /* RelatedVideoHeaderView.xib in Resources */,
 				94C681191FEE528D00C3A5AD /* DongtaiDetailHeaderView.xib in Resources */,
 				9465232E1FCFD0CC00DB46B6 /* UserDetailViewController.xib in Resources */,
 				94B8566F1F6FD79B00C92E29 /* NoLoginHeaderView.xib in Resources */,
@@ -960,12 +986,14 @@
 				94B856411F6CCE2700C92E29 /* MyOtherCell.xib in Resources */,
 				9435729C1FD4D09500FE4A83 /* NavigationBarView.xib in Resources */,
 				946450B1200F17F50016A4EB /* VideoTableViewController.xib in Resources */,
+				94349D4020148E8400085ED4 /* RelatedVideoFooterView.xib in Resources */,
 				945F6F061FFDCC9100F4F395 /* UserDiggViewController.xib in Resources */,
 				94EB2E131FFD10CF00BAE862 /* UserDetailNavigationBar.xib in Resources */,
 				944678571FE2122C007C264A /* PreviewDongtaiBigImageController.xib in Resources */,
 				94B0E4531FDCE7FD00ABB332 /* DongtaiCollectionViewCell.xib in Resources */,
 				94AE55A8200B45C600D880CB /* HuoshanCell.xib in Resources */,
 				94B856451F6CD22200C92E29 /* MyFisrtSectionCell.xib in Resources */,
+				94349D442014907000085ED4 /* RelatedVideoCell.xib in Resources */,
 				946523321FCFD32E00DB46B6 /* UserDetailHeaderView.xib in Resources */,
 				94B0E4BA1FE0174000ABB332 /* WeitoutiaoViewController.xib in Resources */,
 				946450B5200F22660016A4EB /* HomeTableViewController.xib in Resources */,
@@ -1147,6 +1175,7 @@
 				94B0E4B91FE0174000ABB332 /* WeitoutiaoViewController.swift in Sources */,
 				942DCF6C1F602220001AD160 /* AppDelegate.swift in Sources */,
 				94B856401F6CCE2700C92E29 /* MyOtherCell.swift in Sources */,
+				94349D37201449AC00085ED4 /* RelatedVideoTableViewController.swift in Sources */,
 				943572741FD0D61100FE4A83 /* UserDetailBottomPushController.swift in Sources */,
 				942DCF671F602220001AD160 /* HuoshanViewController.swift in Sources */,
 				94AE55A3200B423800D880CB /* HuoshanCategoryController.swift in Sources */,
@@ -1160,6 +1189,7 @@
 				946450A7200D89300016A4EB /* SmallVideoPlayerCustomView.swift in Sources */,
 				9462C6891F7E6D77009D4513 /* SettingCell.swift in Sources */,
 				946450B8200F25190016A4EB /* VideoCell.swift in Sources */,
+				94349D3E20148E7900085ED4 /* RelatedVideoFooterView.swift in Sources */,
 				94B0E4671FDD39FA00ABB332 /* DongtaiOriginThreadView.swift in Sources */,
 				9405D9A01F69404E00AA60D4 /* Const.swift in Sources */,
 				94B0E4A41FDF587F00ABB332 /* Foundation+Extension.swift in Sources */,
@@ -1173,11 +1203,13 @@
 				94B0E44D1FDCE14D00ABB332 /* PostVideoOrArticleView.swift in Sources */,
 				9465978B2004D99E0006C37D /* WendaAnswerHeaderView.swift in Sources */,
 				9435729A1FD4D08E00FE4A83 /* NavigationBarView.swift in Sources */,
+				94349D432014907000085ED4 /* RelatedVideoCell.swift in Sources */,
 				946450B0200F17F50016A4EB /* VideoTableViewController.swift in Sources */,
 				943572601FCFE2D900FE4A83 /* UserDetail.swift in Sources */,
 				94B0E4A21FDF582300ABB332 /* UIKit+Extension.swift in Sources */,
 				94C681131FEE4A4900C3A5AD /* DongtaiNavigationBar.swift in Sources */,
 				94B0E44B1FDCDD7400ABB332 /* Calculate.swift in Sources */,
+				94349D3A20148E1300085ED4 /* RelatedVideoHeaderView.swift in Sources */,
 				94904D0E1FE73E1A00051528 /* Emoji.swift in Sources */,
 				94AE55AE200C8DDD00D880CB /* OfflineSectionHeader.swift in Sources */,
 				94C681171FEE528600C3A5AD /* DongtaiDetailHeaderView.swift in Sources */,

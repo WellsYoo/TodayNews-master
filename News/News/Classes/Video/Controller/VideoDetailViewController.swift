@@ -34,6 +34,8 @@ class VideoDetailViewController: UIViewController {
     /// 喜欢按钮
     @IBOutlet weak var loveButton: UIButton!
     
+    @IBOutlet weak var bottomView: UIView!
+    
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -46,6 +48,14 @@ class VideoDetailViewController: UIViewController {
     
     /// 用户信息 view
     private lazy var userView = VideoDetailUserView.loadViewFromNib()
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        return tableView
+    }()
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -75,9 +85,16 @@ extension VideoDetailViewController {
         NetworkTool.loadArticleInformation(from: "click_video", itemId: video.item_id, groupId: video.group_id) {
             self.videoDetail = $0
             self.userView.userInfo = $0.user_info
+            // 添加相关视频界面
+            let relatedVideoVC = RelatedVideoTableViewController()
+            self.addChildViewController(relatedVideoVC)
+            relatedVideoVC.videoDetail = $0
+            relatedVideoVC.video = self.video
+            self.tableView.tableHeaderView = relatedVideoVC.tableView
         }
         view.addSubview(player)
         view.addSubview(userView)
+        view.addSubview(tableView)
         
         player.snp.makeConstraints {
             $0.top.equalTo(view.snp.top).offset(isIPhoneX ? 40 : 0)
@@ -92,9 +109,13 @@ extension VideoDetailViewController {
             $0.right.equalTo(view.snp.right)
             $0.height.equalTo(45)
         }
+        
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(userView.snp.bottom)
+            $0.bottom.equalTo(bottomView.snp.top)
+            $0.left.right.equalTo(view)
+        }
     }
-    
-    
 }
 
 // MARK: - 添加点击事件
