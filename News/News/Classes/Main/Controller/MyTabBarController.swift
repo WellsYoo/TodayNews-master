@@ -10,15 +10,10 @@ import UIKit
 
 class MyTabBarController: UITabBarController {
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let tabbar = UITabBar.appearance()
-        tabbar.tintColor = UIColor(red: 245 / 255.0, green: 90 / 255.0, blue: 93 / 255.0, alpha: 1.0)
-        
+        tabbar.theme_tintColor = "colores.tabbarTintColor"
         // 添加子控制器
         addChildViewControllers()
         NotificationCenter.default.addObserver(self, selector: #selector(receiveDayOrNightButtonClicked), name: NSNotification.Name(rawValue: "dayOrNightButtonClicked"), object: nil)

@@ -31,9 +31,7 @@ class WendaAnswerCell: UITableViewCell, RegisterCellFromNib {
                 thumbImageView.kf.setImage(with: URL(string: thumb.url)!)
                 thumbImageViewHeight.constant = 166.0
                 thumbImageViewWidth.constant = 166.0 * thumb.ratio
-            } else {
-                thumbImageViewHeight.constant = 0
-            }
+            } else { thumbImageViewHeight.constant = 0 }
             contentLabel.setSeparatedLinesFrom(answer.attributedString, hasImage: answer.content_abstract.hasImage)
             contentLabelHeight.constant = answer.content_abstract.textH!
             layoutIfNeeded()

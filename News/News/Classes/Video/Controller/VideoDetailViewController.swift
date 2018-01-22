@@ -16,7 +16,6 @@ import SVProgressHUD
 protocol VideoDetailViewControllerDelegate: class {
     /// 详情控制器将要消失
     func VideoDetailViewControllerViewWillDisappear(_ realVideo: RealVideo, _ currentTime: TimeInterval, _ currentIndexPath: IndexPath)
-    
 }
 
 class VideoDetailViewController: UIViewController {

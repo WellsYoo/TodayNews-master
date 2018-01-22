@@ -43,7 +43,7 @@ class MyTabBar: UITabBar {
         let buttonW: CGFloat = width * 0.2
         let buttonH: CGFloat = height
         let buttonY: CGFloat = 0
-        
+        // 不能使用 subviews.enumerated 的遍历方式
         var index = 0
         
         for button in subviews {

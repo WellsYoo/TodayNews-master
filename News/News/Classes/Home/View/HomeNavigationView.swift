@@ -19,7 +19,6 @@ class HomeNavigationView: UIView, NibLoadable {
     /// 头像按钮点击
     var didSelectedAvatarButton: (()->())?
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         searchButton.theme_backgroundColor = "colors.cellBackgroundColor"

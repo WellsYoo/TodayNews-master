@@ -78,7 +78,6 @@ class RichLabel: UILabel {
     private var tapRichTextType: TapRichTextType = .none
     /// 记录用户点击的 range
     var selectedRange = NSRange()
-    
 }
 
 extension RichLabel {
@@ -155,9 +154,7 @@ extension RichLabel {
     func range(from ranges: [NSRange], index: Int) -> NSRange {
         // 获取话题的范围
         for item in ranges {
-            if index > item.location && index < item.location + item.length {
-                return item
-            }
+            if index > item.location && index < item.location + item.length { return item }
         }
         return NSRange()
     }

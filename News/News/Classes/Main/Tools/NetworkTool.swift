@@ -228,8 +228,7 @@ extension NetworkToolProtocol {
             // 网络错误的提示信息
             guard response.result.isSuccess else { return }
             if let value = response.result.value {
-                let json = JSON(value)
-                completionHandler(RealVideo.deserialize(from: json["data"].dictionaryObject)!)
+                completionHandler(RealVideo.deserialize(from: JSON(value)["data"].dictionaryObject)!)
             }
         }
     }
@@ -335,9 +334,7 @@ extension NetworkToolProtocol {
             if let value = response.result.value {
                 let json = JSON(value)
                 guard json["message"] == "success" else { return }
-                if let data = json["data"].dictionaryObject {
-                    completionHandler(UserDetail.deserialize(from: data as NSDictionary)!)
-                }
+                completionHandler(UserDetail.deserialize(from: json["data"].dictionaryObject)!)
             }
         }
     }
@@ -561,9 +558,7 @@ extension NetworkToolProtocol {
             // 网络错误的提示信息
             guard response.result.isSuccess else { return }
             if let value = response.result.value {
-                if let data = JSON(value)["thread"].dictionaryObject {
-                    completionHandler(UserDetailDongtai.deserialize(from: data as NSDictionary)!)
-                }
+                completionHandler(UserDetailDongtai.deserialize(from: JSON(value)["thread"].dictionaryObject)!)
             }
         }
     }
@@ -585,9 +580,7 @@ extension NetworkToolProtocol {
             // 网络错误的提示信息
             guard response.result.isSuccess else { return }
             if let value = response.result.value {
-                if let data = JSON(value)["comment"].dictionaryObject {
-                    completionHandler(UserDetailDongtai.deserialize(from: data as NSDictionary)!)
-                }
+                completionHandler(UserDetailDongtai.deserialize(from: JSON(value)["comment"].dictionaryObject)!)
             }
         }
     }
