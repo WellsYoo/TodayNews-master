@@ -13,13 +13,27 @@ import RxCocoa
 import SnapKit
 import SVProgressHUD
 
+protocol VideoDetailViewControllerDelegate: class {
+    /// 详情控制器将要消失
+    func VideoDetailViewControllerViewWillDisappear(_ realVideo: RealVideo, _ currentTime: TimeInterval, _ currentIndexPath: IndexPath)
+    
+}
+
 class VideoDetailViewController: UIViewController {
+    
+    weak var delegate: VideoDetailViewControllerDelegate?
     /// 播放器
     private lazy var player: BMPlayer = BMPlayer(customControlView: BMPlayerControlView())
     /// 当前视频数据
     var video = NewsModel()
     /// 评论数据
     private var comments = [DongtaiComment]()
+    /// 真实视频地址
+    var realVideo = RealVideo()
+    /// 当前播放的时间
+    var currentTime: TimeInterval = 0
+    /// 当前点击的索引
+    var currentIndexPath = IndexPath(item: 0, section: 0)
     /// 喜欢按钮
     @IBOutlet weak var loveButton: UIButton!
     
@@ -28,6 +42,8 @@ class VideoDetailViewController: UIViewController {
     private let disposeBag = DisposeBag()
     /// 用户信息 view
     private lazy var userView = VideoDetailUserView.loadViewFromNib()
+    /// 相关新视频的 view
+    private lazy var relatedVideoView = RelatedVideoView()
     /// tableView
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -59,6 +75,7 @@ class VideoDetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        delegate?.VideoDetailViewControllerViewWillDisappear(realVideo, currentTime, currentIndexPath)
     }
     
     override func viewDidLoad() {
@@ -66,7 +83,7 @@ class VideoDetailViewController: UIViewController {
         // 设置播放器，修改属性
         setupUI()
         // 获取数据
-        loadNetwork()
+        loadNetwork(with: video)
         // 添加点击事件
         addAction()
     }
@@ -88,6 +105,8 @@ extension VideoDetailViewController {
     private func setupUI() {
         loveButton.theme_setImage("images.love_video_20x20_", forState: .normal)
         loveButton.theme_setImage("images.love_video_press_20x20_", forState: .selected)
+        
+        player.delegate = self
         
         view.addSubview(player)
         view.addSubview(backButton)
@@ -120,32 +139,23 @@ extension VideoDetailViewController {
     }
     
     /// 获取数据
-    private func loadNetwork() {
+    private func loadNetwork(with video: NewsModel) {
         // 需要先获取视频的真实播放地址
         NetworkTool.parseVideoRealURL(video_id: video.video_detail_info.video_id, completionHandler: {
+            self.realVideo = $0
             // 设置视频播放地址
             self.player.setVideo(resource: BMPlayerResource(url: URL(string: $0.video_list.video_1.mainURL)!))
+            // 设置当前播放的时间
+            self.player.seek(self.currentTime)
         })
         // 视频详情数据
         NetworkTool.loadArticleInformation(from: "click_video", itemId: video.item_id, groupId: video.group_id) {
             self.userView.userInfo = $0.user_info
             // 添加相关视频界面
-            // 两种方式：
-            // 1.使用子控制器的方式，分别添加 tableView 的头部和尾部，但是这样第一次显示的时候，头部下方会显示很大空白，并且尾部显示不出来
-            //            let relatedVideoVC = RelatedVideoTableViewController()
-            //            self.addChildViewController(relatedVideoVC)
-            //            relatedVideoVC.videoDetail = $0
-            //            relatedVideoVC.video = self.video
-            //            relatedVideoVC.tableView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: relatedVideoVC.tableView.contentSize.height)
-            //            self.tableView.tableHeaderView = relatedVideoVC.tableView
-            // 1.使用自定义 view
-            let relatedVideoView = RelatedVideoView()
-            relatedVideoView.video = self.video
-            relatedVideoView.videoDetail = $0
-            self.tableView.tableHeaderView = relatedVideoView
-            relatedVideoView.didSelectCheckMoreButton = { [weak self] in
-                self!.tableView.tableHeaderView = relatedVideoView
-            }
+            // 使用自定义 view，这里不使用添加子控制器的方式，可参考 RelatedVideoTableViewController
+            self.relatedVideoView.video = self.video
+            self.relatedVideoView.videoDetail = $0
+            self.tableView.tableHeaderView = self.relatedVideoView
         }
         /// 添加上拉刷新
         tableView.mj_footer = RefreshAutoGifFooter(refreshingBlock: { [weak self] in
@@ -179,6 +189,23 @@ extension VideoDetailViewController {
                 self!.navigationController?.pushViewController(userDetailVC, animated: true)
             })
             .disposed(by: disposeBag)
+        // 点击了查看更多
+        relatedVideoView.didSelectCheckMoreButton = { [weak self] in
+            self!.tableView.tableHeaderView = self!.relatedVideoView
+        }
+        // 点击了 relatedVideoView 的 cell
+        relatedVideoView.didSelectCell = { [weak self] in
+            switch $0.card_type {
+            case .video, .adVideo:  // 视频、广告视频
+                print("广告视频")
+                // 获取数据
+                self!.loadNetwork(with: $0)
+            case .adTextlink:       // 广告链接
+                let textLinkVC = TextLinkViewController()
+                textLinkVC.url = $0.web_url
+                self!.navigationController?.pushViewController(textLinkVC, animated: true)
+            }
+        }
     }
     /// 评论点击
     @IBAction func commentButtonClicked(_ sender: UIButton) {
@@ -225,4 +252,28 @@ extension VideoDetailViewController: UITableViewDelegate, UITableViewDataSource 
         }
         view.addSubview(postCommentView)
     }
+}
+
+extension VideoDetailViewController: BMPlayerDelegate {
+    
+    func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {
+        
+    }
+    
+    func bmPlayer(player: BMPlayer, loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval) {
+        
+    }
+    
+    func bmPlayer(player: BMPlayer, playTimeDidChange currentTime: TimeInterval, totalTime: TimeInterval) {
+        self.currentTime = currentTime
+    }
+    
+    func bmPlayer(player: BMPlayer, playerIsPlaying playing: Bool) {
+        
+    }
+    
+    func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool) {
+        
+    }
+    
 }

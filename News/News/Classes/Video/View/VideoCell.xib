@@ -47,7 +47,7 @@
                                 </connections>
                             </button>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wXl-Je-VfJ">
-                                <rect key="frame" x="15" y="0.0" width="49" height="46"/>
+                                <rect key="frame" x="15" y="0.0" width="109" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享到" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RN6-tl-yTu">
                                         <rect key="frame" x="0.0" y="0.0" width="49" height="46"/>
@@ -56,14 +56,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUL-DI-fUV">
-                                        <rect key="frame" x="49" y="0.0" width="0.0" height="46"/>
+                                        <rect key="frame" x="49" y="0.0" width="30" height="46"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" id="fep-6i-GXv"/>
+                                            <constraint firstAttribute="width" constant="30" id="fep-6i-GXv"/>
                                         </constraints>
                                         <state key="normal" image="video_center_share_pyq_28x28_"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVO-G2-gEc">
-                                        <rect key="frame" x="49" y="0.0" width="0.0" height="46"/>
+                                        <rect key="frame" x="79" y="0.0" width="30" height="46"/>
                                         <state key="normal" image="video_center_share_weChat_28x28_"/>
                                     </button>
                                 </subviews>

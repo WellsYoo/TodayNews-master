@@ -53,6 +53,7 @@
 		944678571FE2122C007C264A /* PreviewDongtaiBigImageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 944678551FE2122C007C264A /* PreviewDongtaiBigImageController.xib */; };
 		944678641FE25F94007C264A /* PreviewUserAvatarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944678621FE25F94007C264A /* PreviewUserAvatarController.swift */; };
 		944678651FE25F94007C264A /* PreviewUserAvatarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 944678631FE25F94007C264A /* PreviewUserAvatarController.xib */; };
+		94569D4A2015E73400B31777 /* TextLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94569D492015E73400B31777 /* TextLinkViewController.swift */; };
 		945F6F051FFDCC9100F4F395 /* UserDiggViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F6F031FFDCC9100F4F395 /* UserDiggViewController.swift */; };
 		945F6F061FFDCC9100F4F395 /* UserDiggViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945F6F041FFDCC9100F4F395 /* UserDiggViewController.xib */; };
 		945F6F091FFDCF0000F4F395 /* UserDiggCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F6F071FFDCF0000F4F395 /* UserDiggCell.swift */; };
@@ -242,6 +243,7 @@
 		944678551FE2122C007C264A /* PreviewDongtaiBigImageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewDongtaiBigImageController.xib; sourceTree = "<group>"; };
 		944678621FE25F94007C264A /* PreviewUserAvatarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewUserAvatarController.swift; sourceTree = "<group>"; };
 		944678631FE25F94007C264A /* PreviewUserAvatarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewUserAvatarController.xib; sourceTree = "<group>"; };
+		94569D492015E73400B31777 /* TextLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLinkViewController.swift; sourceTree = "<group>"; };
 		945F6F031FFDCC9100F4F395 /* UserDiggViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDiggViewController.swift; sourceTree = "<group>"; };
 		945F6F041FFDCC9100F4F395 /* UserDiggViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDiggViewController.xib; sourceTree = "<group>"; };
 		945F6F071FFDCF0000F4F395 /* UserDiggCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDiggCell.swift; sourceTree = "<group>"; };
@@ -762,6 +764,7 @@
 				944451AE201177FA003DC412 /* VideoDetailViewController.xib */,
 				94349D35201449AC00085ED4 /* RelatedVideoTableViewController.swift */,
 				94349D36201449AC00085ED4 /* RelatedVideoTableViewController.xib */,
+				94569D492015E73400B31777 /* TextLinkViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1200,6 +1203,7 @@
 				946450AB200E03F10016A4EB /* PreviewDongtaiBigImageLayout.swift in Sources */,
 				9462C67D1F7DCEC7009D4513 /* SettingModel.swift in Sources */,
 				943572761FD0D70D00FE4A83 /* UserDetailBottomPopController.swift in Sources */,
+				94569D4A2015E73400B31777 /* TextLinkViewController.swift in Sources */,
 				94B0E4521FDCE7FD00ABB332 /* DongtaiCollectionViewCell.swift in Sources */,
 				9465232D1FCFD0CC00DB46B6 /* UserDetailViewController.swift in Sources */,
 				946450A0200D7C4D0016A4EB /* SmallVideoViewController.swift in Sources */,

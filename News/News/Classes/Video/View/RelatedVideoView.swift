@@ -13,6 +13,8 @@ import RxCocoa
 class RelatedVideoView: UIView {
     /// 点击了查看更多
     var didSelectCheckMoreButton: (()->())?
+    /// 点击了 cell
+    var didSelectCell: ((_ video: NewsModel)->())?
     
     private lazy var disposeBag = DisposeBag()
     
@@ -40,6 +42,8 @@ class RelatedVideoView: UIView {
             tableView.height = CGFloat(videoDetail.related_video_section) * 80.0
             footerView.y = tableView.frame.maxY
             height = footerView.frame.maxY
+            // 如果之前有数据，这里需要 reload 一下
+            tableView.reloadData()
         }
     }
     /// 当前视频数据
@@ -54,9 +58,11 @@ class RelatedVideoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        // 添加子视图
         addSubview(headerView)
         addSubview(tableView)
         addSubview(footerView)
+        // 展开按钮点击
         headerView.foldButton.rx.controlEvent(.touchUpInside)
             .subscribe(onNext: { [weak self] in
                 UIView.animate(withDuration: 0.25, animations: {
@@ -65,6 +71,7 @@ class RelatedVideoView: UIView {
                 })
             })
             .disposed(by: disposeBag)
+        // 查看更多
         footerView.moreButton.rx.controlEvent(.touchUpInside)
             .subscribe(onNext: { [weak self] in
                 self!.isUnfold = true
@@ -101,5 +108,9 @@ extension RelatedVideoView: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as RelatedVideoCell
         cell.relatedVideo = videoDetail.related_video_toutiao[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        didSelectCell?(videoDetail.related_video_toutiao[indexPath.row])
     }
 }

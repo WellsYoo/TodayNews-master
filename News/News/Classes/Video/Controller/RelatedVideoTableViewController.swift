@@ -26,10 +26,8 @@ class RelatedVideoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         headerView.video = video
-//        headerView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 110)
         tableView.tableHeaderView = headerView
         footerView.ad = videoDetail.ad
-//        footerView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 327)
         tableView.tableFooterView = footerView
         tableView.ym_registerCell(cell: RelatedVideoCell.self)
         headerView.foldButton.rx.controlEvent(.touchUpInside)

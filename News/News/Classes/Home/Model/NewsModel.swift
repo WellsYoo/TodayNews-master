@@ -117,14 +117,14 @@ struct NewsModel: HandyJSON {
     var card_type: CardType = .video
     var is_article = false
     var is_preview = false
-    
-    
+    var web_url = ""
 }
 
 /// 视频类型
 enum CardType: String, HandyJSONEnum {
-    case video = "video"        // 视频
-    case adVideo = "ad_video"   // 广告视频
+    case video = "video"             // 视频
+    case adVideo = "ad_video"        // 广告视频
+    case adTextlink = "ad_textlink"  // 广告链接
 }
 
 struct ADButton: HandyJSON {

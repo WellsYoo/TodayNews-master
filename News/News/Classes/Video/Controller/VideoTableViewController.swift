@@ -29,10 +29,13 @@ class VideoTableViewController: UITableViewController {
     private var priorCell: VideoCell?
     /// 视频真实地址
     private var realVideo = RealVideo()
+    /// 当前播放的时间
+    var currentTime: TimeInterval = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.configuration()
+        player.delegate = self
         tableView.tableFooterView = UIView()
         tableView.rowHeight = screenWidth * 0.67
         tableView.ym_registerCell(cell: VideoCell.self)
@@ -81,20 +84,6 @@ class VideoTableViewController: UITableViewController {
 
 // MARK: - Table view data source
 extension VideoTableViewController {
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 当前点击的 cell
-        let currentCell = tableView.cellForRow(at: indexPath) as! VideoCell
-        // 如果播放器正在播放，则停止播放
-        if player.isPlaying {
-            player.pause()
-            player.removeFromSuperview()
-        }
-        // 跳转到详情控制器
-        let videoDetailVC = VideoDetailViewController()
-        videoDetailVC.video = currentCell.video
-        navigationController?.pushViewController(videoDetailVC, animated: true)
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return videos.count
@@ -162,6 +151,23 @@ extension VideoTableViewController {
         })
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 当前点击的 cell
+        let currentCell = tableView.cellForRow(at: indexPath) as! VideoCell
+        // 如果播放器正在播放，则停止播放
+        if player.isPlaying {
+            player.pause()
+            player.removeFromSuperview()
+        }
+        // 跳转到详情控制器
+        let videoDetailVC = VideoDetailViewController()
+        videoDetailVC.video = currentCell.video
+        videoDetailVC.delegate = self
+        videoDetailVC.currentTime = currentTime
+        videoDetailVC.currentIndexPath = indexPath
+        navigationController?.pushViewController(videoDetailVC, animated: true)
+    }
+    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // 说明有视频正在播放
         if player.isPlaying {
@@ -189,6 +195,45 @@ extension VideoTableViewController {
         cell.nameLable.isHidden = false
         cell.shareStackView.isHidden = true
     }
+}
+
+extension VideoTableViewController: BMPlayerDelegate {
+    
+    func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {
+        
+    }
+    
+    func bmPlayer(player: BMPlayer, loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval) {
+        
+    }
+    
+    func bmPlayer(player: BMPlayer, playTimeDidChange currentTime: TimeInterval, totalTime: TimeInterval) {
+        self.currentTime = currentTime
+    }
+    
+    func bmPlayer(player: BMPlayer, playerIsPlaying playing: Bool) {
+        
+    }
+    
+    func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool) {
+        
+    }
+}
+
+// MARK: - VideoDetailViewControllerDelegate
+extension VideoTableViewController: VideoDetailViewControllerDelegate {
+    /// 详情控制器将要消失
+    func VideoDetailViewControllerViewWillDisappear(_ realVideo: RealVideo, _ currentTime: TimeInterval, _ currentIndexPath: IndexPath) {
+        let currentCell = tableView.cellForRow(at: currentIndexPath) as! VideoCell
+        currentCell.bgImageButton.addSubview(player)
+        player.snp.makeConstraints({ $0.edges.equalTo(currentCell.bgImageButton) })
+        // 设置视频播放地址
+        player.setVideo(resource: BMPlayerResource(url: URL(string: realVideo.video_list.video_1.mainURL)!))
+        player.seek(currentTime)
+        self.priorCell = currentCell
+    }
     
 }
+
+
 

@@ -87,19 +87,19 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="iCK-ti-gtx" firstAttribute="leading" secondItem="J5L-dI-a0F" secondAttribute="trailing" constant="10" id="0ol-Ed-YOQ"/>
-                    <constraint firstItem="R0V-8b-vW3" firstAttribute="bottom" secondItem="iCK-ti-gtx" secondAttribute="bottom" id="5Hc-mK-9Ie"/>
                     <constraint firstItem="Afr-tV-F0r" firstAttribute="centerY" secondItem="R0V-8b-vW3" secondAttribute="centerY" id="7mW-EN-R20"/>
                     <constraint firstItem="jZP-xB-wAm" firstAttribute="bottom" secondItem="iCK-ti-gtx" secondAttribute="bottom" constant="-5" id="AIC-1u-Wqs"/>
                     <constraint firstItem="Afr-tV-F0r" firstAttribute="leading" secondItem="J5L-dI-a0F" secondAttribute="leading" constant="37" id="BOS-pg-Tdr"/>
                     <constraint firstAttribute="trailing" secondItem="iCK-ti-gtx" secondAttribute="trailing" constant="15" id="Ctu-bK-E5l"/>
                     <constraint firstItem="iCK-ti-gtx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FUh-Br-FSj"/>
                     <constraint firstItem="N6Z-Du-HOF" firstAttribute="leading" secondItem="Afr-tV-F0r" secondAttribute="trailing" constant="5" id="JsG-Fs-sF4"/>
-                    <constraint firstItem="J5L-dI-a0F" firstAttribute="top" secondItem="iCK-ti-gtx" secondAttribute="top" id="P0y-3S-zbQ"/>
+                    <constraint firstItem="J5L-dI-a0F" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Qkx-NC-L1C"/>
                     <constraint firstItem="J5L-dI-a0F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="TAA-jt-k6g"/>
                     <constraint firstItem="iCK-ti-gtx" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.288" id="VJz-at-pX6"/>
                     <constraint firstItem="R0V-8b-vW3" firstAttribute="leading" secondItem="J5L-dI-a0F" secondAttribute="leading" id="WpU-yb-DRh"/>
                     <constraint firstItem="N6Z-Du-HOF" firstAttribute="centerY" secondItem="Afr-tV-F0r" secondAttribute="centerY" id="bQb-7v-Vge"/>
                     <constraint firstItem="jZP-xB-wAm" firstAttribute="trailing" secondItem="iCK-ti-gtx" secondAttribute="trailing" constant="-5" id="gEw-Y9-697"/>
+                    <constraint firstAttribute="bottom" secondItem="R0V-8b-vW3" secondAttribute="bottom" constant="10" id="udf-og-HaV"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -109,6 +109,7 @@
                 <outlet property="nameLabelLeading" destination="BOS-pg-Tdr" id="dmB-8y-iPh"/>
                 <outlet property="playCountLabel" destination="N6Z-Du-HOF" id="zBm-gd-I6O"/>
                 <outlet property="thumbImageView" destination="iCK-ti-gtx" id="nVw-Ao-fPf"/>
+                <outlet property="thumbImageViewHeight" destination="X5j-wO-1mc" id="gnA-9p-6oh"/>
                 <outlet property="timeLabel" destination="jZP-xB-wAm" id="Bsu-eX-Ah5"/>
                 <outlet property="titleLabel" destination="J5L-dI-a0F" id="cRk-4f-iKF"/>
             </connections>

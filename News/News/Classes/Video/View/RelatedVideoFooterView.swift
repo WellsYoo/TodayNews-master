@@ -55,6 +55,7 @@ class RelatedVideoFooterView: UIView, NibLoadable {
     @IBOutlet weak var moreButtonHeight: NSLayoutConstraint!
     /// 缩略图
     @IBOutlet weak var thumbImageView: UIImageView!
+    @IBOutlet weak var thumbAspect: NSLayoutConstraint!
     /// app 名称
     @IBOutlet weak var nameLabel: UILabel!
     /// 立即下载

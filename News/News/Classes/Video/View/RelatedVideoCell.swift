@@ -16,16 +16,23 @@ class RelatedVideoCell: UITableViewCell, RegisterCellFromNib {
             titleLabel.text = relatedVideo.title
             nameLabel.text = relatedVideo.source
             thumbImageView.kf.setImage(with: URL(string: relatedVideo.middle_image.url)!)
-            playCountLabel.text = relatedVideo.video_detail_info.videoWatchCount + "次播放"
+            if relatedVideo.video_detail_info.video_watch_count != 0 {
+                playCountLabel.text = relatedVideo.video_detail_info.videoWatchCount + "次播放"
+            } else { playCountLabel.isHidden = true }
             timeLabel.text = relatedVideo.videoDuration
             timeLabel.isHidden = !relatedVideo.has_video
             switch relatedVideo.card_type {
             case .video:    // 视频
                 adLabel.isHidden = true
                 nameLabelLeading.constant = 0
-            case .adVideo:  // 广告
+            case .adVideo:  // 广告视频
                 adLabel.isHidden = false
                 nameLabelLeading.constant = 37.0
+            case .adTextlink:  // 广告链接
+                thumbImageViewHeight.constant = 0
+                adLabel.isHidden = false
+                timeLabel.isHidden = true
+                playCountLabel.isHidden = true
             }
             layoutIfNeeded()
         }
@@ -41,6 +48,7 @@ class RelatedVideoCell: UITableViewCell, RegisterCellFromNib {
     @IBOutlet weak var playCountLabel: UILabel!
     /// 缩略图
     @IBOutlet weak var thumbImageView: UIImageView!
+    @IBOutlet weak var thumbImageViewHeight: NSLayoutConstraint!
     /// 时长
     @IBOutlet weak var timeLabel: UILabel!
     

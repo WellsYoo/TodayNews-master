@@ -162,6 +162,7 @@
                 <outlet property="moreButtonHeight" destination="zeI-ha-NHX" id="ijh-vc-sqU"/>
                 <outlet property="nameLabel" destination="vPI-jN-lEw" id="G8D-0h-Jte"/>
                 <outlet property="separatorView" destination="W3f-qh-wv0" id="egh-fF-q2K"/>
+                <outlet property="thumbAspect" destination="VZd-Sq-WgJ" id="GPv-cV-fNO"/>
                 <outlet property="thumbImageView" destination="yNv-6w-8tt" id="cZO-J4-FIL"/>
                 <outlet property="titleLabel" destination="hMa-iN-axx" id="MHd-sf-LLU"/>
             </connections>
