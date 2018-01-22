@@ -113,7 +113,7 @@ extension VideoTableViewController {
                 if let priorCell = self!.priorCell {
                     if cell != priorCell {
                         // 设置当前 cell 的属性
-                        self!.setupCurrent(priorCell)
+                        self!.showSubviews(of: priorCell)
                         // 判断当前播放器是否正在播放
                         if self!.player.isPlaying {
                             self!.player.pause()
@@ -133,13 +133,8 @@ extension VideoTableViewController {
     
     /// 把播放器添加到 cell 上
     private func addPlayer(on cell: VideoCell) {
-        cell.titleLabel.isHidden = true
-        cell.playCountLabel.isHidden = true
-        cell.timeLabel.isHidden = true
-        cell.vImageView.isHidden = true
-        cell.avatarButton.isHidden = true
-        cell.nameLable.isHidden = true
-        cell.shareStackView.isHidden = false
+        // 视频播放时隐藏 cell 的部分子视图
+        hideSubviews(of: cell)
         // 解析头条的视频真实播放地址
         NetworkTool.parseVideoRealURL(video_id: cell.video.video_detail_info.video_id, completionHandler: {
             self.realVideo = $0
@@ -179,14 +174,14 @@ extension VideoTableViewController {
                 player.pause()
                 player.removeFromSuperview()
                 // 设置当前 cell 的属性
-                setupCurrent(cell)
+                showSubviews(of: cell)
                 priorCell = nil
             }
         }
     }
     
     /// 设置当前 cell 的属性
-    func setupCurrent(_ cell: VideoCell) {
+    func showSubviews(of cell: VideoCell) {
         cell.titleLabel.isHidden = false
         cell.playCountLabel.isHidden = false
         cell.timeLabel.isHidden = false
@@ -229,8 +224,22 @@ extension VideoTableViewController: VideoDetailViewControllerDelegate {
         player.snp.makeConstraints({ $0.edges.equalTo(currentCell.bgImageButton) })
         // 设置视频播放地址
         player.setVideo(resource: BMPlayerResource(url: URL(string: realVideo.video_list.video_1.mainURL)!))
+        // 设置当前播放时间
         player.seek(currentTime)
+        // 视频播放时隐藏 cell 的部分子视图
+        hideSubviews(of: currentCell)
         self.priorCell = currentCell
+    }
+    
+    /// 视频播放时隐藏 cell 的部分子视图
+    private func hideSubviews(of cell: VideoCell) {
+        cell.titleLabel.isHidden = true
+        cell.playCountLabel.isHidden = true
+        cell.timeLabel.isHidden = true
+        cell.vImageView.isHidden = true
+        cell.avatarButton.isHidden = true
+        cell.nameLable.isHidden = true
+        cell.shareStackView.isHidden = false
     }
     
 }

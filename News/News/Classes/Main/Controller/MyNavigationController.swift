@@ -15,25 +15,15 @@ class MyNavigationController: UINavigationController {
         super.viewDidLoad()
         let navigationBar = UINavigationBar.appearance()
         navigationBar.theme_tintColor = "colors.black"
-        if UserDefaults.standard.bool(forKey: isNight) {
-            navigationBar.setBackgroundImage(UIImage(named: "navigation_background_night"), for: .default)
-        } else {
-            navigationBar.setBackgroundImage(UIImage(named: "navigation_background"), for: .default)
-        }
-        // 全局拖拽手势
-        initGlobalPan()
-        
+        navigationBar.setBackgroundImage(UIImage(named: "navigation_background" + (UserDefaults.standard.bool(forKey: isNight) ? "_night" : "")), for: .default)
+        // 添加通知
         NotificationCenter.default.addObserver(self, selector: #selector(receiveDayOrNightButtonClicked), name: NSNotification.Name(rawValue: "dayOrNightButtonClicked"), object: nil)
     }
     
     /// 接收到了按钮点击的通知
     @objc func receiveDayOrNightButtonClicked(notification: Notification) {
-        let selected = notification.object as! Bool
-        if selected {  // 设置为夜间
-            navigationBar.setBackgroundImage(UIImage(named: "navigation_background_night"), for: .default)
-        } else {       // 设置为日间
-            navigationBar.setBackgroundImage(UIImage(named: "navigation_background"), for: .default)
-        }
+        // 设置为夜间/日间
+        navigationBar.setBackgroundImage(UIImage(named: "navigation_background" + (notification.object as! Bool ? "_night" : "")), for: .default)
     }
     
     // 拦截 push 操作
@@ -58,22 +48,4 @@ class MyNavigationController: UINavigationController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-}
-
-extension MyNavigationController: UIGestureRecognizerDelegate {
-    /// 全局拖拽手势
-    fileprivate func initGlobalPan() {
-        // 创建 pan 手势
-        let target = interactivePopGestureRecognizer?.delegate
-        let globalPan = UIPanGestureRecognizer(target: target, action: Selector(("handleNavigationTransition:")))
-        globalPan.delegate = self
-        view.addGestureRecognizer(globalPan)
-        // 禁止系统的手势
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-    }
-    
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return viewControllers.count != 1
-    }
-    
 }
