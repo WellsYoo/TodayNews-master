@@ -152,6 +152,7 @@
 		94C6811D1FEE7F6300C3A5AD /* DongtaiCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C6811B1FEE7F6300C3A5AD /* DongtaiCommentCell.xib */; };
 		94D9D4BF1F7B255100E5739F /* MoreLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D9D4BE1F7B255100E5739F /* MoreLoginViewController.swift */; };
 		94D9D4C11F7B256E00E5739F /* MoreLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94D9D4C01F7B256E00E5739F /* MoreLoginViewController.storyboard */; };
+		94DE2D0B2015D36E009D62F8 /* RelatedVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DE2D0A2015D36E009D62F8 /* RelatedVideoView.swift */; };
 		94E0DBCE1FEB33C90094D1D7 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E0DBCD1FEB33C90094D1D7 /* RefreshView.swift */; };
 		94EB2DFC1FFD071000BAE862 /* UserDetailViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB2DFA1FFD071000BAE862 /* UserDetailViewController2.swift */; };
 		94EB2DFD1FFD071000BAE862 /* UserDetailViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EB2DFB1FFD071000BAE862 /* UserDetailViewController2.xib */; };
@@ -342,6 +343,7 @@
 		94C6811B1FEE7F6300C3A5AD /* DongtaiCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DongtaiCommentCell.xib; sourceTree = "<group>"; };
 		94D9D4BE1F7B255100E5739F /* MoreLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreLoginViewController.swift; sourceTree = "<group>"; };
 		94D9D4C01F7B256E00E5739F /* MoreLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreLoginViewController.storyboard; sourceTree = "<group>"; };
+		94DE2D0A2015D36E009D62F8 /* RelatedVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedVideoView.swift; sourceTree = "<group>"; };
 		94E0DBCD1FEB33C90094D1D7 /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		94EB2DFA1FFD071000BAE862 /* UserDetailViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController2.swift; sourceTree = "<group>"; };
 		94EB2DFB1FFD071000BAE862 /* UserDetailViewController2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailViewController2.xib; sourceTree = "<group>"; };
@@ -786,6 +788,7 @@
 				94349D3F20148E8400085ED4 /* RelatedVideoFooterView.xib */,
 				94349D412014907000085ED4 /* RelatedVideoCell.swift */,
 				94349D422014907000085ED4 /* RelatedVideoCell.xib */,
+				94DE2D0A2015D36E009D62F8 /* RelatedVideoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1177,6 +1180,7 @@
 				94B856401F6CCE2700C92E29 /* MyOtherCell.swift in Sources */,
 				94349D37201449AC00085ED4 /* RelatedVideoTableViewController.swift in Sources */,
 				943572741FD0D61100FE4A83 /* UserDetailBottomPushController.swift in Sources */,
+				94DE2D0B2015D36E009D62F8 /* RelatedVideoView.swift in Sources */,
 				942DCF671F602220001AD160 /* HuoshanViewController.swift in Sources */,
 				94AE55A3200B423800D880CB /* HuoshanCategoryController.swift in Sources */,
 				9435727A1FD0DA0600FE4A83 /* PopoverAnimator.swift in Sources */,

@@ -154,7 +154,7 @@ class UserDetailHeaderView: UIView, NibLoadable {
                 areaButton.setTitle(userDetail!.area, for: .normal)
             }
             descriptionLabel.text = userDetail!.description as String
-            if userDetail!.descriptionHeight! > 21 {
+            if userDetail!.descriptionHeight > 21 {
                 unfoldButton.isHidden = false
                 unfoldButtonWidth.constant = 40.0
             }
@@ -383,7 +383,7 @@ extension UserDetailHeaderView: UITableViewDelegate, UITableViewDataSource {
             return cellHeight(with: videos[indexPath.row])
         case .wenda:     // 问答
             let wenda = wendas[indexPath.row]
-            return wenda.cellHeight!
+            return wenda.cellHeight
         case .iesVideo:  // 小视频
             return cellHeight(with: iesVideos[indexPath.row])
         }
@@ -391,7 +391,7 @@ extension UserDetailHeaderView: UITableViewDelegate, UITableViewDataSource {
     
     /// 设置 cell 的高度
     private func cellHeight(with dongtai: UserDetailDongtai) -> CGFloat {
-        return dongtai.cellHeight!
+        return dongtai.cellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -514,7 +514,7 @@ extension UserDetailHeaderView {
         unfoldButtonWidth.constant = 0
         relationRecommendView.labelHeight.constant = 0
         relationRecommendView.layoutIfNeeded()
-        descriptionLabelHeight.constant = userDetail!.descriptionHeight!
+        descriptionLabelHeight.constant = userDetail!.descriptionHeight
         UIView.animate(withDuration: 0.25, animations: {
             self.layoutIfNeeded()
         })

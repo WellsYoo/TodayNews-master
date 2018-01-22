@@ -69,8 +69,8 @@ extension SmallVideoViewController {
         case .douyin:
             titleButton.theme_setImage("images.douyin_logo_new_100x28_", forState: .normal)
         }
-        commentButton.setTitle(smallVideo.raw_data.action.commentCount!, for: .normal)
-        diggButton.setTitle(smallVideo.raw_data.action.diggCount!, for: .normal)
+        commentButton.setTitle(smallVideo.raw_data.action.commentCount, for: .normal)
+        diggButton.setTitle(smallVideo.raw_data.action.diggCount, for: .normal)
         collectionView.scrollToItem(at: IndexPath(item: originalIndex, section: 0), at: .centeredHorizontally, animated: false)
         // 设置播放器
         setupPlayer(currentIndex: originalIndex)

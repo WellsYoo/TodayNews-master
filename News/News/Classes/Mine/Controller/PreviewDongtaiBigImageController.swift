@@ -35,7 +35,7 @@ class PreviewDongtaiBigImageController: UIViewController {
     /// 保存图片
     @IBAction func saveButtonClicked(_ sender: UIButton) {
         let largeImage = images[selectedIndex]
-        ImageDownloader.default.downloadImage(with: URL(string: largeImage.urlString!)!, progressBlock: { (receivedSize, totalSize) in
+        ImageDownloader.default.downloadImage(with: URL(string: largeImage.urlString)!, progressBlock: { (receivedSize, totalSize) in
             // 获取当前进度
             let progress = Float(receivedSize) / Float(totalSize)
             SVProgressHUD.showProgress(progress)

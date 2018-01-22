@@ -86,7 +86,10 @@ extension VideoTableViewController {
         // 当前点击的 cell
         let currentCell = tableView.cellForRow(at: indexPath) as! VideoCell
         // 如果播放器正在播放，则停止播放
-        if player.isPlaying { player.pause() }
+        if player.isPlaying {
+            player.pause()
+            player.removeFromSuperview()
+        }
         // 跳转到详情控制器
         let videoDetailVC = VideoDetailViewController()
         videoDetailVC.video = currentCell.video
@@ -154,7 +157,7 @@ extension VideoTableViewController {
             cell.bgImageButton.addSubview(self.player)
             self.player.snp.makeConstraints({ $0.edges.equalTo(cell.bgImageButton) })
             // 设置视频播放地址
-            self.player.setVideo(resource: BMPlayerResource(url: URL(string: $0.video_list.video_1.mainURL!)!))
+            self.player.setVideo(resource: BMPlayerResource(url: URL(string: $0.video_list.video_1.mainURL)!))
             self.priorCell = cell
         })
     }

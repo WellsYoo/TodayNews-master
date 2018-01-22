@@ -26,7 +26,7 @@ class DongtaiCollectionViewCell: UICollectionViewCell, RegisterCellFromNib {
     
     var largeImage: LargeImageList? {
         didSet {
-            thumbImageView.kf.setImage(with: URL(string: largeImage!.urlString!), placeholder: nil, options: nil, progressBlock: { (receivedSize, totalSize) in
+            thumbImageView.kf.setImage(with: URL(string: largeImage!.urlString), placeholder: nil, options: nil, progressBlock: { (receivedSize, totalSize) in
                 let progress = Float(receivedSize) / Float(totalSize)
                 SVProgressHUD.showProgress(progress)
                 SVProgressHUD.setBackgroundColor(.clear)

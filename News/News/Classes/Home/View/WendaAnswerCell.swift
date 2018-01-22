@@ -22,19 +22,19 @@ class WendaAnswerCell: UITableViewCell, RegisterCellFromNib {
                 userIntroLabel.text = answer.user.user_intro
                 userintroLabelHeight.constant = 16.0
             }
-            diggLabel.text = answer.diggCount! + "赞"
-            readCountLabel.text = answer.browCount! + "阅读"
+            diggLabel.text = answer.diggCount + "赞"
+            readCountLabel.text = answer.browCount + "阅读"
             thumbImageView.image = nil
             // 是否有图片
-            if answer.content_abstract.hasImage! {
+            if answer.content_abstract.hasImage {
                 let thumb = answer.content_abstract.thumb_image_list.first!
                 thumbImageView.kf.setImage(with: URL(string: thumb.url)!)
                 thumbImageViewHeight.constant = 166.0
-                thumbImageViewWidth.constant = 166.0 * thumb.ratio!
+                thumbImageViewWidth.constant = 166.0 * thumb.ratio
             } else {
                 thumbImageViewHeight.constant = 0
             }
-            contentLabel.setSeparatedLinesFrom(answer.attributedString!, hasImage: answer.content_abstract.hasImage!)
+            contentLabel.setSeparatedLinesFrom(answer.attributedString, hasImage: answer.content_abstract.hasImage)
             contentLabelHeight.constant = answer.content_abstract.textH!
             layoutIfNeeded()
         }

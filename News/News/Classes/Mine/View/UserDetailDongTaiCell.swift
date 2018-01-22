@@ -23,12 +23,12 @@ class UserDetailDongTaiCell: UITableViewCell, RegisterCellFromNib {
             theme_backgroundColor = "colors.cellBackgroundColor"
             avatarImageView.kf.setImage(with: URL(string: dongtai.user.avatar_url))
             nameLabel.text = dongtai.user.screen_name
-            modifyTimeLabel.text = "· " + dongtai.createTime!
+            modifyTimeLabel.text = "· " + dongtai.createTime
             likeButton.setTitle(dongtai.diggCount, for: .normal)
             commentButton.setTitle(dongtai.commentCount, for: .normal)
             forwardButton.setTitle(dongtai.forwardCount, for: .normal)
             areaLabel.text = dongtai.brand_info + " " + dongtai.position.position
-            readCountLabel.text = dongtai.readCount! + "阅读"
+            readCountLabel.text = dongtai.readCount + "阅读"
             
             // 点击了用户
             contentLabel.userTapped = { [weak self] (userName, range) in
@@ -47,9 +47,9 @@ class UserDetailDongTaiCell: UITableViewCell, RegisterCellFromNib {
                 }
             }
             // 显示 emoji
-            contentLabel.attributedText = dongtai.attributedContent!
-            contentLabelHeight.constant = dongtai.contentH!
-            allContentLabel.isHidden = dongtai.attributedCntentHeight! == 110 ? false : true
+            contentLabel.attributedText = dongtai.attributedContent
+            contentLabelHeight.constant = dongtai.contentH
+            allContentLabel.isHidden = dongtai.attributedCntentHeight == 110 ? false : true
             /// 防止因为 cell 重用机制，导致数据错乱现象出现
             if middleView.contains(postVideoOrArticleView) {
                 postVideoOrArticleView.removeFromSuperview()
@@ -72,13 +72,13 @@ class UserDetailDongTaiCell: UITableViewCell, RegisterCellFromNib {
                 }
             case .postContent, .postSmallVideo: // 发布了文字内容
                 middleView.addSubview(collectionView)
-                collectionView.frame = CGRect(x: 15, y: 0, width: dongtai.collectionViewW!, height: dongtai.collectionViewH!)
+                collectionView.frame = CGRect(x: 15, y: 0, width: dongtai.collectionViewW, height: dongtai.collectionViewH)
                 collectionView.isPostSmallVideo = (dongtai.item_type == .postSmallVideo)
                 collectionView.thumbImageList = dongtai.thumb_image_list
                 collectionView.largeImageList = dongtai.large_image_list
             case .commentOrQuoteContent, .commentOrQuoteOthers: // 引用或评论
                 middleView.addSubview(originThreadView)
-                originThreadView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: dongtai.origin_thread.height!)
+                originThreadView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: dongtai.origin_thread.height)
                 originThreadView.originthread = dongtai.origin_thread
             }
             layoutIfNeeded()

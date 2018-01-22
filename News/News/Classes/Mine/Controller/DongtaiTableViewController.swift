@@ -188,16 +188,16 @@ class DongtaiTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch currentTopTabType {
         case .dongtai:   // 动态
-            return dongtais[indexPath.row].cellHeight!
+            return dongtais[indexPath.row].cellHeight
         case .article:   // 文章
-            return articles[indexPath.row].cellHeight!
+            return articles[indexPath.row].cellHeight
         case .video:     // 视频
-            return videos[indexPath.row].cellHeight!
+            return videos[indexPath.row].cellHeight
         case .wenda:     // 问答
             let wenda = wendas[indexPath.row]
-            return wenda.cellHeight!
+            return wenda.cellHeight
         case .iesVideo:  // 小视频
-            return iesVideos[indexPath.row].cellHeight!
+            return iesVideos[indexPath.row].cellHeight
         }
     }
     

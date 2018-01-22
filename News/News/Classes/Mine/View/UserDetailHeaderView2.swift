@@ -38,8 +38,8 @@ class UserDetailHeaderView2: UIView, NibLoadable {
                 areaButtonTop.constant = 10
                 areaButton.setTitle(userDetail.area, for: .normal)
             }
-            descriptionLabel.attributedText = userDetail.attributedDescription!
-            if userDetail.descriptionHeight! > 21 {
+            descriptionLabel.attributedText = userDetail.attributedDescription
+            if userDetail.descriptionHeight > 21 {
                 unfoldButton.isHidden = false
                 unfoldButtonWidth.constant = 40.0
             }
@@ -233,7 +233,7 @@ extension UserDetailHeaderView2 {
         unfoldButtonWidth.constant = 0
         relationRecommendView.labelHeight.constant = 0
         relationRecommendView.layoutIfNeeded()
-        descriptionLabelHeight.constant = userDetail.descriptionHeight!
+        descriptionLabelHeight.constant = userDetail.descriptionHeight
         UIView.animate(withDuration: 0.25, animations: {
             self.layoutIfNeeded()
             self.didSelectConcernButton?()

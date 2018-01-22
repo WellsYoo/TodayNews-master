@@ -18,7 +18,7 @@ struct NewsModel: HandyJSON {
     var behot_time: Int = 0
     var tip: Int = 0
     var publish_time: TimeInterval = 0
-    var publishTime: String? { return publish_time.convertString() }
+    var publishTime: String { return publish_time.convertString() }
     
     var source_icon_style: Int = 0
     var tag_id: Int = 0
@@ -35,21 +35,21 @@ struct NewsModel: HandyJSON {
     var display_url: String = ""
     var url: String = ""
     var repin_count: Int = 0
-    var repinCount: String? { return read_count.convertString() }
+    var repinCount: String { return read_count.convertString() }
     var stick_label: String = ""
     var show_portrait_article: Bool = false
     var action_list = [Action]()
     var digg_count: Int = 0
-    var diggCount: String? { return digg_count.convertString() }
+    var diggCount: String { return digg_count.convertString() }
     var has_m3u8_video: Bool = false
     var has_video: Bool = false
     var item_version: Int = 0
     var share_count: Int = 0
-    var shareCount: String? { return share_count.convertString() }
+    var shareCount: String { return share_count.convertString() }
     var source: String = ""
     var article_alt_url: String = ""
     var comment_count: Int = 0
-    var commentCount: String? { return comment_count.convertString() }
+    var commentCount: String { return comment_count.convertString() }
     var cursor: Int = 0
     var video_style: Int = 0
     var show_portrait: Bool = false
@@ -60,21 +60,23 @@ struct NewsModel: HandyJSON {
     var verified_content: String = ""
     var share_url: String = ""
     var bury_count: Int = 0
-    var buryCount: String? { return bury_count.convertString() }
+    var buryCount: String { return bury_count.convertString() }
     var article_sub_type: Int = 0
     var allow_download: Bool = false
     var tag: String = ""
     var like_count: Int = 0
-    var likeCount: String? { return like_count.convertString() }
+    var likeCount: String { return like_count.convertString() }
     var level: Int = 0
     var read_count: Int = 0
-    var readCount: String? { return read_count.convertString() }
+    var readCount: String { return read_count.convertString() }
     var article_type: Int = 0
     var user_verified = false
     var rid: String = ""
     let emojiManager = EmojiManager()
     
     var title: String = ""
+    var titleH: CGFloat { return title.textHeight(fontSize: 16, width: screenWidth - 60) }
+    
     var abstract: String = ""
     
     var is_subject: Bool = false
@@ -97,7 +99,7 @@ struct NewsModel: HandyJSON {
     var raw_data = SmallVideo() //小视频数据
     var video_duration: Int = 0
     var video_id: String = ""
-    var videoDuration: String? { return video_duration.convertVideoDuration() }
+    var videoDuration: String { return video_duration.convertVideoDuration() }
     
     // 广告
     var ad_button = ADButton()
@@ -109,6 +111,8 @@ struct NewsModel: HandyJSON {
     var app_name = ""
     var appleid = ""
     var description = ""
+    var descriptionH: CGFloat { return description.textHeight(fontSize: 13, width: screenWidth - 30) }
+    
     var download_url = ""
     var card_type: CardType = .video
     var is_article = false
@@ -152,12 +156,12 @@ struct SmallVideo: HandyJSON {
     var status = Status()
     var thumb_image_list = [ThumbImageList]()
     var title: String = ""
-    var attrbutedText: NSMutableAttributedString? {
+    var attrbutedText: NSMutableAttributedString {
         return emojiManager.showEmoji(content: title, font: UIFont.systemFont(ofSize: 17))
     }
     
     var create_time: TimeInterval = 0
-    var createTime: String? { return create_time.convertString() }
+    var createTime: String { return create_time.convertString() }
     
     var recommand_reason: String = ""
     var first_frame_image_list = [FirstFrameImage]()
@@ -191,21 +195,21 @@ enum GroupSource: Int, HandyJSONEnum {
 
 struct SmallVideoAction: HandyJSON {
     var bury_count = 0
-    var buryCount: String? { return bury_count.convertString() }
+    var buryCount: String { return bury_count.convertString() }
     var comment_count = 0
-    var commentCount: String? { return comment_count.convertString() }
+    var commentCount: String { return comment_count.convertString() }
     var digg_count = 0
-    var diggCount: String? { return digg_count.convertString() }
+    var diggCount: String { return digg_count.convertString() }
     var forward_count = 0
-    var forwardCount: String? { return forward_count.convertString() }
+    var forwardCount: String { return forward_count.convertString() }
     var play_count = 0
-    var playCount: String? { return play_count.convertString() }
+    var playCount: String { return play_count.convertString() }
     var read_count = 0
-    var readCount: String? { return read_count.convertString() }
+    var readCount: String { return read_count.convertString() }
     var user_bury = 0
-    var userBury: String? { return user_bury.convertString() }
+    var userBury: String { return user_bury.convertString() }
     var user_repin = 0
-    var userRepin: String? { return user_repin.convertString() }
+    var userRepin: String { return user_repin.convertString() }
     var user_digg = false
 }
 
@@ -263,9 +267,9 @@ struct Relation: HandyJSON {
 
 struct RelationCount: HandyJSON {
     var followings_count: Int = 0
-    var followingsCount: String? { return followings_count.convertString() }
+    var followingsCount: String { return followings_count.convertString() }
     var followers_count: Int = 0
-    var followersCount: String? { return followers_count.convertString() }
+    var followersCount: String { return followers_count.convertString() }
 }
 
 struct Music: HandyJSON {
@@ -302,7 +306,7 @@ struct FirstFrameImage: HandyJSON {
     var image_type: Int = 0
     var url_list = [URLList]()
     var url: NSString = ""
-    var urlString: String? {
+    var urlString: String {
         guard url.hasSuffix(".webp") else { return url as String }
         return url.replacingCharacters(in: NSRange(location: url.length - 5, length: 5), with: ".png")
     }
@@ -325,10 +329,10 @@ struct VideoDetailInfo: HandyJSON {
     var detail_video_large_image = DetailVideoLargeImage()
     var video_third_monitor_url: String = ""
     var video_watching_count: Int = 0
-    var videoWatchingCount: String? { return video_watching_count.convertString() }
+    var videoWatchingCount: String { return video_watching_count.convertString() }
     var video_id: String = ""
     var video_watch_count: Int = 0
-    var videoWatchCount: String? { return video_watch_count.convertString() }
+    var videoWatchCount: String { return video_watch_count.convertString() }
     var video_type: Int = 0
     var show_pgc_subscribe: Int = 0
 }
@@ -337,7 +341,7 @@ struct DetailVideoLargeImage: HandyJSON {
     var height: Int = 0
     var url_list: [URLList]!
     var url: NSString = ""
-    var urlString: String? {
+    var urlString: String {
         guard url.hasSuffix(".webp") else { return url as String }
         return url.replacingCharacters(in: NSRange(location: url.length - 5, length: 5), with: ".png")
     }
@@ -391,11 +395,11 @@ struct NewsUserInfo: HandyJSON {
     var description: String = ""
     var avatar_url: String = ""
     var follower_count: Int = 0
-    var followerCount: String? { return follower_count.convertString() }
+    var followerCount: String { return follower_count.convertString() }
     var user_decoration: String!
     var subcribed: Int = 0
     var fans_count: Int = 0
-    var fansCount: String? { return fans_count.convertString() }
+    var fansCount: String { return fans_count.convertString() }
     var special_column = [SpecialColumn]()
     var user_auth_info: String!
     var media_id: Int = 0
@@ -404,7 +408,7 @@ struct NewsUserInfo: HandyJSON {
 
 struct ForwardInfo: HandyJSON {
     var forward_count: Int = 0
-    var forwardCount: String? { return forward_count.convertString() }
+    var forwardCount: String { return forward_count.convertString() }
 }
 
 struct UGCRecommend: HandyJSON {
@@ -463,7 +467,7 @@ struct VideoPlayInfo: HandyJSON {
     var video_list = VideoList()
     var original_play_url = OriginalPlayURL()
     var video_duration: Int = 0
-    var videoDuration: String? {
+    var videoDuration: String {
         return video_duration.convertVideoDuration()
     }
     

@@ -20,14 +20,14 @@ class DongtaiOriginThreadView: UIView, NibLoadable {
             if originthread.delete || !originthread.show_origin {
                 contentLabel.text = originthread.show_tips != "" ? originthread.show_tips : originthread.content
                 contentLabel.textAlignment = .center
-                contentLabelHeight.constant = originthread.contentH!
+                contentLabelHeight.constant = originthread.contentH
             } else {
-                contentLabel.attributedText = originthread.attributedContent!
-                contentLabelHeight.constant = originthread.contentH!
+                contentLabel.attributedText = originthread.attributedContent
+                contentLabelHeight.constant = originthread.contentH
                 collectionView.isDongtaiDetail = originthread.isDongtaiDetail
                 collectionView.thumbImageList = originthread.thumb_image_list
                 collectionView.largeImageList = originthread.large_image_list
-                collectionViewWidth.constant = originthread.collectionViewW!
+                collectionViewWidth.constant = originthread.collectionViewW
                 layoutIfNeeded()
             }
         }
@@ -46,7 +46,7 @@ class DongtaiOriginThreadView: UIView, NibLoadable {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        height = originthread.height!
+        height = originthread.height
         width = screenWidth
     }
     

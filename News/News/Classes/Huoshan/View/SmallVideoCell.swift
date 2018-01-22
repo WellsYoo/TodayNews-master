@@ -25,7 +25,7 @@ class SmallVideoCell: UICollectionViewCell, RegisterCellFromNib {
             avatarButton.kf.setImage(with: URL(string: smallVideo.raw_data.user.info.avatar_url), for: .normal)
             vImageView.isHidden = !smallVideo.raw_data.user.info.user_verified
             concernButton.isSelected = smallVideo.raw_data.user.relation.is_following
-            titleLabel.attributedText = smallVideo.raw_data.attrbutedText!
+            titleLabel.attributedText = smallVideo.raw_data.attrbutedText
         }
     }
     

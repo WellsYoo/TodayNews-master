@@ -14,10 +14,10 @@ class UserDetailWendaCell: UITableViewCell, RegisterCellFromNib {
         didSet {
             questionTitleLabel.text = wenda.question.title
             contentLabel.text = wenda.answer.content_abstract.text
-            diggCountLabel.text = wenda.answer.diggCount! + "赞 ·"
-            readCountLabel.text = wenda.answer.browCount! + "人阅读"
+            diggCountLabel.text = wenda.answer.diggCount + "赞 ·"
+            readCountLabel.text = wenda.answer.browCount + "人阅读"
             showTimeLabel.text = wenda.answer.show_time
-            contentLabelHeight.constant = wenda.answer.content_abstract.textHeight!
+            contentLabelHeight.constant = wenda.answer.content_abstract.textHeight
             layoutIfNeeded()
         }
     }

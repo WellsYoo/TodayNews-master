@@ -16,8 +16,8 @@ class RelatedVideoCell: UITableViewCell, RegisterCellFromNib {
             titleLabel.text = relatedVideo.title
             nameLabel.text = relatedVideo.source
             thumbImageView.kf.setImage(with: URL(string: relatedVideo.middle_image.url)!)
-            playCountLabel.text = relatedVideo.video_detail_info.videoWatchCount! + "次播放"
-            timeLabel.text = relatedVideo.videoDuration!
+            playCountLabel.text = relatedVideo.video_detail_info.videoWatchCount + "次播放"
+            timeLabel.text = relatedVideo.videoDuration
             timeLabel.isHidden = !relatedVideo.has_video
             switch relatedVideo.card_type {
             case .video:    // 视频

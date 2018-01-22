@@ -31,12 +31,12 @@ struct UserDetail: HandyJSON {
     var creator_id: Int = 0             // 53271122458
     
     var description: String = "" // 考研规划“神嘴”张雪峰老师。
-    var attributedDescription: NSAttributedString? {
+    var attributedDescription: NSAttributedString {
         let emojimanager = EmojiManager()
         return emojimanager.showEmoji(content: description, font: UIFont.systemFont(ofSize: 13))
     }
     // screeenWidth - (15 + 15 + 40 + 5)
-    var descriptionHeight: CGFloat? { return Calculate.textHeight(text: description, fontSize: 13, width: screenWidth - 30.0) }
+    var descriptionHeight: CGFloat { return Calculate.textHeight(text: description, fontSize: 13, width: screenWidth - 30.0) }
     
     var apply_auth_url: String = "" // sslocal://apply_user_auth_info
     
@@ -58,10 +58,10 @@ struct UserDetail: HandyJSON {
     var share_url: String = ""
     
     var followers_count: Int = 0// 粉丝 470837
-    var followersCount: String? { return followers_count.convertString() }
+    var followersCount: String { return followers_count.convertString() }
     
     var followings_count: Int = 0 // 关注 3
-    var followingsCount: String? { return followings_count.convertString() }
+    var followingsCount: String { return followings_count.convertString() }
     
     var media_type: Int = 0
     
@@ -219,31 +219,31 @@ struct RichContent {
 // MARK: - 用户详情 动态模型
 struct UserDetailDongtai: HandyJSON {
     /// header view 的高度
-    var detailHeaderHeight: CGFloat? {
+    var detailHeaderHeight: CGFloat {
         // 60 + contentHeight + middleViewHeight + 25 + 5 + 40
-        var height: CGFloat = 135 + detailContentH!
+        var height: CGFloat = 135 + detailContentH
         switch item_type {
         case .postVideoOrArticle, .postVideo, .answerQuestion, .proposeQuestion, .forwardArticle, .postContentAndVideo:   // 发布了视频和文章,提出了问题,回答了问题
             height += 60
         case .postContent, .postSmallVideo:   // 发布了文字内容
-            height += collectionViewH!
+            height += collectionViewH
         case .commentOrQuoteContent, .commentOrQuoteOthers:   // 引用或者评论别人的内容
-            height += origin_thread.detailHeight!
+            height += origin_thread.detailHeight
         }
         return height
     }
     
     /// cell 的高度
-    var cellHeight: CGFloat? {
+    var cellHeight: CGFloat {
         // 顶部分割线 5，头像用户名 45，底部 55， 中间部分上下间距 5
-        var height: CGFloat = 115.0 + contentH!
+        var height: CGFloat = 115.0 + contentH
         switch item_type {
         case .postVideoOrArticle, .postVideo, .answerQuestion, .proposeQuestion, .forwardArticle, .postContentAndVideo:   // 发布了视频和文章,提出了问题,回答了问题
             height += 60
         case .postContent, .postSmallVideo:   // 发布了文字内容
-            height += (thumb_image_list.count == 0 ? 0 : collectionViewH!)
+            height += (thumb_image_list.count == 0 ? 0 : collectionViewH)
         case .commentOrQuoteContent, .commentOrQuoteOthers:   // 引用或者评论别人的内容
-            height += origin_thread.height!
+            height += origin_thread.height
         }
         return height
     }
@@ -251,17 +251,17 @@ struct UserDetailDongtai: HandyJSON {
     var isDongtaiDetail = false
     
     /// 详情 collectionView 高度
-    var detailConllectionViewH : CGFloat? {
+    var detailConllectionViewH : CGFloat {
         return Calculate.detailCollectionViewHieght(thumb_image_list)
     }
     
     /// collectionView 高度
-    var collectionViewH: CGFloat? {
+    var collectionViewH: CGFloat {
         return Calculate.collectionViewHeight(thumb_image_list.count)
     }
     
     /// collectionView 宽度
-    var collectionViewW: CGFloat? {
+    var collectionViewW: CGFloat {
         return isDongtaiDetail ? (screenWidth - 30) : Calculate.collectionViewWidth(thumb_image_list.count)
     }
     
@@ -277,22 +277,22 @@ struct UserDetailDongtai: HandyJSON {
     
     var content_unescape: String = ""
     var content: String = ""
-    var detailContentH: CGFloat? {
+    var detailContentH: CGFloat {
         return Calculate.textHeight(text: content, fontSize: 17, width: screenWidth - 30.0)
     }
     
-    var contentH: CGFloat? {
+    var contentH: CGFloat {
         let height = Calculate.textHeight(text: content, fontSize: 17, width: screenWidth - 30.0)
         return height >= 110 ? 110 : height
     }
     
     /// 富文本内容高度
-    var attributedCntentHeight: CGFloat? {
-        let height = Calculate.attributedTextHeight(text: attributedContent!, width: screenWidth - 30.0)
+    var attributedCntentHeight: CGFloat {
+        let height = Calculate.attributedTextHeight(text: attributedContent, width: screenWidth - 30.0)
         return height >= 110.0 ? 110.0 : height
     }
     
-    var attributedContent: NSAttributedString? {
+    var attributedContent: NSAttributedString {
         let emojimanager = EmojiManager()
         return emojimanager.showEmoji(content: content, font: UIFont.systemFont(ofSize: 17))
     }
@@ -303,21 +303,21 @@ struct UserDetailDongtai: HandyJSON {
     var item_type: DongtaiItemType = .postContent
     
     var create_time: TimeInterval = 0
-    var createTime: String? { return create_time.convertString() }
+    var createTime: String { return create_time.convertString() }
     
     var comment_count: Int = 0
-    var commentCount: String? { return comment_count.convertString() }
+    var commentCount: String { return comment_count.convertString() }
     
     var digg_count: Int = 0
-    var diggCount: String? { return digg_count.convertString() }
+    var diggCount: String { return digg_count.convertString() }
     
     var forward_num: Int = 0
     
     var forward_count: Int = 0
-    var forwardCount: String? { return forward_count.convertString() }
+    var forwardCount: String { return forward_count.convertString() }
     
     var read_count: Int = 0
-    var readCount: String? { return read_count.convertString() }
+    var readCount: String { return read_count.convertString() }
     
     var is_admin: Int = 0
     
@@ -508,7 +508,7 @@ struct DongtaiCommentBase: HandyJSON {
     var group_id: Int = 0
     var share = CommentBaseShare()
     var create_time: TimeInterval = 0
-    var createTime: String? {
+    var createTime: String {
         return create_time.convertString()
     }
     var content_rich_span: String = ""
@@ -581,34 +581,34 @@ struct CommentBaseBlock: HandyJSON {
 struct CommentBaseAction: HandyJSON {
     var user_repin: Int = 0
     var bury_count: Int = 0
-    var buryCount: String? {
+    var buryCount: String {
         return bury_count.convertString()
     }
     
     var forward_count: Int = 0
-    var forwardCount: String? {
+    var forwardCount: String {
         return forward_count.convertString()
     }
     var comment_count: Int = 0
-    var commentCount: String? {
+    var commentCount: String {
         return comment_count.convertString()
     }
     var user_bury: Int = 0
-    var userBury: String? {
+    var userBury: String {
         return user_bury.convertString()
     }
     var digg_count: Int = 0
-    var diggCount: String? {
+    var diggCount: String {
         return digg_count.convertString()
     }
     var user_digg: Bool = false
     
     var read_count: Int = 0
-    var readCount: String? {
+    var readCount: String {
         return read_count.convertString()
     }
     var play_count: Int = 0
-    var playCount: String? {
+    var playCount: String {
         return play_count.convertString()
     }
 }
@@ -665,17 +665,17 @@ struct DongtaiPosition: HandyJSON {
 // MARK: 引用内容
 struct DongtaiOriginThread: HandyJSON {
     /// cell 的高度
-    var height: CGFloat? { return 20 + contentH! + ((delete || !show_origin) ? 0 : collectionViewH!) }
-    var detailHeight: CGFloat? { return 20 + contentH! + ((delete || !show_origin) ? 0 : detailCollectionViewH!) }
+    var height: CGFloat { return 20 + contentH + ((delete || !show_origin) ? 0 : collectionViewH) }
+    var detailHeight: CGFloat { return 20 + contentH + ((delete || !show_origin) ? 0 : detailCollectionViewH) }
     
     var content: String = ""
-    var contentH: CGFloat? {
+    var contentH: CGFloat {
         if !show_origin || delete { return 40 }
         let nameAndContent = (user.screen_name == "" ? "" : "\(user.screen_name):") + content
         let height = Calculate.textHeight(text: nameAndContent, fontSize: 17, width: screenWidth - 30.0) + 5.0
         return height >= 120 ? 120 : height
     }
-    var attributedContent: NSAttributedString? {
+    var attributedContent: NSAttributedString {
         let emojimanager = EmojiManager()
         let mutableAtttributedString = NSMutableAttributedString(string: (user.screen_name == "" ? "" : "\(user.screen_name):"), attributes: [.foregroundColor: UIColor.blueFontColor()])
         mutableAtttributedString.append(emojimanager.showEmoji(content: content, font: UIFont.systemFont(ofSize: 17)))
@@ -685,17 +685,17 @@ struct DongtaiOriginThread: HandyJSON {
     var isDongtaiDetail = false
     
     /// 详情 collectionView 高度
-    var detailCollectionViewH: CGFloat? {
+    var detailCollectionViewH: CGFloat {
         return Calculate.detailCollectionViewHieght(thumb_image_list)
     }
     
     /// collectionView 高度
-    var collectionViewH: CGFloat? {
+    var collectionViewH: CGFloat {
         return Calculate.collectionViewHeight(thumb_image_list.count)
     }
     
     /// collectionView 宽度
-    var collectionViewW: CGFloat? {
+    var collectionViewW: CGFloat {
         return isDongtaiDetail ? (screenWidth - 30) : Calculate.collectionViewWidth(thumb_image_list.count)
     }
     var ugc_cut_image_list = [UGCCutImageList]()
@@ -818,14 +818,14 @@ struct DongtaiComment: HandyJSON {
     var is_followed = false
     var user_bury: Int = 0
     var create_time: TimeInterval = 0
-    var createTime: String? { return create_time.convertString() }
+    var createTime: String { return create_time.convertString() }
     
     var reply_count: Int = 0
     var digg_count: Int = 0
-    var diggCount: String? { return digg_count.convertString() }
+    var diggCount: String { return digg_count.convertString() }
     var score: Float = 0.0
     var bury_count: Int = 0
-    var buryCount: String? { return bury_count.convertString()}
+    var buryCount: String { return bury_count.convertString()}
     var reply_list = [DongtaiReplyList]()
     var verified_reason: String = ""
     var is_pgc_author = false
@@ -835,7 +835,7 @@ struct DongtaiComment: HandyJSON {
     var user_digg = false
     var user_profile_image_url: String = ""
     var text: String = ""
-    var attributedContent: NSAttributedString? {
+    var attributedContent: NSAttributedString {
         let emojimanager = EmojiManager()
         return emojimanager.showEmoji(content: text, font: UIFont.systemFont(ofSize: 17))
     }
@@ -906,7 +906,7 @@ struct LargeImageList: HandyJSON {
     var url_list = [URLList]()
     
     var url: NSString = ""
-    var urlString: String? {
+    var urlString: String {
         guard url.hasSuffix(".webp") else { return url as String }
         return url.replacingCharacters(in: NSRange(location: url.length - 5, length: 5), with: ".png")
     }
@@ -929,7 +929,7 @@ struct ThumbImageList: HandyJSON {
     var uri: String = ""
     
     /// 宽高比
-    var ratio: CGFloat? { return width / height }
+    var ratio: CGFloat { return width / height }
     
 }
 
@@ -973,9 +973,9 @@ struct DongtaiUser: HandyJSON {
     var medals = [Any]()
     
     var followers_count: Int = 0
-    var followersCount: String? { return followers_count.convertString() }
+    var followersCount: String { return followers_count.convertString() }
     var followings_count: Int = 0
-    var followingsCount: String? { return followings_count.convertString() }
+    var followingsCount: String { return followings_count.convertString() }
     var name: String = ""
     var desc: String = ""
     var is_following: Int = 0
@@ -1195,9 +1195,9 @@ struct UserDetailArticleImageList: HandyJSON {
 
 struct UserDetailWenda: HandyJSON {
     /// cell 的高度
-    var cellHeight: CGFloat? {
+    var cellHeight: CGFloat {
         // 10 + question.titleH! + 5 + 10 + 10 + 5
-        return 40 + question.titleH! + answer.content_abstract.textHeight!
+        return 40 + question.titleH + answer.content_abstract.textHeight
     }
     var answer: UserDetailAnswer!
     var question: UserDetailQuestion!
@@ -1210,7 +1210,7 @@ struct UserDetailQuestion: HandyJSON {
     var nice_ans_count: Int = 0
     var tag_id: Int = 0
     var title: String = ""
-    var titleH: CGFloat? {
+    var titleH: CGFloat {
         return Calculate.textHeight(text: title, fontSize: 17, width: screenWidth - 30.0) + 5
     }
     
@@ -1243,7 +1243,7 @@ struct UserDetailAnswer: HandyJSON {
     var content: String = ""
     var bury_count: Int = 0
     var brow_count: Int = 0
-    var browCount: String? { return brow_count.convertString() }
+    var browCount: String { return brow_count.convertString() }
     var ansid: String = ""
     var show_time: String = ""
     var wap_url: String = ""
@@ -1256,7 +1256,7 @@ struct UserDetailAnswer: HandyJSON {
     var is_buryed: Bool = false
     var user = DongtaiUser()
     var digg_count: Int = 0
-    var diggCount: String? { return digg_count.convertString() }
+    var diggCount: String { return digg_count.convertString() }
     var ans_url: String = ""
     
 }
@@ -1264,7 +1264,7 @@ struct UserDetailAnswer: HandyJSON {
 struct UserDetailAnswerContentAbstract: HandyJSON {
     var thumb_image_list: [ThumbImageList]!
     var text: String = ""
-    var textHeight: CGFloat? {
+    var textHeight: CGFloat {
         let height = Calculate.textHeight(text: text, fontSize: 16, width: screenWidth - 30.0)
         return height >= 42 ? 42 : height
     }

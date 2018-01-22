@@ -36,9 +36,9 @@ struct Video: HandyJSON {
     var size: Int = 0
     /// 用 base 64 加密的视频真实地址
     var main_url: String = ""
-    var mainURL: String? {
+    var mainURL: String {
         let decodeData = Data(base64Encoded: main_url, options: Data.Base64DecodingOptions(rawValue: 0))
-        return String(data: decodeData!, encoding: .utf8)
+        return String(data: decodeData!, encoding: .utf8)!
     }
     
     var user_video_proxy: Int = 0
@@ -64,13 +64,13 @@ struct VideoDetail: HandyJSON {
     var log_pb = LogPB()
     var ordered_info = [OrderedInfo]()
     var bury_count: Int = 0
-    var buryCount: String? { return bury_count.convertString() }
+    var buryCount: String { return bury_count.convertString() }
     var ignore_web_transform: Int = 0
     var url: String = ""
     var ad = AD()
     var labels = [VideoDetailLabel]()
     var like_count: Int = 0
-    var likeCount: String? { return like_count.convertString() }
+    var likeCount: String { return like_count.convertString() }
     var ban_digg: Int = 0
     var filter_words = [FilterWord]()
     var danmaku_count: Int = 0
@@ -83,9 +83,9 @@ struct VideoDetail: HandyJSON {
     var related_wenda = [RelatedWenda]()
     var ban_bury: Int = 0
     var comment_count: Int = 0
-    var commentCount: String? { return comment_count.convertString() }
+    var commentCount: String { return comment_count.convertString() }
     var digg_count: Int = 0
-    var diggCount: String? { return digg_count.convertString() }
+    var diggCount: String { return digg_count.convertString() }
     var group_flags: Int = 0
     var is_wenda: Bool = false
     var user_info = NewsUserInfo()
@@ -98,12 +98,12 @@ struct VideoDetail: HandyJSON {
     var media_info = MediaInfo()
     var user_like: Int = 0
     var read_count: Int = 0
-    var readCount: String? { return read_count.convertString() }
+    var readCount: String { return read_count.convertString() }
     var share_url: String = ""
     var video_label_html: String = ""
     var video_watch_count: Int = 0
     var repin_count: Int = 0
-    var repinCount: String? { return read_count.convertString() }
+    var repinCount: String { return read_count.convertString() }
     var ban_comment: Int = 0
     var related_video_section: Int = 0
 }

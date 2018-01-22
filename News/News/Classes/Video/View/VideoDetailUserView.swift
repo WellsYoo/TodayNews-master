@@ -17,7 +17,7 @@ class VideoDetailUserView: UIView, NibLoadable {
             avatarImageView.kf.setImage(with: URL(string: userInfo.avatar_url)!)
             vImageView.isHidden = !userInfo.user_verified
             nameLabel.text = userInfo.name
-            followerCountLabel.text = userInfo.fansCount! + "粉丝"
+            followerCountLabel.text = userInfo.fansCount + "粉丝"
             concernButton.isSelected = userInfo.follow
             concernButton.theme_backgroundColor = userInfo.follow ? "colors.userDetailFollowingConcernBtnBgColor" : "colors.globalRedColor"
             concernButton.borderColor = userInfo.follow ? .grayColor232() : .globalRedColor()

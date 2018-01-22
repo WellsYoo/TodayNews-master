@@ -5,6 +5,7 @@
 //  Created by 杨蒙 on 2018/1/21.
 //  Copyright © 2018年 hrscy. All rights reserved.
 //
+//  ********************暂未使用******************8
 
 import UIKit
 import RxSwift
@@ -25,13 +26,22 @@ class RelatedVideoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         headerView.video = video
+//        headerView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 110)
         tableView.tableHeaderView = headerView
         footerView.ad = videoDetail.ad
+//        footerView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 327)
         tableView.tableFooterView = footerView
         tableView.ym_registerCell(cell: RelatedVideoCell.self)
+        headerView.foldButton.rx.controlEvent(.touchUpInside)
+            .subscribe(onNext: { [weak self] in
+                self!.tableView.tableHeaderView = self!.headerView
+                self!.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
         footerView.moreButton.rx.controlEvent(.touchUpInside)
             .subscribe(onNext: { [weak self] in
                 self!.tableView.rowHeight = 80
+                self!.tableView.reloadData()
             })
             .disposed(by: disposeBag)
     }
@@ -47,7 +57,7 @@ class RelatedVideoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (indexPath.row > videoDetail.related_video_section ? 0 : 80)
+        return (indexPath.row >= videoDetail.related_video_section ? 0 : 80)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

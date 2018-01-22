@@ -24,13 +24,13 @@ class DongtaiDetailHeaderView: UIView, NibLoadable {
             theme_backgroundColor = "colors.cellBackgroundColor"
             avatarButton.kf.setImage(with: URL(string: dongtai.user.avatar_url), for: .normal)
             nameLabel.text = dongtai.user.screen_name
-            timeLabel.text = "· " + dongtai.createTime!
+            timeLabel.text = "· " + dongtai.createTime
             descriptionLabel.text = dongtai.user.verified_content
-            readCountLabel.text = dongtai.readCount! + "阅读 ·" + dongtai.brand_info + " " + dongtai.position.position
-            commentCountLabel.text = dongtai.commentCount! + "评论"
-            zanButton.setTitle(dongtai.diggCount!, for: .normal)
+            readCountLabel.text = dongtai.readCount + "阅读 ·" + dongtai.brand_info + " " + dongtai.position.position
+            commentCountLabel.text = dongtai.commentCount + "评论"
+            zanButton.setTitle(dongtai.diggCount, for: .normal)
             // 显示 emoji
-            contentLabel.attributedText = dongtai.attributedContent!
+            contentLabel.attributedText = dongtai.attributedContent
             // 点击了用户
             contentLabel.userTapped = { [weak self] (userName, range) in
                 for userContent in self!.dongtai.userContents! {
@@ -65,7 +65,7 @@ class DongtaiDetailHeaderView: UIView, NibLoadable {
                 middleView.addSubview(postVideoOrArticleView)
             case .postContent, .postSmallVideo: // 发布了文字内容
                 collectionView.isDongtaiDetail = true
-                collectionView.frame = CGRect(x: 15, y: 0, width: dongtai.collectionViewW!, height: dongtai.detailConllectionViewH!)
+                collectionView.frame = CGRect(x: 15, y: 0, width: dongtai.collectionViewW, height: dongtai.detailConllectionViewH)
                 collectionView.isPostSmallVideo = (dongtai.item_type == .postSmallVideo)
                 collectionView.thumbImageList = dongtai.thumb_image_list
                 collectionView.largeImageList = dongtai.large_image_list
@@ -73,7 +73,7 @@ class DongtaiDetailHeaderView: UIView, NibLoadable {
             case .commentOrQuoteContent, .commentOrQuoteOthers: // 引用或评论
                 originThreadView.originthread = dongtai.origin_thread
                 originThreadView.originthread.isDongtaiDetail = true
-                originThreadView.frame = CGRect(x: 0, y: 0, width: screenWidth - 30, height: dongtai.origin_thread.detailHeight!)
+                originThreadView.frame = CGRect(x: 0, y: 0, width: screenWidth - 30, height: dongtai.origin_thread.detailHeight)
                 middleView.addSubview(originThreadView)
             }
         }
@@ -143,6 +143,6 @@ class DongtaiDetailHeaderView: UIView, NibLoadable {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        height = dongtai.detailHeaderHeight!
+        height = dongtai.detailHeaderHeight
     }
 }

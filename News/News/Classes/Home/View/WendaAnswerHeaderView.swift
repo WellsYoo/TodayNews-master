@@ -16,14 +16,14 @@ class WendaAnswerHeaderView: UIView, NibLoadable {
             titleLabel.text = question.title
             titleLabelHeight.constant = question.titleH!
             contentLabel.text = question.content.text
-            answerCountLabel.text = question.answerCount! + "个回答 · "
-            collectionCountLabel.text = question.answerCount! + "人收藏"
+            answerCountLabel.text = question.answerCount + "个回答 · "
+            collectionCountLabel.text = question.answerCount + "人收藏"
             // 如果有图
             if question.content.thumb_image_list.count != 0 {
                 let thumb = question.content.thumb_image_list.first!
                 imageView.kf.setImage(with: URL(string: thumb.url)!)
                 imageViewHeight.constant = 166.0
-                imageViewWidth.constant = 166 * thumb.ratio!
+                imageViewWidth.constant = 166 * thumb.ratio
             }
             height = question.foldHeight!
             layoutIfNeeded()

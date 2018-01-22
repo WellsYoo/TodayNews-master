@@ -16,7 +16,7 @@ class DongtaiNavigationBar: UIView, NibLoadable {
         didSet {
             avatarButton.kf.setImage(with: URL(string: user.avatar_url)!, for: .normal)
             nameButton.setTitle(user.screen_name, for: .normal)
-            followersButton.setTitle(user.followersCount! + "粉丝", for: .normal)
+            followersButton.setTitle(user.followersCount + "粉丝", for: .normal)
         }
     }
     

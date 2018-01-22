@@ -24,13 +24,13 @@ class DongtaiDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var commentView: AnimatableView!
-    
-    var comments = [DongtaiComment]()
+    /// 评论数据
+    private var comments = [DongtaiComment]()
     
     var dongtai = UserDetailDongtai() {
         didSet {
             navigationBar.user = dongtai.user
-            headerView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: dongtai.detailHeaderHeight!)
+            headerView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: dongtai.detailHeaderHeight)
             headerView.dongtai = dongtai
         }
     }

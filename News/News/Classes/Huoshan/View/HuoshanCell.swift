@@ -13,14 +13,14 @@ class HuoshanCell: UICollectionViewCell, RegisterCellFromNib {
 
     var smallVideo = NewsModel() {
         didSet {
-            titleLabel.attributedText = smallVideo.raw_data.attrbutedText!
+            titleLabel.attributedText = smallVideo.raw_data.attrbutedText
             if let largeImage = smallVideo.raw_data.large_image_list.first {
-                imageView.kf.setImage(with: URL(string: largeImage.urlString!)!)
+                imageView.kf.setImage(with: URL(string: largeImage.urlString)!)
             } else if let firstImage = smallVideo.raw_data.first_frame_image_list.first {
-                imageView.kf.setImage(with: URL(string: firstImage.urlString!)!)
+                imageView.kf.setImage(with: URL(string: firstImage.urlString)!)
             }
-            diggCountLabel.text = smallVideo.raw_data.action.diggCount! + "赞"
-            playCountButton.setTitle(smallVideo.raw_data.action.playCount! + "次播放", for: .normal)
+            diggCountLabel.text = smallVideo.raw_data.action.diggCount + "赞"
+            playCountButton.setTitle(smallVideo.raw_data.action.playCount + "次播放", for: .normal)
         }
     }
     

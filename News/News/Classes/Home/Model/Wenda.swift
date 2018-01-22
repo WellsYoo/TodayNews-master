@@ -38,7 +38,7 @@ struct WendaAnswer: HandyJSON {
     var cellHeight: CGFloat? {
         // 60 + 5 + textH + 5 + imageH + 5 + 20 + 5
         var height: CGFloat = 100 + content_abstract.textH!
-        if content_abstract.hasImage! {
+        if content_abstract.hasImage {
             height += 166.0
         }
         return height
@@ -46,17 +46,17 @@ struct WendaAnswer: HandyJSON {
     
     let emojiManager = EmojiManager()
     
-    var attributedString: NSMutableAttributedString? {
+    var attributedString: NSMutableAttributedString {
         return emojiManager.showEmoji(content: content_abstract.text, font: UIFont.systemFont(ofSize: 18))
     }
     
     var user = WendaUser()
     var comment_count: Int = 0
-    var commentCount: String? { return comment_count.convertString() }
+    var commentCount: String { return comment_count.convertString() }
     var bury_count: Int = 0
-    var buryCount: String? { return bury_count.convertString() }
+    var buryCount: String { return bury_count.convertString() }
     var brow_count: Int = 0
-    var browCount: String? { return brow_count.convertString() }
+    var browCount: String { return brow_count.convertString() }
     var ansid: String = ""
     var comment_schema: String = ""
     var schema: String = ""
@@ -68,9 +68,9 @@ struct WendaAnswer: HandyJSON {
     var is_digg: Bool = false
     var is_buryed: Bool = false
     var create_time: TimeInterval = 0
-    var createTime: String? { return create_time.convertString() }
+    var createTime: String { return create_time.convertString() }
     var digg_count: Int = 0
-    var diggCount: String? { return digg_count.convertString() }
+    var diggCount: String { return digg_count.convertString() }
     var ans_url: String = ""
 }
 
@@ -114,7 +114,7 @@ struct WendaShowFormat: HandyJSON {
 
 struct WendaContentAbstract: HandyJSON {
     
-    var hasImage: Bool? {
+    var hasImage: Bool {
         return thumb_image_list.count != 0
     }
     
@@ -147,7 +147,7 @@ struct WendaVideo: HandyJSON {
 struct WendaUser: HandyJSON {
     var schema: String = ""
     var total_digg: Int = 0
-    var totalDigg: String? { return total_digg.convertString() }
+    var totalDigg: String { return total_digg.convertString() }
     var user_intro: String = ""
     var is_following = false
     var is_verify = false
@@ -155,7 +155,7 @@ struct WendaUser: HandyJSON {
     var uname: String = ""
     var user_id: String = ""
     var create_time: TimeInterval = 0
-    var createTime: String? { return create_time.convertString() }
+    var createTime: String { return create_time.convertString() }
     var avatar_url: String = ""
     var user_auth_info = UserAuthInfo()
     
@@ -183,7 +183,7 @@ struct WendaQuestion: HandyJSON {
     var concern_tag_list = [WendaConcernTag]()
     var fold_reason = WendaFoldReason()
     var follow_count: Int = 0
-    var followCount: String? { return follow_count.convertString() }
+    var followCount: String { return follow_count.convertString() }
     var is_follow: Bool = false
     var can_delete: Bool = false
     var share_data = WendaShareData()
@@ -195,10 +195,10 @@ struct WendaQuestion: HandyJSON {
     
     var show_delete: Bool = false
     var create_time: TimeInterval = 0
-    var createTime: String? { return create_time.convertString() }
+    var createTime: String { return create_time.convertString() }
     var nice_ans_count: Int = 0
     var normal_ans_count: Int = 0
-    var answerCount: String? { return (nice_ans_count + normal_ans_count).convertString() }
+    var answerCount: String { return (nice_ans_count + normal_ans_count).convertString() }
     
     var user = WendaUser()
 }
@@ -209,7 +209,7 @@ struct QuestionContent: HandyJSON {
         guard thumb_image_list.count != 0 else {
             return 0
         }
-        return thumb_image_list.first!.ratio! * 166
+        return thumb_image_list.first!.ratio * 166
     }
     
     var thumb_image_list = [ThumbImageList]()

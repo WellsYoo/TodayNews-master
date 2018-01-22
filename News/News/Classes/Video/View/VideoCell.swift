@@ -15,13 +15,13 @@ class VideoCell: UITableViewCell, RegisterCellFromNib {
     var video = NewsModel() {
         didSet {
             titleLabel.text = video.title
-            playCountLabel.text = video.video_detail_info.videoWatchCount! + "次播放"
+            playCountLabel.text = video.video_detail_info.videoWatchCount + "次播放"
             avatarButton.kf.setImage(with: URL(string: video.user_info.avatar_url), for: .normal)
             vImageView.isHidden = !video.user_info.user_verified
             concernButton.isSelected = video.user_info.follow
-            bgImageButton.kf.setBackgroundImage(with: URL(string: video.video_detail_info.detail_video_large_image.urlString!)!, for: .normal)
-            timeLabel.text = video.videoDuration!
-            commentButton.setTitle(video.commentCount!, for: .normal)
+            bgImageButton.kf.setBackgroundImage(with: URL(string: video.video_detail_info.detail_video_large_image.urlString)!, for: .normal)
+            timeLabel.text = video.videoDuration
+            commentButton.setTitle(video.commentCount, for: .normal)
             commentButton.theme_setTitleColor("colors.black", forState: .normal)
             commentButton.theme_setImage("images.comment_24x24_", forState: .normal)
             concernButton.isHidden = video.label_style == 3

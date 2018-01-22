@@ -34,8 +34,18 @@ class RelatedVideoFooterView: UIView, NibLoadable {
                     }
                 }
                 downloadButton.setTitle(ad.mixed.button_text, for: .normal)
+            } else { // 没有广告
+                bgView.isHidden = true
             }
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        width = screenWidth
+        // 没有广告
+        if ad.app.ad_id == 0 && ad.mixed.id == 0 { height = moreButton.isSelected ? 0 : 40 }
+        else { height = bgView.frame.maxY + 5 }
     }
     
     /// 标题
@@ -70,6 +80,7 @@ class RelatedVideoFooterView: UIView, NibLoadable {
         UIView.animate(withDuration: 0.25) {
             self.layoutIfNeeded()
         }
+        sender.isHidden = true
     }
     
     /// 关闭按钮点击

@@ -248,6 +248,7 @@ extension NetworkToolProtocol {
                       "version_code": "6.5.5",
                       "device_platform": "iphone",
                       "flags": 64,
+                      "aid": 13,
                       "aggr_type": 1,
                       "article_page": 1,
                       "from": from,
