@@ -47,6 +47,8 @@ class VideoTableViewController: UITableViewController {
     private func setupRefresh() {
         // 刷新头部
         let header = RefreshHeader { [weak self] in
+            // 如果有正在播放的视频，先停止播放，并移除播放器
+            if self!.player.isPlaying { self!.removePlayer() }
             // 获取视频的新闻列表数据
             NetworkTool.loadApiNewsFeeds(category: self!.newsTitle.category, ttFrom: .pull, {
                 if self!.tableView.mj_header.isRefreshing { self!.tableView.mj_header.endRefreshing() }
@@ -79,6 +81,52 @@ class VideoTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+extension VideoTableViewController {
+    /// 视频播放时隐藏 cell 的部分子视图
+    private func hideSubviews(of cell: VideoCell) {
+        cell.titleLabel.isHidden = true
+        cell.playCountLabel.isHidden = true
+        cell.timeLabel.isHidden = true
+        cell.vImageView.isHidden = true
+        cell.avatarButton.isHidden = true
+        cell.nameLable.isHidden = true
+        cell.shareStackView.isHidden = false
+    }
+    
+    /// 设置当前 cell 的属性
+    private func showSubviews(of cell: VideoCell) {
+        cell.titleLabel.isHidden = false
+        cell.playCountLabel.isHidden = false
+        cell.timeLabel.isHidden = false
+        cell.avatarButton.isHidden = false
+        cell.vImageView.isHidden = !cell.video.user_verified
+        cell.nameLable.isHidden = false
+        cell.shareStackView.isHidden = true
+    }
+    
+    /// 把播放器添加到 cell 上
+    private func addPlayer(on cell: VideoCell) {
+        // 视频播放时隐藏 cell 的部分子视图
+        hideSubviews(of: cell)
+        // 解析头条的视频真实播放地址
+        NetworkTool.parseVideoRealURL(video_id: cell.video.video_detail_info.video_id, completionHandler: {
+            self.realVideo = $0
+            cell.bgImageButton.addSubview(self.player)
+            self.player.snp.makeConstraints({ $0.edges.equalTo(cell.bgImageButton) })
+            // 设置视频播放地址
+            self.player.setVideo(resource: BMPlayerResource(url: URL(string: $0.video_list.video_1.mainURL)!))
+            self.priorCell = cell
+        })
+    }
+    
+    /// 移除播放器
+    private func removePlayer() {
+        player.pause()
+        player.removeFromSuperview()
+        priorCell = nil
     }
 }
 
@@ -131,29 +179,11 @@ extension VideoTableViewController {
         return cell
     }
     
-    /// 把播放器添加到 cell 上
-    private func addPlayer(on cell: VideoCell) {
-        // 视频播放时隐藏 cell 的部分子视图
-        hideSubviews(of: cell)
-        // 解析头条的视频真实播放地址
-        NetworkTool.parseVideoRealURL(video_id: cell.video.video_detail_info.video_id, completionHandler: {
-            self.realVideo = $0
-            cell.bgImageButton.addSubview(self.player)
-            self.player.snp.makeConstraints({ $0.edges.equalTo(cell.bgImageButton) })
-            // 设置视频播放地址
-            self.player.setVideo(resource: BMPlayerResource(url: URL(string: $0.video_list.video_1.mainURL)!))
-            self.priorCell = cell
-        })
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 当前点击的 cell
         let currentCell = tableView.cellForRow(at: indexPath) as! VideoCell
         // 如果播放器正在播放，则停止播放
-        if player.isPlaying {
-            player.pause()
-            player.removeFromSuperview()
-        }
+        if player.isPlaying { removePlayer() }
         // 跳转到详情控制器
         let videoDetailVC = VideoDetailViewController()
         videoDetailVC.video = currentCell.video
@@ -164,31 +194,24 @@ extension VideoTableViewController {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // 说明有视频正在播放
-        if player.isPlaying {
-            let imageButton = player.superview
-            let contentView = imageButton?.superview
-            let cell = contentView?.superview as! VideoCell
-            let rect = tableView.convert(cell.frame, to: view)
-            if (rect.origin.y <= -cell.height) || (rect.origin.y >= screenHeight - tabBarController!.tabBar.height) {
-                player.pause()
-                player.removeFromSuperview()
-                // 设置当前 cell 的属性
-                showSubviews(of: cell)
-                priorCell = nil
+        for viewController in navigationController!.viewControllers {
+            if viewController is VideoViewController {
+                // 说明有视频正在播放
+                if player.isPlaying {
+                    let imageButton = player.superview
+                    let contentView = imageButton?.superview
+                    let cell = contentView?.superview as! VideoCell
+                    let rect = tableView.convert(cell.frame, to: viewController.view)
+                    // 判断是否滑出屏幕
+                    if (rect.origin.y <= -cell.height) || (rect.origin.y >= screenHeight - tabBarController!.tabBar.height) {
+                        removePlayer()
+                        // 设置当前 cell 的属性
+                        showSubviews(of: cell)
+                    }
+                }
             }
         }
-    }
-    
-    /// 设置当前 cell 的属性
-    func showSubviews(of cell: VideoCell) {
-        cell.titleLabel.isHidden = false
-        cell.playCountLabel.isHidden = false
-        cell.timeLabel.isHidden = false
-        cell.avatarButton.isHidden = false
-        cell.vImageView.isHidden = !cell.video.user_verified
-        cell.nameLable.isHidden = false
-        cell.shareStackView.isHidden = true
+        
     }
 }
 
@@ -230,18 +253,6 @@ extension VideoTableViewController: VideoDetailViewControllerDelegate {
         hideSubviews(of: currentCell)
         self.priorCell = currentCell
     }
-    
-    /// 视频播放时隐藏 cell 的部分子视图
-    private func hideSubviews(of cell: VideoCell) {
-        cell.titleLabel.isHidden = true
-        cell.playCountLabel.isHidden = true
-        cell.timeLabel.isHidden = true
-        cell.vImageView.isHidden = true
-        cell.avatarButton.isHidden = true
-        cell.nameLable.isHidden = true
-        cell.shareStackView.isHidden = false
-    }
-    
 }
 
 
