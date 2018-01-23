@@ -18,15 +18,15 @@ class DongtaiCollectionViewCell: UICollectionViewCell, RegisterCellFromNib {
         }
     }
     
-    var thumbImage: ThumbImageList? {
+    var thumbImage = ThumbImage() {
         didSet {
-            thumbImageView.kf.setImage(with: URL(string: thumbImage!.url)!)
+            thumbImageView.kf.setImage(with: URL(string: thumbImage.urlString)!)
         }
     }
     
-    var largeImage: LargeImageList? {
+    var largeImage = LargeImage() {
         didSet {
-            thumbImageView.kf.setImage(with: URL(string: largeImage!.urlString), placeholder: nil, options: nil, progressBlock: { (receivedSize, totalSize) in
+            thumbImageView.kf.setImage(with: URL(string: largeImage.urlString), placeholder: nil, options: nil, progressBlock: { (receivedSize, totalSize) in
                 let progress = Float(receivedSize) / Float(totalSize)
                 SVProgressHUD.showProgress(progress)
                 SVProgressHUD.setBackgroundColor(.clear)

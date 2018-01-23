@@ -15,7 +15,7 @@ class PreviewDongtaiBigImageController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     /// 图片数组
-    var images = [LargeImageList]()
+    var images = [LargeImage]()
     /// 图片的序号
     @IBOutlet weak var indexLabel: UILabel!
     /// 选中了第几个 cell

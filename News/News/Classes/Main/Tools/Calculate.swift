@@ -24,18 +24,18 @@ protocol Calculatable {
     // MARK: 从文本内容中获取 uid 和 用户名
     static func richContents(from content: String, idPattern: String, titlePattern: String) -> [RichContent]
     // MARK: 计算详情里的 collectionViewCell 的大小
-    static func detailCollectionViewCellSize(_ thumbImageList: [ThumbImageList]) -> CGSize
+    static func detailCollectionViewCellSize(_ thumbImages: [ThumbImage]) -> CGSize
     // MARK: 计算详情里的高度
-    static func detailCollectionViewHieght(_ thumbImageList: [ThumbImageList]) -> CGFloat
+    static func detailCollectionViewHieght(_ thumbImages: [ThumbImage]) -> CGFloat
 }
 
 extension Calculatable {
     
     /// 计算高度
-    static func detailCollectionViewHieght(_ thumbImageList: [ThumbImageList]) -> CGFloat {
-        switch thumbImageList.count {
+    static func detailCollectionViewHieght(_ thumbImages: [ThumbImage]) -> CGFloat {
+        switch thumbImages.count {
         case 1:
-            let thumbImage = thumbImageList.first!
+            let thumbImage = thumbImages.first!
             return (screenWidth - 30) * thumbImage.height / thumbImage.width
         case 2:
             return (screenWidth - 35) * 0.5
@@ -53,10 +53,10 @@ extension Calculatable {
     }
     
     /// 计算情里的 collectionViewCell 的大小
-    static func detailCollectionViewCellSize(_ thumbImageList: [ThumbImageList]) -> CGSize {
-        switch thumbImageList.count {
+    static func detailCollectionViewCellSize(_ thumbImages: [ThumbImage]) -> CGSize {
+        switch thumbImages.count {
         case 1:
-            let thumbImage = thumbImageList.first!
+            let thumbImage = thumbImages.first!
             let height = (screenWidth - 30) * thumbImage.height / thumbImage.width
             return CGSize(width: (screenWidth - 30), height: height)
         case 2, 4:

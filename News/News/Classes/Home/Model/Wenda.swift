@@ -118,8 +118,8 @@ struct WendaContentAbstract: HandyJSON {
         return thumb_image_list.count != 0
     }
     
-    var thumb_image_list = [ThumbImageList]()
-    var large_image_list = [LargeImageList]()
+    var thumb_image_list = [ThumbImage]()
+    var large_image_list = [LargeImage]()
     var video_list: [WendaVideo]!
     var text: String = ""
     var textH: CGFloat? {
@@ -212,12 +212,12 @@ struct QuestionContent: HandyJSON {
         return thumb_image_list.first!.ratio * 166
     }
     
-    var thumb_image_list = [ThumbImageList]()
+    var thumb_image_list = [ThumbImage]()
     var text: String = ""
     var textH: CGFloat? {
         return text.textHeight(fontSize: 16, width: screenWidth - 30)
     }
-    var large_image_list = [LargeImageList]()
+    var large_image_list = [LargeImage]()
 }
 
 struct WendaShareData: HandyJSON {

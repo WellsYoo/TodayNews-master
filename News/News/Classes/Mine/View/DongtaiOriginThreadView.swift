@@ -25,8 +25,8 @@ class DongtaiOriginThreadView: UIView, NibLoadable {
                 contentLabel.attributedText = originthread.attributedContent
                 contentLabelHeight.constant = originthread.contentH
                 collectionView.isDongtaiDetail = originthread.isDongtaiDetail
-                collectionView.thumbImageList = originthread.thumb_image_list
-                collectionView.largeImageList = originthread.large_image_list
+                collectionView.thumbImages = originthread.thumb_image_list
+                collectionView.largeImages = originthread.large_image_list
                 collectionViewWidth.constant = originthread.collectionViewW
                 layoutIfNeeded()
             }

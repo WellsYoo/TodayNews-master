@@ -12,8 +12,45 @@ import HandyJSON
 /// 新闻数据模型（首页新闻数据，视频新闻数据，小视频，微头条）
 struct NewsModel: HandyJSON {
     
+    var imageCellHeight: CGFloat {
+        // imageHeight + titleH! + 10 + 40
+        let imageHeight = screenWidth * 9.0 / 16.0 + titleH
+        return imageHeight + 50
+    }
+    
+    var girlCellHeight: CGFloat {
+        return contentH + 75 + screenWidth * 1.4
+    }
+    
+    var jokeCellHeight: CGFloat {
+        // 15 + 50 + 10 + contentH!
+        return 75 + contentH
+    }
+    
+    var cellHeight: CGFloat {
+        // 15 + titleH + 10 + middleViewH + 16 + 10 + bottomViewH + 10
+        var height: CGFloat = 61 + titleH
+        
+        if video_duration != 0 && video_style == 2 {
+            height += screenWidth * 0.5
+        }
+        
+        if label_style == .ad && sub_title != "" {
+            height += 40
+        }
+        
+        return height
+    }
+    
+    
+    var show_more: String = ""
+    
+    let emojiManager = EmojiManager()
+    
     var ppmmCellHeight: CGFloat { return contentH + 75 + screenWidth * 1.4 }
     var content = ""
+    var attributedContent: NSMutableAttributedString { return emojiManager.showEmoji(content: content, font: UIFont.systemFont(ofSize: 17)) }
+    
     var contentH: CGFloat { return content.textHeight(fontSize: 16, width: screenWidth - 30) }
     var item_id: Int = 0
     var cell_flag: Int = 0
@@ -26,10 +63,11 @@ struct NewsModel: HandyJSON {
     var tag_id: Int = 0
     var media_info = MediaInfo()
     var user_info = NewsUserInfo()
+    var user = NewsUserInfo()
     var preload_web: Int = 0
     var cell_layout_style: Int = 0
     var group_id: Int = 0
-    var cell_type: Int = 0
+    var cell_type: CellType = .none
     var log_pb = LogPB()
     var media_name: String = ""
     
@@ -48,6 +86,11 @@ struct NewsModel: HandyJSON {
     var item_version: Int = 0
     var share_count: Int = 0
     var shareCount: String { return share_count.convertString() }
+    var forward_count: Int = 0
+    var forwardCount: String {
+        guard forward_count != 0 else { return "转发" }
+        return forward_count.convertString()
+    }
     var source: String = ""
     var article_alt_url: String = ""
     var comment_count: Int = 0
@@ -74,9 +117,15 @@ struct NewsModel: HandyJSON {
     var article_type: Int = 0
     var user_verified = false
     var rid: String = ""
-    let emojiManager = EmojiManager()
     
     var title: String = ""
+    var titleH: CGFloat {
+        if video_duration != 0 && video_style == 0 { // // 右侧有图
+            return title.textHeight(fontSize: 17, width: screenWidth * 0.72 - 30)
+        } else {
+            return title.textHeight(fontSize: 17, width: screenWidth - 30)
+        }
+    }
     
     var videoTitleH: CGFloat { return title.textHeight(fontSize: 16, width: screenWidth - 60) }
     
@@ -94,7 +143,7 @@ struct NewsModel: HandyJSON {
     var aggr_type: Int = 0
     var has_mp4_video: Int = 0
     var image_list = [ImageList]()
-    var large_image_list = [LargeImageList]()
+    var large_image_list = [LargeImage]()
     
     var middle_image = MiddleImage()
     var video_play_info = VideoPlayInfo()
@@ -105,7 +154,7 @@ struct NewsModel: HandyJSON {
     var videoDuration: String { return video_duration.convertVideoDuration() }
     var gallary_flag = 0
     var gallary_image_count = 0
-    
+    var large_image = LargeImage()
     
     // 广告
     var ad_button = ADButton()
@@ -124,6 +173,15 @@ struct NewsModel: HandyJSON {
     var is_article = false
     var is_preview = false
     var web_url = ""
+    
+    /// 他们也在用
+    var user_cards = [UserCard]()
+}
+
+enum CellType: Int, HandyJSONEnum {
+    case none = 0
+    case user = 32              // 用户
+    case relatedConcern = 50    // 相关关注
 }
 
 enum NewsLabelStyle: Int, HandyJSONEnum {
@@ -166,7 +224,7 @@ struct SmallVideo: HandyJSON {
     var rich_title: String = ""
     var group_id: Int = 0
     var status = Status()
-    var thumb_image_list = [ThumbImageList]()
+    var thumb_image_list = [ThumbImage]()
     var title: String = ""
     var attrbutedText: NSMutableAttributedString {
         return emojiManager.showEmoji(content: title, font: UIFont.systemFont(ofSize: 17))
@@ -182,7 +240,7 @@ struct SmallVideo: HandyJSON {
     var app_schema: String = ""
     var interact_label: String = ""
     var activity: String = ""
-    var large_image_list = [LargeImageList]()
+    var large_image_list = [LargeImage]()
     var group_source: GroupSource = .huoshan
     var share = Share()
     var publish_reason = PublishReason()
@@ -197,6 +255,13 @@ struct SmallVideo: HandyJSON {
     var item_id: Int = 0
     var animated_image_list = [AnimatedImage]()
     var video_neardup_id: Int = 0
+    
+    /// 他们也在用
+    var user_cards = [UserCard]()
+    var has_more = false
+    var id = 0
+    var show_more = ""
+    var show_more_jump_url = ""
 }
 
 /// 小视频类型
@@ -421,6 +486,7 @@ struct NewsUserInfo: HandyJSON {
     var special_column = [SpecialColumn]()
     var user_auth_info: String!
     var media_id: Int = 0
+    var screen_name = ""
     
 }
 

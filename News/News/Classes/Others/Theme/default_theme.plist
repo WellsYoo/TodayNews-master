@@ -4,6 +4,12 @@
 <dict>
 	<key>images</key>
 	<dict>
+		<key>like_old_feed_press_24x24_</key>
+		<string>like_old_feed_press_24x24_</string>
+		<key>like_old_feed_24x24_</key>
+		<string>like_old_feed_24x24_</string>
+		<key>icon_popup_close_24x24_</key>
+		<string>icon_popup_close_24x24_</string>
 		<key>download_ad_feed_13x13_</key>
 		<string>download_ad_feed_13x13_</string>
 		<key>palyicon_video_textpage_6x8_</key>

@@ -34,6 +34,10 @@ class HomeTableViewController: UITableViewController {
         // 注册视频的 cell
         tableView.ym_registerCell(cell: VideoCell.self)
         tableView.ym_registerCell(cell: HomeCell.self)
+        tableView.ym_registerCell(cell: HomeUserCell.self)
+        tableView.ym_registerCell(cell: TheyAlsoUseCell.self)
+        tableView.ym_registerCell(cell: HomeJokeCell.self)
+        tableView.ym_registerCell(cell: HomeImageTableCell.self)
         tableView.tableFooterView = UIView()
         tableView.theme_separatorColor = "colors.separatorViewColor"
         // 设置刷新控件
@@ -84,10 +88,22 @@ class HomeTableViewController: UITableViewController {
 extension HomeTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let aNews = news[indexPath.row]
         if newsTitle.category == .video { return screenWidth * 0.67 }
-        else if newsTitle.category == .essayJoke { return screenWidth * 0.67 }
+        else if newsTitle.category == .essayJoke { return aNews.jokeCellHeight }
+        else if newsTitle.category == .photos { return aNews.imageCellHeight }
+        else if newsTitle.category == .imagePPMM { return aNews.girlCellHeight }
+        else {
+            switch aNews.cell_type {
+            case .user:
+                return aNews.contentH
+            case .relatedConcern:
+                return 290
+            case .none:
+                return aNews.cellHeight
+            }
+        }
         
-        return 100
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,14 +111,40 @@ extension HomeTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let aNews = news[indexPath.row]
         if newsTitle.category == .video { // 如果是视频
             let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as VideoCell
-            cell.video = news[indexPath.row]
+            cell.video = aNews
+            return cell
+        } else if newsTitle.category == .essayJoke { // 如果是段子
+            let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as HomeJokeCell
+            cell.isJoke = true
+            cell.joke = aNews
+            return cell
+        } else if newsTitle.category == .photos { // 如果是图片,组图
+            let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as HomeImageTableCell
+            cell.homeImage = aNews
+            return cell
+        } else if newsTitle.category == .imagePPMM { // 街拍
+            let cell = Bundle.main.loadNibNamed(String(describing: HomeJokeCell.self), owner: nil, options: nil)?.last as! HomeJokeCell
+            cell.isJoke = false
+            cell.joke = aNews
             return cell
         } else {
-            let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as HomeCell
-            cell.aNews = news[indexPath.row]
-            return cell
+            switch aNews.cell_type {
+            case .user:
+                let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as HomeUserCell
+                cell.aNews = aNews
+                return cell
+            case .relatedConcern:
+                let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as TheyAlsoUseCell
+                cell.theyUse = aNews.raw_data
+                return cell
+            case .none:
+                let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as HomeCell
+                cell.aNews = aNews
+                return cell
+            }
         }
         
     }

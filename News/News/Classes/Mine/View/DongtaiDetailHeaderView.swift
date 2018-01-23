@@ -48,15 +48,9 @@ class DongtaiDetailHeaderView: UIView, NibLoadable {
                 }
             }
             /// 防止因为 cell 重用机制，导致数据错乱现象出现
-            if middleView.contains(postVideoOrArticleView) {
-                postVideoOrArticleView.removeFromSuperview()
-            }
-            if middleView.contains(collectionView) {
-                collectionView.removeFromSuperview()
-            }
-            if middleView.contains(originThreadView) {
-                originThreadView.removeFromSuperview()
-            }
+            if middleView.contains(postVideoOrArticleView) { postVideoOrArticleView.removeFromSuperview() }
+            if middleView.contains(collectionView) { collectionView.removeFromSuperview() }
+            if middleView.contains(originThreadView) { originThreadView.removeFromSuperview() }
             
             switch dongtai.item_type {
             case .postVideoOrArticle, .postVideo, .answerQuestion, .proposeQuestion, .forwardArticle, .postContentAndVideo: // 发布了文章或者视频
@@ -67,8 +61,8 @@ class DongtaiDetailHeaderView: UIView, NibLoadable {
                 collectionView.isDongtaiDetail = true
                 collectionView.frame = CGRect(x: 15, y: 0, width: dongtai.collectionViewW, height: dongtai.detailConllectionViewH)
                 collectionView.isPostSmallVideo = (dongtai.item_type == .postSmallVideo)
-                collectionView.thumbImageList = dongtai.thumb_image_list
-                collectionView.largeImageList = dongtai.large_image_list
+                collectionView.thumbImages = dongtai.thumb_image_list
+                collectionView.largeImages = dongtai.large_image_list
                 middleView.addSubview(collectionView)
             case .commentOrQuoteContent, .commentOrQuoteOthers: // 引用或评论
                 originThreadView.originthread = dongtai.origin_thread
@@ -80,22 +74,11 @@ class DongtaiDetailHeaderView: UIView, NibLoadable {
     }
     
     /// 懒加载 评论或引用
-    private lazy var originThreadView: DongtaiOriginThreadView = {
-        let originThreadView = DongtaiOriginThreadView.loadViewFromNib()
-        return originThreadView
-    }()
-    
+    private lazy var originThreadView = DongtaiOriginThreadView.loadViewFromNib()
     /// 懒加载 发布视频或者文章
-    private lazy var postVideoOrArticleView: PostVideoOrArticleView = {
-        let postVideoOrArticleView = PostVideoOrArticleView.loadViewFromNib()
-        return postVideoOrArticleView
-    }()
-    
+    private lazy var postVideoOrArticleView = PostVideoOrArticleView.loadViewFromNib()
     /// 懒加载 collectionView
-    private lazy var collectionView: DongtaiCollectionView = {
-        let collectionView = DongtaiCollectionView.loadViewFromNib()
-        return collectionView
-    }()
+    private lazy var collectionView = DongtaiCollectionView.loadViewFromNib()
     
     override func awakeFromNib() {
         super.awakeFromNib()

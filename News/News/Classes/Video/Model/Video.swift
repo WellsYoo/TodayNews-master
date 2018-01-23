@@ -179,7 +179,7 @@ struct Mixed: HandyJSON {
     var is_tongtou_ad: Bool = false
     var open_url: String = ""
     var image: String = ""
-    var image_list = [ThumbImageList]()
+    var image_list = [ThumbImage]()
     var source_name: String = ""
     var title: String = ""
     var type: String = ""

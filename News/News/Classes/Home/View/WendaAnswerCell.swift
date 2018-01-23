@@ -28,7 +28,7 @@ class WendaAnswerCell: UITableViewCell, RegisterCellFromNib {
             // 是否有图片
             if answer.content_abstract.hasImage {
                 let thumb = answer.content_abstract.thumb_image_list.first!
-                thumbImageView.kf.setImage(with: URL(string: thumb.url)!)
+                thumbImageView.kf.setImage(with: URL(string: thumb.urlString)!)
                 thumbImageViewHeight.constant = 166.0
                 thumbImageViewWidth.constant = 166.0 * thumb.ratio
             } else { thumbImageViewHeight.constant = 0 }

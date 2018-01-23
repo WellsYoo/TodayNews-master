@@ -149,9 +149,11 @@ struct UserCard: HandyJSON {
     
     var recommend_reason: String = ""
     
-    var recommend_type: Int = 2048
+    var recommend_type: Int = 0
     
     var user: UserCardUser = UserCardUser()
+    
+    var stats_place_holder: String = ""
     
 }
 
@@ -387,9 +389,9 @@ struct UserDetailDongtai: HandyJSON {
     
     var repost_params = DongtaiRepostParam()
     
-    var thumb_image_list = [ThumbImageList]()
-    var ugc_cut_image_list = [UGCCutImageList]()
-    var large_image_list = [LargeImageList]()
+    var thumb_image_list = [ThumbImage]()
+    var ugc_cut_image_list = [UGCCutImage]()
+    var large_image_list = [LargeImage]()
     
     // 下面是文章数据
     var go_detail_count: String = ""
@@ -698,7 +700,7 @@ struct DongtaiOriginThread: HandyJSON {
     var collectionViewW: CGFloat {
         return isDongtaiDetail ? (screenWidth - 30) : Calculate.collectionViewWidth(thumb_image_list.count)
     }
-    var ugc_cut_image_list = [UGCCutImageList]()
+    var ugc_cut_image_list = [UGCCutImage]()
     
     var content_unescape: String = ""
     
@@ -718,11 +720,11 @@ struct DongtaiOriginThread: HandyJSON {
     
     var open_url: String = ""
     
-    var large_image_list = [LargeImageList]()
+    var large_image_list = [LargeImage]()
     
     var delete = false
     
-    var thumb_image_list = [ThumbImageList]()
+    var thumb_image_list = [ThumbImage]()
     
     var brand_info: String = ""
     
@@ -735,7 +737,7 @@ struct DongtaiOriginThread: HandyJSON {
     var flags: Int = 0
     var cursor: Int = 0
     var item_type: Int = 0
-    var friend_digg_list = [DongtaiFriendDiggList]()
+    var friend_digg_list = [DongtaiFriendDigg]()
     var repost_params = DongtaiRepostParam()
     var comments = [DongtaiComment]()
     var forward_num: Int = 0
@@ -773,7 +775,7 @@ struct DongtaiForwardInfo: HandyJSON {
     
 }
 
-struct DongtaiFriendDiggList: HandyJSON {
+struct DongtaiFriendDigg: HandyJSON {
     
 }
 
@@ -899,7 +901,7 @@ struct URLList: HandyJSON {
     var url: String = ""
 }
 
-struct LargeImageList: HandyJSON {
+struct LargeImage: HandyJSON {
     
     var height: CGFloat = 0
     
@@ -916,13 +918,17 @@ struct LargeImageList: HandyJSON {
     var uri: String = ""
 }
 
-struct ThumbImageList: HandyJSON {
+struct ThumbImage: HandyJSON {
     
     var height: CGFloat = 0
     
     var url_list = [URLList]()
     
-    var url: String = ""
+    var url: NSString = ""
+    var urlString: String {
+        guard url.hasSuffix(".webp") else { return url as String }
+        return url.replacingCharacters(in: NSRange(location: url.length - 5, length: 5), with: ".png")
+    }
     
     var width: CGFloat = 0
     
@@ -933,7 +939,7 @@ struct ThumbImageList: HandyJSON {
     
 }
 
-struct UGCCutImageList: HandyJSON {
+struct UGCCutImage: HandyJSON {
     
     var height: CGFloat = 0
     
@@ -1221,8 +1227,8 @@ struct UserDetailQuestion: HandyJSON {
 }
 
 struct UserDetailQuestionContent: HandyJSON {
-    var thumb_image_list = [ThumbImageList]()
-    var large_image_list = [LargeImageList]()
+    var thumb_image_list = [ThumbImage]()
+    var large_image_list = [LargeImage]()
     var pic_uri_list = [PicUriList]()
     var text: String = ""
 }
@@ -1262,13 +1268,13 @@ struct UserDetailAnswer: HandyJSON {
 }
 
 struct UserDetailAnswerContentAbstract: HandyJSON {
-    var thumb_image_list: [ThumbImageList]!
+    var thumb_image_list: [ThumbImage]!
     var text: String = ""
     var textHeight: CGFloat {
         let height = Calculate.textHeight(text: text, fontSize: 16, width: screenWidth - 30.0)
         return height >= 42 ? 42 : height
     }
     
-    var large_image_list: [LargeImageList]!
+    var large_image_list: [LargeImage]!
 }
 

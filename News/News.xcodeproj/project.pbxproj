@@ -56,6 +56,16 @@
 		94569D4A2015E73400B31777 /* TextLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94569D492015E73400B31777 /* TextLinkViewController.swift */; };
 		94569D4D2016DE5800B31777 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94569D4B2016DE5800B31777 /* HomeCell.swift */; };
 		94569D4E2016DE5800B31777 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94569D4C2016DE5800B31777 /* HomeCell.xib */; };
+		94569D512017340F00B31777 /* TheyAlsoUseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94569D4F2017340F00B31777 /* TheyAlsoUseCell.xib */; };
+		94569D522017340F00B31777 /* TheyAlsoUseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94569D502017340F00B31777 /* TheyAlsoUseCell.swift */; };
+		94569D552017343F00B31777 /* HomeUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94569D532017343F00B31777 /* HomeUserCell.xib */; };
+		94569D562017343F00B31777 /* HomeUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94569D542017343F00B31777 /* HomeUserCell.swift */; };
+		94569D592017373600B31777 /* TheyUseCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94569D572017373600B31777 /* TheyUseCollectionCell.xib */; };
+		94569D5A2017373600B31777 /* TheyUseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94569D582017373600B31777 /* TheyUseCollectionCell.swift */; };
+		94569D5D20173C2B00B31777 /* HomeJokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94569D5B20173C2A00B31777 /* HomeJokeCell.swift */; };
+		94569D5E20173C2B00B31777 /* HomeJokeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94569D5C20173C2A00B31777 /* HomeJokeCell.xib */; };
+		94569D612017405E00B31777 /* HomeImageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94569D5F2017405E00B31777 /* HomeImageTableCell.swift */; };
+		94569D622017405E00B31777 /* HomeImageTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94569D602017405E00B31777 /* HomeImageTableCell.xib */; };
 		945F6F051FFDCC9100F4F395 /* UserDiggViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F6F031FFDCC9100F4F395 /* UserDiggViewController.swift */; };
 		945F6F061FFDCC9100F4F395 /* UserDiggViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945F6F041FFDCC9100F4F395 /* UserDiggViewController.xib */; };
 		945F6F091FFDCF0000F4F395 /* UserDiggCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F6F071FFDCF0000F4F395 /* UserDiggCell.swift */; };
@@ -248,6 +258,16 @@
 		94569D492015E73400B31777 /* TextLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLinkViewController.swift; sourceTree = "<group>"; };
 		94569D4B2016DE5800B31777 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		94569D4C2016DE5800B31777 /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
+		94569D4F2017340F00B31777 /* TheyAlsoUseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TheyAlsoUseCell.xib; sourceTree = "<group>"; };
+		94569D502017340F00B31777 /* TheyAlsoUseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheyAlsoUseCell.swift; sourceTree = "<group>"; };
+		94569D532017343F00B31777 /* HomeUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeUserCell.xib; sourceTree = "<group>"; };
+		94569D542017343F00B31777 /* HomeUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeUserCell.swift; sourceTree = "<group>"; };
+		94569D572017373600B31777 /* TheyUseCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TheyUseCollectionCell.xib; sourceTree = "<group>"; };
+		94569D582017373600B31777 /* TheyUseCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheyUseCollectionCell.swift; sourceTree = "<group>"; };
+		94569D5B20173C2A00B31777 /* HomeJokeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeJokeCell.swift; sourceTree = "<group>"; };
+		94569D5C20173C2A00B31777 /* HomeJokeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeJokeCell.xib; sourceTree = "<group>"; };
+		94569D5F2017405E00B31777 /* HomeImageTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeImageTableCell.swift; sourceTree = "<group>"; };
+		94569D602017405E00B31777 /* HomeImageTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeImageTableCell.xib; sourceTree = "<group>"; };
 		945F6F031FFDCC9100F4F395 /* UserDiggViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDiggViewController.swift; sourceTree = "<group>"; };
 		945F6F041FFDCC9100F4F395 /* UserDiggViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDiggViewController.xib; sourceTree = "<group>"; };
 		945F6F071FFDCF0000F4F395 /* UserDiggCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDiggCell.swift; sourceTree = "<group>"; };
@@ -538,6 +558,16 @@
 				94B0E4B11FDFF31B00ABB332 /* HomeNavigationView.xib */,
 				94569D4B2016DE5800B31777 /* HomeCell.swift */,
 				94569D4C2016DE5800B31777 /* HomeCell.xib */,
+				94569D502017340F00B31777 /* TheyAlsoUseCell.swift */,
+				94569D4F2017340F00B31777 /* TheyAlsoUseCell.xib */,
+				94569D542017343F00B31777 /* HomeUserCell.swift */,
+				94569D532017343F00B31777 /* HomeUserCell.xib */,
+				94569D582017373600B31777 /* TheyUseCollectionCell.swift */,
+				94569D572017373600B31777 /* TheyUseCollectionCell.xib */,
+				94569D5B20173C2A00B31777 /* HomeJokeCell.swift */,
+				94569D5C20173C2A00B31777 /* HomeJokeCell.xib */,
+				94569D5F2017405E00B31777 /* HomeImageTableCell.swift */,
+				94569D602017405E00B31777 /* HomeImageTableCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -981,6 +1011,7 @@
 				94B0E46D1FDD3D5200ABB332 /* DongtaiCollectionView.xib in Resources */,
 				945F6F0A1FFDCF0000F4F395 /* UserDiggCell.xib in Resources */,
 				94C6811D1FEE7F6300C3A5AD /* DongtaiCommentCell.xib in Resources */,
+				94569D622017405E00B31777 /* HomeImageTableCell.xib in Resources */,
 				942DCF161F6010E1001AD160 /* LaunchScreen.storyboard in Resources */,
 				946450A1200D7C4D0016A4EB /* SmallVideoViewController.xib in Resources */,
 				944678651FE25F94007C264A /* PreviewUserAvatarController.xib in Resources */,
@@ -994,8 +1025,10 @@
 				94C681191FEE528D00C3A5AD /* DongtaiDetailHeaderView.xib in Resources */,
 				9465232E1FCFD0CC00DB46B6 /* UserDetailViewController.xib in Resources */,
 				94B8566F1F6FD79B00C92E29 /* NoLoginHeaderView.xib in Resources */,
+				94569D5E20173C2B00B31777 /* HomeJokeCell.xib in Resources */,
 				94C29AAD20005B4B000513D7 /* emoji_sort.plist in Resources */,
 				94B856411F6CCE2700C92E29 /* MyOtherCell.xib in Resources */,
+				94569D592017373600B31777 /* TheyUseCollectionCell.xib in Resources */,
 				9435729C1FD4D09500FE4A83 /* NavigationBarView.xib in Resources */,
 				946450B1200F17F50016A4EB /* VideoTableViewController.xib in Resources */,
 				94349D4020148E8400085ED4 /* RelatedVideoFooterView.xib in Resources */,
@@ -1019,6 +1052,7 @@
 				9462C67B1F7DCC66009D4513 /* settingPlist.plist in Resources */,
 				94B0E4B21FDFF31B00ABB332 /* HomeNavigationView.xib in Resources */,
 				94863B981F714F79007345D2 /* default_theme.plist in Resources */,
+				94569D512017340F00B31777 /* TheyAlsoUseCell.xib in Resources */,
 				9465978E2004D99E0006C37D /* WendaAnswerCell.xib in Resources */,
 				94C681111FEE472500C3A5AD /* DongtaiDetailViewController.xib in Resources */,
 				94863B9A1F714F83007345D2 /* night_theme.plist in Resources */,
@@ -1033,6 +1067,7 @@
 				94455DDE2000A27400991ADC /* PostCommentView.xib in Resources */,
 				94AE55A4200B423800D880CB /* HuoshanCategoryController.xib in Resources */,
 				94C29AAE20005B4B000513D7 /* emojis.plist in Resources */,
+				94569D552017343F00B31777 /* HomeUserCell.xib in Resources */,
 				94EB2E191FFDBB6500BAE862 /* WendaViewController.xib in Resources */,
 				94EB2DFD1FFD071000BAE862 /* UserDetailViewController2.xib in Resources */,
 			);
@@ -1174,9 +1209,11 @@
 				94AE55A7200B45C600D880CB /* HuoshanCell.swift in Sources */,
 				942DCF6E1F602220001AD160 /* VideoViewController.swift in Sources */,
 				94B3CE29200F86D6002E230B /* NSData+CRC32.m in Sources */,
+				94569D522017340F00B31777 /* TheyAlsoUseCell.swift in Sources */,
 				944678561FE2122C007C264A /* PreviewDongtaiBigImageController.swift in Sources */,
 				94349D2E2012135700085ED4 /* VideoDetailUserView.swift in Sources */,
 				94B9B0F81FD61D6D003A3340 /* RelationRecommendCell.swift in Sources */,
+				94569D612017405E00B31777 /* HomeImageTableCell.swift in Sources */,
 				946450B4200F22660016A4EB /* HomeTableViewController.swift in Sources */,
 				946597F52009FA880006C37D /* HomeNewsTitle.swift in Sources */,
 				94EB2E0A1FFD0B6F00BAE862 /* UserDetailCell.swift in Sources */,
@@ -1197,6 +1234,7 @@
 				942DCF671F602220001AD160 /* HuoshanViewController.swift in Sources */,
 				94AE55A3200B423800D880CB /* HuoshanCategoryController.swift in Sources */,
 				9435727A1FD0DA0600FE4A83 /* PopoverAnimator.swift in Sources */,
+				94569D5D20173C2B00B31777 /* HomeJokeCell.swift in Sources */,
 				945F6F091FFDCF0000F4F395 /* UserDiggCell.swift in Sources */,
 				94B0E46B1FDD3AD800ABB332 /* DongtaiCollectionView.swift in Sources */,
 				94EB2E121FFD10CF00BAE862 /* UserDetailNavigationBar.swift in Sources */,
@@ -1206,6 +1244,7 @@
 				946450A7200D89300016A4EB /* SmallVideoPlayerCustomView.swift in Sources */,
 				9462C6891F7E6D77009D4513 /* SettingCell.swift in Sources */,
 				946450B8200F25190016A4EB /* VideoCell.swift in Sources */,
+				94569D5A2017373600B31777 /* TheyUseCollectionCell.swift in Sources */,
 				94349D3E20148E7900085ED4 /* RelatedVideoFooterView.swift in Sources */,
 				94B0E4671FDD39FA00ABB332 /* DongtaiOriginThreadView.swift in Sources */,
 				9405D9A01F69404E00AA60D4 /* Const.swift in Sources */,
@@ -1215,6 +1254,7 @@
 				943572761FD0D70D00FE4A83 /* UserDetailBottomPopController.swift in Sources */,
 				94569D4A2015E73400B31777 /* TextLinkViewController.swift in Sources */,
 				94B0E4521FDCE7FD00ABB332 /* DongtaiCollectionViewCell.swift in Sources */,
+				94569D562017343F00B31777 /* HomeUserCell.swift in Sources */,
 				9465232D1FCFD0CC00DB46B6 /* UserDetailViewController.swift in Sources */,
 				946450A0200D7C4D0016A4EB /* SmallVideoViewController.swift in Sources */,
 				94EB2E151FFD142B00BAE862 /* TopTabScrollView.swift in Sources */,

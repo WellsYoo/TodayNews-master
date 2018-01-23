@@ -14,13 +14,13 @@ class DongtaiCollectionView: UICollectionView, UICollectionViewDelegateFlowLayou
     /// 是否是动态详情
     var isDongtaiDetail = false
     
-    var thumbImageList = [ThumbImageList]() {
+    var thumbImages = [ThumbImage]() {
         didSet {
             reloadData()
         }
     }
     
-    var largeImageList = [LargeImageList]()
+    var largeImages = [LargeImage]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,23 +33,23 @@ class DongtaiCollectionView: UICollectionView, UICollectionViewDelegateFlowLayou
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return thumbImageList.count
+        return thumbImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.ym_dequeueReusableCell(indexPath: indexPath) as DongtaiCollectionViewCell
-        cell.thumbImage = thumbImageList[indexPath.item]
+        cell.thumbImage = thumbImages[indexPath.item]
         cell.isPostSmallVideo = isPostSmallVideo
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return isDongtaiDetail ? Calculate.detailCollectionViewCellSize(thumbImageList) : Calculate.collectionViewCellSize(thumbImageList.count)
+        return isDongtaiDetail ? Calculate.detailCollectionViewCellSize(thumbImages) : Calculate.collectionViewCellSize(thumbImages.count)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let previewBigImageVC = PreviewDongtaiBigImageController()
-        previewBigImageVC.images = largeImageList
+        previewBigImageVC.images = largeImages
         previewBigImageVC.selectedIndex = indexPath.item
         UIApplication.shared.keyWindow?.rootViewController?.present(previewBigImageVC, animated: false, completion: nil)
     }

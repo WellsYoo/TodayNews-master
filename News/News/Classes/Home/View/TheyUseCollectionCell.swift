@@ -1,54 +1,51 @@
 //
-//  RelationRecommendCell.swift
-//  News
+//  TheyUseCollectionCell.swift
+//  TodayNews
 //
-//  Created by 杨蒙 on 2017/12/5.
-//  Copyright © 2017年 hrscy. All rights reserved.
+//  Created by 杨蒙 on 2018/1/23.
+//  Copyright © 2018年 hrscy. All rights reserved.
 //
 
 import UIKit
-import IBAnimatable
 import Kingfisher
+import IBAnimatable
 
-class RelationRecommendCell: UICollectionViewCell, RegisterCellFromNib {
-
+class TheyUseCollectionCell: UICollectionViewCell, RegisterCellFromNib {
+    
     var userCard = UserCard() {
         didSet {
-            nameLabel.text = userCard.user.info.name
             avatarImageView.kf.setImage(with: URL(string: userCard.user.info.avatar_url)!)
-            vImageView.isHidden = userCard.user.info.user_auth_info.auth_info == ""
-            recommendReasonLabel.text = userCard.recommend_reason
+            nameLabel.text = userCard.user.info.name
+            subtitleLabel.text = userCard.recommend_reason
+            vipImageView.isHidden = userCard.user.info.user_auth_info.auth_info == ""
         }
     }
     
+    @IBOutlet weak var vipImageView: UIImageView!
     /// 头像
     @IBOutlet weak var avatarImageView: AnimatableImageView!
-    /// V 图标
-    @IBOutlet weak var vImageView: UIImageView!
-    /// 用户名称
+    /// 名称
     @IBOutlet weak var nameLabel: UILabel!
-    /// 推荐原因
-    @IBOutlet weak var recommendReasonLabel: UILabel!
-    /// 加载 图标
-    @IBOutlet weak var loadingImageView: UIImageView!
-    /// 关注按钮
+    /// 子标题
+    @IBOutlet weak var subtitleLabel: UILabel!
+    /// 关注
     @IBOutlet weak var concernButton: AnimatableButton!
     
-    @IBOutlet weak var baseView: AnimatableView!
+    @IBOutlet weak var closeButton: UIButton!
+    
+    /// 加载 图标
+    @IBOutlet weak var loadingImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         theme_backgroundColor = "colors.cellBackgroundColor"
-        nameLabel.theme_textColor = "colors.black"
-        recommendReasonLabel.theme_textColor = "colors.black"
-        theme_backgroundColor = "colors.cellBackgroundColor"
-        baseView.theme_backgroundColor = "colors.cellBackgroundColor"
+        closeButton.theme_setImage("images.icon_popup_close_24x24_", forState: .normal)
         concernButton.setTitle("关注", for: .normal)
         concernButton.setTitle("已关注", for: .selected)
         concernButton.theme_setTitleColor("colors.userDetailConcernButtonTextColor", forState: .normal)
         concernButton.theme_setTitleColor("colors.userDetailConcernButtonSelectedTextColor", forState: .selected)
     }
-    
+
     /// 关注按钮点击
     @IBAction func concernButtonClicked(_ sender: AnimatableButton) {
         loadingImageView.isHidden = false
@@ -84,5 +81,4 @@ class RelationRecommendCell: UICollectionViewCell, RegisterCellFromNib {
         animation.repeatCount = MAXFLOAT
         return animation
     }()
-
 }

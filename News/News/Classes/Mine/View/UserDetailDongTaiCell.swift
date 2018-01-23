@@ -65,17 +65,14 @@ class UserDetailDongTaiCell: UITableViewCell, RegisterCellFromNib {
             case .postVideoOrArticle, .postVideo, .answerQuestion, .proposeQuestion, .forwardArticle, .postContentAndVideo: // 发布了文章或者视频
                 middleView.addSubview(postVideoOrArticleView)
                 postVideoOrArticleView.frame = CGRect(x: 15, y: 0, width: screenWidth - 30, height: middleView.height)
-                if dongtai.group.show_origin {
-                    postVideoOrArticleView.group = dongtai.group
-                } else if dongtai.origin_group.show_origin {
-                    postVideoOrArticleView.group = dongtai.origin_group
-                }
+                if dongtai.group.show_origin { postVideoOrArticleView.group = dongtai.group }
+                else if dongtai.origin_group.show_origin { postVideoOrArticleView.group = dongtai.origin_group }
             case .postContent, .postSmallVideo: // 发布了文字内容
                 middleView.addSubview(collectionView)
                 collectionView.frame = CGRect(x: 15, y: 0, width: dongtai.collectionViewW, height: dongtai.collectionViewH)
                 collectionView.isPostSmallVideo = (dongtai.item_type == .postSmallVideo)
-                collectionView.thumbImageList = dongtai.thumb_image_list
-                collectionView.largeImageList = dongtai.large_image_list
+                collectionView.thumbImages = dongtai.thumb_image_list
+                collectionView.largeImages = dongtai.large_image_list
             case .commentOrQuoteContent, .commentOrQuoteOthers: // 引用或评论
                 middleView.addSubview(originThreadView)
                 originThreadView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: dongtai.origin_thread.height)

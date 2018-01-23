@@ -15,9 +15,11 @@ class HomeCell: UITableViewCell, RegisterCellFromNib {
 
     var aNews = NewsModel() {
         didSet {
+            downloadButton.setImage(nil, for: .normal)
             topImageView.image = nil
             rightImageView.image = nil
             videoImageButton.setImage(nil, for: .normal)
+            if middleView.subviews.count != 0 { videoImageButton.removeFromSuperview() }
             bottomViewHeight.constant = 0
             downloadButton.setTitle("", for: .normal)
             titleLabel.text = aNews.title
@@ -42,6 +44,7 @@ class HomeCell: UITableViewCell, RegisterCellFromNib {
                 if aNews.sub_title != "" {
                     subTitleLabel.text = aNews.sub_title
                     bottomViewHeight.constant = 40
+                    downloadButton.setImage(UIImage(named: "download_ad_feed_13x13_"), for: .normal)
                 }
             } else {
                 adOrHotLabel.text = ""
@@ -57,25 +60,28 @@ class HomeCell: UITableViewCell, RegisterCellFromNib {
                     } else if aNews.middle_image.url.length > 0 {
                         rightImageView.kf.setImage(with: URL(string: aNews.middle_image.urlString)!)
                     } else if let largeImage = aNews.large_image_list.first {
-                        videoImageButton.kf.setImage(with: URL(string: largeImage.urlString)!, for: .normal)
+                        rightImageView.kf.setImage(with: URL(string: largeImage.urlString)!)
                     }
                     rightImageViewWidth.constant = screenWidth * 0.28
                 } else if aNews.video_style == 2 { // 大图
-                    middleViewHeight.constant = screenWidth * 0.4
+                    middleViewHeight.constant = screenWidth * 0.5
                     if let largeImage = aNews.large_image_list.first {
-                        videoImageButton.kf.setImage(with: URL(string: largeImage.urlString)!, for: .normal)
+                        videoImageButton.setImage(UIImage(named: "video_play_icon_44x44_"), for: .normal)
+                        videoImageButton.kf.setBackgroundImage(with: URL(string: largeImage.urlString)!, for: .normal)
                     }
-//                        videoImageButton.snp.makeConstraints({
-//                            $0.edges.equalTo(middleView)
-//                        })
+                    middleView.addSubview(videoImageButton)
+                    setupRightImageView()
                 }
-            } else {
-                rightTimeButtonWidth.constant = 0
-                rightImageViewWidth.constant = 0
-                rightTimeButton.setTitle("", for: .normal)
-            }
+            } else { setupRightImageView() }
             layoutIfNeeded()
+            videoImageButton.frame = CGRect(x: 0, y: 0, width: middleView.width, height: screenWidth * 0.5)
         }
+    }
+    
+    private func setupRightImageView() {
+        rightTimeButtonWidth.constant = 0
+        rightImageViewWidth.constant = 0
+        rightTimeButton.setTitle("", for: .normal)
     }
     
     private func setupAdLabel() {
@@ -146,7 +152,7 @@ class HomeCell: UITableViewCell, RegisterCellFromNib {
     /// 视频大图
     lazy var videoImageButton: UIButton = {
         let videoImageButton = UIButton()
-        videoImageButton.setImage(UIImage(named: "video_play_icon_44x44_"), for: .normal)
+        
         return videoImageButton
     }()
     

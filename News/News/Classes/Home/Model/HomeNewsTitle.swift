@@ -46,7 +46,7 @@ enum NewsTitleCategory: String, HandyJSONEnum {
     case video = "video"
     /// 社会
     case society = "news_society"
-    /// 图片
+    /// 图片,组图
     case photos = "组图"
     /// 娱乐
     case entertainment = "news_entertainment"
