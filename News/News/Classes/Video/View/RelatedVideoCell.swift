@@ -15,7 +15,7 @@ class RelatedVideoCell: UITableViewCell, RegisterCellFromNib {
         didSet {
             titleLabel.text = relatedVideo.title
             nameLabel.text = relatedVideo.source
-            thumbImageView.kf.setImage(with: URL(string: relatedVideo.middle_image.url)!)
+            thumbImageView.kf.setImage(with: URL(string: relatedVideo.middle_image.urlString)!)
             if relatedVideo.video_detail_info.video_watch_count != 0 {
                 playCountLabel.text = relatedVideo.video_detail_info.videoWatchCount + "次播放"
             } else { playCountLabel.isHidden = true }

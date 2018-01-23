@@ -24,18 +24,18 @@ class VideoCell: UITableViewCell, RegisterCellFromNib {
             commentButton.setTitle(video.commentCount, for: .normal)
             commentButton.theme_setTitleColor("colors.black", forState: .normal)
             commentButton.theme_setImage("images.comment_24x24_", forState: .normal)
-            concernButton.isHidden = video.label_style == 3
-            commentButton.isHidden = video.label_style == 3
+            concernButton.isHidden = video.label_style == .ad
+            commentButton.isHidden = video.label_style == .ad
             adButton.setTitle((video.ad_button.button_text == "" ? "查看详情" : video.ad_button.button_text), for: .normal)
             nameLable.text = video.user_info.name
-            if video.label_style == 3 {
+            if video.label_style == .ad {
                 nameLable.text = video.app_name != "" ? video.app_name : video.ad_button.app_name
                 descriptionLabel.text = video.ad_button.description == "" ? video.sub_title : video.ad_button.description
                 descriptionLabelHeight.constant = 20
                 layoutIfNeeded()
             }
-            adButton.isHidden = video.label_style != 3
-            adLabel.isHidden = video.label_style != 3
+            adButton.isHidden = video.label_style != .ad
+            adLabel.isHidden = video.label_style != .ad
         }
     }
     

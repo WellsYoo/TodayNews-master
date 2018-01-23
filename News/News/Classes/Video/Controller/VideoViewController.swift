@@ -2,7 +2,7 @@
 //  VideoViewController.swift
 //  News
 //
-//  Created by 杨蒙 on 2017/9/6.
+//  Created by 杨蒙 on 2018/1/16.
 //  Copyright © 2017年 hrscy. All rights reserved.
 //
 

@@ -35,8 +35,9 @@ class HomeTableViewController: UITableViewController {
         tableView.ym_registerCell(cell: VideoCell.self)
         tableView.ym_registerCell(cell: HomeCell.self)
         tableView.tableFooterView = UIView()
+        tableView.theme_separatorColor = "colors.separatorViewColor"
         // 设置刷新控件
-//        setupRefresh()
+        setupRefresh()
     }
     
     /// 设置刷新控件
@@ -81,6 +82,13 @@ class HomeTableViewController: UITableViewController {
 
 // MARK: - Table view data source
 extension HomeTableViewController {
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if newsTitle.category == .video { return screenWidth * 0.67 }
+        else if newsTitle.category == .essayJoke { return screenWidth * 0.67 }
+        
+        return 100
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return news.count

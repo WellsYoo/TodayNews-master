@@ -65,7 +65,7 @@ class RelatedVideoHeaderView: UIView, NibLoadable {
     @IBAction func foldButtonClicked(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected {
-            titleLabelHeight.constant = video.titleH
+            titleLabelHeight.constant = video.videoTitleH
             descriptionLabelHeight.constant = video.descriptionH
             publishTimeLabelHeight.constant = 16
         } else {

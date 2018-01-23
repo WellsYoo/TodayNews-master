@@ -7,12 +7,14 @@
 //  Copyright © 2018年 hrscy. All rights reserved.
 //
 
-import UIKit
 import HandyJSON
 
 /// 新闻数据模型（首页新闻数据，视频新闻数据，小视频，微头条）
 struct NewsModel: HandyJSON {
     
+    var ppmmCellHeight: CGFloat { return contentH + 75 + screenWidth * 1.4 }
+    var content = ""
+    var contentH: CGFloat { return content.textHeight(fontSize: 16, width: screenWidth - 30) }
     var item_id: Int = 0
     var cell_flag: Int = 0
     var behot_time: Int = 0
@@ -20,7 +22,7 @@ struct NewsModel: HandyJSON {
     var publish_time: TimeInterval = 0
     var publishTime: String { return publish_time.convertString() }
     
-    var source_icon_style: Int = 0
+    var source_icon_style: Int = 0  // 1,4,6 右侧视频
     var tag_id: Int = 0
     var media_info = MediaInfo()
     var user_info = NewsUserInfo()
@@ -75,12 +77,13 @@ struct NewsModel: HandyJSON {
     let emojiManager = EmojiManager()
     
     var title: String = ""
-    var titleH: CGFloat { return title.textHeight(fontSize: 16, width: screenWidth - 60) }
+    
+    var videoTitleH: CGFloat { return title.textHeight(fontSize: 16, width: screenWidth - 60) }
     
     var abstract: String = ""
     
     var is_subject: Bool = false
-    var hot: Int = 0
+    var hot: Bool = false  // 热
     var keywords: String = ""
     var source_open_url: String = ""
     var article_url: String = ""
@@ -100,6 +103,9 @@ struct NewsModel: HandyJSON {
     var video_duration: Int = 0
     var video_id: String = ""
     var videoDuration: String { return video_duration.convertVideoDuration() }
+    var gallary_flag = 0
+    var gallary_image_count = 0
+    
     
     // 广告
     var ad_button = ADButton()
@@ -107,7 +113,7 @@ struct NewsModel: HandyJSON {
     var ad_label = ""
     var sub_title = ""
     var type = "" // app
-    var label_style: Int = 0  // 3 是广告
+    var label_style: NewsLabelStyle = .none  // 3 是广告,1是置顶
     var app_name = ""
     var appleid = ""
     var description = ""
@@ -118,6 +124,12 @@ struct NewsModel: HandyJSON {
     var is_article = false
     var is_preview = false
     var web_url = ""
+}
+
+enum NewsLabelStyle: Int, HandyJSONEnum {
+    case none = 0
+    case topOrLive = 1      // 置顶或直播
+    case ad = 3             // 广告
 }
 
 /// 视频类型
@@ -360,8 +372,11 @@ struct MiddleImage: HandyJSON {
     
     var url_list = [URLList]()
     
-    var url: String = ""
-    
+    var url: NSString = ""
+    var urlString: String {
+        guard url.hasSuffix(".webp") else { return url as String }
+        return url.replacingCharacters(in: NSRange(location: url.length - 5, length: 5), with: ".png")
+    }
     var width: CGFloat = 0
     
     var uri: String = ""
@@ -376,8 +391,11 @@ struct ImageList: HandyJSON {
     
     var url_list = [URLList]()
     
-    var url: String = ""
-    
+    var url: NSString = ""
+    var urlString: String {
+        guard url.hasSuffix(".webp") else { return url as String }
+        return url.replacingCharacters(in: NSRange(location: url.length - 5, length: 5), with: ".png")
+    }
     var width: CGFloat = 0
     
     var uri: String = ""

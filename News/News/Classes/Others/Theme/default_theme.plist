@@ -4,6 +4,12 @@
 <dict>
 	<key>images</key>
 	<dict>
+		<key>download_ad_feed_13x13_</key>
+		<string>download_ad_feed_13x13_</string>
+		<key>palyicon_video_textpage_6x8_</key>
+		<string>palyicon_video_textpage_6x8_</string>
+		<key>add_textpage_17x12_</key>
+		<string>add_textpage_17x12_</string>
 		<key>add_channel_titlbar_thin_new_16x16_</key>
 		<string>add_channel_titlbar_thin_new_16x16_</string>
 		<key>arrow_down_16_16x14_</key>
