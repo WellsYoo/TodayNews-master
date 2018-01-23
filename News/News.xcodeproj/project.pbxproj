@@ -54,6 +54,8 @@
 		944678641FE25F94007C264A /* PreviewUserAvatarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944678621FE25F94007C264A /* PreviewUserAvatarController.swift */; };
 		944678651FE25F94007C264A /* PreviewUserAvatarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 944678631FE25F94007C264A /* PreviewUserAvatarController.xib */; };
 		94569D4A2015E73400B31777 /* TextLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94569D492015E73400B31777 /* TextLinkViewController.swift */; };
+		94569D4D2016DE5800B31777 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94569D4B2016DE5800B31777 /* HomeCell.swift */; };
+		94569D4E2016DE5800B31777 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94569D4C2016DE5800B31777 /* HomeCell.xib */; };
 		945F6F051FFDCC9100F4F395 /* UserDiggViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F6F031FFDCC9100F4F395 /* UserDiggViewController.swift */; };
 		945F6F061FFDCC9100F4F395 /* UserDiggViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945F6F041FFDCC9100F4F395 /* UserDiggViewController.xib */; };
 		945F6F091FFDCF0000F4F395 /* UserDiggCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F6F071FFDCF0000F4F395 /* UserDiggCell.swift */; };
@@ -244,6 +246,8 @@
 		944678621FE25F94007C264A /* PreviewUserAvatarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewUserAvatarController.swift; sourceTree = "<group>"; };
 		944678631FE25F94007C264A /* PreviewUserAvatarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewUserAvatarController.xib; sourceTree = "<group>"; };
 		94569D492015E73400B31777 /* TextLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLinkViewController.swift; sourceTree = "<group>"; };
+		94569D4B2016DE5800B31777 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		94569D4C2016DE5800B31777 /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
 		945F6F031FFDCC9100F4F395 /* UserDiggViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDiggViewController.swift; sourceTree = "<group>"; };
 		945F6F041FFDCC9100F4F395 /* UserDiggViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDiggViewController.xib; sourceTree = "<group>"; };
 		945F6F071FFDCF0000F4F395 /* UserDiggCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDiggCell.swift; sourceTree = "<group>"; };
@@ -532,6 +536,8 @@
 				946597812004D99D0006C37D /* WendaAnswerHeaderView.xib */,
 				94B0E4AF1FDFF30E00ABB332 /* HomeNavigationView.swift */,
 				94B0E4B11FDFF31B00ABB332 /* HomeNavigationView.xib */,
+				94569D4B2016DE5800B31777 /* HomeCell.swift */,
+				94569D4C2016DE5800B31777 /* HomeCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1003,6 +1009,7 @@
 				946523321FCFD32E00DB46B6 /* UserDetailHeaderView.xib in Resources */,
 				94B0E4BA1FE0174000ABB332 /* WeitoutiaoViewController.xib in Resources */,
 				946450B5200F22660016A4EB /* HomeTableViewController.xib in Resources */,
+				94569D4E2016DE5800B31777 /* HomeCell.xib in Resources */,
 				942DCF131F6010E1001AD160 /* Assets.xcassets in Resources */,
 				94B9B0F51FD61C98003A3340 /* RelationRecommendView.xib in Resources */,
 				946597882004D99E0006C37D /* WendaAnswerHeaderView.xib in Resources */,
@@ -1158,6 +1165,7 @@
 				944451AC201081DE003DC412 /* Video.swift in Sources */,
 				94B856521F6CDE3C00C92E29 /* MyConcernCell.swift in Sources */,
 				942DCF681F602220001AD160 /* MyNavigationController.swift in Sources */,
+				94569D4D2016DE5800B31777 /* HomeCell.swift in Sources */,
 				94675A39200A6620005C7A7B /* NewsModel.swift in Sources */,
 				945F6F051FFDCC9100F4F395 /* UserDiggViewController.swift in Sources */,
 				942C05011FEE1E9800F871A0 /* UserDetailWendaCell.swift in Sources */,

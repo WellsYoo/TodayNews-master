@@ -17,9 +17,9 @@ protocol NetworkToolProtocol {
     // MARK: 首页顶部导航栏搜索推荐标题内容
     static func loadHomeSearchSuggestInfo(_ completionHandler: @escaping (_ searchSuggest: String) -> ())
     // MARK: 获取首页、视频、小视频的新闻列表数据
-    static func loadApiNewsFeeds(category: String, ttFrom: TTFrom, _ completionHandler: @escaping (_ maxBehotTime: TimeInterval, _ news: [NewsModel]) -> ())
+    static func loadApiNewsFeeds(category: NewsTitleCategory, ttFrom: TTFrom, _ completionHandler: @escaping (_ maxBehotTime: TimeInterval, _ news: [NewsModel]) -> ())
     // MARK: 获取首页、视频、小视频的新闻列表数据,加载更多
-    static func loadMoreApiNewsFeeds(category: String, ttFrom: TTFrom, maxBehotTime: TimeInterval, listCount: Int, _ completionHandler: @escaping (_ news: [NewsModel]) -> ())
+    static func loadMoreApiNewsFeeds(category: NewsTitleCategory, ttFrom: TTFrom, maxBehotTime: TimeInterval, listCount: Int, _ completionHandler: @escaping (_ news: [NewsModel]) -> ())
     // MARK: - --------------------------------- 视频 video  ---------------------------------
     // MARK: 视频顶部新闻标题的数据
     static func loadVideoApiCategoies(completionHandler: @escaping (_ newsTitles: [HomeNewsTitle]) -> ())
@@ -119,7 +119,7 @@ extension NetworkToolProtocol {
     /// - parameter ttFrom: 那个界面
     /// - parameter completionHandler: 返回新闻列表数据
     /// - parameter news: 首页新闻数据数组
-    static func loadApiNewsFeeds(category: String, ttFrom: TTFrom, _ completionHandler: @escaping (_ maxBehotTime: TimeInterval, _ news: [NewsModel]) -> ()) {
+    static func loadApiNewsFeeds(category: NewsTitleCategory, ttFrom: TTFrom, _ completionHandler: @escaping (_ maxBehotTime: TimeInterval, _ news: [NewsModel]) -> ()) {
         // 下拉刷新的时间
         let pullTime = Date().timeIntervalSince1970
         let url = BASE_URL + "/api/news/feed/v75/?"
@@ -153,7 +153,7 @@ extension NetworkToolProtocol {
     /// - parameter listCount: 数据数量
     /// - parameter completionHandler: 返回新闻列表数据
     /// - parameter news: 首页新闻数据数组
-    static func loadMoreApiNewsFeeds(category: String, ttFrom: TTFrom, maxBehotTime: TimeInterval, listCount: Int, _ completionHandler: @escaping (_ news: [NewsModel]) -> ()) {
+    static func loadMoreApiNewsFeeds(category: NewsTitleCategory, ttFrom: TTFrom, maxBehotTime: TimeInterval, listCount: Int, _ completionHandler: @escaping (_ news: [NewsModel]) -> ()) {
         
         let url = BASE_URL + "/api/news/feed/v75/?"
         let params = ["device_id": device_id,

@@ -2,12 +2,14 @@
 //  HomeViewController.swift
 //  News
 //
-//  Created by 杨蒙 on 2017/9/6.
+//  Created by 杨蒙 on 2018/1/23.
 //  Copyright © 2017年 hrscy. All rights reserved.
 //
 
 import UIKit
 import SGPagingView
+import RxSwift
+import RxCocoa
 
 class HomeViewController: UIViewController {
     /// 标题和内容
@@ -17,6 +19,17 @@ class HomeViewController: UIViewController {
     private let newsTitleTable = NewsTitleTable()
     /// 自定义导航栏
     private lazy var navigationBar = HomeNavigationView.loadViewFromNib()
+    
+    private lazy var disposeBag = DisposeBag()
+    /// 添加频道按钮
+    private lazy var addChannelButton: UIButton = {
+        let addChannelButton = UIButton(frame: CGRect(x: screenWidth - newsTitleHeight, y: 0, width: newsTitleHeight, height: newsTitleHeight))
+        addChannelButton.theme_setImage("images.add_channel_titlbar_thin_new_16x16_", forState: .normal)
+        let separatorView = UIView(frame: CGRect(x: 0, y: newsTitleHeight - 1, width: newsTitleHeight, height: 1))
+        separatorView.theme_backgroundColor = "colors.separatorViewColor"
+        addChannelButton.addSubview(separatorView)
+        return addChannelButton
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,6 +57,8 @@ extension HomeViewController {
         view.theme_backgroundColor = "colors.cellBackgroundColor"
         // 设置自定义导航栏
         navigationItem.titleView = navigationBar
+        // 添加频道
+        view.addSubview(addChannelButton)
         // 首页顶部新闻标题的数据
         NetworkTool.loadHomeNewsTitleData {
             // 向数据库中插入数据
@@ -79,6 +94,12 @@ extension HomeViewController {
         navigationBar.didSelectedAvatarButton = { [weak self] in
             self!.navigationController?.pushViewController(MineViewController(), animated: true)
         }
+        /// 添加频道点击
+        addChannelButton.rx.controlEvent(.touchUpInside)
+            .subscribe(onNext: { (_) in
+                
+            })
+            .disposed(by: disposeBag)
     }
     
 }

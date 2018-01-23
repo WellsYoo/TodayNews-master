@@ -25,7 +25,7 @@ let iid: Int = 5034850950
 
 let isIPhoneX: Bool = screenHeight == 812 ? true : false
 
-let newsTitleHeight: CGFloat = 44.0
+let newsTitleHeight: CGFloat = 40
 let kMyHeaderViewHeight: CGFloat = 280
 let kUserDetailHeaderBGImageViewHeight: CGFloat = 146
 

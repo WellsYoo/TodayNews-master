@@ -20,11 +20,7 @@ class VideoViewController: UIViewController {
         super.viewWillAppear(animated)
         // 设置状态栏属性
         navigationController?.navigationBar.barStyle = .black
-        if UserDefaults.standard.bool(forKey: isNight) {
-            navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_background_night"), for: .default)
-        } else {
-            navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_background"), for: .default)
-        }
+        navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_background" + (UserDefaults.standard.bool(forKey: isNight) ? "_night" : "")), for: .default)
     }
     
     override func viewDidLoad() {

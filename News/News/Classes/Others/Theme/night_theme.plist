@@ -4,6 +4,8 @@
 <dict>
 	<key>images</key>
 	<dict>
+		<key>add_channel_titlbar_thin_new_16x16_</key>
+		<string>add_channel_titlbar_thin_new_night_16x16_</string>
 		<key>arrow_down_16_16x14_</key>
 		<string>arrow_down_night_16_16x14_</string>
 		<key>comment_video_20x20_</key>
