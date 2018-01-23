@@ -5,7 +5,8 @@
 //  Created by 杨蒙 on 2018/1/21.
 //  Copyright © 2018年 hrscy. All rights reserved.
 //
-//  ********************暂未使用******************8
+//  ********************暂未使用******************
+//  ********************仅供参考******************
 
 import UIKit
 import RxSwift
@@ -30,12 +31,14 @@ class RelatedVideoTableViewController: UITableViewController {
         footerView.ad = videoDetail.ad
         tableView.tableFooterView = footerView
         tableView.ym_registerCell(cell: RelatedVideoCell.self)
+        // 展开按钮
         headerView.foldButton.rx.controlEvent(.touchUpInside)
             .subscribe(onNext: { [weak self] in
                 self!.tableView.tableHeaderView = self!.headerView
                 self!.tableView.reloadData()
             })
             .disposed(by: disposeBag)
+        // 查看更多
         footerView.moreButton.rx.controlEvent(.touchUpInside)
             .subscribe(onNext: { [weak self] in
                 self!.tableView.rowHeight = 80

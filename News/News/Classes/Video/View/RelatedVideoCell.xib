@@ -109,7 +109,7 @@
                 <outlet property="nameLabelLeading" destination="BOS-pg-Tdr" id="dmB-8y-iPh"/>
                 <outlet property="playCountLabel" destination="N6Z-Du-HOF" id="zBm-gd-I6O"/>
                 <outlet property="thumbImageView" destination="iCK-ti-gtx" id="nVw-Ao-fPf"/>
-                <outlet property="thumbImageViewHeight" destination="X5j-wO-1mc" id="gnA-9p-6oh"/>
+                <outlet property="thumbImageViewWidth" destination="VJz-at-pX6" id="PPp-Ks-T26"/>
                 <outlet property="timeLabel" destination="jZP-xB-wAm" id="Bsu-eX-Ah5"/>
                 <outlet property="titleLabel" destination="J5L-dI-a0F" id="cRk-4f-iKF"/>
             </connections>

@@ -196,10 +196,10 @@ extension VideoDetailViewController {
         relatedVideoView.didSelectCell = { [weak self] in
             switch $0.card_type {
             case .video, .adVideo:  // 视频、广告视频
-                print("广告视频")
                 // 获取数据
                 self!.loadNetwork(with: $0)
             case .adTextlink:       // 广告链接
+                if self!.player.isPlaying { self!.player.pause() }
                 let textLinkVC = TextLinkViewController()
                 textLinkVC.url = $0.web_url
                 self!.navigationController?.pushViewController(textLinkVC, animated: true)

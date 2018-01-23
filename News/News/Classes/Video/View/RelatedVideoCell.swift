@@ -29,10 +29,11 @@ class RelatedVideoCell: UITableViewCell, RegisterCellFromNib {
                 adLabel.isHidden = false
                 nameLabelLeading.constant = 37.0
             case .adTextlink:  // 广告链接
-                thumbImageViewHeight.constant = 0
+                thumbImageViewWidth = NSLayoutConstraint(item: thumbImageView, attribute: .width, relatedBy: .equal, toItem: thumbImageView.superview, attribute: .width, multiplier: 0, constant: 0)
                 adLabel.isHidden = false
                 timeLabel.isHidden = true
                 playCountLabel.isHidden = true
+                nameLabelLeading.constant = 37.0
             }
             layoutIfNeeded()
         }
@@ -48,7 +49,7 @@ class RelatedVideoCell: UITableViewCell, RegisterCellFromNib {
     @IBOutlet weak var playCountLabel: UILabel!
     /// 缩略图
     @IBOutlet weak var thumbImageView: UIImageView!
-    @IBOutlet weak var thumbImageViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var thumbImageViewWidth: NSLayoutConstraint!
     /// 时长
     @IBOutlet weak var timeLabel: UILabel!
     
