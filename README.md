@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/hrscy/TodayNews.svg?branch=master)](https://travis-ci.org/hrscy/TodayNews) ![swift3.1](https://img.shields.io/badge/language-swift%204-orange.svg)
 
-# 最新代码已经上传，当前代码还不完善，还有部分功能未完成，后续会继续更新...
+# 最新代码已经上传，还有部分功能未完成，后续会继续更新...
 
 # 下方二维码是视频链接地址。
 
@@ -14,6 +14,8 @@
 
 # 另外视频需要支付一部分费用，购买视频的小伙伴可以加入我的 QQ  群，我会帮有问题的小伙伴解决问题~。
 
+# 最早分支代码请看 [TodayNews-old](https://github.com/hrscy/TodayNews/tree/TodayNews-old)，仅供参考。
+
 # 下面我上传了一些试看内容。
 
 ### [101-项目搭建](http://player.youku.com/embed/XMzI1MzI3MTY4OA==)
@@ -21,6 +23,11 @@
 ### [617-正则表达式匹配用户名话题和链接](http://player.youku.com/embed/XMzI1NjI1NjEyNA==)
 
 # 2018.1.19 更新
+
+## 新增接口文档
+[接口文档](https://github.com/hrscy/TodayNews/tree/master/todayNews-docs)
+
+接口文档使用的是 [MKDocs](http://www.mkdocs.org/)，具体安装方法以及使用可以参考官网的介绍。
 
 - 10-视频界面实现
     - 1001-解析视频的真实播放地址
