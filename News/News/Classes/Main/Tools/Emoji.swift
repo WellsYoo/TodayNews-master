@@ -11,13 +11,9 @@ import UIKit
 struct Emoji {
     
     var id = ""
-    
     var name = ""
-    
     var png = ""
-    
     var isDelete = false
-    
     var isEmpty = false
     
     init(id: String = "", name: String = "", png: String = "", isDelete: Bool = false, isEmpty: Bool = false) {
@@ -27,7 +23,6 @@ struct Emoji {
         self.isDelete = isDelete
         self.isEmpty = isEmpty
     }
-    
 }
 
 struct EmojiManager {
@@ -55,9 +50,7 @@ struct EmojiManager {
         var temps = [Emoji]()
         // 遍历
         for (index, id) in emojiSorts.enumerated() {
-            if index != 0 && index % 20 == 0 {
-                temps.append(Emoji(isDelete: true))
-            }
+            if index != 0 && index % 20 == 0 { temps.append(Emoji(isDelete: true)) }
             temps.append(Emoji(id: id, png: "emoji_\(id)_32x32_"))
         }
         
@@ -74,7 +67,7 @@ struct EmojiManager {
             if emoji.isDelete { emojis.append(emoji) }
         }
         /**
-         // 这种方式不能会循环多次，导致会把之前设置的值覆盖掉，所以不再使用，改为上面的方式
+         // 这种方式可能会循环多次，导致会把之前设置的值覆盖掉，所以不再使用，改为上面的方式
          emojiMapping?.enumerateKeysAndObjects({ (key, value, stop) i
             _ = temps.map({
                 var emoji = $0

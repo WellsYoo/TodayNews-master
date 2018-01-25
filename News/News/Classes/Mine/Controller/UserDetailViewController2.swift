@@ -37,7 +37,7 @@ class UserDetailViewController2: UIViewController {
     @IBOutlet weak var bottomViewBottom: NSLayoutConstraint!
     
     var userId: Int = 0
-    var userDetail: UserDetail?
+    var userDetail = UserDetail()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -181,7 +181,7 @@ extension UserDetailViewController2: UserDetailBottomViewDelegate {
             let popoverAnimator = PopoverAnimator()
             // 转化 frame
             let rect = myBottomView.convert(button.frame, to: view)
-            let popWidth = (screenWidth - CGFloat(userDetail!.bottom_tab.count + 1) * 20) / CGFloat(userDetail!.bottom_tab.count)
+            let popWidth = (screenWidth - CGFloat(userDetail.bottom_tab.count + 1) * 20) / CGFloat(userDetail.bottom_tab.count)
             let popX = CGFloat(button.tag) * (popWidth + 20) + 20
             let popHeight = CGFloat(bottomTab.children.count) * 40 + 25
             popoverAnimator.presetnFrame = CGRect(x: popX, y: rect.origin.y - popHeight, width: popWidth, height: popHeight)

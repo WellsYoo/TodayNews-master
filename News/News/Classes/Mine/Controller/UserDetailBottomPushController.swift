@@ -20,8 +20,7 @@ class UserDetailBottomPushController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let webView = WKWebView()
-        webView.frame = view.bounds
+        let webView = WKWebView(frame: view.bounds)
         webView.load(URLRequest(url: URL(string: url)!))
         view.addSubview(webView)
     }

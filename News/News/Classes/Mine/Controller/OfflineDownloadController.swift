@@ -21,6 +21,7 @@ class OfflineDownloadController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "离线下载"
         tableView.ym_registerCell(cell: OfflineDownlaodCell.self)
         tableView.rowHeight = 44
         tableView.sectionHeaderHeight = 44
