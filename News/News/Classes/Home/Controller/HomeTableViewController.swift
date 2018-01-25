@@ -15,6 +15,8 @@ import NVActivityIndicatorView
 import SnapKit
 
 class HomeTableViewController: UITableViewController {
+    
+    private lazy var disposeBag = DisposeBag()
     /// 播放器
     private lazy var player: BMPlayer = BMPlayer(customControlView: VideoPlayerCustomView())
     /// 标题
@@ -89,11 +91,14 @@ extension HomeTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let aNews = news[indexPath.row]
-        if newsTitle.category == .video { return screenWidth * 0.67 }
-        else if newsTitle.category == .essayJoke { return aNews.jokeCellHeight }
-        else if newsTitle.category == .photos { return aNews.imageCellHeight }
-        else if newsTitle.category == .imagePPMM { return aNews.girlCellHeight }
-        else {
+        switch newsTitle.category {
+        case .essayJoke:
+            return aNews.jokeCellHeight
+        case .photos:
+            return aNews.imageCellHeight
+        case .imagePPMM:
+            return aNews.girlCellHeight
+        default:
             switch aNews.cell_type {
             case .user:
                 return aNews.contentH
@@ -103,7 +108,6 @@ extension HomeTableViewController {
                 return aNews.cellHeight
             }
         }
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -111,32 +115,30 @@ extension HomeTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let aNews = news[indexPath.row]
-        if newsTitle.category == .video { // 如果是视频
-            let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as VideoCell
-            cell.video = aNews
-            return cell
-        } else if newsTitle.category == .essayJoke { // 如果是段子
+        
+        switch newsTitle.category {
+        case .essayJoke:            // 段子
             let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as HomeJokeCell
             cell.isJoke = true
-            cell.joke = aNews
+            cell.joke = news[indexPath.row]
             return cell
-        } else if newsTitle.category == .photos { // 如果是图片,组图
+        case .photos:               // 图片,组图
             let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as HomeImageTableCell
-            cell.homeImage = aNews
+            cell.homeImage = news[indexPath.row]
             return cell
-        } else if newsTitle.category == .imagePPMM { // 街拍
+        case .imagePPMM:            // 街拍
             let cell = Bundle.main.loadNibNamed(String(describing: HomeJokeCell.self), owner: nil, options: nil)?.last as! HomeJokeCell
             cell.isJoke = false
-            cell.joke = aNews
+            cell.joke = news[indexPath.row]
             return cell
-        } else {
+        default:
+            let aNews = news[indexPath.row]
             switch aNews.cell_type {
-            case .user:
+            case .user:             // 用户
                 let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as HomeUserCell
                 cell.aNews = aNews
                 return cell
-            case .relatedConcern:
+            case .relatedConcern:   // 相关关注
                 let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as TheyAlsoUseCell
                 cell.theyUse = aNews.raw_data
                 return cell
@@ -146,7 +148,5 @@ extension HomeTableViewController {
                 return cell
             }
         }
-        
     }
-    
 }

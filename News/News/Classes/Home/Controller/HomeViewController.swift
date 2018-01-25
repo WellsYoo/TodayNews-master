@@ -73,9 +73,16 @@ extension HomeViewController {
             self.view.addSubview(self.pageTitleView!)
             // 设置子控制器
             _ = $0.flatMap({ (newsTitle) -> () in
-                let homeTableVC = HomeTableViewController()
-                homeTableVC.newsTitle = newsTitle
-                self.addChildViewController(homeTableVC)
+                switch newsTitle.category {
+                case .video:
+                    let videoTableVC = VideoTableViewController()
+                    videoTableVC.newsTitle = newsTitle
+                    self.addChildViewController(videoTableVC)
+                default :
+                    let homeTableVC = HomeTableViewController()
+                    homeTableVC.newsTitle = newsTitle
+                    self.addChildViewController(homeTableVC)
+                }
             })
             // 内容视图
             self.pageContentView = SGPageContentView(frame: CGRect(x: 0, y: newsTitleHeight, width: screenWidth, height: self.view.height - newsTitleHeight), parentVC: self, childVCs: self.childViewControllers)

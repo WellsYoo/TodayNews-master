@@ -30,6 +30,30 @@ extension RegisterCellFromNib {
     }
 }
 
+extension VideoCell {
+    /// 视频播放时隐藏 cell 的部分子视图
+    func hideSubviews() {
+        titleLabel.isHidden = true
+        playCountLabel.isHidden = true
+        timeLabel.isHidden = true
+        vImageView.isHidden = true
+        avatarButton.isHidden = true
+        nameLable.isHidden = true
+        shareStackView.isHidden = false
+    }
+    
+    /// 设置当前 cell 的属性
+    func showSubviews() {
+        titleLabel.isHidden = false
+        playCountLabel.isHidden = false
+        timeLabel.isHidden = false
+        avatarButton.isHidden = false
+        vImageView.isHidden = !video.user_verified
+        nameLable.isHidden = false
+        shareStackView.isHidden = true
+    }
+}
+
 extension UILabel {
     
     /// 设置问答的内容

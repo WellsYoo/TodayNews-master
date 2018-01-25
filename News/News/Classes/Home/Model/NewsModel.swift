@@ -180,8 +180,10 @@ struct NewsModel: HandyJSON {
 
 enum CellType: Int, HandyJSONEnum {
     case none = 0
-    case user = 32              // 用户
-    case relatedConcern = 50    // 相关关注
+    /// 用户
+    case user = 32
+    /// 相关关注
+    case relatedConcern = 50
 }
 
 enum NewsLabelStyle: Int, HandyJSONEnum {

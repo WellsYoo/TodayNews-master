@@ -85,32 +85,11 @@ class VideoTableViewController: UITableViewController {
 }
 
 extension VideoTableViewController {
-    /// 视频播放时隐藏 cell 的部分子视图
-    private func hideSubviews(of cell: VideoCell) {
-        cell.titleLabel.isHidden = true
-        cell.playCountLabel.isHidden = true
-        cell.timeLabel.isHidden = true
-        cell.vImageView.isHidden = true
-        cell.avatarButton.isHidden = true
-        cell.nameLable.isHidden = true
-        cell.shareStackView.isHidden = false
-    }
-    
-    /// 设置当前 cell 的属性
-    private func showSubviews(of cell: VideoCell) {
-        cell.titleLabel.isHidden = false
-        cell.playCountLabel.isHidden = false
-        cell.timeLabel.isHidden = false
-        cell.avatarButton.isHidden = false
-        cell.vImageView.isHidden = !cell.video.user_verified
-        cell.nameLable.isHidden = false
-        cell.shareStackView.isHidden = true
-    }
     
     /// 把播放器添加到 cell 上
     private func addPlayer(on cell: VideoCell) {
         // 视频播放时隐藏 cell 的部分子视图
-        hideSubviews(of: cell)
+        cell.hideSubviews()
         // 解析头条的视频真实播放地址
         NetworkTool.parseVideoRealURL(video_id: cell.video.video_detail_info.video_id, completionHandler: {
             self.realVideo = $0
@@ -161,7 +140,7 @@ extension VideoTableViewController {
                 if let priorCell = self!.priorCell {
                     if cell != priorCell {
                         // 设置当前 cell 的属性
-                        self!.showSubviews(of: priorCell)
+                        priorCell.showSubviews()
                         // 判断当前播放器是否正在播放
                         if self!.player.isPlaying {
                             self!.player.pause()
@@ -206,7 +185,7 @@ extension VideoTableViewController {
                     if (rect.origin.y <= -cell.height) || (rect.origin.y >= screenHeight - tabBarController!.tabBar.height) {
                         removePlayer()
                         // 设置当前 cell 的属性
-                        showSubviews(of: cell)
+                        cell.showSubviews()
                     }
                 }
             }
@@ -250,7 +229,7 @@ extension VideoTableViewController: VideoDetailViewControllerDelegate {
         // 设置当前播放时间
         player.seek(currentTime)
         // 视频播放时隐藏 cell 的部分子视图
-        hideSubviews(of: currentCell)
+        currentCell.hideSubviews()
         self.priorCell = currentCell
     }
 }
