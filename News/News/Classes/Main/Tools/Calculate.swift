@@ -37,18 +37,12 @@ extension Calculatable {
         case 1:
             let thumbImage = thumbImages.first!
             return (screenWidth - 30) * thumbImage.height / thumbImage.width
-        case 2:
-            return (screenWidth - 35) * 0.5
-        case 3:
-            return image3Width + 5
-        case 4:
-            return (screenWidth - 3)
-        case 5, 6:
-            return (image3Width + 5) * 2
-        case 7...9:
-            return (image3Width + 5) * 3
-        default:
-            return 0
+        case 2: return (screenWidth - 35) * 0.5
+        case 3: return image3Width + 5
+        case 4: return (screenWidth - 3)
+        case 5, 6: return (image3Width + 5) * 2
+        case 7...9: return (image3Width + 5) * 3
+        default: return 0
         }
     }
     
@@ -62,10 +56,8 @@ extension Calculatable {
         case 2, 4:
             let image2W = (screenWidth - 35) * 0.5
             return CGSize(width: image2W, height: image2W)
-        case 3, 5...9:
-            return CGSize(width: image3Width, height: image3Width)
-        default:
-            return .zero
+        case 3, 5...9: return CGSize(width: image3Width, height: image3Width)
+        default: return .zero
         }
     }
     
@@ -107,41 +99,29 @@ extension Calculatable {
     /// 计算宽度
     static func collectionViewWidth(_ count: Int) -> CGFloat {
         switch count {
-        case 1, 2:
-            return (image2Width + 5) * 2
-        case 3, 5...9:
-            return screenWidth - 30
-        case 4:
-            return (image3Width + 5) * 2
-        default:
-            return 0
+        case 1, 2: return (image2Width + 5) * 2
+        case 3, 5...9: return screenWidth - 30
+        case 4: return (image3Width + 5) * 2
+        default: return 0
         }
     }
     
     /// 计算高度
     static func collectionViewHeight(_ count: Int) -> CGFloat {
         switch count {
-        case 1, 2:
-            return image2Width
-        case 3:
-            return image3Width + 5
-        case 4...6:
-            return (image3Width + 5) * 2
-        case 7...9:
-            return (image3Width + 5) * 3
-        default:
-            return 0
+        case 1, 2: return image2Width
+        case 3: return image3Width + 5
+        case 4...6: return (image3Width + 5) * 2
+        case 7...9: return (image3Width + 5) * 3
+        default: return 0
         }
     }
     /// 计算 collectionViewCell 的大小
     static func collectionViewCellSize(_ count: Int) -> CGSize {
         switch count {
-        case 1, 2:
-            return CGSize(width: image2Width, height: image2Width)
-        case 3...9:
-            return CGSize(width: image3Width, height: image3Width)
-        default:
-            return .zero
+        case 1, 2: return CGSize(width: image2Width, height: image2Width)
+        case 3...9: return CGSize(width: image3Width, height: image3Width)
+        default: return .zero
         }
     }
     

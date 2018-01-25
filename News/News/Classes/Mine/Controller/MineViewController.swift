@@ -38,16 +38,16 @@ class MineViewController: UITableViewController {
         tableView.ym_registerCell(cell: MyFisrtSectionCell.self)
         tableView.ym_registerCell(cell: MyOtherCell.self)
         // 获取我的 cell 的数据
-        NetworkTool.loadMyCellData { (sections) in
-            self.sections = sections
+        NetworkTool.loadMyCellData {
+            self.sections = $0
             self.tableView.reloadData()
-            NetworkTool.loadMyConcern(completionHandler: { (concerns) in
-                self.concerns = concerns
+            NetworkTool.loadMyConcern(completionHandler: {
+                self.concerns = $0
                 self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
             })
         }
         /// 更多按钮点击
-        headerView.moreLoginButton.rx.controlEvent(.touchUpInside)
+        headerView.moreLoginButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 let storyboard = UIStoryboard(name: String(describing: MoreLoginViewController.self), bundle: nil)
                 let moreLoginVC = storyboard.instantiateViewController(withIdentifier: String(describing: MoreLoginViewController.self)) as! MoreLoginViewController
@@ -100,8 +100,7 @@ extension MineViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 0 {
             let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as MyFisrtSectionCell
-            let section = sections[indexPath.section]
-            cell.myCellModel = section[indexPath.row]
+            cell.myCellModel = sections[indexPath.section][indexPath.row]
             cell.collectionView.isHidden = (concerns.count == 0 || concerns.count == 1)
             if concerns.count == 1 { cell.myConcern = concerns[0] }
             if concerns.count > 1 { cell.myConcerns = concerns }
@@ -114,8 +113,7 @@ extension MineViewController {
             return cell
         }
         let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as MyOtherCell
-        let section = sections[indexPath.section]
-        let myCellModel = section[indexPath.row]
+        let myCellModel = sections[indexPath.section][indexPath.row]
         cell.leftLabel.text = myCellModel.text
         cell.rightLabel.text = myCellModel.grey_text
         return cell
@@ -123,12 +121,10 @@ extension MineViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 3 {
-            if indexPath.row == 1 { // 跳转到系统设置界面
-                let settingVC = SettingViewController()
-                settingVC.navigationItem.title = "设置"
-                navigationController?.pushViewController(settingVC, animated: true)
-            }
+        if indexPath.section == 3 && indexPath.row == 1 { // 跳转到系统设置界面
+            let settingVC = SettingViewController()
+            settingVC.navigationItem.title = "设置"
+            navigationController?.pushViewController(settingVC, animated: true)
         }
     }
     

@@ -81,6 +81,7 @@ class MoreLoginViewController: AnimatableModalViewController {
     
     @IBAction func readButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        
     }
     
     override func didReceiveMemoryWarning() {

@@ -84,9 +84,7 @@ extension NetworkToolProtocol {
                     if let datas = dataDict["data"]?.arrayObject {
                         var titles = [HomeNewsTitle]()
                         titles.append(HomeNewsTitle.deserialize(from: "{\"category\": \"\", \"name\": \"推荐\"}")!)
-                        titles += datas.flatMap({
-                            HomeNewsTitle.deserialize(from: $0 as? NSDictionary)
-                        })
+                        titles += datas.flatMap({ HomeNewsTitle.deserialize(from: $0 as? NSDictionary) })
                         completionHandler(titles)
                     }
                 }
@@ -140,9 +138,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["message"] == "success" else { return }
                 guard let datas = json["data"].array else { return }
-                completionHandler(pullTime, datas.flatMap({
-                    NewsModel.deserialize(from: $0["content"].string)
-                }))
+                completionHandler(pullTime, datas.flatMap({ NewsModel.deserialize(from: $0["content"].string) }))
             }
         }
     }
@@ -173,9 +169,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["message"] == "success" else { return }
                 guard let datas = json["data"].array else { return }
-                completionHandler(datas.flatMap({
-                    NewsModel.deserialize(from: $0["content"].string)
-                }))
+                completionHandler(datas.flatMap({ NewsModel.deserialize(from: $0["content"].string) }))
             }
         }
     }
@@ -197,9 +191,7 @@ extension NetworkToolProtocol {
                 if let datas = json["data"].arrayObject {
                     var titles = [HomeNewsTitle]()
                     titles.append(HomeNewsTitle.deserialize(from: "{\"category\": \"video\", \"name\": \"推荐\"}")!)
-                    titles += datas.flatMap({
-                        HomeNewsTitle.deserialize(from: $0 as? NSDictionary)
-                    })
+                    titles += datas.flatMap({ HomeNewsTitle.deserialize(from: $0 as? NSDictionary) })
                     completionHandler(titles)
                 }
             }
@@ -283,9 +275,7 @@ extension NetworkToolProtocol {
                 if let data = json["data"].dictionary {
                     if let sections = data["sections"]?.arrayObject {
                         mySections += sections.flatMap({ item in
-                            (item as! [Any]).flatMap({ row in
-                                MyCellModel.deserialize(from: row as? NSDictionary)
-                            })
+                            (item as! [Any]).flatMap({ MyCellModel.deserialize(from: $0 as? NSDictionary) })
                         })
                         completionHandler(mySections)
                     }
@@ -309,9 +299,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["message"] == "success" else { return }
                 if let datas = json["data"].arrayObject {
-                    completionHandler(datas.flatMap({
-                        MyConcern.deserialize(from: $0 as? NSDictionary)
-                    }))
+                    completionHandler(datas.flatMap({ MyConcern.deserialize(from: $0 as? NSDictionary) }))
                 }
             }
         }
@@ -468,9 +456,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["message"] == "success" else { return }
                 if let data = json["data"].arrayObject {
-                    completionHandler(data.flatMap({
-                        UserDetailDongtai.deserialize(from: $0 as? NSDictionary)
-                    }))
+                    completionHandler(data.flatMap({ UserDetailDongtai.deserialize(from: $0 as? NSDictionary) }))
                 }
             }
         }

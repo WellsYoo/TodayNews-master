@@ -120,7 +120,7 @@ extension VideoTableViewController {
         let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as VideoCell
         cell.video = videos[indexPath.row]
         // 用户头像
-        cell.avatarButton.rx.controlEvent(.touchUpInside)
+        cell.avatarButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 let userDetailVC = UserDetailViewController2()
                 userDetailVC.userId = cell.video.user_info.user_id
@@ -128,13 +128,13 @@ extension VideoTableViewController {
             })
             .disposed(by: disposeBag)
         // 评论按钮点击
-        cell.commentButton.rx.controlEvent(.touchUpInside)
+        cell.commentButton.rx.tap
             .subscribe(onNext: {
                 
             })
             .disposed(by: disposeBag)
         // 背景图片按钮点击
-        cell.bgImageButton.rx.controlEvent(.touchUpInside)
+        cell.bgImageButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 // 如果有值，说明当前有正在播放的视频
                 if let priorCell = self!.priorCell {
@@ -173,6 +173,7 @@ extension VideoTableViewController {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // 找到 VideoViewController
         for viewController in navigationController!.viewControllers {
             if viewController is VideoViewController {
                 // 说明有视频正在播放
@@ -190,7 +191,6 @@ extension VideoTableViewController {
                 }
             }
         }
-        
     }
 }
 
