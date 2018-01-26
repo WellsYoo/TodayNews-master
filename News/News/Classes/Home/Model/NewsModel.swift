@@ -560,4 +560,14 @@ struct VideoPlayInfo: HandyJSON {
     var validate: String = ""
 }
 
+struct NewsDetailImage: HandyJSON {
+    
+    var url: String = ""
+    
+    var width: CGFloat = 0
+    
+    var height: CGFloat = 0
+    
+    var rate: CGFloat = 1
 
+}

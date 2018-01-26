@@ -9,6 +9,16 @@
 import UIKit
 import CoreText
 
+protocol StoryboardLoadable {}
+
+extension StoryboardLoadable where Self: UIViewController {
+    /// 提供 加载方法
+    static func loadStoryboard(name: String? = nil) -> Self {
+        let storyboard = UIStoryboard(name: "\(self)", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "\(self)") as! Self
+    }
+}
+
 protocol NibLoadable {}
 
 extension NibLoadable {

@@ -60,4 +60,14 @@ extension HomeRecommendController {
             return cell
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let aNews = news[indexPath.row]
+        if (aNews.source == "悟空问答") { // 悟空问答
+            let wendaVC = WendaViewController()
+            wendaVC.qid = aNews.item_id
+            wendaVC.enterForm = .clickHeadline
+            navigationController?.pushViewController(wendaVC, animated: true)
+        }
+    }
 }

@@ -20,6 +20,10 @@ protocol NetworkToolProtocol {
     static func loadApiNewsFeeds(category: NewsTitleCategory, ttFrom: TTFrom, _ completionHandler: @escaping (_ maxBehotTime: TimeInterval, _ news: [NewsModel]) -> ())
     // MARK: 获取首页、视频、小视频的新闻列表数据,加载更多
     static func loadMoreApiNewsFeeds(category: NewsTitleCategory, ttFrom: TTFrom, maxBehotTime: TimeInterval, listCount: Int, _ completionHandler: @escaping (_ news: [NewsModel]) -> ())
+    // MARK: 获取一般新闻详情数据
+    static func loadCommenNewsDetail(articleURL: String, completionHandler:@escaping (_ htmlString: String, _ images: [NewsDetailImage], _ abstracts: [String])->())
+    // MARK: 获取图片新闻详情数据
+    static func loadNewsDetail(articleURL: String, completionHandler:@escaping (_ images: [NewsDetailImage], _ abstracts: [String])->())
     // MARK: - --------------------------------- 视频 video  ---------------------------------
     // MARK: 视频顶部新闻标题的数据
     static func loadVideoApiCategoies(completionHandler: @escaping (_ newsTitles: [HomeNewsTitle]) -> ())
@@ -84,7 +88,7 @@ extension NetworkToolProtocol {
                     if let datas = dataDict["data"]?.arrayObject {
                         var titles = [HomeNewsTitle]()
                         titles.append(HomeNewsTitle.deserialize(from: "{\"category\": \"\", \"name\": \"推荐\"}")!)
-                        titles += datas.flatMap({ HomeNewsTitle.deserialize(from: $0 as? NSDictionary) })
+                        titles += datas.flatMap({ HomeNewsTitle.deserialize(from: $0 as? Dictionary) })
                         completionHandler(titles)
                     }
                 }
@@ -174,6 +178,107 @@ extension NetworkToolProtocol {
         }
     }
     
+    /// 获取一般新闻详情数据
+    /// - parameter articleURL: 链接
+    /// - parameter completionHandler: 返回图片数组，标题数组
+    /// - parameter htmlString: html
+    /// - parameter images: 图片数组
+    /// - parameter abstracts: 标题数组
+    static func loadCommenNewsDetail(articleURL: String, completionHandler:@escaping (_ htmlString: String, _ images: [NewsDetailImage], _ abstracts: [String])->()) {
+        
+        Alamofire.request(articleURL).responseString { (response) in
+            guard response.result.isSuccess else { return }
+            if let value = response.result.value {
+                var images = [NewsDetailImage]()
+                var abstracts = [String]()
+                var htmlString = String()
+                if value.contains("BASE_DATA.galleryInfo =") { // 则是图文详情
+                    // 获取 图片链接数组
+                    let startIndex = value.range(of: "\"sub_images\":")!.upperBound
+                    let endIndex = value.range(of: ",\"max_img_width\"")!.lowerBound
+                    let BASE_DATA = value[Range(uncheckedBounds: (lower: startIndex, upper: endIndex))]
+                    let data = BASE_DATA.data(using: String.Encoding.utf8)! as Data
+                    let dicts = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [Any]
+                    images = dicts.flatMap({ NewsDetailImage.deserialize(from: ($0 as! NSDictionary))! })
+                    // 获取 子标题
+                    let titleStartIndex = value.range(of: "\"sub_abstracts\":")!.upperBound
+                    let titlEndIndex = value.range(of: ",\"sub_titles\"")!.lowerBound
+                    let sub_abstracts = value[Range(uncheckedBounds: (lower: titleStartIndex, upper: titlEndIndex))]
+                    let titleData = sub_abstracts.data(using: String.Encoding.utf8)! as Data
+                    abstracts = try! JSONSerialization.jsonObject(with: titleData, options: .mutableContainers) as! [String]
+                } else if value.contains("articleInfo: ") { // 一般的新闻
+                    // 获取 新闻内容
+                    let startIndex = value.range(of: "content: '")!.upperBound
+                    let endIndex = value.range(of: "'.replace")!.lowerBound
+                    let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex))
+                    let content = value[range]
+                    let contentDecode = NetworkTool.htmlDecode(content: String(content))
+                    /// 创建 html
+                    var html = "<!DOCTYPE html>"
+                    html += "<html>"
+                    html += "<head>"
+                    html += "<meta charset=utf-8>"
+                    html += "<meta content='width=device-wdith,initial-scale=1.0,maximum-scale=3.0,user-scalabel=0;' name='viewport' />"
+                    html += "<link rel=\"stylesheet\" type=\"text/css\" href=\"news.css\" />\n"
+                    html += "</head>"
+                    html += "<body>"
+                    html += contentDecode
+                    html += "</body>"
+                    html += "<div></div>"
+                    html += "</html>"
+                    htmlString = html
+                } else { // 第三方的新闻内容
+                    // 这部分显示还有问题
+                    htmlString = value
+                }
+                completionHandler(htmlString, images, abstracts)
+            }
+        }
+    }
+    /// 转义字符
+    private static func htmlDecode(content: String) -> String {
+        var s = String()
+        s = content.replacingOccurrences(of: "&amp;", with: "&")
+        s = s.replacingOccurrences(of: "&lt;", with: "<")
+        s = s.replacingOccurrences(of: "&gt;", with: ">")
+        s = s.replacingOccurrences(of: "&nbsp;", with: " ")
+        s = s.replacingOccurrences(of: "&#39;", with: "\'")
+        s = s.replacingOccurrences(of: "&quot;", with: "\"")
+        s = s.replacingOccurrences(of: "<br>", with: "\n")
+        return s
+    }
+    
+    /// 获取图片新闻详情数据
+    /// - parameter articleURL: 链接
+    /// - parameter completionHandler: 返回图片数组，标题数组
+    /// - parameter images: 图片数组
+    /// - parameter abstracts: 标题数组
+    static func loadNewsDetail(articleURL: String, completionHandler:@escaping (_ images: [NewsDetailImage], _ abstracts: [String])->()) {
+        // 测试数据
+        //        http://toutiao.com/item/6450211121520443918/
+        let url = "http://www.toutiao.com/a6450237670911852814/#p=1"
+        
+        Alamofire.request(url).responseString { (response) in
+            guard response.result.isSuccess else { return }
+            if let value = response.result.value {
+                if value.contains("BASE_DATA.galleryInfo =") {
+                    // 获取 图片链接数组
+                    let startIndex = value.range(of: "\"sub_images\":")!.upperBound
+                    let endIndex = value.range(of: ",\"max_img_width\"")!.lowerBound
+                    let BASE_DATA = value[Range(uncheckedBounds: (lower: startIndex, upper: endIndex))]
+                    let data = BASE_DATA.data(using: String.Encoding.utf8)! as Data
+                    let dicts = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [Any]
+                    // 获取 子标题
+                    let titleStartIndex = value.range(of: "\"sub_abstracts\":")!.upperBound
+                    let titlEndIndex = value.range(of: ",\"sub_titles\"")!.lowerBound
+                    let sub_abstracts = value[Range(uncheckedBounds: (lower: titleStartIndex, upper: titlEndIndex))]
+                    let titleData = sub_abstracts.data(using: String.Encoding.utf8)! as Data
+                    completionHandler(dicts.flatMap({ NewsDetailImage.deserialize(from: ($0 as! [String: Any]))! }), try! JSONSerialization.jsonObject(with: titleData, options: .mutableContainers) as! [String])
+                }
+            }
+        }
+    }
+    
     // MARK: - --------------------------------- 视频 video  ---------------------------------
     /// 视频顶部新闻标题的数据
     /// - parameter completionHandler: 返回标题数据
@@ -191,7 +296,7 @@ extension NetworkToolProtocol {
                 if let datas = json["data"].arrayObject {
                     var titles = [HomeNewsTitle]()
                     titles.append(HomeNewsTitle.deserialize(from: "{\"category\": \"video\", \"name\": \"推荐\"}")!)
-                    titles += datas.flatMap({ HomeNewsTitle.deserialize(from: $0 as? NSDictionary) })
+                    titles += datas.flatMap({ HomeNewsTitle.deserialize(from: $0 as? Dictionary) })
                     completionHandler(titles)
                 }
             }
@@ -275,7 +380,7 @@ extension NetworkToolProtocol {
                 if let data = json["data"].dictionary {
                     if let sections = data["sections"]?.arrayObject {
                         mySections += sections.flatMap({ item in
-                            (item as! [Any]).flatMap({ MyCellModel.deserialize(from: $0 as? NSDictionary) })
+                            (item as! [Any]).flatMap({ MyCellModel.deserialize(from: $0 as? Dictionary) })
                         })
                         completionHandler(mySections)
                     }
@@ -299,7 +404,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["message"] == "success" else { return }
                 if let datas = json["data"].arrayObject {
-                    completionHandler(datas.flatMap({ MyConcern.deserialize(from: $0 as? NSDictionary) }))
+                    completionHandler(datas.flatMap({ MyConcern.deserialize(from: $0 as? Dictionary) }))
                 }
             }
         }
@@ -345,7 +450,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["message"] == "success" else { return }
                 if let data = json["data"].dictionaryObject {
-                    completionHandler(ConcernUser.deserialize(from: data["user"] as? NSDictionary)!)
+                    completionHandler(ConcernUser.deserialize(from: data["user"] as? Dictionary)!)
                 }
             }
         }
@@ -369,7 +474,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["message"] == "success" else { return }
                 if let data = json["data"].dictionaryObject {
-                    completionHandler(ConcernUser.deserialize(from: data["user"] as? NSDictionary)!)
+                    completionHandler(ConcernUser.deserialize(from: data["user"] as? Dictionary)!)
                 }
             }
         }
@@ -395,7 +500,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["err_no"] == 0 else { return }
                 if let user_cards = json["user_cards"].arrayObject {
-                    completionHandler(user_cards.flatMap({ UserCard.deserialize(from: $0 as? NSDictionary) }))
+                    completionHandler(user_cards.flatMap({ UserCard.deserialize(from: $0 as? Dictionary) }))
                 }
             }
         }
@@ -424,7 +529,7 @@ extension NetworkToolProtocol {
                     let max_cursor = data["max_cursor"]!.int
                     if let datas = data["data"]!.arrayObject {
                         completionHandler(max_cursor!, datas.flatMap({
-                            UserDetailDongtai.deserialize(from: $0 as? NSDictionary)
+                            UserDetailDongtai.deserialize(from: $0 as? Dictionary)
                         }))
                     }
                 }
@@ -456,7 +561,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["message"] == "success" else { return }
                 if let data = json["data"].arrayObject {
-                    completionHandler(data.flatMap({ UserDetailDongtai.deserialize(from: $0 as? NSDictionary) }))
+                    completionHandler(data.flatMap({ UserDetailDongtai.deserialize(from: $0 as? Dictionary) }))
                 }
             }
         }
@@ -485,7 +590,7 @@ extension NetworkToolProtocol {
                     if answerQuestions.count == 0 { completionHandler(cursor, []) }
                     else {
                         completionHandler(json["cursor"].string!, answerQuestions.flatMap({
-                            UserDetailWenda.deserialize(from: $0 as? NSDictionary)
+                            UserDetailWenda.deserialize(from: $0 as? Dictionary)
                         }))
                     }
                 }
@@ -519,7 +624,7 @@ extension NetworkToolProtocol {
                     if answerQuestions.count == 0 { completionHandler(cursor, []) }
                     else {
                         completionHandler(json["cursor"].string!, answerQuestions.flatMap({
-                            UserDetailWenda.deserialize(from: $0 as? NSDictionary)
+                            UserDetailWenda.deserialize(from: $0 as? Dictionary)
                         }))
                     }
                 }
@@ -595,9 +700,8 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["message"] == "success" else { completionHandler([]); return }
                 if let datas = json["data"].arrayObject {
-                    completionHandler(datas.flatMap({ data in
-                        let dict = data as! [String: Any]
-                        return DongtaiComment.deserialize(from: dict["comment"] as? NSDictionary)
+                    completionHandler(datas.flatMap({
+                        return DongtaiComment.deserialize(from: ($0 as! [String: Any])["comment"] as? Dictionary)
                     }))
                 }
             }
@@ -627,7 +731,7 @@ extension NetworkToolProtocol {
                 guard json["message"] == "success" else { completionHandler([]); return }
                 if let data = json["data"].dictionary {
                     if let datas = data["data"]!.arrayObject {
-                        completionHandler(datas.flatMap({ DongtaiComment.deserialize(from: $0 as? NSDictionary) }))
+                        completionHandler(datas.flatMap({ DongtaiComment.deserialize(from: $0 as? Dictionary) }))
                     }
                 }
             }
@@ -655,7 +759,7 @@ extension NetworkToolProtocol {
                 guard json["message"] == "success" else { completionHandler([]); return }
                 if let data = json["data"].dictionary {
                     if let datas = data["data"]!.arrayObject {
-                        completionHandler(datas.flatMap({ DongtaiUserDigg.deserialize(from: $0 as? NSDictionary) }))
+                        completionHandler(datas.flatMap({ DongtaiUserDigg.deserialize(from: $0 as? Dictionary) }))
                     }
                 }
             }
@@ -726,7 +830,7 @@ extension NetworkToolProtocol {
                     if let datas = dataDict["data"]!.arrayObject {
                         var titles = [HomeNewsTitle]()
                         titles.append(HomeNewsTitle.deserialize(from: "{\"category\": \"hotsoon_video\", \"name\": \"推荐\"}")!)
-                        titles += datas.flatMap({ HomeNewsTitle.deserialize(from: $0 as? NSDictionary) })
+                        titles += datas.flatMap({ HomeNewsTitle.deserialize(from: $0 as? Dictionary) })
                         completionHandler(titles)
                     }
                 }
