@@ -53,7 +53,7 @@ extension VideoViewController {
             // 设置子控制器
             _ = $0.flatMap({ (newsTitle) -> () in
                 let videoTableVC = VideoTableViewController()
-                videoTableVC.newsTitle = newsTitle
+                videoTableVC.setupRefresh(with: newsTitle.category)
                 self.addChildViewController(videoTableVC)
             })
             // 内容视图

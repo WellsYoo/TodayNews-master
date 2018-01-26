@@ -93,8 +93,8 @@ extension HomeViewController {
                     homeImageVC.setupRefresh(with: .photos)
                     self.addChildViewController(homeImageVC)
                 default :
-                    let homeTableVC = HomeTableViewController()
-                    homeTableVC.setupRefresh()
+                    let homeTableVC = HomeRecommendController()
+                    homeTableVC.setupRefresh(with: newsTitle.category)
                     self.addChildViewController(homeTableVC)
                 }
             })

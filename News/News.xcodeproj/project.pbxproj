@@ -84,7 +84,6 @@
 		946450A9200DFB440016A4EB /* SmallVideoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946450A8200DFB440016A4EB /* SmallVideoLayout.swift */; };
 		946450AB200E03F10016A4EB /* PreviewDongtaiBigImageLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946450AA200E03F10016A4EB /* PreviewDongtaiBigImageLayout.swift */; };
 		946450B0200F17F50016A4EB /* VideoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946450AE200F17F50016A4EB /* VideoTableViewController.swift */; };
-		946450B1200F17F50016A4EB /* VideoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946450AF200F17F50016A4EB /* VideoTableViewController.xib */; };
 		946450B4200F22660016A4EB /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946450B2200F22660016A4EB /* HomeTableViewController.swift */; };
 		946450B8200F25190016A4EB /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946450B6200F25190016A4EB /* VideoCell.swift */; };
 		946450B9200F25190016A4EB /* VideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946450B7200F25190016A4EB /* VideoCell.xib */; };
@@ -288,7 +287,6 @@
 		946450A8200DFB440016A4EB /* SmallVideoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallVideoLayout.swift; sourceTree = "<group>"; };
 		946450AA200E03F10016A4EB /* PreviewDongtaiBigImageLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDongtaiBigImageLayout.swift; sourceTree = "<group>"; };
 		946450AE200F17F50016A4EB /* VideoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewController.swift; sourceTree = "<group>"; };
-		946450AF200F17F50016A4EB /* VideoTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoTableViewController.xib; sourceTree = "<group>"; };
 		946450B2200F22660016A4EB /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		946450B6200F25190016A4EB /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		946450B7200F25190016A4EB /* VideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoCell.xib; sourceTree = "<group>"; };
@@ -801,7 +799,6 @@
 			children = (
 				942DCF631F602220001AD160 /* VideoViewController.swift */,
 				946450AE200F17F50016A4EB /* VideoTableViewController.swift */,
-				946450AF200F17F50016A4EB /* VideoTableViewController.xib */,
 				944451AD201177FA003DC412 /* VideoDetailViewController.swift */,
 				944451AE201177FA003DC412 /* VideoDetailViewController.xib */,
 				94349D35201449AC00085ED4 /* RelatedVideoTableViewController.swift */,
@@ -1036,7 +1033,6 @@
 				94B856411F6CCE2700C92E29 /* MyOtherCell.xib in Resources */,
 				94569D592017373600B31777 /* TheyUseCollectionCell.xib in Resources */,
 				9435729C1FD4D09500FE4A83 /* NavigationBarView.xib in Resources */,
-				946450B1200F17F50016A4EB /* VideoTableViewController.xib in Resources */,
 				94349D4020148E8400085ED4 /* RelatedVideoFooterView.xib in Resources */,
 				945F6F061FFDCC9100F4F395 /* UserDiggViewController.xib in Resources */,
 				94EB2E131FFD10CF00BAE862 /* UserDetailNavigationBar.xib in Resources */,
