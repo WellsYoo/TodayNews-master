@@ -53,6 +53,7 @@
 		944678571FE2122C007C264A /* PreviewDongtaiBigImageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 944678551FE2122C007C264A /* PreviewDongtaiBigImageController.xib */; };
 		944678641FE25F94007C264A /* PreviewUserAvatarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944678621FE25F94007C264A /* PreviewUserAvatarController.swift */; };
 		944678651FE25F94007C264A /* PreviewUserAvatarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 944678631FE25F94007C264A /* PreviewUserAvatarController.xib */; };
+		9453B3C2201AAD6E003540E0 /* HomeJokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9453B3C0201AAD6E003540E0 /* HomeJokeViewController.swift */; };
 		94569D4A2015E73400B31777 /* TextLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94569D492015E73400B31777 /* TextLinkViewController.swift */; };
 		94569D4D2016DE5800B31777 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94569D4B2016DE5800B31777 /* HomeCell.swift */; };
 		94569D4E2016DE5800B31777 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94569D4C2016DE5800B31777 /* HomeCell.xib */; };
@@ -85,7 +86,6 @@
 		946450B0200F17F50016A4EB /* VideoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946450AE200F17F50016A4EB /* VideoTableViewController.swift */; };
 		946450B1200F17F50016A4EB /* VideoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946450AF200F17F50016A4EB /* VideoTableViewController.xib */; };
 		946450B4200F22660016A4EB /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946450B2200F22660016A4EB /* HomeTableViewController.swift */; };
-		946450B5200F22660016A4EB /* HomeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946450B3200F22660016A4EB /* HomeTableViewController.xib */; };
 		946450B8200F25190016A4EB /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946450B6200F25190016A4EB /* VideoCell.swift */; };
 		946450B9200F25190016A4EB /* VideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946450B7200F25190016A4EB /* VideoCell.xib */; };
 		9465232D1FCFD0CC00DB46B6 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465232B1FCFD0CC00DB46B6 /* UserDetailViewController.swift */; };
@@ -167,6 +167,9 @@
 		94D9D4C11F7B256E00E5739F /* MoreLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94D9D4C01F7B256E00E5739F /* MoreLoginViewController.storyboard */; };
 		94DE2D0B2015D36E009D62F8 /* RelatedVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DE2D0A2015D36E009D62F8 /* RelatedVideoView.swift */; };
 		94E0DBCE1FEB33C90094D1D7 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E0DBCD1FEB33C90094D1D7 /* RefreshView.swift */; };
+		94E4BE79201AAFCB003F6F18 /* HomeRecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4BE77201AAFCB003F6F18 /* HomeRecommendController.swift */; };
+		94E4BE7C201ACA44003F6F18 /* HomeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E4BE7B201ACA44003F6F18 /* HomeImageViewController.swift */; };
+		94E4BE80201ACCEF003F6F18 /* WendaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E4BE7F201ACCEF003F6F18 /* WendaViewController.xib */; };
 		94EB2DFC1FFD071000BAE862 /* UserDetailViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB2DFA1FFD071000BAE862 /* UserDetailViewController2.swift */; };
 		94EB2DFD1FFD071000BAE862 /* UserDetailViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EB2DFB1FFD071000BAE862 /* UserDetailViewController2.xib */; };
 		94EB2E041FFD099900BAE862 /* UserDetailHeaderView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB2E021FFD099900BAE862 /* UserDetailHeaderView2.swift */; };
@@ -178,7 +181,6 @@
 		94EB2E131FFD10CF00BAE862 /* UserDetailNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EB2E111FFD10CF00BAE862 /* UserDetailNavigationBar.xib */; };
 		94EB2E151FFD142B00BAE862 /* TopTabScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB2E141FFD142B00BAE862 /* TopTabScrollView.swift */; };
 		94EB2E181FFDBB6500BAE862 /* WendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB2E161FFDBB6500BAE862 /* WendaViewController.swift */; };
-		94EB2E191FFDBB6500BAE862 /* WendaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EB2E171FFDBB6500BAE862 /* WendaViewController.xib */; };
 		94FE5A041FCAAE520018B47C /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FE5A031FCAAE520018B47C /* SQLiteManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -255,6 +257,7 @@
 		944678551FE2122C007C264A /* PreviewDongtaiBigImageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewDongtaiBigImageController.xib; sourceTree = "<group>"; };
 		944678621FE25F94007C264A /* PreviewUserAvatarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewUserAvatarController.swift; sourceTree = "<group>"; };
 		944678631FE25F94007C264A /* PreviewUserAvatarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewUserAvatarController.xib; sourceTree = "<group>"; };
+		9453B3C0201AAD6E003540E0 /* HomeJokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeJokeViewController.swift; sourceTree = "<group>"; };
 		94569D492015E73400B31777 /* TextLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLinkViewController.swift; sourceTree = "<group>"; };
 		94569D4B2016DE5800B31777 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		94569D4C2016DE5800B31777 /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
@@ -287,7 +290,6 @@
 		946450AE200F17F50016A4EB /* VideoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewController.swift; sourceTree = "<group>"; };
 		946450AF200F17F50016A4EB /* VideoTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoTableViewController.xib; sourceTree = "<group>"; };
 		946450B2200F22660016A4EB /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
-		946450B3200F22660016A4EB /* HomeTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewController.xib; sourceTree = "<group>"; };
 		946450B6200F25190016A4EB /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		946450B7200F25190016A4EB /* VideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoCell.xib; sourceTree = "<group>"; };
 		9465232B1FCFD0CC00DB46B6 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
@@ -371,6 +373,9 @@
 		94D9D4C01F7B256E00E5739F /* MoreLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreLoginViewController.storyboard; sourceTree = "<group>"; };
 		94DE2D0A2015D36E009D62F8 /* RelatedVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedVideoView.swift; sourceTree = "<group>"; };
 		94E0DBCD1FEB33C90094D1D7 /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
+		94E4BE77201AAFCB003F6F18 /* HomeRecommendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecommendController.swift; sourceTree = "<group>"; };
+		94E4BE7B201ACA44003F6F18 /* HomeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeImageViewController.swift; sourceTree = "<group>"; };
+		94E4BE7F201ACCEF003F6F18 /* WendaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WendaViewController.xib; sourceTree = "<group>"; };
 		94EB2DFA1FFD071000BAE862 /* UserDetailViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController2.swift; sourceTree = "<group>"; };
 		94EB2DFB1FFD071000BAE862 /* UserDetailViewController2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailViewController2.xib; sourceTree = "<group>"; };
 		94EB2E021FFD099900BAE862 /* UserDetailHeaderView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailHeaderView2.swift; sourceTree = "<group>"; };
@@ -382,7 +387,6 @@
 		94EB2E111FFD10CF00BAE862 /* UserDetailNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserDetailNavigationBar.xib; sourceTree = "<group>"; };
 		94EB2E141FFD142B00BAE862 /* TopTabScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabScrollView.swift; sourceTree = "<group>"; };
 		94EB2E161FFDBB6500BAE862 /* WendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WendaViewController.swift; sourceTree = "<group>"; };
-		94EB2E171FFDBB6500BAE862 /* WendaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WendaViewController.xib; sourceTree = "<group>"; };
 		94FE5A031FCAAE520018B47C /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		98DD34B2800BEB6C5BFC1091 /* Pods_News.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_News.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -528,9 +532,11 @@
 			children = (
 				942DCF4A1F602220001AD160 /* HomeViewController.swift */,
 				946450B2200F22660016A4EB /* HomeTableViewController.swift */,
-				946450B3200F22660016A4EB /* HomeTableViewController.xib */,
 				94EB2E161FFDBB6500BAE862 /* WendaViewController.swift */,
-				94EB2E171FFDBB6500BAE862 /* WendaViewController.xib */,
+				94E4BE7F201ACCEF003F6F18 /* WendaViewController.xib */,
+				94E4BE77201AAFCB003F6F18 /* HomeRecommendController.swift */,
+				9453B3C0201AAD6E003540E0 /* HomeJokeViewController.swift */,
+				94E4BE7B201ACA44003F6F18 /* HomeImageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1041,7 +1047,6 @@
 				94349D442014907000085ED4 /* RelatedVideoCell.xib in Resources */,
 				946523321FCFD32E00DB46B6 /* UserDetailHeaderView.xib in Resources */,
 				94B0E4BA1FE0174000ABB332 /* WeitoutiaoViewController.xib in Resources */,
-				946450B5200F22660016A4EB /* HomeTableViewController.xib in Resources */,
 				94569D4E2016DE5800B31777 /* HomeCell.xib in Resources */,
 				942DCF131F6010E1001AD160 /* Assets.xcassets in Resources */,
 				94B9B0F51FD61C98003A3340 /* RelationRecommendView.xib in Resources */,
@@ -1060,6 +1065,7 @@
 				94C29AB320008DC5000513D7 /* EmojiCollectionCell.xib in Resources */,
 				94C681151FEE4A4F00C3A5AD /* DongtaiNavigationBar.xib in Resources */,
 				946450A5200D805E0016A4EB /* SmallVideoCell.xib in Resources */,
+				94E4BE80201ACCEF003F6F18 /* WendaViewController.xib in Resources */,
 				94C29AAF20005B4B000513D7 /* emoji_mapping.plist in Resources */,
 				946450B9200F25190016A4EB /* VideoCell.xib in Resources */,
 				94EB2E0B1FFD0B6F00BAE862 /* UserDetailCell.xib in Resources */,
@@ -1068,7 +1074,6 @@
 				94AE55A4200B423800D880CB /* HuoshanCategoryController.xib in Resources */,
 				94C29AAE20005B4B000513D7 /* emojis.plist in Resources */,
 				94569D552017343F00B31777 /* HomeUserCell.xib in Resources */,
-				94EB2E191FFDBB6500BAE862 /* WendaViewController.xib in Resources */,
 				94EB2DFD1FFD071000BAE862 /* UserDetailViewController2.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1186,6 +1191,7 @@
 				94AE55A0200B3FFC00D880CB /* HuoshanNavigationBar.swift in Sources */,
 				94B165211F87B0AF001EA09F /* OfflineDownloadController.swift in Sources */,
 				94C29AB520009630000513D7 /* EmojiLayout.swift in Sources */,
+				9453B3C2201AAD6E003540E0 /* HomeJokeViewController.swift in Sources */,
 				94863B951F714DBA007345D2 /* MyTheme.swift in Sources */,
 				94E0DBCE1FEB33C90094D1D7 /* RefreshView.swift in Sources */,
 				94EB2E041FFD099900BAE862 /* UserDetailHeaderView2.swift in Sources */,
@@ -1262,6 +1268,7 @@
 				9465978B2004D99E0006C37D /* WendaAnswerHeaderView.swift in Sources */,
 				9435729A1FD4D08E00FE4A83 /* NavigationBarView.swift in Sources */,
 				94349D432014907000085ED4 /* RelatedVideoCell.swift in Sources */,
+				94E4BE7C201ACA44003F6F18 /* HomeImageViewController.swift in Sources */,
 				946450B0200F17F50016A4EB /* VideoTableViewController.swift in Sources */,
 				943572601FCFE2D900FE4A83 /* UserDetail.swift in Sources */,
 				94B0E4A21FDF582300ABB332 /* UIKit+Extension.swift in Sources */,
@@ -1271,6 +1278,7 @@
 				94904D0E1FE73E1A00051528 /* Emoji.swift in Sources */,
 				94AE55AE200C8DDD00D880CB /* OfflineSectionHeader.swift in Sources */,
 				94C681171FEE528600C3A5AD /* DongtaiDetailHeaderView.swift in Sources */,
+				94E4BE79201AAFCB003F6F18 /* HomeRecommendController.swift in Sources */,
 				94B0E4B01FDFF30E00ABB332 /* HomeNavigationView.swift in Sources */,
 				9465978D2004D99E0006C37D /* WendaAnswerBottomView.swift in Sources */,
 				9435727C1FD0DBEC00FE4A83 /* MyPresentationController.swift in Sources */,

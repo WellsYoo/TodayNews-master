@@ -39,7 +39,7 @@ class HomeJokeCell: UITableViewCell, RegisterCellFromNib {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        starButton.theme_setImage("images.love_video_night_20x20_", forState: .normal)
+        starButton.theme_setImage("images.love_video_20x20_", forState: .normal)
         starButton.theme_setImage("images.love_video_press_20x20_", forState: .selected)
     }
 

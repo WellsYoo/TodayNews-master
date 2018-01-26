@@ -74,13 +74,27 @@ extension HomeViewController {
             // 设置子控制器
             _ = $0.flatMap({ (newsTitle) -> () in
                 switch newsTitle.category {
-                case .video:
+                case .video:            // 视频
                     let videoTableVC = VideoTableViewController()
                     videoTableVC.newsTitle = newsTitle
                     self.addChildViewController(videoTableVC)
+                case .essayJoke:        // 段子
+                    let essayJokeVC = HomeJokeViewController()
+                    essayJokeVC.isJoke = true
+                    essayJokeVC.setupRefresh(with: .essayJoke)
+                    self.addChildViewController(essayJokeVC)
+                case .imagePPMM:        // 街拍
+                    let imagePPMMVC = HomeJokeViewController()
+                    imagePPMMVC.isJoke = false
+                    imagePPMMVC.setupRefresh(with: .imagePPMM)
+                    self.addChildViewController(imagePPMMVC)
+                case .photos:           // 图片,组图
+                    let homeImageVC = HomeImageViewController()
+                    homeImageVC.setupRefresh(with: .photos)
+                    self.addChildViewController(homeImageVC)
                 default :
                     let homeTableVC = HomeTableViewController()
-                    homeTableVC.newsTitle = newsTitle
+                    homeTableVC.setupRefresh()
                     self.addChildViewController(homeTableVC)
                 }
             })

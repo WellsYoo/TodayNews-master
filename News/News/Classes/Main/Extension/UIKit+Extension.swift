@@ -8,134 +8,12 @@
 
 import UIKit
 import CoreText
-import Kingfisher
 
 protocol NibLoadable {}
 
 extension NibLoadable {
     static func loadViewFromNib() -> Self {
         return Bundle.main.loadNibNamed("\(self)", owner: nil, options: nil)?.last as! Self
-    }
-}
-
-protocol RegisterCellFromNib {}
-
-extension RegisterCellFromNib {
-    
-    static var identifier: String {
-        return "\(self)"
-    }
-    
-    static var nib: UINib? {
-        return UINib(nibName: "\(self)", bundle: nil)
-    }
-}
-
-extension SettingCell {
-    /// 从沙盒中获取缓存数据的大小
-    func calculateDiskCashSize() {
-        let cache = KingfisherManager.shared.cache
-        cache.calculateDiskCacheSize { (size) in
-            // 转换成 M
-            let sizeM = Double(size) / 1024.0 / 1024.0
-            self.rightTitleLabel.text = String(format: "%.2fM", sizeM)
-        }
-    }
-    /// 非 WiFi 网络播放提醒
-    func setupPlayNoticeAlertController() {
-        let alertController = UIAlertController(title: "非 WiFi 网络播放提醒", message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        let everyAction = UIAlertAction(title: "每次提醒", style: .default, handler: { (_) in
-            self.rightTitleLabel.text = "每次提醒"
-        })
-        let onceAction = UIAlertAction(title: "提醒一次", style: .default, handler: { (_) in
-            self.rightTitleLabel.text = "提醒一次"
-        })
-        alertController.addAction(cancelAction)
-        alertController.addAction(everyAction)
-        alertController.addAction(onceAction)
-        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
-    }
-    /// 非 WiFi 网络流量
-    func setupNetworkAlertController() {
-        let alertController = UIAlertController(title: "非 WiFi 网络流量", message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        let bestAction = UIAlertAction(title: "最小效果(下载大图)", style: .default, handler: { (_) in
-            self.rightTitleLabel.text = "最小效果(下载大图)"
-        })
-        let betterAction = UIAlertAction(title: "较省流量(智能下图)", style: .default, handler: { (_) in
-            self.rightTitleLabel.text = "较省流量(智能下图)"
-        })
-        let leastAction = UIAlertAction(title: "极省流量(智能下图)", style: .default, handler: { (_) in
-            self.rightTitleLabel.text = "极省流量(智能下图)"
-        })
-        alertController.addAction(cancelAction)
-        alertController.addAction(bestAction)
-        alertController.addAction(betterAction)
-        alertController.addAction(leastAction)
-        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
-    }
-    /// 设置字体大小
-    func setupFontAlertController() {
-        let alertController = UIAlertController(title: "设置字体大小", message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        let smallAction = UIAlertAction(title: "小", style: .default, handler: { (_) in
-            self.rightTitleLabel.text = "小"
-        })
-        let middleAction = UIAlertAction(title: "中", style: .default, handler: { (_) in
-            self.rightTitleLabel.text = "中"
-        })
-        let bigAction = UIAlertAction(title: "大", style: .default, handler: { (_) in
-            self.rightTitleLabel.text = "大"
-        })
-        let largeAction = UIAlertAction(title: "特大", style: .default, handler: { (_) in
-            self.rightTitleLabel.text = "特大"
-        })
-        alertController.addAction(cancelAction)
-        alertController.addAction(smallAction)
-        alertController.addAction(middleAction)
-        alertController.addAction(bigAction)
-        alertController.addAction(largeAction)
-        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
-    }
-    /// 弹出清理缓存的提示框
-    func clearCacheAlertController() {
-        let alertController = UIAlertController(title: "确定清除所有缓存？问答草稿、离线下载及图片均会被清除", message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: "确定", style: .default, handler: { (_) in
-            let cache = KingfisherManager.shared.cache
-            cache.clearDiskCache()
-            cache.clearMemoryCache()
-            cache.cleanExpiredDiskCache()
-            self.rightTitleLabel.text = "0.00M"
-        })
-        alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
-        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
-    }
-}
-
-extension VideoCell {
-    /// 视频播放时隐藏 cell 的部分子视图
-    func hideSubviews() {
-        titleLabel.isHidden = true
-        playCountLabel.isHidden = true
-        timeLabel.isHidden = true
-        vImageView.isHidden = true
-        avatarButton.isHidden = true
-        nameLable.isHidden = true
-        shareStackView.isHidden = false
-    }
-    
-    /// 设置当前 cell 的属性
-    func showSubviews() {
-        titleLabel.isHidden = false
-        playCountLabel.isHidden = false
-        timeLabel.isHidden = false
-        avatarButton.isHidden = false
-        vImageView.isHidden = !video.user_verified
-        nameLable.isHidden = false
-        shareStackView.isHidden = true
     }
 }
 
@@ -199,11 +77,8 @@ extension UITextView {
         // 如果输入是空表情
         if emoji.isEmpty { return }
         // 如果输入是删除表情
-        if emoji.isDelete {
-            deleteBackward()
-            return
-        }
-        
+        if emoji.isDelete { deleteBackward(); return }
+
         // 创建附件
         let attachment = NSTextAttachment()
         attachment.image = UIImage(named: emoji.png)
@@ -231,9 +106,7 @@ extension UIView {
     
     /// x
     var x: CGFloat {
-        get {
-            return frame.origin.x
-        }
+        get { return frame.origin.x }
         set(newValue) {
             var tempFrame: CGRect = frame
             tempFrame.origin.x    = newValue
@@ -243,9 +116,7 @@ extension UIView {
     
     /// y
     var y: CGFloat {
-        get {
-            return frame.origin.y
-        }
+        get { return frame.origin.y }
         set(newValue) {
             var tempFrame: CGRect = frame
             tempFrame.origin.y    = newValue
@@ -255,9 +126,7 @@ extension UIView {
     
     /// height
     var height: CGFloat {
-        get {
-            return frame.size.height
-        }
+        get { return frame.size.height }
         set(newValue) {
             var tempFrame: CGRect = frame
             tempFrame.size.height = newValue
@@ -267,51 +136,52 @@ extension UIView {
     
     /// width
     var width: CGFloat {
-        get {
-            return frame.size.width
-        }
+        get { return frame.size.width }
         set(newValue) {
             var tempFrame: CGRect = frame
-            tempFrame.size.width = newValue
+            tempFrame.size.width  = newValue
             frame = tempFrame
         }
     }
     
     /// size
     var size: CGSize {
-        get {
-            return frame.size
-        }
+        get { return frame.size }
         set(newValue) {
             var tempFrame: CGRect = frame
-            tempFrame.size = newValue
-            frame = tempFrame
+            tempFrame.size        = newValue
+            frame                 = tempFrame
         }
     }
     
     /// centerX
     var centerX: CGFloat {
-        get {
-            return center.x
-        }
+        get { return center.x }
         set(newValue) {
             var tempCenter: CGPoint = center
-            tempCenter.x = newValue
-            center = tempCenter
+            tempCenter.x            = newValue
+            center                  = tempCenter
         }
     }
     
     /// centerY
     var centerY: CGFloat {
-        get {
-            return center.y
-        }
+        get { return center.y }
         set(newValue) {
             var tempCenter: CGPoint = center
-            tempCenter.y = newValue
-            center = tempCenter;
+            tempCenter.y            = newValue
+            center                  = tempCenter;
         }
     }
+}
+
+protocol RegisterCellFromNib {}
+
+extension RegisterCellFromNib {
+    
+    static var identifier: String { return "\(self)" }
+    
+    static var nib: UINib? { return UINib(nibName: "\(self)", bundle: nil) }
 }
 
 extension UITableView {
@@ -371,8 +241,8 @@ extension UIImageView {
 
 extension UIColor {
     
+    //        self.init(red: <#T##CGFloat#>, green: <#T##CGFloat#>, blue: <#T##CGFloat#>, alpha: <#T##CGFloat#>)
     convenience init(r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat = 1.0) {
-        //        self.init(red: <#T##CGFloat#>, green: <#T##CGFloat#>, blue: <#T##CGFloat#>, alpha: <#T##CGFloat#>)
         self.init(displayP3Red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: alpha)
     }
     
