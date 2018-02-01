@@ -569,5 +569,7 @@ struct NewsDetailImage: HandyJSON {
     var height: CGFloat = 0
     
     var rate: CGFloat = 1
+    
+    var url_list = [URLList]()
 
 }

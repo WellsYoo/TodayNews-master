@@ -44,6 +44,10 @@
 		9435727C1FD0DBEC00FE4A83 /* MyPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9435727B1FD0DBEC00FE4A83 /* MyPresentationController.swift */; };
 		9435729A1FD4D08E00FE4A83 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943572991FD4D08E00FE4A83 /* NavigationBarView.swift */; };
 		9435729C1FD4D09500FE4A83 /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9435729B1FD4D09500FE4A83 /* NavigationBarView.xib */; };
+		9441337F2022956B00CE4DA9 /* NewsDetailImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9441337D2022956B00CE4DA9 /* NewsDetailImageController.swift */; };
+		944133802022956B00CE4DA9 /* NewsDetailImageController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9441337E2022956B00CE4DA9 /* NewsDetailImageController.storyboard */; };
+		944133832022958900CE4DA9 /* NewsDetailImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 944133812022958900CE4DA9 /* NewsDetailImageCell.xib */; };
+		944133842022958900CE4DA9 /* NewsDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944133822022958900CE4DA9 /* NewsDetailImageCell.swift */; };
 		944451AC201081DE003DC412 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944451AB201081DE003DC412 /* Video.swift */; };
 		944451AF201177FA003DC412 /* VideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944451AD201177FA003DC412 /* VideoDetailViewController.swift */; };
 		944451B0201177FA003DC412 /* VideoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 944451AE201177FA003DC412 /* VideoDetailViewController.xib */; };
@@ -247,6 +251,10 @@
 		9435727B1FD0DBEC00FE4A83 /* MyPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPresentationController.swift; sourceTree = "<group>"; };
 		943572991FD4D08E00FE4A83 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		9435729B1FD4D09500FE4A83 /* NavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationBarView.xib; sourceTree = "<group>"; };
+		9441337D2022956B00CE4DA9 /* NewsDetailImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailImageController.swift; sourceTree = "<group>"; };
+		9441337E2022956B00CE4DA9 /* NewsDetailImageController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsDetailImageController.storyboard; sourceTree = "<group>"; };
+		944133812022958900CE4DA9 /* NewsDetailImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDetailImageCell.xib; sourceTree = "<group>"; };
+		944133822022958900CE4DA9 /* NewsDetailImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailImageCell.swift; sourceTree = "<group>"; };
 		944451AB201081DE003DC412 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		944451AD201177FA003DC412 /* VideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailViewController.swift; sourceTree = "<group>"; };
 		944451AE201177FA003DC412 /* VideoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoDetailViewController.xib; sourceTree = "<group>"; };
@@ -530,11 +538,13 @@
 			children = (
 				942DCF4A1F602220001AD160 /* HomeViewController.swift */,
 				946450B2200F22660016A4EB /* HomeTableViewController.swift */,
-				94EB2E161FFDBB6500BAE862 /* WendaViewController.swift */,
-				94E4BE7F201ACCEF003F6F18 /* WendaViewController.xib */,
 				94E4BE77201AAFCB003F6F18 /* HomeRecommendController.swift */,
 				9453B3C0201AAD6E003540E0 /* HomeJokeViewController.swift */,
 				94E4BE7B201ACA44003F6F18 /* HomeImageViewController.swift */,
+				9441337D2022956B00CE4DA9 /* NewsDetailImageController.swift */,
+				9441337E2022956B00CE4DA9 /* NewsDetailImageController.storyboard */,
+				94EB2E161FFDBB6500BAE862 /* WendaViewController.swift */,
+				94E4BE7F201ACCEF003F6F18 /* WendaViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -572,6 +582,8 @@
 				94569D5C20173C2A00B31777 /* HomeJokeCell.xib */,
 				94569D5F2017405E00B31777 /* HomeImageTableCell.swift */,
 				94569D602017405E00B31777 /* HomeImageTableCell.xib */,
+				944133822022958900CE4DA9 /* NewsDetailImageCell.swift */,
+				944133812022958900CE4DA9 /* NewsDetailImageCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1058,6 +1070,7 @@
 				94C681111FEE472500C3A5AD /* DongtaiDetailViewController.xib in Resources */,
 				94863B9A1F714F83007345D2 /* night_theme.plist in Resources */,
 				94D9D4C11F7B256E00E5739F /* MoreLoginViewController.storyboard in Resources */,
+				944133802022956B00CE4DA9 /* NewsDetailImageController.storyboard in Resources */,
 				94C29AB320008DC5000513D7 /* EmojiCollectionCell.xib in Resources */,
 				94C681151FEE4A4F00C3A5AD /* DongtaiNavigationBar.xib in Resources */,
 				946450A5200D805E0016A4EB /* SmallVideoCell.xib in Resources */,
@@ -1067,6 +1080,7 @@
 				94EB2E0B1FFD0B6F00BAE862 /* UserDetailCell.xib in Resources */,
 				943572781FD0D71900FE4A83 /* UserDetailBottomPopController.storyboard in Resources */,
 				94455DDE2000A27400991ADC /* PostCommentView.xib in Resources */,
+				944133832022958900CE4DA9 /* NewsDetailImageCell.xib in Resources */,
 				94AE55A4200B423800D880CB /* HuoshanCategoryController.xib in Resources */,
 				94C29AAE20005B4B000513D7 /* emojis.plist in Resources */,
 				94569D552017343F00B31777 /* HomeUserCell.xib in Resources */,
@@ -1270,6 +1284,7 @@
 				94B0E4A21FDF582300ABB332 /* UIKit+Extension.swift in Sources */,
 				94C681131FEE4A4900C3A5AD /* DongtaiNavigationBar.swift in Sources */,
 				94B0E44B1FDCDD7400ABB332 /* Calculate.swift in Sources */,
+				944133842022958900CE4DA9 /* NewsDetailImageCell.swift in Sources */,
 				94349D3A20148E1300085ED4 /* RelatedVideoHeaderView.swift in Sources */,
 				94904D0E1FE73E1A00051528 /* Emoji.swift in Sources */,
 				94AE55AE200C8DDD00D880CB /* OfflineSectionHeader.swift in Sources */,
@@ -1283,6 +1298,7 @@
 				94C29AB220008DC5000513D7 /* EmojiCollectionCell.swift in Sources */,
 				94B3CE2F20102772002E230B /* VideoPlayerCustomView.swift in Sources */,
 				946450A9200DFB440016A4EB /* SmallVideoLayout.swift in Sources */,
+				9441337F2022956B00CE4DA9 /* NewsDetailImageController.swift in Sources */,
 				94B9B0F31FD61C8D003A3340 /* RelationRecommendView.swift in Sources */,
 				946523301FCFD32800DB46B6 /* UserDetailHeaderView.swift in Sources */,
 			);

@@ -263,17 +263,21 @@ extension NetworkToolProtocol {
             if let value = response.result.value {
                 if value.contains("BASE_DATA.galleryInfo =") {
                     // 获取 图片链接数组
-                    let startIndex = value.range(of: "\"sub_images\":")!.upperBound
-                    let endIndex = value.range(of: ",\"max_img_width\"")!.lowerBound
+                    let startIndex = value.range(of: ",\\\"sub_images\\\":")!.upperBound
+                    let endIndex = value.range(of: ",\\\"max_img_width\\\":")!.lowerBound
                     let BASE_DATA = value[Range(uncheckedBounds: (lower: startIndex, upper: endIndex))]
-                    let data = BASE_DATA.data(using: String.Encoding.utf8)! as Data
-                    let dicts = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [Any]
+                    let substring = BASE_DATA.replacingOccurrences(of: "\\\\", with: "")
+                    let substring2 = substring.replacingOccurrences(of: "\\", with: "")
+                    let data = substring2.data(using: .utf8)! as Data
+                    let dicts = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [Any]
                     // 获取 子标题
-                    let titleStartIndex = value.range(of: "\"sub_abstracts\":")!.upperBound
-                    let titlEndIndex = value.range(of: ",\"sub_titles\"")!.lowerBound
+                    let titleStartIndex = value.range(of: "\\\"sub_abstracts\\\":")!.upperBound
+                    let titlEndIndex = value.range(of: ",\\\"sub_titles\\\"")!.lowerBound
                     let sub_abstracts = value[Range(uncheckedBounds: (lower: titleStartIndex, upper: titlEndIndex))]
-                    let titleData = sub_abstracts.data(using: String.Encoding.utf8)! as Data
-                    completionHandler(dicts.flatMap({ NewsDetailImage.deserialize(from: ($0 as! [String: Any]))! }), try! JSONSerialization.jsonObject(with: titleData, options: .mutableContainers) as! [String])
+                    let titleSubstring1 = sub_abstracts.replacingOccurrences(of: "\\\"", with: "\"")
+                    let titleSubstring2 = titleSubstring1.replacingOccurrences(of: "\\u", with: "u")
+                    let titleData = titleSubstring2.data(using: String.Encoding.utf8)! as Data
+                    completionHandler(dicts!.flatMap({ NewsDetailImage.deserialize(from: $0 as? [String: Any])! }), try! JSONSerialization.jsonObject(with: titleData, options: .mutableContainers) as! [String])
                 }
             }
         }
