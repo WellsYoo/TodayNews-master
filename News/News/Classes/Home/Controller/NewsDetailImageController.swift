@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import SVProgressHUD
+import Photos
 
 class NewsDetailImageController: UIViewController, StoryboardLoadable {
     
@@ -16,6 +17,7 @@ class NewsDetailImageController: UIViewController, StoryboardLoadable {
     
     var images = [NewsDetailImage]()
     var abstracts = [String]()
+    var currentIndex = 0
     
     var isSelectedFirstCell = false
     
@@ -155,7 +157,21 @@ extension NewsDetailImageController: NewsDetailImageCellDelegate {
             
         }
         let saveImageAction = UIAlertAction(title: "保存图片", style: .default) { (_) in
-            
+            let image = self.images[self.currentIndex]
+            ImageDownloader.default.downloadImage(with: URL(string: image.url)!, progressBlock: { (receivedSize, totalSize) in
+                // 获取当前进度
+                let progress = Float(receivedSize) / Float(totalSize)
+                SVProgressHUD.showProgress(progress)
+                SVProgressHUD.setBackgroundColor(.clear)
+                SVProgressHUD.setForegroundColor(UIColor.white)
+            }) { (image, error, imageURL, data) in
+                // 调用系统相册，保存到相册
+                PHPhotoLibrary.shared().performChanges({
+                    PHAssetChangeRequest.creationRequestForAsset(from: image!)
+                }, completionHandler: { (success, error) in
+                    if success { SVProgressHUD.showSuccess(withStatus: "保存成功!") }
+                })
+            }
         }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         actionSheet.addAction(shareImageAction)
@@ -231,8 +247,8 @@ extension NewsDetailImageController: UICollectionViewDelegate, UICollectionViewD
     
     // 方式1 ，下面的代码可以和在 cell 中设置的 abstractLabel 对应来写，二者选一种
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let index = Int(scrollView.contentOffset.x / screenWidth) + 1
-        setupAttributeString(index: index)
+        currentIndex = Int(scrollView.contentOffset.x / screenWidth) + 1
+        setupAttributeString(index: currentIndex)
     }
     
     /// 设置子标题
@@ -255,9 +271,3 @@ extension NewsDetailImageController: UICollectionViewDelegate, UICollectionViewD
         abstractLabel.attributedText = numberAttributeString
     }
 }
-
-
-
-
-
-
