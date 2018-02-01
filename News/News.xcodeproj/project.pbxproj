@@ -48,6 +48,8 @@
 		944133802022956B00CE4DA9 /* NewsDetailImageController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9441337E2022956B00CE4DA9 /* NewsDetailImageController.storyboard */; };
 		944133832022958900CE4DA9 /* NewsDetailImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 944133812022958900CE4DA9 /* NewsDetailImageCell.xib */; };
 		944133842022958900CE4DA9 /* NewsDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944133822022958900CE4DA9 /* NewsDetailImageCell.swift */; };
+		94413387202316CE00CE4DA9 /* NewsDetailImageCommentController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94413385202316CE00CE4DA9 /* NewsDetailImageCommentController.storyboard */; };
+		94413388202316CE00CE4DA9 /* NewsDetailImageCommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94413386202316CE00CE4DA9 /* NewsDetailImageCommentController.swift */; };
 		944451AC201081DE003DC412 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944451AB201081DE003DC412 /* Video.swift */; };
 		944451AF201177FA003DC412 /* VideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944451AD201177FA003DC412 /* VideoDetailViewController.swift */; };
 		944451B0201177FA003DC412 /* VideoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 944451AE201177FA003DC412 /* VideoDetailViewController.xib */; };
@@ -255,6 +257,8 @@
 		9441337E2022956B00CE4DA9 /* NewsDetailImageController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsDetailImageController.storyboard; sourceTree = "<group>"; };
 		944133812022958900CE4DA9 /* NewsDetailImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDetailImageCell.xib; sourceTree = "<group>"; };
 		944133822022958900CE4DA9 /* NewsDetailImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailImageCell.swift; sourceTree = "<group>"; };
+		94413385202316CE00CE4DA9 /* NewsDetailImageCommentController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsDetailImageCommentController.storyboard; sourceTree = "<group>"; };
+		94413386202316CE00CE4DA9 /* NewsDetailImageCommentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailImageCommentController.swift; sourceTree = "<group>"; };
 		944451AB201081DE003DC412 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		944451AD201177FA003DC412 /* VideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailViewController.swift; sourceTree = "<group>"; };
 		944451AE201177FA003DC412 /* VideoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoDetailViewController.xib; sourceTree = "<group>"; };
@@ -543,6 +547,8 @@
 				94E4BE7B201ACA44003F6F18 /* HomeImageViewController.swift */,
 				9441337D2022956B00CE4DA9 /* NewsDetailImageController.swift */,
 				9441337E2022956B00CE4DA9 /* NewsDetailImageController.storyboard */,
+				94413386202316CE00CE4DA9 /* NewsDetailImageCommentController.swift */,
+				94413385202316CE00CE4DA9 /* NewsDetailImageCommentController.storyboard */,
 				94EB2E161FFDBB6500BAE862 /* WendaViewController.swift */,
 				94E4BE7F201ACCEF003F6F18 /* WendaViewController.xib */,
 			);
@@ -1062,6 +1068,7 @@
 				94B165251F87B17D001EA09F /* OfflineDownlaodCell.xib in Resources */,
 				94349D302012135F00085ED4 /* VideoDetailUserView.xib in Resources */,
 				942C05021FEE1E9800F871A0 /* UserDetailWendaCell.xib in Resources */,
+				94413387202316CE00CE4DA9 /* NewsDetailImageCommentController.storyboard in Resources */,
 				9462C67B1F7DCC66009D4513 /* settingPlist.plist in Resources */,
 				94B0E4B21FDFF31B00ABB332 /* HomeNavigationView.xib in Resources */,
 				94863B981F714F79007345D2 /* default_theme.plist in Resources */,
@@ -1291,6 +1298,7 @@
 				94C681171FEE528600C3A5AD /* DongtaiDetailHeaderView.swift in Sources */,
 				94E4BE79201AAFCB003F6F18 /* HomeRecommendController.swift in Sources */,
 				94B0E4B01FDFF30E00ABB332 /* HomeNavigationView.swift in Sources */,
+				94413388202316CE00CE4DA9 /* NewsDetailImageCommentController.swift in Sources */,
 				9465978D2004D99E0006C37D /* WendaAnswerBottomView.swift in Sources */,
 				9435727C1FD0DBEC00FE4A83 /* MyPresentationController.swift in Sources */,
 				94C6811C1FEE7F6300C3A5AD /* DongtaiCommentCell.swift in Sources */,

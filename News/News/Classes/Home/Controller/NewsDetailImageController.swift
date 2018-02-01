@@ -77,18 +77,18 @@ extension NewsDetailImageController {
             commentLabel.isHidden = true
         } else {
             commentLabel.text = aNews.commentCount
-            switch aNews.comment_count {
+            switch Int32(aNews.comment_count) {
             case 0...9:
                 commentLabelWidth.constant = 20
             case 10...99:
                 commentLabelWidth.constant = 23
             case 100...999:
                 commentLabelWidth.constant = 28
+            case 999..<INT_MAX:
+                commentLabel.text = "999+"
+                commentLabelWidth.constant = 36
             default:
                 commentLabelWidth.constant = 20
-            }
-            if aNews.comment_count > 999 {
-                commentLabel.text = "999+"
             }
         }
         if isSelectedFirstCell { // 如果点击的第一个 cell 才去获取数据,其他情况数据从上一控制器传过来
@@ -131,10 +131,10 @@ extension NewsDetailImageController {
     
     /// 评论按钮点击
     @IBAction func commentButtonClicked(_ sender: UIButton) {
-//        let newDetailCommentVC = NewsDetailImageCommentController.loadStoryboard()
-//        newDetailCommentVC.aNews = aNews
-//        newDetailCommentVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - 20)))
-//        present(newDetailCommentVC, animated: true, completion: nil)
+        let newDetailCommentVC = NewsDetailImageCommentController.loadStoryboard()
+        newDetailCommentVC.aNews = aNews
+        newDetailCommentVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - 20)))
+        present(newDetailCommentVC, animated: true, completion: nil)
     }
     
     /// 收藏按钮点击
