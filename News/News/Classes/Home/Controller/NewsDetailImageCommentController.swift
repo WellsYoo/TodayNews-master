@@ -44,6 +44,7 @@ class NewsDetailImageCommentController: AnimatableModalViewController, Storyboar
 extension NewsDetailImageCommentController {
     
     fileprivate func setupUI() {
+        SVProgressHUD.configuration()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.ym_registerCell(cell: DongtaiCommentCell.self)
@@ -104,10 +105,10 @@ extension NewsDetailImageCommentController: UITableViewDelegate, UITableViewData
         view.addSubview(postCommentView)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y < 0 {
-            dismiss(animated: true, completion: nil)
-        }
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if scrollView.contentOffset.y < 0 {
+//            dismiss(animated: true, completion: nil)
+//        }
+//    }
     
 }

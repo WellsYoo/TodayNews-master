@@ -63,16 +63,6 @@ extension NewsDetailImageController {
         collectionView.ym_registerCell(cell: NewsDetailImageCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-//        if let userVerified = aNews!.user_verified {
-//            avatarButton.isHidden = !userVerified
-//            vipImageView.isHidden = !userVerified
-//        }
-//        if let user = aNews!.user {
-//            avatarButton.kf.setImage(with: URL(string: (user.avatar_url)!), for: .normal)
-//        } else if let user_info = aNews!.user_info {
-//            avatarButton.kf.setImage(with: URL(string: (user_info.avatar_url)!), for: .normal)
-//        }
         if aNews.comment_count == 0 {
             commentLabel.isHidden = true
         } else {
