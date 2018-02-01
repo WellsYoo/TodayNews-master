@@ -125,7 +125,7 @@ extension NewsDetailImageController {
     @IBAction func commentButtonClicked(_ sender: UIButton) {
         let newDetailCommentVC = NewsDetailImageCommentController.loadStoryboard()
         newDetailCommentVC.aNews = aNews
-        newDetailCommentVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - 20)))
+        newDetailCommentVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - (isIPhoneX ? 44 : 20))))
         present(newDetailCommentVC, animated: true, completion: nil)
     }
     
@@ -162,13 +162,12 @@ extension NewsDetailImageController: NewsDetailImageCellDelegate {
                 // 获取当前进度
                 let progress = Float(receivedSize) / Float(totalSize)
                 SVProgressHUD.showProgress(progress)
-                SVProgressHUD.setBackgroundColor(.clear)
-                SVProgressHUD.setForegroundColor(UIColor.white)
             }) { (image, error, imageURL, data) in
                 // 调用系统相册，保存到相册
                 PHPhotoLibrary.shared().performChanges({
                     PHAssetChangeRequest.creationRequestForAsset(from: image!)
                 }, completionHandler: { (success, error) in
+                    SVProgressHUD.dismiss()
                     if success { SVProgressHUD.showSuccess(withStatus: "保存成功!") }
                 })
             }
@@ -196,8 +195,6 @@ extension NewsDetailImageController: UICollectionViewDelegate, UICollectionViewD
         cell.imageView.kf.setImage(with: URL(string: image.url), placeholder: nil, options: nil, progressBlock: { (receivedSize, totalSize) in
             let progress = Float(receivedSize) / Float(totalSize)
             SVProgressHUD.showProgress(progress)
-            SVProgressHUD.setBackgroundColor(UIColor(r: 0, g: 0, b: 0, alpha: 0.5))
-            SVProgressHUD.setForegroundColor(UIColor.white)
         }) { (image, error, cacheType, url) in
             SVProgressHUD.dismiss()
         }
@@ -207,42 +204,35 @@ extension NewsDetailImageController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: NewsDetailImageCell.self), for: indexPath)
+        let cell = collectionView.ym_dequeueReusableCell(indexPath: indexPath) as NewsDetailImageCell
         if hidden {
             UIView.animate(withDuration: 0.3, animations: { // 隐藏
-                cell.isUserInteractionEnabled = false
-                self.closeButton.alpha = 1
-                self.moreButton.alpha = 1
-                self.bottomView.alpha = 1
-                self.avatarButton.alpha = 1
-//                if let userVerified = self.aNews!.user_verified {
-//                    if userVerified {
-                        self.vipImageView.alpha = 1
-//                    }
-//                }
-                self.abstractLabel.alpha = 1
+                // 设置透明度
+                self.setup(cell, alpha: 1.0)
             }, completion: { (_) in
                 self.hidden = false
                 cell.isUserInteractionEnabled = true
             })
         } else {
             UIView.animate(withDuration: 0.3, animations: { // 显示
-                cell.isUserInteractionEnabled = false
-                self.avatarButton.alpha = 0
-                self.closeButton.alpha = 0
-                self.moreButton.alpha = 0
-                self.bottomView.alpha = 0
-//                if let userVerified = self.aNews!.user_verified {
-//                    if userVerified {
-                        self.vipImageView.alpha = 0
-//                    }
-//                }
-                self.abstractLabel.alpha = 0
+                // 设置透明度
+                self.setup(cell, alpha: 0)
             }, completion: { (_) in
                 self.hidden = true
                 cell.isUserInteractionEnabled = true
             })
         }
+    }
+    
+    /// 设置透明度
+    private func setup(_ cell: NewsDetailImageCell, alpha: CGFloat) {
+        cell.isUserInteractionEnabled = false
+        self.closeButton.alpha = alpha
+        self.moreButton.alpha = alpha
+        self.bottomView.alpha = alpha
+        self.avatarButton.alpha = alpha
+        self.vipImageView.alpha = alpha
+        self.abstractLabel.alpha = alpha
     }
     
     // 方式1 ，下面的代码可以和在 cell 中设置的 abstractLabel 对应来写，二者选一种

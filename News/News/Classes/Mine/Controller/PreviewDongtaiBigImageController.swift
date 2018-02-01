@@ -23,6 +23,7 @@ class PreviewDongtaiBigImageController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.configuration()
         view.backgroundColor = .black
         indexLabel.text = "\(selectedIndex + 1)/\(images.count)"
         collectionView.ym_registerCell(cell: DongtaiCollectionViewCell.self)
@@ -39,13 +40,12 @@ class PreviewDongtaiBigImageController: UIViewController {
             // 获取当前进度
             let progress = Float(receivedSize) / Float(totalSize)
             SVProgressHUD.showProgress(progress)
-            SVProgressHUD.setBackgroundColor(.clear)
-            SVProgressHUD.setForegroundColor(UIColor.white)
         }) { (image, error, imageURL, data) in
             // 调用系统相册，保存到相册
             PHPhotoLibrary.shared().performChanges({
                 PHAssetChangeRequest.creationRequestForAsset(from: image!)
             }, completionHandler: { (success, error) in
+                SVProgressHUD.dismiss()
                 if success { SVProgressHUD.showSuccess(withStatus: "保存成功!") }
             })
         }

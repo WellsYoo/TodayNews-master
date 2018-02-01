@@ -140,7 +140,7 @@
                     </view>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <integer key="value" value="5"/>
+                            <real key="value" value="10"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="string" keyPath="_modalPosition" value="BottomCenter"/>
                     </userDefinedRuntimeAttributes>
