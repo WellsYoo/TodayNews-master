@@ -133,7 +133,6 @@
 		94B0E4B01FDFF30E00ABB332 /* HomeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B0E4AF1FDFF30E00ABB332 /* HomeNavigationView.swift */; };
 		94B0E4B21FDFF31B00ABB332 /* HomeNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B0E4B11FDFF31B00ABB332 /* HomeNavigationView.xib */; };
 		94B0E4B91FE0174000ABB332 /* WeitoutiaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B0E4B71FE0174000ABB332 /* WeitoutiaoViewController.swift */; };
-		94B0E4BA1FE0174000ABB332 /* WeitoutiaoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B0E4B81FE0174000ABB332 /* WeitoutiaoViewController.xib */; };
 		94B165211F87B0AF001EA09F /* OfflineDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B165201F87B0AF001EA09F /* OfflineDownloadController.swift */; };
 		94B165241F87B17D001EA09F /* OfflineDownlaodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B165221F87B17D001EA09F /* OfflineDownlaodCell.swift */; };
 		94B165251F87B17D001EA09F /* OfflineDownlaodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B165231F87B17D001EA09F /* OfflineDownlaodCell.xib */; };
@@ -342,7 +341,6 @@
 		94B0E4AF1FDFF30E00ABB332 /* HomeNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationView.swift; sourceTree = "<group>"; };
 		94B0E4B11FDFF31B00ABB332 /* HomeNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeNavigationView.xib; sourceTree = "<group>"; };
 		94B0E4B71FE0174000ABB332 /* WeitoutiaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeitoutiaoViewController.swift; sourceTree = "<group>"; };
-		94B0E4B81FE0174000ABB332 /* WeitoutiaoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeitoutiaoViewController.xib; sourceTree = "<group>"; };
 		94B165201F87B0AF001EA09F /* OfflineDownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDownloadController.swift; sourceTree = "<group>"; };
 		94B165221F87B17D001EA09F /* OfflineDownlaodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDownlaodCell.swift; sourceTree = "<group>"; };
 		94B165231F87B17D001EA09F /* OfflineDownlaodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfflineDownlaodCell.xib; sourceTree = "<group>"; };
@@ -876,7 +874,6 @@
 			isa = PBXGroup;
 			children = (
 				94B0E4B71FE0174000ABB332 /* WeitoutiaoViewController.swift */,
-				94B0E4B81FE0174000ABB332 /* WeitoutiaoViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1060,7 +1057,6 @@
 				94B856451F6CD22200C92E29 /* MyFisrtSectionCell.xib in Resources */,
 				94349D442014907000085ED4 /* RelatedVideoCell.xib in Resources */,
 				946523321FCFD32E00DB46B6 /* UserDetailHeaderView.xib in Resources */,
-				94B0E4BA1FE0174000ABB332 /* WeitoutiaoViewController.xib in Resources */,
 				94569D4E2016DE5800B31777 /* HomeCell.xib in Resources */,
 				942DCF131F6010E1001AD160 /* Assets.xcassets in Resources */,
 				94B9B0F51FD61C98003A3340 /* RelationRecommendView.xib in Resources */,

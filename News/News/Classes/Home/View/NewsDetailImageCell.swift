@@ -2,8 +2,8 @@
 //  NewsDetailImageCell.swift
 //  TodayNews
 //
-//  Created by 杨蒙 on 2017/8/4.
-//  Copyright © 2017年 hrscy. All rights reserved.
+//  Created by 杨蒙 on 2018/2/1.
+//  Copyright © 2018年 hrscy. All rights reserved.
 //
 
 import UIKit

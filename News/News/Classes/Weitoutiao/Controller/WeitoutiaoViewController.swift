@@ -2,20 +2,21 @@
 //  WeitoutiaoViewController.swift
 //  News
 //
-//  Created by 杨蒙 on 2017/12/12.
-//  Copyright © 2017年 hrscy. All rights reserved.
+//  Created by 杨蒙 on 2018/2/2.
+//  Copyright © 2018年 hrscy. All rights reserved.
 //
 
 import UIKit
 import SwiftTheme
 
-class WeitoutiaoViewController: UIViewController {
+class WeitoutiaoViewController: HomeTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // 设置 UI
         setupUI()
-        
+        // 设置刷新控件
+        setupRefresh(with: .weitoutiao)
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,13 +31,17 @@ class WeitoutiaoViewController: UIViewController {
 }
 
 extension WeitoutiaoViewController {
+    
+}
+
+extension WeitoutiaoViewController {
     /// 设置 UI
     private func setupUI() {
-        view.theme_backgroundColor = "colors.cellBackgroundColor"
         // 判断是否是夜间
         MyThemeStyle.setupNavigationBarStyle(self, UserDefaults.standard.bool(forKey: isNight))
-        // 添加 导航栏右侧按钮
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: UserDefaults.standard.bool(forKey: isNight) ? "follow_title_profile_night_18x18_" : "follow_title_profile_18x18_"), style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
+        // 添加 导航栏左右侧按钮
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: UserDefaults.standard.bool(forKey: isNight) ? "follow_title_profile_night_18x18_" : "follow_title_profile_18x18_"), style: .plain, target: self, action: #selector(leftBarButtonItemClicked))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: UserDefaults.standard.bool(forKey: isNight) ? "short_video_publish_icon_camera_night_24x24_" : "short_video_publish_icon_camera_24x24_"), style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
         // 添加通知
         NotificationCenter.default.addObserver(self, selector: #selector(receiveDayOrNightButtonClicked), name: NSNotification.Name(rawValue: "dayOrNightButtonClicked"), object: nil)
     }
@@ -47,6 +52,10 @@ extension WeitoutiaoViewController {
         // 判断是否是夜间
         MyThemeStyle.setupNavigationBarStyle(self, UserDefaults.standard.bool(forKey: isNight))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: selected ? "follow_title_profile_night_18x18_" : "follow_title_profile_18x18_"), style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
+    }
+    /// 导航栏左侧按钮点击
+    @objc private func leftBarButtonItemClicked() {
+        
     }
     /// 导航栏右侧按钮点击
     @objc private func rightBarButtonItemClicked() {

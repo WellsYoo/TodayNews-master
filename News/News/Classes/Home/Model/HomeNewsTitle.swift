@@ -132,4 +132,16 @@ enum NewsTitleCategory: String, HandyJSONEnum {
     case cellphone = "cellphone"
     /// 旅行
     case travel = "news_travel"
+    /// 微头条
+    case weitoutiao = "weitoutiao"
+    /// 小视频 推荐
+    case hotsoonVideo = "hotsoon_video"
+    /// 小视频 颜值/美女
+    case ugcVideoBeauty = "ugc_video_beauty"
+    /// 小视频 随拍
+    case ugcVideoCasual = "ugc_video_casual"
+    /// 小视频 美食
+    case ugcVideoFood = "ugc_video_food"
+    /// 小视频 户外
+    case ugcVideoLife = "ugc_video_life"
 }
