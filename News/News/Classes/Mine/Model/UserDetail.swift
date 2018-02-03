@@ -387,7 +387,7 @@ struct UserDetailDongtai: HandyJSON {
     
     var comments = [DongtaiComment]()
     
-    var repost_params = DongtaiRepostParam()
+    var repost_params = RepostParam()
     
     var thumb_image_list = [ThumbImage]()
     var ugc_cut_image_list = [UGCCutImage]()
@@ -515,7 +515,7 @@ struct DongtaiCommentBase: HandyJSON {
     }
     var content_rich_span: String = ""
     var detail_schema: String = ""
-    var repost_params = DongtaiRepostParam()
+    var repost_params = RepostParam()
     var user = CommentBaseUser()
 }
 
@@ -738,7 +738,7 @@ struct DongtaiOriginThread: HandyJSON {
     var cursor: Int = 0
     var item_type: Int = 0
     var friend_digg_list = [DongtaiFriendDigg]()
-    var repost_params = DongtaiRepostParam()
+    var repost_params = RepostParam()
     var comments = [DongtaiComment]()
     var forward_num: Int = 0
     
@@ -902,7 +902,7 @@ struct URLList: HandyJSON {
 }
 
 struct LargeImage: HandyJSON {
-    
+    var type = ImageType.normal
     var height: CGFloat = 0
     
     var url_list = [URLList]()
@@ -919,7 +919,7 @@ struct LargeImage: HandyJSON {
 }
 
 struct ThumbImage: HandyJSON {
-    
+    var type = ImageType.normal
     var height: CGFloat = 0
     
     var url_list = [URLList]()
@@ -940,7 +940,7 @@ struct ThumbImage: HandyJSON {
 }
 
 struct UGCCutImage: HandyJSON {
-    
+    var type = ImageType.normal
     var height: CGFloat = 0
     
     var url_list = [URLList]()
@@ -1055,7 +1055,7 @@ struct OriginGroupMiddleImage: HandyJSON {
     
 }
 
-struct DongtaiRepostParam: HandyJSON {
+struct RepostParam: HandyJSON {
     
     var opt_id: Int = 0
     

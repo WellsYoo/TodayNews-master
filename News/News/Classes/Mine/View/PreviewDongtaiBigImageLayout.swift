@@ -12,6 +12,7 @@ class PreviewDongtaiBigImageLayout: UICollectionViewFlowLayout {
     
     override func prepare() {
         super.prepare()
+        scrollDirection = .horizontal
         itemSize = CGSize(width: collectionView!.width, height: collectionView!.height)
         minimumLineSpacing = 0
         minimumInteritemSpacing = 0

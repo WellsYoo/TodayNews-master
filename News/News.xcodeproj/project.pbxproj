@@ -153,6 +153,8 @@
 		94B9B0F51FD61C98003A3340 /* RelationRecommendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B9B0F41FD61C98003A3340 /* RelationRecommendView.xib */; };
 		94B9B0F81FD61D6D003A3340 /* RelationRecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B9B0F61FD61D6D003A3340 /* RelationRecommendCell.swift */; };
 		94B9B0F91FD61D6D003A3340 /* RelationRecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B9B0F71FD61D6D003A3340 /* RelationRecommendCell.xib */; };
+		94BAF5FD2025409F0017D977 /* WeitoutiaoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BAF5FB2025409F0017D977 /* WeitoutiaoCell.swift */; };
+		94BAF5FE2025409F0017D977 /* WeitoutiaoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BAF5FC2025409F0017D977 /* WeitoutiaoCell.xib */; };
 		94C29AAD20005B4B000513D7 /* emoji_sort.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94C29AAA20005B4B000513D7 /* emoji_sort.plist */; };
 		94C29AAE20005B4B000513D7 /* emojis.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94C29AAB20005B4B000513D7 /* emojis.plist */; };
 		94C29AAF20005B4B000513D7 /* emoji_mapping.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94C29AAC20005B4B000513D7 /* emoji_mapping.plist */; };
@@ -363,6 +365,8 @@
 		94B9B0F41FD61C98003A3340 /* RelationRecommendView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelationRecommendView.xib; sourceTree = "<group>"; };
 		94B9B0F61FD61D6D003A3340 /* RelationRecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationRecommendCell.swift; sourceTree = "<group>"; };
 		94B9B0F71FD61D6D003A3340 /* RelationRecommendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelationRecommendCell.xib; sourceTree = "<group>"; };
+		94BAF5FB2025409F0017D977 /* WeitoutiaoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeitoutiaoCell.swift; sourceTree = "<group>"; };
+		94BAF5FC2025409F0017D977 /* WeitoutiaoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeitoutiaoCell.xib; sourceTree = "<group>"; };
 		94C29AAA20005B4B000513D7 /* emoji_sort.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = emoji_sort.plist; sourceTree = "<group>"; };
 		94C29AAB20005B4B000513D7 /* emojis.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emojis.plist; sourceTree = "<group>"; };
 		94C29AAC20005B4B000513D7 /* emoji_mapping.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = emoji_mapping.plist; sourceTree = "<group>"; };
@@ -888,6 +892,8 @@
 		94B0E4B61FE0172300ABB332 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				94BAF5FB2025409F0017D977 /* WeitoutiaoCell.swift */,
+				94BAF5FC2025409F0017D977 /* WeitoutiaoCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1028,6 +1034,7 @@
 				94B9B0F91FD61D6D003A3340 /* RelationRecommendCell.xib in Resources */,
 				94B0E46D1FDD3D5200ABB332 /* DongtaiCollectionView.xib in Resources */,
 				945F6F0A1FFDCF0000F4F395 /* UserDiggCell.xib in Resources */,
+				94BAF5FE2025409F0017D977 /* WeitoutiaoCell.xib in Resources */,
 				94C6811D1FEE7F6300C3A5AD /* DongtaiCommentCell.xib in Resources */,
 				94569D622017405E00B31777 /* HomeImageTableCell.xib in Resources */,
 				942DCF161F6010E1001AD160 /* LaunchScreen.storyboard in Resources */,
@@ -1287,6 +1294,7 @@
 				94B0E4A21FDF582300ABB332 /* UIKit+Extension.swift in Sources */,
 				94C681131FEE4A4900C3A5AD /* DongtaiNavigationBar.swift in Sources */,
 				94B0E44B1FDCDD7400ABB332 /* Calculate.swift in Sources */,
+				94BAF5FD2025409F0017D977 /* WeitoutiaoCell.swift in Sources */,
 				944133842022958900CE4DA9 /* NewsDetailImageCell.swift in Sources */,
 				94349D3A20148E1300085ED4 /* RelatedVideoHeaderView.swift in Sources */,
 				94904D0E1FE73E1A00051528 /* Emoji.swift in Sources */,

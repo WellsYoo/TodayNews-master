@@ -12,6 +12,23 @@ import HandyJSON
 /// 新闻数据模型（首页新闻数据，视频新闻数据，小视频，微头条）
 struct NewsModel: HandyJSON {
     
+    var weitoutiaoHeight: CGFloat {
+        // 50 + contentH + 5 + middleViewH + 65
+        var height: CGFloat = 120
+        height += contentH
+        height += collectionViewH
+        return height
+    }
+    
+    /// collectionView 高度
+    var collectionViewH: CGFloat {
+        return Calculate.collectionViewHeight(thumb_image_list.count)
+    }
+    /// collectionView 宽度
+    var collectionViewW: CGFloat {
+        return Calculate.collectionViewWidth(thumb_image_list.count)
+    }
+    
     var imageCellHeight: CGFloat {
         // imageHeight + titleH! + 10 + 40
         let imageHeight = screenWidth * 9.0 / 16.0 + titleH
@@ -42,7 +59,6 @@ struct NewsModel: HandyJSON {
         return height
     }
     
-    
     var show_more: String = ""
     
     let emojiManager = EmojiManager()
@@ -58,7 +74,8 @@ struct NewsModel: HandyJSON {
     var tip: Int = 0
     var publish_time: TimeInterval = 0
     var publishTime: String { return publish_time.convertString() }
-    
+    var create_time: TimeInterval = 0
+    var createTime: String { return create_time.convertString() }
     var source_icon_style: Int = 0  // 1,4,6 右侧视频
     var tag_id: Int = 0
     var media_info = MediaInfo()
@@ -79,6 +96,7 @@ struct NewsModel: HandyJSON {
     var stick_label: String = ""
     var show_portrait_article: Bool = false
     var action_list = [Action]()
+    var user_digg = false
     var digg_count: Int = 0
     var diggCount: String { return digg_count.convertString() }
     var has_m3u8_video: Bool = false
@@ -144,6 +162,7 @@ struct NewsModel: HandyJSON {
     var has_mp4_video: Int = 0
     var image_list = [ImageList]()
     var large_image_list = [LargeImage]()
+    var thumb_image_list = [ThumbImage]()
     
     var middle_image = MiddleImage()
     var video_play_info = VideoPlayInfo()
@@ -176,6 +195,12 @@ struct NewsModel: HandyJSON {
     
     /// 他们也在用
     var user_cards = [UserCard]()
+    
+    var position = DongtaiPosition()
+    
+    var repost_params = RepostParam()
+    // 来自。。。
+    var brand_info = ""
 }
 
 enum CellType: Int, HandyJSONEnum {
@@ -434,7 +459,7 @@ struct VideoURL: HandyJSON {
 }
 
 struct MiddleImage: HandyJSON {
-    
+    var type = ImageType.normal
     var height: CGFloat = 0
     
     var url_list = [URLList]()
@@ -452,7 +477,14 @@ struct MiddleImage: HandyJSON {
     
 }
 
+/// 图片的类型
+enum ImageType: Int, HandyJSONEnum {
+    case normal = 1     // 一般图片
+    case gif = 2        // gif 图
+}
+
 struct ImageList: HandyJSON {
+    var type = ImageType.normal
     
     var height: CGFloat = 0
     
@@ -477,7 +509,9 @@ struct NewsUserInfo: HandyJSON {
     var user_verified: Bool = false
     var verified_content: String = ""
     var user_id: Int = 0
+    var id: Int = 0
     var description: String = ""
+    var desc: String = ""
     var avatar_url: String = ""
     var follower_count: Int = 0
     var followerCount: String { return follower_count.convertString() }
@@ -489,6 +523,12 @@ struct NewsUserInfo: HandyJSON {
     var user_auth_info: String!
     var media_id: Int = 0
     var screen_name = ""
+    var is_followed: Bool = false
+    var is_following: Bool = false // 是否正在关注
+    var is_blocking: Bool = false
+    var is_blocked: Bool = false
+    var is_friend: Bool = false
+    var medals = [String]() // hot_post (热门内容)
     
 }
 

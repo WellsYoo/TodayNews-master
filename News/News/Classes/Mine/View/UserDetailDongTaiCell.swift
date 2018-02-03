@@ -20,7 +20,6 @@ class UserDetailDongTaiCell: UITableViewCell, RegisterCellFromNib {
     
     var dongtai = UserDetailDongtai() {
         didSet {
-            theme_backgroundColor = "colors.cellBackgroundColor"
             avatarImageView.kf.setImage(with: URL(string: dongtai.user.avatar_url))
             nameLabel.text = dongtai.user.screen_name
             modifyTimeLabel.text = "· " + dongtai.createTime

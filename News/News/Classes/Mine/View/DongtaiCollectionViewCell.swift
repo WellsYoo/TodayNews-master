@@ -21,6 +21,7 @@ class DongtaiCollectionViewCell: UICollectionViewCell, RegisterCellFromNib {
     var thumbImage = ThumbImage() {
         didSet {
             thumbImageView.kf.setImage(with: URL(string: thumbImage.urlString)!)
+            gifLabel.isHidden = !(thumbImage.type == .gif)
         }
     }
     
@@ -40,6 +41,8 @@ class DongtaiCollectionViewCell: UICollectionViewCell, RegisterCellFromNib {
     @IBOutlet weak var thumbImageView: UIImageView!
     
     @IBOutlet weak var iconButton: UIButton!
+    
+    @IBOutlet weak var gifLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

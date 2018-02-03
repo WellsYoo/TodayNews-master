@@ -9,10 +9,14 @@
 import UIKit
 
 class DongtaiCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource, NibLoadable {
+    
+    var didSelect: ((_ selectedIndex: Int)->())?
     /// 是否发布了小视频
     var isPostSmallVideo = false
     /// 是否是动态详情
     var isDongtaiDetail = false
+    
+    var isWeitoutiao = false
     
     var thumbImages = [ThumbImage]() {
         didSet {
@@ -27,8 +31,8 @@ class DongtaiCollectionView: UICollectionView, UICollectionViewDelegateFlowLayou
         delegate = self
         dataSource = self
         backgroundColor = .clear
-        ym_registerCell(cell: DongtaiCollectionViewCell.self)
         collectionViewLayout = DongtaiCollectionViewFlowLayout()
+        ym_registerCell(cell: DongtaiCollectionViewCell.self)
         isScrollEnabled = false
     }
     
@@ -48,6 +52,7 @@ class DongtaiCollectionView: UICollectionView, UICollectionViewDelegateFlowLayou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if isWeitoutiao { didSelect?(indexPath.item); return }
         let previewBigImageVC = PreviewDongtaiBigImageController()
         previewBigImageVC.images = largeImages
         previewBigImageVC.selectedIndex = indexPath.item

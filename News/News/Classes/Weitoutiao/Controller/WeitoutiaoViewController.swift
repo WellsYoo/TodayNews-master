@@ -8,8 +8,12 @@
 
 import UIKit
 import SwiftTheme
+import RxSwift
+import RxCocoa
 
 class WeitoutiaoViewController: HomeTableViewController {
+    
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,34 @@ class WeitoutiaoViewController: HomeTableViewController {
 
 extension WeitoutiaoViewController {
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let aNews = news[indexPath.row]
+        return aNews.weitoutiaoHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return news.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as WeitoutiaoCell
+        cell.aNews = news[indexPath.row]
+        cell.coverButton.rx.controlEvent(.touchUpInside)
+            .subscribe(onNext: { [weak self] in
+                let userDetailVC = UserDetailViewController2()
+                userDetailVC.userId = cell.aNews.user.user_id
+                self?.navigationController?.pushViewController(userDetailVC, animated: true)
+            })
+            .disposed(by: disposeBag)
+        // 点击了那张图片
+        cell.didSelectCell = { [weak self] (selectedIndex) in
+            let previewBigImageVC = PreviewDongtaiBigImageController()
+            previewBigImageVC.images = cell.aNews.large_image_list
+            previewBigImageVC.selectedIndex = selectedIndex
+            self!.present(previewBigImageVC, animated: false, completion: nil)
+        }
+        return cell
+    }
 }
 
 extension WeitoutiaoViewController {
@@ -44,6 +76,7 @@ extension WeitoutiaoViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: UserDefaults.standard.bool(forKey: isNight) ? "short_video_publish_icon_camera_night_24x24_" : "short_video_publish_icon_camera_24x24_"), style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
         // 添加通知
         NotificationCenter.default.addObserver(self, selector: #selector(receiveDayOrNightButtonClicked), name: NSNotification.Name(rawValue: "dayOrNightButtonClicked"), object: nil)
+        tableView.ym_registerCell(cell: WeitoutiaoCell.self)
     }
     
     /// 接收到了按钮点击的通知
