@@ -50,22 +50,16 @@ class UserDetailDongTaiCell: UITableViewCell, RegisterCellFromNib {
             contentLabelHeight.constant = dongtai.contentH
             allContentLabel.isHidden = dongtai.attributedCntentHeight == 110 ? false : true
             /// 防止因为 cell 重用机制，导致数据错乱现象出现
-            if middleView.contains(postVideoOrArticleView) {
-                postVideoOrArticleView.removeFromSuperview()
-            }
-            if middleView.contains(collectionView) {
-                collectionView.removeFromSuperview()
-            }
-            if middleView.contains(originThreadView) {
-                originThreadView.removeFromSuperview()
-            }
+            if middleView.contains(postVideoOrArticleView) { postVideoOrArticleView.removeFromSuperview() }
+            if middleView.contains(collectionView) { collectionView.removeFromSuperview() }
+            if middleView.contains(originThreadView) { originThreadView.removeFromSuperview() }
             
             switch dongtai.item_type {
             case .postVideoOrArticle, .postVideo, .answerQuestion, .proposeQuestion, .forwardArticle, .postContentAndVideo: // 发布了文章或者视频
                 middleView.addSubview(postVideoOrArticleView)
                 postVideoOrArticleView.frame = CGRect(x: 15, y: 0, width: screenWidth - 30, height: middleView.height)
-                if dongtai.group.show_origin { postVideoOrArticleView.group = dongtai.group }
-                else if dongtai.origin_group.show_origin { postVideoOrArticleView.group = dongtai.origin_group }
+                if dongtai.group.group_id != 0 { postVideoOrArticleView.group = dongtai.group }
+                else if dongtai.origin_group.group_id != 0  { postVideoOrArticleView.group = dongtai.origin_group }
             case .postContent, .postSmallVideo: // 发布了文字内容
                 middleView.addSubview(collectionView)
                 collectionView.frame = CGRect(x: 15, y: 0, width: dongtai.collectionViewW, height: dongtai.collectionViewH)
@@ -82,22 +76,11 @@ class UserDetailDongTaiCell: UITableViewCell, RegisterCellFromNib {
     }
     
     /// 懒加载 评论或引用
-    private lazy var originThreadView: DongtaiOriginThreadView = {
-        let originThreadView = DongtaiOriginThreadView.loadViewFromNib()
-        return originThreadView
-    }()
-    
+    private lazy var originThreadView = DongtaiOriginThreadView.loadViewFromNib()
     /// 懒加载 发布视频或者文章
-    private lazy var postVideoOrArticleView: PostVideoOrArticleView = {
-        let postVideoOrArticleView = PostVideoOrArticleView.loadViewFromNib()
-        return postVideoOrArticleView
-    }()
-    
+    private lazy var postVideoOrArticleView = PostVideoOrArticleView.loadViewFromNib()
     /// 懒加载 collectionView
-    private lazy var collectionView: DongtaiCollectionView = {
-        let collectionView = DongtaiCollectionView.loadViewFromNib()
-        return collectionView
-    }()
+    private lazy var collectionView = DongtaiCollectionView.loadViewFromNib()
     
     @IBOutlet weak var separatorView: UIView!
     /// 头像

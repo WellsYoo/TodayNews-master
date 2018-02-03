@@ -75,6 +75,7 @@ extension HomeViewController {
                 case .video:            // 视频
                     let videoTableVC = VideoTableViewController()
                     videoTableVC.newsTitle = newsTitle
+                    videoTableVC.setupRefresh(with: .video)
                     self.addChildViewController(videoTableVC)
                 case .essayJoke:        // 段子
                     let essayJokeVC = HomeJokeViewController()

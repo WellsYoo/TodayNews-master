@@ -10,9 +10,11 @@
 
 import UIKit
 import SVProgressHUD
+import BMPlayer
 
 class HomeTableViewController: UITableViewController {
-    
+    /// 播放器
+    lazy var player: BMPlayer = BMPlayer(customControlView: VideoPlayerCustomView())
     /// 标题
     var newsTitle = HomeNewsTitle()
     /// 新闻数据
@@ -24,6 +26,7 @@ class HomeTableViewController: UITableViewController {
         super.viewDidLoad()
         SVProgressHUD.configuration()
         tableView.tableFooterView = UIView()
+        tableView.theme_backgroundColor = "colors.tableViewBackgroundColor"
         tableView.theme_separatorColor = "colors.separatorViewColor"
     }
     
@@ -34,6 +37,7 @@ class HomeTableViewController: UITableViewController {
             // 获取视频的新闻列表数据
             NetworkTool.loadApiNewsFeeds(category: category, ttFrom: .pull, {
                 if self!.tableView.mj_header.isRefreshing { self!.tableView.mj_header.endRefreshing() }
+                self!.player.removeFromSuperview()
                 self!.maxBehotTime = $0
                 self!.news = $1
                 self!.tableView.reloadData()

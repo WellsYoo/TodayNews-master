@@ -15,8 +15,6 @@ import NVActivityIndicatorView
 import SnapKit
 
 class VideoTableViewController: HomeTableViewController {
-    /// 播放器
-    private lazy var player: BMPlayer = BMPlayer(customControlView: VideoPlayerCustomView())
     
     private lazy var disposeBag = DisposeBag()
     /// 上一次播放的 cell

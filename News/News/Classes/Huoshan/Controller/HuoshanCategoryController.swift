@@ -23,6 +23,7 @@ class HuoshanCategoryController: UIViewController {
         super.viewDidLoad()
         SVProgressHUD.configuration()
         collectionView.collectionViewLayout = HuoshanLayout()
+        collectionView.theme_backgroundColor = "colors.tableViewBackgroundColor"
         collectionView.ym_registerCell(cell: HuoshanCell.self)
         // 添加刷新控件
         setRefresh()
