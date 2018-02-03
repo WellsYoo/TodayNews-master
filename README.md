@@ -4,6 +4,16 @@
 
 # 最新代码已经上传，还有部分功能未完成，后续会继续更新...
 
+![](asset/1.gif)
+![](asset/2.gif)
+![](asset/3.gif)
+![](asset/4.gif)
+![](asset/5.gif)
+![](asset/6.gif)
+![](asset/7.gif)
+![](asset/8.gif)
+![](asset/9.gif)
+
 # 下方二维码是视频链接地址。
 
 ![](asset/video.png)
