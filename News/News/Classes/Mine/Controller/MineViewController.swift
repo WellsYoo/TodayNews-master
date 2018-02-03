@@ -41,6 +41,7 @@ class MineViewController: UITableViewController {
         NetworkTool.loadMyCellData {
             self.sections = $0
             self.tableView.reloadData()
+            // 我的关注数据
             NetworkTool.loadMyConcern(completionHandler: {
                 self.concerns = $0
                 self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
@@ -49,8 +50,7 @@ class MineViewController: UITableViewController {
         /// 更多按钮点击
         headerView.moreLoginButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                let storyboard = UIStoryboard(name: String(describing: MoreLoginViewController.self), bundle: nil)
-                let moreLoginVC = storyboard.instantiateViewController(withIdentifier: String(describing: MoreLoginViewController.self)) as! MoreLoginViewController
+                let moreLoginVC = MoreLoginViewController.loadStoryboard()
                 moreLoginVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - (isIPhoneX ? 44 : 20))))
                 self!.present(moreLoginVC, animated: true, completion: nil)
             })

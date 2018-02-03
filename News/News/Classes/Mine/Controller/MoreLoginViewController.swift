@@ -9,7 +9,7 @@
 import UIKit
 import IBAnimatable
 
-class MoreLoginViewController: AnimatableModalViewController {
+class MoreLoginViewController: AnimatableModalViewController, StoryboardLoadable {
     
     @IBOutlet weak var loginCloseButton: UIButton!
     /// 顶部标题
