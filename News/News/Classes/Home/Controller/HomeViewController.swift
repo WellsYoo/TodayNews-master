@@ -106,12 +106,16 @@ extension HomeViewController {
     /// 点击事件
     private func clickAction() {
         // 搜索按钮点击
-        navigationBar.didSelectedSearchButton = {
+        navigationBar.didSelectSearchButton = {
             
         }
         // 头像按钮点击
-        navigationBar.didSelectedAvatarButton = { [weak self] in
+        navigationBar.didSelectAvatarButton = { [weak self] in
             self!.navigationController?.pushViewController(MineViewController(), animated: true)
+        }
+        // 相机按钮点击
+        navigationBar.didSelectCameraButton = {
+            
         }
         /// 添加频道点击
         addChannelButton.rx.controlEvent(.touchUpInside)

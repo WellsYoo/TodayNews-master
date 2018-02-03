@@ -19,7 +19,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EeF-fb-9Bv">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feK-0T-7Iy" customClass="AnimatableButton" customModule="IBAnimatable">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feK-0T-7Iy">
                             <rect key="frame" x="5" y="7" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="UGS-Qe-WJb"/>
@@ -31,7 +31,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNQ-8s-CLP" customClass="AnimatableButton" customModule="IBAnimatable">
-                            <rect key="frame" x="50" y="7" width="320" height="30"/>
+                            <rect key="frame" x="45" y="7" width="285" height="30"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="olv-eW-Fds"/>
@@ -51,15 +51,29 @@
                                 <action selector="searchButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="k7B-Li-OpN"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Gk-xZ-yby">
+                            <rect key="frame" x="340" y="7" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="qqo-Yo-1Nc"/>
+                                <constraint firstAttribute="width" constant="30" id="yxG-dL-8sy"/>
+                            </constraints>
+                            <state key="normal" image="home_camera"/>
+                            <connections>
+                                <action selector="avatarButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="5lV-qs-6cj"/>
+                                <action selector="cameraButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="pga-nH-A9u"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="yNQ-8s-CLP" secondAttribute="trailing" constant="5" id="9Ms-Qr-ROi"/>
+                        <constraint firstAttribute="trailing" secondItem="0Gk-xZ-yby" secondAttribute="trailing" constant="5" id="AAB-10-Obs"/>
+                        <constraint firstItem="0Gk-xZ-yby" firstAttribute="leading" secondItem="yNQ-8s-CLP" secondAttribute="trailing" constant="10" id="ADZ-H5-q0r"/>
                         <constraint firstItem="yNQ-8s-CLP" firstAttribute="centerY" secondItem="EeF-fb-9Bv" secondAttribute="centerY" id="Fth-SS-Egk"/>
                         <constraint firstItem="feK-0T-7Iy" firstAttribute="leading" secondItem="EeF-fb-9Bv" secondAttribute="leading" constant="5" id="MO7-pa-T80"/>
                         <constraint firstItem="feK-0T-7Iy" firstAttribute="centerY" secondItem="EeF-fb-9Bv" secondAttribute="centerY" id="bpr-Ug-oZg"/>
+                        <constraint firstItem="0Gk-xZ-yby" firstAttribute="centerY" secondItem="EeF-fb-9Bv" secondAttribute="centerY" id="jAI-L1-YJb"/>
                         <constraint firstAttribute="height" constant="44" id="jsy-6G-oEm"/>
-                        <constraint firstItem="yNQ-8s-CLP" firstAttribute="leading" secondItem="feK-0T-7Iy" secondAttribute="trailing" constant="15" id="m6Y-YE-5eu"/>
+                        <constraint firstItem="yNQ-8s-CLP" firstAttribute="leading" secondItem="feK-0T-7Iy" secondAttribute="trailing" constant="10" id="m6Y-YE-5eu"/>
                         <constraint firstItem="feK-0T-7Iy" firstAttribute="centerY" secondItem="EeF-fb-9Bv" secondAttribute="centerY" id="ynP-lL-hd1"/>
                     </constraints>
                 </view>
@@ -74,12 +88,14 @@
             <viewLayoutGuide key="safeArea" id="9YB-44-f3Y"/>
             <connections>
                 <outlet property="avatarButton" destination="feK-0T-7Iy" id="h4S-Gd-SIs"/>
+                <outlet property="cameraButton" destination="0Gk-xZ-yby" id="t9g-XS-qru"/>
                 <outlet property="searchButton" destination="yNQ-8s-CLP" id="nNs-g7-YUm"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="235"/>
         </view>
     </objects>
     <resources>
+        <image name="home_camera" width="38" height="38"/>
         <image name="home_no_login_head" width="38" height="38"/>
         <image name="search_small_16x16_" width="16" height="16"/>
     </resources>

@@ -144,11 +144,9 @@ extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewD
         guard !isEdit || sourceIndexPath.section == 1 else { return }
         /// 需要移动的 cell
         let tempArray: NSMutableArray = homeTitles as! NSMutableArray
-        
         tempArray.exchangeObject(at: sourceIndexPath.item, withObjectAt: destinationIndexPath.item)
         collectionView.reloadData()
     }
-    
     /// 每个 cell 之间的间距
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)

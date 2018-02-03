@@ -13,17 +13,22 @@ class HomeNavigationView: UIView, NibLoadable {
 
     @IBOutlet weak var searchButton: AnimatableButton!
     
-    @IBOutlet weak var avatarButton: AnimatableButton!
+    @IBOutlet weak var avatarButton: UIButton!
+    @IBOutlet weak var cameraButton: UIButton!
     /// 搜索按钮点击
-    var didSelectedSearchButton: (()->())?
+    var didSelectSearchButton: (()->())?
     /// 头像按钮点击
-    var didSelectedAvatarButton: (()->())?
+    var didSelectAvatarButton: (()->())?
+    /// 相机按钮点击
+    var didSelectCameraButton: (()->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         searchButton.theme_backgroundColor = "colors.cellBackgroundColor"
         searchButton.theme_setTitleColor("colors.grayColor150", forState: .normal)
         searchButton.setImage(UIImage(named: "search_small_16x16_"), for: [.normal, .highlighted])
+        cameraButton.theme_setImage("images.home_camera", forState: .normal)
+        cameraButton.theme_setImage("images.home_camera", forState: .highlighted)
         avatarButton.theme_setImage("images.home_no_login_head", forState: .normal)
         avatarButton.theme_setImage("images.home_no_login_head", forState: .highlighted)
         // 首页顶部导航栏搜索推荐标题内容
@@ -44,14 +49,18 @@ class HomeNavigationView: UIView, NibLoadable {
         }
     }
     
+    /// 相机按钮点击
+    @IBAction func cameraButtonClicked(_ sender: UIButton) {
+        didSelectCameraButton?()
+    }
     /// 头像按钮点击
-    @IBAction func avatarButtonClicked(_ sender: AnimatableButton) {
-        didSelectedAvatarButton?()
+    @IBAction func avatarButtonClicked(_ sender: UIButton) {
+        didSelectAvatarButton?()
     }
     
     /// 搜索按钮点击
     @IBAction func searchButtonClicked(_ sender: AnimatableButton) {
-        didSelectedSearchButton?()
+        didSelectSearchButton?()
     }
     
 }

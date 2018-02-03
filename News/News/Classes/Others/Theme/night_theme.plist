@@ -4,6 +4,8 @@
 <dict>
 	<key>images</key>
 	<dict>
+		<key>home_camera</key>
+		<string>home_camera_night</string>
 		<key>like_old_feed_press_24x24_</key>
 		<string>like_old_feed_press_night_24x24_</string>
 		<key>like_old_feed_24x24_</key>
