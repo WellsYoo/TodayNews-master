@@ -14,6 +14,12 @@
 ![](asset/8.gif)
 ![](asset/9.gif)
 
+# 项目环境
+
+- Xcode 9.2
+- Swift 4
+- iOS 11
+
 # 下方二维码是视频链接地址。
 
 ![](asset/video.png)
