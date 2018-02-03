@@ -13,8 +13,8 @@ import RxCocoa
 
 class HomeViewController: UIViewController {
     /// 标题和内容
-    var pageTitleView: SGPageTitleView?
-    var pageContentView: SGPageContentView?
+    private var pageTitleView: SGPageTitleView?
+    private var pageContentView: SGPageContentView?
     /// 自定义导航栏
     private lazy var navigationBar = HomeNavigationView.loadViewFromNib()
     

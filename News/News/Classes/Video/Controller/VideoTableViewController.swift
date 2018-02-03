@@ -24,7 +24,7 @@ class VideoTableViewController: HomeTableViewController {
     /// 视频真实地址
     private var realVideo = RealVideo()
     /// 当前播放的时间
-    var currentTime: TimeInterval = 0
+    private var currentTime: TimeInterval = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
