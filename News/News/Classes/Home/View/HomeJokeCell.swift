@@ -1,6 +1,6 @@
 //
 //  HomeJokeCell.swift
-//  TodayNews
+//  News
 //
 //  Created by 杨蒙 on 2018/1/23.
 //  Copyright © 2018年 hrscy. All rights reserved.

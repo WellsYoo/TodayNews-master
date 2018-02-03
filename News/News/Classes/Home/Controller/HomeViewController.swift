@@ -15,8 +15,6 @@ class HomeViewController: UIViewController {
     /// 标题和内容
     var pageTitleView: SGPageTitleView?
     var pageContentView: SGPageContentView?
-    // 标题数据表
-    private let newsTitleTable = NewsTitleTable()
     /// 自定义导航栏
     private lazy var navigationBar = HomeNavigationView.loadViewFromNib()
     
@@ -62,7 +60,7 @@ extension HomeViewController {
         // 首页顶部新闻标题的数据
         NetworkTool.loadHomeNewsTitleData {
             // 向数据库中插入数据
-            self.newsTitleTable.insert($0)
+            NewsTitleTable().insert($0)
             let configuration = SGPageTitleViewConfigure()
             configuration.titleColor = .black
             configuration.titleSelectedColor = .globalRedColor()
@@ -117,8 +115,10 @@ extension HomeViewController {
         }
         /// 添加频道点击
         addChannelButton.rx.controlEvent(.touchUpInside)
-            .subscribe(onNext: { (_) in
-                
+            .subscribe(onNext: { [weak self] in
+                let homeAddCategoryVC = HomeAddCategoryController.loadStoryboard()
+                homeAddCategoryVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - (isIPhoneX ? 44 : 20))))
+                self!.present(homeAddCategoryVC, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }

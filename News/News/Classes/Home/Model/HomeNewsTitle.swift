@@ -132,6 +132,30 @@ enum NewsTitleCategory: String, HandyJSONEnum {
     case cellphone = "cellphone"
     /// 旅行
     case travel = "news_travel"
+    /// 问答
+    case questionAndAnswer = "question_and_answer"
+    /// 小说
+    case novelChannel = "novel_channel"
+    /// 直播
+    case live_talk = "live_talk"
+    /// 中国新唱将
+    case chinaSinger = "中国新唱将"
+    /// 火山直播
+    case hotsoon = "hotsoon"
+    /// 互联网法院
+    case highCourt = "high_court"
+    /// 快乐男声
+    case happyBoy = "快乐男声"
+    /// 传媒
+    case media = "media"
+    /// 百万英雄
+    case millionHero = "million_hero"
+    /// 彩票
+    case lottery = "彩票"
+    /// 中国好表演
+    case chinaAct = "中国好表演"
+    /// 春节
+    case springFestival = "spring_festival"
     /// 微头条
     case weitoutiao = "weitoutiao"
     /// 小视频 推荐

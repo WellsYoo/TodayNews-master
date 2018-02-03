@@ -14,6 +14,8 @@ protocol NetworkToolProtocol {
     // MARK: - --------------------------------- 首页 home  ---------------------------------
     // MARK: 首页顶部新闻标题的数据
     static func loadHomeNewsTitleData(completionHandler: @escaping (_ newsTitles: [HomeNewsTitle]) -> ())
+    // MARK: 点击首页加号按钮，获取频道推荐数据
+    static func loadHomeCategoryRecommend(completionHandler:@escaping (_ titles: [HomeNewsTitle]) -> ())
     // MARK: 首页顶部导航栏搜索推荐标题内容
     static func loadHomeSearchSuggestInfo(_ completionHandler: @escaping (_ searchSuggest: String) -> ())
     // MARK: 获取首页、视频、小视频的新闻列表数据
@@ -24,6 +26,7 @@ protocol NetworkToolProtocol {
     static func loadCommenNewsDetail(articleURL: String, completionHandler:@escaping (_ htmlString: String, _ images: [NewsDetailImage], _ abstracts: [String])->())
     // MARK: 获取图片新闻详情数据
     static func loadNewsDetail(articleURL: String, completionHandler:@escaping (_ images: [NewsDetailImage], _ abstracts: [String])->())
+    
     // MARK: - --------------------------------- 视频 video  ---------------------------------
     // MARK: 视频顶部新闻标题的数据
     static func loadVideoApiCategoies(completionHandler: @escaping (_ newsTitles: [HomeNewsTitle]) -> ())
@@ -31,6 +34,7 @@ protocol NetworkToolProtocol {
     static func parseVideoRealURL(video_id: String, completionHandler: @escaping (_ realVideo: RealVideo) -> ())
     // MARK: 视频详情数据
     static func loadArticleInformation(from: String, itemId: Int, groupId: Int, completionHandler: @escaping (_ videoDetail: VideoDetail) -> ())
+    
     // MARK: - --------------------------------- 我的 mine  ---------------------------------
     // MARK: 我的界面 cell 的数据
     static func loadMyCellData(completionHandler: @escaping (_ sections: [[MyCellModel]]) -> ())
@@ -64,6 +68,7 @@ protocol NetworkToolProtocol {
     static func loadProposeQuestionBrow(qid: Int, enterForm: WendaEnterFrom, completionHandler: @escaping (_ wenda: Wenda) -> ())
     // MARK: 获取问答的列表数据（提出了问题），加载更多
     static func loadMoreProposeQuestionBrow(qid: Int, offset: Int, enterForm: WendaEnterFrom, completionHandler: @escaping (_ wenda: Wenda) -> ())
+    
     // MARK: - --------------------------------- 小视频  ---------------------------------
     // MARK: 小视频导航栏标题的数据
     static func loadSmallVideoCategories(completionHandler: @escaping (_ newsTitles: [HomeNewsTitle]) -> ())
@@ -91,6 +96,27 @@ extension NetworkToolProtocol {
                         titles += datas.flatMap({ HomeNewsTitle.deserialize(from: $0 as? Dictionary) })
                         completionHandler(titles)
                     }
+                }
+            }
+        }
+    }
+    
+    /// 点击首页加号按钮，获取频道推荐数据
+    /// - parameter completionHandler: 返回标题数据
+    /// - parameter titles: 标题数据
+    static func loadHomeCategoryRecommend(completionHandler:@escaping (_ titles: [HomeNewsTitle]) -> ()) {
+        let url = BASE_URL + "/article/category/get_extra/v1/?"
+        let params = ["device_id": device_id,
+                      "iid": iid]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            guard response.result.isSuccess else { return }
+            if let value = response.result.value {
+                let json = JSON(value)
+                let dataDict = json["data"].dictionary
+                if let data = dataDict!["data"]!.arrayObject {
+                    completionHandler(data.flatMap({
+                        HomeNewsTitle.deserialize(from: ($0 as! [String: Any]))
+                    }))
                 }
             }
         }

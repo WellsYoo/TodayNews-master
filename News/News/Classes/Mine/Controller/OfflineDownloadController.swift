@@ -10,9 +10,7 @@ import UIKit
 
 class OfflineDownloadController: UITableViewController {
     // 标题数组
-    fileprivate var titles = [HomeNewsTitle]()
-    // 标题数据表
-    fileprivate let newsTitleTable = NewsTitleTable()
+    private var titles = [HomeNewsTitle]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,7 +27,7 @@ class OfflineDownloadController: UITableViewController {
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.theme_backgroundColor = "colors.tableViewBackgroundColor"
         // 从数据库中取出左右数据，赋值给 标题数组 titles
-        titles = newsTitleTable.selectAll()
+        titles = NewsTitleTable().selectAll()
     }
     
     override func didReceiveMemoryWarning() {
@@ -71,7 +69,7 @@ extension OfflineDownloadController {
         // 替换数组中的数据
         titles[indexPath.row] = homeNewsTitle
         // 更新数据库中的数据
-        newsTitleTable.update(homeNewsTitle)
+        NewsTitleTable().update(homeNewsTitle)
         tableView.reloadRows(at: [indexPath], with: .none)
         //        tableView.deselectRow(at: indexPath, animated: true)
     }

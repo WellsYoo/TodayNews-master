@@ -197,11 +197,8 @@ extension RegisterCellFromNib {
 extension UITableView {
     /// 注册 cell 的方法
     func ym_registerCell<T: UITableViewCell>(cell: T.Type) where T: RegisterCellFromNib {
-        if let nib = T.nib {
-            register(nib, forCellReuseIdentifier: T.identifier)
-        } else {
-            register(cell, forCellReuseIdentifier: T.identifier)
-        }
+        if let nib = T.nib { register(nib, forCellReuseIdentifier: T.identifier) }
+        else { register(cell, forCellReuseIdentifier: T.identifier) }
     }
     
     /// 从缓存池池出队已经存在的 cell
@@ -213,16 +210,28 @@ extension UITableView {
 extension UICollectionView {
     /// 注册 cell 的方法
     func ym_registerCell<T: UICollectionViewCell>(cell: T.Type) where T: RegisterCellFromNib {
-        if let nib = T.nib {
-            register(nib, forCellWithReuseIdentifier: T.identifier)
-        } else {
-            register(cell, forCellWithReuseIdentifier: T.identifier)
-        }
+        if let nib = T.nib { register(nib, forCellWithReuseIdentifier: T.identifier) }
+        else { register(cell, forCellWithReuseIdentifier: T.identifier) }
     }
     
     /// 从缓存池池出队已经存在的 cell
     func ym_dequeueReusableCell<T: UICollectionViewCell>(indexPath: IndexPath) -> T where T: RegisterCellFromNib {
         return dequeueReusableCell(withReuseIdentifier: T.identifier, for: indexPath) as! T
+    }
+    
+    /// 注册头部
+    func ym_registerSupplementaryHeaderView<T: UICollectionReusableView>(reusableView: T.Type) where T: RegisterCellFromNib {
+        // T 遵守了 RegisterCellOrNib 协议，所以通过 T 就能取出 identifier 这个属性
+        if let nib = T.nib {
+            register(nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: T.identifier)
+        } else {
+            register(reusableView, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: T.identifier)
+        }
+    }
+    
+    /// 获取可重用的头部
+    func ym_dequeueReusableSupplementaryHeaderView<T: UICollectionReusableView>(indexPath: IndexPath) -> T where T: RegisterCellFromNib {
+        return dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: T.identifier, for: indexPath) as! T
     }
 }
 
