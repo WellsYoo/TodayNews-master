@@ -17,7 +17,6 @@ target 'News' do
   pod 'SVProgressHUD'
   pod 'MJRefresh'
   pod 'SGPagingView'
-  pod 'SGPagingView'
   pod 'BMPlayer'
   pod 'FDFullscreenPopGesture'
 
