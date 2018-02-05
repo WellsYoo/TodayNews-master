@@ -75,6 +75,11 @@ extension HomeRecommendController {
             wendaVC.qid = aNews.item_id
             wendaVC.enterForm = .clickHeadline
             navigationController?.pushViewController(wendaVC, animated: true)
+        } else if aNews.has_video {
+            // 跳转到视频详情控制器
+            let videoDetailVC = VideoDetailViewController()
+            videoDetailVC.video = aNews
+            navigationController?.pushViewController(videoDetailVC, animated: true)
         }
     }
 }
