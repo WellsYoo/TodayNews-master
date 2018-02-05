@@ -22,8 +22,8 @@ class MyTabBar: UITabBar {
     // internal 默认，也可以不写
     private lazy var publishButton: UIButton = {
         let publishButton = UIButton(type: .custom)
-        publishButton.theme_setBackgroundImage("images.publishButtonBackgroundImage", forState: .normal)
-        publishButton.theme_setBackgroundImage("images.publishButtonBackgroundSelectedImage", forState: .selected)
+        publishButton.theme_setBackgroundImage("images.tab_redpackage_big_64x44_", forState: .normal)
+        publishButton.theme_setBackgroundImage("images.tab_redpackage_big_press_64x44_", forState: .selected)
         publishButton.sizeToFit()
         return publishButton
     }()

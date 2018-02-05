@@ -4,6 +4,10 @@
 <dict>
 	<key>images</key>
 	<dict>
+		<key>tab_redpackage_big_press_64x44_</key>
+		<string>tab_redpackage_big_press_night_64x44_</string>
+		<key>tab_redpackage_big_64x44_</key>
+		<string>tab_redpackage_big_night_64x44_</string>
 		<key>home_camera</key>
 		<string>home_camera_night</string>
 		<key>like_old_feed_press_24x24_</key>

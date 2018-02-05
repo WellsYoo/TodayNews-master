@@ -20,6 +20,7 @@
 		941533F2202577EA008E0F26 /* ChannelRecommendReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941533F0202577EA008E0F26 /* ChannelRecommendReusableView.xib */; };
 		941533F5202577FC008E0F26 /* MyChannelReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941533F3202577FB008E0F26 /* MyChannelReusableView.swift */; };
 		941533F6202577FC008E0F26 /* MyChannelReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941533F4202577FC008E0F26 /* MyChannelReusableView.xib */; };
+		942AF2C720283B190096DD4E /* RedPackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942AF2C620283B190096DD4E /* RedPackageViewController.swift */; };
 		942C05011FEE1E9800F871A0 /* UserDetailWendaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C04FF1FEE1E9800F871A0 /* UserDetailWendaCell.swift */; };
 		942C05021FEE1E9800F871A0 /* UserDetailWendaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942C05001FEE1E9800F871A0 /* UserDetailWendaCell.xib */; };
 		942C05041FEE2A9300F871A0 /* SVProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C05031FEE2A9300F871A0 /* SVProgressHUD+Extension.swift */; };
@@ -234,6 +235,7 @@
 		941533F0202577EA008E0F26 /* ChannelRecommendReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelRecommendReusableView.xib; sourceTree = "<group>"; };
 		941533F3202577FB008E0F26 /* MyChannelReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyChannelReusableView.swift; sourceTree = "<group>"; };
 		941533F4202577FC008E0F26 /* MyChannelReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyChannelReusableView.xib; sourceTree = "<group>"; };
+		942AF2C620283B190096DD4E /* RedPackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedPackageViewController.swift; sourceTree = "<group>"; };
 		942C04FF1FEE1E9800F871A0 /* UserDetailWendaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailWendaCell.swift; sourceTree = "<group>"; };
 		942C05001FEE1E9800F871A0 /* UserDetailWendaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailWendaCell.xib; sourceTree = "<group>"; };
 		942C05031FEE2A9300F871A0 /* SVProgressHUD+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVProgressHUD+Extension.swift"; sourceTree = "<group>"; };
@@ -485,6 +487,38 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		942AF2C220283B000096DD4E /* RedPackage */ = {
+			isa = PBXGroup;
+			children = (
+				942AF2C320283B000096DD4E /* Controller */,
+				942AF2C420283B000096DD4E /* Model */,
+				942AF2C520283B000096DD4E /* View */,
+			);
+			path = RedPackage;
+			sourceTree = "<group>";
+		};
+		942AF2C320283B000096DD4E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				942AF2C620283B190096DD4E /* RedPackageViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		942AF2C420283B000096DD4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		942AF2C520283B000096DD4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		942DCEFF1F6010E1001AD160 = {
 			isa = PBXGroup;
 			children = (
@@ -543,6 +577,7 @@
 				942DCF4D1F602220001AD160 /* Huoshan */,
 				942DCF591F602220001AD160 /* Mine */,
 				94B0E4B31FE0172300ABB332 /* Weitoutiao */,
+				942AF2C220283B000096DD4E /* RedPackage */,
 				942DCF521F602220001AD160 /* Main */,
 				942DCF5E1F602220001AD160 /* Others */,
 			);
@@ -1285,6 +1320,7 @@
 				94FE5A041FCAAE520018B47C /* SQLiteManager.swift in Sources */,
 				9465975A20043F8D0006C37D /* Wenda.swift in Sources */,
 				942DCF701F6024B7001AD160 /* MyTabBar.swift in Sources */,
+				942AF2C720283B190096DD4E /* RedPackageViewController.swift in Sources */,
 				9465978C2004D99E0006C37D /* BottomButton.swift in Sources */,
 				942DCF661F602220001AD160 /* HomeViewController.swift in Sources */,
 				94904D201FE7E56200051528 /* RichLabel.swift in Sources */,

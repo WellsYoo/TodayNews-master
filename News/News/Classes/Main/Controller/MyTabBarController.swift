@@ -13,7 +13,8 @@ class MyTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let tabbar = UITabBar.appearance()
-        tabbar.theme_tintColor = "colores.tabbarTintColor"
+        tabbar.theme_tintColor = "colors.tabbarTintColor"
+        tabbar.theme_barTintColor = "colors.cellBackgroundColor"
         // 添加子控制器
         addChildViewControllers()
         NotificationCenter.default.addObserver(self, selector: #selector(receiveDayOrNightButtonClicked), name: NSNotification.Name(rawValue: "dayOrNightButtonClicked"), object: nil)
@@ -33,6 +34,8 @@ class MyTabBarController: UITabBarController {
                     setNightChildController(controller: childController, imageName: "huoshan")
                 case "微头条":
                     setNightChildController(controller: childController, imageName: "weitoutiao")
+                case "":
+                    setNightChildController(controller: childController, imageName: "redpackage")
                 default:
                     break
                 }
@@ -48,6 +51,8 @@ class MyTabBarController: UITabBarController {
                     setDayChildController(controller: childController, imageName: "huoshan")
                 case "微头条":
                     setDayChildController(controller: childController, imageName: "weitoutiao")
+                case "":
+                    setDayChildController(controller: childController, imageName: "redpackage")
                 default:
                     break
                 }
@@ -71,10 +76,11 @@ class MyTabBarController: UITabBarController {
     private func addChildViewControllers() {
         setChildViewController(HomeViewController(), title: "首页", imageName: "home")
         setChildViewController(VideoViewController(), title: "西瓜视频", imageName: "video")
+        setChildViewController(RedPackageViewController(), title: "", imageName: "redpackage")
         setChildViewController(WeitoutiaoViewController(), title: "微头条", imageName: "weitoutiao")
         setChildViewController(HuoshanViewController(), title: "小视频", imageName: "huoshan")
         // tabBar 是 readonly 属性，不能直接修改，利用 KVC 把 readonly 属性的权限改过来
-        setValue(MyTabBar(), forKey: "tabBar")
+//        setValue(MyTabBar(), forKey: "tabBar")
     }
     
     /// 初始化子控制器
