@@ -21,6 +21,10 @@
 		941533F5202577FC008E0F26 /* MyChannelReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941533F3202577FB008E0F26 /* MyChannelReusableView.swift */; };
 		941533F6202577FC008E0F26 /* MyChannelReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941533F4202577FC008E0F26 /* MyChannelReusableView.xib */; };
 		942AF2C720283B190096DD4E /* RedPackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942AF2C620283B190096DD4E /* RedPackageViewController.swift */; };
+		942AF2CB202840340096DD4E /* NewYearActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942AF2CA202840340096DD4E /* NewYearActivity.swift */; };
+		942AF2CE202843B40096DD4E /* NewYearActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942AF2CC202843B40096DD4E /* NewYearActivityCell.swift */; };
+		942AF2CF202843B40096DD4E /* NewYearActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942AF2CD202843B40096DD4E /* NewYearActivityCell.xib */; };
+		942AF2D120284FF90096DD4E /* activity.plist in Resources */ = {isa = PBXBuildFile; fileRef = 942AF2D020284FF90096DD4E /* activity.plist */; };
 		942C05011FEE1E9800F871A0 /* UserDetailWendaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C04FF1FEE1E9800F871A0 /* UserDetailWendaCell.swift */; };
 		942C05021FEE1E9800F871A0 /* UserDetailWendaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942C05001FEE1E9800F871A0 /* UserDetailWendaCell.xib */; };
 		942C05041FEE2A9300F871A0 /* SVProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C05031FEE2A9300F871A0 /* SVProgressHUD+Extension.swift */; };
@@ -236,6 +240,10 @@
 		941533F3202577FB008E0F26 /* MyChannelReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyChannelReusableView.swift; sourceTree = "<group>"; };
 		941533F4202577FC008E0F26 /* MyChannelReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyChannelReusableView.xib; sourceTree = "<group>"; };
 		942AF2C620283B190096DD4E /* RedPackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedPackageViewController.swift; sourceTree = "<group>"; };
+		942AF2CA202840340096DD4E /* NewYearActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYearActivity.swift; sourceTree = "<group>"; };
+		942AF2CC202843B40096DD4E /* NewYearActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYearActivityCell.swift; sourceTree = "<group>"; };
+		942AF2CD202843B40096DD4E /* NewYearActivityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewYearActivityCell.xib; sourceTree = "<group>"; };
+		942AF2D020284FF90096DD4E /* activity.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = activity.plist; sourceTree = "<group>"; };
 		942C04FF1FEE1E9800F871A0 /* UserDetailWendaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailWendaCell.swift; sourceTree = "<group>"; };
 		942C05001FEE1E9800F871A0 /* UserDetailWendaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailWendaCell.xib; sourceTree = "<group>"; };
 		942C05031FEE2A9300F871A0 /* SVProgressHUD+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVProgressHUD+Extension.swift"; sourceTree = "<group>"; };
@@ -508,6 +516,7 @@
 		942AF2C420283B000096DD4E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				942AF2CA202840340096DD4E /* NewYearActivity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -515,6 +524,8 @@
 		942AF2C520283B000096DD4E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				942AF2CC202843B40096DD4E /* NewYearActivityCell.swift */,
+				942AF2CD202843B40096DD4E /* NewYearActivityCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -865,6 +876,7 @@
 				942DCF601F602220001AD160 /* Info.plist */,
 				9405D99F1F69404E00AA60D4 /* Const.swift */,
 				9462C67A1F7DCC66009D4513 /* settingPlist.plist */,
+				942AF2D020284FF90096DD4E /* activity.plist */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -1102,6 +1114,7 @@
 				941533F6202577FC008E0F26 /* MyChannelReusableView.xib in Resources */,
 				94BAF5FE2025409F0017D977 /* WeitoutiaoCell.xib in Resources */,
 				94C6811D1FEE7F6300C3A5AD /* DongtaiCommentCell.xib in Resources */,
+				942AF2CF202843B40096DD4E /* NewYearActivityCell.xib in Resources */,
 				94569D622017405E00B31777 /* HomeImageTableCell.xib in Resources */,
 				942DCF161F6010E1001AD160 /* LaunchScreen.storyboard in Resources */,
 				946450A1200D7C4D0016A4EB /* SmallVideoViewController.xib in Resources */,
@@ -1117,6 +1130,7 @@
 				9465232E1FCFD0CC00DB46B6 /* UserDetailViewController.xib in Resources */,
 				94B8566F1F6FD79B00C92E29 /* NoLoginHeaderView.xib in Resources */,
 				94569D5E20173C2B00B31777 /* HomeJokeCell.xib in Resources */,
+				942AF2D120284FF90096DD4E /* activity.plist in Resources */,
 				94C29AAD20005B4B000513D7 /* emoji_sort.plist in Resources */,
 				941533EA20257750008E0F26 /* AddCategoryCell.xib in Resources */,
 				94B856411F6CCE2700C92E29 /* MyOtherCell.xib in Resources */,
@@ -1279,6 +1293,7 @@
 				94455DDD2000A27400991ADC /* PostCommentView.swift in Sources */,
 				9462C6791F7DC94C009D4513 /* SettingViewController.swift in Sources */,
 				94AE55A0200B3FFC00D880CB /* HuoshanNavigationBar.swift in Sources */,
+				942AF2CE202843B40096DD4E /* NewYearActivityCell.swift in Sources */,
 				94B165211F87B0AF001EA09F /* OfflineDownloadController.swift in Sources */,
 				94C29AB520009630000513D7 /* EmojiLayout.swift in Sources */,
 				9453B3C2201AAD6E003540E0 /* HomeJokeViewController.swift in Sources */,
@@ -1381,6 +1396,7 @@
 				9465978D2004D99E0006C37D /* WendaAnswerBottomView.swift in Sources */,
 				9435727C1FD0DBEC00FE4A83 /* MyPresentationController.swift in Sources */,
 				94C6811C1FEE7F6300C3A5AD /* DongtaiCommentCell.swift in Sources */,
+				942AF2CB202840340096DD4E /* NewYearActivity.swift in Sources */,
 				941533F1202577EA008E0F26 /* ChannelRecommendReusableView.swift in Sources */,
 				943572621FD0028900FE4A83 /* UserDetailBottomView.swift in Sources */,
 				94C29AB220008DC5000513D7 /* EmojiCollectionCell.swift in Sources */,

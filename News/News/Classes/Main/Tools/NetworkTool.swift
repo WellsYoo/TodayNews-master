@@ -72,6 +72,9 @@ protocol NetworkToolProtocol {
     // MARK: - --------------------------------- 小视频  ---------------------------------
     // MARK: 小视频导航栏标题的数据
     static func loadSmallVideoCategories(completionHandler: @escaping (_ newsTitles: [HomeNewsTitle]) -> ())
+    // MARK: - --------------------------------- 新年活动 ---------------------------------
+    // MARK: 获取新年活动数据
+    static func loadNewYearActivities(completionHandler: @escaping (_ newYear: NewYear) -> ())
 }
 
 extension NetworkToolProtocol {
@@ -868,6 +871,22 @@ extension NetworkToolProtocol {
         }
     }
     
+    // MARK: - --------------------------------- 新年活动 ---------------------------------
+    /// 获取新年活动数据
+    /// - parameter completionHandler: 返回活动数据
+    /// - parameter newYear: 新年活动
+    static func loadNewYearActivities(completionHandler: @escaping (_ newYear: NewYear) -> ()) {
+
+        Alamofire.request("https://mh.snssdk.com/festival/activity/activities/information/").responseJSON { (response) in
+            // 网络错误的提示信息
+            guard response.result.isSuccess else { return }
+            if let value = response.result.value {
+                let json = JSON(value)
+                guard json["err_no"] == 0 else { return }
+                completionHandler(NewYear.deserialize(from: json["data"].dictionaryObject)!)
+            }
+        }
+    }
 }
 
 struct NetworkTool: NetworkToolProtocol {}

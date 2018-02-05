@@ -97,7 +97,7 @@ extension SettingViewController {
         // plist 文件中的数据
         let cellPlist = NSArray(contentsOfFile: path!) as! [Any]
         sections = cellPlist.flatMap({ section in
-            (section as! [Any]).flatMap({ SettingModel.deserialize(from: $0 as? NSDictionary) })
+            (section as! [Any]).flatMap({ SettingModel.deserialize(from: $0 as? [String: Any]) })
         })
         tableView.sectionHeaderHeight = 10
         tableView.ym_registerCell(cell: SettingCell.self)
