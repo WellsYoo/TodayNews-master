@@ -5,6 +5,8 @@
 //  Created by 杨蒙 on 2018/2/5.
 //  Copyright © 2018年 hrscy. All rights reserved.
 //
+//  抢十亿红包
+//
 
 import UIKit
 
@@ -48,6 +50,16 @@ extension RedPackageViewController {
         let cell = tableView.ym_dequeueReusableCell(indexPath: indexPath) as NewYearActivityCell
         cell.newYearActivity = newYearActivities[indexPath.row]
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            
+        } else {
+            let nextVC = RainNextURLViewController()
+            nextVC.url = newYearActivities[indexPath.row].rain_next_image_url
+            navigationController?.pushViewController(nextVC, animated: true)
+        }
     }
 }
 

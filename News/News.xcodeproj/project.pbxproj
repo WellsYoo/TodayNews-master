@@ -25,6 +25,7 @@
 		942AF2CE202843B40096DD4E /* NewYearActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942AF2CC202843B40096DD4E /* NewYearActivityCell.swift */; };
 		942AF2CF202843B40096DD4E /* NewYearActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942AF2CD202843B40096DD4E /* NewYearActivityCell.xib */; };
 		942AF2D120284FF90096DD4E /* activity.plist in Resources */ = {isa = PBXBuildFile; fileRef = 942AF2D020284FF90096DD4E /* activity.plist */; };
+		942AF2D3202856EA0096DD4E /* RainNextURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942AF2D2202856EA0096DD4E /* RainNextURLViewController.swift */; };
 		942C05011FEE1E9800F871A0 /* UserDetailWendaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C04FF1FEE1E9800F871A0 /* UserDetailWendaCell.swift */; };
 		942C05021FEE1E9800F871A0 /* UserDetailWendaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942C05001FEE1E9800F871A0 /* UserDetailWendaCell.xib */; };
 		942C05041FEE2A9300F871A0 /* SVProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C05031FEE2A9300F871A0 /* SVProgressHUD+Extension.swift */; };
@@ -244,6 +245,7 @@
 		942AF2CC202843B40096DD4E /* NewYearActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYearActivityCell.swift; sourceTree = "<group>"; };
 		942AF2CD202843B40096DD4E /* NewYearActivityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewYearActivityCell.xib; sourceTree = "<group>"; };
 		942AF2D020284FF90096DD4E /* activity.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = activity.plist; sourceTree = "<group>"; };
+		942AF2D2202856EA0096DD4E /* RainNextURLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainNextURLViewController.swift; sourceTree = "<group>"; };
 		942C04FF1FEE1E9800F871A0 /* UserDetailWendaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailWendaCell.swift; sourceTree = "<group>"; };
 		942C05001FEE1E9800F871A0 /* UserDetailWendaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailWendaCell.xib; sourceTree = "<group>"; };
 		942C05031FEE2A9300F871A0 /* SVProgressHUD+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVProgressHUD+Extension.swift"; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 			isa = PBXGroup;
 			children = (
 				942AF2C620283B190096DD4E /* RedPackageViewController.swift */,
+				942AF2D2202856EA0096DD4E /* RainNextURLViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1358,6 +1361,7 @@
 				942DCF6B1F602220001AD160 /* MineViewController.swift in Sources */,
 				946450A7200D89300016A4EB /* SmallVideoPlayerCustomView.swift in Sources */,
 				9462C6891F7E6D77009D4513 /* SettingCell.swift in Sources */,
+				942AF2D3202856EA0096DD4E /* RainNextURLViewController.swift in Sources */,
 				946450B8200F25190016A4EB /* VideoCell.swift in Sources */,
 				94569D5A2017373600B31777 /* TheyUseCollectionCell.swift in Sources */,
 				94349D3E20148E7900085ED4 /* RelatedVideoFooterView.swift in Sources */,
