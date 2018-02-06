@@ -19,6 +19,7 @@ class HomeCell: UITableViewCell, RegisterCellFromNib {
             topImageView.image = nil
             rightImageView.image = nil
             videoImageButton.setImage(nil, for: .normal)
+            collectionView.removeFromSuperview()
             if middleView.subviews.count != 0 { videoImageButton.removeFromSuperview() }
             bottomViewHeight.constant = 0
             downloadButton.setTitle("", for: .normal)
@@ -51,7 +52,7 @@ class HomeCell: UITableViewCell, RegisterCellFromNib {
                 adOrHotLabelWidth.constant = 0
                 nameLabelLeading.constant = 0
             }
-            if aNews.video_duration != 0 { // 有视频
+            if aNews.video_duration != 0 && aNews.has_video { // 有视频
                 if aNews.video_style == 0 {  // 右侧有图
                     rightTimeButton.setTitle(aNews.videoDuration, for: .normal)
                     rightTimeButtonWidth.constant = 50
@@ -72,7 +73,21 @@ class HomeCell: UITableViewCell, RegisterCellFromNib {
                     middleView.addSubview(videoImageButton)
                     setupRightImageView()
                 }
-            } else { setupRightImageView() }
+            // 没有视频
+            } else {
+                if aNews.image_list.count != 0 {
+                    setupRightImageView()
+                    if aNews.image_list.count == 1 { // 右侧显示图片
+                        rightImageView.kf.setImage(with: URL(string: aNews.image_list.first!.urlString)!)
+                        rightImageViewWidth.constant = screenWidth * 0.28
+                    } else {
+                        middleViewHeight.constant = image3Width
+                        middleView.addSubview(collectionView)
+                        collectionView.frame = CGRect(x: 0, y: 0, width: screenWidth - 30, height: image3Width)
+                        collectionView.images = aNews.image_list
+                    }
+                }
+            }
             layoutIfNeeded()
             videoImageButton.frame = CGRect(x: 0, y: 0, width: middleView.width, height: screenWidth * 0.5)
         }
@@ -88,7 +103,8 @@ class HomeCell: UITableViewCell, RegisterCellFromNib {
         adOrHotLabelWidth.constant = 32
         nameLabelLeading.constant = 37
     }
-    
+    /// 懒加载 collectionView
+    private lazy var collectionView = HomeImageCollectionView.loadViewFromNib()
     /// 标题顶部图
     @IBOutlet weak var topImageView: UIImageView!
     @IBOutlet weak var thumbImageViewHeight: NSLayoutConstraint!

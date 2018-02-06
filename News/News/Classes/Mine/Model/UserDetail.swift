@@ -422,7 +422,7 @@ struct UserDetailDongtai: HandyJSON {
     var behot_time: Int = 0
     var detail_play_effective_count: Int = 0
     var keywords: String = ""
-    var middle_image: String = ""
+    var middle_image = MiddleImage()
     var display_type: Int = 0
     var has_inner_video: Bool = false
     var article_live_type: String = ""

@@ -45,10 +45,7 @@ class WeitoutiaoCell: UITableViewCell, RegisterCellFromNib {
         }
     }
     /// 懒加载 collectionView
-    private lazy var collectionView: DongtaiCollectionView = {
-        let collectionView = DongtaiCollectionView.loadViewFromNib()
-        return collectionView
-    }()
+    private lazy var collectionView = DongtaiCollectionView.loadViewFromNib()
     /// 头像
     @IBOutlet weak var avatarImageView: AnimatableImageView!
     /// v

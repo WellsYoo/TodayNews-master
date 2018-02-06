@@ -56,6 +56,10 @@ struct NewsModel: HandyJSON {
             height += 40
         }
         
+        if image_list.count != 0 {
+            height += image3Width
+        }
+        
         return height
     }
     
@@ -160,6 +164,7 @@ struct NewsModel: HandyJSON {
     
     var aggr_type: Int = 0
     var has_mp4_video: Int = 0
+    var hase_image = false
     var image_list = [ImageList]()
     var large_image_list = [LargeImage]()
     var thumb_image_list = [ThumbImage]()

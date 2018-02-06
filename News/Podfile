@@ -19,5 +19,6 @@ target 'News' do
   pod 'SGPagingView'
   pod 'BMPlayer'
   pod 'FDFullscreenPopGesture'
+  # pod 'Texture'
 
 end

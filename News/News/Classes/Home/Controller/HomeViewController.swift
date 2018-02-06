@@ -87,10 +87,19 @@ extension HomeViewController {
                     imagePPMMVC.isJoke = false
                     imagePPMMVC.setupRefresh(with: .imagePPMM)
                     self.addChildViewController(imagePPMMVC)
+                case .imageFunny:        // 趣图
+                    let imagePPMMVC = HomeJokeViewController()
+                    imagePPMMVC.isJoke = false
+                    imagePPMMVC.setupRefresh(with: .imageFunny)
+                    self.addChildViewController(imagePPMMVC)
                 case .photos:           // 图片,组图
                     let homeImageVC = HomeImageViewController()
                     homeImageVC.setupRefresh(with: .photos)
                     self.addChildViewController(homeImageVC)
+                case .jinritemai:       // 特卖
+                    let temaiVC = TeMaiViewController()
+                    temaiVC.url = "https://m.maila88.com/mailaIndex?mailaAppKey=GDW5NMaKQNz81jtW2Yuw2P"
+                    self.addChildViewController(temaiVC)
                 default :
                     let homeTableVC = HomeRecommendController()
                     homeTableVC.setupRefresh(with: newsTitle.category)

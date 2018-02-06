@@ -10,6 +10,11 @@
 		8B0865C457153443A3BFFBFF /* Pods_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DD34B2800BEB6C5BFC1091 /* Pods_News.framework */; };
 		9405D9A01F69404E00AA60D4 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9405D99F1F69404E00AA60D4 /* Const.swift */; };
 		9405D9A61F69462500AA60D4 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9405D9A51F69462500AA60D4 /* NetworkTool.swift */; };
+		940B028A20297EC7004355C2 /* TeMaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B028920297EC7004355C2 /* TeMaiViewController.swift */; };
+		940B028C20298168004355C2 /* HomeImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B028B20298168004355C2 /* HomeImageCollectionView.swift */; };
+		940B028F2029825D004355C2 /* HomeImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B028D2029825D004355C2 /* HomeImageCell.swift */; };
+		940B02902029825D004355C2 /* HomeImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940B028E2029825D004355C2 /* HomeImageCell.xib */; };
+		940B0292202983E3004355C2 /* HomeImageCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940B0291202983E3004355C2 /* HomeImageCollectionView.xib */; };
 		941533E5202576B7008E0F26 /* HomeAddCategoryController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941533E3202576B6008E0F26 /* HomeAddCategoryController.storyboard */; };
 		941533E6202576B7008E0F26 /* HomeAddCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941533E4202576B7008E0F26 /* HomeAddCategoryController.swift */; };
 		941533E920257750008E0F26 /* AddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941533E72025774F008E0F26 /* AddCategoryCell.swift */; };
@@ -230,6 +235,11 @@
 		806A7465D65977173B67AFCB /* Pods-News.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News.debug.xcconfig"; path = "Pods/Target Support Files/Pods-News/Pods-News.debug.xcconfig"; sourceTree = "<group>"; };
 		9405D99F1F69404E00AA60D4 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		9405D9A51F69462500AA60D4 /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
+		940B028920297EC7004355C2 /* TeMaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeMaiViewController.swift; sourceTree = "<group>"; };
+		940B028B20298168004355C2 /* HomeImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeImageCollectionView.swift; sourceTree = "<group>"; };
+		940B028D2029825D004355C2 /* HomeImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeImageCell.swift; sourceTree = "<group>"; };
+		940B028E2029825D004355C2 /* HomeImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeImageCell.xib; sourceTree = "<group>"; };
+		940B0291202983E3004355C2 /* HomeImageCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeImageCollectionView.xib; sourceTree = "<group>"; };
 		941533E3202576B6008E0F26 /* HomeAddCategoryController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeAddCategoryController.storyboard; sourceTree = "<group>"; };
 		941533E4202576B7008E0F26 /* HomeAddCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAddCategoryController.swift; sourceTree = "<group>"; };
 		941533E72025774F008E0F26 /* AddCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryCell.swift; sourceTree = "<group>"; };
@@ -624,6 +634,7 @@
 				94E4BE7F201ACCEF003F6F18 /* WendaViewController.xib */,
 				941533E4202576B7008E0F26 /* HomeAddCategoryController.swift */,
 				941533E3202576B6008E0F26 /* HomeAddCategoryController.storyboard */,
+				940B028920297EC7004355C2 /* TeMaiViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -671,6 +682,10 @@
 				941533F0202577EA008E0F26 /* ChannelRecommendReusableView.xib */,
 				941533F3202577FB008E0F26 /* MyChannelReusableView.swift */,
 				941533F4202577FC008E0F26 /* MyChannelReusableView.xib */,
+				940B028B20298168004355C2 /* HomeImageCollectionView.swift */,
+				940B0291202983E3004355C2 /* HomeImageCollectionView.xib */,
+				940B028D2029825D004355C2 /* HomeImageCell.swift */,
+				940B028E2029825D004355C2 /* HomeImageCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1176,11 +1191,13 @@
 				94EB2E0B1FFD0B6F00BAE862 /* UserDetailCell.xib in Resources */,
 				941533F2202577EA008E0F26 /* ChannelRecommendReusableView.xib in Resources */,
 				943572781FD0D71900FE4A83 /* UserDetailBottomPopController.storyboard in Resources */,
+				940B0292202983E3004355C2 /* HomeImageCollectionView.xib in Resources */,
 				94455DDE2000A27400991ADC /* PostCommentView.xib in Resources */,
 				944133832022958900CE4DA9 /* NewsDetailImageCell.xib in Resources */,
 				94AE55A4200B423800D880CB /* HuoshanCategoryController.xib in Resources */,
 				94C29AAE20005B4B000513D7 /* emojis.plist in Resources */,
 				94569D552017343F00B31777 /* HomeUserCell.xib in Resources */,
+				940B02902029825D004355C2 /* HomeImageCell.xib in Resources */,
 				94EB2DFD1FFD071000BAE862 /* UserDetailViewController2.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1250,6 +1267,9 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
+				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SGPagingView/SGPagingView.framework",
@@ -1258,6 +1278,7 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1269,6 +1290,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SGPagingView.framework",
@@ -1277,6 +1301,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1294,6 +1319,7 @@
 				94B165241F87B17D001EA09F /* OfflineDownlaodCell.swift in Sources */,
 				94EB2DFC1FFD071000BAE862 /* UserDetailViewController2.swift in Sources */,
 				94455DDD2000A27400991ADC /* PostCommentView.swift in Sources */,
+				940B028C20298168004355C2 /* HomeImageCollectionView.swift in Sources */,
 				9462C6791F7DC94C009D4513 /* SettingViewController.swift in Sources */,
 				94AE55A0200B3FFC00D880CB /* HuoshanNavigationBar.swift in Sources */,
 				942AF2CE202843B40096DD4E /* NewYearActivityCell.swift in Sources */,
@@ -1333,6 +1359,7 @@
 				94569D612017405E00B31777 /* HomeImageTableCell.swift in Sources */,
 				946450B4200F22660016A4EB /* HomeTableViewController.swift in Sources */,
 				946597F52009FA880006C37D /* HomeNewsTitle.swift in Sources */,
+				940B028A20297EC7004355C2 /* TeMaiViewController.swift in Sources */,
 				94EB2E0A1FFD0B6F00BAE862 /* UserDetailCell.swift in Sources */,
 				94B8566D1F6FD79300C92E29 /* NoLoginHeaderView.swift in Sources */,
 				94FE5A041FCAAE520018B47C /* SQLiteManager.swift in Sources */,
@@ -1370,6 +1397,7 @@
 				94B0E4A41FDF587F00ABB332 /* Foundation+Extension.swift in Sources */,
 				946450AB200E03F10016A4EB /* PreviewDongtaiBigImageLayout.swift in Sources */,
 				9462C67D1F7DCEC7009D4513 /* SettingModel.swift in Sources */,
+				940B028F2029825D004355C2 /* HomeImageCell.swift in Sources */,
 				943572761FD0D70D00FE4A83 /* UserDetailBottomPopController.swift in Sources */,
 				94569D4A2015E73400B31777 /* TextLinkViewController.swift in Sources */,
 				94B0E4521FDCE7FD00ABB332 /* DongtaiCollectionViewCell.swift in Sources */,
