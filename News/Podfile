@@ -20,5 +20,6 @@ target 'News' do
   pod 'BMPlayer'
   pod 'FDFullscreenPopGesture'
   # pod 'Texture'
+  pod 'lottie-ios'
 
 end

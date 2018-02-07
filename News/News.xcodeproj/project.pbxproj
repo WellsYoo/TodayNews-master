@@ -15,6 +15,9 @@
 		940B028F2029825D004355C2 /* HomeImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B028D2029825D004355C2 /* HomeImageCell.swift */; };
 		940B02902029825D004355C2 /* HomeImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940B028E2029825D004355C2 /* HomeImageCell.xib */; };
 		940B0292202983E3004355C2 /* HomeImageCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940B0291202983E3004355C2 /* HomeImageCollectionView.xib */; };
+		940B02942029B1B5004355C2 /* RedPackageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B02932029B1B5004355C2 /* RedPackageHeaderView.swift */; };
+		940B02982029DCF0004355C2 /* activity_main_head_white.json in Resources */ = {isa = PBXBuildFile; fileRef = 940B02972029DCF0004355C2 /* activity_main_head_white.json */; };
+		940B029A2029DE12004355C2 /* activity_main_mahjong_start_guide.json in Resources */ = {isa = PBXBuildFile; fileRef = 940B02992029DE12004355C2 /* activity_main_mahjong_start_guide.json */; };
 		941533E5202576B7008E0F26 /* HomeAddCategoryController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941533E3202576B6008E0F26 /* HomeAddCategoryController.storyboard */; };
 		941533E6202576B7008E0F26 /* HomeAddCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941533E4202576B7008E0F26 /* HomeAddCategoryController.swift */; };
 		941533E920257750008E0F26 /* AddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941533E72025774F008E0F26 /* AddCategoryCell.swift */; };
@@ -240,6 +243,9 @@
 		940B028D2029825D004355C2 /* HomeImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeImageCell.swift; sourceTree = "<group>"; };
 		940B028E2029825D004355C2 /* HomeImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeImageCell.xib; sourceTree = "<group>"; };
 		940B0291202983E3004355C2 /* HomeImageCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeImageCollectionView.xib; sourceTree = "<group>"; };
+		940B02932029B1B5004355C2 /* RedPackageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedPackageHeaderView.swift; sourceTree = "<group>"; };
+		940B02972029DCF0004355C2 /* activity_main_head_white.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activity_main_head_white.json; sourceTree = "<group>"; };
+		940B02992029DE12004355C2 /* activity_main_mahjong_start_guide.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activity_main_mahjong_start_guide.json; sourceTree = "<group>"; };
 		941533E3202576B6008E0F26 /* HomeAddCategoryController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeAddCategoryController.storyboard; sourceTree = "<group>"; };
 		941533E4202576B7008E0F26 /* HomeAddCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAddCategoryController.swift; sourceTree = "<group>"; };
 		941533E72025774F008E0F26 /* AddCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryCell.swift; sourceTree = "<group>"; };
@@ -539,6 +545,7 @@
 			children = (
 				942AF2CC202843B40096DD4E /* NewYearActivityCell.swift */,
 				942AF2CD202843B40096DD4E /* NewYearActivityCell.xib */,
+				940B02932029B1B5004355C2 /* RedPackageHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -895,6 +902,8 @@
 				9405D99F1F69404E00AA60D4 /* Const.swift */,
 				9462C67A1F7DCC66009D4513 /* settingPlist.plist */,
 				942AF2D020284FF90096DD4E /* activity.plist */,
+				940B02972029DCF0004355C2 /* activity_main_head_white.json */,
+				940B02992029DE12004355C2 /* activity_main_mahjong_start_guide.json */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -1171,6 +1180,7 @@
 				94B165251F87B17D001EA09F /* OfflineDownlaodCell.xib in Resources */,
 				94349D302012135F00085ED4 /* VideoDetailUserView.xib in Resources */,
 				942C05021FEE1E9800F871A0 /* UserDetailWendaCell.xib in Resources */,
+				940B029A2029DE12004355C2 /* activity_main_mahjong_start_guide.json in Resources */,
 				94413387202316CE00CE4DA9 /* NewsDetailImageCommentController.storyboard in Resources */,
 				941533ED20257767008E0F26 /* ChannelRecommendCell.xib in Resources */,
 				9462C67B1F7DCC66009D4513 /* settingPlist.plist in Resources */,
@@ -1193,6 +1203,7 @@
 				943572781FD0D71900FE4A83 /* UserDetailBottomPopController.storyboard in Resources */,
 				940B0292202983E3004355C2 /* HomeImageCollectionView.xib in Resources */,
 				94455DDE2000A27400991ADC /* PostCommentView.xib in Resources */,
+				940B02982029DCF0004355C2 /* activity_main_head_white.json in Resources */,
 				944133832022958900CE4DA9 /* NewsDetailImageCell.xib in Resources */,
 				94AE55A4200B423800D880CB /* HuoshanCategoryController.xib in Resources */,
 				94C29AAE20005B4B000513D7 /* emojis.plist in Resources */,
@@ -1267,9 +1278,6 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
-				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
-				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
-				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SGPagingView/SGPagingView.framework",
@@ -1278,7 +1286,7 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1290,9 +1298,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SGPagingView.framework",
@@ -1301,7 +1306,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1356,6 +1361,7 @@
 				944678561FE2122C007C264A /* PreviewDongtaiBigImageController.swift in Sources */,
 				94349D2E2012135700085ED4 /* VideoDetailUserView.swift in Sources */,
 				94B9B0F81FD61D6D003A3340 /* RelationRecommendCell.swift in Sources */,
+				940B02942029B1B5004355C2 /* RedPackageHeaderView.swift in Sources */,
 				94569D612017405E00B31777 /* HomeImageTableCell.swift in Sources */,
 				946450B4200F22660016A4EB /* HomeTableViewController.swift in Sources */,
 				946597F52009FA880006C37D /* HomeNewsTitle.swift in Sources */,

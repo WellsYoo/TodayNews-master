@@ -14,6 +14,8 @@ class RedPackageViewController: UITableViewController {
 
     /// 新年活动
     var newYearActivities = [NewYearActivity]()
+    /// 头部
+    private lazy var headerView = RedPackageHeaderView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 180))
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -75,6 +77,8 @@ extension RedPackageViewController {
         })
         tableView.ym_registerCell(cell: NewYearActivityCell.self)
         tableView.tableFooterView = UIView()
+        tableView.tableHeaderView = headerView
+        tableView.bounces = false
         tableView.rowHeight = 180
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor(r: 254, g: 230, b: 207)

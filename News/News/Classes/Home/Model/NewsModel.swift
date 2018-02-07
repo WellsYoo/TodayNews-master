@@ -56,8 +56,12 @@ struct NewsModel: HandyJSON {
             height += 40
         }
         
-        if image_list.count != 0 {
-            height += image3Width
+        if middle_image.url != "" && image_list.count == 0 { return 95 }
+        else {
+            if image_list.count != 0 {
+                if image_list.count == 1 { return 95 }
+                else { height += image3Width }
+            }
         }
         
         return height
