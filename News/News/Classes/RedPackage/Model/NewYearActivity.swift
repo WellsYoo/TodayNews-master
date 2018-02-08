@@ -71,3 +71,14 @@ struct ShareInfo: HandyJSON {
 struct MoreActivity: HandyJSON {
     
 }
+
+/// 增加抽卡次数
+struct NewYearTask: HandyJSON {
+    
+    var schema_url = ""
+    var task_bonus_count = ""
+    var task_desc = ""
+    var task_id = ""
+    var task_status = ""
+    var task_sub_desc = ""
+}

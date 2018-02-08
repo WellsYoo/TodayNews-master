@@ -75,6 +75,9 @@ protocol NetworkToolProtocol {
     // MARK: - --------------------------------- 新年活动 ---------------------------------
     // MARK: 获取新年活动数据
     static func loadNewYearActivities(completionHandler: @escaping (_ newYear: NewYear) -> ())
+    // MARK: 增加抽卡次数
+    static func loadFestivalActivityTasks(completionHandler: @escaping (_ tasks: [NewYearTask]) -> ())
+    
 }
 
 extension NetworkToolProtocol {
@@ -884,6 +887,25 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["err_no"] == 0 else { return }
                 completionHandler(NewYear.deserialize(from: json["data"].dictionaryObject)!)
+            }
+        }
+    }
+    /// 增加抽卡次数
+    /// - parameter completionHandler: 返回任务列表
+    /// - parameter tasks: 任务列表
+    static func loadFestivalActivityTasks(completionHandler: @escaping (_ tasks: [NewYearTask]) -> ()) {
+        
+        Alamofire.request("https://ft.snssdk.com/festival/activity/tasks/information/").responseJSON { (response) in
+            // 网络错误的提示信息
+            guard response.result.isSuccess else { return }
+            if let value = response.result.value {
+                let json = JSON(value)
+                guard json["err_no"] == 0 else { return }
+                if let data = json["data"].dictionary {
+                    if let task_list = data["task_list"]!.arrayObject {
+                        completionHandler(task_list.flatMap({ NewYearTask.deserialize(from: $0 as? Dictionary) }))
+                    }
+                }
             }
         }
     }

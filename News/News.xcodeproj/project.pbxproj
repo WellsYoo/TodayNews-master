@@ -18,6 +18,7 @@
 		940B02942029B1B5004355C2 /* RedPackageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B02932029B1B5004355C2 /* RedPackageHeaderView.swift */; };
 		940B02982029DCF0004355C2 /* activity_main_head_white.json in Resources */ = {isa = PBXBuildFile; fileRef = 940B02972029DCF0004355C2 /* activity_main_head_white.json */; };
 		940B029A2029DE12004355C2 /* activity_main_mahjong_start_guide.json in Resources */ = {isa = PBXBuildFile; fileRef = 940B02992029DE12004355C2 /* activity_main_mahjong_start_guide.json */; };
+		940B029C202BE975004355C2 /* CardTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B029B202BE975004355C2 /* CardTaskViewController.swift */; };
 		941533E5202576B7008E0F26 /* HomeAddCategoryController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941533E3202576B6008E0F26 /* HomeAddCategoryController.storyboard */; };
 		941533E6202576B7008E0F26 /* HomeAddCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941533E4202576B7008E0F26 /* HomeAddCategoryController.swift */; };
 		941533E920257750008E0F26 /* AddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941533E72025774F008E0F26 /* AddCategoryCell.swift */; };
@@ -246,6 +247,7 @@
 		940B02932029B1B5004355C2 /* RedPackageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedPackageHeaderView.swift; sourceTree = "<group>"; };
 		940B02972029DCF0004355C2 /* activity_main_head_white.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activity_main_head_white.json; sourceTree = "<group>"; };
 		940B02992029DE12004355C2 /* activity_main_mahjong_start_guide.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activity_main_mahjong_start_guide.json; sourceTree = "<group>"; };
+		940B029B202BE975004355C2 /* CardTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTaskViewController.swift; sourceTree = "<group>"; };
 		941533E3202576B6008E0F26 /* HomeAddCategoryController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeAddCategoryController.storyboard; sourceTree = "<group>"; };
 		941533E4202576B7008E0F26 /* HomeAddCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAddCategoryController.swift; sourceTree = "<group>"; };
 		941533E72025774F008E0F26 /* AddCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryCell.swift; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 			children = (
 				942AF2C620283B190096DD4E /* RedPackageViewController.swift */,
 				942AF2D2202856EA0096DD4E /* RainNextURLViewController.swift */,
+				940B029B202BE975004355C2 /* CardTaskViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1419,6 +1422,7 @@
 				946450B0200F17F50016A4EB /* VideoTableViewController.swift in Sources */,
 				943572601FCFE2D900FE4A83 /* UserDetail.swift in Sources */,
 				94B0E4A21FDF582300ABB332 /* UIKit+Extension.swift in Sources */,
+				940B029C202BE975004355C2 /* CardTaskViewController.swift in Sources */,
 				94C681131FEE4A4900C3A5AD /* DongtaiNavigationBar.swift in Sources */,
 				94B0E44B1FDCDD7400ABB332 /* Calculate.swift in Sources */,
 				94BAF5FD2025409F0017D977 /* WeitoutiaoCell.swift in Sources */,

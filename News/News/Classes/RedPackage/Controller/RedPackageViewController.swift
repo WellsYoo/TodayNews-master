@@ -19,14 +19,8 @@ class RedPackageViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         UIApplication.shared.keyWindow?.theme_backgroundColor = "colors.tableViewBackgroundColor"
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-        UIApplication.shared.keyWindow?.theme_backgroundColor = "colors.windowColor"
     }
     
     override func viewDidLoad() {
