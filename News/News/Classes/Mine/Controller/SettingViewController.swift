@@ -18,13 +18,7 @@ class SettingViewController: UITableViewController {
         super.viewWillAppear(animated)
         // 设置状态栏属性
         navigationController?.navigationBar.barStyle = .default
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        UIApplication.shared.keyWindow?.backgroundColor = .white
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func viewDidLoad() {
