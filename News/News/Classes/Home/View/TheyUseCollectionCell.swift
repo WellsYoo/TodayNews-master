@@ -38,6 +38,10 @@ class TheyUseCollectionCell: UICollectionViewCell, RegisterCellFromNib {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        layer.cornerRadius = 5
+        layer.masksToBounds = true
+        layer.theme_borderColor = "colors.lightGray"
+        layer.borderWidth = 1
         theme_backgroundColor = "colors.cellBackgroundColor"
         closeButton.theme_setImage("images.icon_popup_close_24x24_", forState: .normal)
         concernButton.setTitle("关注", for: .normal)
