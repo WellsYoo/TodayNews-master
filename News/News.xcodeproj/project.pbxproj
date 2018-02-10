@@ -131,6 +131,19 @@
 		9465978E2004D99E0006C37D /* WendaAnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946597872004D99E0006C37D /* WendaAnswerCell.xib */; };
 		946597F52009FA880006C37D /* HomeNewsTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946597F42009FA880006C37D /* HomeNewsTitle.swift */; };
 		94675A39200A6620005C7A7B /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94675A38200A6620005C7A7B /* NewsModel.swift */; };
+		946A7AAB202E92B8004FF9C6 /* RedPackageViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A7AAA202E92B8004FF9C6 /* RedPackageViewController2.swift */; };
+		946A7AAD202E92EA004FF9C6 /* activity2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 946A7AAC202E92EA004FF9C6 /* activity2.plist */; };
+		946A7AB0202E95F4004FF9C6 /* NewYearCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A7AAE202E95F4004FF9C6 /* NewYearCardCell.swift */; };
+		946A7AB1202E95F4004FF9C6 /* NewYearCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946A7AAF202E95F4004FF9C6 /* NewYearCardCell.xib */; };
+		946A7AB4202E9677004FF9C6 /* NewYearOtherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A7AB2202E9677004FF9C6 /* NewYearOtherCell.swift */; };
+		946A7AB5202E9677004FF9C6 /* NewYearOtherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946A7AB3202E9677004FF9C6 /* NewYearOtherCell.xib */; };
+		946A7ABC202EA27C004FF9C6 /* ShengxiaoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A7ABA202EA27C004FF9C6 /* ShengxiaoCell.swift */; };
+		946A7ABD202EA27C004FF9C6 /* ShengxiaoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946A7ABB202EA27C004FF9C6 /* ShengxiaoCell.xib */; };
+		946A7ABF202EA3EF004FF9C6 /* shengxiao.plist in Resources */ = {isa = PBXBuildFile; fileRef = 946A7ABE202EA3EF004FF9C6 /* shengxiao.plist */; };
+		946A7AC1202EA8DB004FF9C6 /* ShengxiaoBigImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A7AC0202EA8DB004FF9C6 /* ShengxiaoBigImageController.swift */; };
+		946A7AC3202EA942004FF9C6 /* ShengxiaoBigImageController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 946A7AC2202EA942004FF9C6 /* ShengxiaoBigImageController.storyboard */; };
+		946A7AC6202EAEFA004FF9C6 /* RedPackageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946A7AC4202EAEFA004FF9C6 /* RedPackageCell.swift */; };
+		946A7AC7202EAEFA004FF9C6 /* RedPackageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946A7AC5202EAEFA004FF9C6 /* RedPackageCell.xib */; };
 		947E79411FD9078C003CF9F6 /* UserDetailDongTaiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947E793F1FD9078C003CF9F6 /* UserDetailDongTaiCell.swift */; };
 		947E79421FD9078C003CF9F6 /* UserDetailDongTaiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947E79401FD9078C003CF9F6 /* UserDetailDongTaiCell.xib */; };
 		94863B951F714DBA007345D2 /* MyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94863B941F714DBA007345D2 /* MyTheme.swift */; };
@@ -366,6 +379,19 @@
 		946597872004D99E0006C37D /* WendaAnswerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WendaAnswerCell.xib; sourceTree = "<group>"; };
 		946597F42009FA880006C37D /* HomeNewsTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNewsTitle.swift; sourceTree = "<group>"; };
 		94675A38200A6620005C7A7B /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		946A7AAA202E92B8004FF9C6 /* RedPackageViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedPackageViewController2.swift; sourceTree = "<group>"; };
+		946A7AAC202E92EA004FF9C6 /* activity2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = activity2.plist; sourceTree = "<group>"; };
+		946A7AAE202E95F4004FF9C6 /* NewYearCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYearCardCell.swift; sourceTree = "<group>"; };
+		946A7AAF202E95F4004FF9C6 /* NewYearCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewYearCardCell.xib; sourceTree = "<group>"; };
+		946A7AB2202E9677004FF9C6 /* NewYearOtherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYearOtherCell.swift; sourceTree = "<group>"; };
+		946A7AB3202E9677004FF9C6 /* NewYearOtherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewYearOtherCell.xib; sourceTree = "<group>"; };
+		946A7ABA202EA27C004FF9C6 /* ShengxiaoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShengxiaoCell.swift; sourceTree = "<group>"; };
+		946A7ABB202EA27C004FF9C6 /* ShengxiaoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShengxiaoCell.xib; sourceTree = "<group>"; };
+		946A7ABE202EA3EF004FF9C6 /* shengxiao.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = shengxiao.plist; sourceTree = "<group>"; };
+		946A7AC0202EA8DB004FF9C6 /* ShengxiaoBigImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShengxiaoBigImageController.swift; sourceTree = "<group>"; };
+		946A7AC2202EA942004FF9C6 /* ShengxiaoBigImageController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShengxiaoBigImageController.storyboard; sourceTree = "<group>"; };
+		946A7AC4202EAEFA004FF9C6 /* RedPackageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedPackageCell.swift; sourceTree = "<group>"; };
+		946A7AC5202EAEFA004FF9C6 /* RedPackageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RedPackageCell.xib; sourceTree = "<group>"; };
 		947E793F1FD9078C003CF9F6 /* UserDetailDongTaiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailDongTaiCell.swift; sourceTree = "<group>"; };
 		947E79401FD9078C003CF9F6 /* UserDetailDongTaiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailDongTaiCell.xib; sourceTree = "<group>"; };
 		94863B941F714DBA007345D2 /* MyTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTheme.swift; sourceTree = "<group>"; };
@@ -529,8 +555,11 @@
 			isa = PBXGroup;
 			children = (
 				942AF2C620283B190096DD4E /* RedPackageViewController.swift */,
+				946A7AAA202E92B8004FF9C6 /* RedPackageViewController2.swift */,
 				942AF2D2202856EA0096DD4E /* RainNextURLViewController.swift */,
 				940B029B202BE975004355C2 /* CardTaskViewController.swift */,
+				946A7AC0202EA8DB004FF9C6 /* ShengxiaoBigImageController.swift */,
+				946A7AC2202EA942004FF9C6 /* ShengxiaoBigImageController.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -549,6 +578,14 @@
 				942AF2CC202843B40096DD4E /* NewYearActivityCell.swift */,
 				942AF2CD202843B40096DD4E /* NewYearActivityCell.xib */,
 				940B02932029B1B5004355C2 /* RedPackageHeaderView.swift */,
+				946A7AAE202E95F4004FF9C6 /* NewYearCardCell.swift */,
+				946A7AAF202E95F4004FF9C6 /* NewYearCardCell.xib */,
+				946A7AC4202EAEFA004FF9C6 /* RedPackageCell.swift */,
+				946A7AC5202EAEFA004FF9C6 /* RedPackageCell.xib */,
+				946A7AB2202E9677004FF9C6 /* NewYearOtherCell.swift */,
+				946A7AB3202E9677004FF9C6 /* NewYearOtherCell.xib */,
+				946A7ABA202EA27C004FF9C6 /* ShengxiaoCell.swift */,
+				946A7ABB202EA27C004FF9C6 /* ShengxiaoCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -905,6 +942,8 @@
 				9405D99F1F69404E00AA60D4 /* Const.swift */,
 				9462C67A1F7DCC66009D4513 /* settingPlist.plist */,
 				942AF2D020284FF90096DD4E /* activity.plist */,
+				946A7AAC202E92EA004FF9C6 /* activity2.plist */,
+				946A7ABE202EA3EF004FF9C6 /* shengxiao.plist */,
 				940B02972029DCF0004355C2 /* activity_main_head_white.json */,
 				940B02992029DE12004355C2 /* activity_main_mahjong_start_guide.json */,
 			);
@@ -1149,13 +1188,16 @@
 				942DCF161F6010E1001AD160 /* LaunchScreen.storyboard in Resources */,
 				946450A1200D7C4D0016A4EB /* SmallVideoViewController.xib in Resources */,
 				944678651FE25F94007C264A /* PreviewUserAvatarController.xib in Resources */,
+				946A7AB1202E95F4004FF9C6 /* NewYearCardCell.xib in Resources */,
 				94B0E4691FDD3A0100ABB332 /* DongtaiOriginThreadView.xib in Resources */,
 				94B856531F6CDE3C00C92E29 /* MyConcernCell.xib in Resources */,
 				94349D38201449AC00085ED4 /* RelatedVideoTableViewController.xib in Resources */,
 				9462C68A1F7E6D77009D4513 /* SettingCell.xib in Resources */,
+				946A7AB5202E9677004FF9C6 /* NewYearOtherCell.xib in Resources */,
 				947E79421FD9078C003CF9F6 /* UserDetailDongTaiCell.xib in Resources */,
 				94EB2E051FFD099900BAE862 /* UserDetailHeaderView2.xib in Resources */,
 				94349D3C20148E1B00085ED4 /* RelatedVideoHeaderView.xib in Resources */,
+				946A7ABD202EA27C004FF9C6 /* ShengxiaoCell.xib in Resources */,
 				94C681191FEE528D00C3A5AD /* DongtaiDetailHeaderView.xib in Resources */,
 				9465232E1FCFD0CC00DB46B6 /* UserDetailViewController.xib in Resources */,
 				94B8566F1F6FD79B00C92E29 /* NoLoginHeaderView.xib in Resources */,
@@ -1186,9 +1228,12 @@
 				940B029A2029DE12004355C2 /* activity_main_mahjong_start_guide.json in Resources */,
 				94413387202316CE00CE4DA9 /* NewsDetailImageCommentController.storyboard in Resources */,
 				941533ED20257767008E0F26 /* ChannelRecommendCell.xib in Resources */,
+				946A7ABF202EA3EF004FF9C6 /* shengxiao.plist in Resources */,
+				946A7AAD202E92EA004FF9C6 /* activity2.plist in Resources */,
 				9462C67B1F7DCC66009D4513 /* settingPlist.plist in Resources */,
 				94B0E4B21FDFF31B00ABB332 /* HomeNavigationView.xib in Resources */,
 				94863B981F714F79007345D2 /* default_theme.plist in Resources */,
+				946A7AC7202EAEFA004FF9C6 /* RedPackageCell.xib in Resources */,
 				94569D512017340F00B31777 /* TheyAlsoUseCell.xib in Resources */,
 				9465978E2004D99E0006C37D /* WendaAnswerCell.xib in Resources */,
 				94C681111FEE472500C3A5AD /* DongtaiDetailViewController.xib in Resources */,
@@ -1210,6 +1255,7 @@
 				944133832022958900CE4DA9 /* NewsDetailImageCell.xib in Resources */,
 				94AE55A4200B423800D880CB /* HuoshanCategoryController.xib in Resources */,
 				94C29AAE20005B4B000513D7 /* emojis.plist in Resources */,
+				946A7AC3202EA942004FF9C6 /* ShengxiaoBigImageController.storyboard in Resources */,
 				94569D552017343F00B31777 /* HomeUserCell.xib in Resources */,
 				940B02902029825D004355C2 /* HomeImageCell.xib in Resources */,
 				94EB2DFD1FFD071000BAE862 /* UserDetailViewController2.xib in Resources */,
@@ -1343,6 +1389,7 @@
 				944451AF201177FA003DC412 /* VideoDetailViewController.swift in Sources */,
 				94D9D4BF1F7B255100E5739F /* MoreLoginViewController.swift in Sources */,
 				946597892004D99E0006C37D /* WendaAnswerCell.swift in Sources */,
+				946A7ABC202EA27C004FF9C6 /* ShengxiaoCell.swift in Sources */,
 				946450A4200D805E0016A4EB /* SmallVideoCell.swift in Sources */,
 				9405D9A61F69462500AA60D4 /* NetworkTool.swift in Sources */,
 				94C681101FEE472500C3A5AD /* DongtaiDetailViewController.swift in Sources */,
@@ -1370,6 +1417,7 @@
 				946597F52009FA880006C37D /* HomeNewsTitle.swift in Sources */,
 				940B028A20297EC7004355C2 /* TeMaiViewController.swift in Sources */,
 				94EB2E0A1FFD0B6F00BAE862 /* UserDetailCell.swift in Sources */,
+				946A7AAB202E92B8004FF9C6 /* RedPackageViewController2.swift in Sources */,
 				94B8566D1F6FD79300C92E29 /* NoLoginHeaderView.swift in Sources */,
 				94FE5A041FCAAE520018B47C /* SQLiteManager.swift in Sources */,
 				9465975A20043F8D0006C37D /* Wenda.swift in Sources */,
@@ -1416,6 +1464,7 @@
 				94EB2E151FFD142B00BAE862 /* TopTabScrollView.swift in Sources */,
 				94B0E44D1FDCE14D00ABB332 /* PostVideoOrArticleView.swift in Sources */,
 				9465978B2004D99E0006C37D /* WendaAnswerHeaderView.swift in Sources */,
+				946A7AC1202EA8DB004FF9C6 /* ShengxiaoBigImageController.swift in Sources */,
 				9435729A1FD4D08E00FE4A83 /* NavigationBarView.swift in Sources */,
 				94349D432014907000085ED4 /* RelatedVideoCell.swift in Sources */,
 				94E4BE7C201ACA44003F6F18 /* HomeImageViewController.swift in Sources */,
@@ -1428,13 +1477,16 @@
 				94BAF5FD2025409F0017D977 /* WeitoutiaoCell.swift in Sources */,
 				944133842022958900CE4DA9 /* NewsDetailImageCell.swift in Sources */,
 				941533E6202576B7008E0F26 /* HomeAddCategoryController.swift in Sources */,
+				946A7AC6202EAEFA004FF9C6 /* RedPackageCell.swift in Sources */,
 				94349D3A20148E1300085ED4 /* RelatedVideoHeaderView.swift in Sources */,
+				946A7AB4202E9677004FF9C6 /* NewYearOtherCell.swift in Sources */,
 				94904D0E1FE73E1A00051528 /* Emoji.swift in Sources */,
 				94AE55AE200C8DDD00D880CB /* OfflineSectionHeader.swift in Sources */,
 				94C681171FEE528600C3A5AD /* DongtaiDetailHeaderView.swift in Sources */,
 				94E4BE79201AAFCB003F6F18 /* HomeRecommendController.swift in Sources */,
 				94B0E4B01FDFF30E00ABB332 /* HomeNavigationView.swift in Sources */,
 				94413388202316CE00CE4DA9 /* NewsDetailImageCommentController.swift in Sources */,
+				946A7AB0202E95F4004FF9C6 /* NewYearCardCell.swift in Sources */,
 				9465978D2004D99E0006C37D /* WendaAnswerBottomView.swift in Sources */,
 				9435727C1FD0DBEC00FE4A83 /* MyPresentationController.swift in Sources */,
 				94C6811C1FEE7F6300C3A5AD /* DongtaiCommentCell.swift in Sources */,
