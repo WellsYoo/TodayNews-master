@@ -41,7 +41,7 @@
 ### [617-正则表达式匹配用户名话题和链接](http://player.youku.com/embed/XMzI1NjI1NjEyNA==)
 
 ## 新增接口文档
-[接口文档](https://github.com/hrscy/TodayNews/tree/master/todayNews-docs)
+[接口文档](https://github.com/hrscy/TodayNews/tree/master/news-docs)
 
 接口文档使用的是 [MKDocs](http://www.mkdocs.org/)，具体安装方法以及使用可以参考官网的介绍。
 
