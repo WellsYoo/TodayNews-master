@@ -2,7 +2,12 @@
 
 [![Build Status](https://travis-ci.org/hrscy/TodayNews.svg?branch=master)](https://travis-ci.org/hrscy/TodayNews) ![swift3.1](https://img.shields.io/badge/language-swift%204-orange.svg)
 
-# 最新代码已经上传，还有部分功能未完成，后续会继续更新...
+# 视频链接地址请看 **[腾讯课堂](https://ke.qq.com/course/281908#tuin=1c8f38f4)** ，本系列视频实战教程需要有 Swift 语言基础，并且有过 iOS 开发相关经验。
+
+# 声明：
+## 本课程是使用 Swift 4 进行开发的实战课程，介绍了一个新闻资讯类 app 的实现过程，与其他大部分 iOS 的 app 实现过程类似，数据来源自今日头条，非常感谢今日头条，视频中并未介绍获取今日头条数据的方法，视频中也没有使用今日头条的数据进行牟利。对于其他个人或者机构未经今日头条许可，禁止使用今日头条的数据进行商业行为，如经今日头条发现并追究法律责任与本人无关，视频中的完整代码可以去我的 github 主页进行下载，代码禁止用于任何商业行为，特此声明。
+
+# 功能截图。
 
 ![](asset/11.gif)
 ![](asset/10.gif)
@@ -21,14 +26,6 @@
 - Xcode 9.2
 - Swift 4
 - iOS 11
-
-# 视频链接地址请看[腾讯课堂](https://ke.qq.com/course/281908#tuin=1c8f38f4)。
-
-# **提示：**
-
-# 本系列视频实战教程需要有 Swift 语言基础，并且有过 iOS 开发相关经验。
-
-# 另外视频需要支付一部分费用，购买视频的小伙伴可以加入我的 QQ  群，我会帮有问题的小伙伴解决问题~。
 
 # 最早分支代码请看 [TodayNews-old](https://github.com/hrscy/TodayNews/tree/TodayNews-old)，仅供参考。
 
