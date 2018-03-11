@@ -22,9 +22,7 @@
 - Swift 4
 - iOS 11
 
-# 下方二维码是视频链接地址。
-
-![](asset/video.png)
+# 视频链接地址请看[腾讯课堂](https://ke.qq.com/course/281908#tuin=1c8f38f4)。
 
 # **提示：**
 
