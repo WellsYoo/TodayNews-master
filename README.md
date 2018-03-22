@@ -61,7 +61,7 @@
 - [x]  设置界面
 - [x]  离线下载界面
 
-![](asset/zan.jpeg)
+![](asset/zan.png)
 
 # 视频目录
 1. 项目搭建
