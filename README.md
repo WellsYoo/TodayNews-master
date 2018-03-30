@@ -20,7 +20,7 @@
 
 # 项目环境
 
-- Xcode 9.2
+- Xcode 9.2（xcode 9.3 编译通过）
 - Swift 4
 - iOS 11
 
