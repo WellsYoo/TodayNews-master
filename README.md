@@ -20,8 +20,8 @@
 
 # 项目环境
 
-- Xcode 9.2（xcode 9.3 编译通过）
-- Swift 4
+- Xcode 9.3
+- Swift 4.1
 - iOS 11
 
 # 最早分支代码请看 [TodayNews-old](https://github.com/hrscy/TodayNews/tree/TodayNews-old)，仅供参考。
