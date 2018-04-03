@@ -37,9 +37,9 @@ extension HuoshanViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(receiveDayOrNightButtonClicked), name: NSNotification.Name(rawValue: "dayOrNightButtonClicked"), object: nil)
         // 小视频导航栏标题的数据
         NetworkTool.loadSmallVideoCategories {
-            self.navigationBar.titleNames = $0.flatMap({ $0.name })
+            self.navigationBar.titleNames = $0.compactMap({ $0.name })
             // 设置子控制器
-            _ = $0.flatMap({ (newsTitle) -> () in
+            _ = $0.compactMap({ (newsTitle) -> () in
                 let categoryVC = HuoshanCategoryController()
                 categoryVC.newsTitle = newsTitle
                 self.addChildViewController(categoryVC)

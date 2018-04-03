@@ -28,7 +28,7 @@ class NewYearCardCell: UITableViewCell, RegisterCellFromNib {
         let path = Bundle.main.path(forResource: "shengxiao", ofType: "plist")
         // plist 文件中的数据
         let cards = NSArray(contentsOfFile: path!) as! [Any]
-        destCards = cards.flatMap({ Shengxiao.deserialize(from: $0 as? [String: Any]) })
+        destCards = cards.compactMap({ Shengxiao.deserialize(from: $0 as? [String: Any]) })
         collectionView.ym_registerCell(cell: ShengxiaoCell.self)
         
     }

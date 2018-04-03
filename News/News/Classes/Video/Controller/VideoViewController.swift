@@ -47,11 +47,11 @@ extension VideoViewController {
             configuration.titleSelectedColor = .globalRedColor()
             configuration.indicatorColor = .clear
             // 标题名称的数组
-            self.pageTitleView = SGPageTitleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: newsTitleHeight), delegate: self, titleNames: $0.flatMap({ $0.name }), configure: configuration)
+            self.pageTitleView = SGPageTitleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: newsTitleHeight), delegate: self, titleNames: $0.compactMap({ $0.name }), configure: configuration)
             self.pageTitleView!.backgroundColor = .clear
             self.view.addSubview(self.pageTitleView!)
             // 设置子控制器
-            _ = $0.flatMap({ (newsTitle) -> () in
+            _ = $0.compactMap({ (newsTitle) -> () in
                 let videoTableVC = VideoTableViewController()
                 videoTableVC.setupRefresh(with: newsTitle.category)
                 self.addChildViewController(videoTableVC)

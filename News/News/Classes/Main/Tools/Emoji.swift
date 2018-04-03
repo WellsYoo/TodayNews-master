@@ -36,7 +36,7 @@ struct EmojiManager {
          // 根据 plist 文件 读取数据
          let array = NSArray(contentsOfFile: path!) as! [[String: String]]
          // 字典转成模型
-         emojis = array.flatMap { Emoji.deserialize(from: $0 as NSDictionary) }
+         emojis = array.compactMap { Emoji.deserialize(from: $0 as NSDictionary) }
          */
         // 获取 emoji_sort.plist 的路径
         let arrayPath = Bundle.main.path(forResource: "emoji_sort.plist", ofType: nil)

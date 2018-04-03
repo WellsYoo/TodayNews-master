@@ -94,7 +94,7 @@ extension RedPackageViewController2 {
         let path = Bundle.main.path(forResource: "activity", ofType: "plist")
         // plist 文件中的数据
         let activities = NSArray(contentsOfFile: path!) as! [Any]
-        newYearActivities = activities.flatMap({
+        newYearActivities = activities.compactMap({
             NewYearActivity.deserialize(from: $0 as? [String: Any])
         })
         tableView.ym_registerCell(cell: NewYearCardCell.self)

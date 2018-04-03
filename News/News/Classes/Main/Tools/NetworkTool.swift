@@ -99,7 +99,7 @@ extension NetworkToolProtocol {
                     if let datas = dataDict["data"]?.arrayObject {
                         var titles = [HomeNewsTitle]()
                         titles.append(HomeNewsTitle.deserialize(from: "{\"category\": \"\", \"name\": \"推荐\"}")!)
-                        titles += datas.flatMap({ HomeNewsTitle.deserialize(from: $0 as? Dictionary) })
+                        titles += datas.compactMap({ HomeNewsTitle.deserialize(from: $0 as? Dictionary) })
                         completionHandler(titles)
                     }
                 }
@@ -120,7 +120,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 let dataDict = json["data"].dictionary
                 if let data = dataDict!["data"]!.arrayObject {
-                    completionHandler(data.flatMap({
+                    completionHandler(data.compactMap({
                         HomeNewsTitle.deserialize(from: ($0 as! [String: Any]))
                     }))
                 }
@@ -174,7 +174,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["message"] == "success" else { return }
                 guard let datas = json["data"].array else { return }
-                completionHandler(pullTime, datas.flatMap({ NewsModel.deserialize(from: $0["content"].string) }))
+                completionHandler(pullTime, datas.compactMap({ NewsModel.deserialize(from: $0["content"].string) }))
             }
         }
     }
@@ -205,7 +205,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["message"] == "success" else { return }
                 guard let datas = json["data"].array else { return }
-                completionHandler(datas.flatMap({ NewsModel.deserialize(from: $0["content"].string) }))
+                completionHandler(datas.compactMap({ NewsModel.deserialize(from: $0["content"].string) }))
             }
         }
     }
@@ -231,7 +231,7 @@ extension NetworkToolProtocol {
                     let BASE_DATA = value[Range(uncheckedBounds: (lower: startIndex, upper: endIndex))]
                     let data = BASE_DATA.data(using: String.Encoding.utf8)! as Data
                     let dicts = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [Any]
-                    images = dicts.flatMap({ NewsDetailImage.deserialize(from: ($0 as! NSDictionary))! })
+                    images = dicts.compactMap({ NewsDetailImage.deserialize(from: ($0 as! NSDictionary))! })
                     // 获取 子标题
                     let titleStartIndex = value.range(of: "\"sub_abstracts\":")!.upperBound
                     let titlEndIndex = value.range(of: ",\"sub_titles\"")!.lowerBound
@@ -309,7 +309,7 @@ extension NetworkToolProtocol {
                     let titleSubstring1 = sub_abstracts.replacingOccurrences(of: "\\\"", with: "\"")
                     let titleSubstring2 = titleSubstring1.replacingOccurrences(of: "\\u", with: "u")
                     let titleData = titleSubstring2.data(using: String.Encoding.utf8)! as Data
-                    completionHandler(dicts!.flatMap({ NewsDetailImage.deserialize(from: $0 as? [String: Any])! }), try! JSONSerialization.jsonObject(with: titleData, options: .mutableContainers) as! [String])
+                    completionHandler(dicts!.compactMap({ NewsDetailImage.deserialize(from: $0 as? [String: Any])! }), try! JSONSerialization.jsonObject(with: titleData, options: .mutableContainers) as! [String])
                 }
             }
         }
@@ -332,7 +332,7 @@ extension NetworkToolProtocol {
                 if let datas = json["data"].arrayObject {
                     var titles = [HomeNewsTitle]()
                     titles.append(HomeNewsTitle.deserialize(from: "{\"category\": \"video\", \"name\": \"推荐\"}")!)
-                    titles += datas.flatMap({ HomeNewsTitle.deserialize(from: $0 as? Dictionary) })
+                    titles += datas.compactMap({ HomeNewsTitle.deserialize(from: $0 as? Dictionary) })
                     completionHandler(titles)
                 }
             }
@@ -415,8 +415,8 @@ extension NetworkToolProtocol {
                 mySections.append([MyCellModel.deserialize(from: "{\"text\":\"我的关注\",\"grey_text\":\"\"}")!])
                 if let data = json["data"].dictionary {
                     if let sections = data["sections"]?.arrayObject {
-                        mySections += sections.flatMap({ item in
-                            (item as! [Any]).flatMap({ MyCellModel.deserialize(from: $0 as? Dictionary) })
+                        mySections += sections.compactMap({ item in
+                            (item as! [Any]).compactMap({ MyCellModel.deserialize(from: $0 as? Dictionary) })
                         })
                         completionHandler(mySections)
                     }
@@ -440,7 +440,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["message"] == "success" else { return }
                 if let datas = json["data"].arrayObject {
-                    completionHandler(datas.flatMap({ MyConcern.deserialize(from: $0 as? Dictionary) }))
+                    completionHandler(datas.compactMap({ MyConcern.deserialize(from: $0 as? Dictionary) }))
                 }
             }
         }
@@ -536,7 +536,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["err_no"] == 0 else { return }
                 if let user_cards = json["user_cards"].arrayObject {
-                    completionHandler(user_cards.flatMap({ UserCard.deserialize(from: $0 as? Dictionary) }))
+                    completionHandler(user_cards.compactMap({ UserCard.deserialize(from: $0 as? Dictionary) }))
                 }
             }
         }
@@ -564,7 +564,7 @@ extension NetworkToolProtocol {
                 if let data = json["data"].dictionary {
                     let max_cursor = data["max_cursor"]!.int
                     if let datas = data["data"]!.arrayObject {
-                        completionHandler(max_cursor!, datas.flatMap({
+                        completionHandler(max_cursor!, datas.compactMap({
                             UserDetailDongtai.deserialize(from: $0 as? Dictionary)
                         }))
                     }
@@ -597,7 +597,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["message"] == "success" else { return }
                 if let data = json["data"].arrayObject {
-                    completionHandler(data.flatMap({ UserDetailDongtai.deserialize(from: $0 as? Dictionary) }))
+                    completionHandler(data.compactMap({ UserDetailDongtai.deserialize(from: $0 as? Dictionary) }))
                 }
             }
         }
@@ -625,7 +625,7 @@ extension NetworkToolProtocol {
                 if let answerQuestions = json["answer_question"].arrayObject {
                     if answerQuestions.count == 0 { completionHandler(cursor, []) }
                     else {
-                        completionHandler(json["cursor"].string!, answerQuestions.flatMap({
+                        completionHandler(json["cursor"].string!, answerQuestions.compactMap({
                             UserDetailWenda.deserialize(from: $0 as? Dictionary)
                         }))
                     }
@@ -659,7 +659,7 @@ extension NetworkToolProtocol {
                 if let answerQuestions = json["answer_question"].arrayObject {
                     if answerQuestions.count == 0 { completionHandler(cursor, []) }
                     else {
-                        completionHandler(json["cursor"].string!, answerQuestions.flatMap({
+                        completionHandler(json["cursor"].string!, answerQuestions.compactMap({
                             UserDetailWenda.deserialize(from: $0 as? Dictionary)
                         }))
                     }
@@ -736,7 +736,7 @@ extension NetworkToolProtocol {
                 let json = JSON(value)
                 guard json["message"] == "success" else { completionHandler([]); return }
                 if let datas = json["data"].arrayObject {
-                    completionHandler(datas.flatMap({
+                    completionHandler(datas.compactMap({
                         return DongtaiComment.deserialize(from: ($0 as! [String: Any])["comment"] as? Dictionary)
                     }))
                 }
@@ -767,7 +767,7 @@ extension NetworkToolProtocol {
                 guard json["message"] == "success" else { completionHandler([]); return }
                 if let data = json["data"].dictionary {
                     if let datas = data["data"]!.arrayObject {
-                        completionHandler(datas.flatMap({ DongtaiComment.deserialize(from: $0 as? Dictionary) }))
+                        completionHandler(datas.compactMap({ DongtaiComment.deserialize(from: $0 as? Dictionary) }))
                     }
                 }
             }
@@ -795,7 +795,7 @@ extension NetworkToolProtocol {
                 guard json["message"] == "success" else { completionHandler([]); return }
                 if let data = json["data"].dictionary {
                     if let datas = data["data"]!.arrayObject {
-                        completionHandler(datas.flatMap({ DongtaiUserDigg.deserialize(from: $0 as? Dictionary) }))
+                        completionHandler(datas.compactMap({ DongtaiUserDigg.deserialize(from: $0 as? Dictionary) }))
                     }
                 }
             }
@@ -866,7 +866,7 @@ extension NetworkToolProtocol {
                     if let datas = dataDict["data"]!.arrayObject {
                         var titles = [HomeNewsTitle]()
                         titles.append(HomeNewsTitle.deserialize(from: "{\"category\": \"hotsoon_video\", \"name\": \"推荐\"}")!)
-                        titles += datas.flatMap({ HomeNewsTitle.deserialize(from: $0 as? Dictionary) })
+                        titles += datas.compactMap({ HomeNewsTitle.deserialize(from: $0 as? Dictionary) })
                         completionHandler(titles)
                     }
                 }
@@ -903,7 +903,7 @@ extension NetworkToolProtocol {
                 guard json["err_no"] == 0 else { return }
                 if let data = json["data"].dictionary {
                     if let task_list = data["task_list"]!.arrayObject {
-                        completionHandler(task_list.flatMap({ NewYearTask.deserialize(from: $0 as? Dictionary) }))
+                        completionHandler(task_list.compactMap({ NewYearTask.deserialize(from: $0 as? Dictionary) }))
                     }
                 }
             }
