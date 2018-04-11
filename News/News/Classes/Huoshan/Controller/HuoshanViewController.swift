@@ -51,7 +51,7 @@ extension HuoshanViewController {
         
         // 点击了 标题
         navigationBar.pageTitleViewSelected = { [weak self] in
-            self!.pageContentView!.setPageCententViewCurrentIndex($0)
+            self!.pageContentView!.setPageContentViewCurrentIndex($0)
         }
     }
     

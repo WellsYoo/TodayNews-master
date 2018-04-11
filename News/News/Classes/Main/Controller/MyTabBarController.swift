@@ -94,8 +94,7 @@ class MyTabBarController: UITabBarController {
         }
         childController.title = title
         // 添加导航控制器为 TabBarController 的子控制器
-        let navVc = MyNavigationController(rootViewController: childController)
-        addChildViewController(navVc)
+        addChildViewController(MyNavigationController(rootViewController: childController))
     }
     
     deinit {

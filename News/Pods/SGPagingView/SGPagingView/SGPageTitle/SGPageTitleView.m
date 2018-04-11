@@ -32,7 +32,7 @@
 /// SGPageTitleViewDelegate
 @property (nonatomic, weak) id<SGPageTitleViewDelegate> delegatePageTitleView;
 /// SGPageTitleView 配置信息
-@property (nonatomic, readwrite, strong) SGPageTitleViewConfigure *configure;
+@property (nonatomic, strong) SGPageTitleViewConfigure *configure;
 /// scrollView
 @property (nonatomic, strong) UIScrollView *scrollView;
 /// 指示器
@@ -198,7 +198,7 @@
         CGFloat bottomSeparatorX = 0;
         CGFloat bottomSeparatorY = self.SG_height - bottomSeparatorH;
         _bottomSeparator.frame = CGRectMake(bottomSeparatorX, bottomSeparatorY, bottomSeparatorW, bottomSeparatorH);
-        _bottomSeparator.backgroundColor = [UIColor lightGrayColor];
+        _bottomSeparator.backgroundColor = self.configure.bottomSeparatorColor;
     }
     return _bottomSeparator;
 }
@@ -315,6 +315,15 @@
         button.selected = YES;
         self.tempBtn = button;
     }
+    
+    // 此处处理避免滚动内容试图时手指不离开屏幕的前提下点击按钮后再次滚动内容试图导致按钮文字由于文字渐变导致未选中按钮文字的不标准化处理
+    if (self.isTitleGradientEffect == YES) {
+        [self.btnMArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            UIButton *btn = obj;
+            btn.titleLabel.textColor = self.configure.titleColor;
+        }];
+    }
+    
     // 标题文字缩放属性
     if (self.isOpenTitleTextZoom) {
         [self.btnMArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

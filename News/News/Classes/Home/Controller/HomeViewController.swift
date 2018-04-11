@@ -143,7 +143,7 @@ extension HomeViewController {
 extension HomeViewController: SGPageTitleViewDelegate, SGPageContentViewDelegate {
     /// 联动 pageContent 的方法
     func pageTitleView(_ pageTitleView: SGPageTitleView!, selectedIndex: Int) {
-        self.pageContentView!.setPageCententViewCurrentIndex(selectedIndex)
+        self.pageContentView!.setPageContentViewCurrentIndex(selectedIndex)
     }
     
     /// 联动 SGPageTitleView 的方法
