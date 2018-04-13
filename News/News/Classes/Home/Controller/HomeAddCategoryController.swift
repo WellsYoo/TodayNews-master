@@ -45,23 +45,25 @@ class HomeAddCategoryController: AnimatableModalViewController, StoryboardLoadab
     @objc private func longPressTarget(longPress: UILongPressGestureRecognizer) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "longPressTarget"), object: nil)
         let selectedIndexPath = collectionView.indexPathForItem(at: longPress.location(in: collectionView))
-        switch longPress.state {
-        case .began:
-            if isEdit && selectedIndexPath?.section == 0 { // 选中的是上部的 cell,并且是可编辑状态
-                collectionView.beginInteractiveMovementForItem(at: selectedIndexPath!)
-            } else {
-                isEdit = true
-                collectionView.reloadData()
-                if (selectedIndexPath != nil) && (selectedIndexPath?.section == 0) {
+        if selectedIndexPath?.item != 0 {
+            switch longPress.state {
+            case .began:
+                if isEdit && selectedIndexPath?.section == 0 { // 选中的是上部的 cell,并且是可编辑状态
                     collectionView.beginInteractiveMovementForItem(at: selectedIndexPath!)
+                } else {
+                    isEdit = true
+                    collectionView.reloadData()
+                    if (selectedIndexPath != nil) && (selectedIndexPath?.section == 0) {
+                        collectionView.beginInteractiveMovementForItem(at: selectedIndexPath!)
+                    }
                 }
+            case .changed:
+                collectionView.updateInteractiveMovementTargetPosition(longPress.location(in: longPressRecognizer.view))
+            case .ended:
+                collectionView.endInteractiveMovement()
+            default:
+                collectionView.cancelInteractiveMovement()
             }
-        case .changed:
-            collectionView.updateInteractiveMovementTargetPosition(longPress.location(in: longPressRecognizer.view))
-        case .ended:
-            collectionView.endInteractiveMovement()
-        default:
-            collectionView.cancelInteractiveMovement()
         }
     }
     
@@ -117,9 +119,9 @@ extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.ym_dequeueReusableCell(indexPath: indexPath) as AddCategoryCell
+            cell.titleButton.setTitle(homeTitles[indexPath.item].name, for: .normal)
             cell.isEdit = isEdit
             cell.delegate = self
-            cell.titleButton.setTitle(homeTitles[indexPath.item].name, for: .normal)
             return cell
         } else {
             let cell = collectionView.ym_dequeueReusableCell(indexPath: indexPath) as ChannelRecommendCell
