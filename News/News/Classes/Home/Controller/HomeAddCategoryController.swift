@@ -23,12 +23,8 @@ class HomeAddCategoryController: AnimatableModalViewController, StoryboardLoadab
         super.viewDidLoad()
         // 从数据库中取出左右数据，赋值给 标题数组 titles
         homeTitles = NewsTitleTable().selectAll()
-        let layout = UICollectionViewFlowLayout()
-        // 每个 cell 的大小
-        layout.itemSize = CGSize(width: (screenWidth - 50) * 0.25, height: 44)
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        collectionView.collectionViewLayout = layout
+        // 布局
+        collectionView.collectionViewLayout = AddCategoryFlowLayout()
         // 注册 cell 和头部
         collectionView.ym_registerCell(cell: AddCategoryCell.self)
         collectionView.ym_registerCell(cell: ChannelRecommendCell.self)
@@ -43,10 +39,8 @@ class HomeAddCategoryController: AnimatableModalViewController, StoryboardLoadab
         }
     }
     
-    private lazy var longPressRecognizer: UILongPressGestureRecognizer = {
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressTarget))
-        return longPress
-    }()
+    /// 长按手势
+    private lazy var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressTarget))
     
     @objc private func longPressTarget(longPress: UILongPressGestureRecognizer) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "longPressTarget"), object: nil)
@@ -78,7 +72,7 @@ class HomeAddCategoryController: AnimatableModalViewController, StoryboardLoadab
 }
 
 // MARK: - MyChannelReusableViewDelegate
-extension HomeAddCategoryController: MyChannelReusableViewDelegate, AddCategoryCellDelagate {
+extension HomeAddCategoryController: AddCategoryCellDelagate {
     /// 删除按钮点击
     func deleteCategoryButtonClicked(of cell: AddCategoryCell) {
         // 上部删除，下部添加
@@ -89,18 +83,22 @@ extension HomeAddCategoryController: MyChannelReusableViewDelegate, AddCategoryC
         collectionView.deleteItems(at: [IndexPath(item: indexPath!.item, section: 0)])
     }
 
-    /// 编辑按钮点击
-    func channelReusableViewEditButtonClicked(_ sender: UIButton) {
-        isEdit = sender.isSelected
-        collectionView.reloadData()
-    }
-    
 }
 
 extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     /// 头部
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        return indexPath.section == 0 ? collectionView.ym_dequeueReusableSupplementaryHeaderView(indexPath: indexPath) as MyChannelReusableView : collectionView.ym_dequeueReusableSupplementaryHeaderView(indexPath: indexPath) as ChannelRecommendReusableView
+        if indexPath.section == 0 {
+            let channelResableView = collectionView.ym_dequeueReusableSupplementaryHeaderView(indexPath: indexPath) as MyChannelReusableView
+            // 点击了编辑 / 完成 按钮
+            channelResableView.channelReusableViewEditButtonClicked = { [weak self] (sender) in
+                self!.isEdit = sender.isSelected
+                self!.collectionView.reloadData()
+            }
+            return channelResableView
+        } else {
+            return collectionView.ym_dequeueReusableSupplementaryHeaderView(indexPath: indexPath) as ChannelRecommendReusableView
+        }
     }
     
     /// headerView 的大小
@@ -141,15 +139,27 @@ extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewD
     }
     /// 移动 cell
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        guard !isEdit || sourceIndexPath.section == 1 else { return }
-        /// 需要移动的 cell
-        let tempArray: NSMutableArray = homeTitles as! NSMutableArray
-        tempArray.exchangeObject(at: sourceIndexPath.item, withObjectAt: destinationIndexPath.item)
-        collectionView.reloadData()
+        guard isEdit && sourceIndexPath.section == 0 else { return }
+        // 需要移动的 cell
+        let title = homeTitles[sourceIndexPath.item]
+        homeTitles.remove(at: sourceIndexPath.item)
+        homeTitles.insert(title, at: destinationIndexPath.item)
     }
     /// 每个 cell 之间的间距
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
     
+}
+
+/// 布局
+class AddCategoryFlowLayout: UICollectionViewFlowLayout {
+    
+    override func prepare() {
+        super.prepare()
+        // 每个 cell 的大小
+        itemSize = CGSize(width: (screenWidth - 50) * 0.25, height: 44)
+        minimumLineSpacing = 10
+        minimumInteritemSpacing = 10
+    }
 }

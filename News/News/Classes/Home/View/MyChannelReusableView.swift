@@ -8,15 +8,11 @@
 
 import UIKit
 
-protocol MyChannelReusableViewDelegate: class {
-    /// 编辑按钮点击
-    func channelReusableViewEditButtonClicked(_ sender: UIButton)
-}
-
 /// 我的频道推荐
 class MyChannelReusableView: UICollectionReusableView, RegisterCellFromNib {
-
-    weak var delegate: MyChannelReusableViewDelegate?
+    
+    /// 点击了编辑 / 完成 按钮
+    var channelReusableViewEditButtonClicked: ((_ sender: UIButton)->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,7 +30,7 @@ class MyChannelReusableView: UICollectionReusableView, RegisterCellFromNib {
     
     @IBAction func editButtonClicked(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        delegate?.channelReusableViewEditButtonClicked(sender)
+        channelReusableViewEditButtonClicked?(sender)
     }
     /// 移除通知
     deinit {
