@@ -19,7 +19,7 @@ class AddCategoryCell: UICollectionViewCell, RegisterCellFromNib {
     var isEdit = false {
         didSet {
             deleteCategoryButton.isHidden = !isEdit
-            if titleButton.titleLabel!.text! == "推荐" || titleButton.titleLabel!.text! == "关注" {
+            if titleButton.titleLabel!.text! == "推荐" || titleButton.titleLabel!.text! == "热点" {
                 deleteCategoryButton.isHidden = true
             }
         }
