@@ -99,9 +99,12 @@ extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewD
             channelResableView.channelReusableViewEditButtonClicked = { [weak self] (sender) in
                 self!.isEdit = sender.isSelected
             }
+            channelResableView.width = screenWidth - 15.0
             return channelResableView
         } else {
-            return collectionView.ym_dequeueReusableSupplementaryHeaderView(indexPath: indexPath) as ChannelRecommendReusableView
+            let channelRecommendReusableView = collectionView.ym_dequeueReusableSupplementaryHeaderView(indexPath: indexPath) as ChannelRecommendReusableView
+            channelRecommendReusableView.width = screenWidth - 15.0
+            return channelRecommendReusableView
         }
     }
     

@@ -33,7 +33,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pA6-Vl-A8T">
-                            <rect key="frame" x="255" y="13" width="55" height="24"/>
+                            <rect key="frame" x="265" y="13" width="55" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="55" id="6ZO-I7-eVJ"/>
                                 <constraint firstAttribute="height" constant="24" id="ECV-Of-wzs"/>
@@ -54,7 +54,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="pA6-Vl-A8T" secondAttribute="trailing" constant="10" id="APq-f1-Cbr"/>
+                        <constraint firstAttribute="trailing" secondItem="pA6-Vl-A8T" secondAttribute="trailing" id="APq-f1-Cbr"/>
                         <constraint firstItem="p6e-ez-LRM" firstAttribute="leading" secondItem="JOZ-YJ-QiB" secondAttribute="trailing" constant="10" id="FG2-HK-GAQ"/>
                         <constraint firstItem="pA6-Vl-A8T" firstAttribute="centerY" secondItem="UaZ-1p-jIn" secondAttribute="centerY" id="Gr3-WZ-Pey"/>
                         <constraint firstItem="JOZ-YJ-QiB" firstAttribute="leading" secondItem="UaZ-1p-jIn" secondAttribute="leading" constant="10" id="MYX-0k-2Wz"/>
