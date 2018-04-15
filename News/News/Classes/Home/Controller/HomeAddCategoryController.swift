@@ -48,7 +48,10 @@ class HomeAddCategoryController: AnimatableModalViewController, StoryboardLoadab
     
     @objc private func longPressTarget(longPress: UILongPressGestureRecognizer) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "longPressTarget"), object: nil)
-        if let selectedIndexPath = collectionView.indexPathForItem(at: longPress.location(in: collectionView)) {
+        // 选中的 点
+        let selectedPoint = longPress.location(in: collectionView)
+        // 转换成索引
+        if let selectedIndexPath = collectionView.indexPathForItem(at: selectedPoint) {
             switch longPress.state {
             case .began:
                 if isEdit && selectedIndexPath.section == 0 { // 选中的是上部的 cell,并且是可编辑状态
@@ -66,8 +69,16 @@ class HomeAddCategoryController: AnimatableModalViewController, StoryboardLoadab
             default:
                 collectionView.cancelInteractiveMovement()
             }
+        } else {
+            // 判断点是否在 collectionView 上
+            if selectedPoint.x < collectionView.bounds.minX || selectedPoint.x > collectionView.bounds.maxX || selectedPoint.y < collectionView.bounds.minY || selectedPoint.y > collectionView.bounds.maxY  {
+                collectionView.endInteractiveMovement()
+            }
         }
-        
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     /// 关闭按钮
@@ -98,6 +109,7 @@ extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewD
             // 点击了编辑 / 完成 按钮
             channelResableView.channelReusableViewEditButtonClicked = { [weak self] (sender) in
                 self!.isEdit = sender.isSelected
+                if !sender.isSelected { collectionView.endInteractiveMovement() }
             }
             channelResableView.width = screenWidth - 15.0
             return channelResableView
