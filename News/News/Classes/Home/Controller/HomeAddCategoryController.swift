@@ -11,7 +11,11 @@ import IBAnimatable
 
 class HomeAddCategoryController: AnimatableModalViewController, StoryboardLoadable {
     /// 是否编辑
-    var isEdit = false
+    var isEdit = false {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     // 上部 我的频道
     private var homeTitles = [HomeNewsTitle]()
     // 下部 频道推荐数据
@@ -44,20 +48,18 @@ class HomeAddCategoryController: AnimatableModalViewController, StoryboardLoadab
     
     @objc private func longPressTarget(longPress: UILongPressGestureRecognizer) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "longPressTarget"), object: nil)
-        let selectedIndexPath = collectionView.indexPathForItem(at: longPress.location(in: collectionView))
-        if selectedIndexPath?.item != 0 && selectedIndexPath?.item != 1 {
+        if let selectedIndexPath = collectionView.indexPathForItem(at: longPress.location(in: collectionView)) {
             switch longPress.state {
             case .began:
-                if isEdit && selectedIndexPath?.section == 0 { // 选中的是上部的 cell,并且是可编辑状态
-                    collectionView.beginInteractiveMovementForItem(at: selectedIndexPath!)
+                if isEdit && selectedIndexPath.section == 0 { // 选中的是上部的 cell,并且是可编辑状态
+                    collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
                 } else {
                     isEdit = true
-                    collectionView.reloadData()
-                    if (selectedIndexPath != nil) && (selectedIndexPath?.section == 0) {
-                        collectionView.beginInteractiveMovementForItem(at: selectedIndexPath!)
-                    }
+                    collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
                 }
             case .changed:
+                // 固定第一、二个不能移动
+                if selectedIndexPath.item <= 1 { collectionView.endInteractiveMovement(); break }
                 collectionView.updateInteractiveMovementTargetPosition(longPress.location(in: longPressRecognizer.view))
             case .ended:
                 collectionView.endInteractiveMovement()
@@ -65,6 +67,7 @@ class HomeAddCategoryController: AnimatableModalViewController, StoryboardLoadab
                 collectionView.cancelInteractiveMovement()
             }
         }
+        
     }
     
     /// 关闭按钮
@@ -95,7 +98,6 @@ extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewD
             // 点击了编辑 / 完成 按钮
             channelResableView.channelReusableViewEditButtonClicked = { [weak self] (sender) in
                 self!.isEdit = sender.isSelected
-                self!.collectionView.reloadData()
             }
             return channelResableView
         } else {
@@ -139,14 +141,33 @@ extension HomeAddCategoryController: UICollectionViewDelegate, UICollectionViewD
         categories.remove(at: indexPath.item)
         collectionView.deleteItems(at: [IndexPath(item: indexPath.item, section: 1)])
     }
+    
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     /// 移动 cell
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        guard isEdit && sourceIndexPath.section == 0 else { return }
-        // 需要移动的 cell
+        // 固定第一、二个不能移动
+        if destinationIndexPath.item <= 1 {
+            collectionView.endInteractiveMovement()
+            collectionView.reloadData()
+            return
+        }
+        // 取出需要移动的 cell
         let title = homeTitles[sourceIndexPath.item]
         homeTitles.remove(at: sourceIndexPath.item)
-        homeTitles.insert(title, at: destinationIndexPath.item)
+        // 移动 cell
+        if isEdit && sourceIndexPath.section == 0 {
+            // 说明移动前后都在 第一组
+            if destinationIndexPath.section == 0 {
+                homeTitles.insert(title, at: destinationIndexPath.item)
+            } else { // 说明移动后在 第二组
+                categories.insert(title, at: destinationIndexPath.item)
+            }
+        }
     }
+    
     /// 每个 cell 之间的间距
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
