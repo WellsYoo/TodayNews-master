@@ -1,0 +1,103 @@
+PODS:
+  - Alamofire (4.7.1)
+  - BMPlayer (1.0.1):
+    - BMPlayer/Full (= 1.0.1)
+  - BMPlayer/Core (1.0.1)
+  - BMPlayer/Full (1.0.1):
+    - BMPlayer/Core
+    - NVActivityIndicatorView (~> 4.3.0)
+    - SnapKit (~> 4.0.0)
+  - FDFullscreenPopGesture (1.1)
+  - HandyJSON (4.2.0)
+  - IBAnimatable (5.0.0)
+  - Kingfisher (4.7.0)
+  - lottie-ios (2.5.0)
+  - MJRefresh (3.1.15.3)
+  - NVActivityIndicatorView (4.3.0):
+    - NVActivityIndicatorView/Presenter (= 4.3.0)
+  - NVActivityIndicatorView/Presenter (4.3.0)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
+  - SGPagingView (1.3.6)
+  - SnapKit (4.0.1)
+  - SQLite.swift (0.11.4):
+    - SQLite.swift/standard (= 0.11.4)
+  - SQLite.swift/standard (0.11.4)
+  - SVProgressHUD (2.2.5)
+  - SwiftTheme (0.4.2)
+  - SwiftyJSON (4.2.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - BMPlayer (from `https://github.com/BrikerMan/BMPlayer.git`, branch `master`)
+  - FDFullscreenPopGesture
+  - HandyJSON
+  - IBAnimatable
+  - Kingfisher
+  - lottie-ios
+  - MJRefresh
+  - RxCocoa
+  - RxSwift
+  - SGPagingView
+  - SQLite.swift
+  - SVProgressHUD
+  - SwiftTheme (from `https://github.com/jiecao-fm/SwiftTheme.git`, branch `master`)
+  - SwiftyJSON
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - FDFullscreenPopGesture
+    - HandyJSON
+    - IBAnimatable
+    - Kingfisher
+    - lottie-ios
+    - MJRefresh
+    - NVActivityIndicatorView
+    - RxCocoa
+    - RxSwift
+    - SGPagingView
+    - SnapKit
+    - SQLite.swift
+    - SVProgressHUD
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  BMPlayer:
+    :branch: master
+    :git: https://github.com/BrikerMan/BMPlayer.git
+  SwiftTheme:
+    :branch: master
+    :git: https://github.com/jiecao-fm/SwiftTheme.git
+
+CHECKOUT OPTIONS:
+  BMPlayer:
+    :commit: ad539eba10f4e5e266caf596ac62ad5c553ae572
+    :git: https://github.com/BrikerMan/BMPlayer.git
+  SwiftTheme:
+    :commit: a3cbb87b7b01cb38507e36ea02583bdd3d1e3feb
+    :git: https://github.com/jiecao-fm/SwiftTheme.git
+
+SPEC CHECKSUMS:
+  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  BMPlayer: f6fd03be54a5ce7209c352d95873d35fb069db0c
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
+  IBAnimatable: aa2286a9cf8fb4ae2e1be85c5287ae56143b024f
+  Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
+  lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  NVActivityIndicatorView: 963f62bf9f993fcf23218e55958e5b1761b9504c
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SGPagingView: 4e9204cc62e4b63b269fbf48b4e8c9333adcd071
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SQLite.swift: 3e3bee21da701b5b9f87c4a672cb54f233505692
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftTheme: cfaeee3881332c23c433f3cf092b2a95c792b4ff
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+
+PODFILE CHECKSUM: 8b14010daeb3608da1f7f28d6a8932c044d52711
+
+COCOAPODS: 1.5.3
