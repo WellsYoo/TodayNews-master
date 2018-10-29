@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1651B0A8463B36B1AE37D690 /* Pods_WellsNewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF5A1C8644E62CFEDF5190AC /* Pods_WellsNewsTests.framework */; };
+		1E3D26A62187482D00BEA4E4 /* WNTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D26A52187482D00BEA4E4 /* WNTabBarController.swift */; };
 		1E94BFF121737B8F0031CEF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E94BFF021737B8F0031CEF8 /* AppDelegate.swift */; };
 		1E94BFF321737B8F0031CEF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E94BFF221737B8F0031CEF8 /* ViewController.swift */; };
 		1E94BFF621737B8F0031CEF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E94BFF421737B8F0031CEF8 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		09A2C44DBF16E3198D29D363 /* Pods-WellsNewsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WellsNewsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WellsNewsUITests/Pods-WellsNewsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1E3D26A52187482D00BEA4E4 /* WNTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNTabBarController.swift; sourceTree = "<group>"; };
 		1E94BFED21737B8F0031CEF8 /* WellsNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WellsNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E94BFF021737B8F0031CEF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E94BFF221737B8F0031CEF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E3D26A22187478400BEA4E4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1E3D26A3218747A000BEA4E4 /* Main */,
+				1E94BFF021737B8F0031CEF8 /* AppDelegate.swift */,
+				1E94BFF221737B8F0031CEF8 /* ViewController.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		1E3D26A3218747A000BEA4E4 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1E3D26A4218747B400BEA4E4 /* Controller */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		1E3D26A4218747B400BEA4E4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1E3D26A52187482D00BEA4E4 /* WNTabBarController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		1E94BFE421737B8F0031CEF8 = {
 			isa = PBXGroup;
 			children = (
@@ -114,8 +142,7 @@
 		1E94BFEF21737B8F0031CEF8 /* WellsNews */ = {
 			isa = PBXGroup;
 			children = (
-				1E94BFF021737B8F0031CEF8 /* AppDelegate.swift */,
-				1E94BFF221737B8F0031CEF8 /* ViewController.swift */,
+				1E3D26A22187478400BEA4E4 /* Classes */,
 				1E94BFF421737B8F0031CEF8 /* Main.storyboard */,
 				1E94BFF721737B900031CEF8 /* Assets.xcassets */,
 				1E94BFF921737B900031CEF8 /* LaunchScreen.storyboard */,
@@ -388,6 +415,7 @@
 			files = (
 				1E94BFF321737B8F0031CEF8 /* ViewController.swift in Sources */,
 				1E94BFF121737B8F0031CEF8 /* AppDelegate.swift in Sources */,
+				1E3D26A62187482D00BEA4E4 /* WNTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
