@@ -18,14 +18,11 @@
 		1E3D26BF21874AD100BEA4E4 /* night_theme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26B121874AD100BEA4E4 /* night_theme.plist */; };
 		1E3D26C021874AD100BEA4E4 /* emoji_mapping.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26B221874AD100BEA4E4 /* emoji_mapping.plist */; };
 		1E3D26C121874AD100BEA4E4 /* emojis.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26B321874AD100BEA4E4 /* emojis.plist */; };
-		1E3D26C221874AD100BEA4E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D26B421874AD100BEA4E4 /* AppDelegate.swift */; };
 		1E3D26C321874AD100BEA4E4 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D26B521874AD100BEA4E4 /* Const.swift */; };
 		1E3D26C421874AD100BEA4E4 /* activity2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26B621874AD100BEA4E4 /* activity2.plist */; };
 		1E3D26C521874AD100BEA4E4 /* settingPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26B721874AD100BEA4E4 /* settingPlist.plist */; };
-		1E3D26C621874AD100BEA4E4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26B821874AD100BEA4E4 /* Info.plist */; };
 		1E94BFF121737B8F0031CEF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E94BFF021737B8F0031CEF8 /* AppDelegate.swift */; };
 		1E94BFF321737B8F0031CEF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E94BFF221737B8F0031CEF8 /* ViewController.swift */; };
-		1E94BFF621737B8F0031CEF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E94BFF421737B8F0031CEF8 /* Main.storyboard */; };
 		1E94BFF821737B900031CEF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E94BFF721737B900031CEF8 /* Assets.xcassets */; };
 		1E94BFFB21737B900031CEF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E94BFF921737B900031CEF8 /* LaunchScreen.storyboard */; };
 		1E94C00621737B900031CEF8 /* WellsNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E94C00521737B900031CEF8 /* WellsNewsTests.swift */; };
@@ -63,15 +60,12 @@
 		1E3D26B121874AD100BEA4E4 /* night_theme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = night_theme.plist; sourceTree = "<group>"; };
 		1E3D26B221874AD100BEA4E4 /* emoji_mapping.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = emoji_mapping.plist; sourceTree = "<group>"; };
 		1E3D26B321874AD100BEA4E4 /* emojis.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emojis.plist; sourceTree = "<group>"; };
-		1E3D26B421874AD100BEA4E4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E3D26B521874AD100BEA4E4 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		1E3D26B621874AD100BEA4E4 /* activity2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = activity2.plist; sourceTree = "<group>"; };
 		1E3D26B721874AD100BEA4E4 /* settingPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settingPlist.plist; sourceTree = "<group>"; };
-		1E3D26B821874AD100BEA4E4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E94BFED21737B8F0031CEF8 /* WellsNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WellsNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E94BFF021737B8F0031CEF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E94BFF221737B8F0031CEF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1E94BFF521737B8F0031CEF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E94BFF721737B900031CEF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E94BFFA21737B900031CEF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E94BFFC21737B900031CEF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -157,11 +151,9 @@
 				1E3D26AF21874AD100BEA4E4 /* Theme */,
 				1E3D26B221874AD100BEA4E4 /* emoji_mapping.plist */,
 				1E3D26B321874AD100BEA4E4 /* emojis.plist */,
-				1E3D26B421874AD100BEA4E4 /* AppDelegate.swift */,
 				1E3D26B521874AD100BEA4E4 /* Const.swift */,
 				1E3D26B621874AD100BEA4E4 /* activity2.plist */,
 				1E3D26B721874AD100BEA4E4 /* settingPlist.plist */,
-				1E3D26B821874AD100BEA4E4 /* Info.plist */,
 			);
 			name = Others;
 			path = ../../../../TodayNews/News/News/Classes/Others;
@@ -202,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				1E3D26A22187478400BEA4E4 /* Classes */,
-				1E94BFF421737B8F0031CEF8 /* Main.storyboard */,
 				1E94BFF721737B900031CEF8 /* Assets.xcassets */,
 				1E94BFF921737B900031CEF8 /* LaunchScreen.storyboard */,
 				1E94BFFC21737B900031CEF8 /* Info.plist */,
@@ -368,11 +359,9 @@
 				1E3D26BE21874AD100BEA4E4 /* default_theme.plist in Resources */,
 				1E3D26C521874AD100BEA4E4 /* settingPlist.plist in Resources */,
 				1E94BFFB21737B900031CEF8 /* LaunchScreen.storyboard in Resources */,
-				1E3D26C621874AD100BEA4E4 /* Info.plist in Resources */,
 				1E3D26BA21874AD100BEA4E4 /* emoji_sort.plist in Resources */,
 				1E94BFF821737B900031CEF8 /* Assets.xcassets in Resources */,
 				1E3D26C121874AD100BEA4E4 /* emojis.plist in Resources */,
-				1E94BFF621737B8F0031CEF8 /* Main.storyboard in Resources */,
 				1E3D26C421874AD100BEA4E4 /* activity2.plist in Resources */,
 				1E3D26BD21874AD100BEA4E4 /* activity_main_head_white.json in Resources */,
 			);
@@ -507,7 +496,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E3D26C221874AD100BEA4E4 /* AppDelegate.swift in Sources */,
 				1E94BFF321737B8F0031CEF8 /* ViewController.swift in Sources */,
 				1E94BFF121737B8F0031CEF8 /* AppDelegate.swift in Sources */,
 				1E3D26A62187482D00BEA4E4 /* WNTabBarController.swift in Sources */,
@@ -547,14 +535,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1E94BFF421737B8F0031CEF8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1E94BFF521737B8F0031CEF8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1E94BFF921737B900031CEF8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

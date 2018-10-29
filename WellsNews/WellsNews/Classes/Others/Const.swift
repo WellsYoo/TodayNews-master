@@ -64,5 +64,3 @@ enum TTFrom: String {
     case preLoadMoreDraw = "pre_load_more_draw"
 }
 
-
-
