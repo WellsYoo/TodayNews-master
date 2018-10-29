@@ -7,6 +7,7 @@ target 'WellsNews' do
 
   # Pods for WellsNews
    pod 'SwiftLint', '~> 0.26.0'
+   pod 'SwiftTheme', :git=>'https://github.com/jiecao-fm/SwiftTheme.git',:branch=>'master'
 
   target 'WellsNewsTests' do
     inherit! :search_paths

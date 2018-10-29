@@ -9,6 +9,20 @@
 /* Begin PBXBuildFile section */
 		1651B0A8463B36B1AE37D690 /* Pods_WellsNewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF5A1C8644E62CFEDF5190AC /* Pods_WellsNewsTests.framework */; };
 		1E3D26A62187482D00BEA4E4 /* WNTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D26A52187482D00BEA4E4 /* WNTabBarController.swift */; };
+		1E3D26B921874AD100BEA4E4 /* activity_main_mahjong_start_guide.json in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26AA21874AD100BEA4E4 /* activity_main_mahjong_start_guide.json */; };
+		1E3D26BA21874AD100BEA4E4 /* emoji_sort.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26AB21874AD100BEA4E4 /* emoji_sort.plist */; };
+		1E3D26BB21874AD100BEA4E4 /* activity.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26AC21874AD100BEA4E4 /* activity.plist */; };
+		1E3D26BC21874AD100BEA4E4 /* shengxiao.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26AD21874AD100BEA4E4 /* shengxiao.plist */; };
+		1E3D26BD21874AD100BEA4E4 /* activity_main_head_white.json in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26AE21874AD100BEA4E4 /* activity_main_head_white.json */; };
+		1E3D26BE21874AD100BEA4E4 /* default_theme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26B021874AD100BEA4E4 /* default_theme.plist */; };
+		1E3D26BF21874AD100BEA4E4 /* night_theme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26B121874AD100BEA4E4 /* night_theme.plist */; };
+		1E3D26C021874AD100BEA4E4 /* emoji_mapping.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26B221874AD100BEA4E4 /* emoji_mapping.plist */; };
+		1E3D26C121874AD100BEA4E4 /* emojis.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26B321874AD100BEA4E4 /* emojis.plist */; };
+		1E3D26C221874AD100BEA4E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D26B421874AD100BEA4E4 /* AppDelegate.swift */; };
+		1E3D26C321874AD100BEA4E4 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D26B521874AD100BEA4E4 /* Const.swift */; };
+		1E3D26C421874AD100BEA4E4 /* activity2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26B621874AD100BEA4E4 /* activity2.plist */; };
+		1E3D26C521874AD100BEA4E4 /* settingPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26B721874AD100BEA4E4 /* settingPlist.plist */; };
+		1E3D26C621874AD100BEA4E4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D26B821874AD100BEA4E4 /* Info.plist */; };
 		1E94BFF121737B8F0031CEF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E94BFF021737B8F0031CEF8 /* AppDelegate.swift */; };
 		1E94BFF321737B8F0031CEF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E94BFF221737B8F0031CEF8 /* ViewController.swift */; };
 		1E94BFF621737B8F0031CEF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E94BFF421737B8F0031CEF8 /* Main.storyboard */; };
@@ -40,6 +54,20 @@
 /* Begin PBXFileReference section */
 		09A2C44DBF16E3198D29D363 /* Pods-WellsNewsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WellsNewsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WellsNewsUITests/Pods-WellsNewsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1E3D26A52187482D00BEA4E4 /* WNTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNTabBarController.swift; sourceTree = "<group>"; };
+		1E3D26AA21874AD100BEA4E4 /* activity_main_mahjong_start_guide.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activity_main_mahjong_start_guide.json; sourceTree = "<group>"; };
+		1E3D26AB21874AD100BEA4E4 /* emoji_sort.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = emoji_sort.plist; sourceTree = "<group>"; };
+		1E3D26AC21874AD100BEA4E4 /* activity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = activity.plist; sourceTree = "<group>"; };
+		1E3D26AD21874AD100BEA4E4 /* shengxiao.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = shengxiao.plist; sourceTree = "<group>"; };
+		1E3D26AE21874AD100BEA4E4 /* activity_main_head_white.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activity_main_head_white.json; sourceTree = "<group>"; };
+		1E3D26B021874AD100BEA4E4 /* default_theme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = default_theme.plist; sourceTree = "<group>"; };
+		1E3D26B121874AD100BEA4E4 /* night_theme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = night_theme.plist; sourceTree = "<group>"; };
+		1E3D26B221874AD100BEA4E4 /* emoji_mapping.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = emoji_mapping.plist; sourceTree = "<group>"; };
+		1E3D26B321874AD100BEA4E4 /* emojis.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emojis.plist; sourceTree = "<group>"; };
+		1E3D26B421874AD100BEA4E4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1E3D26B521874AD100BEA4E4 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		1E3D26B621874AD100BEA4E4 /* activity2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = activity2.plist; sourceTree = "<group>"; };
+		1E3D26B721874AD100BEA4E4 /* settingPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settingPlist.plist; sourceTree = "<group>"; };
+		1E3D26B821874AD100BEA4E4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E94BFED21737B8F0031CEF8 /* WellsNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WellsNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E94BFF021737B8F0031CEF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E94BFF221737B8F0031CEF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				1E3D26A3218747A000BEA4E4 /* Main */,
+				1E3D26A921874AD100BEA4E4 /* Others */,
 				1E94BFF021737B8F0031CEF8 /* AppDelegate.swift */,
 				1E94BFF221737B8F0031CEF8 /* ViewController.swift */,
 			);
@@ -115,6 +144,36 @@
 				1E3D26A52187482D00BEA4E4 /* WNTabBarController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		1E3D26A921874AD100BEA4E4 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				1E3D26AA21874AD100BEA4E4 /* activity_main_mahjong_start_guide.json */,
+				1E3D26AB21874AD100BEA4E4 /* emoji_sort.plist */,
+				1E3D26AC21874AD100BEA4E4 /* activity.plist */,
+				1E3D26AD21874AD100BEA4E4 /* shengxiao.plist */,
+				1E3D26AE21874AD100BEA4E4 /* activity_main_head_white.json */,
+				1E3D26AF21874AD100BEA4E4 /* Theme */,
+				1E3D26B221874AD100BEA4E4 /* emoji_mapping.plist */,
+				1E3D26B321874AD100BEA4E4 /* emojis.plist */,
+				1E3D26B421874AD100BEA4E4 /* AppDelegate.swift */,
+				1E3D26B521874AD100BEA4E4 /* Const.swift */,
+				1E3D26B621874AD100BEA4E4 /* activity2.plist */,
+				1E3D26B721874AD100BEA4E4 /* settingPlist.plist */,
+				1E3D26B821874AD100BEA4E4 /* Info.plist */,
+			);
+			name = Others;
+			path = ../../../../TodayNews/News/News/Classes/Others;
+			sourceTree = "<group>";
+		};
+		1E3D26AF21874AD100BEA4E4 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				1E3D26B021874AD100BEA4E4 /* default_theme.plist */,
+				1E3D26B121874AD100BEA4E4 /* night_theme.plist */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		1E94BFE421737B8F0031CEF8 = {
@@ -204,6 +263,7 @@
 				1E94BFEA21737B8F0031CEF8 /* Frameworks */,
 				1E94BFEB21737B8F0031CEF8 /* Resources */,
 				1E0705682173887A006F44D8 /* ShellScript */,
+				3E06A2ADDA09029C69EAAE8C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -300,9 +360,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E3D26B921874AD100BEA4E4 /* activity_main_mahjong_start_guide.json in Resources */,
+				1E3D26C021874AD100BEA4E4 /* emoji_mapping.plist in Resources */,
+				1E3D26BF21874AD100BEA4E4 /* night_theme.plist in Resources */,
+				1E3D26BC21874AD100BEA4E4 /* shengxiao.plist in Resources */,
+				1E3D26BB21874AD100BEA4E4 /* activity.plist in Resources */,
+				1E3D26BE21874AD100BEA4E4 /* default_theme.plist in Resources */,
+				1E3D26C521874AD100BEA4E4 /* settingPlist.plist in Resources */,
 				1E94BFFB21737B900031CEF8 /* LaunchScreen.storyboard in Resources */,
+				1E3D26C621874AD100BEA4E4 /* Info.plist in Resources */,
+				1E3D26BA21874AD100BEA4E4 /* emoji_sort.plist in Resources */,
 				1E94BFF821737B900031CEF8 /* Assets.xcassets in Resources */,
+				1E3D26C121874AD100BEA4E4 /* emojis.plist in Resources */,
 				1E94BFF621737B8F0031CEF8 /* Main.storyboard in Resources */,
+				1E3D26C421874AD100BEA4E4 /* activity2.plist in Resources */,
+				1E3D26BD21874AD100BEA4E4 /* activity_main_head_white.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +411,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		3E06A2ADDA09029C69EAAE8C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WellsNews/Pods-WellsNews-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WellsNews/Pods-WellsNews-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		4EFDD43F00BD89FA2D8571B3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -413,9 +507,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E3D26C221874AD100BEA4E4 /* AppDelegate.swift in Sources */,
 				1E94BFF321737B8F0031CEF8 /* ViewController.swift in Sources */,
 				1E94BFF121737B8F0031CEF8 /* AppDelegate.swift in Sources */,
 				1E3D26A62187482D00BEA4E4 /* WNTabBarController.swift in Sources */,
+				1E3D26C321874AD100BEA4E4 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
