@@ -6,7 +6,7 @@ target 'WellsNews' do
   use_frameworks!
 
   # Pods for WellsNews
-  pod 'SwiftLint'
+   pod 'SwiftLint', '~> 0.26.0'
 
   target 'WellsNewsTests' do
     inherit! :search_paths
