@@ -10,7 +10,7 @@ import UIKit
 
 class UserDetailBottomPopController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var children = [BottomTabChildren]()
+    var myChildren = [BottomTabChildren]()
     
     @IBOutlet weak var tableView: UITableView!
     /// 点击了一个 bottomTab
@@ -22,13 +22,13 @@ class UserDetailBottomPopController: UIViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return children.count
+        return myChildren.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)", for: indexPath)
         cell.selectionStyle = .none
-        let child = children[indexPath.row]
+        let child = myChildren[indexPath.row]
         cell.textLabel?.text = child.name
         cell.textLabel?.textAlignment = .center
         cell.textLabel?.font = UIFont.systemFont(ofSize: 13)
@@ -37,7 +37,7 @@ class UserDetailBottomPopController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: MyPresentationControllerDismiss), object: nil)
-        didSelectedChild?(children[indexPath.row])
+        didSelectedChild?(myChildren[indexPath.row])
     }
 
     override func didReceiveMemoryWarning() {

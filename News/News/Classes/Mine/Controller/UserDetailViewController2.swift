@@ -172,7 +172,7 @@ extension UserDetailViewController2: UserDetailBottomViewDelegate {
             let sb = UIStoryboard(name: "\(UserDetailBottomPopController.self)", bundle: nil)
             // 创建 UserDetailBottomPopController
             let popoverVC = sb.instantiateViewController(withIdentifier: "\(UserDetailBottomPopController.self)") as! UserDetailBottomPopController
-            popoverVC.children = bottomTab.children
+            popoverVC.myChildren = bottomTab.children
             popoverVC.modalPresentationStyle = .custom
             popoverVC.didSelectedChild = { [weak self] in
                 bottomPushVC.url = $0.value
