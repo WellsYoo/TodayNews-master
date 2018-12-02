@@ -30,7 +30,7 @@ class WNTabBarController: UITabBarController {
     
 // MARK: Private
     private func addChildViewControllers() {
-//        setChildViewController(<#T##childController: UIViewController##UIViewController#>, title: <#T##String#>, imageName: <#T##String#>)
+        setChildViewController(HomeViewController(), title: "首页", imageName: "home")
     }
     
     private func setChildViewController(_ childController: UIViewController, title: String, imageName: String) {

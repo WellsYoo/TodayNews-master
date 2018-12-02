@@ -8,6 +8,21 @@ target 'WellsNews' do
   # Pods for WellsNews
    pod 'SwiftLint', '~> 0.26.0'
    pod 'SwiftTheme', :git=>'https://github.com/jiecao-fm/SwiftTheme.git',:branch=>'master'
+   pod 'SGPagingView', '~> 1.5.5'
+   pod 'Alamofire'
+   pod 'SwiftyJSON'
+#   pod 'HandyJSON'
+ pod '   ', '~> 4.2.0'
+   pod 'Kingfisher'
+   pod 'IBAnimatable'
+   pod 'SwiftTheme', :git=>'https://github.com/jiecao-fm/SwiftTheme.git',:branch=>'master'
+   pod 'RxSwift'
+   pod 'RxCocoa'
+   pod 'SQLite.swift'
+   pod 'SVProgressHUD'
+   pod 'MJRefresh'
+   pod 'BMPlayer', :git => 'https://github.com/BrikerMan/BMPlayer.git', :branch => 'master'
+   pod 'FDFullscreenPopGesture'
 
   target 'WellsNewsTests' do
     inherit! :search_paths

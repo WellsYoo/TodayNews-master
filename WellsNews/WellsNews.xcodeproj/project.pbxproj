@@ -27,6 +27,14 @@
 		1E94BFFB21737B900031CEF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E94BFF921737B900031CEF8 /* LaunchScreen.storyboard */; };
 		1E94C00621737B900031CEF8 /* WellsNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E94C00521737B900031CEF8 /* WellsNewsTests.swift */; };
 		1E94C01121737B900031CEF8 /* WellsNewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E94C01021737B900031CEF8 /* WellsNewsUITests.swift */; };
+		1EA0DA4D21B21B4B00954DC9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0DA4C21B21B4B00954DC9 /* HomeViewController.swift */; };
+		1EFB836021B22B4A00C02703 /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB835621B22B4A00C02703 /* UIKit+Extension.swift */; };
+		1EFB836121B22B4A00C02703 /* Foundation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB835721B22B4A00C02703 /* Foundation+Extension.swift */; };
+		1EFB836221B22B4A00C02703 /* SVProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB835821B22B4A00C02703 /* SVProgressHUD+Extension.swift */; };
+		1EFB836321B22B4A00C02703 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB835921B22B4A00C02703 /* NSData+CRC32.m */; };
+		1EFB836421B22B4A00C02703 /* MyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB835B21B22B4A00C02703 /* MyTheme.swift */; };
+		1EFB836821B22B4A00C02703 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB835F21B22B4A00C02703 /* Emoji.swift */; };
+		1EFB836B21B22CCD00C02703 /* HomeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB836A21B22CCD00C02703 /* HomeNavigationView.swift */; };
 		23A05EF952A8AAE34F7C17E1 /* Pods_WellsNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 912327A4F2D0D0ADB67EBE6B /* Pods_WellsNews.framework */; };
 		32E9E166CE66B5775E9C7474 /* Pods_WellsNewsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC64E0ECF9C4FFCDD0AA601 /* Pods_WellsNewsUITests.framework */; };
 /* End PBXBuildFile section */
@@ -75,6 +83,16 @@
 		1E94C00C21737B900031CEF8 /* WellsNewsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WellsNewsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E94C01021737B900031CEF8 /* WellsNewsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellsNewsUITests.swift; sourceTree = "<group>"; };
 		1E94C01221737B900031CEF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EA0DA4C21B21B4B00954DC9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1EFB835421B22B4A00C02703 /* News-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "News-Bridging-Header.h"; sourceTree = "<group>"; };
+		1EFB835521B22B4A00C02703 /* NSData+CRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CRC32.h"; sourceTree = "<group>"; };
+		1EFB835621B22B4A00C02703 /* UIKit+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
+		1EFB835721B22B4A00C02703 /* Foundation+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extension.swift"; sourceTree = "<group>"; };
+		1EFB835821B22B4A00C02703 /* SVProgressHUD+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SVProgressHUD+Extension.swift"; sourceTree = "<group>"; };
+		1EFB835921B22B4A00C02703 /* NSData+CRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CRC32.m"; sourceTree = "<group>"; };
+		1EFB835B21B22B4A00C02703 /* MyTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTheme.swift; sourceTree = "<group>"; };
+		1EFB835F21B22B4A00C02703 /* Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		1EFB836A21B22CCD00C02703 /* HomeNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationView.swift; sourceTree = "<group>"; };
 		2A88975C9FFEA612AFBC56A5 /* Pods-WellsNewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WellsNewsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WellsNewsTests/Pods-WellsNewsTests.release.xcconfig"; sourceTree = "<group>"; };
 		912327A4F2D0D0ADB67EBE6B /* Pods_WellsNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WellsNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9283679413F0F9E21AE95AA6 /* Pods-WellsNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WellsNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-WellsNews/Pods-WellsNews.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +134,7 @@
 		1E3D26A22187478400BEA4E4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1EA0DA4A21B21B0C00954DC9 /* Home */,
 				1E3D26A3218747A000BEA4E4 /* Main */,
 				1E3D26A921874AD100BEA4E4 /* Others */,
 				1E94BFF021737B8F0031CEF8 /* AppDelegate.swift */,
@@ -127,6 +146,8 @@
 		1E3D26A3218747A000BEA4E4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1EFB835321B22B4A00C02703 /* Extension */,
+				1EFB835A21B22B4A00C02703 /* Tools */,
 				1E3D26A4218747B400BEA4E4 /* Controller */,
 			);
 			path = Main;
@@ -217,6 +238,53 @@
 				1E94C01221737B900031CEF8 /* Info.plist */,
 			);
 			path = WellsNewsUITests;
+			sourceTree = "<group>";
+		};
+		1EA0DA4A21B21B0C00954DC9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1EFB836921B22CA600C02703 /* View */,
+				1EA0DA4B21B21B2700954DC9 /* Controller */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1EA0DA4B21B21B2700954DC9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1EA0DA4C21B21B4B00954DC9 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1EFB835321B22B4A00C02703 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1EFB835421B22B4A00C02703 /* News-Bridging-Header.h */,
+				1EFB835521B22B4A00C02703 /* NSData+CRC32.h */,
+				1EFB835621B22B4A00C02703 /* UIKit+Extension.swift */,
+				1EFB835721B22B4A00C02703 /* Foundation+Extension.swift */,
+				1EFB835821B22B4A00C02703 /* SVProgressHUD+Extension.swift */,
+				1EFB835921B22B4A00C02703 /* NSData+CRC32.m */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		1EFB835A21B22B4A00C02703 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				1EFB835B21B22B4A00C02703 /* MyTheme.swift */,
+				1EFB835F21B22B4A00C02703 /* Emoji.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		1EFB836921B22CA600C02703 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1EFB836A21B22CCD00C02703 /* HomeNavigationView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		4E6599533AB52292BA8A6F46 /* Pods */ = {
@@ -410,13 +478,43 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WellsNews/Pods-WellsNews-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BMPlayer/BMPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
+				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/IBAnimatable/IBAnimatable.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SGPagingView/SGPagingView.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BMPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IBAnimatable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SGPagingView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -496,10 +594,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EFB836121B22B4A00C02703 /* Foundation+Extension.swift in Sources */,
+				1EFB836421B22B4A00C02703 /* MyTheme.swift in Sources */,
+				1EFB836821B22B4A00C02703 /* Emoji.swift in Sources */,
+				1EA0DA4D21B21B4B00954DC9 /* HomeViewController.swift in Sources */,
 				1E94BFF321737B8F0031CEF8 /* ViewController.swift in Sources */,
 				1E94BFF121737B8F0031CEF8 /* AppDelegate.swift in Sources */,
+				1EFB836B21B22CCD00C02703 /* HomeNavigationView.swift in Sources */,
 				1E3D26A62187482D00BEA4E4 /* WNTabBarController.swift in Sources */,
+				1EFB836021B22B4A00C02703 /* UIKit+Extension.swift in Sources */,
+				1EFB836321B22B4A00C02703 /* NSData+CRC32.m in Sources */,
 				1E3D26C321874AD100BEA4E4 /* Const.swift in Sources */,
+				1EFB836221B22B4A00C02703 /* SVProgressHUD+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
